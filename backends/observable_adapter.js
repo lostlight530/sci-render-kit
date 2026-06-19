@@ -39,7 +39,7 @@ function generateHTML(recipe, profile) {
   
   let plotCode = '';
   
-  if (chartType === 'line-chart') {
+if (chartType === 'line-chart') {
     const marks = Object.entries(data).map(([label, values], i) => {
       const color = palette[i % palette.length];
       const points = values.map((y, x) => ({ x, y, series: label }));
@@ -59,7 +59,6 @@ const plot = Plot.plot({
     `;
   } else if (chartType === 'scatter-plot') {
     const marks = Object.entries(data).map(([label, [x, y]], i) => {
-      const color = palette[i % palette.length];
       const points = x.map((xi, j) => ({ x: xi, y: y[j], series: label }));
       return JSON.stringify(points);
     });
@@ -70,11 +69,82 @@ const plot = Plot.plot({
   marks: [
     Plot.dot(data, { x: "x", y: "y", stroke: "series", fill: "series", r: 5, strokeWidth: 1 })
   ],
-  color: { domain: ${JSON.stringify(Object.keys(data))}, range: ${JSON.stringify(palette.slice(0, Object.keys(data).length))} }
+  color: { domain: ${JSON.stringify(Object.keys(data))}, range: ${JSON.stringify(palette.slice(0, Object.keys(data).length))} },
+  style: { fontFamily: "${aesthetics.font || 'sans-serif'}", fontSize: "${aesthetics.font_size || 12}px" }
+});
+    `;
+  } else if (chartType === 'bar-chart') {
+    const categories = Object.keys(data);
+    const values = Object.values(data);
+    const mappedData = categories.map((c, i) => ({category: c, value: values[i]}));
+
+    plotCode = `
+const data = ${JSON.stringify(mappedData)};
+const plot = Plot.plot({
+  marks: [
+    Plot.barY(data, { x: "category", y: "value", fill: "category" })
+  ],
+  color: { domain: ${JSON.stringify(categories)}, range: ${JSON.stringify(palette.slice(0, categories.length))} },
+  style: { fontFamily: "${aesthetics.font || 'sans-serif'}", fontSize: "${aesthetics.font_size || 12}px" }
+});
+    `;
+  } else if (chartType === 'heatmap') {
+    const matrix = data.matrix;
+    const row_labels = data.row_labels || Array.from({length: matrix.length}, (_, i) => `R${i+1}`);
+    const col_labels = data.col_labels || Array.from({length: matrix[0].length}, (_, i) => `C${i+1}`);
+
+    const mappedData = [];
+    for (let i=0; i<matrix.length; i++) {
+        for (let j=0; j<matrix[i].length; j++) {
+            mappedData.push({ row: row_labels[i], col: col_labels[j], value: matrix[i][j] });
+        }
+    }
+
+    plotCode = `
+const data = ${JSON.stringify(mappedData)};
+const plot = Plot.plot({
+  color: { type: "diverging", scheme: "RdBu", reverse: true },
+  marks: [
+    Plot.cell(data, {x: "col", y: "row", fill: "value"}),
+    Plot.text(data, {x: "col", y: "row", text: d => d.value.toFixed(2), fill: d => d.value < 0.5 ? "white" : "black"})
+  ],
+  style: { fontFamily: "${aesthetics.font || 'sans-serif'}", fontSize: "${aesthetics.font_size || 12}px" }
+});
+    `;
+  } else if (chartType === 'boxplot') {
+    const mappedData = [];
+    Object.entries(data).forEach(([group, values]) => {
+        values.forEach(v => mappedData.push({group, value: v}));
+    });
+
+    plotCode = `
+const data = ${JSON.stringify(mappedData)};
+const plot = Plot.plot({
+  marks: [
+    Plot.boxY(data, {x: "group", y: "value", fill: "group"})
+  ],
+  color: { domain: ${JSON.stringify(Object.keys(data))}, range: ${JSON.stringify(palette.slice(0, Object.keys(data).length))} },
+  style: { fontFamily: "${aesthetics.font || 'sans-serif'}", fontSize: "${aesthetics.font_size || 12}px" }
+});
+    `;
+  } else if (chartType === 'histogram') {
+    const values = data.values;
+    const mappedData = values.map(v => ({value: v}));
+    const color = palette[0] || '#1f77b4';
+    const bins = aesthetics.bins || 10;
+
+    plotCode = `
+const data = ${JSON.stringify(mappedData)};
+const plot = Plot.plot({
+  marks: [
+    Plot.rectY(data, Plot.binX({y: "count"}, {x: "value", thresholds: ${bins}, fill: "${color}"}))
+  ],
+  style: { fontFamily: "${aesthetics.font || 'sans-serif'}", fontSize: "${aesthetics.font_size || 12}px" }
 });
     `;
   } else {
     plotCode = `// TODO: 实现 ${chartType} 的 Observable Plot 渲染`;
+plotCode = `// TODO: 实现 ${chartType} 的 Observable Plot 渲染`;
   }
   
   return `<!DOCTYPE html>
@@ -115,13 +185,7 @@ function writeManifest(recipe, profile, outputPath) {
 function render(recipePath, profileName = 'presentation') {
   const recipe = loadRecipe(recipePath);
   
-  const errors = validateRecipe(recipe);
-  if (errors.length > 0) {
-    console.error('❌ 配方验证失败:');
-    errors.forEach(e => console.error(`  - ${e}`));
-    process.exit(1);
-  }
-  
+
   const profile = loadProfile(profileName);
   const html = generateHTML(recipe, profile);
   

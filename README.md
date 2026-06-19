@@ -1,77 +1,93 @@
 # sci-render-kit
 
-> 学术渲染工具包 — 配方驱动的多后端科学可视化 | Recipe-driven multi-backend scientific visualization
+**学术渲染工具包 — 配方驱动的多后端科学可视化**
+*Academic Render Toolkit — Recipe-driven multi-backend scientific visualization*
 
-## 核心差异 / Key Differences（vs `college-draw`）
+---
 
-| 维度 / Dimension | college-draw | sci-render-kit |
-|------|--------------|----------------|
-| 驱动模式 / Driver | Python 工厂类 / Factory class | YAML 配方声明 / Declarative recipes |
-| 渲染后端 / Backend | 仅 Matplotlib | Python + R + Observable Plot |
-| 代码量 / Code | ~800 行 Python | ~200 行适配器 + YAML 配方 |
-| 配置方式 / Config | 硬编码期刊/色板 / Hardcoded | 声明式 profiles + 可扩展 / Declarative, extensible |
-| 质量门 / QA Gate | 运行时检查 / Runtime check | 配方静态验证 + 运行时检查 / Static + runtime |
-| 元数据 / Metadata | 无 / None | 强制渲染溯源 / Mandatory reproducibility manifest |
-| 输出格式 / Output | PDF/EPS/SVG | PNG + SVG + HTML（交互式 / interactive） |
+## 🌟 核心差异 / Key Differences (vs `college-draw`)
 
-## 快速开始 / Quick Start
+| 维度 / Dimension | `college-draw` | `sci-render-kit` (本项目) |
+| :--- | :--- | :--- |
+| **驱动模式 / Driver** | Python 工厂类 / Factory class | **YAML 配方声明 / Declarative YAML recipes** |
+| **渲染后端 / Backend** | 仅 / Only Matplotlib | **Python (Matplotlib) + R (ggplot2) + JS (Observable)** |
+| **代码量 / Code Volume** | ~800 行 Python / lines of Python | **极简适配器 / Minimal adapters + YAML recipes** |
+| **配置方式 / Config** | 硬编码期刊色板 / Hardcoded palettes | **声明式、可扩展的 profiles / Declarative, extensible profiles** |
+| **质量门禁 / Quality Gate**| 运行时检查 / Runtime check | **配方静态验证 + 美学规范检查 / Static + Aesthetic validation before rendering** |
+| **元数据 / Metadata** | 无 / None | **强制生成渲染溯源清单 / Mandatory reproducibility manifest** |
+| **输出格式 / Output** | PDF/EPS/SVG | **PNG + SVG + HTML (交互式 / Interactive)** |
+
+---
+
+## 🚀 快速开始 / Quick Start
+
+**sci-render-kit** 提供了一个统一的命令行入口，让你可以用同一套 YAML 配方，在不同的绘图语言间无缝切换。
+*sci-render-kit provides a unified CLI, allowing you to seamlessly switch between plotting languages using the exact same YAML recipe.*
 
 ```bash
-# 1. 写一个配方 / Write a recipe
-# recipes/line-chart.yaml
+# 1. 编写一个配方 (Write a chart recipe)
+# 查看 recipes/line-chart.yaml (See recipes/line-chart.yaml)
 
-# 2. 渲染 / Render
-python backends/matplotlib_adapter.py render recipes/line-chart.yaml
-# 或 / or
-Rscript backends/ggplot2_adapter.R render recipes/line-chart.yaml
+# 2. 渲染：使用 Python Matplotlib 后端，并应用 Nature 期刊规范
+# Render using Python Matplotlib backend with Nature journal profile
+python3 sci_render.py recipes/line-chart.yaml --profile nature --backend matplotlib
+
+# 3. 切换渲染引擎：使用 R ggplot2 后端，应用 Science 期刊规范
+# Switch engine: Render using R ggplot2 backend with Science journal profile
+python3 sci_render.py recipes/line-chart.yaml --profile science --backend ggplot2
+
+# 4. 生成交互式网页：使用 Observable Plot 后端
+# Generate interactive web plots: Render using Observable Plot backend
+python3 sci_render.py recipes/line-chart.yaml --profile presentation --backend observable
 ```
 
-## 核心概念 / Core Concepts
+---
 
-```
-配方 / Recipe       → 声明式图表定义（YAML）/ Declarative chart definition
-后端 / Backend      → 配方 → 代码转换器（适配器模式）/ Adapter pattern converter
-配置 / Profile      → 期刊/场景美学预设 / Journal/scene aesthetic presets
-元数据 / Metadata   → 每次渲染自动记录的完整溯源 / Full render provenance
-质量门 / Gate       → 配方静态验证 + 渲染后检查 / Pre-validation + post-render check
-```
+## 🧠 核心概念 / Core Concepts
 
-## 设计理念 / Design Philosophy
+- **配方 (Recipe)**: 声明式图表定义（YAML）。只描述数据和图表结构，不写绘图代码。 / *Declarative chart definition (YAML). Describes data and structure without writing plotting code.*
+- **统一调度器 (Unified CLI)**: `sci_render.py`。负责加载配方、读取规范、执行强校验，最后分发给底层引擎。 / *The main entry point that loads recipes, applies profiles, enforces validation, and dispatches to engines.*
+- **后端 (Backend)**: 将配方转换为对应语言（Python/R/JS）代码的适配器。 / *Adapters that translate recipes into language-specific execution code (Python/R/JS).*
+- **配置 (Profile)**: 针对特定学术期刊（如 Nature, Science）或场景（如 PPT 演示）的美学预设。 / *Aesthetic presets for specific academic journals (e.g., Nature, Science) or scenarios.*
+- **质量门 (Quality Gate)**: 在渲染前强制执行的 Schema 校验与业务逻辑验证（如：色彩数量超标拦截）。 / *Pre-render validation checks ensuring schema compliance and aesthetic rules (e.g., color count limits).*
+- **元数据 (Metadata)**: 每次渲染必然伴随生成的 `.manifest.json` 溯源文件，确保 100% 实验可复现。 / *A `.manifest.json` provenance file automatically generated with every render to guarantee 100% reproducibility.*
 
-1. **声明优先 / Declaration First**：图表定义用 YAML，不用写代码 / Define charts in YAML, not code
-2. **后端无关 / Backend Agnostic**：同一配方在 matplotlib/ggplot2/Observable 间切换 / Same recipe, any backend
-3. **元数据强制 / Mandatory Metadata**：每次渲染必须输出 reproducibility manifest / Every render carries provenance
-4. **质量前置 / Quality Ahead**：配方在渲染前通过静态验证 / Validate before rendering
+---
 
-## 目录结构 / Directory Structure
+## 🏗️ 目录结构 / Directory Structure
 
-```
+```text
 sci-render-kit/
-├── README.md
-├── MANIFEST.yaml          ← 能力声明 / Capability manifest
-├── recipes/               ← 图表配方 / Chart recipes (YAML)
+├── sci_render.py          ← 统一命令行入口 (Unified CLI Entrypoint)
+├── ARCHITECTURE.md        ← 详细系统架构设计 (Detailed Architecture Design)
+├── MANIFEST.yaml          ← 工具包能力声明 (Toolkit capability manifest)
+├── recipes/               ← 图表配方示例 (Chart recipes in YAML)
 │   ├── line-chart.yaml
 │   ├── bar-chart.yaml
 │   ├── scatter-plot.yaml
-│   └── heatmap.yaml
-├── backends/              ← 后端适配器 / Backend adapters
+│   ├── heatmap.yaml
+│   ├── boxplot.yaml
+│   └── histogram.yaml
+├── backends/              ← 后端适配器 (Backend adapters / Code generators)
 │   ├── matplotlib_adapter.py
 │   ├── ggplot2_adapter.R
 │   └── observable_adapter.js
-├── profiles/              ← 期刊/场景配置 / Journal profiles
+├── profiles/              ← 期刊/场景配置预设 (Journal aesthetic profiles)
 │   ├── nature.yaml
 │   ├── science.yaml
 │   ├── ieee.yaml
 │   └── presentation.yaml
-├── metadata/              ← 元数据规范 / Metadata schemas
+├── metadata/              ← 元数据规范 (Metadata validation schemas)
 │   ├── recipe.schema.yaml
 │   └── reproducibility.schema.yaml
-├── quality/               ← 质量门定义 / Quality gate definitions
+├── quality/               ← 质量门定义 (Quality gate rule definitions)
 │   └── gates.yaml
-└── tests/                 ← 测试 / Tests
+└── tests/                 ← 测试套件 (Test suite)
     └── test_all.py
 ```
 
-## 协议 / License
+---
 
-MIT
+## ⚖️ 协议 / License
+
+MIT License

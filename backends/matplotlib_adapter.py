@@ -128,7 +128,42 @@ def generate_render_logic(chart_type: str, data: dict, aesthetics: dict) -> str:
             lines.append(f'ax.scatter({json.dumps(x)}, {json.dumps(y)}, c="{color}", s=16, label="{label}", edgecolors="black", linewidths=0.3)')
         lines.append('ax.legend(frameon=False)')
         return '\n'.join(lines)
-    
+
+    elif chart_type == 'heatmap':
+        lines = []
+        matrix = data.get('matrix', [])
+        row_labels = data.get('row_labels', [])
+        col_labels = data.get('col_labels', [])
+        cmap = aesthetics.get('cmap', 'viridis')
+        lines.append(f'cax = ax.imshow({json.dumps(matrix)}, cmap="{cmap}")')
+        lines.append(f'fig.colorbar(cax)')
+        if col_labels:
+            lines.append(f'ax.set_xticks(np.arange(len({json.dumps(col_labels)})))')
+            lines.append(f'ax.set_xticklabels({json.dumps(col_labels)})')
+        if row_labels:
+            lines.append(f'ax.set_yticks(np.arange(len({json.dumps(row_labels)})))')
+            lines.append(f'ax.set_yticklabels({json.dumps(row_labels)})')
+        return '\n'.join(lines)
+
+    elif chart_type == 'boxplot':
+        lines = []
+        labels = list(data.keys())
+        values = list(data.values())
+        lines.append(f'bplot = ax.boxplot({json.dumps(values)}, patch_artist=True, labels={json.dumps(labels)})')
+        lines.append(f'colors = {json.dumps(palette[:len(labels)])}')
+        lines.append('for patch, color in zip(bplot["boxes"], colors):')
+        lines.append('    patch.set_facecolor(color)')
+        lines.append('    patch.set_alpha(0.7)')
+        return '\n'.join(lines)
+
+    elif chart_type == 'histogram':
+        lines = []
+        values = data.get('values', [])
+        bins = aesthetics.get('bins', 10)
+        color = palette[0] if palette else '#1f77b4'
+        lines.append(f'ax.hist({json.dumps(values)}, bins={bins}, color="{color}", edgecolor="black", alpha=0.7)')
+        return '\n'.join(lines)
+
     else:
         return f'# TODO: 实现 {chart_type} 的渲染逻辑'
 
@@ -155,14 +190,7 @@ def render(recipe_path: str, profile_name: str = 'nature') -> None:
     """主渲染入口"""
     recipe = load_recipe(recipe_path)
     
-    # 静态验证
-    errors = validate_recipe(recipe)
-    if errors:
-        print('❌ 配方验证失败:')
-        for e in errors:
-            print(f'  - {e}')
-        sys.exit(1)
-    
+
     profile = load_profile(profile_name)
     
     # 生成代码

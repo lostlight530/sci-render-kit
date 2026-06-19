@@ -1,35 +1,36 @@
-title: "Recipe Schema"
-description: "图表配方的 YAML Schema 定义 | Chart recipe YAML schema definition"
-
+title: Recipe Schema
+description: "\u56FE\u8868\u914D\u65B9\u7684 YAML Schema \u5B9A\u4E49 | Chart recipe\
+  \ YAML schema definition"
 type: object
 required:
-  - id
-  - type
-  - data
-  - aesthetics
-  - output
-
+- id
+- type
+- data
+- aesthetics
+- output
 properties:
   id:
     type: string
-    description: "配方唯一标识"
-    
+    description: "\u914D\u65B9\u552F\u4E00\u6807\u8BC6"
   name:
     type: string
-    description: "人类可读名称"
-    
+    description: "\u4EBA\u7C7B\u53EF\u8BFB\u540D\u79F0"
   type:
     type: string
-    enum: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
-    description: "图表类型"
-    
+    enum:
+    - line-chart
+    - bar-chart
+    - scatter-plot
+    - heatmap
+    - boxplot
+    - histogram
+    description: "\u56FE\u8868\u7C7B\u578B"
   data:
     type: object
-    description: "图表数据（类型相关）"
-    
+    description: "\u56FE\u8868\u6570\u636E\uFF08\u7C7B\u578B\u76F8\u5173\uFF09"
   aesthetics:
     type: object
-    description: "美学参数"
+    description: "\u7F8E\u5B66\u53C2\u6570"
     properties:
       title:
         type: string
@@ -39,13 +40,15 @@ properties:
         type: string
       palette:
         type: array
-        items: string
+        items:
+          type: string
       font_size:
         type: integer
         minimum: 5
       figsize:
         type: array
-        items: number
+        items:
+          type: number
         minItems: 2
         maxItems: 2
       dpi:
@@ -56,26 +59,33 @@ properties:
         minimum: 0.1
       cmap:
         type: string
-        description: "热力图色阶名称"
-        
+        description: "\u70ED\u529B\u56FE\u8272\u9636\u540D\u79F0"
+      bins:
+        type: integer
+        minimum: 1
+        description: "\u76F4\u65B9\u56FE\u7684\u67F1\u6570"
   output:
     type: object
     required:
-      - dir
-      - filename
+    - dir
+    - filename
     properties:
       dir:
         type: string
-        description: "输出目录"
+        description: "\u8F93\u51FA\u76EE\u5F55"
       filename:
         type: string
-        description: "输出文件名"
+        description: "\u8F93\u51FA\u6587\u4EF6\u540D"
       format:
         type: string
-        enum: [png, svg, pdf, eps, html]
+        enum:
+        - png
+        - svg
+        - pdf
+        - eps
+        - html
         default: png
-        description: "输出格式"
-        
+        description: "\u8F93\u51FA\u683C\u5F0F"
   notes:
     type: string
-    description: "人类注释"
+    description: "\u4EBA\u7C7B\u6CE8\u91CA"

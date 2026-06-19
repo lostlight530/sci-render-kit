@@ -22,7 +22,7 @@ def test_profiles_exist():
     print("  [OK] 所有 profile 存在")
 
 def test_recipes_exist():
-    recipes = ['line-chart', 'bar-chart', 'scatter-plot', 'heatmap']
+    recipes = ['line-chart', 'bar-chart', 'scatter-plot', 'heatmap', 'boxplot', 'histogram']
     for r in recipes:
         path = f'recipes/{r}.yaml'
         assert os.path.exists(path), f"recipe {r} 必须存在"
@@ -47,26 +47,17 @@ def test_backends_exist():
         assert os.path.exists(path), f"backend {b} 必须存在"
     print("  [OK] 所有后端适配器存在")
 
-def test_matplotlib_adapter_validate():
-    from backends import matplotlib_adapter
+
+def test_central_cli_validation():
+    import subprocess
+    # Test valid
+    res = subprocess.run(["python3", "sci_render.py", "recipes/line-chart.yaml", "--backend", "matplotlib"], capture_output=True, text=True)
+    assert "P0 Schema 验证通过" in res.stdout, "合法配方应该通过 Schema 验证"
+    assert "P1 美学规范检查通过" in res.stdout, "合法配方应该通过 P1 验证"
     
-    # 测试通过验证的配方
-    valid_recipe = {
-        'id': 'test',
-        'type': 'line-chart',
-        'data': {'a': [1, 2, 3]},
-        'aesthetics': {},
-        'output': {'dir': 'test', 'filename': 'test.png'}
-    }
-    errors = matplotlib_adapter.validate_recipe(valid_recipe)
-    assert len(errors) == 0, f"合法配方不应报错: {errors}"
-    
-    # 测试缺少字段的配方
-    invalid_recipe = {'type': 'line-chart'}
-    errors = matplotlib_adapter.validate_recipe(invalid_recipe)
-    assert len(errors) > 0, "缺少字段的配方应报错"
-    
-    print("  [OK] matplotlib 适配器验证逻辑正确")
+    # Test invalid schema
+    res2 = subprocess.run(["python3", "sci_render.py", "profiles/nature.yaml", "--backend", "matplotlib"], capture_output=True, text=True)
+    assert res2.returncode != 0, "不合法的配方文件应该被拦截并返回非零"
 
 def test_manifest_output():
     # 检查是否生成 manifest 示例
