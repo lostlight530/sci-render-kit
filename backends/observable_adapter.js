@@ -152,7 +152,7 @@ plotCode = `// TODO: 实现 ${chartType} 的 Observable Plot 渲染`;
 <head>
   <meta charset="UTF-8">
   <title>${aesthetics.title || 'Chart'}</title>
-  <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot"></script>
   <style>
     body { font-family: ${aesthetics.font || 'sans-serif'}; margin: 20px; }
     #chart { max-width: 100%; }
