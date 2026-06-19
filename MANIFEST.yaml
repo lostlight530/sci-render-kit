@@ -1,0 +1,41 @@
+name: sci-render-kit
+purpose: 声明式学术可视化工具包 | Declarative academic visualization toolkit
+principles:
+  - 声明优先: 图表定义用 YAML 不用写代码
+  - 后端无关: 同一配方可切换多后端
+  - 元数据强制: 每次渲染必须输出溯源信息
+  - 质量前置: 配方先通过静态验证
+  
+backends:
+  - name: matplotlib
+    language: python
+    adapter: backends/matplotlib_adapter.py
+    capabilities: [png, svg, pdf]
+    default: true
+  - name: ggplot2
+    language: r
+    adapter: backends/ggplot2_adapter.R
+    capabilities: [png, svg, pdf]
+  - name: observable
+    language: javascript
+    adapter: backends/observable_adapter.js
+    capabilities: [html, svg]
+    
+profiles:
+  - nature
+  - science
+  - ieee
+  - presentation
+  
+recipes:
+  types: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
+  schema: metadata/recipe.schema.yaml
+  
+quality:
+  gates: quality/gates.yaml
+  levels: [P0, P1, P2]
+  
+metadata:
+  required: true
+  output: manifest.json
+  schema: metadata/reproducibility.schema.yaml

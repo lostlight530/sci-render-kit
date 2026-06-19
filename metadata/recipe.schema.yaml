@@ -1,0 +1,81 @@
+title: "Recipe Schema"
+description: "图表配方的 YAML Schema 定义 | Chart recipe YAML schema definition"
+
+type: object
+required:
+  - id
+  - type
+  - data
+  - aesthetics
+  - output
+
+properties:
+  id:
+    type: string
+    description: "配方唯一标识"
+    
+  name:
+    type: string
+    description: "人类可读名称"
+    
+  type:
+    type: string
+    enum: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
+    description: "图表类型"
+    
+  data:
+    type: object
+    description: "图表数据（类型相关）"
+    
+  aesthetics:
+    type: object
+    description: "美学参数"
+    properties:
+      title:
+        type: string
+      x_label:
+        type: string
+      y_label:
+        type: string
+      palette:
+        type: array
+        items: string
+      font_size:
+        type: integer
+        minimum: 5
+      figsize:
+        type: array
+        items: number
+        minItems: 2
+        maxItems: 2
+      dpi:
+        type: integer
+        minimum: 72
+      line_width:
+        type: number
+        minimum: 0.1
+      cmap:
+        type: string
+        description: "热力图色阶名称"
+        
+  output:
+    type: object
+    required:
+      - dir
+      - filename
+    properties:
+      dir:
+        type: string
+        description: "输出目录"
+      filename:
+        type: string
+        description: "输出文件名"
+      format:
+        type: string
+        enum: [png, svg, pdf, eps, html]
+        default: png
+        description: "输出格式"
+        
+  notes:
+    type: string
+    description: "人类注释"

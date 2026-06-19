@@ -1,0 +1,25 @@
+id: scatter-plot-demo
+name: 散点图演示
+type: scatter-plot
+
+data:
+  Group-A: [[1, 2, 3, 4, 5], [2, 4, 3, 5, 4]]
+  Group-B: [[1, 2, 3, 4, 5], [1, 3, 5, 4, 2]]
+
+aesthetics:
+  title: "分组散点对比"
+  x_label: "X Axis"
+  y_label: "Y Axis"
+  palette: ["#E69F00", "#56B4E9"]
+  font_size: 10
+  figsize: [6.0, 4.0]
+  dpi: 300
+
+output:
+  dir: output
+  filename: scatter-plot.png
+  format: png
+
+notes: >
+  演示用配方：展示两组数据的散点分布
+  预期：带边缘色的散点图，图例在底部

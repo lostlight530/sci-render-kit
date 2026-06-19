@@ -1,0 +1,15 @@
+name: ieee
+journal: IEEE
+aesthetics:
+  font: "Times New Roman"
+  font_size: 8
+  figsize: [3.5, 2.5]
+  dpi: 300
+  line_width: 0.75
+  axes_linewidth: 0.75
+  palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
+  constraints:
+    - "矢量格式优先 (PDF/EPS)"
+    - "字号 ≥ 8pt"
+    - "单栏宽度 89mm"
+    - "双栏宽度 182mm"

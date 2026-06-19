@@ -1,0 +1,15 @@
+name: presentation
+journal: "Presentation"
+aesthetics:
+  font: "sans-serif"
+  font_size: 14
+  figsize: [10.0, 6.0]
+  dpi: 150
+  line_width: 2.0
+  axes_linewidth: 1.0
+  palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
+  constraints:
+    - "高对比度配色"
+    - "字体 ≥ 14pt 确保可读性"
+    - "支持 PNG/JPG 位图"
+    - "16:9 比例优先"

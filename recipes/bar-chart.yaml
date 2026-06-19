@@ -1,0 +1,27 @@
+id: bar-chart-demo
+name: 柱状图演示
+type: bar-chart
+
+data:
+  Model-A: 0.92
+  Model-B: 0.88
+  Model-C: 0.85
+  Model-D: 0.79
+
+aesthetics:
+  title: "模型对比"
+  x_label: "模型"
+  y_label: "F1 Score"
+  palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442"]
+  font_size: 10
+  figsize: [6.0, 4.0]
+  dpi: 300
+
+output:
+  dir: output
+  filename: bar-chart.png
+  format: png
+
+notes: >
+  演示用配方：展示不同模型的 F1 Score 对比
+  预期：分组柱状图，误差棒可选

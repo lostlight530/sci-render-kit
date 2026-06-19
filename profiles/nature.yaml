@@ -1,0 +1,18 @@
+name: nature
+journal: Nature
+aesthetics:
+  font: "Arial"
+  font_size: 5
+  figsize: [3.5, 2.45]
+  dpi: 300
+  line_width: 1.0
+  axes_linewidth: 0.5
+  palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
+  constraints:
+    - "矢量格式优先 (PDF/EPS)"
+    - "字号 ≥ 5pt"
+    - "单栏宽度 89mm"
+    - "双栏宽度 183mm"
+    - "颜色 ≤ 8 种"
+    - "禁用 3D 图"
+    - "禁用红绿并置"

@@ -1,0 +1,72 @@
+title: "Quality Gates"
+description: "渲染前后的质量检查门 | Pre/post-render quality inspection gates"
+
+gates:
+  - id: P0-recipe-valid
+    name: "配方静态验证"
+    level: P0
+    description: "渲染前必须通过的静态检查"
+    checks:
+      - id: schema-compliance
+        name: "Schema 合规"
+        rule: "配方必须符合 recipe.schema.yaml 定义的字段要求"
+      - id: required-fields
+        name: "必需字段"
+        rule: "必须包含 id, type, data, aesthetics, output"
+      - id: data-type
+        name: "数据类型检查"
+        rule: "data 必须是字典或列表"
+      - id: output-config
+        name: "输出配置"
+        rule: "output 必须包含 dir 和 filename"
+    
+  - id: P1-aesthetics-check
+    name: "美学规范检查"
+    level: P1
+    description: "渲染前的美学参数验证"
+    checks:
+      - id: color-count
+        name: "颜色数量"
+        rule: "palette 中颜色数 ≤ 8"
+      - id: font-size
+        name: "字号合规"
+        rule: "font_size ≥ 5 (Nature) 或 ≥ 6 (Science)"
+      - id: forbidden-pairs
+        name: "禁止配色"
+        rule: "不包含红绿并置组合"
+      - id: no-3d
+        name: "3D 禁用"
+        rule: "type 不为 3d-*"
+    
+  - id: P2-output-integrity
+    name: "输出完整性检查"
+    level: P2
+    description: "渲染后的输出验证"
+    checks:
+      - id: file-exists
+        name: "文件存在"
+        rule: "输出文件已成功生成"
+      - id: non-empty
+        name: "非空文件"
+        rule: "文件大小 > 0"
+      - id: format-match
+        name: "格式匹配"
+        rule: "文件扩展名与 output.format 一致"
+      - id: manifest-exists
+        name: "元数据存在"
+        rule: "同名的 .manifest.json 必须存在"
+    
+  - id: P3-journal-compliance
+    name: "期刊规范对齐"
+    level: P3
+    description: "针对目标期刊的专项检查"
+    checks:
+      - id: vector-format
+        name: "矢量格式"
+        rule: "对于 Nature/Science，输出必须是 PDF 或 EPS"
+      - id: dpi-check
+        name: "DPI 达标"
+        rule: "DPI ≥ 期刊最低要求"
+      - id: size-check
+        name: "尺寸合规"
+        rule: "图像尺寸在期刊限制范围内"

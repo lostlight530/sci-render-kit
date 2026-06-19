@@ -1,0 +1,16 @@
+name: science
+journal: Science
+aesthetics:
+  font: "Helvetica"
+  font_size: 6
+  figsize: [3.35, 2.35]
+  dpi: 600
+  line_width: 0.75
+  axes_linewidth: 0.75
+  palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
+  constraints:
+    - "矢量格式优先 (PDF/EPS)"
+    - "字号 ≥ 6pt"
+    - "单栏宽度 85mm"
+    - "双栏宽度 174mm"
+    - "DPI ≥ 600"

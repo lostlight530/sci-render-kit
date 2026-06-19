@@ -1,0 +1,86 @@
+title: "Reproducibility Manifest Schema"
+description: "每次渲染必须输出的元数据格式 | Mandatory metadata format for every render"
+
+type: object
+required:
+  - generated_at
+  - generator
+  - recipe
+  - backend
+  - output
+  - parameters
+
+properties:
+  generated_at:
+    type: string
+    format: date-time
+    description: "ISO 8601 渲染时间戳"
+    
+  generator:
+    type: string
+    description: "生成器标识，如 sci-render-kit/matplotlib@1.0.0"
+    
+  recipe:
+    type: string
+    description: "配方 ID"
+    
+  profile:
+    type: string
+    description: "使用的配置文件名"
+    
+  backend:
+    type: string
+    enum: [matplotlib, ggplot2, observable]
+    description: "渲染后端"
+    
+  output:
+    type: string
+    description: "输出文件路径"
+    
+  checksum:
+    type: string
+    description: "输出文件的 SHA-256 校验和"
+    
+  parameters:
+    type: object
+    description: "渲染参数快照"
+    properties:
+      aesthetics:
+        type: object
+        description: "最终生效的美学参数"
+      data_hash:
+        type: string
+        description: "输入数据的哈希值"
+      data_keys:
+        type: array
+        items: string
+        description: "数据键列表"
+        
+  provenance:
+    type: object
+    description: "溯源信息"
+    properties:
+      recipe_source:
+        type: string
+        description: "配方来源 URL 或路径"
+      data_source:
+        type: string
+        description: "数据来源 URL 或路径"
+      execution_environment:
+        type: string
+        description: "执行环境描述"
+        
+example:
+  generated_at: "2026-06-18T14:30:00Z"
+  generator: "sci-render-kit/matplotlib@1.0.0"
+  recipe: "line-chart-demo"
+  profile: "nature"
+  backend: "matplotlib"
+  output: "output/line-chart.png"
+  checksum: "sha256:abc123..."
+  parameters:
+    aesthetics:
+      font_size: 5
+      line_width: 1.0
+    data_hash: "sha256:def456..."
+    data_keys: ["accuracy", "loss"]

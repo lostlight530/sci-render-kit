@@ -1,0 +1,26 @@
+id: line-chart-demo
+name: 折线图演示
+type: line-chart
+
+data:
+  accuracy: [0.72, 0.78, 0.84, 0.88, 0.91, 0.93, 0.94, 0.95]
+  loss: [1.2, 0.85, 0.62, 0.45, 0.35, 0.28, 0.24, 0.21]
+
+aesthetics:
+  title: "训练曲线"
+  x_label: "Epoch"
+  y_label: "Value"
+  palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
+  font_size: 10
+  line_width: 1.0
+  figsize: [6.0, 4.0]
+  dpi: 300
+
+output:
+  dir: output
+  filename: line-chart.png
+  format: png
+
+notes: >
+  演示用配方：展示训练过程中 accuracy 和 loss 的变化
+  预期：双 Y 轴或叠加折线图
