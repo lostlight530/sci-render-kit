@@ -4,6 +4,7 @@
 
 library(yaml)
 library(jsonlite)
+library(digest)
 
 
 `%||%` <- function(a, b) if (is.null(a)) b else a
@@ -196,13 +197,18 @@ cat("已保存: %s/%s\n")
   return(full_code)
 }
 write_manifest <- function(recipe, profile, output_path) {
+  chksum <- "none"
+  if (file.exists(output_path)) {
+    chksum <- paste0("sha256:", digest(output_path, file=TRUE, algo="sha256"))
+  }
   manifest <- list(
     generated_at = format(Sys.time(), "%Y-%m-%dT%H:%M:%S"),
     generator = 'sci-render-kit/ggplot2',
     recipe = recipe$id %||% 'unknown',
     profile = profile$name %||% 'default',
     backend = 'ggplot2',
-    output = output_path
+    output = output_path,
+    checksum = chksum
   )
   manifest_path <- sub('\\.[^.]+$', '.manifest.json', output_path)
   write_json(manifest, manifest_path, auto_unbox = TRUE, pretty = TRUE)
@@ -227,6 +233,7 @@ render <- function(recipe_path, profile_name = 'nature') {
   cat(sprintf('✅ 已生成渲染脚本: %s\n', script_path))
   cat(sprintf('📋 运行以下命令执行渲染:\n'))
   cat(sprintf('   Rscript %s\n', script_path))
+  system2('Rscript', args=script_path)
   
   output_path <- file.path(output_dir, output$filename %||% 'figure.png')
   write_manifest(recipe, profile, output_path)

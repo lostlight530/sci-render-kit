@@ -6,8 +6,11 @@ Matplotlib 后端适配器 — 将 YAML 配方渲染为图表
 
 import yaml
 import json
+import numpy as np
+import hashlib
 import sys
 import os
+import subprocess
 from pathlib import Path
 from datetime import datetime
 from string import Template
@@ -113,7 +116,7 @@ def generate_render_logic(chart_type: str, data: dict, aesthetics: dict) -> str:
         values = list(data.values())
         n = len(categories)
         bar_width = 0.6
-        x = np.arange(n)
+        lines.append(f'x = np.arange({n})')
         for i, (label, val) in enumerate(zip(categories, values)):
             color = palette[i % len(palette)]
             lines.append(f'ax.bar(x[{i}] + {bar_width/2}, {val}, width={bar_width}, color="{color}", edgecolor="black", linewidth=0.5)')
@@ -176,7 +179,7 @@ def write_manifest(recipe: dict, profile: dict, output_path: str) -> None:
         'profile': profile.get('name', 'default'),
         'backend': 'matplotlib',
         'output': output_path,
-        'checksum': 'sha256:placeholder',
+        'checksum': 'sha256:' + hashlib.sha256(open(output_path, 'rb').read()).hexdigest() if Path(output_path).exists() else 'none',
         'parameters': {
             'aesthetics': recipe.get('aesthetics', {}),
             'data_keys': list(recipe.get('data', {}).keys()),
@@ -208,6 +211,7 @@ def render(recipe_path: str, profile_name: str = 'nature') -> None:
     print(f'✅ 已生成渲染脚本: {script_path}')
     print(f'📋 运行以下命令执行渲染:')
     print(f'   python {script_path}')
+    subprocess.run(['python3', script_path], check=True)
     
     # 写入 manifest（预览版）
     output_path = output_dir / output.get('filename', 'figure.png')

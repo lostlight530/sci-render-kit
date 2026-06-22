@@ -119,5 +119,46 @@ def main():
         print(f"❌ 后端执行失败, 返回码: {e.returncode}")
         sys.exit(1)
 
+    # 5. 执行 Quality Gates (P2/P3 输出后检查)
+    output_cfg = recipe.get('output', {})
+    output_dir = output_cfg.get('dir', 'output')
+    output_file = output_cfg.get('filename', 'figure.png')
+    output_path = Path(output_dir) / output_file
+    manifest_path = output_path.with_suffix('.manifest.json')
+
+    post_errors = []
+
+    for gate in gates.get('gates', []):
+        level = gate.get('level')
+        if level in ['P2', 'P3']:
+            for check in gate.get('checks', []):
+                cid = check.get('id')
+                if cid == 'file-exists':
+                    if not output_path.exists():
+                        post_errors.append(f"[{gate['name']}] {check['name']}: 输出文件未生成")
+                elif cid == 'non-empty':
+                    if output_path.exists() and output_path.stat().st_size == 0:
+                        post_errors.append(f"[{gate['name']}] {check['name']}: 输出文件为空")
+                elif cid == 'format-match':
+                    expected_ext = '.' + output_cfg.get('format', 'png').lower()
+                    if output_path.suffix.lower() != expected_ext:
+                        post_errors.append(f"[{gate['name']}] {check['name']}: 期望扩展名 {expected_ext} 但得到 {output_path.suffix.lower()}")
+                elif cid == 'manifest-exists':
+                    if not manifest_path.exists():
+                        post_errors.append(f"[{gate['name']}] {check['name']}: 溯源元数据文件未生成")
+                elif cid == 'vector-format':
+                    if args.profile in ['nature', 'science']:
+                        if output_path.suffix.lower() not in ['.pdf', '.eps']:
+                            post_errors.append(f"[{gate['name']}] {check['name']}: {args.profile} 期望矢量格式 (.pdf/.eps)，但得到 {output_path.suffix.lower()}")
+
+    if post_errors:
+        print("❌ 渲染后质量门检查失败:")
+        for err in post_errors:
+            print(f"  - {err}")
+        sys.exit(1)
+    else:
+        print("✅ P2/P3 输出检查通过")
+
+
 if __name__ == "__main__":
     main()

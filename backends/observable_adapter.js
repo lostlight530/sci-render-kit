@@ -6,7 +6,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const yaml = require('yaml'); // 若本地无 yaml 包，需 npm install yaml
+const yaml = require('yaml');
+const crypto = require('crypto');
 
 function loadRecipe(recipePath) {
   const content = fs.readFileSync(recipePath, 'utf-8');
@@ -170,13 +171,22 @@ document.getElementById("chart").appendChild(plot);
 }
 
 function writeManifest(recipe, profile, outputPath) {
+  let checksum = "none";
+  if (fs.existsSync(outputPath)) {
+    const fileBuffer = fs.readFileSync(outputPath);
+    const hashSum = crypto.createHash('sha256');
+    hashSum.update(fileBuffer);
+    checksum = 'sha256:' + hashSum.digest('hex');
+  }
+
   const manifest = {
     generated_at: new Date().toISOString(),
     generator: 'sci-render-kit/observable',
     recipe: recipe.id || 'unknown',
     profile: profile.name || 'default',
     backend: 'observable',
-    output: outputPath
+    output: outputPath,
+    checksum: checksum
   };
   const manifestPath = outputPath.replace(/\.[^.]+$/, '.manifest.json');
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
