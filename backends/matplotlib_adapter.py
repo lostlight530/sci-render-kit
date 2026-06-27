@@ -211,7 +211,13 @@ def render(recipe_path: str, profile_name: str = 'nature') -> None:
     print(f'✅ 已生成渲染脚本: {script_path}')
     print(f'📋 运行以下命令执行渲染:')
     print(f'   python {script_path}')
-    subprocess.run(['python3', script_path], check=True)
+    try:
+        subprocess.run(['python3', str(script_path)], check=True)
+    finally:
+        # Hygiene: clean up generated execute script
+        if script_path.exists():
+            script_path.unlink()
+            print(f"🧹 已清理临时脚本: {script_path}")
     
     # 写入 manifest（预览版）
     output_path = output_dir / output.get('filename', 'figure.png')

@@ -50,14 +50,30 @@ def test_backends_exist():
 
 def test_central_cli_validation():
     import subprocess
-    # Test valid
-    res = subprocess.run(["python3", "sci_render.py", "recipes/line-chart.yaml", "--backend", "matplotlib"], capture_output=True, text=True)
-    assert "P0 Schema 验证通过" in res.stdout, "合法配方应该通过 Schema 验证"
-    assert "P1 美学规范检查通过" in res.stdout, "合法配方应该通过 P1 验证"
+    # Test valid (using presentation profile to avoid nature's PDF vector requirement vs PNG recipe config)
+    res = subprocess.run(["python3", "sci_render.py", "recipes/line-chart.yaml", "--profile", "presentation", "--backend", "matplotlib"], capture_output=True, text=True)
+    assert "P0 Schema 验证通过" in res.stdout, f"合法配方应该通过 Schema 验证, stdout: {res.stdout}"
+    assert "P1 美学规范检查通过" in res.stdout, f"合法配方应该通过 P1 验证, stdout: {res.stdout}"
+    assert "✅ P2/P3 输出检查通过" in res.stdout, f"合法配方应该通过输出检查, stdout: {res.stdout}"
     
-    # Test invalid schema
+    # Test invalid schema -> P0_SCHEMA_FAILURE
     res2 = subprocess.run(["python3", "sci_render.py", "profiles/nature.yaml", "--backend", "matplotlib"], capture_output=True, text=True)
     assert res2.returncode != 0, "不合法的配方文件应该被拦截并返回非零"
+    assert "P0_SCHEMA_FAILURE" in res2.stdout, "不合法的配方应触发 P0_SCHEMA_FAILURE"
+
+    # Test missing profile -> MISSING_PROFILE
+    res3 = subprocess.run(["python3", "sci_render.py", "recipes/line-chart.yaml", "--profile", "unknown_profile"], capture_output=True, text=True)
+    assert res3.returncode != 0, "缺失的 profile 应该被拦截并返回非零"
+    assert "MISSING_PROFILE" in res3.stdout, "缺失的 profile 应触发 MISSING_PROFILE"
+
+    # Test invalid YAML parse -> YAML_PARSE_FAILURE
+    with open("recipes/bad.yaml", "w") as bad_f:
+        bad_f.write("invalid: yaml: \n  [ - foo")
+    res4 = subprocess.run(["python3", "sci_render.py", "recipes/bad.yaml"], capture_output=True, text=True)
+    assert res4.returncode != 0, "损坏的 YAML 应该被拦截并返回非零"
+    assert "YAML_PARSE_FAILURE" in res4.stdout, "损坏的 YAML 应触发 YAML_PARSE_FAILURE"
+    import os
+    os.remove("recipes/bad.yaml")
 
 def test_manifest_output():
     # 检查是否生成 manifest 示例
