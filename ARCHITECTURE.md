@@ -70,3 +70,22 @@
 3. **门禁拦截 (Gate Check)**：如果配方中的配色方案使用了超过 8 种颜色，CLI 会直接拒绝渲染并抛出规则冲突异常。
 4. **代码生成与执行 (Generate & Exec)**：校验通过后，自动在 `output/` 目录下生成 `_generated_render.R` 并由系统自动运行 `Rscript`。
 5. **获取高品质产物 (Output)**：用户在 `output/` 目录下得到完全符合 Nature 规范的 `my-experiment.png` 以及用于证明可复现性的 `my-experiment.manifest.json`。
+
+---
+
+## 4. 严格规则与卫生原则 (Strict Rules & Output Hygiene)
+
+为了实现彻底的可复现性和透明度，系统设计并实施了以下强制守则（Doctrine）：
+
+### 4.1 输出卫生 (Output Hygiene)
+所有通过后端适配器临时生成的中间代码（如 `_generated_render.py`）必须在执行完毕后被安全删除，保证工作区无任何残留的脏脚本代码。任何失败必须是显式的拦截，不能存在部分写文件的状态。
+
+### 4.2 配置硬约束 (Profile Constraints)
+Profile（配置）用于编码外部环境的硬约束。
+- 绝不允许后端偷偷对样式进行覆盖。
+- 缺失 Profile 文件必须触发 `MISSING_PROFILE` 异常，不接受动态创造的假配置。
+- 如果配方声明（如 PNG 格式）与目标配置（如 Nature 要求 PDF 矢量格式）冲突，系统在 P3 质量门拦截报告，并认为这是合理的设计。
+
+### 4.3 无 Shell 注入 (No Shell=True)
+所有从 `sci_render.py` 到后端的任务分发，均通过原生的列表式 subprocess 派发。
+严禁使用 `shell=True`，彻底杜绝 YAML 文件中可能隐藏的代码执行攻击。

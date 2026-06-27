@@ -14,8 +14,13 @@ from pathlib import Path
 from jsonschema import validate, ValidationError
 
 def load_yaml(path: str) -> dict:
-    with open(path, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            return yaml.safe_load(f)
+    except yaml.YAMLError as e:
+        print("YAML_PARSE_FAILURE")
+        print(f"Error parsing YAML file {path}: {e}")
+        sys.exit(1)
 
 def run_quality_gates(recipe: dict, profile: dict, gates_def: dict):
     """根据 quality/gates.yaml 运行静态检查 (P0, P1)"""
@@ -81,13 +86,18 @@ def main():
         validate(instance=recipe, schema=schema)
         print("✅ P0 Schema 验证通过")
     except ValidationError as e:
+        print("P0_SCHEMA_FAILURE")
         print("❌ [P0-recipe-valid] Schema 验证失败:")
         print(f"  - {e.message}")
         sys.exit(1)
 
     # 2. 统一读取 Profile
     profile_path = f'profiles/{args.profile}.yaml'
-    profile = load_yaml(profile_path) if os.path.exists(profile_path) else {'name': args.profile}
+    if not os.path.exists(profile_path):
+        print("MISSING_PROFILE")
+        print(f"Error: Profile file not found: {profile_path}")
+        sys.exit(1)
+    profile = load_yaml(profile_path)
 
     # 3. 执行 Quality Gates (P0/P1)
     gates_path = 'quality/gates.yaml'
@@ -116,6 +126,7 @@ def main():
         # 我们把参数传递给后端的 CLI
         subprocess.run([cmd, script, "render", args.recipe, "--profile", args.profile], check=True)
     except subprocess.CalledProcessError as e:
+        print("BACKEND_EXECUTION_FAILURE")
         print(f"❌ 后端执行失败, 返回码: {e.returncode}")
         sys.exit(1)
 
@@ -145,6 +156,7 @@ def main():
                         post_errors.append(f"[{gate['name']}] {check['name']}: 期望扩展名 {expected_ext} 但得到 {output_path.suffix.lower()}")
                 elif cid == 'manifest-exists':
                     if not manifest_path.exists():
+                        print("MANIFEST_MISSING")
                         post_errors.append(f"[{gate['name']}] {check['name']}: 溯源元数据文件未生成")
                 elif cid == 'vector-format':
                     if args.profile in ['nature', 'science']:

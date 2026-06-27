@@ -91,3 +91,13 @@ sci-render-kit/
 ## ⚖️ 协议 / License
 
 MIT License
+
+---
+
+## 🛑 严格错误控制体系 (Strict Error Control System)
+为了保证 100% 稳定的学术渲染流程，本工具禁止任何静默失败，定义了以下强制中断信号：
+* `YAML_PARSE_FAILURE`: 当解析到损坏的 YAML 配方或配置时触发。
+* `MISSING_PROFILE`: 强制声明特定的期刊配置，若未找到对应的 `.yaml` 文件则直接报错，拒绝执行。
+* `P0_SCHEMA_FAILURE`: 当用户提供的配方字段类型或必需项校验失败时触发。
+* `BACKEND_EXECUTION_FAILURE`: 底层渲染适配器发生异常或失败时触发。
+* `MANIFEST_MISSING`: 溯源元数据文件未能成功生成时触发。
