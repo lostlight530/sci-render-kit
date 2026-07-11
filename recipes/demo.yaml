@@ -1,0 +1,14 @@
+id: demo-line-chart
+type: line-chart
+title: "示例折线图"
+data:
+  Series A: [10, 20, 15, 25, 30]
+  Series B: [5, 15, 20, 10, 25]
+aesthetics:
+  palette: ["#E69F00", "#56B4E9"]
+  font_size: 10
+  figsize: [6.0, 4.0]
+output:
+  dir: output
+  filename: demo.png
+  format: png
