@@ -230,11 +230,20 @@ render <- function(recipe_path, profile_name = 'nature') {
   script_path <- file.path(output_dir, '_generated_render.R')
   writeLines(code, script_path)
   
-  cat(sprintf('✅ 已生成渲染脚本: %s\n', script_path))
-  cat(sprintf('📋 运行以下命令执行渲染:\n'))
+  cat(sprintf('已生成渲染脚本: %s\n', script_path))
+  cat(sprintf('运行以下命令执行渲染:\n'))
   cat(sprintf('   Rscript %s\n', script_path))
-  system2('Rscript', args=script_path)
-  
+
+  tryCatch({
+    system2('Rscript', args=script_path)
+  }, finally = {
+    # Hygiene: clean up generated execute script (consistent with matplotlib adapter)
+    if (file.exists(script_path)) {
+      unlink(script_path)
+      cat(sprintf('已清理临时脚本: %s\n', script_path))
+    }
+  })
+
   output_path <- file.path(output_dir, output$filename %||% 'figure.png')
   write_manifest(recipe, profile, output_path)
 }

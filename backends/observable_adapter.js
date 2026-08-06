@@ -145,7 +145,6 @@ const plot = Plot.plot({
     `;
   } else {
     plotCode = `// TODO: 实现 ${chartType} 的 Observable Plot 渲染`;
-plotCode = `// TODO: 实现 ${chartType} 的 Observable Plot 渲染`;
   }
   
   return `<!DOCTYPE html>

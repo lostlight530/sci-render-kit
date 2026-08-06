@@ -48,12 +48,12 @@ python3 sci_render.py recipes/line-chart.yaml --profile presentation --backend o
 | R ggplot2 backend | **Implemented** |
 | JS Observable backend | **Implemented** |
 | Profile static validation | **Implemented** |
-| `collapse_view.py` | **Experimental** |
-| `cognitive_color.py` | **Experimental** |
-| `time_crystal.py` | **Experimental** |
-| `uncertainty_legend.py` | **Experimental** |
-| `quantum_layer.py` | **Experimental** |
-| `observer_dashboard.py` | **Experimental** |
+| `collapse_view.py` → `core/projection.py` | **Experimental** |
+| `cognitive_color.py` → `core/color_encoding.py` | **Experimental** |
+| `time_crystal.py` → `core/time_crystal.py` | **Experimental** |
+| `uncertainty_legend.py` → `core/uncertainty_legend.py` | **Experimental** |
+| `observer_dashboard.py` → `core/observer_dashboard.py` | **Experimental** |
+| `quantum_layer.py` → `core/superposition.py` | **Experimental** |
 
 ## 配方示例 / Recipe Example
 
