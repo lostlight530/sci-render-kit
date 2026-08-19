@@ -36,7 +36,23 @@ function generateHTML(recipe, profile) {
   const data = recipe.data;
   const chartType = recipe.type;
   
-  const palette = aesthetics.palette || ['#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2', '#D55E00', '#CC79A7', '#000000'];
+  let palette = aesthetics.palette || ['#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2', '#D55E00', '#CC79A7', '#000000'];
+
+  // 语义色彩编码（与 core/color_encoding.py 的 CognitiveColorEncoder 保持一致）：
+  // semantic_palette: true 时按系列名的语义标签生成色板，优先于显式 palette
+  if (aesthetics.semantic_palette &&
+      ['line-chart', 'bar-chart', 'scatter-plot', 'boxplot', 'histogram'].includes(chartType)) {
+    const SEMANTIC_MAP = {
+      positive: '#009E73', negative: '#D55E00', neutral: '#56B4E9',
+      critical: '#D55E00', stable: '#0072B2', energetic: '#E69F00',
+      creative: '#CC79A7', attention: '#F0E442'
+    };
+    const PERCEPTUAL = ['#0072B2', '#E69F00', '#009E73', '#CC79A7', '#56B4E9', '#F0E442', '#D55E00', '#000000'];
+    const seriesLabels = Object.keys(data);
+    if (seriesLabels.length > 0) {
+      palette = seriesLabels.map((label, i) => SEMANTIC_MAP[label.toLowerCase()] || PERCEPTUAL[i % PERCEPTUAL.length]);
+    }
+  }
   
   let plotCode = '';
   

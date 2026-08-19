@@ -15,6 +15,38 @@ from pathlib import Path
 from datetime import datetime
 from string import Template
 
+# 允许以脚本方式从任意工作目录运行（python3 backends/matplotlib_adapter.py）
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from core.color_encoding import CognitiveColorEncoder
+
+# 默认色板（Okabe-Ito 色盲友好）
+DEFAULT_PALETTE = [
+    "#E69F00",
+    "#56B4E9",
+    "#009E73",
+    "#F0E442",
+    "#0072B2",
+    "#D55E00",
+    "#CC79A7",
+    "#000000",
+]
+
+# 采用离散系列着色的图表类型（语义色板按系列名解析）
+SERIES_CHART_TYPES = ("line-chart", "bar-chart", "scatter-plot", "boxplot", "histogram")
+
+
+def resolve_palette(aesthetics: dict, chart_type: str, data: dict) -> list:
+    """解析有效色板。
+
+    当 ``semantic_palette: true`` 时，由 core.color_encoding 的认知色彩编码器
+    按系列名的语义标签生成色板（优先于显式 palette）。
+    """
+    if aesthetics.get("semantic_palette") and chart_type in SERIES_CHART_TYPES:
+        labels = list(data.keys())
+        if labels:
+            return CognitiveColorEncoder().resolve_series_palette(labels)
+    return aesthetics.get("palette", DEFAULT_PALETTE)
+
 
 def load_recipe(path: str) -> dict:
     with open(path, "r", encoding="utf-8") as f:
@@ -106,19 +138,7 @@ print(f"已保存: ${output_path}")
 
 def generate_render_logic(chart_type: str, data: dict, aesthetics: dict) -> str:
     """根据图表类型生成 matplotlib 渲染逻辑"""
-    palette = aesthetics.get(
-        "palette",
-        [
-            "#E69F00",
-            "#56B4E9",
-            "#009E73",
-            "#F0E442",
-            "#0072B2",
-            "#D55E00",
-            "#CC79A7",
-            "#000000",
-        ],
-    )
+    palette = resolve_palette(aesthetics, chart_type, data)
 
     if chart_type == "line-chart":
         lines = []

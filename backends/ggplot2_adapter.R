@@ -43,6 +43,26 @@ generate_r_code <- function(recipe, profile) {
   data <- recipe$data
   palette <- aesthetics$palette %||% c('#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2', '#D55E00', '#CC79A7', '#000000')
   palette_r <- paste("c(", paste(sprintf('"%s"', palette), collapse=", "), ")", sep="")
+
+  # 语义色彩编码（与 core/color_encoding.py 的 CognitiveColorEncoder 保持一致）：
+  # semantic_palette: true 时按系列名的语义标签生成色板，优先于显式 palette
+  if (isTRUE(aesthetics$semantic_palette) &&
+      chart_type %in% c('line-chart', 'bar-chart', 'scatter-plot', 'boxplot', 'histogram')) {
+    semantic_map <- c(positive='#009E73', negative='#D55E00', neutral='#56B4E9',
+                      critical='#D55E00', stable='#0072B2', energetic='#E69F00',
+                      creative='#CC79A7', attention='#F0E442')
+    perceptual <- c('#0072B2', '#E69F00', '#009E73', '#CC79A7',
+                    '#56B4E9', '#F0E442', '#D55E00', '#000000')
+    series_labels <- names(data)
+    if (length(series_labels) > 0) {
+      palette <- vapply(seq_along(series_labels), function(i) {
+        key <- tolower(series_labels[i])
+        if (key %in% names(semantic_map)) unname(semantic_map[[key]]) else perceptual[(i - 1) %% length(perceptual) + 1]
+      }, character(1))
+      # 命名向量：确保 ggplot2 按系列名而非因子水平顺序取色
+      palette_r <- paste("c(", paste(sprintf('"%s" = "%s"', series_labels, palette), collapse=", "), ")", sep="")
+    }
+  }
   font_size <- aesthetics$font_size %||% 10
   
   df_code <- ""
