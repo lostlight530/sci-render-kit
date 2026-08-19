@@ -38,6 +38,7 @@ python3 sci_render.py recipes/line-chart.yaml --profile presentation --backend o
 - **配方 (Recipe)**: 声明式图表定义（YAML）
 - **统一调度器 (CLI)**: `sci_render.py` — 加载配方、应用 profile、执行校验、分发引擎
 - **Profile**: 期刊规范声明（字体、色板、尺寸）
+- **语义色彩编码 (Semantic Color Encoding)**: 配方声明 `semantic_palette: true` 后，系列名命中语义标签（`positive`/`negative`/`stable` 等）即由 `core/color_encoding.py` 自动分配语义色（三后端一致）；声明 `background` 或启用语义色板时，P1 质量门 `palette-contrast` 强制校验色板与背景的 WCAG 对比度 ≥ 3.0。示例：`recipes/semantic-line-chart.yaml`
 
 ## 实现状态 / Implementation Status
 
@@ -48,8 +49,8 @@ python3 sci_render.py recipes/line-chart.yaml --profile presentation --backend o
 | R ggplot2 backend | **Implemented** |
 | JS Observable backend | **Implemented** |
 | Profile static validation | **Implemented** |
+| `core/color_encoding.py` 语义色彩编码（semantic_palette + `palette-contrast` 质量门，三后端） | **Implemented** |
 | `collapse_view.py` → `core/projection.py` | **Experimental** |
-| `cognitive_color.py` → `core/color_encoding.py` | **Experimental** |
 | `time_crystal.py` → `core/time_crystal.py` | **Experimental** |
 | `uncertainty_legend.py` → `core/uncertainty_legend.py` | **Experimental** |
 | `observer_dashboard.py` → `core/observer_dashboard.py` | **Experimental** |
