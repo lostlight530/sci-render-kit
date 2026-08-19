@@ -1,6 +1,5 @@
 title: Recipe Schema
-description: "\u56FE\u8868\u914D\u65B9\u7684 YAML Schema \u5B9A\u4E49 | Chart recipe\
-  \ YAML schema definition"
+description: "图表配方的 YAML Schema 定义 | Chart recipe YAML schema definition"
 type: object
 required:
 - id
@@ -11,10 +10,10 @@ required:
 properties:
   id:
     type: string
-    description: "\u914D\u65B9\u552F\u4E00\u6807\u8BC6"
+    description: "配方唯一标识"
   name:
     type: string
-    description: "\u4EBA\u7C7B\u53EF\u8BFB\u540D\u79F0"
+    description: "人类可读名称"
   type:
     type: string
     enum:
@@ -24,13 +23,13 @@ properties:
     - heatmap
     - boxplot
     - histogram
-    description: "\u56FE\u8868\u7C7B\u578B"
+    description: "图表类型"
   data:
     type: object
-    description: "\u56FE\u8868\u6570\u636E\uFF08\u7C7B\u578B\u76F8\u5173\uFF09"
+    description: "图表数据（类型相关）"
   aesthetics:
     type: object
-    description: "\u7F8E\u5B66\u53C2\u6570"
+    description: "美学参数"
     properties:
       title:
         type: string
@@ -59,17 +58,26 @@ properties:
         minimum: 0.1
       semantic_palette:
         type: boolean
-        description: "\u542F\u7528\u8BED\u4E49\u8272\u5F69\u7F16\u7801\uFF1A\u6309\u7CFB\u5217\u540D\u7684\u8BED\u4E49\u6807\u7B7E\u81EA\u52A8\u751F\u6210\u8272\u677F"
+        description: "启用语义色彩编码：按系列名的语义标签自动生成色板"
       background:
         type: string
-        description: "\u753B\u5E03\u80CC\u666F\u8272\uFF08hex\uFF09\uFF0C\u7528\u4E8E palette-contrast \u5BF9\u6BD4\u5EA6\u95E8\u7981"
+        description: "画布背景色（hex），用于 palette-contrast 对比度门禁"
+      text_color:
+        type: string
+        description: "文字颜色（hex），声明后由 P1 text-contrast 门禁校验与背景对比度 ≥ 4.5（WCAG SC 1.4.3）"
+      adjacency_check:
+        type: boolean
+        description: "启用分类色板两两相邻对比度检查（P1 palette-adjacency，WCAG SC 1.4.11，≥ 3.0）"
+      palette_name:
+        type: string
+        description: "注册色板名称（core/palettes.py，如 okabe-ito / petroff10）；P1 palette-name 门禁校验"
       cmap:
         type: string
-        description: "\u70ED\u529B\u56FE\u8272\u9636\u540D\u79F0"
+        description: "热力图色阶名称"
       bins:
         type: integer
         minimum: 1
-        description: "\u76F4\u65B9\u56FE\u7684\u67F1\u6570"
+        description: "直方图的柱数"
   output:
     type: object
     required:
@@ -78,10 +86,10 @@ properties:
     properties:
       dir:
         type: string
-        description: "\u8F93\u51FA\u76EE\u5F55"
+        description: "输出目录"
       filename:
         type: string
-        description: "\u8F93\u51FA\u6587\u4EF6\u540D"
+        description: "输出文件名"
       format:
         type: string
         enum:
@@ -91,7 +99,7 @@ properties:
         - eps
         - html
         default: png
-        description: "\u8F93\u51FA\u683C\u5F0F"
+        description: "输出格式"
   notes:
     type: string
-    description: "\u4EBA\u7C7B\u6CE8\u91CA"
+    description: "人类注释"

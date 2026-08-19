@@ -37,6 +37,18 @@ gates:
       - id: palette-contrast
         name: "色板对比度"
         rule: "声明 background 或启用 semantic_palette 时，色板颜色与背景的 WCAG 对比度 ≥ 3.0"
+      - id: text-contrast
+        name: "文字对比度"
+        rule: "声明 text_color 时，文字与背景（未声明则按 #FFFFFF）的 WCAG 对比度 ≥ 4.5（SC 1.4.3）"
+      - id: palette-adjacency
+        name: "相邻色对"
+        rule: "声明 adjacency_check: true 时，分类色板两两 WCAG 对比度 ≥ 3.0（SC 1.4.11），报告失败色对"
+      - id: cvd-contrast
+        name: "色盲模拟对比度"
+        rule: "声明 background 或启用 semantic_palette 时，色板颜色在 Machado 2009 三色盲模拟下与背景对比度 ≥ 3.0"
+      - id: palette-name
+        name: "注册色板"
+        rule: "声明 palette_name 时必须命中 core/palettes.py 注册表；系列图仅接受 categorical 类型色板"
       - id: no-3d
         name: "3D 禁用"
         rule: "type 不为 3d-*"
@@ -58,6 +70,9 @@ gates:
       - id: manifest-exists
         name: "元数据存在"
         rule: "同名的 .manifest.json 必须存在"
+      - id: prov-exists
+        name: "溯源旁车存在"
+        rule: "matplotlib 后端渲染必须产出同名 .prov.json（FAIR R1.2 溯源旁车；R/JS 侧为可选跟进）"
     
   - id: P3-journal-compliance
     name: "期刊规范对齐"
@@ -66,10 +81,10 @@ gates:
     checks:
       - id: vector-format
         name: "矢量格式"
-        rule: "对于 Nature/Science，输出必须是 PDF 或 EPS"
+        rule: "对于 Nature/Science/Cell，输出必须是 PDF 或 EPS"
       - id: dpi-check
         name: "DPI 达标"
         rule: "合并后的 DPI 不得低于 profile 声明的期刊最低 DPI（profile aesthetics.dpi）"
       - id: size-check
         name: "尺寸合规"
-        rule: "figsize 为正值二元组；profile 声明 max_width_in 时图宽不得超过该版宽上限"
+        rule: "figsize 为正值二元组；profile 声明 max_width_in/max_height_in 时图宽/图高不得超过对应版面上限"
