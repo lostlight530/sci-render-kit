@@ -18,6 +18,7 @@ from string import Template
 # 允许以脚本方式从任意工作目录运行（python3 backends/matplotlib_adapter.py）
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core.color_encoding import CognitiveColorEncoder
+from core.palettes import resolve_categorical
 
 # 默认色板（Okabe-Ito 色盲友好）
 DEFAULT_PALETTE = [
@@ -45,6 +46,11 @@ def resolve_palette(aesthetics: dict, chart_type: str, data: dict) -> list:
         labels = list(data.keys())
         if labels:
             return CognitiveColorEncoder().resolve_series_palette(labels)
+    if aesthetics.get("palette_name"):
+        # 注册色板（core/palettes.py）；名称合法性由 P1 palette-name 门禁集中校验
+        colors = resolve_categorical(str(aesthetics["palette_name"]))
+        labels = list(data.keys()) if chart_type in SERIES_CHART_TYPES else []
+        return colors[: len(labels)] if labels else colors
     return aesthetics.get("palette", DEFAULT_PALETTE)
 
 
@@ -73,7 +79,67 @@ def validate_recipe(recipe: dict) -> list[str]:
     return errors
 
 
-def generate_python_code(recipe: dict, profile: dict) -> str:
+def build_provenance(recipe: dict, profile: dict, recipe_path: str = None) -> dict:
+    """构建图件溯源记录（FAIR R1.2；同时内嵌图件 + 输出 .prov.json 旁车）。"""
+    import platform
+
+    import matplotlib
+
+    recipe_bytes = None
+    if recipe_path and Path(recipe_path).exists():
+        recipe_bytes = Path(recipe_path).read_bytes()
+    data_json = json.dumps(recipe.get("data", {}), sort_keys=True, ensure_ascii=False)
+    return {
+        "schema": "sci-render-kit/provenance@1",
+        "standards": ["FAIR R1.2 (provenance metadata)", "log-sidecar pattern"],
+        "recipe_id": recipe.get("id", "unknown"),
+        "recipe_sha256": "sha256:" + hashlib.sha256(recipe_bytes).hexdigest()
+        if recipe_bytes
+        else "none",
+        "input_data_sha256": "sha256:"
+        + hashlib.sha256(data_json.encode("utf-8")).hexdigest(),
+        "generator": "sci-render-kit",
+        "backend": "matplotlib",
+        "backend_version": matplotlib.__version__,
+        "python_version": platform.python_version(),
+        "numpy_version": np.__version__,
+        "profile": profile.get("name", "default"),
+        "generated_at": datetime.now().isoformat(),
+    }
+
+
+def _savefig_metadata(provenance: dict, fmt: str, recipe: dict):
+    """按输出格式构造 savefig metadata（matplotlib 3.10+ 原生支持）。
+
+    PNG 支持任意自定义文本键（PIL 可读回验证）；PDF/SVG 仅接受标准键，
+    溯源 JSON 放入 Keywords。返回的 dict 将 repr 进生成脚本。
+    """
+    if not provenance:
+        return None
+    prov_json = json.dumps(provenance, ensure_ascii=False, separators=(",", ":"))
+    creator = f"sci-render-kit/matplotlib@{provenance['backend_version']}"
+    title = str(recipe.get("id", "figure"))
+    if fmt == "png":
+        return {"srk:provenance": prov_json, "Software": creator}
+    if fmt == "pdf":
+        return {
+            "Title": title,
+            "Author": "sci-render-kit",
+            "Subject": "recipe-driven scientific rendering",
+            "Keywords": prov_json,
+            "Creator": creator,
+        }
+    if fmt == "svg":
+        return {
+            "Title": title,
+            "Creator": creator,
+            "Description": "recipe-driven scientific rendering",
+            "Keywords": prov_json,
+        }
+    return None
+
+
+def generate_python_code(recipe: dict, profile: dict, provenance: dict = None) -> str:
     """将配方 + 配置转换为 Python 代码"""
     code_template = '''#!/usr/bin/env python3
 """自动生成 — 由 sci-render-kit 从配方渲染"""
@@ -97,7 +163,7 @@ ${render_logic}
 # 保存
 Path('${output_dir}').mkdir(parents=True, exist_ok=True)
 fig.savefig('${output_path}', dpi=${dpi}, format='${format}', 
-            bbox_inches='tight', pad_inches=0.05)
+            bbox_inches='tight', pad_inches=0.05, metadata=${savefig_metadata})
 plt.close(fig)
 print(f"已保存: ${output_path}")
 '''
@@ -123,6 +189,10 @@ print(f"已保存: ${output_path}")
         "filename", "figure.png"
     )
 
+    savefig_metadata = _savefig_metadata(
+        provenance, output.get("format", "png").lower(), recipe
+    )
+
     t = Template(code_template)
     return t.substitute(
         rc_params=json.dumps(rc_params),
@@ -133,6 +203,7 @@ print(f"已保存: ${output_path}")
         output_path=str(output_path),
         dpi=rc_params["savefig.dpi"],
         format=output.get("format", "png").lower(),
+        savefig_metadata=repr(savefig_metadata),
     )
 
 
@@ -243,14 +314,31 @@ def write_manifest(recipe: dict, profile: dict, output_path: str) -> None:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
 
 
+def write_provenance_sidecar(provenance: dict, output_path: str) -> None:
+    """输出 .prov.json 溯源旁车文件（含输出文件 SHA-256）。"""
+    record = dict(provenance)
+    record["output"] = output_path
+    record["output_sha256"] = (
+        "sha256:" + hashlib.sha256(open(output_path, "rb").read()).hexdigest()
+        if Path(output_path).exists()
+        else "none"
+    )
+    sidecar_path = Path(output_path).with_suffix(".prov.json")
+    with open(sidecar_path, "w", encoding="utf-8") as f:
+        json.dump(record, f, indent=2, ensure_ascii=False)
+
+
 def render(recipe_path: str, profile_name: str = "nature") -> None:
     """主渲染入口"""
     recipe = load_recipe(recipe_path)
 
     profile = load_profile(profile_name)
 
+    # 溯源记录：内嵌图件 metadata + .prov.json 旁车（FAIR R1.2）
+    provenance = build_provenance(recipe, profile, recipe_path)
+
     # 生成代码
-    code = generate_python_code(recipe, profile)
+    code = generate_python_code(recipe, profile, provenance)
 
     # 输出到临时文件
     output = recipe["output"]
@@ -267,14 +355,18 @@ def render(recipe_path: str, profile_name: str = "nature") -> None:
     try:
         subprocess.run(["python3", str(script_path)], check=True)
     finally:
-        # Hygiene: clean up generated execute script
-        if script_path.exists():
-            script_path.unlink()
+        # Hygiene: clean up generated execute script (best-effort;
+        # missing_ok 容忍网络/overlay 文件系统上 exists→unlink 的竞态)
+        try:
+            script_path.unlink(missing_ok=True)
             print(f"🧹 已清理临时脚本: {script_path}")
+        except OSError:
+            pass
 
     # 写入 manifest（预览版）
     output_path = output_dir / output.get("filename", "figure.png")
     write_manifest(recipe, profile, str(output_path))
+    write_provenance_sidecar(provenance, str(output_path))
 
 
 if __name__ == "__main__":
