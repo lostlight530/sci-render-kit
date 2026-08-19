@@ -35,7 +35,8 @@
 - [ ] New chart types have recipes in `recipes/`
 - [ ] New chart types implemented in all 3 backends
 - [ ] Generated scripts are cleaned up after execution
-- [ ] Manifest is written for every output
+- [ ] Manifest is written for every output (matplotlib also writes the `.prov.json` provenance sidecar — P2 `prov-exists` gate)
+- [ ] R/JS adapters' embedded semantic-color constants stay in parity with `core/color_encoding.py`
 - [ ] New modules are marked as `[EXPERIMENTAL]` if not integrated
 - [ ] Documentation updated if behavior changes
 

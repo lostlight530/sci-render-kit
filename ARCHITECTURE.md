@@ -69,7 +69,7 @@
 2. **执行渲染 (Render)**：运行 `python3 sci_render.py recipes/my-experiment.yaml --profile nature --backend ggplot2`。
 3. **门禁拦截 (Gate Check)**：如果配方中的配色方案使用了超过 8 种颜色，CLI 会直接拒绝渲染并抛出规则冲突异常。
 4. **代码生成与执行 (Generate & Exec)**：校验通过后，自动在 `output/` 目录下生成 `_generated_render.R` 并由系统自动运行 `Rscript`。
-5. **获取高品质产物 (Output)**：用户在 `output/` 目录下得到完全符合 Nature 规范的 `my-experiment.pdf` 以及用于证明可复现性的 `my-experiment.manifest.json`。
+5. **获取高品质产物 (Output)**：用户在 `output/` 目录下得到完全符合 Nature 规范的 `my-experiment.pdf`、用于证明可复现性的 `my-experiment.manifest.json`，以及 matplotlib 后端的 `my-experiment.prov.json` 溯源旁车（P2 `prov-exists` 门禁强制）。
 
 ---
 

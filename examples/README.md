@@ -49,5 +49,6 @@ matplotlib / ggplot2 支持 `png`/`svg`/`pdf`，observable 支持 `html`。
 
 - nature.yaml — Nature 期刊风格（P3 强制矢量输出 PDF/EPS，DPI ≥ 300，版宽 ≤ 7.2in）
 - science.yaml — Science 期刊风格（P3 强制矢量输出 PDF/EPS，DPI ≥ 600，版宽 ≤ 6.85in）
-- ieee.yaml — IEEE 会议论文风格（版宽 ≤ 7.17in）
+- cell.yaml — Cell 期刊风格（P3 强制矢量输出 PDF/EPS，仅 Arial，线图 DPI ≥ 1000）
+- ieee.yaml — IEEE 会议论文风格（版宽 ≤ 7.17in，版面高度 ≤ 8.8in）
 - presentation.yaml — 演示文稿风格（位图友好，适合快速验证配方）
