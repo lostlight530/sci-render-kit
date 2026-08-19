@@ -22,7 +22,8 @@ def test_profiles_exist():
     print("  [OK] 所有 profile 存在")
 
 def test_recipes_exist():
-    recipes = ['line-chart', 'bar-chart', 'scatter-plot', 'heatmap', 'boxplot', 'histogram']
+    recipes = ['line-chart', 'bar-chart', 'scatter-plot', 'heatmap', 'boxplot', 'histogram',
+               'semantic-line-chart', 'line-chart-interactive']
     for r in recipes:
         path = f'recipes/{r}.yaml'
         assert os.path.exists(path), f"recipe {r} 必须存在"
@@ -173,6 +174,81 @@ def test_semantic_recipe_e2e():
     assert res2.returncode != 0, "低对比度配方应被质量门拦截"
     assert '对比度' in res2.stdout, "应报告 palette-contrast 违规"
     print("  [OK] 语义配方端到端渲染与门禁拦截正常")
+
+def test_backend_capability_gate():
+    import subprocess
+    # observable 后端只支持 html；png 配方必须在 dispatch 前被拦截
+    res = subprocess.run(["python3", "sci_render.py", "recipes/line-chart.yaml",
+                          "--profile", "presentation", "--backend", "observable"],
+                         capture_output=True, text=True)
+    assert res.returncode != 0, "格式超出后端能力集应被拦截"
+    assert "BACKEND_CAPABILITY_MISMATCH" in res.stdout, f"应触发 BACKEND_CAPABILITY_MISMATCH, stdout: {res.stdout}"
+    print("  [OK] 后端能力门禁工作正常")
+
+
+def test_observable_html_e2e():
+    import shutil, subprocess
+    # 无 node 或缺少 yaml 依赖时跳过而非失败
+    if not shutil.which("node"):
+        print("  [SKIP] 无 node 环境，跳过 observable E2E")
+        return
+    probe = subprocess.run(["node", "-e", "require('yaml')"], capture_output=True)
+    if probe.returncode != 0:
+        print("  [SKIP] 缺少 npm yaml 依赖（npm install），跳过 observable E2E")
+        return
+    res = subprocess.run(["python3", "sci_render.py", "recipes/line-chart-interactive.yaml",
+                          "--profile", "presentation", "--backend", "observable"],
+                         capture_output=True, text=True)
+    assert res.returncode == 0, f"交互式配方应渲染成功, stdout: {res.stdout}\nstderr: {res.stderr}"
+    assert os.path.exists('output/line-chart.html')
+    assert os.path.exists('output/line-chart.manifest.json')
+    with open('output/line-chart.html') as f:
+        assert f.read(15).lstrip().lower().startswith('<!doctype'), "输出必须是 HTML 文档"
+    print("  [OK] observable HTML 端到端渲染正常")
+
+
+def test_p3_dpi_size_checks():
+    import subprocess
+    # dpi 低于期刊最低要求 + 图宽超过版宽上限，必须被 P3 拦截
+    with open("recipes/_p3_violation.yaml", "w") as f:
+        f.write('id: p3-violation\ntype: line-chart\ndata:\n  a: [1, 2]\n'
+                'aesthetics:\n  dpi: 300\n  figsize: [8.0, 4.0]\n'
+                'output:\n  dir: output\n  filename: p3v.png\n  format: png\n')
+    res = subprocess.run(["python3", "sci_render.py", "recipes/_p3_violation.yaml",
+                          "--profile", "science", "--backend", "matplotlib"],
+                         capture_output=True, text=True)
+    os.remove("recipes/_p3_violation.yaml")
+    assert res.returncode != 0, "违反 P3 期刊规范的配方应被拦截"
+    assert "DPI 300 低于 science 最低要求 600" in res.stdout, f"应触发 dpi-check, stdout: {res.stdout}"
+    assert "超过 science 版宽上限" in res.stdout, f"应触发 size-check, stdout: {res.stdout}"
+    print("  [OK] P3 dpi-check / size-check 工作正常")
+
+
+def test_adapter_semantic_parity():
+    """R/JS 适配器内嵌的语义色常量必须与 core/color_encoding.py 完全一致（静态一致性）"""
+    import re
+    from core.color_encoding import CognitiveColorEncoder
+    expected = {k: f"#{v[0]:02X}{v[1]:02X}{v[2]:02X}" for k, v in CognitiveColorEncoder.SEMANTIC_MAP.items()}
+    for path, pattern in [
+        ('backends/ggplot2_adapter.R', r"(\w+)='(#[0-9A-Fa-f]{6})'"),
+        ('backends/observable_adapter.js', r"(\w+): '(#[0-9A-Fa-f]{6})'"),
+    ]:
+        with open(path) as f:
+            found = dict(re.findall(pattern, f.read()))
+        for tag, hex_code in expected.items():
+            assert found.get(tag, '').upper() == hex_code.upper(), \
+                f"{path} 中语义标签 {tag} 应为 {hex_code}，实际 {found.get(tag)}"
+    # 感知色板（fallback）的 hex 序列与顺序也必须一致
+    perceptual_expected = [f"#{v[0]:02X}{v[1]:02X}{v[2]:02X}".upper()
+                           for v in CognitiveColorEncoder.PERCEPTUAL_PALETTE]
+    for path in ['backends/ggplot2_adapter.R', 'backends/observable_adapter.js']:
+        with open(path) as f:
+            text = f.read()
+        idx = text.lower().index('perceptual')
+        hexes = [h.upper() for h in re.findall(r"#[0-9A-Fa-f]{6}", text[idx:])[:8]]
+        assert hexes == perceptual_expected, f"{path} 感知色板序列与 core 不一致: {hexes}"
+    print("  [OK] R/JS 适配器语义色常量与 core 一致")
+
 
 def test_nature_profile_constraints():
     with open('profiles/nature.yaml', 'r') as f:

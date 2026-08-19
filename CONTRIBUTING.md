@@ -9,7 +9,14 @@
    source .venv/bin/activate  # or .venv\Scripts\activate on Windows
    pip install pyyaml jsonschema matplotlib numpy
    ```
-3. Run tests to verify baseline:
+3. (Optional) For the observable (JS) backend, install Node.js dependencies:
+   ```bash
+   npm install
+   ```
+   The ggplot2 (R) backend requires a local R installation with the
+   `yaml`, `jsonlite`, `digest`, and `ggplot2` packages. Tests that need
+   node/R are skipped automatically when the environment lacks them.
+4. Run tests to verify baseline:
    ```bash
    make test
    ```
