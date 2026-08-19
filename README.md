@@ -23,15 +23,29 @@
 # 1. 编写配方 / Write a recipe
 # See recipes/line-chart.yaml
 
-# 2. 渲染 / Render
-python3 sci_render.py recipes/line-chart.yaml --profile nature --backend matplotlib
+# 2. 渲染 / Render (matplotlib 后端)
+python3 sci_render.py recipes/line-chart.yaml --profile presentation --backend matplotlib
 
-# 3. 切换后端 / Switch backend
-python3 sci_render.py recipes/line-chart.yaml --profile science --backend ggplot2
+# 3. 语义色彩编码 / Semantic color encoding
+python3 sci_render.py recipes/semantic-line-chart.yaml --profile presentation --backend matplotlib
 
-# 4. 交互式 / Interactive
-python3 sci_render.py recipes/line-chart.yaml --profile presentation --backend observable
+# 4. 交互式 / Interactive (需先 npm install，且本机有 node)
+python3 sci_render.py recipes/line-chart-interactive.yaml --profile presentation --backend observable
 ```
+
+门禁演示 / Gate demo（预期被拦截，展示质量门在工作）：
+
+```bash
+# Nature/Science profile 在 P3 门禁强制矢量输出；PNG 配方会被拒绝（exit 1）
+python3 sci_render.py recipes/line-chart.yaml --profile nature --backend matplotlib
+# → [期刊规范对齐] 矢量格式: nature 期望矢量格式 (.pdf/.eps)，但得到 .png
+```
+
+后端依赖说明 / Backend requirements：
+
+- **matplotlib**：`pip install pyyaml jsonschema matplotlib numpy`
+- **ggplot2**（可选）：本机 R + `yaml`/`jsonlite`/`digest`/`ggplot2` 包；该路径未在本仓库自动化测试中做运行时验证
+- **observable**：本机 node + `npm install`（声明于 `package.json`，仅 `yaml` 一个依赖）；输出能力为 HTML
 
 ## 核心概念 / Core Concepts
 
