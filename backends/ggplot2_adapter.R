@@ -152,16 +152,22 @@ p <- ggplot(df, aes(x = x, y = y, color = series)) +
                      sprintf('df$Col <- factor(df$Col, levels=c(%s))', paste(sprintf('"%s"', col_labels), collapse=", "))
                      )
 
+    # 尊重配方声明的 cmap；matplotlib 风格的 "_r" 后缀映射为 direction = -1
     cmap <- aesthetics$cmap %||% "RdBu"
+    direction <- 1
+    if (grepl("_r$", cmap)) {
+      cmap <- sub("_r$", "", cmap)
+      direction <- -1
+    }
     plot_code <- sprintf('
 library(ggplot2)
 p <- ggplot(df, aes(x = Col, y = Row, fill = Value)) +
   geom_tile(color = "white") +
   geom_text(aes(label = sprintf("%%.2f", Value)), color = ifelse(df$Value < 0.5, "white", "black"), size = %d/3) +
-  scale_fill_distiller(palette = "RdBu", direction = -1) +
+  scale_fill_distiller(palette = "%s", direction = %d) +
   theme_minimal() +
   theme(axis.title = element_blank(), axis.text = element_text(size = %d))
-', font_size, font_size)
+', font_size, cmap, direction, font_size)
 
   } else if (chart_type == 'boxplot') {
     df_lines <- c()
@@ -228,7 +234,11 @@ write_manifest <- function(recipe, profile, output_path) {
     profile = profile$name %||% 'default',
     backend = 'ggplot2',
     output = output_path,
-    checksum = chksum
+    checksum = chksum,
+    parameters = list(
+      aesthetics = recipe$aesthetics %||% list(),
+      data_keys = names(recipe$data) %||% list()
+    )
   )
   manifest_path <- sub('\\.[^.]+$', '.manifest.json', output_path)
   write_json(manifest, manifest_path, auto_unbox = TRUE, pretty = TRUE)
@@ -269,10 +279,18 @@ render <- function(recipe_path, profile_name = 'nature') {
 }
 
 # 主入口
+# 支持两种形式：`render <recipe> --profile <name>`（与 sci_render.py 派发一致）
+# 或旧式位置参数 `render <recipe> [profile]`
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) >= 2 && args[1] == 'render') {
-  profile <- if (length(args) >= 3) args[3] else 'nature'
+  profile <- 'nature'
+  flag_idx <- match('--profile', args)
+  if (!is.na(flag_idx) && length(args) >= flag_idx + 1) {
+    profile <- args[flag_idx + 1]
+  } else if (length(args) >= 3 && !startsWith(args[3], '--')) {
+    profile <- args[3]
+  }
   render(args[2], profile)
 } else {
-  cat('用法: Rscript backends/ggplot2_adapter.R render <recipe.yaml> [profile]\n')
+  cat('用法: Rscript backends/ggplot2_adapter.R render <recipe.yaml> [--profile <name>]\n')
 }

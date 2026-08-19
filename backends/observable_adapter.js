@@ -201,7 +201,11 @@ function writeManifest(recipe, profile, outputPath) {
     profile: profile.name || 'default',
     backend: 'observable',
     output: outputPath,
-    checksum: checksum
+    checksum: checksum,
+    parameters: {
+      aesthetics: recipe.aesthetics || {},
+      data_keys: Object.keys(recipe.data || {})
+    }
   };
   const manifestPath = outputPath.replace(/\.[^.]+$/, '.manifest.json');
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
@@ -226,10 +230,18 @@ function render(recipePath, profileName = 'presentation') {
 }
 
 // CLI
+// 支持两种形式：`render <recipe> --profile <name>`（与 sci_render.py 派发一致）
+// 或旧式位置参数 `render <recipe> [profile]`
 const args = process.argv.slice(2);
 if (args[0] === 'render' && args[1]) {
-  const profile = args[2] || 'presentation';
+  let profile = 'presentation';
+  const flagIdx = args.indexOf('--profile');
+  if (flagIdx !== -1 && args[flagIdx + 1]) {
+    profile = args[flagIdx + 1];
+  } else if (args[2] && !args[2].startsWith('--')) {
+    profile = args[2];
+  }
   render(args[1], profile);
 } else {
-  console.log('用法: node backends/observable_adapter.js render <recipe.yaml> [profile]');
+  console.log('用法: node backends/observable_adapter.js render <recipe.yaml> [--profile <name>]');
 }
