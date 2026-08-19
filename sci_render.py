@@ -13,6 +13,42 @@ import subprocess
 from pathlib import Path
 from jsonschema import validate, ValidationError
 
+from core.color_encoding import CognitiveColorEncoder
+
+# 采用离散系列着色的图表类型（语义色板按系列名解析）
+SERIES_CHART_TYPES = {"line-chart", "bar-chart", "scatter-plot", "boxplot", "histogram"}
+
+
+def _hex_to_rgb(color: str):
+    """解析 #RRGGBB / #RGB 十六进制颜色为 (r, g, b) 元组；无法解析返回 None"""
+    if not isinstance(color, str):
+        return None
+    c = color.strip().lstrip('#')
+    if len(c) == 3:
+        c = ''.join(ch * 2 for ch in c)
+    if len(c) != 6:
+        return None
+    try:
+        return (int(c[0:2], 16), int(c[2:4], 16), int(c[4:6], 16))
+    except ValueError:
+        return None
+
+
+def resolve_effective_palette(recipe: dict, aesthetics: dict) -> list:
+    """计算渲染实际使用的色板。
+
+    当配方/配置声明 ``semantic_palette: true`` 时，色板由
+    core.color_encoding.CognitiveColorEncoder 按系列名的语义标签生成
+    （优先于显式 palette）；否则使用显式声明的 palette。
+    """
+    if aesthetics.get('semantic_palette'):
+        chart_type = str(recipe.get('type', ''))
+        labels = list(recipe.get('data', {}).keys()) if chart_type in SERIES_CHART_TYPES else []
+        if labels:
+            return CognitiveColorEncoder().resolve_series_palette(labels)
+    return [str(c) for c in aesthetics.get('palette', [])]
+
+
 def load_yaml(path: str) -> dict:
     try:
         with open(path, 'r', encoding='utf-8') as f:
@@ -38,9 +74,28 @@ def run_quality_gates(recipe: dict, profile: dict, gates_def: dict):
 
                 # 实现具体规则
                 if cid == 'color-count':
-                    palette = aesthetics.get('palette', [])
+                    palette = resolve_effective_palette(recipe, aesthetics)
                     if len(palette) > 8:
                         errors.append(f"[{gate['name']}] {check['name']}: palette 中颜色数({len(palette)})不能超过 8")
+
+                elif cid == 'palette-contrast':
+                    # 仅在声明 background 或启用 semantic_palette 时启用（向后兼容）
+                    background = aesthetics.get('background')
+                    use_semantic = bool(aesthetics.get('semantic_palette', False))
+                    if background or use_semantic:
+                        bg_value = background or '#FFFFFF'
+                        bg_rgb = _hex_to_rgb(bg_value)
+                        if bg_rgb is not None:
+                            encoder = CognitiveColorEncoder()
+                            for color in resolve_effective_palette(recipe, aesthetics):
+                                rgb = _hex_to_rgb(color)
+                                if rgb is None:
+                                    continue
+                                ratio = encoder.contrast_ratio(rgb, bg_rgb)
+                                if ratio < 3.0:
+                                    errors.append(
+                                        f"[{gate['name']}] {check['name']}: 颜色 {color} 与背景 {bg_value} "
+                                        f"的 WCAG 对比度 {ratio:.2f} 低于 3.0")
 
                 elif cid == 'font-size':
                     font_size = aesthetics.get('font_size', 10)

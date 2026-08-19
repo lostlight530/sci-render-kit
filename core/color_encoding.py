@@ -1,9 +1,18 @@
 """
 Cognitive Color Encoding - Semantic Color Mapping System
-[EXPERIMENTAL] Not yet integrated into the main rendering pipeline.
+[IMPLEMENTED] Integrated into the main rendering pipeline.
 
 Maps data semantics to perceptually distinct colors, ensuring that
 visualization color choices carry meaning rather than aesthetic whim.
+
+Integration points:
+- ``sci_render.py`` quality gate ``palette-contrast`` (P1) uses
+  ``CognitiveColorEncoder.contrast_ratio`` to enforce WCAG non-text
+  contrast (>= 3.0) between palette colors and the declared background.
+- Backend adapters resolve ``aesthetics.semantic_palette: true`` via
+  ``CognitiveColorEncoder.resolve_series_palette`` so that series named
+  after semantic tags (e.g. ``positive`` / ``negative`` / ``stable``)
+  automatically receive their semantic colors.
 
 Real-world: Semantic color theory and perceptual color spaces.
 """
@@ -128,6 +137,21 @@ class CognitiveColorEncoder:
         lighter = max(l1, l2)
         darker = min(l1, l2)
         return (lighter + 0.05) / (darker + 0.05)
+
+    def resolve_series_palette(self, labels: List[str]) -> List[str]:
+        """Resolve hex colors for a list of series labels.
+
+        Labels matching a known semantic tag (case-insensitive) receive
+        their semantic color; all other labels receive perceptually
+        distinct palette colors by index.
+        """
+        resolved = []
+        for i, label in enumerate(labels):
+            color = self.encode(str(label).lower())
+            if color is None:
+                color = self.encode_category(str(label), i)
+            resolved.append(color.hex_code)
+        return resolved
 
     def get_palette(self, n: int) -> List[SemanticColor]:
         """Get n perceptually distinct colors."""
