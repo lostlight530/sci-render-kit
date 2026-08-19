@@ -8,8 +8,13 @@ Profile files declare journal-specific rendering constraints: fonts, color palet
 |---------|------|--------|
 | Nature | `nature.yaml` | Nature journal standards |
 | Science | `science.yaml` | Science journal standards |
+| Cell | `cell.yaml` | Cell journal standards (Arial only, line art ≥ 1000 DPI) |
 | IEEE | `ieee.yaml` | IEEE conference/journal standards |
 | Presentation | `presentation.yaml` | Slide-friendly defaults |
+
+All profiles carry top-level `source_url` + `verified_date` fields recording
+the editorial source the values were checked against (`presentation` 为内部默认，
+`source_url: null`).
 
 ## Profile Structure
 
@@ -43,10 +48,10 @@ aesthetics:
 
 Enforcement notes:
 
-- `font_size`, `dpi`, `max_width_in` are machine-checked by quality gates
-  (see `quality/gates.yaml`); `constraints` is the human-readable summary.
-- For `nature` / `science`, the P3 `vector-format` gate additionally requires
-  the recipe to declare `output.format: pdf` (or `eps`).
+- `font_size`, `dpi`, `max_width_in` / `max_height_in` are machine-checked by
+  quality gates (see `quality/gates.yaml`); `constraints` is the human-readable summary.
+- For `nature` / `science` / `cell`, the P3 `vector-format` gate additionally
+  requires the recipe to declare `output.format: pdf` (or `eps`).
 
 ## Adding a Custom Profile
 
