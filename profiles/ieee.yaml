@@ -5,6 +5,7 @@ aesthetics:
   font_size: 8
   figsize: [3.5, 2.5]
   dpi: 300
+  max_width_in: 7.17  # 双栏宽度 182mm
   line_width: 0.75
   axes_linewidth: 0.75
   palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]

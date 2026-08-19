@@ -69,7 +69,7 @@ gates:
         rule: "对于 Nature/Science，输出必须是 PDF 或 EPS"
       - id: dpi-check
         name: "DPI 达标"
-        rule: "DPI ≥ 期刊最低要求"
+        rule: "合并后的 DPI 不得低于 profile 声明的期刊最低 DPI（profile aesthetics.dpi）"
       - id: size-check
         name: "尺寸合规"
-        rule: "图像尺寸在期刊限制范围内"
+        rule: "figsize 为正值二元组；profile 声明 max_width_in 时图宽不得超过该版宽上限"

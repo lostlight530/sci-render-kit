@@ -19,7 +19,7 @@ backends:
   - name: observable
     language: javascript
     adapter: backends/observable_adapter.js
-    capabilities: [html, svg]
+    capabilities: [html]
     
 profiles:
   - nature
@@ -33,7 +33,7 @@ recipes:
   
 quality:
   gates: quality/gates.yaml
-  levels: [P0, P1, P2]
+  levels: [P0, P1, P2, P3]
   
 metadata:
   required: true

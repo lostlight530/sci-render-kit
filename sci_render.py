@@ -18,6 +18,13 @@ from core.color_encoding import CognitiveColorEncoder
 # 采用离散系列着色的图表类型（语义色板按系列名解析）
 SERIES_CHART_TYPES = {"line-chart", "bar-chart", "scatter-plot", "boxplot", "histogram"}
 
+# 后端输出能力声明（与 MANIFEST.yaml 一致；dispatch 前强制校验）
+BACKEND_CAPABILITIES = {
+    'matplotlib': {'png', 'svg', 'pdf'},
+    'ggplot2': {'png', 'svg', 'pdf'},
+    'observable': {'html'},
+}
+
 
 def _hex_to_rgb(color: str):
     """解析 #RRGGBB / #RGB 十六进制颜色为 (r, g, b) 元组；无法解析返回 None"""
@@ -167,6 +174,15 @@ def main():
     else:
         print("✅ P1 美学规范检查通过")
 
+    # 3.5 后端能力校验：声明的输出格式必须在后端能力集内
+    output_format = str(recipe.get('output', {}).get('format', 'png')).lower()
+    allowed_formats = BACKEND_CAPABILITIES[args.backend]
+    if output_format not in allowed_formats:
+        print("BACKEND_CAPABILITY_MISMATCH")
+        print(f"❌ 后端 {args.backend} 不支持输出格式 '{output_format}'"
+              f"（支持: {', '.join(sorted(allowed_formats))}）")
+        sys.exit(1)
+
     # 4. 调用对应的 Backend Adapter
     backend_script_map = {
         'matplotlib': ('python3', 'backends/matplotlib_adapter.py'),
@@ -194,6 +210,10 @@ def main():
 
     post_errors = []
 
+    # 合并后的美学参数（recipe 覆盖 profile），供 P3 期刊合规检查使用
+    merged_aesthetics = {**profile.get('aesthetics', {}), **recipe.get('aesthetics', {})}
+    profile_aesthetics = profile.get('aesthetics', {})
+
     for gate in gates.get('gates', []):
         level = gate.get('level')
         if level in ['P2', 'P3']:
@@ -217,6 +237,23 @@ def main():
                     if args.profile in ['nature', 'science']:
                         if output_path.suffix.lower() not in ['.pdf', '.eps']:
                             post_errors.append(f"[{gate['name']}] {check['name']}: {args.profile} 期望矢量格式 (.pdf/.eps)，但得到 {output_path.suffix.lower()}")
+                elif cid == 'dpi-check':
+                    # 合并后的 DPI 不得低于 profile 声明的期刊最低 DPI
+                    min_dpi = profile_aesthetics.get('dpi')
+                    actual_dpi = merged_aesthetics.get('dpi', min_dpi)
+                    if min_dpi is not None and actual_dpi is not None and actual_dpi < min_dpi:
+                        post_errors.append(f"[{gate['name']}] {check['name']}: DPI {actual_dpi} 低于 {args.profile} 最低要求 {min_dpi}")
+                elif cid == 'size-check':
+                    # figsize 必须为正值二元组；profile 声明 max_width_in 时宽度不得超限
+                    figsize = merged_aesthetics.get('figsize')
+                    if figsize is not None:
+                        if (not isinstance(figsize, list) or len(figsize) != 2
+                                or any(not isinstance(v, (int, float)) or v <= 0 for v in figsize)):
+                            post_errors.append(f"[{gate['name']}] {check['name']}: figsize 必须为正值二元组，当前 {figsize}")
+                        else:
+                            max_width = profile_aesthetics.get('max_width_in')
+                            if max_width is not None and figsize[0] > max_width:
+                                post_errors.append(f"[{gate['name']}] {check['name']}: 图宽 {figsize[0]}in 超过 {args.profile} 版宽上限 {max_width}in")
 
     if post_errors:
         print("❌ 渲染后质量门检查失败:")
