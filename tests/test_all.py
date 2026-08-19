@@ -15,7 +15,7 @@ def test_manifest_schema_exists():
     print("  [OK] Schema 文件存在")
 
 def test_profiles_exist():
-    profiles = ['nature', 'science', 'ieee', 'presentation']
+    profiles = ['nature', 'science', 'cell', 'ieee', 'presentation']
     for p in profiles:
         path = f'profiles/{p}.yaml'
         assert os.path.exists(path), f"profile {p} 必须存在"
@@ -258,6 +258,192 @@ def test_nature_profile_constraints():
     assert any('字号' in c for c in constraints), "Nature profile 应包含字号约束"
     assert any('矢量' in c for c in constraints), "Nature profile 应包含矢量格式约束"
     print("  [OK] Nature Profile 约束完整")
+
+
+def test_cvd_simulation_module():
+    from core.cvd_simulation import simulate_cvd, cvd_contrast_report, CVD_TYPES
+    from core.color_encoding import CognitiveColorEncoder
+    # 消色差刺激（灰）在三种模拟下近似不变
+    for t in CVD_TYPES:
+        r, g, b = simulate_cvd((128, 128, 128), t)
+        assert abs(r - 128) <= 1 and abs(g - 128) <= 1 and abs(b - 128) <= 1
+    # Machado 2009 protanopia：纯红显著变暗（L 锥缺失）
+    r, g, b = simulate_cvd((255, 0, 0), 'protanopia')
+    assert r < 100 and g < 100 and b < 60, f"protanopia 模拟异常: {(r, g, b)}"
+    # 输出裁剪在 [0, 255]
+    assert all(0 <= c <= 255 for c in simulate_cvd((255, 255, 255), 'tritanopia'))
+    # 对比度报告按最坏情况排序
+    enc = CognitiveColorEncoder()
+    rep = cvd_contrast_report((204, 121, 167), (255, 255, 255), enc.contrast_ratio)
+    assert len(rep) == 3 and rep[0][1] <= rep[-1][1]
+    # 未知类型报错
+    try:
+        simulate_cvd((0, 0, 0), 'achromatopsia')
+        assert False, "未知 CVD 类型应抛 ValueError"
+    except ValueError:
+        pass
+    print("  [OK] CVD 模拟模块（Machado 2009）工作正常")
+
+
+def test_cvd_contrast_gate():
+    from sci_render import run_quality_gates, load_yaml
+    gates = load_yaml('quality/gates.yaml')
+    # #CC79A7 白底：正常对比度 3.06 通过 palette-contrast，但 tritanopia 模拟下 < 3.0 必须被拦截
+    rec = {'type': 'line-chart', 'data': {'a': [1, 2]},
+           'aesthetics': {'palette': ['#CC79A7'], 'background': '#FFFFFF'}, 'output': {}}
+    errors = run_quality_gates(rec, {}, gates)
+    assert any('tritanopia' in e and '模拟' in e for e in errors), f"应触发 cvd-contrast: {errors}"
+    # 语义色板在三种模拟下均 ≥ 3.0（positive 最坏 ≈3.13），不应误报
+    good = {'type': 'line-chart', 'data': {'positive': [1], 'stable': [2]},
+            'aesthetics': {'semantic_palette': True, 'background': '#FFFFFF'}, 'output': {}}
+    assert not any('模拟' in e for e in run_quality_gates(good, {}, gates))
+    # 未声明 background/semantic_palette 时不启用（向后兼容）
+    legacy = {'type': 'line-chart', 'data': {'a': [1, 2]},
+              'aesthetics': {'palette': ['#CC79A7']}, 'output': {}}
+    assert not any('模拟' in e for e in run_quality_gates(legacy, {}, gates))
+    print("  [OK] cvd-contrast 质量门（Machado 2009 模拟）工作正常")
+
+
+def test_text_contrast_and_adjacency_gates():
+    from sci_render import run_quality_gates, load_yaml
+    gates = load_yaml('quality/gates.yaml')
+    base = {'type': 'line-chart', 'data': {'a': [1, 2], 'b': [2, 3]}, 'output': {}}
+    # SC 1.4.3：#777777 白底 ≈ 4.48 < 4.5 拦截；#595959 ≈ 7.0 通过
+    bad = {**base, 'aesthetics': {'text_color': '#777777', 'background': '#FFFFFF'}}
+    assert any('SC 1.4.3' in e for e in run_quality_gates(bad, {}, gates))
+    good = {**base, 'aesthetics': {'text_color': '#595959', 'background': '#FFFFFF'}}
+    assert not any('SC 1.4.3' in e for e in run_quality_gates(good, {}, gates))
+    # 未声明 text_color 不启用
+    assert not any('SC 1.4.3' in e for e in run_quality_gates({**base, 'aesthetics': {}}, {}, gates))
+    # SC 1.4.11：声明 adjacency_check 后两两 ≥ 3.0；#0072B2 vs #D55E00 ≈ 1.34 拦截并报告色对
+    adj_bad = {**base, 'aesthetics': {'palette': ['#0072B2', '#D55E00'], 'adjacency_check': True}}
+    errs = run_quality_gates(adj_bad, {}, gates)
+    assert any('SC 1.4.11' in e and '#0072B2' in e and '#D55E00' in e for e in errs), errs
+    adj_good = {**base, 'aesthetics': {'palette': ['#000000', '#0072B2'], 'adjacency_check': True}}
+    assert not any('SC 1.4.11' in e for e in run_quality_gates(adj_good, {}, gates))
+    # 未声明 adjacency_check 不启用（向后兼容）
+    adj_off = {**base, 'aesthetics': {'palette': ['#0072B2', '#D55E00']}}
+    assert not any('SC 1.4.11' in e for e in run_quality_gates(adj_off, {}, gates))
+    print("  [OK] text-contrast (4.5:1, SC 1.4.3) 与 palette-adjacency (SC 1.4.11) 门禁工作正常")
+
+
+def test_named_palette_registry():
+    from core.palettes import PALETTE_REGISTRY, describe_palette, resolve_categorical
+    # petroff10：10 色、互异、合法 hex
+    colors = resolve_categorical('petroff10')
+    assert len(colors) == 10 and len(set(colors)) == 10
+    assert all(c.startswith('#') and len(c) == 7 for c in colors)
+    # 与 matplotlib 3.10 官方 color_sequences 一致（环境有 matplotlib 时验证）
+    try:
+        from matplotlib import color_sequences
+        official = ['#%02X%02X%02X' % tuple(round(v * 255) for v in rgb)
+                    for rgb in color_sequences['petroff10']]
+        assert colors == official, f"petroff10 与 matplotlib 官方值不一致: {colors} vs {official}"
+    except ImportError:
+        pass
+    # 元数据完整性：kind / cvd_safety / source / availability
+    for name, entry in PALETTE_REGISTRY.items():
+        assert entry['kind'] in ('categorical', 'sequential', 'diverging')
+        assert entry['cvd_safety'] in ('high', 'medium', 'unverified')
+        assert entry.get('source') and entry.get('availability'), f"{name} 元数据不完整"
+    # 能力诚实：mako / Crameri 发散系非 matplotlib 内置，不得伪装为可用
+    for name in ('mako', 'berlin', 'managua', 'vanimo'):
+        assert PALETTE_REGISTRY[name]['mpl_name'] is None
+        assert '不可用' in PALETTE_REGISTRY[name]['availability']['matplotlib']
+    # 非 categorical 色板按分类解析必须报错
+    try:
+        resolve_categorical('viridis')
+        assert False, "sequential 色阶不应解析为分类色板"
+    except ValueError:
+        pass
+    # 未知名称报错并列出可用项
+    try:
+        describe_palette('jet')
+        assert False
+    except ValueError as e:
+        assert 'petroff10' in str(e)
+    print("  [OK] 命名色板注册表（petroff10 / viridis / cividis / Crameri 系）工作正常")
+
+
+def test_named_palette_gate():
+    from sci_render import run_quality_gates, resolve_effective_palette, load_yaml
+    gates = load_yaml('quality/gates.yaml')
+    # 合法注册色板：按系列数截取前三色
+    rec = {'type': 'line-chart', 'data': {'a': [1], 'b': [2], 'c': [3]},
+           'aesthetics': {'palette_name': 'petroff10'}, 'output': {}}
+    pal = resolve_effective_palette(rec, rec['aesthetics'])
+    assert pal == ['#3F90DA', '#FFA90E', '#BD1F01'], pal
+    assert not run_quality_gates(rec, {}, gates)
+    # matplotlib 适配器同样支持 palette_name
+    from backends.matplotlib_adapter import generate_python_code
+    rec2 = {'id': 't2', 'type': 'line-chart', 'data': {'a': [1, 2]},
+            'aesthetics': {'palette_name': 'petroff10'},
+            'output': {'dir': 'output', 'filename': 't2.png'}}
+    assert '#3F90DA' in generate_python_code(rec2, {})
+    # 未注册名 → P1 拦截并列出可用项
+    bad = {'type': 'line-chart', 'data': {'a': [1]},
+           'aesthetics': {'palette_name': 'jet'}, 'output': {}}
+    assert any('未知色板' in e for e in run_quality_gates(bad, {}, gates))
+    # 系列图误用 sequential 色阶 → 拦截并提示改用 cmap
+    wrong_kind = {'type': 'bar-chart', 'data': {'a': 1},
+                  'aesthetics': {'palette_name': 'viridis'}, 'output': {}}
+    assert any('cmap' in e for e in run_quality_gates(wrong_kind, {}, gates))
+    print("  [OK] palette-name 门禁与注册色板解析工作正常")
+
+
+def test_provenance_sidecar_and_embedding():
+    import subprocess, hashlib
+    res = subprocess.run(["python3", "sci_render.py", "recipes/semantic-line-chart.yaml",
+                          "--profile", "presentation", "--backend", "matplotlib"],
+                         capture_output=True, text=True)
+    assert res.returncode == 0, f"渲染应成功: {res.stdout}\n{res.stderr}"
+    # FAIR R1.2 溯源旁车
+    sidecar = 'output/semantic-line-chart.prov.json'
+    assert os.path.exists(sidecar), "必须生成 .prov.json 溯源旁车"
+    with open(sidecar) as f:
+        prov = json.load(f)
+    assert prov['schema'] == 'sci-render-kit/provenance@1'
+    assert prov['backend'] == 'matplotlib' and prov['backend_version']
+    recipe_bytes = open('recipes/semantic-line-chart.yaml', 'rb').read()
+    assert prov['recipe_sha256'] == 'sha256:' + hashlib.sha256(recipe_bytes).hexdigest()
+    with open('recipes/semantic-line-chart.yaml') as f:
+        loaded = yaml.safe_load(f)
+    data_json = json.dumps(loaded['data'], sort_keys=True, ensure_ascii=False)
+    assert prov['input_data_sha256'] == 'sha256:' + hashlib.sha256(data_json.encode('utf-8')).hexdigest()
+    out_bytes = open('output/semantic-line-chart.png', 'rb').read()
+    assert prov['output_sha256'] == 'sha256:' + hashlib.sha256(out_bytes).hexdigest()
+    # 内嵌 metadata：PNG 文本块可由 PIL 读回且与旁车一致
+    from PIL import Image
+    info = Image.open('output/semantic-line-chart.png').info
+    assert 'srk:provenance' in info, "PNG 必须内嵌 srk:provenance 文本块"
+    embedded = json.loads(info['srk:provenance'])
+    assert embedded['recipe_sha256'] == prov['recipe_sha256']
+    assert embedded['input_data_sha256'] == prov['input_data_sha256']
+    assert embedded['backend_version'] == prov['backend_version']
+    print("  [OK] 图件溯源内嵌 + .prov.json 旁车（FAIR R1.2）工作正常")
+
+
+def test_profiles_refreshed():
+    import re
+    for name in ['nature', 'science', 'cell', 'ieee', 'presentation']:
+        with open(f'profiles/{name}.yaml') as f:
+            prof = yaml.safe_load(f)
+        assert 'verified_date' in prof, f"{name} 缺 verified_date"
+        assert 'source_url' in prof, f"{name} 缺 source_url"
+        assert re.match(r'^\d{4}-\d{2}-\d{2}$', prof['verified_date']), f"{name} verified_date 格式错误"
+    with open('profiles/cell.yaml') as f:
+        cell = yaml.safe_load(f)
+    assert cell['aesthetics']['font'] == 'Arial', "Cell 仅允许 Arial 字体"
+    assert cell['aesthetics']['dpi'] == 1000, "Cell 线图分辨率应 ≥ 1000 DPI"
+    assert abs(cell['aesthetics']['max_width_in'] - 174 / 25.4) < 0.01
+    with open('profiles/ieee.yaml') as f:
+        ieee = yaml.safe_load(f)
+    assert ieee['aesthetics'].get('max_height_in') == 8.8, "IEEE 版面高度上限 8.8in"
+    assert ieee['aesthetics'].get('font_whitelist'), "IEEE 应声明字体白名单"
+    with open('profiles/nature.yaml') as f:
+        nature = yaml.safe_load(f)
+    assert any('面板标签' in c for c in nature['aesthetics']['constraints']), "Nature 应含面板标签约束"
+    print("  [OK] 期刊 profile 刷新（source_url/verified_date、Cell、IEEE 上限）完整")
 
 if __name__ == '__main__':
     tests = [v for k, v in globals().items() if k.startswith('test_')]
