@@ -50,8 +50,8 @@
 整个系统的大脑。它负责：
 *The brain of the system. It is responsible for:*
 1. **读取配方和配置 (Read & Merge)**：解析目标 YAML，并注入对应的期刊 Profile 约束。
-2. **严格验证 (Strict Validation)**：利用 `jsonschema` 对配方进行底层类型检查 (P0 Gate)，并执行 `quality/gates.yaml` 中定义的业务逻辑校验（如色彩数量拦截、字体大小拦截，P1 Gate）。
-3. **任务分发 (Dispatching)**：调用相应的后端适配器，传递通过验证的干净数据载荷。
+2. **严格验证 (Strict Validation)**：利用 `jsonschema` 对配方进行底层类型检查 (P0 Gate)，并执行 `quality/gates.yaml` 中定义的业务逻辑校验（如色彩数量拦截、字体大小拦截，P1 Gate）；渲染完成后再执行 P2（输出完整性）与 P3（期刊规范：矢量格式 / DPI / 版宽）门禁。
+3. **任务分发 (Dispatching)**：先校验配方声明的输出格式在后端能力集内（否则 `BACKEND_CAPABILITY_MISMATCH` 拒绝派发），再调用相应的后端适配器，传递通过验证的干净数据载荷。
 
 ### 2.2 配方与配置 (Recipes & Profiles)
 - **Recipe**：纯粹的业务载体。只包含业务数据（如坐标点）和基础美学声明（如 X 轴名称）。 / *Pure business payload. Contains only data and basic aesthetic intentions.*
@@ -65,11 +65,11 @@
 
 ## 3. 标准工作流 (Standard Workflow)
 
-1. **准备配方 (Prepare)**：作者只需编写 `recipes/my-experiment.yaml`。
+1. **准备配方 (Prepare)**：作者只需编写 `recipes/my-experiment.yaml`（面向 Nature 时声明 `output.format: pdf`，以满足 P3 矢量格式门禁）。
 2. **执行渲染 (Render)**：运行 `python3 sci_render.py recipes/my-experiment.yaml --profile nature --backend ggplot2`。
 3. **门禁拦截 (Gate Check)**：如果配方中的配色方案使用了超过 8 种颜色，CLI 会直接拒绝渲染并抛出规则冲突异常。
 4. **代码生成与执行 (Generate & Exec)**：校验通过后，自动在 `output/` 目录下生成 `_generated_render.R` 并由系统自动运行 `Rscript`。
-5. **获取高品质产物 (Output)**：用户在 `output/` 目录下得到完全符合 Nature 规范的 `my-experiment.png` 以及用于证明可复现性的 `my-experiment.manifest.json`。
+5. **获取高品质产物 (Output)**：用户在 `output/` 目录下得到完全符合 Nature 规范的 `my-experiment.pdf`、用于证明可复现性的 `my-experiment.manifest.json`，以及 matplotlib 后端的 `my-experiment.prov.json` 溯源旁车（P2 `prov-exists` 门禁强制）。
 
 ---
 

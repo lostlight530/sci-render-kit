@@ -1,15 +1,22 @@
 name: ieee
 journal: IEEE
+source_url: "https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/create-graphics-for-your-article/"
+verified_date: "2026-08-19"
 aesthetics:
   font: "Times New Roman"
-  font_size: 8
+  font_size: 9
   figsize: [3.5, 2.5]
   dpi: 300
+  max_width_in: 7.16  # 双栏版宽上限
+  max_height_in: 8.8  # 版面高度上限
   line_width: 0.75
   axes_linewidth: 0.75
   palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
+  font_whitelist: ["Times New Roman", "Times", "Arial", "Helvetica"]
   constraints:
     - "矢量格式优先 (PDF/EPS)"
-    - "字号 ≥ 8pt"
-    - "单栏宽度 89mm"
-    - "双栏宽度 182mm"
+    - "字体白名单: Times New Roman / Times / Arial / Helvetica"
+    - "字号 9–10pt"
+    - "单栏宽度 3.5in (89mm)"
+    - "双栏宽度 7.16in (182mm)"
+    - "版面高度 ≤ 8.8in"

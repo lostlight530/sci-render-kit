@@ -5,7 +5,7 @@ principles:
   - 后端无关: 同一配方可切换多后端
   - 元数据强制: 每次渲染必须输出溯源信息
   - 质量前置: 配方先通过静态验证
-  
+
 backends:
   - name: matplotlib
     language: python
@@ -19,22 +19,23 @@ backends:
   - name: observable
     language: javascript
     adapter: backends/observable_adapter.js
-    capabilities: [html, svg]
-    
+    capabilities: [html]
+
 profiles:
   - nature
   - science
+  - cell
   - ieee
   - presentation
-  
+
 recipes:
   types: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
   schema: metadata/recipe.schema.yaml
-  
+
 quality:
   gates: quality/gates.yaml
-  levels: [P0, P1, P2]
-  
+  levels: [P0, P1, P2, P3]
+
 metadata:
   required: true
   output: manifest.json

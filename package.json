@@ -1,0 +1,12 @@
+{
+  "name": "sci-render-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Recipe-driven multi-backend scientific visualization — JS (observable) backend dependencies",
+  "scripts": {
+    "render:observable": "node backends/observable_adapter.js render"
+  },
+  "dependencies": {
+    "yaml": "^2.5.0"
+  }
+}

@@ -20,6 +20,10 @@ output/
 _generated_render.py
 _generated_render.R
 
+# Node（observable 后端）
+node_modules/
+package-lock.json
+
 # 虚拟环境
 venv/
 env/

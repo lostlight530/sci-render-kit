@@ -53,7 +53,8 @@ properties:
         description: "输入数据的哈希值"
       data_keys:
         type: array
-        items: string
+        items:
+          type: string
         description: "数据键列表"
         
   provenance:

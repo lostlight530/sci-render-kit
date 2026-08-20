@@ -43,6 +43,26 @@ generate_r_code <- function(recipe, profile) {
   data <- recipe$data
   palette <- aesthetics$palette %||% c('#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2', '#D55E00', '#CC79A7', '#000000')
   palette_r <- paste("c(", paste(sprintf('"%s"', palette), collapse=", "), ")", sep="")
+
+  # 语义色彩编码（与 core/color_encoding.py 的 CognitiveColorEncoder 保持一致）：
+  # semantic_palette: true 时按系列名的语义标签生成色板，优先于显式 palette
+  if (isTRUE(aesthetics$semantic_palette) &&
+      chart_type %in% c('line-chart', 'bar-chart', 'scatter-plot', 'boxplot', 'histogram')) {
+    semantic_map <- c(positive='#009E73', negative='#D55E00', neutral='#56B4E9',
+                      critical='#D55E00', stable='#0072B2', energetic='#E69F00',
+                      creative='#CC79A7', attention='#F0E442')
+    perceptual <- c('#0072B2', '#E69F00', '#009E73', '#CC79A7',
+                    '#56B4E9', '#F0E442', '#D55E00', '#000000')
+    series_labels <- names(data)
+    if (length(series_labels) > 0) {
+      palette <- vapply(seq_along(series_labels), function(i) {
+        key <- tolower(series_labels[i])
+        if (key %in% names(semantic_map)) unname(semantic_map[[key]]) else perceptual[(i - 1) %% length(perceptual) + 1]
+      }, character(1))
+      # 命名向量：确保 ggplot2 按系列名而非因子水平顺序取色
+      palette_r <- paste("c(", paste(sprintf('"%s" = "%s"', series_labels, palette), collapse=", "), ")", sep="")
+    }
+  }
   font_size <- aesthetics$font_size %||% 10
   
   df_code <- ""
@@ -132,16 +152,22 @@ p <- ggplot(df, aes(x = x, y = y, color = series)) +
                      sprintf('df$Col <- factor(df$Col, levels=c(%s))', paste(sprintf('"%s"', col_labels), collapse=", "))
                      )
 
+    # 尊重配方声明的 cmap；matplotlib 风格的 "_r" 后缀映射为 direction = -1
     cmap <- aesthetics$cmap %||% "RdBu"
+    direction <- 1
+    if (grepl("_r$", cmap)) {
+      cmap <- sub("_r$", "", cmap)
+      direction <- -1
+    }
     plot_code <- sprintf('
 library(ggplot2)
 p <- ggplot(df, aes(x = Col, y = Row, fill = Value)) +
   geom_tile(color = "white") +
   geom_text(aes(label = sprintf("%%.2f", Value)), color = ifelse(df$Value < 0.5, "white", "black"), size = %d/3) +
-  scale_fill_distiller(palette = "RdBu", direction = -1) +
+  scale_fill_distiller(palette = "%s", direction = %d) +
   theme_minimal() +
   theme(axis.title = element_blank(), axis.text = element_text(size = %d))
-', font_size, font_size)
+', font_size, cmap, direction, font_size)
 
   } else if (chart_type == 'boxplot') {
     df_lines <- c()
@@ -208,7 +234,11 @@ write_manifest <- function(recipe, profile, output_path) {
     profile = profile$name %||% 'default',
     backend = 'ggplot2',
     output = output_path,
-    checksum = chksum
+    checksum = chksum,
+    parameters = list(
+      aesthetics = recipe$aesthetics %||% list(),
+      data_keys = names(recipe$data) %||% list()
+    )
   )
   manifest_path <- sub('\\.[^.]+$', '.manifest.json', output_path)
   write_json(manifest, manifest_path, auto_unbox = TRUE, pretty = TRUE)
@@ -249,10 +279,18 @@ render <- function(recipe_path, profile_name = 'nature') {
 }
 
 # 主入口
+# 支持两种形式：`render <recipe> --profile <name>`（与 sci_render.py 派发一致）
+# 或旧式位置参数 `render <recipe> [profile]`
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) >= 2 && args[1] == 'render') {
-  profile <- if (length(args) >= 3) args[3] else 'nature'
+  profile <- 'nature'
+  flag_idx <- match('--profile', args)
+  if (!is.na(flag_idx) && length(args) >= flag_idx + 1) {
+    profile <- args[flag_idx + 1]
+  } else if (length(args) >= 3 && !startsWith(args[3], '--')) {
+    profile <- args[3]
+  }
   render(args[2], profile)
 } else {
-  cat('用法: Rscript backends/ggplot2_adapter.R render <recipe.yaml> [profile]\n')
+  cat('用法: Rscript backends/ggplot2_adapter.R render <recipe.yaml> [--profile <name>]\n')
 }

@@ -1,5 +1,7 @@
 name: presentation
 journal: "Presentation"
+source_url: null  # 内部默认 profile，无期刊来源
+verified_date: "2026-08-19"
 aesthetics:
   font: "sans-serif"
   font_size: 14

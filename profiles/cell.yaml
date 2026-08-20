@@ -1,0 +1,19 @@
+name: cell
+journal: Cell
+source_url: "https://www.cell.com/cell/authors"
+verified_date: "2026-08-19"
+aesthetics:
+  font: "Arial"
+  font_size: 6
+  figsize: [3.35, 2.35]
+  dpi: 1000  # 线图 (line art) 最低分辨率
+  max_width_in: 6.85  # 双栏宽度 174mm
+  line_width: 0.75
+  axes_linewidth: 0.75
+  palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
+  constraints:
+    - "矢量格式优先 (PDF/EPS)"
+    - "仅使用 Arial 字体"
+    - "线图分辨率 ≥ 1000 DPI"
+    - "单栏宽度 85mm"
+    - "双栏宽度 174mm"

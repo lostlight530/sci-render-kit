@@ -1,0 +1,27 @@
+id: line-chart-interactive-demo
+name: 交互式折线图演示
+type: line-chart
+
+data:
+  accuracy: [0.72, 0.78, 0.84, 0.88, 0.91, 0.93, 0.94, 0.95]
+  loss: [1.2, 0.85, 0.62, 0.45, 0.35, 0.28, 0.24, 0.21]
+
+aesthetics:
+  title: "训练曲线（交互式）"
+  x_label: "Epoch"
+  y_label: "Value"
+  palette: ["#E69F00", "#56B4E9"]
+  font_size: 14
+  figsize: [10.0, 6.0]
+  dpi: 150
+
+output:
+  dir: output
+  filename: line-chart.html
+  format: html
+
+notes: >
+  演示用配方：observable 后端的交互式 HTML 输出。
+  observable 后端能力集为 [html]，配方必须声明 output.format: html；
+  声明其他格式会在 dispatch 前被 BACKEND_CAPABILITY_MISMATCH 拦截。
+  运行前需安装 JS 依赖：npm install

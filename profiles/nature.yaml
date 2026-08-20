@@ -1,16 +1,20 @@
 name: nature
 journal: Nature
+source_url: "https://www.nature.com/nature/for-authors/formatting-guide"
+verified_date: "2026-08-19"
 aesthetics:
   font: "Arial"
   font_size: 5
   figsize: [3.5, 2.45]
   dpi: 300
+  max_width_in: 7.2  # 双栏宽度 183mm
   line_width: 1.0
   axes_linewidth: 0.5
   palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
   constraints:
     - "矢量格式优先 (PDF/EPS)"
     - "字号 ≥ 5pt"
+    - "面板标签 8pt 粗体小写 (panel labels: 8pt bold lowercase)"
     - "单栏宽度 89mm"
     - "双栏宽度 183mm"
     - "颜色 ≤ 8 种"

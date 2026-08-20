@@ -1,0 +1,29 @@
+id: semantic-line-chart-demo
+name: 语义色彩折线图演示
+type: line-chart
+
+data:
+  positive: [0.60, 0.68, 0.75, 0.81, 0.86, 0.90]
+  negative: [0.60, 0.52, 0.46, 0.41, 0.37, 0.34]
+  stable: [0.60, 0.61, 0.59, 0.60, 0.61, 0.60]
+
+aesthetics:
+  title: "语义色彩编码演示"
+  x_label: "Epoch"
+  y_label: "Score"
+  semantic_palette: true
+  background: "#FFFFFF"
+  font_size: 10
+  line_width: 1.0
+  figsize: [6.0, 4.0]
+  dpi: 300
+
+output:
+  dir: output
+  filename: semantic-line-chart.png
+  format: png
+
+notes: >
+  演示用配方：启用 semantic_palette 后，系列名命中语义标签
+  （positive/negative/stable）时由 core/color_encoding.py 自动分配语义色，
+  并由 P1 质量门 palette-contrast 校验色板与背景的 WCAG 对比度（>= 3.0）。

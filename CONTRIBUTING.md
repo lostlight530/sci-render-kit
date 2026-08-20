@@ -9,7 +9,14 @@
    source .venv/bin/activate  # or .venv\Scripts\activate on Windows
    pip install pyyaml jsonschema matplotlib numpy
    ```
-3. Run tests to verify baseline:
+3. (Optional) For the observable (JS) backend, install Node.js dependencies:
+   ```bash
+   npm install
+   ```
+   The ggplot2 (R) backend requires a local R installation with the
+   `yaml`, `jsonlite`, `digest`, and `ggplot2` packages. Tests that need
+   node/R are skipped automatically when the environment lacks them.
+4. Run tests to verify baseline:
    ```bash
    make test
    ```
@@ -28,7 +35,8 @@
 - [ ] New chart types have recipes in `recipes/`
 - [ ] New chart types implemented in all 3 backends
 - [ ] Generated scripts are cleaned up after execution
-- [ ] Manifest is written for every output
+- [ ] Manifest is written for every output (matplotlib also writes the `.prov.json` provenance sidecar — P2 `prov-exists` gate)
+- [ ] R/JS adapters' embedded semantic-color constants stay in parity with `core/color_encoding.py`
 - [ ] New modules are marked as `[EXPERIMENTAL]` if not integrated
 - [ ] Documentation updated if behavior changes
 
