@@ -42,7 +42,7 @@ gates:
         rule: "声明 text_color 时，文字与背景（未声明则按 #FFFFFF）的 WCAG 对比度 ≥ 4.5（SC 1.4.3）"
       - id: palette-adjacency
         name: "相邻色对"
-        rule: "声明 adjacency_check: true 时，分类色板两两 WCAG 对比度 ≥ 3.0（SC 1.4.11），报告失败色对"
+        rule: "声明 adjacency_check: true 时，启用项目的严格分类色板两两对比度策略（≥ 3.0）并报告失败色对；该策略比 WCAG 2.2 SC 1.4.11 对实际相邻、且为理解所必需的图形对象要求更严格，不等同于 WCAG 的一般性两两要求"
       - id: cvd-contrast
         name: "色盲模拟对比度"
         rule: "声明 background 或启用 semantic_palette 时，色板颜色在 Machado 2009 三色盲模拟下与背景对比度 ≥ 3.0"
