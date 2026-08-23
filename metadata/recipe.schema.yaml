@@ -1,12 +1,7 @@
 title: Recipe Schema
 description: "图表配方的 YAML Schema 定义 | Chart recipe YAML schema definition"
 type: object
-required:
-- id
-- type
-- data
-- aesthetics
-- output
+required: [id, type, data, aesthetics, output]
 properties:
   id:
     type: string
@@ -16,13 +11,7 @@ properties:
     description: "人类可读名称"
   type:
     type: string
-    enum:
-    - line-chart
-    - bar-chart
-    - scatter-plot
-    - heatmap
-    - boxplot
-    - histogram
+    enum: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
     description: "图表类型"
   data:
     type: object
@@ -31,23 +20,18 @@ properties:
     type: object
     description: "美学参数"
     properties:
-      title:
-        type: string
-      x_label:
-        type: string
-      y_label:
-        type: string
+      title: {type: string}
+      x_label: {type: string}
+      y_label: {type: string}
       palette:
         type: array
-        items:
-          type: string
+        items: {type: string}
       font_size:
         type: integer
         minimum: 5
       figsize:
         type: array
-        items:
-          type: number
+        items: {type: number}
         minItems: 2
         maxItems: 2
       dpi:
@@ -64,13 +48,13 @@ properties:
         description: "画布背景色（hex），用于 palette-contrast 对比度门禁"
       text_color:
         type: string
-        description: "文字颜色（hex），声明后由 P1 text-contrast 门禁校验与背景对比度 ≥ 4.5（WCAG SC 1.4.3）"
+        description: "文字颜色（hex），声明后由 P1 text-contrast 校验与背景对比度 ≥ 4.5（WCAG SC 1.4.3）"
       adjacency_check:
         type: boolean
-        description: "启用分类色板两两相邻对比度检查（P1 palette-adjacency，WCAG SC 1.4.11，≥ 3.0）"
+        description: "启用项目自定义的严格全分类色对 ≥ 3.0 检查；受 WCAG SC 1.4.11 相邻边界原则启发，但不是 WCAG 的一般性全色板要求"
       palette_name:
         type: string
-        description: "注册色板名称（core/palettes.py，如 okabe-ito / petroff10）；P1 palette-name 门禁校验"
+        description: "注册色板名称（core/palettes.py，如 okabe-ito / petroff10）"
       cmap:
         type: string
         description: "热力图色阶名称"
@@ -78,28 +62,53 @@ properties:
         type: integer
         minimum: 1
         description: "直方图的柱数"
+  accessibility:
+    type: object
+    description: "可访问性契约；支持文本替代、非颜色冗余编码与声明式相邻对象检查，不等于整份出版物的 WCAG 合规声明"
+    properties:
+      alt_text:
+        type: string
+        minLength: 1
+        description: "图表短文本替代，面向 WCAG 2.2 SC 1.1.1 设计支持"
+      long_description:
+        type: string
+        minLength: 1
+        description: "可选长描述；复杂图表可用于补充趋势、含义或数据表位置"
+      require_alt_text:
+        type: boolean
+        description: "为 true 时 P1 门禁要求 alt_text 非空"
+      redundant_encoding:
+        type: string
+        enum: [off, auto, required]
+        default: off
+        description: "非颜色冗余编码策略；required 表示颜色不能作为系列区分的唯一视觉线索"
+      series_styles:
+        type: object
+        description: "按系列标签覆盖 marker / line_style / hatch；未声明项在 auto/required 模式由 core/accessibility.py 生成"
+        additionalProperties:
+          type: object
+          properties:
+            marker: {type: string}
+            line_style: {type: string}
+            hatch: {type: string}
+      adjacent_pairs:
+        type: array
+        description: "实际需要辨认的相邻系列标签对；每对按 SC 1.4.11 边界原则检查 ≥ 3.0"
+        items:
+          type: array
+          minItems: 2
+          maxItems: 2
+          items: {type: string}
   output:
     type: object
-    required:
-    - dir
-    - filename
+    required: [dir, filename]
     properties:
-      dir:
-        type: string
-        description: "输出目录"
-      filename:
-        type: string
-        description: "输出文件名"
+      dir: {type: string}
+      filename: {type: string}
       format:
         type: string
-        enum:
-        - png
-        - svg
-        - pdf
-        - eps
-        - html
+        enum: [png, svg, pdf, eps, html]
         default: png
-        description: "输出格式"
   notes:
     type: string
     description: "人类注释"

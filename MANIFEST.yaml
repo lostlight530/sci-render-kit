@@ -1,86 +1,119 @@
 name: sci-render-kit
-purpose: 声明式、能力有界、可检查溯源的学术可视化工具包 | Declarative, capability-bounded academic visualization toolkit with inspectable provenance
+purpose: 声明式、可溯源、可访问性可审计的学术可视化工具包 | Declarative scientific visualization with provenance and auditable accessibility contracts
 
 principles:
-  - 声明优先: 图表意图由 YAML recipe 描述，渲染行为由受支持 schema 与适配器解释
-  - 后端能力有界: 同一 recipe 模型可面向多后端，但只在各后端声明的 capability 集内成立
-  - 元数据可检查: 渲染结果关联 reproducibility manifest；Matplotlib 路径另有已实现 provenance sidecar/embedded metadata
-  - 质量前置: schema 与 P0/P1 检查在渲染前执行，P2/P3 检查验证已实现的输出/配置谓词
-  - 科研语义克制: gate/profile/provenance 不证明统计显著性、因果、期刊接受或独立复现
-  - 标准范围诚实: WCAG 启发的更严格项目策略必须标成 project policy，而不是扩大外部标准原义
+  - 声明优先: 图表数据、出版约束与可访问性意图由 YAML 声明
+  - 后端能力诚实: 同一配方可切换后端，但不伪装尚未实现的 accessibility/backend 能力
+  - 质量前置: P0 schema 与 P1 美学/可访问性门在渲染前执行
+  - 输出可验证: P2 检查图件、manifest、provenance 与 accessibility sidecar
+  - 出版规范显式: P3 profile 约束 DPI、尺寸与矢量格式
+  - 颜色不是唯一通道: required redundant encoding 使用 marker / line_style / hatch 提供非颜色视觉线索
+  - 标准边界诚实: WCAG 条款用于设计与门禁映射，不声明整篇论文/PDF/网站自动达到 WCAG conformance
+  - 科学边界: gate/profile/provenance 只证明实现的谓词与记录，不证明统计结论、因果或独立复现
+
+research_contract:
+  file: RESEARCH_CONTRACT.md
+  status: active
+  local_reproducibility_levels: [R0, R1, R2, R3]
+  note: local project terminology; R3 requires a separate rerun and declared comparison criterion
+  preferred_upstream_fields:
+    - artifact_id
+    - source_refs
+    - content_or_data_sha256
+    - run_or_analysis_ref
+    - uncertainty_semantics
+    - provenance_ref
+    - validation_status
+  preferred_figure_outputs:
+    - figure_id
+    - recipe_sha256
+    - input_data_sha256
+    - profile_id
+    - backend_id
+    - output_sha256
+    - manifest_ref
+    - provenance_ref
+    - quality_gate_status
+
+interoperability_targets:
+  ro_crate:
+    status: proposed
+    version: "1.3"
+    published: "2026-06-22"
+    note: current manifest/prov/a11y sidecars are not RO-Crates; exporter + validator + tests required
 
 backends:
   - name: matplotlib
     language: python
     adapter: backends/matplotlib_adapter.py
+    base_adapter: backends/matplotlib_base.py
     capabilities: [png, svg, pdf]
+    accessibility: [text-alternative-metadata, text-alternative-sidecar, redundant-series-style]
     default: true
   - name: ggplot2
     language: r
     adapter: backends/ggplot2_adapter.R
     capabilities: [png, svg, pdf]
+    accessibility: [text-alternative-sidecar]
+    redundant_series_style: not_integrated
   - name: observable
     language: javascript
     adapter: backends/observable_adapter.js
     capabilities: [html]
+    accessibility: [text-alternative-sidecar]
+    redundant_series_style: not_integrated
 
-profiles:
-  - nature
-  - science
-  - cell
-  - ieee
-  - presentation
+profiles: [nature, science, cell, ieee, presentation]
 
 recipes:
   types: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
   schema: metadata/recipe.schema.yaml
+  accessibility_example: recipes/accessible-line-chart.yaml
+
+accessibility:
+  profile: sci-render-kit/a11y@1
+  module: core/accessibility.py
+  sidecar: <output>.a11y.json
+  fields: [alt_text, long_description, require_alt_text, redundant_encoding, series_styles, adjacent_pairs]
+  wcag_2_2_design_support:
+    - "1.1.1: text alternative contract"
+    - "1.4.1: non-color redundant series cues"
+    - "1.4.11: contrast for explicitly declared adjacent graphical series"
+  project_strict_policy:
+    aesthetics.adjacency_check: "all unique palette pairs >= 3.0; stricter than WCAG actual-adjacency scope"
+  conformance_claim: false
 
 quality:
   gates: quality/gates.yaml
   levels: [P0, P1, P2, P3]
-  semantics:
-    passed_gate_proves_scientific_validity: false
-    profile_proves_journal_acceptance: false
-    palette_adjacency:
-      status: project_stricter_opt_in_policy
-      external_scope_reference: WCAG_2_2_SC_1_4_11_and_G209
-      universal_wcag_all_pairs_claim: false
 
 metadata:
-  required: true
-  output: manifest.json
-  schema: metadata/reproducibility.schema.yaml
-  semantics: traceability_and_replay_context_not_independent_reproduction_proof
+  reproducibility:
+    required: true
+    schema: metadata/reproducibility.schema.yaml
+    sidecar: <output>.manifest.json
+  provenance:
+    matplotlib: implemented
+    sidecar: <output>.prov.json
+    other_backends: optional_follow_up
+  accessibility:
+    when_declared: required
+    sidecar: <output>.a11y.json
 
-provenance:
-  matplotlib_sidecar:
-    pattern: <output-stem>.prov.json
-    status: implemented
-  embedded_matplotlib_metadata: implemented
-  r_js_equivalent_sidecar: not_claimed
-  immutable_ledger_claim: false
+research_software:
+  citation: CITATION.cff
+  cff_version: "1.2.0"
 
-research_contract:
-  document: RESEARCH_CONTRACT.md
-  status: active
-  updated: 2026-08-23
-  interoperability:
-    ro_crate:
-      target_version: "1.3"
-      status: proposed_mapping
-      implemented: false
-    cross_repo_handoff:
-      status: contract_only
-      direct_runtime_coupling: false
-  reproducibility_terms:
-    namespace: local_project_doctrine
-    levels: [R0_traceable, R1_replay_addressable, R2_environment_bounded, R3_reproduced]
+verification:
+  local_contract: make test
+  github_actions: .github/workflows/ci.yml
+  python: "3.12"
+  ci_python_dependencies: [pyyaml, jsonschema, matplotlib, numpy, pillow]
+  node_and_r_runtime: optional_and_not_required_for_core_ci
 
-external_evidence_observed:
-  retrieved: 2026-08-23
-  matplotlib:
-    latest_stable_observed: "3.11.1"
-    latest_release_compatibility_verified_here: false
-  wcag:
-    baseline: "2.2"
-    non_text_contrast_scope: adjacent_required_graphical_objects
+experimental_modules:
+  - projection
+  - time_crystal
+  - uncertainty_legend
+  - observer_dashboard
+  - superposition

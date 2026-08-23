@@ -21,9 +21,9 @@ gates:
         rule: "output 必须包含 dir 和 filename"
 
   - id: P1-aesthetics-check
-    name: "美学规范检查"
+    name: "美学与可访问性检查"
     level: P1
-    description: "渲染前的美学参数验证"
+    description: "渲染前的美学、可读性与视觉编码契约"
     checks:
       - id: color-count
         name: "颜色数量"
@@ -33,19 +33,28 @@ gates:
         rule: "font_size ≥ 5 (Nature) 或 ≥ 6 (Science)"
       - id: forbidden-pairs
         name: "禁止配色"
-        rule: "不包含红绿并置组合"
+        rule: "显式 palette 不包含高饱和红绿并置组合"
       - id: palette-contrast
-        name: "色板对比度"
+        name: "色板对背景"
         rule: "声明 background 或启用 semantic_palette 时，色板颜色与背景的 WCAG 对比度 ≥ 3.0"
       - id: text-contrast
         name: "文字对比度"
         rule: "声明 text_color 时，文字与背景（未声明则按 #FFFFFF）的 WCAG 对比度 ≥ 4.5（SC 1.4.3）"
       - id: palette-adjacency
-        name: "相邻色对"
-        rule: "声明 adjacency_check: true 时，启用项目的严格分类色板两两对比度策略（≥ 3.0）并报告失败色对；该策略比 WCAG 2.2 SC 1.4.11 对实际相邻、且为理解所必需的图形对象要求更严格，不等同于 WCAG 的一般性两两要求"
+        name: "严格全色对策略"
+        rule: "声明 aesthetics.adjacency_check: true 时，分类色板全部唯一色对 ≥ 3.0；这是比 WCAG SC 1.4.11 实际相邻对象要求更严格的项目策略"
+      - id: declared-adjacency
+        name: "声明式相邻对象对比度"
+        rule: "accessibility.adjacent_pairs 中实际需要辨认的系列对，其颜色边界对比度 ≥ 3.0（面向 SC 1.4.11 / G209）"
+      - id: text-alternative
+        name: "文本替代"
+        rule: "accessibility.require_alt_text: true 时必须提供非空 alt_text（面向 SC 1.1.1）"
+      - id: non-color-cue
+        name: "非颜色冗余编码"
+        rule: "accessibility.redundant_encoding: required 时，多系列 line/scatter/bar 必须具有可区分 marker/line_style/hatch（面向 SC 1.4.1）"
       - id: cvd-contrast
         name: "色盲模拟对比度"
-        rule: "声明 background 或启用 semantic_palette 时，色板颜色在 Machado 2009 三色盲模拟下与背景对比度 ≥ 3.0"
+        rule: "声明 background 或启用 semantic_palette 时，色板颜色在 Machado 2009 三色盲模拟下与背景对比度 ≥ 3.0；属于项目额外防护"
       - id: palette-name
         name: "注册色板"
         rule: "声明 palette_name 时必须命中 core/palettes.py 注册表；系列图仅接受 categorical 类型色板"
@@ -73,6 +82,9 @@ gates:
       - id: prov-exists
         name: "溯源旁车存在"
         rule: "matplotlib 后端渲染必须产出同名 .prov.json（FAIR R1.2 溯源旁车；R/JS 侧为可选跟进）"
+      - id: a11y-exists
+        name: "可访问性旁车存在"
+        rule: "配方声明 accessibility 时，统一 CLI 必须产出同名 .a11y.json 视觉编码/文本替代契约"
 
   - id: P3-journal-compliance
     name: "期刊规范对齐"

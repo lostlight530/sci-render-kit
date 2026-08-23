@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this research software, please cite it using the metadata below."
+title: "sci-render-kit"
+type: software
+authors:
+  - alias: lostlight530
+repository-code: "https://github.com/lostlight530/sci-render-kit"
+license: MIT
+keywords:
+  - scientific visualization
+  - reproducibility
+  - accessibility
+  - research software

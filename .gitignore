@@ -15,6 +15,8 @@ output/
 *.pdf
 *.html
 *.manifest.json
+*.prov.json
+*.a11y.json
 
 # 临时生成脚本
 _generated_render.py

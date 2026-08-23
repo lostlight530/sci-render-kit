@@ -1,0 +1,28 @@
+id: accessible-line-chart
+name: Accessible redundant-encoding demo
+type: line-chart
+data:
+  control: [1.0, 1.8, 2.4, 3.0]
+  treatment: [1.0, 2.2, 3.5, 4.9]
+aesthetics:
+  title: Control vs treatment
+  x_label: Observation
+  y_label: Response
+  palette: ["#000000", "#0072B2"]
+  background: "#FFFFFF"
+  text_color: "#000000"
+  font_size: 10
+  figsize: [6.0, 4.0]
+  dpi: 300
+accessibility:
+  require_alt_text: true
+  alt_text: "Line chart where control rises gradually and treatment rises more steeply across four observations."
+  long_description: "Both series start at 1.0. Control ends at 3.0 while treatment ends at 4.9. Color is not the only series cue: the Matplotlib accessibility adapter also assigns distinct markers and line styles."
+  redundant_encoding: required
+  adjacent_pairs:
+    - [control, treatment]
+output:
+  dir: output
+  filename: accessible-line-chart.png
+  format: png
+notes: "Demonstrates text alternative support, non-color redundant encoding, declared adjacency contrast, provenance, and accessibility sidecars."
