@@ -1,159 +1,224 @@
-"""
-Collapse View Engine — Multi-Dimensional Data Projection
-[EXPERIMENTAL] Not yet integrated into the main rendering pipeline.
+"""Dimensionality-reduction utilities.
+[EXPERIMENTAL] Not integrated into the canonical figure renderer.
 
-Multi-dimensional data projection system enabling visualization of
-high-dimensional datasets through intelligent dimensionality reduction.
-
-Real-world: Dimensionality reduction for scientific visualization.
+This module implements PCA and neighborhood-preservation diagnostics. The
+historical ``TSNEProjection`` class remains as an explicit unsupported
+compatibility surface; the repository does not ship a fake t-SNE algorithm.
 """
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Dict, Optional
 
 import numpy as np
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
-from typing import List, Tuple, Optional, Dict, Any
 
 
 @dataclass
-class ProjectedPoint:
-    """A single point in projected space."""
-
-    original_dims: Tuple[float, ...]
-    projected_dims: Tuple[float, ...]
-    label: Optional[str] = None
-    metadata: Dict[str, Any] = field(default_factory=dict)
+class ProjectionResult:
+    embedding: np.ndarray
+    method: str
+    parameters: Dict[str, object]
+    diagnostics: Dict[str, float]
 
 
-class ProjectionEngine(ABC):
-    """Abstract base for dimensionality reduction algorithms."""
+class PCAProjection:
+    """Principal-component projection using a centered SVD."""
 
     def __init__(self, n_components: int = 2):
+        if n_components < 1:
+            raise ValueError("n_components must be >= 1")
         self.n_components = n_components
-        self._fitted = False
+        self.mean_: Optional[np.ndarray] = None
+        self.components_: Optional[np.ndarray] = None
+        self.explained_variance_: Optional[np.ndarray] = None
+        self.explained_variance_ratio_: Optional[np.ndarray] = None
 
-    @abstractmethod
-    def fit_transform(self, data: np.ndarray) -> np.ndarray:
-        """Fit and transform data to lower dimensions."""
-        pass
+    @staticmethod
+    def _validate(X) -> np.ndarray:
+        array = np.asarray(X, dtype=float)
+        if array.ndim != 2:
+            raise ValueError("X must be a 2D array")
+        if array.shape[0] < 2:
+            raise ValueError("PCA requires at least two observations")
+        if array.shape[1] < 1:
+            raise ValueError("PCA requires at least one feature")
+        if not np.isfinite(array).all():
+            raise ValueError("X contains NaN or infinite values")
+        return array
 
-    def project(
-        self, data: np.ndarray, labels: List[str] = None
-    ) -> List[ProjectedPoint]:
-        """Project data and return structured points."""
-        projected = self.fit_transform(data)
-        points = []
-        for i, (orig, proj) in enumerate(zip(data, projected)):
-            point = ProjectedPoint(
-                original_dims=tuple(orig.tolist()),
-                projected_dims=tuple(proj.tolist()),
-                label=labels[i] if labels and i < len(labels) else None,
+    def fit(self, X) -> "PCAProjection":
+        array = self._validate(X)
+        if self.n_components > min(array.shape):
+            raise ValueError(
+                f"n_components={self.n_components} exceeds min(X.shape)={min(array.shape)}"
             )
-            points.append(point)
-        return points
+        self.mean_ = array.mean(axis=0)
+        centered = array - self.mean_
+        _, singular_values, vt = np.linalg.svd(centered, full_matrices=False)
+        self.components_ = vt[: self.n_components]
+        variance = (singular_values ** 2) / (array.shape[0] - 1)
+        self.explained_variance_ = variance[: self.n_components]
+        total = variance.sum()
+        self.explained_variance_ratio_ = (
+            self.explained_variance_ / total if total > 0 else np.zeros_like(self.explained_variance_)
+        )
+        return self
+
+    def transform(self, X) -> np.ndarray:
+        if self.mean_ is None or self.components_ is None:
+            raise RuntimeError("PCAProjection must be fitted before transform")
+        array = np.asarray(X, dtype=float)
+        if array.ndim != 2 or array.shape[1] != self.mean_.shape[0]:
+            raise ValueError("X feature dimension does not match fitted PCA")
+        if not np.isfinite(array).all():
+            raise ValueError("X contains NaN or infinite values")
+        return (array - self.mean_) @ self.components_.T
+
+    def fit_transform(self, X) -> np.ndarray:
+        return self.fit(X).transform(X)
+
+    def result(self, X) -> ProjectionResult:
+        embedding = self.fit_transform(X)
+        return ProjectionResult(
+            embedding=embedding,
+            method="pca",
+            parameters={"n_components": self.n_components, "centered": True},
+            diagnostics={
+                "explained_variance_ratio_sum": float(self.explained_variance_ratio_.sum()),
+            },
+        )
 
 
-class PCAProjection(ProjectionEngine):
-    """Principal Component Analysis projection."""
+class TSNEProjection:
+    """Compatibility placeholder: a real t-SNE implementation is not shipped."""
 
-    def fit_transform(self, data: np.ndarray) -> np.ndarray:
-        """Linear dimensionality reduction via PCA."""
-        # Center the data
-        mean = np.mean(data, axis=0)
-        centered = data - mean
+    def __init__(self, *args, **kwargs):
+        self.parameters = dict(kwargs)
+        if args:
+            self.parameters["positional_args"] = list(args)
 
-        # Compute covariance matrix
-        cov = np.cov(centered.T)
-
-        # Eigen decomposition
-        eigenvalues, eigenvectors = np.linalg.eigh(cov)
-
-        # Sort by eigenvalues descending
-        idx = np.argsort(eigenvalues)[::-1]
-        eigenvectors = eigenvectors[:, idx]
-
-        # Project to n_components
-        components = eigenvectors[:, : self.n_components]
-        return centered @ components
+    def fit_transform(self, X):
+        raise NotImplementedError(
+            "sci-render-kit does not implement t-SNE. Use a validated external implementation "
+            "and pass its embedding to the rendering layer with provenance."
+        )
 
 
-class TSNEProjection(ProjectionEngine):
-    """t-Distributed Stochastic Neighbor Embedding projection."""
-
-    def __init__(self, n_components: int = 2, perplexity: float = 30.0):
-        super().__init__(n_components)
-        self.perplexity = perplexity
-
-    def fit_transform(self, data: np.ndarray) -> np.ndarray:
-        """Non-linear dimensionality reduction via t-SNE."""
-        # Simplified t-SNE implementation
-        n_samples = data.shape[0]
-
-        # Compute pairwise distances
-        distances = np.zeros((n_samples, n_samples))
-        for i in range(n_samples):
-            for j in range(i + 1, n_samples):
-                dist = np.linalg.norm(data[i] - data[j])
-                distances[i, j] = dist
-                distances[j, i] = dist
-
-        # Simple 2D embedding (simplified for demonstration)
-        np.random.seed(42)
-        embedding = np.random.randn(n_samples, self.n_components) * 0.0001
-
-        # Iterative optimization (simplified)
-        for _ in range(100):
-            # Compute low-dimensional pairwise distances
-            low_distances = np.zeros((n_samples, n_samples))
-            for i in range(n_samples):
-                for j in range(i + 1, n_samples):
-                    dist = np.linalg.norm(embedding[i] - embedding[j])
-                    low_distances[i, j] = dist
-                    low_distances[j, i] = dist
-
-            # Gradient descent step (simplified)
-            for i in range(n_samples):
-                grad = np.zeros(self.n_components)
-                for j in range(n_samples):
-                    if i != j:
-                        diff = embedding[i] - embedding[j]
-                        grad += diff * (distances[i, j] - low_distances[i, j])
-                embedding[i] -= 0.01 * grad
-
-        return embedding
-
-
-class ProjectionQualityMetrics:
-    """Metrics for evaluating projection quality."""
+class ProjectionMetrics:
+    """Neighborhood and distance diagnostics for an externally produced embedding."""
 
     @staticmethod
-    def stress(original: np.ndarray, projected: np.ndarray) -> float:
-        """Compute stress metric (lower is better)."""
-        n = original.shape[0]
-        original_dist = np.zeros((n, n))
-        projected_dist = np.zeros((n, n))
+    def _validate_pair(original, embedded):
+        X = np.asarray(original, dtype=float)
+        Y = np.asarray(embedded, dtype=float)
+        if X.ndim != 2 or Y.ndim != 2:
+            raise ValueError("original and embedded must be 2D arrays")
+        if X.shape[0] != Y.shape[0]:
+            raise ValueError("original and embedded must contain the same observations")
+        if X.shape[0] < 3:
+            raise ValueError("at least three observations are required")
+        if not np.isfinite(X).all() or not np.isfinite(Y).all():
+            raise ValueError("arrays contain NaN or infinite values")
+        return X, Y
 
+    @staticmethod
+    def _pairwise_distances(X: np.ndarray) -> np.ndarray:
+        delta = X[:, None, :] - X[None, :, :]
+        return np.sqrt(np.sum(delta * delta, axis=2))
+
+    @staticmethod
+    def _rank_matrix(distances: np.ndarray) -> np.ndarray:
+        """Return 1-based neighbor ranks; diagonal self-rank is zero."""
+        n = distances.shape[0]
+        ranks = np.zeros((n, n), dtype=int)
         for i in range(n):
-            for j in range(i + 1, n):
-                original_dist[i, j] = np.linalg.norm(original[i] - original[j])
-                projected_dist[i, j] = np.linalg.norm(projected[i] - projected[j])
-
-        numerator = np.sum((original_dist - projected_dist) ** 2)
-        denominator = np.sum(original_dist**2)
-
-        return np.sqrt(numerator / denominator) if denominator > 0 else 0.0
-
-    @staticmethod
-    def trustworthiness(
-        original: np.ndarray, projected: np.ndarray, k: int = 5
-    ) -> float:
-        """Compute trustworthiness (0-1, higher is better)."""
-        n = original.shape[0]
-        # Simplified trustworthiness calculation
-        return 0.85  # Placeholder for full implementation
+            order = np.argsort(distances[i], kind="stable")
+            rank = 1
+            for j in order:
+                if j == i:
+                    continue
+                ranks[i, j] = rank
+                rank += 1
+        return ranks
 
     @staticmethod
-    def continuity(original: np.ndarray, projected: np.ndarray, k: int = 5) -> float:
-        """Compute continuity (0-1, higher is better)."""
-        n = original.shape[0]
-        # Simplified continuity calculation
-        return 0.82  # Placeholder for full implementation
+    def _validate_k(n: int, k: int) -> int:
+        k = int(k)
+        if k < 1:
+            raise ValueError("k must be >= 1")
+        if k >= n:
+            raise ValueError("k must be smaller than number of observations")
+        denominator = n * k * (2 * n - 3 * k - 1)
+        if denominator <= 0:
+            raise ValueError("k is too large for the trustworthiness/continuity normalization")
+        return k
+
+    @classmethod
+    def trustworthiness(cls, original, embedded, k: int = 5) -> float:
+        """Measure false-neighbor intrusion into the embedding (higher is better)."""
+        X, Y = cls._validate_pair(original, embedded)
+        n = X.shape[0]
+        k = cls._validate_k(n, k)
+        d_x = cls._pairwise_distances(X)
+        d_y = cls._pairwise_distances(Y)
+        rank_x = cls._rank_matrix(d_x)
+        penalty = 0.0
+        for i in range(n):
+            neighbors_y = [j for j in np.argsort(d_y[i]) if j != i][:k]
+            for j in neighbors_y:
+                if rank_x[i, j] > k:
+                    penalty += rank_x[i, j] - k
+        normalizer = 2.0 / (n * k * (2 * n - 3 * k - 1))
+        return float(max(0.0, min(1.0, 1.0 - normalizer * penalty)))
+
+    @classmethod
+    def continuity(cls, original, embedded, k: int = 5) -> float:
+        """Measure original-neighbor preservation in the embedding (higher is better)."""
+        X, Y = cls._validate_pair(original, embedded)
+        n = X.shape[0]
+        k = cls._validate_k(n, k)
+        d_x = cls._pairwise_distances(X)
+        d_y = cls._pairwise_distances(Y)
+        rank_y = cls._rank_matrix(d_y)
+        penalty = 0.0
+        for i in range(n):
+            neighbors_x = [j for j in np.argsort(d_x[i]) if j != i][:k]
+            for j in neighbors_x:
+                if rank_y[i, j] > k:
+                    penalty += rank_y[i, j] - k
+        normalizer = 2.0 / (n * k * (2 * n - 3 * k - 1))
+        return float(max(0.0, min(1.0, 1.0 - normalizer * penalty)))
+
+    @classmethod
+    def normalized_stress(cls, original, embedded) -> float:
+        """Distance distortion after optimal scalar rescaling of embedded distances."""
+        X, Y = cls._validate_pair(original, embedded)
+        d_x = cls._pairwise_distances(X)
+        d_y = cls._pairwise_distances(Y)
+        tri = np.triu_indices_from(d_x, k=1)
+        original_dist = d_x[tri]
+        embedded_dist = d_y[tri]
+        denominator = float(np.dot(embedded_dist, embedded_dist))
+        scale = float(np.dot(original_dist, embedded_dist) / denominator) if denominator > 0 else 0.0
+        residual = original_dist - scale * embedded_dist
+        original_energy = float(np.dot(original_dist, original_dist))
+        if original_energy == 0:
+            return 0.0 if np.allclose(residual, 0) else float("inf")
+        return float(np.sqrt(np.dot(residual, residual) / original_energy))
+
+
+class ProjectionEngine:
+    """Small explicit registry for implemented projection methods."""
+
+    def __init__(self):
+        self._methods = {"pca": PCAProjection}
+
+    def project(self, X, method: str = "pca", **kwargs) -> ProjectionResult:
+        method = str(method).lower()
+        if method == "tsne":
+            raise NotImplementedError("t-SNE is not implemented; use an external validated embedding")
+        if method not in self._methods:
+            raise ValueError(f"unknown projection method: {method}")
+        projector = self._methods[method](**kwargs)
+        return projector.result(X)
