@@ -10,7 +10,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+# Preserve direct script execution from any working directory:
+# python3 backends/matplotlib_adapter.py ...
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from backends import matplotlib_base as base
 from core.accessibility import accessibility_config, resolve_series_styles
