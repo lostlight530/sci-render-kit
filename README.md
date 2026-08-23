@@ -53,7 +53,7 @@ python3 sci_render.py recipes/line-chart.yaml --profile nature --backend matplot
 - **统一调度器 (CLI)**: `sci_render.py` — 加载配方、应用 profile、执行校验、分发引擎
 - **Profile**: 期刊规范声明（字体、色板、尺寸）
 - **语义色彩编码 (Semantic Color Encoding)**: 配方声明 `semantic_palette: true` 后，系列名命中语义标签（`positive`/`negative`/`stable` 等）即由 `core/color_encoding.py` 自动分配语义色（三后端一致）；声明 `background` 或启用语义色板时，P1 质量门 `palette-contrast` 强制校验色板与背景的 WCAG 对比度 ≥ 3.0。示例：`recipes/semantic-line-chart.yaml`
-- **WCAG 校验族 (P1)**: `palette-contrast`（色板 vs 背景 ≥ 3.0）；`text-contrast`（声明 `text_color` 时文字 vs 背景 ≥ 4.5，SC 1.4.3）；`palette-adjacency`（声明 `adjacency_check: true` 时分类色板两两 ≥ 3.0 并报告失败色对，SC 1.4.11）；`cvd-contrast`（Machado 2009 三色盲模拟下色板 vs 背景保持 ≥ 3.0）
+- **可访问性校验族 (P1)**: `palette-contrast`（色板 vs 背景 ≥ 3.0，面向需要被辨认的图形对象）；`text-contrast`（声明 `text_color` 时文字 vs 背景 ≥ 4.5，SC 1.4.3）；`palette-adjacency`（声明 `adjacency_check: true` 时启用项目自定义的严格“分类色板两两 ≥ 3.0”策略并报告失败色对；该策略受 SC 1.4.11 / G209 的相邻边界原则启发，但比 WCAG 对“实际相邻且为理解所必需”的图形对象要求更严格，并非 WCAG 的一般性两两要求）；`cvd-contrast`（Machado 2009 三色盲模拟下色板 vs 背景保持 ≥ 3.0，属于项目额外防护）
 - **命名色板注册表 (`core/palettes.py`)**: `aesthetics.palette_name` 引用策展色板 —— `okabe-ito`（Okabe-Ito 2008）、`petroff10`（Petroff 2021，matplotlib ≥3.10 官方可访问色环）、`viridis`/`cividis`（顺序、CVD 安全）、Crameri 发散系 `berlin`/`managua`/`vanimo`；每条目标注语义类型（categorical/sequential/diverging）与 CVD 安全级别，非 matplotlib 内置的色阶在能力矩阵中如实标注「不可用」
 - **图件溯源 (Provenance, FAIR R1.2)**: matplotlib 后端每次渲染将溯源记录（配方 SHA-256、输入数据 SHA-256、后端版本、时间戳）内嵌进图件 metadata（PNG/SVG/PDF 原生支持），并输出同名 `.prov.json` 旁车文件（含输出文件 SHA-256）；P2 门禁 `prov-exists` 强制校验。R/JS 侧为可选跟进，未声明已实现
 
