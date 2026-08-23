@@ -1,26 +1,39 @@
 #!/usr/bin/env python3
-"""
-Matplotlib 后端适配器 — 将 YAML 配方渲染为图表
-直接依赖 PyYAML、NumPy 和 Matplotlib；项目级还包含 jsonschema
+"""Matplotlib backend for recipe-driven scientific figures.
+
+The backend renders supported recipes and writes two project-owned evidence
+sidecars:
+
+- ``sci-render-kit/render-manifest@2`` — replay-addressable render identity;
+- ``sci-render-kit/provenance@2`` — backend/run provenance metadata.
+
+These records support FAIR R1.2-style provenance practice, but they are not a
+claim of FAIR certification, scientific validity, publisher acceptance, or
+independent reproduction.
 """
 
-import yaml
-import json
-import numpy as np
+from __future__ import annotations
+
+import argparse
 import hashlib
-import sys
+import json
 import os
+import platform
 import subprocess
+import sys
+from datetime import datetime, timezone
 from pathlib import Path
-from datetime import datetime
 from string import Template
+from typing import Callable, Optional
 
-# 允许以脚本方式从任意工作目录运行（python3 backends/matplotlib_adapter.py）
+import numpy as np
+import yaml
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from core.color_encoding import CognitiveColorEncoder
 from core.palettes import resolve_categorical
 
-# 默认色板（Okabe-Ito 色盲友好）
 DEFAULT_PALETTE = [
     "#E69F00",
     "#56B4E9",
@@ -32,92 +45,137 @@ DEFAULT_PALETTE = [
     "#000000",
 ]
 
-# 采用离散系列着色的图表类型（语义色板按系列名解析）
-SERIES_CHART_TYPES = ("line-chart", "bar-chart", "scatter-plot", "boxplot", "histogram")
+SERIES_CHART_TYPES = (
+    "line-chart",
+    "bar-chart",
+    "scatter-plot",
+    "boxplot",
+    "histogram",
+)
+
+PROVENANCE_PROFILE = "sci-render-kit/provenance@2"
+MANIFEST_PROFILE = "sci-render-kit/render-manifest@2"
+
+
+def _now() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def canonical_sha256(value) -> str:
+    encoded = json.dumps(
+        value,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+        default=str,
+    ).encode("utf-8")
+    return "sha256:" + hashlib.sha256(encoded).hexdigest()
+
+
+def file_sha256(path: str | Path | None) -> Optional[str]:
+    if not path:
+        return None
+    candidate = Path(path)
+    if not candidate.is_file():
+        return None
+    digest = hashlib.sha256()
+    with candidate.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return "sha256:" + digest.hexdigest()
+
+
+def _atomic_json(path: Path, payload: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp = path.with_suffix(path.suffix + ".tmp")
+    temp.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    os.replace(temp, path)
 
 
 def resolve_palette(aesthetics: dict, chart_type: str, data: dict) -> list:
-    """解析有效色板。
-
-    当 ``semantic_palette: true`` 时，由 core.color_encoding 的认知色彩编码器
-    按系列名的语义标签生成色板（优先于显式 palette）。
-    """
+    """Resolve an effective categorical palette for supported series charts."""
     if aesthetics.get("semantic_palette") and chart_type in SERIES_CHART_TYPES:
         labels = list(data.keys())
         if labels:
             return CognitiveColorEncoder().resolve_series_palette(labels)
     if aesthetics.get("palette_name"):
-        # 注册色板（core/palettes.py）；名称合法性由 P1 palette-name 门禁集中校验
         colors = resolve_categorical(str(aesthetics["palette_name"]))
         labels = list(data.keys()) if chart_type in SERIES_CHART_TYPES else []
         return colors[: len(labels)] if labels else colors
-    return aesthetics.get("palette", DEFAULT_PALETTE)
+    return list(aesthetics.get("palette") or DEFAULT_PALETTE)
 
 
 def load_recipe(path: str) -> dict:
-    with open(path, "r", encoding="utf-8") as f:
-        return yaml.safe_load(f)
+    with open(path, "r", encoding="utf-8") as handle:
+        data = yaml.safe_load(handle)
+    if not isinstance(data, dict):
+        raise ValueError(f"recipe root must be a mapping: {path}")
+    return data
 
 
 def load_profile(name: str) -> dict:
     profile_path = Path("profiles") / f"{name}.yaml"
     if not profile_path.exists():
         return {}
-    with open(profile_path, "r", encoding="utf-8") as f:
-        return yaml.safe_load(f)
+    with profile_path.open("r", encoding="utf-8") as handle:
+        data = yaml.safe_load(handle)
+    return data if isinstance(data, dict) else {}
 
 
 def validate_recipe(recipe: dict) -> list[str]:
-    """静态验证：配方合规检查"""
+    """Compatibility lightweight validation; the unified CLI owns JSON Schema."""
     errors = []
-    required = ["type", "data", "aesthetics"]
-    for key in required:
+    for key in ("type", "data", "aesthetics", "output"):
         if key not in recipe:
-            errors.append(f"缺少必需字段: {key}")
-    if "output" not in recipe:
-        errors.append("缺少 output 配置")
+            errors.append(f"missing required field: {key}")
     return errors
 
 
 def build_provenance(recipe: dict, profile: dict, recipe_path: str = None) -> dict:
-    """构建图件溯源记录（FAIR R1.2；同时内嵌图件 + 输出 .prov.json 旁车）。"""
-    import platform
-
+    """Build project provenance for one Matplotlib render."""
     import matplotlib
 
-    recipe_bytes = None
-    if recipe_path and Path(recipe_path).exists():
-        recipe_bytes = Path(recipe_path).read_bytes()
-    data_json = json.dumps(recipe.get("data", {}), sort_keys=True, ensure_ascii=False)
+    profile_path = Path("profiles") / f"{profile.get('name')}.yaml" if profile.get("name") else None
     return {
-        "schema": "sci-render-kit/provenance@1",
-        "standards": ["FAIR R1.2 (provenance metadata)", "log-sidecar pattern"],
-        "recipe_id": recipe.get("id", "unknown"),
-        "recipe_sha256": "sha256:" + hashlib.sha256(recipe_bytes).hexdigest()
-        if recipe_bytes
-        else "none",
-        "input_data_sha256": "sha256:"
-        + hashlib.sha256(data_json.encode("utf-8")).hexdigest(),
+        "profile": PROVENANCE_PROFILE,
+        "generated_at": _now(),
         "generator": "sci-render-kit",
-        "backend": "matplotlib",
-        "backend_version": matplotlib.__version__,
-        "python_version": platform.python_version(),
-        "numpy_version": np.__version__,
-        "profile": profile.get("name", "default"),
-        "generated_at": datetime.now().isoformat(),
+        "backend": {
+            "name": "matplotlib",
+            "version": matplotlib.__version__,
+            "runtime": f"Python {platform.python_version()}",
+            "numpy_version": np.__version__,
+        },
+        "recipe": {
+            "id": recipe.get("id", "unknown"),
+            "source": recipe_path,
+            "canonical_sha256": canonical_sha256(recipe),
+            "file_sha256": file_sha256(recipe_path),
+        },
+        "target_profile": {
+            "id": profile.get("name"),
+            "canonical_sha256": canonical_sha256(profile),
+            "file_sha256": file_sha256(profile_path) if profile_path else None,
+        },
+        "input_data": {
+            "canonical_sha256": canonical_sha256(recipe.get("data", {})),
+            "keys": list((recipe.get("data") or {}).keys()),
+        },
+        "standards_scope": {
+            "fair_r1_2": "provenance-oriented metadata practice",
+            "certification_claim": False,
+        },
+        "scientific_validity_claim": False,
     }
 
 
 def _savefig_metadata(provenance: dict, fmt: str, recipe: dict):
-    """按输出格式构造 savefig metadata（matplotlib 3.10+ 原生支持）。
-
-    PNG 支持任意自定义文本键（PIL 可读回验证）；PDF/SVG 仅接受标准键，
-    溯源 JSON 放入 Keywords。返回的 dict 将 repr 进生成脚本。
-    """
+    """Build format-compatible embedded metadata where Matplotlib supports it."""
     if not provenance:
         return None
     prov_json = json.dumps(provenance, ensure_ascii=False, separators=(",", ":"))
-    creator = f"sci-render-kit/matplotlib@{provenance['backend_version']}"
+    backend_version = (provenance.get("backend") or {}).get("version", "unknown")
+    creator = f"sci-render-kit/matplotlib@{backend_version}"
     title = str(recipe.get("id", "figure"))
     if fmt == "png":
         return {"srk:provenance": prov_json, "Software": creator}
@@ -125,7 +183,7 @@ def _savefig_metadata(provenance: dict, fmt: str, recipe: dict):
         return {
             "Title": title,
             "Author": "sci-render-kit",
-            "Subject": "recipe-driven scientific rendering",
+            "Subject": "recipe-driven scientific figure",
             "Keywords": prov_json,
             "Creator": creator,
         }
@@ -133,250 +191,279 @@ def _savefig_metadata(provenance: dict, fmt: str, recipe: dict):
         return {
             "Title": title,
             "Creator": creator,
-            "Description": "recipe-driven scientific rendering",
+            "Description": "recipe-driven scientific figure",
             "Keywords": prov_json,
         }
     return None
 
 
-def generate_python_code(recipe: dict, profile: dict, provenance: dict = None) -> str:
-    """将配方 + 配置转换为 Python 代码"""
+def _axis_decoration(aesthetics: dict) -> str:
+    lines = []
+    if aesthetics.get("title"):
+        lines.append(f"ax.set_title({json.dumps(str(aesthetics['title']))})")
+    if aesthetics.get("x_label"):
+        lines.append(f"ax.set_xlabel({json.dumps(str(aesthetics['x_label']))})")
+    if aesthetics.get("y_label"):
+        lines.append(f"ax.set_ylabel({json.dumps(str(aesthetics['y_label']))})")
+    return "\n".join(lines)
+
+
+def generate_python_code(
+    recipe: dict,
+    profile: dict,
+    provenance: dict = None,
+    *,
+    render_logic_fn: Optional[Callable[[str, dict, dict], str]] = None,
+    metadata_fn: Optional[Callable[[dict, str, dict], Optional[dict]]] = None,
+) -> str:
+    """Generate a self-contained Matplotlib render script.
+
+    Optional callables let the public accessibility adapter extend rendering
+    without monkeypatching module globals.
+    """
+    render_logic_fn = render_logic_fn or generate_render_logic
+    metadata_fn = metadata_fn or _savefig_metadata
+
+    aesthetics = {**(profile.get("aesthetics") or {}), **(recipe.get("aesthetics") or {})}
+    dpi = int(aesthetics.get("dpi", 300))
+    rc_params = {
+        "font.family": aesthetics.get("font", "sans-serif"),
+        "font.size": aesthetics.get("font_size", 10),
+        "axes.linewidth": aesthetics.get("axes_linewidth", 0.8),
+        "lines.linewidth": aesthetics.get("line_width", 1.2),
+        "savefig.dpi": dpi,
+    }
+    figsize = aesthetics.get("figsize", [6.0, 4.0])
+    chart_type = recipe["type"]
+    render_logic = render_logic_fn(chart_type, recipe["data"], aesthetics)
+    decoration = _axis_decoration(aesthetics)
+
+    output = recipe["output"]
+    output_path = Path(output.get("dir", "output")) / output.get("filename", "figure.png")
+    fmt = str(output.get("format", output_path.suffix.lstrip(".") or "png")).lower()
+    savefig_metadata = metadata_fn(provenance, fmt, recipe)
+
     code_template = '''#!/usr/bin/env python3
-"""自动生成 — 由 sci-render-kit 从配方渲染"""
+"""Generated by sci-render-kit from a declarative recipe."""
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
 
-# 配置
 plt.rcParams.update(${rc_params})
-
-# 数据
 data = ${data}
-
-# 创建图表
 fig, ax = plt.subplots(figsize=${figsize})
-
 ${render_logic}
-
-# 保存
-Path('${output_dir}').mkdir(parents=True, exist_ok=True)
-fig.savefig('${output_path}', dpi=${dpi}, format='${format}', 
+${decoration}
+Path(${output_dir}).mkdir(parents=True, exist_ok=True)
+fig.savefig(${output_path}, dpi=${dpi}, format=${format},
             bbox_inches='tight', pad_inches=0.05, metadata=${savefig_metadata})
 plt.close(fig)
-print(f"已保存: ${output_path}")
+print("saved:", ${output_path})
 '''
-
-    # 合并配置
-    aesthetics = {**profile.get("aesthetics", {}), **recipe.get("aesthetics", {})}
-    rc_params = {
-        "font.family": aesthetics.get("font", "sans-serif"),
-        "font.size": aesthetics.get("font_size", 10),
-        "axes.linewidth": aesthetics.get("axes_linewidth", 0.8),
-        "lines.linewidth": aesthetics.get("line_width", 1.2),
-        "savefig.dpi": max(aesthetics.get("dpi", 300), 300),
-    }
-
-    figsize = aesthetics.get("figsize", [6.0, 4.0])
-
-    # 根据图表类型生成渲染逻辑
-    chart_type = recipe["type"]
-    render_logic = generate_render_logic(chart_type, recipe["data"], aesthetics)
-
-    output = recipe["output"]
-    output_path = Path(output.get("dir", "output")) / output.get(
-        "filename", "figure.png"
-    )
-
-    savefig_metadata = _savefig_metadata(
-        provenance, output.get("format", "png").lower(), recipe
-    )
-
-    t = Template(code_template)
-    return t.substitute(
-        rc_params=json.dumps(rc_params),
-        data=json.dumps(recipe["data"]),
-        figsize=figsize,
+    return Template(code_template).substitute(
+        rc_params=repr(rc_params),
+        data=repr(recipe["data"]),
+        figsize=repr(figsize),
         render_logic=render_logic,
-        output_dir=str(output_path.parent),
-        output_path=str(output_path),
-        dpi=rc_params["savefig.dpi"],
-        format=output.get("format", "png").lower(),
+        decoration=decoration,
+        output_dir=repr(str(output_path.parent)),
+        output_path=repr(str(output_path)),
+        dpi=dpi,
+        format=repr(fmt),
         savefig_metadata=repr(savefig_metadata),
     )
 
 
 def generate_render_logic(chart_type: str, data: dict, aesthetics: dict) -> str:
-    """根据图表类型生成 matplotlib 渲染逻辑"""
+    """Generate Matplotlib statements for the supported chart family."""
     palette = resolve_palette(aesthetics, chart_type, data)
 
     if chart_type == "line-chart":
         lines = []
         for i, (label, values) in enumerate(data.items()):
             color = palette[i % len(palette)]
-            lines.append(f"x = np.arange(len({json.dumps(values)}))")
+            lines.append(f"x = np.arange(len({repr(values)}))")
             lines.append(
-                f'ax.plot(x, {json.dumps(values)}, color="{color}", linewidth=1.0, label="{label}", marker="o", markersize=2.5)'
+                "ax.plot(x, {values}, color={color}, label={label}, marker='o', markersize=2.5)".format(
+                    values=repr(values), color=repr(color), label=repr(str(label))
+                )
             )
         lines.append("ax.legend(frameon=False)")
         return "\n".join(lines)
 
-    elif chart_type == "bar-chart":
-        lines = []
+    if chart_type == "bar-chart":
         categories = list(data.keys())
         values = list(data.values())
-        n = len(categories)
-        bar_width = 0.6
-        lines.append(f"x = np.arange({n})")
-        for i, (label, val) in enumerate(zip(categories, values)):
+        lines = [f"x = np.arange({len(categories)})"]
+        for i, (label, value) in enumerate(zip(categories, values)):
             color = palette[i % len(palette)]
             lines.append(
-                f'ax.bar(x[{i}] + {bar_width / 2}, {val}, width={bar_width}, color="{color}", edgecolor="black", linewidth=0.5)'
+                f"ax.bar(x[{i}], {repr(value)}, width=0.6, color={repr(color)}, edgecolor='black', linewidth=0.5)"
             )
-        lines.append(f"ax.set_xticks(x + {bar_width / 2})")
-        lines.append(f"ax.set_xticklabels({json.dumps(categories)})")
+        lines.append("ax.set_xticks(x)")
+        lines.append(f"ax.set_xticklabels({repr([str(v) for v in categories])})")
         return "\n".join(lines)
 
-    elif chart_type == "scatter-plot":
+    if chart_type == "scatter-plot":
         lines = []
-        for i, (label, (x, y)) in enumerate(data.items()):
+        for i, (label, pair) in enumerate(data.items()):
+            if not isinstance(pair, (list, tuple)) or len(pair) != 2:
+                raise ValueError(f"scatter series {label!r} must be [x_values, y_values]")
+            x, y = pair
             color = palette[i % len(palette)]
             lines.append(
-                f'ax.scatter({json.dumps(x)}, {json.dumps(y)}, c="{color}", s=16, label="{label}", edgecolors="black", linewidths=0.3)'
+                "ax.scatter({x}, {y}, c={color}, s=16, label={label}, edgecolors='black', linewidths=0.3)".format(
+                    x=repr(x), y=repr(y), color=repr(color), label=repr(str(label))
+                )
             )
         lines.append("ax.legend(frameon=False)")
         return "\n".join(lines)
 
-    elif chart_type == "heatmap":
-        lines = []
+    if chart_type == "heatmap":
         matrix = data.get("matrix", [])
         row_labels = data.get("row_labels", [])
         col_labels = data.get("col_labels", [])
         cmap = aesthetics.get("cmap", "viridis")
-        lines.append(f'cax = ax.imshow({json.dumps(matrix)}, cmap="{cmap}")')
-        lines.append(f"fig.colorbar(cax)")
+        lines = [f"cax = ax.imshow({repr(matrix)}, cmap={repr(str(cmap))})", "fig.colorbar(cax)"]
         if col_labels:
-            lines.append(f"ax.set_xticks(np.arange(len({json.dumps(col_labels)})))")
-            lines.append(f"ax.set_xticklabels({json.dumps(col_labels)})")
+            lines.extend([
+                f"ax.set_xticks(np.arange(len({repr(col_labels)})))",
+                f"ax.set_xticklabels({repr(col_labels)})",
+            ])
         if row_labels:
-            lines.append(f"ax.set_yticks(np.arange(len({json.dumps(row_labels)})))")
-            lines.append(f"ax.set_yticklabels({json.dumps(row_labels)})")
+            lines.extend([
+                f"ax.set_yticks(np.arange(len({repr(row_labels)})))",
+                f"ax.set_yticklabels({repr(row_labels)})",
+            ])
         return "\n".join(lines)
 
-    elif chart_type == "boxplot":
-        lines = []
-        labels = list(data.keys())
+    if chart_type == "boxplot":
+        labels = [str(label) for label in data.keys()]
         values = list(data.values())
-        lines.append(
-            f"bplot = ax.boxplot({json.dumps(values)}, patch_artist=True, labels={json.dumps(labels)})"
-        )
-        lines.append(f"colors = {json.dumps(palette[: len(labels)])}")
-        lines.append('for patch, color in zip(bplot["boxes"], colors):')
-        lines.append("    patch.set_facecolor(color)")
-        lines.append("    patch.set_alpha(0.7)")
+        lines = [
+            f"bplot = ax.boxplot({repr(values)}, patch_artist=True, tick_labels={repr(labels)})",
+            f"colors = {repr(palette[: len(labels)])}",
+            'for patch, color in zip(bplot["boxes"], colors):',
+            "    patch.set_facecolor(color)",
+            "    patch.set_alpha(0.7)",
+        ]
         return "\n".join(lines)
 
-    elif chart_type == "histogram":
-        lines = []
+    if chart_type == "histogram":
         values = data.get("values", [])
-        bins = aesthetics.get("bins", 10)
+        bins = int(aesthetics.get("bins", 10))
         color = palette[0] if palette else "#1f77b4"
-        lines.append(
-            f'ax.hist({json.dumps(values)}, bins={bins}, color="{color}", edgecolor="black", alpha=0.7)'
-        )
-        return "\n".join(lines)
+        return f"ax.hist({repr(values)}, bins={bins}, color={repr(color)}, edgecolor='black', alpha=0.7)"
 
-    else:
-        return f"# TODO: 实现 {chart_type} 的渲染逻辑"
+    raise ValueError(f"unsupported chart type: {chart_type}")
 
 
-def write_manifest(recipe: dict, profile: dict, output_path: str) -> None:
-    """输出渲染溯源元数据"""
+def write_manifest(recipe: dict, profile: dict, output_path: str, *, recipe_path: str = None) -> None:
+    """Write the R1 replay-addressable Matplotlib render manifest."""
+    import matplotlib
+
+    output = Path(output_path)
+    profile_path = Path("profiles") / f"{profile.get('name')}.yaml" if profile.get("name") else None
     manifest = {
-        "generated_at": datetime.now().isoformat(),
-        "generator": "sci-render-kit/matplotlib",
-        "recipe": recipe.get("id", "unknown"),
-        "profile": profile.get("name", "default"),
-        "backend": "matplotlib",
-        "output": output_path,
-        "checksum": "sha256:"
-        + hashlib.sha256(open(output_path, "rb").read()).hexdigest()
-        if Path(output_path).exists()
-        else "none",
+        "profile": MANIFEST_PROFILE,
+        "generated_at": _now(),
+        "generator": "sci-render-kit",
+        "recipe": {
+            "id": recipe.get("id", "unknown"),
+            "canonical_sha256": canonical_sha256(recipe),
+            "file_sha256": file_sha256(recipe_path),
+            "source": recipe_path,
+        },
+        "target_profile": {
+            "id": profile.get("name"),
+            "canonical_sha256": canonical_sha256(profile),
+            "file_sha256": file_sha256(profile_path) if profile_path else None,
+        },
+        "backend": {
+            "name": "matplotlib",
+            "version": matplotlib.__version__,
+            "runtime": f"Python {platform.python_version()}",
+        },
+        "output": str(output),
+        "output_sha256": file_sha256(output),
         "parameters": {
-            "aesthetics": recipe.get("aesthetics", {}),
-            "data_keys": list(recipe.get("data", {}).keys()),
+            "aesthetics": {**(profile.get("aesthetics") or {}), **(recipe.get("aesthetics") or {})},
+            "data_canonical_sha256": canonical_sha256(recipe.get("data", {})),
+            "data_keys": list((recipe.get("data") or {}).keys()),
+        },
+        "provenance": {
+            "sidecar": output.with_suffix(".prov.json").name,
+            "accessibility_sidecar": output.with_suffix(".a11y.json").name if "accessibility" in recipe else None,
+            "figure_evidence_sidecar": None,
+        },
+        "reproducibility": {
+            "level": "R1",
+            "semantics": "Replay-addressable render evidence; no independent rerun claimed.",
+            "independently_rerun": False,
         },
     }
-    manifest_path = Path(output_path).with_suffix(".manifest.json")
-    with open(manifest_path, "w", encoding="utf-8") as f:
-        json.dump(manifest, f, indent=2, ensure_ascii=False)
+    _atomic_json(output.with_suffix(".manifest.json"), manifest)
 
 
 def write_provenance_sidecar(provenance: dict, output_path: str) -> None:
-    """输出 .prov.json 溯源旁车文件（含输出文件 SHA-256）。"""
+    """Write project provenance with output byte identity."""
     record = dict(provenance)
-    record["output"] = output_path
-    record["output_sha256"] = (
-        "sha256:" + hashlib.sha256(open(output_path, "rb").read()).hexdigest()
-        if Path(output_path).exists()
-        else "none"
-    )
-    sidecar_path = Path(output_path).with_suffix(".prov.json")
-    with open(sidecar_path, "w", encoding="utf-8") as f:
-        json.dump(record, f, indent=2, ensure_ascii=False)
+    record["output"] = {
+        "path": output_path,
+        "file_sha256": file_sha256(output_path),
+    }
+    _atomic_json(Path(output_path).with_suffix(".prov.json"), record)
 
 
-def render(recipe_path: str, profile_name: str = "nature") -> None:
-    """主渲染入口"""
+def render(
+    recipe_path: str,
+    profile_name: str = "nature",
+    *,
+    render_logic_fn: Optional[Callable[[str, dict, dict], str]] = None,
+    metadata_fn: Optional[Callable[[dict, str, dict], Optional[dict]]] = None,
+) -> None:
+    """Render one recipe and write Matplotlib-owned evidence sidecars."""
     recipe = load_recipe(recipe_path)
-
+    errors = validate_recipe(recipe)
+    if errors:
+        raise ValueError("; ".join(errors))
     profile = load_profile(profile_name)
-
-    # 溯源记录：内嵌图件 metadata + .prov.json 旁车（FAIR R1.2）
     provenance = build_provenance(recipe, profile, recipe_path)
+    code = generate_python_code(
+        recipe,
+        profile,
+        provenance,
+        render_logic_fn=render_logic_fn,
+        metadata_fn=metadata_fn,
+    )
 
-    # 生成代码
-    code = generate_python_code(recipe, profile, provenance)
-
-    # 输出到临时文件
     output = recipe["output"]
     output_dir = Path(output.get("dir", "output"))
     output_dir.mkdir(parents=True, exist_ok=True)
-
     script_path = output_dir / "_generated_render.py"
-    with open(script_path, "w", encoding="utf-8") as f:
-        f.write(code)
-
-    print(f"✅ 已生成渲染脚本: {script_path}")
-    print(f"📋 运行以下命令执行渲染:")
-    print(f"   python {script_path}")
+    script_path.write_text(code, encoding="utf-8")
     try:
-        subprocess.run(["python3", str(script_path)], check=True)
+        subprocess.run([sys.executable, str(script_path)], check=True)
     finally:
-        # Hygiene: clean up generated execute script (best-effort;
-        # missing_ok 容忍网络/overlay 文件系统上 exists→unlink 的竞态)
         try:
             script_path.unlink(missing_ok=True)
-            print(f"🧹 已清理临时脚本: {script_path}")
         except OSError:
             pass
 
-    # 写入 manifest（预览版）
     output_path = output_dir / output.get("filename", "figure.png")
-    write_manifest(recipe, profile, str(output_path))
+    if not output_path.is_file():
+        raise RuntimeError(f"render completed without declared output: {output_path}")
     write_provenance_sidecar(provenance, str(output_path))
+    write_manifest(recipe, profile, str(output_path), recipe_path=recipe_path)
 
 
 if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser(description="sci-render-kit matplotlib 后端")
-    parser.add_argument("action", choices=["render"], help="操作")
-    parser.add_argument("recipe", help="配方文件路径")
-    parser.add_argument("--profile", default="nature", help="配置文件名")
+    parser = argparse.ArgumentParser(description="sci-render-kit matplotlib backend")
+    parser.add_argument("action", choices=["render"])
+    parser.add_argument("recipe")
+    parser.add_argument("--profile", default="nature")
     args = parser.parse_args()
-
     if args.action == "render":
         render(args.recipe, args.profile)
