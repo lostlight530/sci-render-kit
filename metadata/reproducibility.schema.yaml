@@ -1,87 +1,119 @@
-title: "Reproducibility Manifest Schema"
-description: "每次渲染必须输出的元数据格式 | Mandatory metadata format for every render"
+title: "Render Manifest Schema"
+profile: sci-render-kit/render-manifest-schema@2
+description: >
+  每次后端渲染生成的工程元数据结构。Manifest 记录配方、数据、后端、输出与参数身份，
+  用于 trace/replay 定位；其存在不等于独立复现（R3）或科学正确性。
 
 type: object
 required:
+  - profile
   - generated_at
   - generator
   - recipe
   - backend
   - output
+  - output_sha256
   - parameters
+  - reproducibility
 
 properties:
+  profile:
+    type: string
+    description: "manifest profile，例如 sci-render-kit/render-manifest@2"
   generated_at:
     type: string
     format: date-time
-    description: "ISO 8601 渲染时间戳"
-    
   generator:
     type: string
-    description: "生成器标识，如 sci-render-kit/matplotlib@1.0.0"
-    
   recipe:
-    type: string
-    description: "配方 ID"
-    
-  profile:
-    type: string
-    description: "使用的配置文件名"
-    
+    type: object
+    required: [id, canonical_sha256]
+    properties:
+      id: {type: string}
+      canonical_sha256: {type: string}
+      file_sha256: {type: [string, "null"]}
+      source: {type: [string, "null"]}
+  target_profile:
+    type: object
+    properties:
+      id: {type: [string, "null"]}
+      canonical_sha256: {type: [string, "null"]}
+      file_sha256: {type: [string, "null"]}
   backend:
-    type: string
-    enum: [matplotlib, ggplot2, observable]
-    description: "渲染后端"
-    
+    type: object
+    required: [name]
+    properties:
+      name: {type: string, enum: [matplotlib, ggplot2, observable]}
+      version: {type: [string, "null"]}
+      runtime: {type: [string, "null"]}
   output:
     type: string
-    description: "输出文件路径"
-    
-  checksum:
+  output_sha256:
     type: string
-    description: "输出文件的 SHA-256 校验和"
-    
   parameters:
     type: object
-    description: "渲染参数快照"
     properties:
       aesthetics:
         type: object
-        description: "最终生效的美学参数"
-      data_hash:
+      data_canonical_sha256:
         type: string
-        description: "输入数据的哈希值"
       data_keys:
         type: array
-        items:
-          type: string
-        description: "数据键列表"
-        
+        items: {type: string}
   provenance:
     type: object
-    description: "溯源信息"
     properties:
-      recipe_source:
+      sidecar: {type: [string, "null"]}
+      accessibility_sidecar: {type: [string, "null"]}
+      figure_evidence_sidecar: {type: [string, "null"]}
+  runtime_validation:
+    type: object
+    properties:
+      profile: {type: string}
+      status: {type: string, enum: [passed, passed_with_warnings, failed]}
+      counts: {type: object}
+  reproducibility:
+    type: object
+    required: [level, semantics]
+    properties:
+      level:
         type: string
-        description: "配方来源 URL 或路径"
-      data_source:
+        enum: [R0, R1, R2, R3]
+      semantics:
         type: string
-        description: "数据来源 URL 或路径"
-      execution_environment:
-        type: string
-        description: "执行环境描述"
-        
+      independently_rerun:
+        type: boolean
+
+x-local-reproducibility-levels:
+  R0: "Traceable: artifact and source/recipe references are recorded."
+  R1: "Replay-addressable: recipe/data/profile/backend/output identities are recorded."
+  R2: "Environment-bounded: runtime/dependency environment is sufficiently recorded for the declared replay scope."
+  R3: "Reproduced: a separate rerun was actually performed and compared under a declared criterion."
+
 example:
-  generated_at: "2026-06-18T14:30:00Z"
-  generator: "sci-render-kit/matplotlib@1.0.0"
-  recipe: "line-chart-demo"
-  profile: "nature"
-  backend: "matplotlib"
+  profile: "sci-render-kit/render-manifest@2"
+  generated_at: "2026-08-24T00:00:00+00:00"
+  generator: "sci-render-kit"
+  recipe:
+    id: "line-chart-demo"
+    canonical_sha256: "sha256:..."
+    file_sha256: "sha256:..."
+    source: "recipes/line-chart.yaml"
+  target_profile:
+    id: "nature"
+    canonical_sha256: "sha256:..."
+    file_sha256: "sha256:..."
+  backend:
+    name: "matplotlib"
+    version: "3.11.1"
+    runtime: "Python 3.x"
   output: "output/line-chart.png"
-  checksum: "sha256:abc123..."
+  output_sha256: "sha256:..."
   parameters:
-    aesthetics:
-      font_size: 5
-      line_width: 1.0
-    data_hash: "sha256:def456..."
-    data_keys: ["accuracy", "loss"]
+    aesthetics: {}
+    data_canonical_sha256: "sha256:..."
+    data_keys: ["series-a", "series-b"]
+  reproducibility:
+    level: R1
+    semantics: "Replay-addressable render evidence; no independent rerun claimed."
+    independently_rerun: false
