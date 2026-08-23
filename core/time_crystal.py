@@ -1,140 +1,109 @@
-"""
-Time Crystal Animation - Periodic Motion Engine
-[EXPERIMENTAL] Not yet integrated into the main rendering pipeline.
+"""Periodic waveform and procedural-animation utilities.
+[EXPERIMENTAL] Not integrated into the canonical renderer.
 
-Time crystals are structures that repeat in time rather than space.
-This module creates animations with temporal periodicity - patterns
-that oscillate, breathe, and pulse with mathematical precision.
-
-Real-world: Procedural animation with mathematical periodicity.
+The historical ``TimeCrystal`` naming is retained for compatibility. This
+module generates ordinary periodic functions over time; it does not model a
+physical time crystal, spontaneous time-translation symmetry breaking, or any
+quantum many-body system.
 """
+
+from __future__ import annotations
 
 import math
 import time
-from dataclasses import dataclass, field
-from typing import Dict, List, Tuple, Optional, Callable, Any
+from dataclasses import dataclass
 from enum import Enum
+from typing import Dict, List, Optional
 
 
-class WaveformType(Enum):
+class CrystalPattern(Enum):
     SINE = "sine"
-    SQUARE = "square"
+    COSINE = "cosine"
     TRIANGLE = "triangle"
     SAWTOOTH = "sawtooth"
-    PULSE = "pulse"
+    SQUARE = "square"
 
 
 @dataclass
-class TimeCrystal:
-    """A time crystal with periodic temporal structure."""
+class TimeCrystalState:
+    """Compatibility record for one periodic waveform channel."""
 
     name: str
     frequency: float
-    amplitude: float
+    amplitude: float = 1.0
     phase: float = 0.0
-    waveform: WaveformType = WaveformType.SINE
-    harmonics: List[float] = field(default_factory=list)
-    damping: float = 0.0
+    pattern: CrystalPattern = CrystalPattern.SINE
 
-    def value_at(self, t: float) -> float:
-        """Get the crystal's value at time t."""
-        base = self._waveform_value(t)
-
-        for i, harmonic_amp in enumerate(self.harmonics):
-            harmonic_freq = self.frequency * (i + 2)
-            base += harmonic_amp * self._waveform_value(t, harmonic_freq)
-
-        if self.damping > 0:
-            base *= math.exp(-self.damping * t)
-
-        return base
-
-    def _waveform_value(self, t: float, freq: float = None) -> float:
-        """Compute waveform value at time t."""
-        f = freq if freq else self.frequency
-        phase = 2 * math.pi * f * t + self.phase
-
-        if self.waveform == WaveformType.SINE:
-            return self.amplitude * math.sin(phase)
-        elif self.waveform == WaveformType.SQUARE:
-            return self.amplitude * (1 if math.sin(phase) >= 0 else -1)
-        elif self.waveform == WaveformType.TRIANGLE:
-            return self.amplitude * (2 / math.pi) * math.asin(math.sin(phase))
-        elif self.waveform == WaveformType.SAWTOOTH:
-            normalized = (phase / (2 * math.pi)) % 1.0
-            return self.amplitude * (2 * normalized - 1)
-        elif self.waveform == WaveformType.PULSE:
-            duty = 0.3
-            normalized = (phase / (2 * math.pi)) % 1.0
-            return self.amplitude if normalized < duty else 0.0
-        return 0.0
+    def __post_init__(self) -> None:
+        if not self.name:
+            raise ValueError("name must be non-empty")
+        self.frequency = float(self.frequency)
+        self.amplitude = float(self.amplitude)
+        self.phase = float(self.phase)
+        if self.frequency < 0:
+            raise ValueError("frequency must be non-negative")
 
 
-class TimeCrystalAnimation:
-    """Animation engine driven by time crystals."""
+class PeriodicWaveformEngine:
+    """Evaluate named deterministic periodic waveform channels."""
 
     def __init__(self):
-        self._crystals: Dict[str, TimeCrystal] = {}
-        self._start_time = time.time()
+        self._states: Dict[str, TimeCrystalState] = {}
+        self._origin = time.monotonic()
 
-    def add_crystal(self, crystal: TimeCrystal) -> None:
-        """Add a time crystal to the animation."""
-        self._crystals[crystal.name] = crystal
+    def add_state(self, state: TimeCrystalState) -> None:
+        self._states[state.name] = state
 
-    def frame(self, t: float = None) -> Dict[str, float]:
-        """Generate a frame of animation values."""
-        if t is None:
-            t = time.time() - self._start_time
+    def remove_state(self, name: str) -> None:
+        self._states.pop(name, None)
 
-        return {name: crystal.value_at(t) for name, crystal in self._crystals.items()}
+    @staticmethod
+    def _wave(pattern: CrystalPattern, angle: float) -> float:
+        if pattern == CrystalPattern.SINE:
+            return math.sin(angle)
+        if pattern == CrystalPattern.COSINE:
+            return math.cos(angle)
+        phase = (angle / (2 * math.pi)) % 1.0
+        if pattern == CrystalPattern.TRIANGLE:
+            return 1.0 - 4.0 * abs(phase - 0.5)
+        if pattern == CrystalPattern.SAWTOOTH:
+            return 2.0 * phase - 1.0
+        if pattern == CrystalPattern.SQUARE:
+            return 1.0 if phase < 0.5 else -1.0
+        raise ValueError(f"unsupported pattern: {pattern}")
 
-    def animate_property(
-        self,
-        crystal_name: str,
-        property_name: str,
-        target_obj: Any,
-        duration: float = None,
-    ) -> Callable:
-        """Create an animation callback for a specific property."""
-        crystal = self._crystals.get(crystal_name)
-        if not crystal:
-            return lambda t: None
+    def value(self, name: str, t: Optional[float] = None) -> float:
+        state = self._states.get(name)
+        if state is None:
+            raise KeyError(f"unknown waveform state: {name}")
+        elapsed = (time.monotonic() - self._origin) if t is None else float(t)
+        angle = 2.0 * math.pi * state.frequency * elapsed + state.phase
+        return state.amplitude * self._wave(state.pattern, angle)
 
-        start = time.time()
+    def snapshot(self, t: Optional[float] = None) -> Dict[str, float]:
+        elapsed = (time.monotonic() - self._origin) if t is None else float(t)
+        return {name: self.value(name, elapsed) for name in sorted(self._states)}
 
-        def update(t: float = None):
-            current_t = t if t else time.time() - start
-            if duration and current_t > duration:
-                return
-            value = crystal.value_at(current_t)
-            setattr(target_obj, property_name, value)
+    def sample(self, name: str, start: float, stop: float, count: int) -> List[dict]:
+        if count < 2:
+            raise ValueError("count must be >= 2")
+        if stop < start:
+            raise ValueError("stop must be >= start")
+        step = (stop - start) / (count - 1)
+        return [
+            {"t": start + index * step, "value": self.value(name, start + index * step)}
+            for index in range(count)
+        ]
 
-        return update
+    def reset_origin(self) -> None:
+        self._origin = time.monotonic()
 
-    def superposition(self, crystal_names: List[str], t: float = None) -> float:
-        """Compute the superposition of multiple crystals."""
-        if t is None:
-            t = time.time() - self._start_time
+    def summary(self) -> dict:
+        return {
+            "channels": sorted(self._states),
+            "semantics": "deterministic_periodic_waveform_not_physical_time_crystal",
+        }
 
-        total = 0.0
-        for name in crystal_names:
-            crystal = self._crystals.get(name)
-            if crystal:
-                total += crystal.value_at(t)
-        return total
 
-    def interference(self, name_a: str, name_b: str, t: float = None) -> float:
-        """Compute interference pattern between two crystals."""
-        if t is None:
-            t = time.time() - self._start_time
-
-        a = self._crystals.get(name_a)
-        b = self._crystals.get(name_b)
-        if not a or not b:
-            return 0.0
-
-        return a.value_at(t) * b.value_at(t)
-
-    def list_crystals(self) -> List[str]:
-        """List all crystal names."""
-        return list(self._crystals.keys())
+# Historical compatibility name.
+TimeCrystal = PeriodicWaveformEngine
