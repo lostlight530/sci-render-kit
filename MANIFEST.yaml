@@ -1,10 +1,13 @@
 name: sci-render-kit
-purpose: 声明式学术可视化工具包 | Declarative academic visualization toolkit
+purpose: 声明式、能力有界、可检查溯源的学术可视化工具包 | Declarative, capability-bounded academic visualization toolkit with inspectable provenance
+
 principles:
-  - 声明优先: 图表定义用 YAML 不用写代码
-  - 后端无关: 同一配方可切换多后端
-  - 元数据强制: 每次渲染必须输出溯源信息
-  - 质量前置: 配方先通过静态验证
+  - 声明优先: 图表意图由 YAML recipe 描述，渲染行为由受支持 schema 与适配器解释
+  - 后端能力有界: 同一 recipe 模型可面向多后端，但只在各后端声明的 capability 集内成立
+  - 元数据可检查: 渲染结果关联 reproducibility manifest；Matplotlib 路径另有已实现 provenance sidecar/embedded metadata
+  - 质量前置: schema 与 P0/P1 检查在渲染前执行，P2/P3 检查验证已实现的输出/配置谓词
+  - 科研语义克制: gate/profile/provenance 不证明统计显著性、因果、期刊接受或独立复现
+  - 标准范围诚实: WCAG 启发的更严格项目策略必须标成 project policy，而不是扩大外部标准原义
 
 backends:
   - name: matplotlib
@@ -35,8 +38,49 @@ recipes:
 quality:
   gates: quality/gates.yaml
   levels: [P0, P1, P2, P3]
+  semantics:
+    passed_gate_proves_scientific_validity: false
+    profile_proves_journal_acceptance: false
+    palette_adjacency:
+      status: project_stricter_opt_in_policy
+      external_scope_reference: WCAG_2_2_SC_1_4_11_and_G209
+      universal_wcag_all_pairs_claim: false
 
 metadata:
   required: true
   output: manifest.json
   schema: metadata/reproducibility.schema.yaml
+  semantics: traceability_and_replay_context_not_independent_reproduction_proof
+
+provenance:
+  matplotlib_sidecar:
+    pattern: <output-stem>.prov.json
+    status: implemented
+  embedded_matplotlib_metadata: implemented
+  r_js_equivalent_sidecar: not_claimed
+  immutable_ledger_claim: false
+
+research_contract:
+  document: RESEARCH_CONTRACT.md
+  status: active
+  updated: 2026-08-23
+  interoperability:
+    ro_crate:
+      target_version: "1.3"
+      status: proposed_mapping
+      implemented: false
+    cross_repo_handoff:
+      status: contract_only
+      direct_runtime_coupling: false
+  reproducibility_terms:
+    namespace: local_project_doctrine
+    levels: [R0_traceable, R1_replay_addressable, R2_environment_bounded, R3_reproduced]
+
+external_evidence_observed:
+  retrieved: 2026-08-23
+  matplotlib:
+    latest_stable_observed: "3.11.1"
+    latest_release_compatibility_verified_here: false
+  wcag:
+    baseline: "2.2"
+    non_text_contrast_scope: adjacent_required_graphical_objects
