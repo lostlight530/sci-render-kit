@@ -1,62 +1,33 @@
-# sci-render-kit Profiles
+# Publication Profiles
 
-Profile files declare journal-specific rendering constraints: fonts, color palettes, figure dimensions, and output format requirements.
+Profiles encode measurable publication constraints; they are not opaque visual themes.
 
-## Available Profiles
+Current profiles:
 
-| Profile | File | Target |
-|---------|------|--------|
-| Nature | `nature.yaml` | Nature journal standards |
-| Science | `science.yaml` | Science journal standards |
-| Cell | `cell.yaml` | Cell journal standards (Arial only, line art ≥ 1000 DPI) |
-| IEEE | `ieee.yaml` | IEEE conference/journal standards |
-| Presentation | `presentation.yaml` | Slide-friendly defaults |
+| Profile | Purpose |
+|---|---|
+| `nature` | Nature-family figure constraints snapshot |
+| `science` | Science figure constraints snapshot |
+| `cell` | Cell figure constraints snapshot |
+| `ieee` | IEEE figure constraints snapshot |
+| `presentation` | Internal/general presentation defaults, not an external journal specification |
 
-All profiles carry top-level `source_url` + `verified_date` fields recording
-the editorial source the values were checked against (`presentation` 为内部默认，
-`source_url: null`).
+Each externally sourced profile should carry `source_url` and `verified_date`. These values document the research snapshot used by the repository; publishers may update instructions later.
 
-## Profile Structure
+P3 currently uses profile fields for checks such as:
 
-Each profile YAML follows this structure (all fields under `aesthetics` are
-merged with — and can be overridden by — the recipe's own `aesthetics`):
+- vector-format expectations,
+- minimum DPI,
+- `max_width_in`,
+- `max_height_in` where declared,
+- font/size constraints represented by the profile.
 
-```yaml
-name: nature
-journal: Nature
-aesthetics:
-  font: "Arial"
-  font_size: 5            # 期刊最小字号（P1 font-size 门禁校验）
-  figsize: [3.5, 2.45]    # 推荐图幅（英寸）
-  dpi: 300                # 期刊最低 DPI（P3 dpi-check 门禁校验）
-  max_width_in: 7.2       # 双栏版宽上限（P3 size-check 门禁校验）
-  line_width: 1.0
-  axes_linewidth: 0.5
-  palette:
-    - "#E69F00"
-    - "#56B4E9"
-    - "#009E73"
-    - "#F0E442"
-    - "#0072B2"
-    - "#D55E00"
-    - "#CC79A7"
-    - "#000000"
-  constraints:            # 人类可读的约束摘要（与质量门规则对应）
-    - "矢量格式优先 (PDF/EPS)"
-    - "字号 ≥ 5pt"
+Accessibility is intentionally **not hidden inside journal profiles**. A publication profile answers “what does this target venue constrain?”; the recipe-level `accessibility` object answers “what non-text/text-alternative and redundant-encoding contract does this figure declare?”. Keeping them separate prevents a journal name from being treated as an automatic accessibility certification.
+
+Example:
+
+```bash
+python3 sci_render.py recipes/accessible-line-chart.yaml --profile presentation --backend matplotlib
 ```
 
-Enforcement notes:
-
-- `font_size`, `dpi`, `max_width_in` / `max_height_in` are machine-checked by
-  quality gates (see `quality/gates.yaml`); `constraints` is the human-readable summary.
-- For `nature` / `science` / `cell`, the P3 `vector-format` gate additionally
-  requires the recipe to declare `output.format: pdf` (or `eps`).
-
-## Adding a Custom Profile
-
-1. Create `profiles/your_profile.yaml` following the structure above.
-2. Reference it via `--profile your_profile` when invoking `sci_render.py`.
-3. The CLI loads the profile and merges it into both the pre-render (P0/P1)
-   and post-render (P2/P3) quality-gate evaluation. A missing profile file
-   aborts the run with `MISSING_PROFILE`.
+For a journal-targeted recipe, combine the same accessibility contract with a current journal profile and let P1/P2/P3 report independent failures.
