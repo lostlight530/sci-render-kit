@@ -5,7 +5,7 @@
 
 ## 当前定位
 
-`sci-render-kit` 不是“自动把图画漂亮”的包装器。它把科研图件看成一个需要同时满足四类契约的研究产物：
+`sci-render-kit` 不是“自动把图画漂亮”的包装器。它把科研图件看成一个需要同时满足四类运行时约束的研究产物：
 
 ```text
 Recipe Schema (P0)
@@ -37,7 +37,7 @@ python3 sci_render.py recipes/accessible-line-chart.yaml --profile presentation 
 
 该示例会生成图件，并在既有 `.manifest.json` / `.prov.json` 之外生成同名 `.a11y.json`。
 
-## 四层质量门
+## 四层运行时质量规则
 
 ### P0 — Recipe schema
 
@@ -134,7 +134,7 @@ backends/matplotlib_adapter.py
        + accessibility manifest linkage
 ```
 
-原有 `generate_python_code`、`resolve_palette` 等公共接口继续由 adapter 重导出，降低架构升级对既有调用者和测试的破坏。
+公共 adapter 保留直接脚本执行的 repo-root import bootstrap，因此 `python3 backends/matplotlib_adapter.py ...` 与模块导入两种方式都继续可用。原有 `generate_python_code`、`resolve_palette` 等公共接口继续由 adapter 重导出，降低架构升级对既有调用者的破坏。
 
 ## Provenance 与 reproducibility
 
@@ -155,7 +155,7 @@ Matplotlib 仍生成：
 | Matplotlib accessibility policy adapter | **Implemented** |
 | R ggplot2 renderer | **Implemented / runtime environment optional** |
 | Observable renderer | **Implemented / node environment optional** |
-| Recipe / profile / P0–P3 gates | **Implemented** |
+| Recipe / profile / P0–P3 runtime checks | **Implemented** |
 | semantic palette / named palettes / CVD simulation | **Implemented** |
 | text alternative contract + `.a11y.json` | **Implemented** |
 | redundant marker/line-style/hatch rendering | **Implemented (Matplotlib)** |
@@ -164,16 +164,18 @@ Matplotlib 仍生成：
 | R/Observable provenance parity | **Optional follow-up** |
 | projection / time_crystal / uncertainty_legend / observer_dashboard / superposition | **Experimental** |
 
-## 验证
+## 本地检查
+
+需要时可以手动运行：
 
 ```bash
 python -m pip install pyyaml jsonschema matplotlib numpy pillow
 make test
 ```
 
-`make test` 运行既有渲染/门禁/色板/期刊/provenance 测试以及新的 accessibility 契约测试。`.github/workflows/ci.yml` 在 PR 和 `main` push 上用 Python 3.12 跑同一契约。
+这些检查覆盖既有渲染、运行时质量规则、色板、期刊 profile、provenance 与 accessibility 行为，只是本地维护工具，**不是 GitHub 合并门禁**。
 
-Node/R 端到端环境仍保持可选；没有对应 runtime 时不能把跳过测试包装成通过验证。
+Node/R 端到端环境仍保持可选；没有对应 runtime 时不能把“未运行”包装成已验证。
 
 ## 科研软件引用
 
