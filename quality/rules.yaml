@@ -1,0 +1,136 @@
+title: "Runtime Quality Rules"
+profile: sci-render-kit/runtime-quality@1
+description: >
+  渲染前后执行的项目级质量规则。规则用于检查明确的结构、可访问性、输出完整性与
+  publisher-target preset 对齐属性；它们不是 GitHub 门禁、科学真值判定或期刊官方验证器。
+
+levels:
+  P0: recipe-structure
+  P1: visual-encoding-and-accessibility
+  P2: output-and-evidence-integrity
+  P3: publisher-target-alignment
+
+rules:
+  - id: P0-recipe-valid
+    name: "配方结构"
+    level: P0
+    default_severity: error
+    description: "JSON Schema 与基础输入结构检查"
+    checks:
+      - id: schema-compliance
+        severity: error
+        name: "Schema 结构"
+        rule: "recipe 必须满足 metadata/recipe.schema.yaml"
+
+  - id: P1-visual-contract
+    name: "视觉编码与可访问性"
+    level: P1
+    default_severity: error
+    checks:
+      - id: color-count
+        severity: warning
+        name: "分类颜色数量"
+        rule: "系列分类颜色超过 8 个时提示视觉辨识负担；不是通用科学上限"
+      - id: font-size
+        severity: error
+        name: "目标字号范围"
+        rule: "仅在 profile.publication 明确声明 font_min_pt/font_max_pt 时检查"
+      - id: forbidden-pairs
+        severity: warning
+        name: "红绿直接并置"
+        rule: "显式 palette 使用纯高饱和红/绿直接区分类别时提示；优先增加非颜色编码"
+      - id: palette-contrast
+        severity: warning
+        name: "色板对背景"
+        rule: "色板颜色与背景 <3:1 时提示；是否属于 WCAG SC 1.4.11 取决于该图形对象是否需要该边界来理解"
+      - id: text-contrast
+        severity: error
+        name: "文字对比度"
+        rule: "声明 text_color 时与背景达到 4.5:1 项目阈值，面向 WCAG 2.2 SC 1.4.3"
+      - id: palette-adjacency
+        severity: warning
+        name: "项目严格全色对策略"
+        rule: "adjacency_check=true 时检查全部唯一分类色对 >=3:1；这是项目额外策略，不是 WCAG 的通用全色板要求"
+      - id: declared-adjacency
+        severity: error
+        name: "声明式相邻对象边界"
+        rule: "adjacent_pairs 中确实需要靠颜色边界区分的图形对象对检查 >=3:1，面向 SC 1.4.11"
+      - id: text-alternative
+        severity: error
+        name: "文本替代"
+        rule: "require_alt_text=true 时必须提供 alt_text，面向 SC 1.1.1 支持"
+      - id: non-color-cue
+        severity: error
+        name: "非颜色冗余编码"
+        rule: "redundant_encoding=required 的多系列 line/scatter/bar 必须有可区分 marker/line_style/hatch，面向 SC 1.4.1"
+      - id: cvd-contrast
+        severity: warning
+        name: "CVD 模拟增强检查"
+        rule: "Machado 2009 模拟后的背景对比检查属于项目额外 safeguard，不是 WCAG 强制测试"
+      - id: palette-name
+        severity: error
+        name: "注册色板"
+        rule: "palette_name 必须存在；系列分类着色只使用 categorical palette"
+      - id: no-3d
+        severity: warning
+        name: "3D 视觉失真风险"
+        rule: "当前 recipe schema 不支持 3D；若未来出现 3d-* 类型默认提示，除非任务确实需要空间维度"
+
+  - id: P2-output-evidence
+    name: "输出与证据完整性"
+    level: P2
+    default_severity: error
+    checks:
+      - id: file-exists
+        severity: error
+        name: "图件存在"
+        rule: "声明的输出文件必须存在"
+      - id: non-empty
+        severity: error
+        name: "图件非空"
+        rule: "输出文件大小必须大于 0"
+      - id: format-match
+        severity: error
+        name: "格式匹配"
+        rule: "输出扩展名与 output.format 一致"
+      - id: manifest-exists
+        severity: error
+        name: "渲染 manifest"
+        rule: "后端必须生成 .manifest.json"
+      - id: prov-exists
+        severity: warning
+        name: "后端 provenance sidecar"
+        rule: "matplotlib 当前应生成 .prov.json；其他后端尚未统一为硬要求"
+      - id: a11y-exists
+        severity: error
+        name: "可访问性 sidecar"
+        rule: "recipe 声明 accessibility 时统一 CLI 必须生成 .a11y.json"
+      - id: figure-evidence-exists
+        severity: error
+        name: "Figure Evidence"
+        rule: "统一 CLI 成功后生成 .evidence.json 跨工具证据索引"
+
+  - id: P3-publisher-target
+    name: "Publisher target alignment"
+    level: P3
+    default_severity: warning
+    description: >
+      仅检查 profile 中明确声明且有来源状态的出版目标属性。
+      通过不等于 Nature/Science/Cell/IEEE 官方认证、投稿接收或完整格式合规。
+    checks:
+      - id: preferred-format
+        severity: warning
+        name: "目标格式偏好"
+        rule: "profile.publication.preferred_formats 仅作为偏好提示，除非 required_formats 明确声明"
+      - id: dpi-check
+        severity: error
+        name: "Raster DPI"
+        rule: "仅对 raster 输出且 profile.publication.raster_min_dpi 有明确值时检查最低 DPI"
+      - id: size-check
+        severity: error
+        name: "版面尺寸"
+        rule: "figsize 为正值，并在 profile.publication.max_width_in/max_height_in 有明确值时检查"
+      - id: font-range
+        severity: error
+        name: "字体尺寸范围"
+        rule: "仅在 profile.publication.font_min_pt/font_max_pt 有明确值时检查最终 font_size"
