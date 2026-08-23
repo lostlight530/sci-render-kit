@@ -1,91 +1,210 @@
-# 架构设计与理念文档 / Architecture & Philosophy
+# 架构设计、科研完整性与可复现边界 / Architecture, Scientific Integrity & Reproducibility Boundaries
+
+> 当前架构校准日期 / Calibration date: 2026-08-23
+
+`sci-render-kit` 是一个**声明式、能力有界、多后端的科学可视化工具包**。它把 recipe、profile、质量门、后端能力和溯源信息分离，使图表生成过程更可检查、更容易重放，也更容易发现不支持的组合。
+
+`sci-render-kit` is a **declarative, capability-bounded, multi-backend scientific visualization toolkit**. It separates recipes, profiles, quality gates, backend capabilities, and provenance so that rendering decisions are inspectable and unsupported combinations remain explicit.
+
+它不承诺“同一 recipe 在所有后端完全等价”，也不把成功渲染描述成科学正确性、期刊接受或独立复现的证明。
 
 ---
 
-## 1. 核心痛点与“遥遥领先”理念 (Core Pain Points & The "Ahead of the Curve" Philosophy)
-
-### 🔴 传统学术绘图的痛点 (Pain Points of Traditional Academic Plotting)
-- **难复现 (Hard to Reproduce)**：绘图代码充斥着硬编码，数据与样式深度耦合。几个月后，原作者往往都无法复现完全一致的图表。 / *Plotting scripts are often filled with hardcoded values, coupling data with styling. Months later, reproducing the exact same chart becomes nearly impossible.*
-- **难修改 (Hard to Modify)**：当需要切换目标期刊（如从 IEEE 换投 Nature）时，研究者不得不逐行手动修改字体、颜色、线宽和 DPI 等绘图代码。 / *Switching target journals (e.g., from IEEE to Nature) requires manually editing fonts, colors, line widths, and DPI across hundreds of lines of code.*
-- **易踩雷 (Prone to Errors)**：往往在投稿的最后一步，才发现色彩使用了红绿组合（对色盲不友好）、颜色数量过多或分辨率未达标。 / *Researchers often discover formatting issues (e.g., red-green color combinations, incorrect DPI) right before submission.*
-
-### 🟢 “遥遥领先”的解决方案 (The "Ahead of the Curve" Solution)
-**sci-render-kit** 提出了一套革命性的理念，彻底重塑学术图表的工作流：
-**sci-render-kit** *introduces a revolutionary philosophy to reshape the academic plotting workflow:*
-
-1. **声明优先 (Declaration First)**：画图不需要写代码，而是编写结构化的 YAML 配置（配方 Recipe）。“画什么”（数据）与“怎么画”（代码）彻底解耦。 / *No coding required. Users write structured YAML configurations (Recipes). "What to plot" is strictly decoupled from "how to plot it".*
-2. **后端无关 (Backend Agnostic)**：同一套 YAML 配方，可以通过统一接口无缝下发给 Python (Matplotlib)、R (ggplot2) 或 JavaScript (Observable Plot) 进行渲染。 / *The exact same YAML recipe can be seamlessly dispatched to Python, R, or JavaScript for rendering.*
-3. **质量前置 (Quality Ahead)**：引入 CI/CD 中的质量门 (Quality Gates) 概念。在调用任何绘图语言之前，系统通过 Schema 和规则库进行强制静态校验，提前拦截不合规的图表。 / *Adopts the "Quality Gates" concept from CI/CD. Schemas and rules are enforced before rendering even begins, blocking non-compliant charts early.*
-4. **强制溯源 (Mandatory Metadata)**：生成图表的同时，强制生成 `manifest.json`。该文件包含了完整的生成环境、配方版本和生成时间指纹，保证 100% 实验可溯源。 / *Generating a chart mandatory generates a `manifest.json` file containing the environment, recipe version, and timestamp, ensuring 100% reproducibility.*
-
----
-
-## 2. 系统架构 (System Architecture)
-
-系统基于**适配器模式 (Adapter Pattern)** 设计，并通过统一的 CLI 调度器 (`sci_render.py`) 实现工作流控制。
-*The system is designed based on the **Adapter Pattern** and controlled by a unified CLI dispatcher (`sci_render.py`).*
+## 1. 规范数据流 / Canonical data flow
 
 ```text
-                                [质量门 / Quality Gates]
-                                          |
-[YAML 配方 / Recipe] ---> (CLI 解析器 / sci_render.py) ---> [配置注入 / Profiles]
-                                          |
-              +---------------------------+---------------------------+
-              |                           |                           |
-              V                           V                           V
- [Python 适配器 / Matplotlib]     [R 适配器 / ggplot2]     [JS 适配器 / Observable]
-              |                           |                           |
-              V                           V                           V
-      [Python 渲染脚本]               [R 渲染脚本]                [HTML/JS 脚本]
-              |                           |                           |
-              +---------------------------+---------------------------+
-                                          |
-                                          V
-                              [最终输出图表 (PNG/SVG/HTML)]
-                                          +
-                              [溯源元数据 (manifest.json)]
+recipe + profile + data
+          |
+          v
+schema validation (P0)
+          |
+          v
+declared visual/accessibility gates (P1)
+          |
+          v
+backend capability resolution
+          |
+          v
+backend render
+          |
+          v
+output / metadata checks (P2/P3)
+          |
+          v
+figure + reproducibility metadata
 ```
 
-### 2.1 统一入口 CLI (Unified CLI: `sci_render.py`)
-整个系统的大脑。它负责：
-*The brain of the system. It is responsible for:*
-1. **读取配方和配置 (Read & Merge)**：解析目标 YAML，并注入对应的期刊 Profile 约束。
-2. **严格验证 (Strict Validation)**：利用 `jsonschema` 对配方进行底层类型检查 (P0 Gate)，并执行 `quality/gates.yaml` 中定义的业务逻辑校验（如色彩数量拦截、字体大小拦截，P1 Gate）；渲染完成后再执行 P2（输出完整性）与 P3（期刊规范：矢量格式 / DPI / 版宽）门禁。
-3. **任务分发 (Dispatching)**：先校验配方声明的输出格式在后端能力集内（否则 `BACKEND_CAPABILITY_MISMATCH` 拒绝派发），再调用相应的后端适配器，传递通过验证的干净数据载荷。
+“Declaration First” 的准确含义是：用户可以通过统一 recipe 描述图表意图，而不是每次手写完整后端代码。它**不等于**每种图表、格式、profile、后端组合都可用；组合必须先落在对应 adapter 的声明能力集内。
 
-### 2.2 配方与配置 (Recipes & Profiles)
-- **Recipe**：纯粹的业务载体。只包含业务数据（如坐标点）和基础美学声明（如 X 轴名称）。 / *Pure business payload. Contains only data and basic aesthetic intentions.*
-- **Profile**：学术期刊的硬性约束。例如 `nature.yaml` 会强制覆盖字体族、最小字号和配色规范。这两者在运行时被 CLI 智能融合。 / *Hard constraints for academic journals. Merged dynamically at runtime.*
+## 2. 统一入口与能力解析 / Unified dispatcher and capability resolution
 
-### 2.3 后端适配器 (Backend Adapters)
-被定义为被动（Dumb）的代码生成器。它们不关心质量校验，只负责一件事：将 JSON/YAML 格式的数据对象，使用模板或 AST 转换为目标语言的真实绘图代码，并触发执行。
-*Defined as "dumb" code generators. They don't care about validation; they strictly translate YAML data into target language plotting scripts and execute them.*
+`sci_render.py` 负责：
 
----
+1. 读取 recipe；
+2. 使用 `metadata/recipe.schema.yaml` 做结构验证；
+3. 读取 profile；
+4. 执行 P0/P1 前置门禁；
+5. 检查输出格式是否在 `BACKEND_CAPABILITIES` 中；
+6. 调用对应 adapter；
+7. 对输出执行 P2/P3 检查。
 
-## 3. 标准工作流 (Standard Workflow)
+当前声明的输出能力是：
 
-1. **准备配方 (Prepare)**：作者只需编写 `recipes/my-experiment.yaml`（面向 Nature 时声明 `output.format: pdf`，以满足 P3 矢量格式门禁）。
-2. **执行渲染 (Render)**：运行 `python3 sci_render.py recipes/my-experiment.yaml --profile nature --backend ggplot2`。
-3. **门禁拦截 (Gate Check)**：如果配方中的配色方案使用了超过 8 种颜色，CLI 会直接拒绝渲染并抛出规则冲突异常。
-4. **代码生成与执行 (Generate & Exec)**：校验通过后，自动在 `output/` 目录下生成 `_generated_render.R` 并由系统自动运行 `Rscript`。
-5. **获取高品质产物 (Output)**：用户在 `output/` 目录下得到完全符合 Nature 规范的 `my-experiment.pdf`、用于证明可复现性的 `my-experiment.manifest.json`，以及 matplotlib 后端的 `my-experiment.prov.json` 溯源旁车（P2 `prov-exists` 门禁强制）。
+| Backend | Declared output formats |
+| --- | --- |
+| Matplotlib | PNG, SVG, PDF |
+| ggplot2 | PNG, SVG, PDF |
+| Observable | HTML |
 
----
+“Backend agnostic” 因此应理解为**统一声明模型 + 明确 capability negotiation**，而不是后端完全互换或像素级一致。
 
-## 4. 严格规则与卫生原则 (Strict Rules & Output Hygiene)
+## 3. Recipe 与 Profile 的责任边界 / Recipe and profile responsibilities
 
-为了实现彻底的可复现性和透明度，系统设计并实施了以下强制守则（Doctrine）：
+### Recipe
 
-### 4.1 输出卫生 (Output Hygiene)
-所有通过后端适配器临时生成的中间代码（如 `_generated_render.py`）必须在执行完毕后被安全删除，保证工作区无任何残留的脏脚本代码。任何失败必须是显式的拦截，不能存在部分写文件的状态。
+Recipe 表达数据、图表类型、输出意图和部分视觉语义。它是待验证输入，不因为采用 YAML 就自动安全、正确或可发表。
 
-### 4.2 配置硬约束 (Profile Constraints)
-Profile（配置）用于编码外部环境的硬约束。
-- 绝不允许后端偷偷对样式进行覆盖。
-- 缺失 Profile 文件必须触发 `MISSING_PROFILE` 异常，不接受动态创造的假配置。
-- 如果配方声明（如 PNG 格式）与目标配置（如 Nature 要求 PDF 矢量格式）冲突，系统在 P3 质量门拦截报告，并认为这是合理的设计。
+### Profile
 
-### 4.3 无 Shell 注入 (No Shell=True)
-所有从 `sci_render.py` 到后端的任务分发，均通过原生的列表式 subprocess 派发。
-严禁使用 `shell=True`，彻底杜绝 YAML 文件中可能隐藏的代码执行攻击。
+Profile 编码仓库选择实现的一部分目标出版约束，例如字体、尺寸或格式规则。它不是目标期刊全部实时规则的权威镜像，也不能代替投稿指南、编辑审查或人工核对。
+
+因此：
+
+```text
+profile pass != journal acceptance
+profile pass != complete journal compliance
+```
+
+## 4. Quality Gates 的严格含义 / Exact meaning of quality gates
+
+质量门只证明**实际执行的谓词**。
+
+### P0 — Schema
+
+验证 recipe 的结构与类型。结构合法不代表数据真实或研究设计正确。
+
+### P1 — Visual and accessibility-oriented checks
+
+包括颜色数量、文字对比、背景对比、语义色板、CVD 模拟和可选邻接色检查等。
+
+#### WCAG 2.2 scope calibration
+
+WCAG 2.2 SC 1.4.11 要求理解内容所必需的非文本图形对象与相邻颜色之间具备足够对比。它不是“所有分类色板任意两色必须 3:1”的通用要求。
+
+本仓 `palette-adjacency` 在启用 `adjacency_check: true` 时执行更严格的**分类色板两两对比**策略。该策略受 SC 1.4.11 / Technique G209 启发，但属于**项目自定义的 stricter safeguard**，不是 WCAG 原文的普遍性要求。
+
+### P2 — Output integrity
+
+检查输出文件、格式和声明的 metadata/provenance 产物是否存在并满足已实现条件。存在文件不代表图中的科学结论正确。
+
+### P3 — Profile-oriented constraints
+
+检查仓库当前编码的目标规范子集，例如某些尺寸、DPI 或矢量格式条件。通过 P3 仍然只是“通过了本仓实现的规则”，不是期刊官方认证。
+
+## 5. Provenance 与 Reproducibility 的区别
+
+旧架构文档使用过“保证 100% 实验可溯源 / reproducibility”一类绝对表述。当前架构明确拆开：
+
+### 5.1 Reproducibility manifest
+
+用于记录 recipe/profile/backend/environment 等渲染上下文。它提高可追踪性与 replay 可寻址性。
+
+### 5.2 Matplotlib provenance path
+
+Matplotlib 后端当前实现了图件 metadata 与同名 `.prov.json` 旁车，其中可记录配方、输入、后端和输出摘要。
+
+### 5.3 不能从 metadata 推导出的结论
+
+```text
+manifest exists != independent reproduction
+SHA-256 matches != semantic equivalence
+render succeeded != scientific validity
+timestamp exists != trusted timestamping
+```
+
+真正的“已复现”必须发生一次独立重跑并按声明判据比较结果，而不是仅生成一个 metadata 文件。
+
+## 6. 科研完整性规则 / Scientific-integrity rules
+
+视觉系统必须避免通过默认样式暗示不存在的证据：
+
+- 不用视觉编码暗示未被数据支持的显著性；
+- 不把相关性画法包装成因果结论；
+- 不因置信区间/误差带存在就假定不确定性模型正确；
+- 缺失值、聚合、过滤、变换和剔除若影响解释，应在上层研究对象或 manifest 中保留可追踪语义；
+- 颜色可访问性是最低保障之一，不能替代文字、标记形状、线型和完整图注等多通道表达。
+
+## 7. 后端卫生与失败语义 / Backend hygiene and failure semantics
+
+Adapter 应保持“dumb”：只负责把已验证 payload 映射为具体后端行为，不偷偷扩张上层语义。
+
+系统必须区分：
+
+- supported and rendered；
+- unsupported capability；
+- optional runtime missing；
+- backend execution failure；
+- post-render gate failure。
+
+Skip、fallback 或缺失可选运行时都不能被计作“该后端已验证成功”。不同 Matplotlib/R/JS 版本也不承诺像素级完全一致。
+
+## 8. Research Contract / 科研契约
+
+根目录新增 [RESEARCH_CONTRACT.md](RESEARCH_CONTRACT.md)，用于把本仓与 `auto-doc-engine`、`epistemic-pipeline` 的 artifact/evidence/provenance 语义统一起来。
+
+推荐上游 handoff 至少能够表达：
+
+```text
+artifact/source identity
+content/data digest
+analysis/run reference
+uncertainty semantics
+provenance reference
+validation status
+```
+
+本仓输出侧则优先表达 recipe、数据、profile、backend、figure、manifest 与 provenance 的可检查关系。
+
+这仍然是**contract-only interoperability**；三个仓没有因为这份文件就变成运行时强耦合系统。
+
+## 9. RO-Crate 1.3 作为未来互操作目标
+
+RO-Crate 1.3 于 2026-06-22 发布为 Recommendation。它适合未来把 figure、recipe、profile、数据、软件环境和 render action 打包成一个机器可读 Research Object。
+
+当前 `.manifest.json` 与 `.prov.json` **不是 RO-Crate**。本仓状态明确为 `proposed_mapping`。只有实现符合规范的 exporter/validator 并增加可执行测试后，才可升级为 implemented。
+
+## 10. 可复现性分级 / Reproducibility levels
+
+本仓采用项目内部术语：
+
+- `R0 Traceable` — 图件能关联其声明 recipe/profile；
+- `R1 Replay-addressable` — 数据/spec/profile/output 标识和摘要以及工具版本足以定位 replay；
+- `R2 Environment-bounded` — 同时记录 runtime/backend/dependency 环境；
+- `R3 Reproduced` — 已真正执行独立重跑并按声明判据比较。
+
+这些不是外部标准，不能把 manifest 或 `.prov.json` 的存在直接翻译成 `R3`。
+
+## 11. 2026-08-23 外部校准 / Ecosystem calibration
+
+- Matplotlib 当前 stable 最新观察版本为 3.11.1（2026-07-17）。这是一条上游事实，不会自动升级仓库已有测试证据；只有实际运行验证后才能声明对应版本兼容性。
+- WCAG 基线仍按 W3C WCAG 2.2 的相关 Success Criteria 解释，并将本仓更严格的 project policy 与标准原义分开。
+
+## 12. 架构 doctrine / Architecture doctrine
+
+1. **能力矩阵高于“后端无关”口号。** 不支持的组合必须显式拒绝。
+2. **质量门只证明实际谓词。** 不能从格式检查外推科研正确性。
+3. **Profile 不是期刊认证。** 外部规则会变化，必须保留来源与验证日期。
+4. **Provenance 不是 reproduction。** 记录生成过程与真正独立重跑是两个层级。
+5. **项目严格策略要标明是项目策略。** 不扩大 WCAG 等外部标准的原始范围。
+6. **实验模块不能靠文档晋级。** 进入 canonical path 需要代码接线和测试。
+7. **跨仓互操作先统一语义，再决定耦合。** artifact/evidence/provenance contract 优先于直接依赖。
+
+## 13. 主要参考 / Primary references
+
+检索日期 / Retrieved: 2026-08-23
+
+- [RO-Crate 1.3 Specification](https://www.researchobject.org/ro-crate/1.3/)
+- [FAIR Principle R1.2](https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/)
+- [W3C WCAG 2.2 — Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)
+- [W3C Technique G209](https://www.w3.org/WAI/WCAG22/Techniques/general/G209)
+- [Matplotlib release notes](https://matplotlib.org/stable/users/release_notes.html)
