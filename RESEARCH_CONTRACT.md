@@ -1,86 +1,228 @@
-# Research Contract — 2026-08-23
+# Research Contract — 2026-08-24
 
-Status: active architecture contract for scientific-figure claims, provenance, accessibility, and research-object interoperability.
+Status: **active architecture contract** for figure-generation claims, runtime validation, uncertainty semantics, provenance, accessibility, publisher-target alignment, and cross-repository evidence handoff.
 
-`sci-render-kit` is the **scientific visualization and result-presentation plane** of the three-repository research toolchain. Its job is to turn a validated declarative recipe into a backend-bounded figure plus inspectable metadata. It does not decide whether the underlying scientific conclusion is true.
+`sci-render-kit` is the scientific-communication plane of the three-repository research toolchain. It turns a declarative recipe into a backend-bounded figure plus machine-readable evidence. It does **not** decide whether the underlying scientific conclusion is true.
 
-## 1. Bounded rendering contract
+## 1. Canonical contract
 
-The intended canonical flow is:
+```text
+recipe + data + research_context + uncertainty
+  -> P0 schema
+  -> P1 runtime findings
+  -> backend capability resolution
+  -> render
+  -> render manifest / provenance / accessibility sidecars
+  -> P2 artifact-integrity findings
+  -> P3 publisher-target findings
+  -> figure-evidence@1
+```
 
-`recipe + profile + data -> schema validation -> declared quality gates -> backend capability check -> render -> output checks -> reproducibility metadata`
+P0–P3 are repository runtime phases, not GitHub merge gates.
 
-Every step has a limited meaning. Passing all gates establishes only that the implemented predicates passed for the declared inputs, profile, backend, and environment.
+A successful render establishes only that the implemented predicates passed for the declared recipe, selected backend, selected profile, and current environment.
 
 ## 2. Scientific-integrity boundary
 
-The toolkit must not imply any of the following solely from a successful render:
+A successful figure must not be interpreted as proof of:
 
 - statistical significance;
 - causal validity;
 - adequate sample size;
-- correct uncertainty modeling;
-- absence of omitted or transformed observations;
-- journal acceptance or full compliance with every editorial requirement;
-- independent reproducibility of the scientific result.
+- correct preprocessing or missing-data treatment;
+- correct uncertainty estimation;
+- absence of omitted observations;
+- journal acceptance;
+- whole-publication accessibility;
+- independent reproduction of the scientific result.
 
-A profile is a machine-checkable subset of declared publication constraints, not an authoritative replacement for current journal instructions or editorial review.
+`scientific_validity_claim` is therefore `false` in the figure evidence profile.
 
-## 3. Provenance semantics
+## 3. Runtime validation semantics
 
-The repository distinguishes two different artifacts:
+The active catalog is:
 
-1. **Reproducibility manifest** — records declared recipe/profile/backend/environment information associated with a render.
-2. **Matplotlib provenance sidecar / embedded metadata** — records content digests and render context for the implemented Matplotlib path.
+```text
+quality/rules.yaml
+sci-render-kit/runtime-quality@1
+```
 
-Neither artifact is a proof of scientific truth or independent reproducibility. A timestamp is not a trusted external timestamp; a SHA-256 digest establishes byte identity under the recorded serialization, not semantic equivalence.
+Each finding has a severity:
 
-## 4. Reproducibility levels
+- **error** — the current declared render/artifact contract cannot be satisfied; stop the run;
+- **warning** — retain as project/publisher-alignment evidence but do not convert to failure;
+- **info** — explanatory evidence.
 
-The following are local project terms, not an external standard:
+A single boolean `quality_gate_status` is retired from the active architecture because it collapses materially different findings into one value.
 
-- **R0 — Traceable**: figure and metadata can be associated with their declared recipe/profile.
-- **R1 — Replay-addressable**: data/spec/profile/output identities and digests plus tool revision are recorded.
-- **R2 — Environment-bounded**: runtime/backend/dependency versions and external runtime assumptions are also recorded.
+Preferred figure-side field is now:
+
+```text
+runtime_validation_status
+```
+
+with structured findings retained in the figure evidence envelope.
+
+## 4. Uncertainty contract
+
+Uncertainty is a declared semantic object, not a visual synonym for “fuzziness”.
+
+Supported `kind` values include:
+
+```text
+standard-error
+standard-deviation
+confidence-interval
+credible-interval
+min-max-range
+quantile-interval
+bootstrap-interval
+heuristic-bound
+```
+
+Every declared uncertainty object must carry a human-readable `semantics` field. Optional `level` and `source_ref` can preserve coverage/analysis context.
+
+Hard boundary:
+
+> Lower/upper bounds alone do not establish a confidence interval, credible interval, probability, or uncertainty model.
+
+The upstream analysis remains responsible for the statistical meaning of the values supplied to the renderer.
+
+## 5. Artifact identity and evidence
+
+### 5.1 Render manifest
+
+All active backends emit project profile:
+
+```text
+sci-render-kit/render-manifest@2
+```
+
+The manifest records available recipe/data/profile/output identities and backend/runtime context. It is replay-addressable evidence, not independent reproduction.
+
+### 5.2 Matplotlib provenance
+
+The Matplotlib path emits:
+
+```text
+sci-render-kit/provenance@2
+```
+
+with recipe/data/profile/output SHA-256 identities and runtime versions. Embedded metadata is used only where the output format supports it.
+
+A SHA-256 digest establishes identity of recorded bytes/canonical serialization. It does not establish semantic truth.
+
+### 5.3 Accessibility sidecar
+
+When accessibility is declared, the unified path emits:
+
+```text
+sci-render-kit/a11y@1
+```
+
+with `conformance_claim: false`.
+
+### 5.4 Figure evidence
+
+The unified CLI emits:
+
+```text
+sci-render-kit/figure-evidence@1
+```
+
+The figure evidence envelope references available artifacts by SHA-256 and carries:
+
+- recipe/profile/backend/output identity;
+- render manifest / provenance / accessibility references;
+- `research_context`;
+- uncertainty semantics;
+- runtime findings;
+- local reproducibility level;
+- scientific-boundary flags.
+
+It is a project-owned handoff profile, not a W3C/RO-Crate standard.
+
+## 6. Reproducibility levels
+
+These are local project terms, not an external standard:
+
+- **R0 — Traceable**: figure and declared sources can be associated.
+- **R1 — Replay-addressable**: stable recipe/data/profile/output identities and references are recorded.
+- **R2 — Environment-bounded**: important runtime/backend/dependency assumptions are also recorded.
 - **R3 — Reproduced**: a separate rerun has actually been executed and compared under a declared criterion.
 
-Generating a manifest or `.prov.json` file alone does not justify `R3`.
+Generating `.manifest.json`, `.prov.json`, `.a11y.json`, or `.evidence.json` does not self-award R3.
 
-## 5. Accessibility contract
+## 7. Accessibility contract
 
-WCAG 2.2 SC 1.4.11 requires sufficient contrast for non-text graphical objects that are required to understand content, relative to adjacent colors. It is not a universal rule that every pair of colors in a categorical palette must have 3:1 contrast.
+The repository supports selected WCAG 2.2 design boundaries without claiming whole-document conformance:
 
-Accordingly, this repository treats its opt-in `palette-adjacency` all-pairs check as a **project-specific stricter safeguard inspired by SC 1.4.11 / Technique G209**, not as a verbatim WCAG requirement. Other gates such as text contrast, palette/background contrast, and CVD simulation retain their own documented activation conditions and scope.
+- **SC 1.1.1** — text-alternative support;
+- **SC 1.4.1** — color is not the only required information channel when redundant encoding is required;
+- **SC 1.4.11** — non-text graphical objects/boundaries required for understanding need appropriate contrast against adjacent colors.
 
-Accessibility checks reduce known visual barriers; they do not guarantee that a figure is accessible to every reader or in every publication context.
+`accessibility.adjacent_pairs` models explicitly declared graphical adjacency.
 
-## 6. Backend capability truth
+`aesthetics.adjacency_check` is an optional stricter project all-pairs safeguard. It must not be described as a universal WCAG palette requirement.
 
-Backend independence means that one declarative recipe model can target multiple adapters **within each adapter's declared capability set**. It does not mean every recipe/output combination works identically everywhere.
+Machado 2009 CVD simulation is an additional project robustness signal, not a WCAG-mandated simulation test.
 
-Current declared output capabilities are:
+## 8. Publisher-target contract
+
+Profiles are sourced machine-readable presets, not official submission validators.
+
+Every external profile should expose:
+
+```text
+source_url
+verified_date
+source_status
+verification_scope
+publication.authority
+publication.acceptance_claim
+```
+
+Current evidence state on 2026-08-24:
+
+- **Nature** — main-figure sizing/font/editability and initial-submission raster guidance reverified against current Nature guidance;
+- **Science / Cell / IEEE** — 2026-08-19 local snapshots retained and explicitly marked as not independently reverified on 2026-08-24;
+- **presentation** — internal project preset with no external publisher authority.
+
+A P3 match means only that the machine-readable preset did not report a mismatch. It does not mean journal acceptance or exhaustive compliance.
+
+## 9. Backend capability truth
+
+Current declared output sets:
 
 - Matplotlib: PNG, SVG, PDF;
 - ggplot2: PNG, SVG, PDF;
-- Observable: HTML.
+- Observable Plot: HTML.
 
-Unsupported combinations must fail explicitly before being reported as successful. Backend/runtime availability and semantic parity remain separate questions.
+Unsupported combinations fail before a successful render is reported.
 
-## 7. Cross-repository handoff contract
+Backend availability and semantic parity are separate questions. In particular:
 
-Preferred upstream fields from `auto-doc-engine`, `epistemic-pipeline`, or another research layer are:
+- Matplotlib implements the current non-color redundant-series styling path;
+- ggplot2 and Observable do not yet claim that same style-mapping capability;
+- Observable HTML pins `@observablehq/plot@0.6.17/+esm` but still requires network access to the CDN when viewed;
+- optional R/Node runtimes must not be counted as verified merely because source adapters exist.
+
+## 10. Cross-repository handoff contract
+
+Preferred upstream fields include:
 
 ```text
 artifact_id
 source_refs[]
 content_or_data_sha256
-run_or_analysis_ref
-uncertainty_semantics
+evidence_envelope_ref
 provenance_ref
+claim_refs[]
+uncertainty_semantics
 validation_status
 ```
 
-Preferred figure-side outputs are:
+Preferred figure-side fields include:
 
 ```text
 figure_id
@@ -91,40 +233,46 @@ backend_id
 output_sha256
 manifest_ref
 provenance_ref
-quality_gate_status
+accessibility_ref
+figure_evidence_ref
+runtime_validation_status
 ```
 
-These fields define an interoperability boundary only. The three repositories remain independently runnable and are not claimed to call each other directly.
+The repositories remain independently runnable. A reference from `sci-render-kit` to an upstream `epistemic-pipeline/evidence-envelope@1` is a handoff relationship, not direct runtime coupling.
 
-## 8. RO-Crate interoperability target
+## 11. RO-Crate interoperability
 
-RO-Crate 1.3 was published as a Recommendation on 2026-06-22 and is a useful current packaging target for research objects and contextual metadata.
+RO-Crate 1.3 remains a useful external packaging target. This repository does **not** currently claim that its render manifest, provenance sidecar, accessibility sidecar, or figure-evidence envelope is an RO-Crate.
 
-For this repository, **RO-Crate 1.3 is proposed interoperability only**. The current manifest and `.prov.json` sidecar are not RO-Crates. A future exporter could package the figure, recipe, profile, source data, software context, and render action into a crate, but that requires a conforming writer/validator and executable tests.
+A future exporter could package the figure, recipe, profile, source data, software environment and upstream evidence into a crate. Until an actual RO-Crate writer/profile/validation path exists here, status remains **proposed interoperability**.
 
-## 9. Ecosystem observations on 2026-08-23
+## 12. Experimental modules
 
-External versions are recorded for situational awareness, not as automatic compatibility claims:
+Experimental files are bounded by their implemented mechanics:
 
-- Matplotlib stable latest observed version: 3.11.1 (released 2026-07-17). Existing repository evidence must remain tied to the versions actually tested; documentation must not silently upgrade that evidence to 3.11.x compatibility.
-- WCAG reference baseline: W3C WCAG 2.2, including SC 1.4.3 and SC 1.4.11.
+- `projection.py`: centered-SVD PCA and actual neighborhood-rank metrics; t-SNE not implemented;
+- `uncertainty_legend.py`: typed uncertainty/interval metadata; no quantum-uncertainty claim;
+- `superposition.py`: deterministic variant layering; no quantum-interference model;
+- `time_crystal.py`: periodic waveform utility; no physical time-crystal simulation;
+- `observer_dashboard.py`: caller-fed interaction telemetry; no automatic comprehension or causal inference.
 
-## 10. Shared scientific-integrity rules
+Experimental status is not upgraded merely because a module imports successfully.
 
-1. A quality gate is only as broad as its implemented predicate.
-2. A publication profile is not journal acceptance.
-3. Provenance is not truth.
-4. A visual encoding must not imply unsupported certainty, causality, or significance.
-5. Backend fallbacks/skips/optional runtimes must not be counted as successful evidence.
-6. External standards are cited with their scope; stricter project policy is labeled as project policy.
-7. Experimental modules remain experimental until they enter the canonical path with tests.
+## 13. Shared hard boundaries
 
-## 11. Primary references
+```text
+Render success ≠ scientific truth
+Runtime validation ≠ scientific validity
+Publisher alignment ≠ acceptance
+Provenance ≠ truth
+Checksum ≠ reproduction
+Interval bounds ≠ confidence interval
+Accessibility sidecar ≠ whole-publication WCAG conformance
+Experimental implementation ≠ canonical pipeline capability
+```
 
-Retrieved 2026-08-23:
+## 14. Maintenance model
 
-- RO-Crate 1.3 Specification: https://www.researchobject.org/ro-crate/1.3/
-- FAIR Principle R1.2: https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/
-- W3C WCAG 2.2 SC 1.4.11: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html
-- W3C Technique G209: https://www.w3.org/WAI/WCAG22/Techniques/general/G209
-- Matplotlib release notes: https://matplotlib.org/stable/users/release_notes.html
+Local checks may be used manually when useful. The repository architecture does not require GitHub Actions, CI, CodeQL, dependency bots, branch protection or merge gates.
+
+Current maintenance work intentionally prioritizes truthful code/config/document contracts over platform governance.
