@@ -1,26 +1,99 @@
 # Agent Guide — sci-render-kit
 
-This file is the operational guide for agents modifying the repository. Public capability claims must remain aligned across `README.md`, `ARCHITECTURE.md`, `MANIFEST.yaml`, schemas, runtime quality rules, adapters, and tests.
+This is the operational contract for agents modifying the repository. Public claims must stay aligned across runtime code, schemas, profiles, evidence sidecars, README, Architecture, Research Contract and Manifest.
 
 ## 1. Canonical architecture
 
 ```text
-recipe.schema.yaml
-  -> sci_render.py (P0/P1 + backend capability)
+metadata/recipe.schema.yaml
+  -> sci_render.py
+     P0 schema
+     P1 runtime findings
+     backend capability resolution
   -> backend adapter
-  -> output
-  -> P2/P3
-
-Matplotlib path:
-backends/matplotlib_adapter.py
-  -> backends/matplotlib_base.py
-
-Accessibility evidence:
-core/accessibility.py
-  -> <output>.a11y.json
+  -> figure + sidecars
+  -> P2 artifact findings
+  -> P3 publisher-target findings
+  -> core/figure_evidence.py
 ```
 
-## 2. Local checks
+Active runtime catalog:
+
+```text
+quality/rules.yaml
+sci-render-kit/runtime-quality@1
+```
+
+Do **not** reintroduce `quality/gates.yaml` or describe P0–P3 as GitHub merge gates.
+
+## 2. Evidence profiles
+
+Current project profiles:
+
+- `sci-render-kit/render-manifest@2`
+- `sci-render-kit/provenance@2` — Matplotlib path
+- `sci-render-kit/a11y@1`
+- `sci-render-kit/figure-evidence@1`
+
+These profiles record bounded implementation evidence. None proves scientific truth, journal acceptance, independent reproduction, or whole-publication WCAG conformance.
+
+## 3. Runtime finding semantics
+
+Rules use `error / warning / info`.
+
+- `error`: current declared render/artifact contract cannot be satisfied;
+- `warning`: preserve as evidence without turning it into a hard failure;
+- `info`: explanatory signal.
+
+Do not convert project safeguards or publisher preferences into errors without an explicit architectural reason.
+
+## 4. Hard rules
+
+1. **Schema ≠ backend support.** Update capability matrices only after actual backend behavior exists.
+2. **No hidden rendering overrides.** Do not silently raise DPI, change output format, or replace declared uncertainty semantics.
+3. **Uncertainty must be typed.** Bounds alone are not a confidence interval. Preserve `kind`, `semantics`, optional `level`, and source reference.
+4. **Use of Color.** If redundant encoding is required, supported multi-series figures need non-color cues.
+5. **WCAG scope.** SC 1.4.11 is about required graphical objects/boundaries against adjacent colors, not every pair in a palette. All-pairs checking is a project policy only.
+6. **CVD scope.** Machado simulation is a robustness safeguard, not a normative WCAG test.
+7. **Color semantics.** `positive -> green` and similar mappings are project conventions, not universal cognitive laws.
+8. **Publisher profiles are snapshots.** Preserve `source_status`, `verified_date`, `verification_scope`, and `acceptance_claim: false`.
+9. **Matplotlib extension model.** Use explicit `render_logic_fn` / `metadata_fn` injection. Do not restore global monkeypatching of base renderer functions.
+10. **Optional ecosystems stay optional.** Source code presence is not R/Node runtime verification.
+11. **Figure evidence is handoff, not truth.** Upstream evidence-envelope/provenance references are not independently validated by the renderer.
+12. **No fake algorithms.** Experimental modules must use `NotImplementedError` rather than return fabricated t-SNE/metric/physics outputs.
+13. **Experimental stays Experimental.** Importability does not promote a module into the canonical dispatcher.
+14. **No GitHub-native governance creep.** Do not add Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate language as repository architecture.
+
+## 5. Where to change what
+
+| Goal | Primary files | Required synchronization |
+|---|---|---|
+| recipe field | `metadata/recipe.schema.yaml` | runtime/backend/docs/evidence semantics |
+| runtime rule | `quality/rules.yaml`, `sci_render.py` | severity + public docs |
+| uncertainty | recipe schema + consumer | semantics must remain explicit |
+| accessibility | `core/accessibility.py`, `sci_render.py` | a11y sidecar + backend capability truth |
+| Matplotlib render | `backends/matplotlib_base.py` | preserve explicit extension hooks |
+| Matplotlib accessibility | `backends/matplotlib_adapter.py` | preserve public API/direct-run bootstrap |
+| ggplot2 | `backends/ggplot2_adapter.R` | manifest/runtime boundary |
+| Observable | `backends/observable_adapter.js` | pinned Plot version/network dependency |
+| publisher profile | `profiles/*.yaml` | source evidence status + P3 semantics |
+| color registry | `core/palettes.py`, `core/color_encoding.py` | avoid unsupported CVD/perceptual claims |
+| figure evidence | `core/figure_evidence.py` | Research Contract + Manifest |
+| public capability | README / Architecture / Manifest | update together |
+
+## 6. Experimental semantics
+
+Historical file names may be retained for compatibility, but their module-level descriptions must match implemented mechanics:
+
+- `projection`: PCA + projection-quality metrics; t-SNE not implemented here;
+- `uncertainty_legend`: typed bounds/interval metadata;
+- `superposition`: deterministic variant layering;
+- `time_crystal`: periodic waveform utility;
+- `observer_dashboard`: caller-fed interaction telemetry.
+
+Do not use physics metaphors as evidence of statistical or scientific capability.
+
+## 7. Local maintenance
 
 When useful:
 
@@ -29,52 +102,8 @@ python -m pip install pyyaml jsonschema matplotlib numpy pillow
 make test
 ```
 
-These are manual maintenance checks, not an automated merge gate. R/Node runtime remains optional unless a developer explicitly provisions those ecosystems locally.
+These are optional local maintenance checks. This 2026-08-24 refresh does not rely on them as completion evidence and does not make them a GitHub merge policy.
 
-## 3. Hard rules
+## 8. Consistency rule
 
-1. **Unified validation.** New public policy goes through `sci_render.py`; adapters should not each invent a different validation model.
-2. **Backend truth.** Schema support does not imply backend support. Update `BACKEND_ACCESSIBILITY_CAPABILITIES` only after actual rendering behavior exists.
-3. **Use of Color.** If `redundant_encoding: required`, supported multi-series charts must expose non-color cues. Do not satisfy this by merely adding another color.
-4. **WCAG scope.** `adjacent_pairs` models actual graphical adjacency for SC 1.4.11 support. The legacy all-pairs adjacency rule is a stricter project policy, not the normative WCAG scope.
-5. **Text alternatives.** `require_alt_text: true` must reject missing short alternatives. Do not claim that a sidecar alone makes a final website/PDF accessible; publishing-layer association still matters.
-6. **CVD is separate.** Machado simulation is a project safeguard, not a WCAG success criterion.
-7. **Matplotlib layering.** Keep `matplotlib_base.py` as the stable render/provenance core. The public adapter may add policy behavior but must preserve existing exported APIs and direct-script import bootstrap.
-8. **Dumb adapters.** Backend adapters translate validated intent into backend-specific rendering; they are not alternative policy engines.
-9. **No fake reproducibility.** Checksums/provenance improve traceability but do not justify “100% reproducible” claims.
-10. **No fake conformance.** `sci-render-kit/a11y@1` explicitly carries `conformance_claim: false`.
-11. **Experimental stays Experimental.** projection/time_crystal/uncertainty_legend/observer_dashboard/superposition are not integrated capabilities.
-12. **Optional ecosystems stay optional.** An unexecuted R/Node E2E path is neither a failure nor proof of runtime parity.
-
-## 4. Where to change what
-
-| Goal | Primary files | Required follow-up |
-|---|---|---|
-| recipe field | `metadata/recipe.schema.yaml` | runtime rule/backend/docs; nearest local check when useful |
-| accessibility rule | `core/accessibility.py`, `sci_render.py`, `quality/gates.yaml` | keep scope explicit |
-| Matplotlib non-color encoding | `backends/matplotlib_adapter.py` | preserve base API + direct-run bootstrap |
-| base Matplotlib rendering/provenance | `backends/matplotlib_base.py` | preserve existing public behavior |
-| new backend capability | adapter + capability matrix | actual implementation or explicit optional-runtime status |
-| publication profile | `profiles/*.yaml`, `profiles/README.md` | source/verification date + P3 semantics |
-| named palette | `core/palettes.py` | type/availability/CVD metadata |
-| provenance | Matplotlib base + P2 rule | checksum/readback semantics |
-| public capability | README/ARCHITECTURE/MANIFEST | update together |
-
-## 5. Accessibility invariants
-
-For `redundant_encoding: required` on a supported multi-series chart:
-
-- every series label resolves to a style signature,
-- signatures are distinct across the visible series,
-- color remains available but is not the only series cue,
-- `.a11y.json` records the actual cues used.
-
-For `adjacent_pairs`:
-
-- labels must exist in the recipe data,
-- only declared pairs are checked by the WCAG-scoped adjacency rule,
-- a separate legacy all-pairs project rule may still run if `aesthetics.adjacency_check` is explicitly enabled.
-
-## 6. Consistency
-
-Keep capability matrices aligned with actual backend behavior, keep new recipe fields synchronized across schema and docs, keep generated sidecars ignored, and do not paraphrase external standards more strongly than their real scope. None of these consistency rules require GitHub Actions or a merge gate.
+When code behavior changes, update the nearest machine-readable contract first, then public docs. Never leave an old test, profile, example, or historical design document presenting retired behavior as current architecture.
