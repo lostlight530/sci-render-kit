@@ -2,18 +2,26 @@ name: cell
 journal: Cell
 source_url: "https://www.cell.com/cell/authors"
 verified_date: "2026-08-19"
+source_status: snapshot_not_reverified_2026_08_24
+verification_scope: "local preset retained from the 2026-08-19 research snapshot; recheck current Cell author instructions before submission"
+publication:
+  authority: local_snapshot
+  acceptance_claim: false
+  preferred_formats: [pdf]
+  raster_min_dpi: 1000
+  font_min_pt: 6
+  max_width_in: 6.85
 aesthetics:
   font: "Arial"
   font_size: 6
   figsize: [3.35, 2.35]
-  dpi: 1000  # 线图 (line art) 最低分辨率
-  max_width_in: 6.85  # 双栏宽度 174mm
+  dpi: 1000
+  max_width_in: 6.85
   line_width: 0.75
   axes_linewidth: 0.75
   palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
-  constraints:
-    - "矢量格式优先 (PDF/EPS)"
-    - "仅使用 Arial 字体"
-    - "线图分辨率 ≥ 1000 DPI"
-    - "单栏宽度 85mm"
-    - "双栏宽度 174mm"
+notes:
+  - "Snapshot retained from 2026-08-19: Arial-oriented preset, 85/174 mm width references and 1000 dpi line-art project target"
+  - "These values were not independently reverified on 2026-08-24"
+  - "Graphical-abstract requirements are a separate figure class and are not represented by this main-figure preset"
+  - "P3 findings are publisher-target alignment evidence, not Cell compliance or acceptance"
