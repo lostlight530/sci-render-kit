@@ -2,19 +2,25 @@ name: science
 journal: Science
 source_url: "https://www.science.org/content/page/instructions-preparing-initial-manuscript"
 verified_date: "2026-08-19"
+source_status: snapshot_not_reverified_2026_08_24
+verification_scope: "local preset retained from the 2026-08-19 research snapshot; recheck publisher instructions before submission"
+publication:
+  authority: local_snapshot
+  acceptance_claim: false
+  preferred_formats: [pdf]
+  raster_min_dpi: 600
+  font_min_pt: 6
+  max_width_in: 7.24
 aesthetics:
   font: "Helvetica"
   font_size: 6
   figsize: [3.35, 2.35]
   dpi: 600
-  max_width_in: 7.24  # 三栏满幅 18.4cm
+  max_width_in: 7.24
   line_width: 0.75
   axes_linewidth: 0.75
   palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
-  constraints:
-    - "矢量格式优先 (PDF/EPS)"
-    - "字号 ≥ 6pt"
-    - "单栏宽度 5.7cm"
-    - "双栏宽度 12.1cm"
-    - "满幅宽度 18.4cm"
-    - "DPI ≥ 600"
+notes:
+  - "Snapshot values retained from 2026-08-19: 5.7/12.1/18.4 cm width references and 600 dpi project target"
+  - "These values were not independently reverified on 2026-08-24"
+  - "P3 findings are publisher-target alignment evidence, not Science compliance or acceptance"
