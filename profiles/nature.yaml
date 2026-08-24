@@ -1,22 +1,31 @@
 name: nature
 journal: Nature
-source_url: "https://www.nature.com/nature/for-authors/formatting-guide"
-verified_date: "2026-08-19"
+source_url: "https://research-figure-guide.nature.com/figures/building-and-exporting-figure-panels/"
+verified_date: "2026-08-24"
+source_status: publisher_guidance_reverified
+verification_scope: "main-figure sizing/font/editability and initial-submission raster guidance; not every editorial or figure-type rule"
+publication:
+  authority: publisher_snapshot
+  acceptance_claim: false
+  preferred_formats: [pdf, svg]
+  raster_min_dpi: 300
+  font_min_pt: 5
+  font_max_pt: 7
+  max_width_in: 7.2047   # 183 mm
+  max_height_in: 6.6929  # 170 mm
 aesthetics:
   font: "Arial"
-  font_size: 5
-  figsize: [3.5, 2.45]
+  font_size: 6
+  figsize: [3.5039, 2.45]  # ~89 mm single-column width
   dpi: 300
-  max_width_in: 7.2  # 双栏宽度 183mm
-  line_width: 1.0
+  max_width_in: 7.2047
+  max_height_in: 6.6929
+  line_width: 0.75
   axes_linewidth: 0.5
   palette: ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
-  constraints:
-    - "矢量格式优先 (PDF/EPS)"
-    - "字号 ≥ 5pt"
-    - "面板标签 8pt 粗体小写 (panel labels: 8pt bold lowercase)"
-    - "单栏宽度 89mm"
-    - "双栏宽度 183mm"
-    - "颜色 ≤ 8 种"
-    - "禁用 3D 图"
-    - "禁用红绿并置"
+notes:
+  - "Nature standard main-figure widths: 89 mm single column / 183 mm double column"
+  - "Maximum main-figure height: 170 mm so legend space remains"
+  - "Standard editable fonts such as Arial or Helvetica; body figure text 5–7 pt"
+  - "Initial-submission guidance requests RGB images at 300 dpi or higher and editable vector files where applicable"
+  - "This profile is a machine-readable subset of publisher guidance, not a Nature acceptance/compliance certificate"
