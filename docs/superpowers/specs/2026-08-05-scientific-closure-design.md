@@ -1,53 +1,102 @@
-# Sci Render Kit Scientific Closure Design
+# Sci Render Kit Scientific Closure Design — Historical Record
 
-Date: 2026-08-05
-Status: approved design baseline
-Base: `main@a193ddc0013dda2524f8ff10910eee86633708d5`
+Date: 2026-08-05  
+Status: **SUPERSEDED on 2026-08-24**  
+Historical base: `main@a193ddc0013dda2524f8ff10910eee86633708d5`
 
-## Objective
+## Why this file remains
 
-Make the declarative scientific-rendering toolkit truthful, safe, backend-aware, and reproducible while preserving `sci_render.py`, existing recipe/profile paths, and the root README.
+This document records an earlier design direction. It is retained for historical context only and must not be treated as the current maintenance contract.
 
-## Verified starting point
+The active architecture is now defined by:
 
-The repository contains the CLI, schemas, quality gates, profiles, recipes, Python/R/JavaScript adapters, declarative engine, transforms, Plotly support, and tests. It has no GitHub workflow or cloud test evidence. Calculation transforms dynamically evaluate generated expressions. Several backend chart branches return TODO code rather than a supported result. The root README links to a missing `profiles/README.md`. Current capability declarations do not provide an enforceable backend-by-chart matrix.
+- `README.md`
+- `ARCHITECTURE.md`
+- `RESEARCH_CONTRACT.md`
+- `MANIFEST.yaml`
+- `AGENTS.md`
+- `quality/rules.yaml`
 
-## Architecture decision
+## Historical objective
 
-Recipes are validated before transformation or dispatch. Data transforms use a parsed arithmetic/filter expression language with an allowlist of fields, literals, operators, and pure functions; arbitrary code execution is impossible. Every backend advertises an explicit capability matrix. A declared combination must either render and produce validated provenance or fail before code generation with a structured unsupported-capability error.
+The 2026-08-05 design aimed to make the declarative scientific-rendering toolkit more truthful, backend-aware and reproducible while preserving the public CLI and existing recipe/profile paths.
 
-The data flow is:
+Useful ideas from that design remain part of the current repository:
 
-`recipe + profile + data -> schema validation -> quality gates -> safe transforms -> capability resolution -> backend render -> output + reproducibility manifest`
+- validate declared structures before rendering;
+- fail explicitly on unsupported backend capabilities;
+- bind artifacts to stable content identities;
+- keep scientific claims narrower than implementation evidence;
+- separate optional ecosystems from verified runtime evidence;
+- prevent experimental modules from masquerading as production capabilities.
 
-The reproducibility manifest binds recipe, profile, data, backend, tool version, environment, and output through SHA-256 digests. Metadata claims distinguish captured facts from user-supplied annotations.
+## Superseded decisions
 
-## Planned change set
+The earlier design also proposed repository-specific GitHub governance, cloud verification, CodeQL, dependency-maintenance workflows, and merge acceptance tied to cloud checks.
 
-- Replace dynamic calculation execution with a safe expression parser; transformations do not mutate caller-owned input records.
-- Fail closed for unknown transforms, operators, marks, profiles, backends, and malformed values.
-- Define and enforce a backend capability matrix consistent with `MANIFEST.yaml` and the recipe schema.
-- Implement every currently declared chart/backend path or explicitly remove it from that backend's declared capability; no TODO code may be emitted as a successful render.
-- Validate generated filenames and paths, prevent traversal, and make output plus manifest publication atomic.
-- Strengthen provenance with canonical serialization and input/spec/profile/output digests.
-- Add `profiles/README.md` as the missing profile contract without modifying the root README.
-- Add deterministic tests for schema validation, quality gates, transforms, code generation, capability negotiation, manifest integrity, and stable hashes.
-- Add adversarial tests for expression injection, malicious fields and paths, invalid numeric values, unsupported combinations, missing runtimes, and interrupted rendering.
-- Add reproducibility, evidence, AI-use, security, contribution, and repo-specific GitHub governance files.
-- Add least-privilege GitHub verification, CodeQL, and dependency-maintenance workflows pinned to immutable action commits.
+Those proposals are **retired** for the current architecture.
 
-## Scientific integrity rules
+Current maintenance policy intentionally does not require:
 
-Visual defaults may not imply statistical significance, uncertainty, causality, or sample adequacy. Missing values, transformations, aggregation, binning, uncertainty encodings, and excluded observations must be represented in the manifest. Color profiles require accessible contrast and must not rely on color alone for categorical distinction. Backends must preserve semantic encodings even when visual implementations differ.
+```text
+GitHub Actions
+CI
+CodeQL
+dependency bots
+branch-protection assumptions
+merge gates
+cloud-check acceptance
+```
 
-## Verification and acceptance
+P0–P3 now mean **runtime figure-validation phases**, not repository-hosting gates.
 
-Cloud checks run on Python 3.12 and 3.14. All existing and new tests, `compileall`, schema checks, JavaScript syntax checks, and deterministic render-fixture comparisons must pass. Optional R, Matplotlib, Plotly, and YAML paths report tested, skipped-with-reason, or unsupported; a skip is never counted as evidence of successful rendering. Identical canonical inputs must produce identical spec and provenance digests.
+## 2026-08-24 replacement architecture
 
-## Non-goals
+The active data flow is:
 
-No root README edit, frontend, hosted dashboard, invented research result, package publication, Jules integration, or claim of pixel-identical output across different backend versions. Existing `sci_render.py` remains the stable entry point.
+```text
+recipe + research context + uncertainty semantics
+  -> P0 schema
+  -> P1 runtime findings (error/warning/info)
+  -> backend capability resolution
+  -> backend render
+  -> render-manifest@2 / provenance@2 / a11y@1
+  -> P2 artifact integrity
+  -> P3 publisher-target alignment
+  -> figure-evidence@1
+```
 
-## Rollout and rollback
+Key differences from the historical design:
 
-Implementation is isolated on `codex/scientific-closure-20260805` and delivered through one repository-specific pull request. Merge occurs only after cloud checks pass. Rollback is a single merge-commit revert; generated artifacts are not versioned and therefore require no repository migration.
+- one boolean quality-gate model has been replaced by structured runtime findings;
+- publisher profile checks are target-alignment evidence, not compliance certification;
+- uncertainty semantics are explicit and cannot be inferred from bounds alone;
+- figure-level evidence has a versioned handoff profile;
+- experimental physics metaphors are bounded to actual deterministic utilities;
+- fake t-SNE/constant projection metrics are not acceptable placeholders;
+- Matplotlib accessibility behavior uses explicit function injection rather than global monkeypatching;
+- Observable HTML records its pinned CDN/network dependency;
+- no completion claim depends on running GitHub/cloud tests.
+
+## Historical security/failure notes retained where applicable
+
+The earlier preference for explicit failure, bounded execution, path hygiene and no arbitrary dynamic execution remains good engineering guidance when those concerns apply to current code.
+
+However, a security or reliability guideline should be implemented in the relevant runtime code rather than converted into a generic repository-hosting gate by default.
+
+## Scientific integrity
+
+Current hard boundaries:
+
+```text
+Render success ≠ scientific truth
+Runtime validation ≠ scientific validity
+Publisher alignment ≠ journal acceptance
+Provenance ≠ truth
+Checksum ≠ reproduction
+Accessibility sidecar ≠ whole-publication WCAG conformance
+```
+
+## Historical status
+
+No further implementation should be planned from this file without first reconciling it against the active 2026-08-24 architecture documents.
