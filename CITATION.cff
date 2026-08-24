@@ -6,8 +6,16 @@ authors:
   - alias: lostlight530
 repository-code: "https://github.com/lostlight530/sci-render-kit"
 license: MIT
+abstract: >
+  Declarative scientific-figure compilation with backend-bounded rendering,
+  provenance and figure-evidence sidecars, explicit uncertainty semantics,
+  accessibility contracts, and source-scoped publisher-target profiles.
 keywords:
   - scientific visualization
-  - reproducibility
-  - accessibility
   - research software
+  - figure provenance
+  - evidence handoff
+  - uncertainty semantics
+  - accessibility
+  - reproducibility metadata
+  - declarative rendering
