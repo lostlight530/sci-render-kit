@@ -1,135 +1,94 @@
-"""
-Quantum Superposition Layer - Multi-State Data Visualization
-[EXPERIMENTAL] Not yet integrated into the main rendering pipeline.
+"""Deterministic variant-layer utilities.
+[EXPERIMENTAL] Not integrated into the canonical renderer.
 
-In quantum mechanics, superposition allows a particle to exist in
-multiple states simultaneously until observed. This layer enables
-data to exist in multiple visual states at once, with the final
-rendering determined by the observer's perspective.
-
-Real-world: Multi-state rendering with perspective-dependent output.
+The historical ``SuperpositionEngine`` name is retained for compatibility. The
+implementation stores alternative visualization states and can combine numeric
+properties using explicitly declared normalized weights. This is ordinary
+variant aggregation, not quantum superposition or wave interference.
 """
 
-import math
+from __future__ import annotations
+
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple, Any, Callable
-from enum import Enum
-
-
-class ObserverMode(Enum):
-    OVERVIEW = "overview"
-    DETAIL = "detail"
-    COMPARISON = "comparison"
-    TEMPORAL = "temporal"
+from typing import Any, Dict, List, Optional
 
 
 @dataclass
-class SuperpositionState:
-    """A single state in a superposition."""
-
+class VisualizationState:
     state_id: str
-    label: str
+    data: Dict[str, Any]
     weight: float = 1.0
-    visual_properties: Dict[str, Any] = field(default_factory=dict)
-    condition: Optional[Callable[[Dict[str, Any]], bool]] = None
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        if not self.state_id:
+            raise ValueError("state_id must be non-empty")
+        self.weight = float(self.weight)
+        if self.weight < 0:
+            raise ValueError("weight must be non-negative")
 
 
-class SuperpositionLayer:
-    """Multi-state data layer with observer-dependent rendering."""
+class VariantLayerEngine:
+    """Store named alternatives and compute transparent weighted aggregates."""
 
     def __init__(self):
-        self._states: Dict[str, SuperpositionState] = {}
-        self._observations: List[Dict[str, Any]] = []
+        self._states: Dict[str, VisualizationState] = {}
 
-    def add_state(self, state: SuperpositionState) -> None:
-        """Add a state to the superposition."""
+    def add_state(self, state: VisualizationState) -> None:
         self._states[state.state_id] = state
 
-    def collapse(
-        self, observer_mode: ObserverMode, context: Dict[str, Any] = None
-    ) -> Optional[SuperpositionState]:
-        """Collapse the superposition based on observer mode."""
-        context = context or {}
+    def remove_state(self, state_id: str) -> None:
+        self._states.pop(state_id, None)
 
-        eligible_states = []
-        for state in self._states.values():
-            if state.condition is None or state.condition(context):
-                eligible_states.append(state)
+    def get_state(self, state_id: str) -> Optional[VisualizationState]:
+        return self._states.get(state_id)
 
-        if not eligible_states:
+    def states(self) -> List[VisualizationState]:
+        return list(self._states.values())
+
+    def normalized_weights(self) -> Dict[str, float]:
+        total = sum(state.weight for state in self._states.values())
+        if total <= 0:
+            return {state_id: 0.0 for state_id in self._states}
+        return {state_id: state.weight / total for state_id, state in self._states.items()}
+
+    def weighted_numeric_merge(self) -> Dict[str, float]:
+        """Weighted-average shared numeric keys; missing/non-numeric values are ignored."""
+        weights = self.normalized_weights()
+        accum: Dict[str, float] = {}
+        used_weight: Dict[str, float] = {}
+        for state_id, state in self._states.items():
+            weight = weights.get(state_id, 0.0)
+            for key, value in state.data.items():
+                if isinstance(value, bool) or not isinstance(value, (int, float)):
+                    continue
+                accum[key] = accum.get(key, 0.0) + float(value) * weight
+                used_weight[key] = used_weight.get(key, 0.0) + weight
+        return {
+            key: accum[key] / used_weight[key]
+            for key in accum
+            if used_weight.get(key, 0.0) > 0
+        }
+
+    def select_max_weight(self) -> Optional[VisualizationState]:
+        if not self._states:
             return None
+        return max(self._states.values(), key=lambda state: (state.weight, state.state_id))
 
-        mode_preferences = {
-            ObserverMode.OVERVIEW: lambda s: -s.weight,
-            ObserverMode.DETAIL: lambda s: s.weight,
-            ObserverMode.COMPARISON: lambda s: 0,
-            ObserverMode.TEMPORAL: lambda s: s.weight,
+    def interference_pattern(self, *args, **kwargs):
+        """Removed compatibility method: no physical wave-interference model exists."""
+        raise NotImplementedError(
+            "VariantLayerEngine does not model quantum/wave interference. "
+            "Use explicit deterministic aggregation appropriate to the data semantics."
+        )
+
+    def summary(self) -> dict:
+        return {
+            "state_count": len(self._states),
+            "normalized_weights": self.normalized_weights(),
+            "semantics": "deterministic_variant_layering_not_quantum_superposition",
         }
 
-        eligible_states.sort(key=mode_preferences.get(observer_mode, lambda s: 0))
 
-        collapsed = eligible_states[0]
-
-        observation = {
-            "timestamp": __import__("time").time(),
-            "observer_mode": observer_mode.value,
-            "collapsed_state": collapsed.state_id,
-            "eligible_count": len(eligible_states),
-        }
-        self._observations.append(observation)
-
-        return collapsed
-
-    def superpose(self, state_ids: List[str]) -> Dict[str, Any]:
-        """Compute the superposition of multiple states."""
-        result = {}
-        states = [self._states[sid] for sid in state_ids if sid in self._states]
-
-        if not states:
-            return result
-
-        total_weight = sum(s.weight for s in states)
-        if total_weight == 0:
-            return result
-
-        all_keys = set()
-        for s in states:
-            all_keys.update(s.visual_properties.keys())
-
-        for key in all_keys:
-            weighted_sum = 0.0
-            for state in states:
-                val = state.visual_properties.get(key, 0)
-                if isinstance(val, (int, float)):
-                    weighted_sum += val * state.weight
-                else:
-                    weighted_sum = val
-                    break
-
-            if isinstance(weighted_sum, float):
-                result[key] = weighted_sum / total_weight
-            else:
-                result[key] = weighted_sum
-
-        return result
-
-    def interference_pattern(self, state_a: str, state_b: str) -> float:
-        """Compute interference between two states."""
-        sa = self._states.get(state_a)
-        sb = self._states.get(state_b)
-        if not sa or not sb:
-            return 0.0
-
-        return sa.weight * sb.weight * math.cos(sa.weight - sb.weight)
-
-    def list_states(self) -> List[str]:
-        """List all state IDs in the superposition."""
-        return list(self._states.keys())
-
-    def observation_history(self) -> List[Dict[str, Any]]:
-        """Get history of collapse observations."""
-        return list(self._observations)
-
-    def reset(self) -> None:
-        """Reset the superposition to its initial state."""
-        self._observations.clear()
+# Historical compatibility name.
+SuperpositionEngine = VariantLayerEngine

@@ -1,24 +1,28 @@
-title: Recipe Schema
-description: "图表配方的 YAML Schema 定义 | Chart recipe YAML schema definition"
+title: Scientific Figure Recipe Schema
+description: >
+  图表 YAML 配方结构。Recipe 描述数据、视觉编码、输出、可访问性意图、上游研究引用与不确定性语义；
+  Schema 通过只证明结构，不证明数据、统计结论或出版合规。
 type: object
 required: [id, type, data, aesthetics, output]
+additionalProperties: true
 properties:
   id:
     type: string
-    description: "配方唯一标识"
+    minLength: 1
+    description: "配方稳定标识"
   name:
     type: string
     description: "人类可读名称"
   type:
     type: string
     enum: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
-    description: "图表类型"
+    description: "当前统一 CLI 支持的图表类型"
   data:
     type: object
-    description: "图表数据（类型相关）"
+    description: "图表内嵌数据；结构由具体 chart type/backend 解释"
   aesthetics:
     type: object
-    description: "美学参数"
+    description: "视觉编码与渲染参数"
     properties:
       title: {type: string}
       x_label: {type: string}
@@ -27,11 +31,11 @@ properties:
         type: array
         items: {type: string}
       font_size:
-        type: integer
-        minimum: 5
+        type: number
+        exclusiveMinimum: 0
       figsize:
         type: array
-        items: {type: number}
+        items: {type: number, exclusiveMinimum: 0}
         minItems: 2
         maxItems: 2
       dpi:
@@ -39,52 +43,55 @@ properties:
         minimum: 72
       line_width:
         type: number
-        minimum: 0.1
+        exclusiveMinimum: 0
+      axes_linewidth:
+        type: number
+        exclusiveMinimum: 0
       semantic_palette:
         type: boolean
-        description: "启用语义色彩编码：按系列名的语义标签自动生成色板"
+        description: "启用项目约定的 series-label -> color 映射；不是普适心理学语义"
       background:
         type: string
-        description: "画布背景色（hex），用于 palette-contrast 对比度门禁"
+        description: "画布背景色"
       text_color:
         type: string
-        description: "文字颜色（hex），声明后由 P1 text-contrast 校验与背景对比度 ≥ 4.5（WCAG SC 1.4.3）"
+        description: "显式文字颜色；运行时规则可检查与背景的项目对比阈值"
       adjacency_check:
         type: boolean
-        description: "启用项目自定义的严格全分类色对 ≥ 3.0 检查；受 WCAG SC 1.4.11 相邻边界原则启发，但不是 WCAG 的一般性全色板要求"
+        description: "启用项目额外的全分类色对 3:1 检查；比 WCAG 实际相邻对象作用域更严格"
       palette_name:
         type: string
-        description: "注册色板名称（core/palettes.py，如 okabe-ito / petroff10）"
+        description: "core/palettes.py 中注册的 categorical palette 名称"
       cmap:
         type: string
-        description: "热力图色阶名称"
+        description: "热力图等连续色阶名称，由后端解析"
       bins:
         type: integer
         minimum: 1
-        description: "直方图的柱数"
+        description: "直方图 bins"
+
   accessibility:
     type: object
-    description: "可访问性契约；支持文本替代、非颜色冗余编码与声明式相邻对象检查，不等于整份出版物的 WCAG 合规声明"
+    description: >
+      项目级可访问性意图。支持 WCAG 2.2 相关设计原则，但不构成整份论文/PDF/网页的 WCAG conformance 声明。
     properties:
       alt_text:
         type: string
         minLength: 1
-        description: "图表短文本替代，面向 WCAG 2.2 SC 1.1.1 设计支持"
+        description: "短文本替代；面向 SC 1.1.1 支持"
       long_description:
         type: string
         minLength: 1
-        description: "可选长描述；复杂图表可用于补充趋势、含义或数据表位置"
+        description: "可选复杂图长描述"
       require_alt_text:
         type: boolean
-        description: "为 true 时 P1 门禁要求 alt_text 非空"
       redundant_encoding:
         type: string
         enum: [off, auto, required]
         default: off
-        description: "非颜色冗余编码策略；required 表示颜色不能作为系列区分的唯一视觉线索"
+        description: "required 时颜色不得成为多系列区分的唯一视觉线索，面向 SC 1.4.1"
       series_styles:
         type: object
-        description: "按系列标签覆盖 marker / line_style / hatch；未声明项在 auto/required 模式由 core/accessibility.py 生成"
         additionalProperties:
           type: object
           properties:
@@ -93,22 +100,80 @@ properties:
             hatch: {type: string}
       adjacent_pairs:
         type: array
-        description: "实际需要辨认的相邻系列标签对；每对按 SC 1.4.11 边界原则检查 ≥ 3.0"
+        description: >
+          实际需要通过边界辨认的图形系列标签对；仅这些声明式相邻对象映射到 SC 1.4.11 的边界对比语义。
         items:
           type: array
           minItems: 2
           maxItems: 2
           items: {type: string}
+
+  research_context:
+    type: object
+    description: >
+      可选上游研究证据引用。CLI 只记录引用/本地 hash，不自动验证上游 claim 的科学真实性。
+    properties:
+      evidence_envelope_ref:
+        type: string
+        minLength: 1
+        description: "例如 epistemic-pipeline/evidence-envelope@1 的本地路径或 URI"
+      provenance_ref:
+        type: string
+        minLength: 1
+      data_artifact_ref:
+        type: string
+        minLength: 1
+      claim_refs:
+        type: array
+        items: {type: string, minLength: 1}
+
+  uncertainty:
+    type: object
+    required: [kind, semantics]
+    description: >
+      图中不确定性的统计/工程含义。上下界不得仅因存在就被称作 confidence interval。
+    properties:
+      kind:
+        type: string
+        enum:
+          - standard-error
+          - standard-deviation
+          - confidence-interval
+          - credible-interval
+          - min-max-range
+          - quantile-interval
+          - bootstrap-interval
+          - heuristic-bound
+          - not-applicable
+      level:
+        type: number
+        exclusiveMinimum: 0
+        maximum: 1
+        description: "例如 0.95；仅在对应统计方法确实定义 coverage/credible level 时有意义"
+      semantics:
+        type: string
+        minLength: 1
+        description: "说明区间如何计算、代表什么以及不代表什么"
+      source_ref:
+        type: string
+        minLength: 1
+        description: "可选统计计算、上游产物或数据源引用"
+
   output:
     type: object
     required: [dir, filename]
     properties:
-      dir: {type: string}
-      filename: {type: string}
+      dir:
+        type: string
+        minLength: 1
+      filename:
+        type: string
+        minLength: 1
       format:
         type: string
-        enum: [png, svg, pdf, eps, html]
+        enum: [png, svg, pdf, html]
         default: png
+
   notes:
     type: string
-    description: "人类注释"
+    description: "人类注释；不参与运行时语义判断"

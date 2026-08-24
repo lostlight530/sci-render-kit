@@ -1,124 +1,163 @@
-"""
-Uncertainty Principle Legend - Adaptive Precision Visualization
-[EXPERIMENTAL] Not yet integrated into the main rendering pipeline.
+"""Uncertainty / interval metadata utilities.
+[EXPERIMENTAL] Not integrated into the canonical renderer.
 
-Inspired by Heisenberg's uncertainty principle: the more precisely you
-know one property, the less precisely you can know a complementary one.
-This legend system visualizes data uncertainty by blurring or sharpening
-visual elements based on confidence levels.
-
-Real-world: Confidence-aware visualization with adaptive precision.
+The historical ``UncertaintyLegend`` and ``UncertaintyBound`` names remain for
+compatibility. Bounds are not called confidence intervals merely because they
+have lower/upper values: callers must declare the interval ``kind`` and its
+statistical or engineering ``semantics``.
 """
 
-import math
+from __future__ import annotations
+
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Any, Dict, List, Optional
+
+INTERVAL_KINDS = {
+    "standard-error",
+    "standard-deviation",
+    "confidence-interval",
+    "credible-interval",
+    "min-max-range",
+    "quantile-interval",
+    "bootstrap-interval",
+    "heuristic-bound",
+    "not-applicable",
+}
+
+LEVEL_KINDS = {"confidence-interval", "credible-interval", "bootstrap-interval", "quantile-interval"}
 
 
 @dataclass
 class UncertaintyBound:
-    """A bound on how uncertain a value is."""
+    """One explicitly typed interval around a reported value."""
 
     value: float
-    lower_bound: float
-    upper_bound: float
-    confidence: float = 1.0
+    lower: float
+    upper: float
+    confidence: Optional[float] = None  # deprecated compatibility alias for level
+    label: str = ""
+    kind: str = "heuristic-bound"
+    semantics: str = "caller-supplied bound; no statistical coverage claim"
+    level: Optional[float] = None
+    source_ref: Optional[str] = None
+    metadata: Dict[str, Any] = field(default_factory=dict)
 
-    @property
-    def uncertainty_range(self) -> float:
-        return self.upper_bound - self.lower_bound
-
-    @property
-    def relative_uncertainty(self) -> float:
-        if self.value == 0:
-            return 0.0
-        return self.uncertainty_range / (2 * abs(self.value))
-
-
-class UncertaintyLegend:
-    """Legend system for visualizing data uncertainty."""
-
-    def __init__(self, max_blur: float = 10.0, max_opacity: float = 0.3):
-        self.max_blur = max_blur
-        self.max_opacity = max_opacity
-        self._bounds: Dict[str, UncertaintyBound] = {}
-
-    def register_bound(self, name: str, bound: UncertaintyBound) -> None:
-        """Register an uncertainty bound for a data point."""
-        self._bounds[name] = bound
-
-    def blur_radius(self, name: str) -> float:
-        """Compute blur radius based on uncertainty."""
-        bound = self._bounds.get(name)
-        if not bound:
-            return 0.0
-
-        uncertainty = bound.relative_uncertainty
-        return min(self.max_blur, uncertainty * self.max_blur)
-
-    def opacity(self, name: str) -> float:
-        """Compute opacity based on confidence."""
-        bound = self._bounds.get(name)
-        if not bound:
-            return 1.0
-
-        return max(self.max_opacity, bound.confidence)
-
-    def error_bar(self, name: str) -> Optional[Tuple[float, float, float]]:
-        """Get error bar data: (value, lower, upper)."""
-        bound = self._bounds.get(name)
-        if not bound:
-            return None
-        return (bound.value, bound.lower_bound, bound.upper_bound)
-
-    def confidence_interval_width(self, name: str) -> float:
-        """Get the width of the confidence interval."""
-        bound = self._bounds.get(name)
-        if not bound:
-            return 0.0
-        return bound.uncertainty_range
-
-    def render_legend(self) -> List[Dict[str, Any]]:
-        """Generate legend entries for visualization."""
-        entries = []
-        for name, bound in self._bounds.items():
-            entries.append(
-                {
-                    "name": name,
-                    "value": bound.value,
-                    "lower": bound.lower_bound,
-                    "upper": bound.upper_bound,
-                    "confidence": bound.confidence,
-                    "blur_radius": self.blur_radius(name),
-                    "opacity": self.opacity(name),
-                    "relative_uncertainty": bound.relative_uncertainty,
-                }
+    def __post_init__(self) -> None:
+        self.value = float(self.value)
+        self.lower = float(self.lower)
+        self.upper = float(self.upper)
+        if self.lower > self.upper:
+            raise ValueError("lower must be <= upper")
+        if not self.lower <= self.value <= self.upper:
+            raise ValueError("value must lie inside [lower, upper]")
+        if self.kind not in INTERVAL_KINDS:
+            raise ValueError(f"unknown interval kind: {self.kind}")
+        if self.level is None and self.confidence is not None:
+            self.level = float(self.confidence)
+        if self.level is not None and not 0.0 < float(self.level) <= 1.0:
+            raise ValueError("interval level must be within (0,1]")
+        if self.level is not None and self.kind not in LEVEL_KINDS:
+            self.metadata.setdefault(
+                "level_warning",
+                "a level was supplied for an interval kind without a standard coverage/credible interpretation",
             )
-        return entries
+        self.confidence = self.level
+        if not str(self.semantics).strip():
+            raise ValueError("semantics must be non-empty")
 
-    def complementarity_check(self, name_a: str, name_b: str) -> Optional[float]:
-        """Check if two values exhibit uncertainty complementarity.
+    def interval_width(self) -> float:
+        return self.upper - self.lower
 
-        Returns the product of their relative uncertainties.
-        If this exceeds a threshold, the pair is complementary
-        (like position and momentum in quantum mechanics).
-        """
-        bound_a = self._bounds.get(name_a)
-        bound_b = self._bounds.get(name_b)
-        if not bound_a or not bound_b:
-            return None
+    def confidence_interval_width(self) -> float:
+        """Deprecated compatibility alias; returns width without asserting CI semantics."""
+        return self.interval_width()
 
-        return bound_a.relative_uncertainty * bound_b.relative_uncertainty
+    def relative_width(self) -> Optional[float]:
+        denominator = abs(self.value)
+        return self.interval_width() / denominator if denominator > 0 else None
 
-    def aggregate_uncertainty(self, names: List[str]) -> float:
-        """Compute aggregate uncertainty across multiple data points."""
-        uncertainties = []
-        for name in names:
-            bound = self._bounds.get(name)
-            if bound:
-                uncertainties.append(bound.relative_uncertainty)
+    def to_dict(self) -> dict:
+        return {
+            "label": self.label,
+            "value": self.value,
+            "lower": self.lower,
+            "upper": self.upper,
+            "width": self.interval_width(),
+            "kind": self.kind,
+            "level": self.level,
+            "semantics": self.semantics,
+            "source_ref": self.source_ref,
+            "metadata": dict(self.metadata),
+        }
 
-        if not uncertainties:
-            return 0.0
 
-        return math.sqrt(sum(u**2 for u in uncertainties) / len(uncertainties))
+class IntervalLegend:
+    """Collection of explicitly typed interval records."""
+
+    def __init__(self):
+        self._bounds: List[UncertaintyBound] = []
+
+    def add_bound(self, bound: UncertaintyBound) -> None:
+        self._bounds.append(bound)
+
+    def add_interval(
+        self,
+        *,
+        value: float,
+        lower: float,
+        upper: float,
+        kind: str,
+        semantics: str,
+        label: str = "",
+        level: Optional[float] = None,
+        source_ref: Optional[str] = None,
+    ) -> UncertaintyBound:
+        bound = UncertaintyBound(
+            value=value,
+            lower=lower,
+            upper=upper,
+            label=label,
+            kind=kind,
+            semantics=semantics,
+            level=level,
+            source_ref=source_ref,
+        )
+        self.add_bound(bound)
+        return bound
+
+    def get_bounds(self) -> List[UncertaintyBound]:
+        return list(self._bounds)
+
+    def total_uncertainty(self) -> float:
+        """Compatibility metric: sum of interval widths, without statistical interpretation."""
+        return sum(bound.interval_width() for bound in self._bounds)
+
+    def relative_uncertainty(self) -> float:
+        values = [bound.relative_width() for bound in self._bounds]
+        defined = [value for value in values if value is not None]
+        return sum(defined) / len(defined) if defined else 0.0
+
+    def uncertainty_summary(self) -> Dict[str, Any]:
+        by_kind: Dict[str, int] = {}
+        for bound in self._bounds:
+            by_kind[bound.kind] = by_kind.get(bound.kind, 0) + 1
+        return {
+            "count": len(self._bounds),
+            "by_kind": by_kind,
+            "total_interval_width": self.total_uncertainty(),
+            "mean_relative_width": self.relative_uncertainty(),
+            "semantics": "descriptive interval metadata; aggregation is not a probability statement",
+        }
+
+    def visualization_data(self) -> List[Dict[str, Any]]:
+        return [bound.to_dict() for bound in self._bounds]
+
+    def complementarity_check(self, *args, **kwargs) -> bool:
+        """Removed physics metaphor; no position/momentum complementarity is represented."""
+        raise NotImplementedError(
+            "This module models declared research intervals, not quantum complementarity."
+        )
+
+
+# Historical compatibility name.
+UncertaintyLegend = IntervalLegend

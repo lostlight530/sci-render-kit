@@ -1,296 +1,249 @@
 #!/usr/bin/env Rscript
-# ggplot2 后端适配器 — 将 YAML 配方渲染为图表
-# 依赖：ggplot2, yaml, jsonlite
+# ggplot2 backend for declarative scientific figure recipes.
+# Dependencies: ggplot2, yaml, jsonlite, digest.
+# The backend writes sci-render-kit/render-manifest@2 replay-addressable evidence.
 
 library(yaml)
 library(jsonlite)
 library(digest)
-
+library(ggplot2)
 
 `%||%` <- function(a, b) if (is.null(a)) b else a
-
+MANIFEST_PROFILE <- "sci-render-kit/render-manifest@2"
 
 load_recipe <- function(path) {
-  yaml.load_file(path)
+  value <- yaml.load_file(path)
+  if (!is.list(value)) stop(paste("recipe root must be a mapping:", path))
+  value
 }
 
 load_profile <- function(name) {
-  profile_path <- paste0('profiles/', name, '.yaml')
-  if (!file.exists(profile_path)) {
-    return(list())
+  profile_path <- paste0("profiles/", name, ".yaml")
+  if (!file.exists(profile_path)) return(list())
+  value <- yaml.load_file(profile_path)
+  if (!is.list(value)) return(list())
+  value
+}
+
+normalize_for_hash <- function(value) {
+  if (is.list(value)) {
+    if (!is.null(names(value))) value <- value[sort(names(value))]
+    return(lapply(value, normalize_for_hash))
   }
-  yaml.load_file(profile_path)
+  value
+}
+
+canonical_sha256 <- function(value) {
+  text <- toJSON(normalize_for_hash(value), auto_unbox=TRUE, null="null", digits=NA, pretty=FALSE)
+  paste0("sha256:", digest(text, algo="sha256", serialize=FALSE))
+}
+
+file_sha256 <- function(path) {
+  if (is.null(path) || !file.exists(path)) return(NULL)
+  paste0("sha256:", digest(path, file=TRUE, algo="sha256"))
 }
 
 validate_recipe <- function(recipe) {
   errors <- c()
-  required <- c('type', 'data', 'aesthetics')
-  for (key in required) {
-    if (!key %in% names(recipe)) {
-      errors <- c(errors, paste('缺少必需字段:', key))
-    }
+  for (key in c("type", "data", "aesthetics", "output")) {
+    if (!key %in% names(recipe)) errors <- c(errors, paste("missing required field:", key))
   }
-  if (!'output' %in% names(recipe)) {
-    errors <- c(errors, '缺少 output 配置')
-  }
-  return(errors)
+  errors
 }
 
+semantic_palette <- function(labels) {
+  semantic_map <- c(
+    positive="#009E73", negative="#D55E00", neutral="#56B4E9",
+    critical="#D55E00", stable="#0072B2", energetic="#E69F00",
+    creative="#CC79A7", attention="#F0E442"
+  )
+  fallback <- c("#0072B2", "#E69F00", "#009E73", "#CC79A7", "#56B4E9", "#F0E442", "#D55E00", "#000000")
+  vapply(seq_along(labels), function(i) {
+    key <- tolower(labels[i])
+    if (key %in% names(semantic_map)) unname(semantic_map[[key]]) else fallback[(i - 1) %% length(fallback) + 1]
+  }, character(1))
+}
 
-generate_r_code <- function(recipe, profile) {
-  aesthetics <- modifyList(profile$aesthetics %||% list(), recipe$aesthetics)
+resolve_palette <- function(recipe, aesthetics) {
+  data <- recipe$data
+  labels <- names(data) %||% character()
+  palette <- aesthetics$palette %||% c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000")
+  if (isTRUE(aesthetics$semantic_palette) && length(labels) > 0 &&
+      recipe$type %in% c("line-chart", "bar-chart", "scatter-plot", "boxplot", "histogram")) {
+    palette <- semantic_palette(labels)
+  }
+  palette
+}
+
+build_plot <- function(recipe, profile) {
+  aesthetics <- modifyList(profile$aesthetics %||% list(), recipe$aesthetics %||% list())
   chart_type <- recipe$type
   data <- recipe$data
-  palette <- aesthetics$palette %||% c('#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2', '#D55E00', '#CC79A7', '#000000')
-  palette_r <- paste("c(", paste(sprintf('"%s"', palette), collapse=", "), ")", sep="")
-
-  # 语义色彩编码（与 core/color_encoding.py 的 CognitiveColorEncoder 保持一致）：
-  # semantic_palette: true 时按系列名的语义标签生成色板，优先于显式 palette
-  if (isTRUE(aesthetics$semantic_palette) &&
-      chart_type %in% c('line-chart', 'bar-chart', 'scatter-plot', 'boxplot', 'histogram')) {
-    semantic_map <- c(positive='#009E73', negative='#D55E00', neutral='#56B4E9',
-                      critical='#D55E00', stable='#0072B2', energetic='#E69F00',
-                      creative='#CC79A7', attention='#F0E442')
-    perceptual <- c('#0072B2', '#E69F00', '#009E73', '#CC79A7',
-                    '#56B4E9', '#F0E442', '#D55E00', '#000000')
-    series_labels <- names(data)
-    if (length(series_labels) > 0) {
-      palette <- vapply(seq_along(series_labels), function(i) {
-        key <- tolower(series_labels[i])
-        if (key %in% names(semantic_map)) unname(semantic_map[[key]]) else perceptual[(i - 1) %% length(perceptual) + 1]
-      }, character(1))
-      # 命名向量：确保 ggplot2 按系列名而非因子水平顺序取色
-      palette_r <- paste("c(", paste(sprintf('"%s" = "%s"', series_labels, palette), collapse=", "), ")", sep="")
-    }
-  }
+  palette <- resolve_palette(recipe, aesthetics)
   font_size <- aesthetics$font_size %||% 10
-  
-  df_code <- ""
-  plot_code <- ""
+  p <- NULL
 
-  if (chart_type == 'line-chart') {
-    df_lines <- c()
-    for (label in names(data)) {
-      values <- data[[label]]
-      df_lines <- c(df_lines, sprintf(
-        'data.frame(x = 1:%d, y = c(%s), series = "%s")',
-        length(values), 
-        paste(values, collapse = ', '),
-        label
-      ))
-    }
-    df_code <- paste('df <- do.call(rbind, list(', paste(df_lines, collapse = ',\n  '), '))')
-    
-    plot_code <- sprintf('
-library(ggplot2)
-p <- ggplot(df, aes(x = x, y = y, color = series)) +
-  geom_line(linewidth = 0.8) +
-  geom_point(size = 1.5) +
-  scale_color_manual(values = %s) +
-  theme_minimal() +
-  theme(
-    legend.position = "bottom",
-    legend.title = element_blank(),
-    panel.grid.major = element_line(color = "#BBBBBB", linewidth = 0.3),
-    panel.grid.minor = element_blank(),
-    axis.title = element_text(size = %d),
-    axis.text = element_text(size = %d)
-  )
-', palette_r, font_size, max(1, font_size - 2))
+  if (chart_type == "line-chart") {
+    frames <- lapply(names(data), function(label) {
+      values <- unlist(data[[label]])
+      data.frame(x=seq_along(values), y=values, series=label)
+    })
+    df <- do.call(rbind, frames)
+    names(palette) <- names(data)[seq_along(palette)]
+    p <- ggplot(df, aes(x=x, y=y, color=series)) +
+      geom_line(linewidth=0.8) + geom_point(size=1.5) +
+      scale_color_manual(values=palette) + theme_minimal() +
+      theme(legend.position="bottom", legend.title=element_blank())
 
-  } else if (chart_type == 'bar-chart') {
+  } else if (chart_type == "bar-chart") {
     labels <- names(data)
-    values <- unlist(unname(data))
-    df_code <- sprintf('df <- data.frame(category = c(%s), value = c(%s))\ndf$category <- factor(df$category, levels = c(%s))',
-                       paste(sprintf('"%s"', labels), collapse=", "),
-                       paste(values, collapse=", "),
-                       paste(sprintf('"%s"', labels), collapse=", "))
-    plot_code <- sprintf('
-library(ggplot2)
-p <- ggplot(df, aes(x = category, y = value, fill = category)) +
-  geom_bar(stat = "identity", color = "black", linewidth = 0.5, width = 0.6) +
-  scale_fill_manual(values = rep(%s, length.out=nrow(df))) +
-  theme_minimal() +
-  theme(legend.position = "none", axis.title = element_text(size = %d))
-', palette_r, font_size)
+    df <- data.frame(category=factor(labels, levels=labels), value=as.numeric(unlist(data)))
+    names(palette) <- labels[seq_along(palette)]
+    p <- ggplot(df, aes(x=category, y=value, fill=category)) +
+      geom_col(color="black", linewidth=0.5, width=0.6) +
+      scale_fill_manual(values=palette) + theme_minimal() + theme(legend.position="none")
 
-  } else if (chart_type == 'scatter-plot') {
-    df_lines <- c()
-    for (label in names(data)) {
-      pts <- data[[label]]
-      df_lines <- c(df_lines, sprintf(
-        'data.frame(x = c(%s), y = c(%s), series = "%s")',
-        paste(pts[[1]], collapse = ', '),
-        paste(pts[[2]], collapse = ', '),
-        label
-      ))
-    }
-    df_code <- paste('df <- do.call(rbind, list(', paste(df_lines, collapse = ',\n  '), '))')
-    plot_code <- sprintf('
-library(ggplot2)
-p <- ggplot(df, aes(x = x, y = y, color = series)) +
-  geom_point(size = 3, stroke = 1, shape = 21, fill = "white") +
-  scale_color_manual(values = %s) +
-  theme_minimal() +
-  theme(legend.position = "bottom", axis.title = element_text(size = %d))
-', palette_r, font_size)
+  } else if (chart_type == "scatter-plot") {
+    frames <- lapply(names(data), function(label) {
+      pair <- data[[label]]
+      if (length(pair) != 2) stop(paste("scatter series must contain x/y pair:", label))
+      data.frame(x=unlist(pair[[1]]), y=unlist(pair[[2]]), series=label)
+    })
+    df <- do.call(rbind, frames)
+    names(palette) <- names(data)[seq_along(palette)]
+    p <- ggplot(df, aes(x=x, y=y, color=series)) +
+      geom_point(size=2.5, stroke=0.6) + scale_color_manual(values=palette) +
+      theme_minimal() + theme(legend.position="bottom")
 
-  } else if (chart_type == 'heatmap') {
+  } else if (chart_type == "heatmap") {
     matrix_data <- data$matrix
-    row_labels <- data$row_labels %||% paste0("R", 1:length(matrix_data))
-    col_labels <- data$col_labels %||% paste0("C", 1:length(matrix_data[[1]]))
-
-    df_lines <- c()
-    for (i in 1:length(matrix_data)) {
-      for (j in 1:length(matrix_data[[i]])) {
-        df_lines <- c(df_lines, sprintf('data.frame(Row="%s", Col="%s", Value=%f)', row_labels[i], col_labels[j], matrix_data[[i]][[j]]))
+    if (is.null(matrix_data) || length(matrix_data) == 0) stop("heatmap matrix must be non-empty")
+    row_labels <- data$row_labels %||% paste0("R", seq_along(matrix_data))
+    col_labels <- data$col_labels %||% paste0("C", seq_along(matrix_data[[1]]))
+    records <- list()
+    index <- 1
+    for (i in seq_along(matrix_data)) {
+      for (j in seq_along(matrix_data[[i]])) {
+        records[[index]] <- data.frame(Row=row_labels[i], Col=col_labels[j], Value=matrix_data[[i]][[j]])
+        index <- index + 1
       }
     }
-    df_code <- paste('df <- do.call(rbind, list(', paste(df_lines, collapse = ',\n  '), '))\n',
-                     sprintf('df$Row <- factor(df$Row, levels=rev(c(%s)))', paste(sprintf('"%s"', row_labels), collapse=", ")),
-                     '\n',
-                     sprintf('df$Col <- factor(df$Col, levels=c(%s))', paste(sprintf('"%s"', col_labels), collapse=", "))
-                     )
+    df <- do.call(rbind, records)
+    df$Row <- factor(df$Row, levels=rev(row_labels))
+    df$Col <- factor(df$Col, levels=col_labels)
+    # R backend uses a documented ggplot2 gradient instead of pretending every Matplotlib cmap name exists in R.
+    p <- ggplot(df, aes(x=Col, y=Row, fill=Value)) +
+      geom_tile(color="white") +
+      scale_fill_viridis_c(option="D") +
+      theme_minimal() + theme(axis.title=element_blank())
 
-    # 尊重配方声明的 cmap；matplotlib 风格的 "_r" 后缀映射为 direction = -1
-    cmap <- aesthetics$cmap %||% "RdBu"
-    direction <- 1
-    if (grepl("_r$", cmap)) {
-      cmap <- sub("_r$", "", cmap)
-      direction <- -1
-    }
-    plot_code <- sprintf('
-library(ggplot2)
-p <- ggplot(df, aes(x = Col, y = Row, fill = Value)) +
-  geom_tile(color = "white") +
-  geom_text(aes(label = sprintf("%%.2f", Value)), color = ifelse(df$Value < 0.5, "white", "black"), size = %d/3) +
-  scale_fill_distiller(palette = "%s", direction = %d) +
-  theme_minimal() +
-  theme(axis.title = element_blank(), axis.text = element_text(size = %d))
-', font_size, cmap, direction, font_size)
+  } else if (chart_type == "boxplot") {
+    frames <- lapply(names(data), function(label) {
+      data.frame(value=unlist(data[[label]]), group=label)
+    })
+    df <- do.call(rbind, frames)
+    df$group <- factor(df$group, levels=names(data))
+    names(palette) <- names(data)[seq_along(palette)]
+    p <- ggplot(df, aes(x=group, y=value, fill=group)) +
+      geom_boxplot(alpha=0.7) + scale_fill_manual(values=palette) +
+      theme_minimal() + theme(legend.position="none")
 
-  } else if (chart_type == 'boxplot') {
-    df_lines <- c()
-    for (label in names(data)) {
-      values <- data[[label]]
-      df_lines <- c(df_lines, sprintf(
-        'data.frame(value = c(%s), group = "%s")',
-        paste(values, collapse = ', '),
-        label
-      ))
-    }
-    df_code <- paste('df <- do.call(rbind, list(', paste(df_lines, collapse = ',\n  '), '))\n',
-                     sprintf('df$group <- factor(df$group, levels=c(%s))', paste(sprintf('"%s"', names(data)), collapse=", ")))
-    plot_code <- sprintf('
-library(ggplot2)
-p <- ggplot(df, aes(x = group, y = value, fill = group)) +
-  geom_boxplot(alpha=0.7) +
-  scale_fill_manual(values = %s) +
-  theme_minimal() +
-  theme(legend.position = "none", axis.title = element_text(size = %d))
-', palette_r, font_size)
-
-  } else if (chart_type == 'histogram') {
-    values <- data$values
-    bins <- aesthetics$bins %||% 10
-    df_code <- sprintf('df <- data.frame(value = c(%s))', paste(values, collapse = ', '))
+  } else if (chart_type == "histogram") {
+    df <- data.frame(value=unlist(data$values %||% list()))
+    bins <- as.integer(aesthetics$bins %||% 10)
     color <- if (length(palette) > 0) palette[1] else "#1f77b4"
-    plot_code <- sprintf('
-library(ggplot2)
-p <- ggplot(df, aes(x = value)) +
-  geom_histogram(bins = %d, fill = "%s", color = "black", alpha=0.7) +
-  theme_minimal() +
-  theme(axis.title = element_text(size = %d))
-', bins, color, font_size)
+    p <- ggplot(df, aes(x=value)) +
+      geom_histogram(bins=bins, fill=color, color="black", alpha=0.7) + theme_minimal()
 
   } else {
-    plot_code <- paste('# TODO: 实现', chart_type, '的 ggplot2 渲染')
+    stop(paste("unsupported chart type:", chart_type))
   }
-  
-  output <- recipe$output
-  output_dir <- output$dir %||% 'output'
-  output_file <- output$filename %||% 'figure.png'
-  
-  full_code <- sprintf('
-%s
-%s
-ggsave("%s/%s", plot = p, dpi = %d, width = %f, height = %f, units = "in")
-cat("已保存: %s/%s\n")
-', df_code, plot_code, output_dir, output_file, max(aesthetics$dpi %||% 300, 300),
-     aesthetics$figsize[1] %||% 6, aesthetics$figsize[2] %||% 4,
-     output_dir, output_file)
-  
-  return(full_code)
+
+  p <- p + theme(
+    axis.title=element_text(size=font_size),
+    axis.text=element_text(size=max(1, font_size - 2))
+  )
+  if (!is.null(aesthetics$title)) p <- p + labs(title=aesthetics$title)
+  if (!is.null(aesthetics$x_label)) p <- p + labs(x=aesthetics$x_label)
+  if (!is.null(aesthetics$y_label)) p <- p + labs(y=aesthetics$y_label)
+  p
 }
-write_manifest <- function(recipe, profile, output_path) {
-  chksum <- "none"
-  if (file.exists(output_path)) {
-    chksum <- paste0("sha256:", digest(output_path, file=TRUE, algo="sha256"))
-  }
+
+write_manifest <- function(recipe, profile, recipe_path, profile_name, output_path) {
+  profile_path <- paste0("profiles/", profile_name, ".yaml")
+  merged_aesthetics <- modifyList(profile$aesthetics %||% list(), recipe$aesthetics %||% list())
   manifest <- list(
-    generated_at = format(Sys.time(), "%Y-%m-%dT%H:%M:%S"),
-    generator = 'sci-render-kit/ggplot2',
-    recipe = recipe$id %||% 'unknown',
-    profile = profile$name %||% 'default',
-    backend = 'ggplot2',
-    output = output_path,
-    checksum = chksum,
-    parameters = list(
-      aesthetics = recipe$aesthetics %||% list(),
-      data_keys = names(recipe$data) %||% list()
+    profile=MANIFEST_PROFILE,
+    generated_at=format(Sys.time(), "%Y-%m-%dT%H:%M:%OS%z"),
+    generator="sci-render-kit",
+    recipe=list(
+      id=recipe$id %||% "unknown",
+      canonical_sha256=canonical_sha256(recipe),
+      file_sha256=file_sha256(recipe_path),
+      source=recipe_path
+    ),
+    target_profile=list(
+      id=profile$name %||% profile_name,
+      canonical_sha256=canonical_sha256(profile),
+      file_sha256=file_sha256(profile_path)
+    ),
+    backend=list(
+      name="ggplot2",
+      version=as.character(packageVersion("ggplot2")),
+      runtime=R.version.string
+    ),
+    output=output_path,
+    output_sha256=file_sha256(output_path),
+    parameters=list(
+      aesthetics=merged_aesthetics,
+      data_canonical_sha256=canonical_sha256(recipe$data %||% list()),
+      data_keys=names(recipe$data) %||% list()
+    ),
+    provenance=list(
+      sidecar=NULL,
+      accessibility_sidecar=if (!is.null(recipe$accessibility)) sub("\\.[^.]+$", ".a11y.json", basename(output_path)) else NULL,
+      figure_evidence_sidecar=NULL
+    ),
+    reproducibility=list(
+      level="R1",
+      semantics="Replay-addressable recipe/data/profile/backend/output identity; no independent rerun claimed.",
+      independently_rerun=FALSE
     )
   )
-  manifest_path <- sub('\\.[^.]+$', '.manifest.json', output_path)
-  write_json(manifest, manifest_path, auto_unbox = TRUE, pretty = TRUE)
+  manifest_path <- sub("\\.[^.]+$", ".manifest.json", output_path)
+  write_json(manifest, manifest_path, auto_unbox=TRUE, pretty=TRUE, null="null")
 }
 
-render <- function(recipe_path, profile_name = 'nature') {
+render <- function(recipe_path, profile_name="nature") {
   recipe <- load_recipe(recipe_path)
-  
-
+  errors <- validate_recipe(recipe)
+  if (length(errors) > 0) stop(paste(errors, collapse="; "))
   profile <- load_profile(profile_name)
-  
-  # 生成代码
-  code <- generate_r_code(recipe, profile)
-  
+  aesthetics <- modifyList(profile$aesthetics %||% list(), recipe$aesthetics %||% list())
+  p <- build_plot(recipe, profile)
+
   output <- recipe$output
-  output_dir <- output$dir %||% 'output'
-  dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
-  
-  script_path <- file.path(output_dir, '_generated_render.R')
-  writeLines(code, script_path)
-  
-  cat(sprintf('已生成渲染脚本: %s\n', script_path))
-  cat(sprintf('运行以下命令执行渲染:\n'))
-  cat(sprintf('   Rscript %s\n', script_path))
+  output_dir <- output$dir %||% "output"
+  output_file <- output$filename %||% "figure.png"
+  output_path <- file.path(output_dir, output_file)
+  dir.create(output_dir, recursive=TRUE, showWarnings=FALSE)
 
-  tryCatch({
-    system2('Rscript', args=script_path)
-  }, finally = {
-    # Hygiene: clean up generated execute script (consistent with matplotlib adapter)
-    if (file.exists(script_path)) {
-      unlink(script_path)
-      cat(sprintf('已清理临时脚本: %s\n', script_path))
-    }
-  })
-
-  output_path <- file.path(output_dir, output$filename %||% 'figure.png')
-  write_manifest(recipe, profile, output_path)
+  figsize <- aesthetics$figsize %||% c(6, 4)
+  dpi <- as.integer(aesthetics$dpi %||% 300)
+  ggsave(output_path, plot=p, dpi=dpi, width=figsize[[1]], height=figsize[[2]], units="in")
+  if (!file.exists(output_path)) stop(paste("render completed without declared output:", output_path))
+  cat(sprintf("saved: %s\n", output_path))
+  write_manifest(recipe, profile, recipe_path, profile_name, output_path)
 }
 
-# 主入口
-# 支持两种形式：`render <recipe> --profile <name>`（与 sci_render.py 派发一致）
-# 或旧式位置参数 `render <recipe> [profile]`
-args <- commandArgs(trailingOnly = TRUE)
-if (length(args) >= 2 && args[1] == 'render') {
-  profile <- 'nature'
-  flag_idx <- match('--profile', args)
-  if (!is.na(flag_idx) && length(args) >= flag_idx + 1) {
-    profile <- args[flag_idx + 1]
-  } else if (length(args) >= 3 && !startsWith(args[3], '--')) {
-    profile <- args[3]
-  }
+args <- commandArgs(trailingOnly=TRUE)
+if (length(args) >= 2 && args[1] == "render") {
+  profile <- "nature"
+  flag_idx <- match("--profile", args)
+  if (!is.na(flag_idx) && length(args) >= flag_idx + 1) profile <- args[flag_idx + 1]
+  else if (length(args) >= 3 && !startsWith(args[3], "--")) profile <- args[3]
   render(args[2], profile)
 } else {
-  cat('用法: Rscript backends/ggplot2_adapter.R render <recipe.yaml> [--profile <name>]\n')
+  cat("usage: Rscript backends/ggplot2_adapter.R render <recipe.yaml> [--profile <name>]\n")
+  quit(status=2)
 }

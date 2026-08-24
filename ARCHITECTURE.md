@@ -1,158 +1,217 @@
-# Architecture & Philosophy — sci-render-kit
+# Architecture — sci-render-kit
 
-## 1. Thesis: a scientific figure is a contract, not a screenshot
+## 1. Thesis
 
-A research figure is simultaneously:
+A scientific figure is not only pixels. It is a bounded transformation from declared data/specification into a visual artifact plus evidence describing what was rendered, under which backend/profile/environment, and what the runtime checks actually established.
 
-- a visual encoding of data,
-- an artifact constrained by a publication profile,
-- a reproducibility object with provenance,
-- and non-text content that may need redundant cues and textual alternatives.
+The canonical architecture separates:
 
-The architecture therefore separates **declaration, policy, rendering, and evidence**. A backend should not invent hidden policy, and a policy file should not claim support that no backend actually renders.
+1. **declaration** — recipe, research context, uncertainty semantics, accessibility intent;
+2. **runtime validation** — explicit machine rules with severity;
+3. **capability resolution** — what the selected backend can actually produce;
+4. **rendering** — backend-specific implementation;
+5. **artifact evidence** — manifest, provenance, accessibility and figure-evidence sidecars;
+6. **publisher-target alignment** — sourced preset comparison, not acceptance certification.
 
-## 2. Pipeline
+## 2. Canonical flow
 
 ```text
 [YAML Recipe]
-    ↓ P0 schema
-[Profile + Accessibility Contract]
-    ↓ P1 policy gates
-[Backend Capability Gate]
-    ↓
-[Backend Adapter]
-    ↓
-[Rendered Figure]
-    + .manifest.json
-    + .prov.json (Matplotlib)
-    + .a11y.json (when accessibility is declared)
-    ↓ P2 integrity
-[Journal Profile Gate]
-    ↓ P3 publication constraints
+  data / aesthetics / output
+  research_context
+  uncertainty
+  accessibility
+        ↓
+[P0 JSON Schema]
+        ↓
+[P1 Runtime Findings]
+ error / warning / info
+        ↓
+[Backend Capability Resolution]
+        ↓
+[Adapter]
+        ↓
+[Figure]
+ + render-manifest@2
+ + provenance@2       (Matplotlib)
+ + a11y@1             (when declared)
+        ↓
+[P2 Artifact Integrity]
+        ↓
+[P3 Publisher-target Alignment]
+        ↓
+[figure-evidence@1]
 ```
 
-## 3. Declaration layer
+P0–P3 are runtime phases. They are not GitHub merge gates.
 
-### 3.1 Recipe
+## 3. Declaration plane
 
-`metadata/recipe.schema.yaml` defines data, aesthetics, output, and accessibility intent. Accessibility fields are deliberately explicit:
+### 3.1 Recipe identity
 
-- `alt_text`
-- `long_description`
-- `require_alt_text`
-- `redundant_encoding`
-- `series_styles`
-- `adjacent_pairs`
+`metadata/recipe.schema.yaml` is the canonical recipe contract. The recipe file has a byte-level SHA-256; its structured `data` object has a canonical JSON SHA-256 in backend evidence. These identities answer different questions and must not be conflated.
 
-The schema describes intent; it does not prove that every backend can realize every field.
+### 3.2 Research context
 
-### 3.2 Profile
+`research_context` can carry references such as an upstream artifact ID, evidence-envelope path, provenance path and claim IDs. These references are handoff metadata; the renderer does not independently validate the scientific truth of upstream claims.
 
-Publication profiles encode measurable external constraints such as dimensions, fonts, DPI, and vector-format expectations. Their `source_url` and `verified_date` fields are snapshots, not promises that publishers will never update guidance.
+### 3.3 Uncertainty semantics
 
-## 4. Policy layer — `sci_render.py`
+An interval must state what it means. `uncertainty.kind` distinguishes standard error, standard deviation, confidence/credible/bootstrap/quantile intervals, min-max ranges and heuristic bounds.
 
-The unified CLI owns validation. Adapters remain rendering implementations rather than independent policy engines.
+A pair of lower/upper numbers is never automatically promoted to a confidence interval. Coverage/frequentist/Bayesian semantics remain the responsibility of the upstream analysis that produced the interval.
 
-### 4.1 Accessibility scope
+### 3.4 Accessibility intent
 
-The 2026-08-23 calibration separates three WCAG-related concerns that were previously conflated with palette checks:
+Recipe-level accessibility remains separate from publisher profiles:
 
-1. **SC 1.1.1 support — Text alternatives.** A recipe can require a short `alt_text`; a long description can carry richer trends/interpretation or point to the data table.
-2. **SC 1.4.1 support — Use of Color.** When `redundant_encoding: required`, multiple visual series cannot rely on color alone. Matplotlib maps the same labels to distinct marker / line-style / hatch cues.
-3. **SC 1.4.11 support — Non-text Contrast.** `adjacent_pairs` identifies graphical series that are actually adjacent and required for understanding; those declared boundaries are checked at ≥ 3:1.
+- text alternative / long description;
+- whether non-color redundant encoding is required;
+- per-series marker/line/hatch overrides;
+- actual adjacent graphical-series pairs.
 
-The older `aesthetics.adjacency_check` remains available as an intentionally stricter **all-pairs project policy**. It must never be described as WCAG requiring every categorical color pair to contrast 3:1.
+The schema declares intent. Backend capability still determines what can be realized.
 
-Machado CVD simulation stays a separate project safeguard. CVD resilience is valuable, but it is not itself a WCAG success criterion.
+## 4. Runtime-quality plane
 
-### 4.2 Backend capability truth
+The active catalog is `quality/rules.yaml` with profile `sci-render-kit/runtime-quality@1`.
 
-A schema field is not backend implementation evidence. Today:
+Each finding has:
 
-- Matplotlib can render redundant line/marker/hatch cues.
-- ggplot2 and Observable can participate in the backend-independent text-alternative sidecar, but their redundant-series-style mapping is **Not Integrated**.
-- If a recipe requests `auto` or `required` redundant encoding on a backend without that capability, the CLI fails with `BACKEND_ACCESSIBILITY_MISMATCH` before dispatch.
+```text
+check_id
+level
+severity
+message
+details
+```
 
-This preserves the repository's central doctrine: **unsupported must be explicit, not silently downgraded.**
+Only `severity: error` stops the render. Warnings are retained as evidence.
 
-## 5. Matplotlib two-layer adapter
+This matters because these conditions are not equivalent:
 
-The mature renderer is retained byte-for-byte as `backends/matplotlib_base.py`. The public `backends/matplotlib_adapter.py` imports that implementation and adds accessibility policy behavior.
+- malformed recipe;
+- unsupported backend/output pair;
+- missing required accessibility cue;
+- project CVD robustness warning;
+- publisher-format preference mismatch.
+
+One boolean “quality gate passed” cannot faithfully represent all of them.
+
+## 5. Accessibility / WCAG scope
+
+The runtime supports selected WCAG 2.2 design boundaries without claiming whole-publication conformance:
+
+- **SC 1.1.1**: short text-alternative contract;
+- **SC 1.4.1**: color cannot be the only required distinction when redundant encoding is required;
+- **SC 1.4.11**: contrast for graphical objects/boundaries required for understanding, including explicitly declared adjacent series where applicable.
+
+`aesthetics.adjacency_check` is an intentionally stricter project all-pairs rule. It is not a universal WCAG requirement.
+
+Machado CVD simulation is another project safeguard, not a WCAG success criterion.
+
+`core/accessibility.py` emits `sci-render-kit/a11y@1` with `conformance_claim: false`.
+
+## 6. Publisher-profile plane
+
+Profiles contain two categories of data:
+
+- `publication`: machine-readable target-alignment fields used by P1/P3;
+- `aesthetics`: actual defaults merged into rendering.
+
+Every external profile exposes `source_url`, `verified_date`, `source_status` and `verification_scope`.
+
+A profile can therefore say “reverified publisher guidance” or “historical local snapshot” instead of silently presenting every number as equally current.
+
+`acceptance_claim: false` is the default scientific boundary.
+
+## 7. Backend plane
+
+### 7.1 Matplotlib
 
 ```text
 matplotlib_adapter.py
-    ├─ re-exports existing public renderer API
-    ├─ patches render logic only during one accessibility-aware render
-    ├─ maps labels -> marker / line_style / hatch
-    ├─ embeds alt text in PNG/SVG/PDF metadata where supported
-    └─ extends the existing manifest with accessibility linkage
-
-matplotlib_base.py
-    ├─ profile merge
-    ├─ code generation
-    ├─ Matplotlib execution
-    ├─ reproducibility manifest
-    └─ provenance sidecar + embedded provenance metadata
+  -> explicit accessibility render/metadata functions
+  -> matplotlib_base.render(..., render_logic_fn=..., metadata_fn=...)
 ```
 
-This is an adapter-policy split: new policy can evolve without rewriting the stable rendering core or breaking existing direct imports.
+The adapter no longer mutates module-global base functions during a render. The base renderer remains the code-generation/provenance implementation and receives extension functions explicitly.
 
-## 6. Evidence sidecars
+The output DPI is the merged profile/recipe DPI. The renderer no longer silently applies `max(dpi, 300)`.
 
-### 6.1 `.manifest.json`
+Matplotlib evidence:
 
-Records generator, profile, parameters, output checksum, and — when accessibility is declared — a pointer to the accessibility profile/sidecar.
+- `sci-render-kit/render-manifest@2`
+- `sci-render-kit/provenance@2`
+- embedded metadata where supported
 
-### 6.2 `.prov.json`
+### 7.2 ggplot2
 
-Matplotlib provenance records recipe/input/output SHA-256 and environment metadata. It provides traceability evidence, not a mathematical guarantee that the experiment is perfectly reproducible on every future machine.
+The R adapter records the same `render-manifest@2` identity categories and the R/ggplot2 runtime when executed. It does not currently implement the Matplotlib redundant-series-style contract.
 
-### 6.3 `.a11y.json`
+### 7.3 Observable Plot
 
-`core/accessibility.py` emits `sci-render-kit/a11y@1` containing:
+The generated HTML pins `@observablehq/plot@0.6.17/+esm`. The manifest records that browser viewing still requires the CDN/network, so the artifact must not be described as offline environment-complete evidence.
 
-- text alternatives,
-- redundant-encoding mode,
-- actual series colors,
-- actual non-color cues,
-- declared adjacent pairs,
-- explicit `conformance_claim: false`.
+## 8. Figure evidence plane
 
-The sidecar makes the figure's accessibility intent inspectable and machine-readable. Association of that sidecar with a figure in a final website/PDF remains the responsibility of the publishing layer.
+`core/figure_evidence.py` creates `sci-render-kit/figure-evidence@1` after successful artifact checks.
 
-## 7. Quality gates
+It references available artifacts with SHA-256 rather than duplicating payloads and records:
 
-- **P0:** JSON Schema / recipe structure
-- **P1:** aesthetics + accessibility semantics
-- **P2:** output, manifest, provenance, accessibility evidence
-- **P3:** publication-profile format / DPI / dimensions
+- recipe/profile/output identities;
+- manifest/provenance/accessibility references;
+- backend;
+- upstream research context;
+- uncertainty declaration;
+- runtime findings;
+- local reproducibility semantics;
+- `scientific_validity_claim: false`.
 
-Each gate has a different failure meaning. A P1 accessibility failure is not the same class of problem as a P3 journal-size mismatch.
+This is the project-level bridge from research analysis evidence to scientific communication. It is intentionally separate from RO-Crate and W3C PROV semantics.
 
-## 8. Verification architecture
+## 9. Reproducibility model
 
-`make test` runs the legacy 26-test renderer/gate/provenance suite plus `tests/test_accessibility.py`. GitHub Actions executes the same deterministic Python contract with Python 3.12 and the Matplotlib/Pillow stack.
+Local terminology:
 
-Node and R runtime tests remain optional because the core CI must not turn missing external ecosystems into false failures or false passes.
+- **R0 Traceable** — artifact association exists;
+- **R1 Replay-addressable** — stable content identities and references are recorded;
+- **R2 Environment-bounded** — sufficient runtime/dependency assumptions are also captured;
+- **R3 Reproduced** — a separate rerun actually occurred and was compared under a declared criterion.
 
-## 9. Hard rules
+A single successful render cannot self-award R3.
+
+## 10. Experimental plane
+
+Experimental modules remain outside the dispatcher.
+
+- `projection.py`: centered-SVD PCA and actual neighborhood-rank metrics; t-SNE is explicit Not Implemented rather than a fake approximation.
+- `uncertainty_legend.py`: typed interval/heuristic-bound metadata; no Heisenberg analogy as statistical evidence.
+- `superposition.py`: deterministic variant layering; no quantum interference model.
+- `time_crystal.py`: deterministic periodic waveform utility; no time-crystal physics simulation.
+- `observer_dashboard.py`: caller-fed interaction telemetry; no automatic comprehension/causal inference.
+
+Historical filenames may remain for compatibility. Their documentation must describe implemented mechanics, not metaphorical physics.
+
+## 11. Maintenance architecture
+
+Optional local commands may inspect repository contracts:
+
+```bash
+make test
+```
+
+They are maintenance aids only. The architecture explicitly does **not** require GitHub Actions, CodeQL, dependency bots, branch-protection rules or merge gates.
+
+Hard rules for future work:
 
 1. Declaration does not imply backend support.
-2. Color cannot be the only required series cue when redundant encoding is required.
-3. WCAG wording must preserve the actual success-criterion scope.
-4. Project-strict policies must be labelled as project policies.
-5. Matplotlib base rendering stays policy-light; validation belongs to the unified CLI.
-6. Provenance, reproducibility, and accessibility are related evidence layers but not interchangeable claims.
-7. No output sidecar justifies saying a paper is “100% reproducible” or “WCAG conformant”.
-8. Experimental modules remain Experimental until wired into the canonical render path with tests.
-
-## 10. Direction
-
-The project is moving from “multi-backend chart generator” toward an **auditable scientific-figure compiler**:
-
-```text
-intent -> constraint -> encoding -> render -> evidence -> publication
-```
-
-Future work should extend backend parity and evidence quality before adding speculative visualization modules.
+2. A warning is not automatically an error.
+3. Publisher alignment is not publisher acceptance.
+4. Provenance is not truth.
+5. Interval semantics must be declared rather than guessed.
+6. Color semantics are project conventions unless stronger evidence exists.
+7. Whole-publication accessibility cannot be inferred from a figure sidecar.
+8. No experimental module may return fabricated metrics or pretend to implement an algorithm it does not implement.
+9. New evidence profiles must distinguish byte identity, structured identity and scientific meaning.
+10. Public docs, schemas, runtime rules and backend behavior must describe the same capability boundary.
