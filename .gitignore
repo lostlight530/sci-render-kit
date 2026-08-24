@@ -8,7 +8,7 @@ build/
 dist/
 *.egg-info/
 
-# 输出目录
+# Rendered/generated artifacts
 output/
 *.png
 *.svg
@@ -17,16 +17,17 @@ output/
 *.manifest.json
 *.prov.json
 *.a11y.json
+*.evidence.json
 
-# 临时生成脚本
+# Temporary generated scripts
 _generated_render.py
 _generated_render.R
 
-# Node（observable 后端）
+# Node / Observable backend
 node_modules/
 package-lock.json
 
-# 虚拟环境
+# Virtual environments
 venv/
 env/
 .venv/
@@ -41,6 +42,6 @@ env/
 .DS_Store
 Thumbs.db
 
-# 测试
+# Optional local check artifacts
 .pytest_cache/
 .coverage
