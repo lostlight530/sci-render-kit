@@ -1,31 +1,36 @@
 name: sci-render-kit
 purpose: "声明式、证据可追踪、可访问性可检查的科研图件编译工具 | Declarative scientific-figure compilation with inspectable evidence and accessibility contracts"
 
+architecture_version: "2026-08-26"
+
 architecture:
   canonical_flow:
-    - recipe_and_research_context
+    - recipe_research_context_claim_bindings_and_process_disclosure
     - p0_schema
     - p1_runtime_findings
     - backend_capability_resolution
     - render
     - p2_artifact_integrity
     - p3_publisher_target_alignment
-    - figure_evidence
+    - figure_evidence_v2
   github_native_gate_required: false
 
 principles:
-  - 声明优先: "data / aesthetics / research_context / uncertainty / accessibility 由 recipe 显式声明"
+  - 声明优先: "data / aesthetics / research_context / claim_bindings / uncertainty / process_disclosure / accessibility 由 recipe 显式声明"
+  - claim绑定不推断: "visual_ref -> claim_refs 仅记录 recipe 声明，不从标题/图例/像素/数据内容自动猜测"
   - 后端能力诚实: "schema 字段存在不等于所有 backend 已实现"
   - 运行时规则分级: "error 阻止当前 render；warning/info 保留为证据"
   - 不确定性语义显式: "bounds 不自动等于 confidence interval"
+  - 过程披露有边界: "AI tool / human review 是声明式过程元数据，不决定 authorship / peer review / scientific validity"
   - 出版目标有证据等级: "profile 标明 source_status / verified_date / verification_scope"
   - 标准边界诚实: "WCAG 只按实际 success-criterion scope 映射，不声称整篇出版物 conformance"
-  - 科学边界: "render/profile/hash/provenance 不证明科研结论真值或独立复现"
+  - 科学边界: "render/profile/hash/provenance/claim-binding 不证明科研结论真值或独立复现"
 
 research_contract:
   file: RESEARCH_CONTRACT.md
   status: active
-  date: "2026-08-24"
+  date: "2026-08-26"
+  companion_figure_claim_contract: FIGURE_CLAIM_CONTRACT.md
   local_reproducibility_levels: [R0, R1, R2, R3]
   r3_semantics: "requires a separate rerun plus a declared comparison criterion"
 
@@ -47,6 +52,22 @@ recipes:
     - evidence_envelope_ref
     - provenance_ref
     - claim_refs
+    - claim_bindings
+  claim_bindings:
+    profile: sci-render-kit/figure-claim-binding@1
+    required_fields: [visual_ref, claim_refs, relation]
+    relations: [supports, illustrates, contextualizes, compares, derived-from]
+    inferred_by_renderer: false
+    entailment_claim: false
+    evidence_sufficiency_claim: false
+  process_disclosure:
+    profile: sci-render-kit/process-disclosure@1
+    ai_assistance_values: [none, used, not_declared]
+    human_review_values: [reviewed, partial, not_reviewed, not_declared]
+    publisher_compliance_claim: false
+    authorship_claim: false
+    peer_review_claim: false
+    scientific_validity_claim: false
   uncertainty_kinds:
     - standard-error
     - standard-deviation
@@ -104,10 +125,18 @@ artifacts:
     emitted_when: recipe_declares_accessibility
     conformance_claim: false
   figure_evidence:
-    profile: sci-render-kit/figure-evidence@1
+    profile: sci-render-kit/figure-evidence@2
     module: core/figure_evidence.py
     sidecar: <output>.evidence.json
+    claim_binding_profile: sci-render-kit/figure-claim-binding@1
+    process_disclosure_profile: sci-render-kit/process-disclosure@1
+    inferred_claim_bindings: false
     scientific_validity_claim: false
+    statistical_validity_claim: false
+    causal_validity_claim: false
+    authorship_claim: false
+    peer_review_claim: false
+    publisher_acceptance_claim: false
     payloads_embedded: false
 
 accessibility:
@@ -143,8 +172,13 @@ publisher_profiles:
 
 interoperability:
   upstream_epistemic:
-    profile: epistemic-pipeline/evidence-envelope@1
+    profile: epistemic-pipeline/evidence-envelope@2
+    claim_index_profile: epistemic-pipeline/claim-index@1
     mode: optional_reference_handoff
+    direct_runtime_coupling: false
+  upstream_artifact_process_disclosure:
+    source: auto-doc-engine optional frontmatter/process disclosure
+    mode: optional_reference_or_recipe_copy
     direct_runtime_coupling: false
   ro_crate:
     version: "1.3"
@@ -180,7 +214,7 @@ research_software:
 local_checks:
   command: make test
   mode: manual_optional
-  tests_run_in_2026_08_24_refresh: false
+  tests_run_in_2026_08_26_refresh: false
   github_actions: false
   codeql: false
   merge_gate: false
