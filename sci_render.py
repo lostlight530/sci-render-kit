@@ -380,7 +380,7 @@ def _update_render_manifest(manifest_path: Path, evidence_path: Path, findings: 
         "counts": counts,
     }
     manifest["figure_evidence"] = {
-        "profile": "sci-render-kit/figure-evidence@1",
+        "profile": "sci-render-kit/figure-evidence@2",
         "sidecar": evidence_path.name,
     }
     temp = manifest_path.with_suffix(".manifest.json.tmp")
