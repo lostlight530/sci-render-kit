@@ -3,8 +3,9 @@
 
 The figure evidence record is a project-owned cross-tool handoff object. It
 indexes the rendered figure, recipe, publisher/profile preset, backend sidecars,
-upstream research references and runtime-rule findings without claiming that a
-successful render establishes scientific validity or publisher acceptance.
+upstream research references, declared claim-to-visual bindings, process
+disclosure and runtime-rule findings without claiming that a successful render
+establishes scientific validity, authorship, peer review, or publisher acceptance.
 """
 
 from __future__ import annotations
@@ -16,7 +17,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, Optional
 
-PROFILE = "sci-render-kit/figure-evidence@1"
+PROFILE = "sci-render-kit/figure-evidence@2"
+CLAIM_BINDING_PROFILE = "sci-render-kit/figure-claim-binding@1"
+PROCESS_DISCLOSURE_PROFILE = "sci-render-kit/process-disclosure@1"
+AI_ASSISTANCE_VALUES = {"none", "used", "not_declared"}
+HUMAN_REVIEW_VALUES = {"reviewed", "partial", "not_reviewed", "not_declared"}
+CLAIM_RELATIONS = {"supports", "illustrates", "contextualizes", "compares", "derived-from"}
 
 
 def _now() -> str:
@@ -71,6 +77,76 @@ def _reference(value: Any) -> Optional[dict]:
     return result
 
 
+def _string_list(value: Any) -> list[str]:
+    if not isinstance(value, (list, tuple, set)):
+        return []
+    result = []
+    seen = set()
+    for item in value:
+        text = str(item).strip()
+        if text and text not in seen:
+            result.append(text)
+            seen.add(text)
+    return result
+
+
+def _normalize_claim_bindings(value: Any) -> list[dict]:
+    """Normalize declared visual-to-claim bindings without inferring new relations."""
+    if not isinstance(value, list):
+        return []
+    bindings = []
+    for item in value:
+        if not isinstance(item, dict):
+            continue
+        visual_ref = str(item.get("visual_ref") or "").strip()
+        relation = str(item.get("relation") or "").strip()
+        claim_refs = _string_list(item.get("claim_refs"))
+        if not visual_ref or not claim_refs or relation not in CLAIM_RELATIONS:
+            continue
+        record = {
+            "visual_ref": visual_ref,
+            "claim_refs": claim_refs,
+            "relation": relation,
+        }
+        evidence_ref = str(item.get("evidence_ref") or "").strip()
+        note = str(item.get("note") or "").strip()
+        if evidence_ref:
+            record["evidence_ref"] = evidence_ref
+        if note:
+            record["note"] = note
+        bindings.append(record)
+    return bindings
+
+
+def _normalize_process_disclosure(value: Any) -> dict:
+    """Normalize optional recipe disclosure without inventing missing claims."""
+    if not isinstance(value, dict):
+        value = {}
+
+    ai_assistance = str(value.get("ai_assistance") or "not_declared").strip()
+    if ai_assistance not in AI_ASSISTANCE_VALUES:
+        ai_assistance = "not_declared"
+
+    human_review = str(value.get("human_review") or "not_declared").strip()
+    if human_review not in HUMAN_REVIEW_VALUES:
+        human_review = "not_declared"
+
+    disclosure_ref = str(value.get("disclosure_ref") or "").strip()
+    result = {
+        "profile": PROCESS_DISCLOSURE_PROFILE,
+        "ai_assistance": ai_assistance,
+        "ai_tools": _string_list(value.get("ai_tools")),
+        "human_review": human_review,
+        "semantics": (
+            "declared figure-generation/communication process metadata only; "
+            "not authorship adjudication, peer review, scientific validity, or publisher compliance"
+        ),
+    }
+    if disclosure_ref:
+        result["disclosure_ref"] = _reference(disclosure_ref)
+    return result
+
+
 def summarize_findings(findings: Iterable[dict]) -> dict:
     items = [dict(item) for item in findings if isinstance(item, dict)]
     counts = {"error": 0, "warning": 0, "info": 0}
@@ -121,11 +197,23 @@ def build_figure_evidence(
         if ref:
             artifact_refs.append(ref)
 
+    claim_refs = _string_list(research_context.get("claim_refs"))
+    claim_bindings = _normalize_claim_bindings(research_context.get("claim_bindings"))
+    all_bound_claims = sorted(
+        set(claim_refs).union(
+            claim_ref
+            for binding in claim_bindings
+            for claim_ref in binding.get("claim_refs", [])
+        )
+    )
+
     upstream = {
+        "artifact_id": research_context.get("artifact_id"),
+        "source_refs": _string_list(research_context.get("source_refs")),
         "evidence_envelope": _reference(research_context.get("evidence_envelope_ref")),
         "provenance": _reference(research_context.get("provenance_ref")),
         "data_artifact": _reference(research_context.get("data_artifact_ref")),
-        "claim_refs": [str(value) for value in (research_context.get("claim_refs") or [])],
+        "claim_refs": claim_refs,
     }
 
     return {
@@ -154,6 +242,18 @@ def build_figure_evidence(
         },
         "artifacts": artifact_refs,
         "upstream_research": upstream,
+        "claim_communication": {
+            "profile": CLAIM_BINDING_PROFILE,
+            "claim_refs": all_bound_claims,
+            "bindings": claim_bindings,
+            "binding_count": len(claim_bindings),
+            "inferred_bindings": False,
+            "semantics": (
+                "recipe-declared relationships between visual references and upstream claim IDs; "
+                "not verified entailment, evidence sufficiency, or scientific truth"
+            ),
+        },
+        "process_disclosure": _normalize_process_disclosure(recipe.get("process_disclosure")),
         "uncertainty": {
             "kind": uncertainty.get("kind", "not_declared"),
             "level": uncertainty.get("level"),
@@ -175,6 +275,8 @@ def build_figure_evidence(
         "statistical_validity_claim": False,
         "causal_validity_claim": False,
         "publisher_acceptance_claim": False,
+        "authorship_claim": False,
+        "peer_review_claim": False,
     }
 
 

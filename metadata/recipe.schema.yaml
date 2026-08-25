@@ -1,7 +1,8 @@
 title: Scientific Figure Recipe Schema
 description: >
-  图表 YAML 配方结构。Recipe 描述数据、视觉编码、输出、可访问性意图、上游研究引用与不确定性语义；
-  Schema 通过只证明结构，不证明数据、统计结论或出版合规。
+  图表 YAML 配方结构。Recipe 描述数据、视觉编码、输出、可访问性意图、上游研究引用、
+  claim 绑定、不确定性语义与可选过程披露；Schema 通过只证明结构，不证明数据、统计结论、
+  claim 真值、作者身份或出版合规。
 type: object
 required: [id, type, data, aesthetics, output]
 additionalProperties: true
@@ -111,12 +112,19 @@ properties:
   research_context:
     type: object
     description: >
-      可选上游研究证据引用。CLI 只记录引用/本地 hash，不自动验证上游 claim 的科学真实性。
+      可选上游研究证据引用与 claim-to-visual 声明。CLI 只记录引用/本地 hash，
+      不自动验证上游 claim 的科学真实性，也不从图形内容推断 claim 关系。
     properties:
+      artifact_id:
+        type: string
+        minLength: 1
+      source_refs:
+        type: array
+        items: {type: string, minLength: 1}
       evidence_envelope_ref:
         type: string
         minLength: 1
-        description: "例如 epistemic-pipeline/evidence-envelope@1 的本地路径或 URI"
+        description: "例如 epistemic-pipeline/evidence-envelope@2 的本地路径或 URI"
       provenance_ref:
         type: string
         minLength: 1
@@ -126,6 +134,37 @@ properties:
       claim_refs:
         type: array
         items: {type: string, minLength: 1}
+        description: "整张图相关的上游 claim 标识；引用不代表 claim 为真"
+      claim_bindings:
+        type: array
+        description: >
+          显式声明某个 visual_ref 与一个或多个 claim 的沟通关系。
+          renderer 不解析图例/标题来猜测绑定；relation 也不是已验证 entailment。
+        items:
+          type: object
+          required: [visual_ref, claim_refs, relation]
+          additionalProperties: true
+          properties:
+            visual_ref:
+              type: string
+              minLength: 1
+              description: "recipe 内的人类可读视觉对象标识，例如 figure、panel:A、series:control"
+            claim_refs:
+              type: array
+              minItems: 1
+              items: {type: string, minLength: 1}
+            relation:
+              type: string
+              enum: [supports, illustrates, contextualizes, compares, derived-from]
+              description: "声明式沟通关系；不是自动验证的逻辑蕴含或证据充分性判断"
+            evidence_ref:
+              type: string
+              minLength: 1
+              description: "可选更具体的 evidence/artifact 引用；不会被 renderer 自动解引用"
+            note:
+              type: string
+              minLength: 1
+              description: "可选人工说明，不参与真值判断"
 
   uncertainty:
     type: object
@@ -158,6 +197,29 @@ properties:
         type: string
         minLength: 1
         description: "可选统计计算、上游产物或数据源引用"
+
+  process_disclosure:
+    type: object
+    description: >
+      可选图件生成/准备过程披露。字段只记录声明的 AI assistance 与人工复核状态，
+      不决定作者身份、peer review、科学正确性或 publisher-policy compliance。
+    properties:
+      ai_assistance:
+        type: string
+        enum: [none, used, not_declared]
+        description: "本 recipe/figure 过程对 AI assistance 的显式声明；缺失与 none 不同"
+      ai_tools:
+        type: array
+        items: {type: string, minLength: 1}
+        description: "人工声明的产品/provider/model/tool 标识；repository 不向供应商 registry 验真"
+      human_review:
+        type: string
+        enum: [reviewed, partial, not_reviewed, not_declared]
+        description: "声明式人工复核状态；reviewed 不等于 peer review 或 scientific validation"
+      disclosure_ref:
+        type: string
+        minLength: 1
+        description: "可选更完整 methods/disclosure 记录的本地路径或 URI；不自动解引用"
 
   output:
     type: object

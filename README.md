@@ -1,14 +1,14 @@
 # sci-render-kit
 
-**声明式科研图件编译：把数据语义、可访问性、出版目标、后端边界与证据旁车放进同一条可检查链**  
-*Declarative scientific-figure compilation with bounded publisher profiles, provenance, accessibility and figure evidence.*
+**声明式科研图件编译：把数据语义、claim 绑定、可访问性、出版目标、后端边界与证据旁车放进同一条可检查链**  
+*Declarative scientific-figure compilation with bounded claim bindings, publisher profiles, provenance, accessibility and figure evidence.*
 
 ## 当前定位
 
-`sci-render-kit` 不判断科研结论是否正确，也不把“画出一张图”包装成“完成复现”。它负责把一个声明式 recipe 转换成后端可实现的图件，并留下足够清楚的运行证据。
+`sci-render-kit` 不判断科研结论是否正确，也不把“画出一张图”包装成“完成复现”。它负责把一个声明式 recipe 转换成后端可实现的图件，并留下足够清楚的运行与沟通证据。
 
 ```text
-Recipe + research context + uncertainty semantics
+Recipe + research context + claim bindings + uncertainty + process disclosure
         ↓ P0 schema
 Runtime visual/accessibility rules
         ↓ P1 findings (error / warning / info)
@@ -20,7 +20,7 @@ Render manifest + provenance + accessibility sidecar
         ↓ P2 artifact integrity
 Publisher-target alignment
         ↓ P3 findings
-Figure Evidence Envelope
+Figure Evidence Envelope @2
 ```
 
 ### 科研边界
@@ -29,8 +29,11 @@ Figure Evidence Envelope
 A rendered figure ≠ a true scientific conclusion
 A runtime rule pass ≠ scientific validity
 A publisher profile match ≠ journal acceptance
+A visual-to-claim binding ≠ verified entailment
 An interval ≠ a confidence interval unless its semantics say so
 A checksum ≠ independent reproduction
+Human review ≠ peer review
+AI/tool disclosure ≠ authorship adjudication
 An accessibility sidecar ≠ WCAG conformance of a whole publication
 ```
 
@@ -73,8 +76,12 @@ P0/P1/P2/P3 是**运行阶段**，不是 GitHub Actions、CI、branch protection
 `metadata/recipe.schema.yaml` 约束 chart type、data、aesthetics、output，并支持：
 
 - `research_context`：上游 artifact / evidence / provenance / claim 引用
+- `research_context.claim_bindings`：显式 `visual_ref -> claim_refs[]` 沟通关系
+- `process_disclosure`：AI assistance / tool identifiers / human-review state
 - `uncertainty.kind` / `uncertainty.semantics` / `uncertainty.source_ref`
 - `accessibility`：text alternative、redundant encoding、adjacent pairs
+
+Schema 通过只说明 recipe 结构符合当前声明，不证明 claim、统计分析、AI disclosure 或 publisher compliance 正确。
 
 ### P1 — Visual / accessibility semantics
 
@@ -102,9 +109,9 @@ Publisher profile 是带来源状态的机器可读 preset，不是官方 submis
 
 P3 mismatch 默认是 warning；profile 内明确 `acceptance_claim: false`。
 
-## Research context 与 uncertainty
+## Research context、claim binding 与 uncertainty
 
-Recipe 可以把上游研究证据带到图件 handoff：
+Recipe 可以把上游研究证据和 claim 关系带到图件 handoff：
 
 ```yaml
 research_context:
@@ -112,6 +119,11 @@ research_context:
   evidence_envelope_ref: evidence/run-042.evidence.json
   provenance_ref: provenance/run-042.prov.json
   claim_refs: [claim_1, claim_2]
+  claim_bindings:
+    - visual_ref: series:treated
+      claim_refs: [claim_2]
+      relation: illustrates
+      evidence_ref: evidence/run-042.evidence.json
 
 uncertainty:
   kind: bootstrap-interval
@@ -119,6 +131,18 @@ uncertainty:
   semantics: "95% percentile bootstrap interval over declared resamples"
   source_ref: analysis-042
 ```
+
+允许的 claim binding relation：
+
+```text
+supports
+illustrates
+contextualizes
+compares
+derived-from
+```
+
+这些只是 recipe **显式声明的沟通关系**。renderer 不分析标题、图例或像素来猜测缺失绑定，也不验证逻辑蕴含、因果支持或 evidence sufficiency。
 
 允许的 uncertainty kinds 包括：
 
@@ -135,25 +159,58 @@ heuristic-bound
 
 只有明确声明统计语义时，区间才应被描述成 confidence / credible interval。
 
+## Process disclosure
+
+Recipe 可以可选声明图件生成/准备过程：
+
+```yaml
+process_disclosure:
+  ai_assistance: used
+  ai_tools:
+    - provider/model or tool identifier declared by the author
+  human_review: reviewed
+  disclosure_ref: methods/figure-disclosure.md
+```
+
+字段语义是**过程披露**，不是作者资格或科学审查：
+
+```text
+ai_assistance: none|used|not_declared
+human_review: reviewed|partial|not_reviewed|not_declared
+```
+
+缺失字段不会被解释成 `none` 或 `reviewed`。`ai_tools` 是人工/上游系统声明的标识，仓库不会向厂商 registry 自动验真。
+
 ## Figure Evidence Envelope
 
 `core/figure_evidence.py` 输出：
 
 ```text
-sci-render-kit/figure-evidence@1
+sci-render-kit/figure-evidence@2
 ```
 
 它汇总：
 
 - figure / recipe / profile / manifest / provenance / accessibility sidecar 的 SHA-256 引用
 - backend 与 output identity
-- `research_context`
+- 上游 `research_context`
+- `sci-render-kit/figure-claim-binding@1`：figure-level claim refs + visual-to-claim bindings
+- `sci-render-kit/process-disclosure@1`：AI assistance / tools / human-review disclosure
 - `uncertainty`
 - runtime validation findings
 - local reproducibility level
 - `scientific_validity_claim: false`
+- `statistical_validity_claim: false`
+- `causal_validity_claim: false`
+- `authorship_claim: false`
+- `peer_review_claim: false`
+- `publisher_acceptance_claim: false`
 
-这是与 `epistemic-pipeline/evidence-envelope@1` 等上游对象衔接的项目 handoff contract，不是外部标准。
+`claim_communication.inferred_bindings` 固定为 `false`：只有 recipe 显式声明的绑定会进入证据包。
+
+这是与 `epistemic-pipeline/evidence-envelope@2` 等上游对象衔接的项目 handoff contract，不是外部标准。
+
+详细语义见 [Figure Claim & Process Disclosure Contract](FIGURE_CLAIM_CONTRACT.md)。
 
 ## Backend truth
 
@@ -224,6 +281,8 @@ make test
 ## 文档
 
 - [Research Contract](RESEARCH_CONTRACT.md)
+- [Figure Claim & Process Disclosure Contract](FIGURE_CLAIM_CONTRACT.md)
+- [Frontier Alignment](FRONTIER_ALIGNMENT.md)
 - [Architecture](ARCHITECTURE.md)
 - [Profile Guide](profiles/README.md)
 - [Examples](examples/README.md)
