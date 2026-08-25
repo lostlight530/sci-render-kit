@@ -1,17 +1,21 @@
 # Architecture — sci-render-kit
 
+> Calibrated 2026-08-26. This document describes scientific-figure runtime and evidence semantics, not GitHub platform governance.
+
 ## 1. Thesis
 
-A scientific figure is not only pixels. It is a bounded transformation from declared data/specification into a visual artifact plus evidence describing what was rendered, under which backend/profile/environment, and what the runtime checks actually established.
+A scientific figure is not only pixels. It is a bounded transformation from declared data/specification into a visual artifact plus evidence describing what was rendered, which upstream claims it is declared to communicate, under which backend/profile/process context, and what the runtime checks actually established.
 
 The canonical architecture separates:
 
-1. **declaration** — recipe, research context, uncertainty semantics, accessibility intent;
+1. **declaration** — recipe, research context, claim bindings, uncertainty semantics, process disclosure, accessibility intent;
 2. **runtime validation** — explicit machine rules with severity;
 3. **capability resolution** — what the selected backend can actually produce;
 4. **rendering** — backend-specific implementation;
 5. **artifact evidence** — manifest, provenance, accessibility and figure-evidence sidecars;
-6. **publisher-target alignment** — sourced preset comparison, not acceptance certification.
+6. **claim communication** — explicit visual-to-claim references, never inferred truth;
+7. **process disclosure** — declared AI assistance/tool and human-review context;
+8. **publisher-target alignment** — sourced preset comparison, not acceptance certification.
 
 ## 2. Canonical flow
 
@@ -19,7 +23,11 @@ The canonical architecture separates:
 [YAML Recipe]
   data / aesthetics / output
   research_context
+    ├─ artifact/evidence/provenance refs
+    ├─ claim_refs[]
+    └─ claim_bindings[]
   uncertainty
+  process_disclosure
   accessibility
         ↓
 [P0 JSON Schema]
@@ -40,7 +48,9 @@ The canonical architecture separates:
         ↓
 [P3 Publisher-target Alignment]
         ↓
-[figure-evidence@1]
+[figure-evidence@2]
+  ├─ figure-claim-binding@1
+  └─ process-disclosure@1
 ```
 
 P0–P3 are runtime phases. They are not GitHub merge gates.
@@ -49,19 +59,73 @@ P0–P3 are runtime phases. They are not GitHub merge gates.
 
 ### 3.1 Recipe identity
 
-`metadata/recipe.schema.yaml` is the canonical recipe contract. The recipe file has a byte-level SHA-256; its structured `data` object has a canonical JSON SHA-256 in backend evidence. These identities answer different questions and must not be conflated.
+`metadata/recipe.schema.yaml` is the canonical recipe contract. The recipe file has a byte-level SHA-256; its structured recipe object has a canonical JSON SHA-256 in figure evidence. These identities answer different questions and must not be conflated.
 
 ### 3.2 Research context
 
-`research_context` can carry references such as an upstream artifact ID, evidence-envelope path, provenance path and claim IDs. These references are handoff metadata; the renderer does not independently validate the scientific truth of upstream claims.
+`research_context` can carry references such as:
 
-### 3.3 Uncertainty semantics
+```text
+artifact_id
+source_refs[]
+evidence_envelope_ref
+provenance_ref
+data_artifact_ref
+claim_refs[]
+claim_bindings[]
+```
+
+These references are handoff metadata. The renderer does not independently validate the scientific truth of upstream claims or dereference opaque URIs automatically.
+
+### 3.3 Claim communication
+
+A broad `claim_refs[]` list associates the figure with upstream claim IDs.
+
+For finer-grained auditing, `claim_bindings[]` declares relationships such as:
+
+```yaml
+- visual_ref: series:treated
+  claim_refs: [claim_2]
+  relation: illustrates
+  evidence_ref: evidence/run-042.evidence.json
+```
+
+The supported relation vocabulary is intentionally small:
+
+```text
+supports
+illustrates
+contextualizes
+compares
+derived-from
+```
+
+The semantics are **declarative communication intent**, not automatic entailment.
+
+The renderer does not inspect the title, legend, data values, or image pixels to infer missing bindings. `figure-evidence@2` records `inferred_bindings: false`.
+
+### 3.4 Uncertainty semantics
 
 An interval must state what it means. `uncertainty.kind` distinguishes standard error, standard deviation, confidence/credible/bootstrap/quantile intervals, min-max ranges and heuristic bounds.
 
 A pair of lower/upper numbers is never automatically promoted to a confidence interval. Coverage/frequentist/Bayesian semantics remain the responsibility of the upstream analysis that produced the interval.
 
-### 3.4 Accessibility intent
+### 3.5 Process disclosure
+
+`process_disclosure` optionally declares:
+
+```text
+ai_assistance
+ai_tools[]
+human_review
+disclosure_ref
+```
+
+The renderer records these fields in `sci-render-kit/process-disclosure@1` but does not use them to infer scientific validity, authorship, peer review or publisher compliance.
+
+Missing values become `not_declared`, never silently `none` or `reviewed`.
+
+### 3.6 Accessibility intent
 
 Recipe-level accessibility remains separate from publisher profiles:
 
@@ -98,6 +162,8 @@ This matters because these conditions are not equivalent:
 
 One boolean “quality gate passed” cannot faithfully represent all of them.
 
+The schema validates claim-binding/process-disclosure structure, but the runtime does not turn those declarations into a scientific truth check.
+
 ## 5. Accessibility / WCAG scope
 
 The runtime supports selected WCAG 2.2 design boundaries without claiming whole-publication conformance:
@@ -124,6 +190,8 @@ Every external profile exposes `source_url`, `verified_date`, `source_status` an
 A profile can therefore say “reverified publisher guidance” or “historical local snapshot” instead of silently presenting every number as equally current.
 
 `acceptance_claim: false` is the default scientific boundary.
+
+Process disclosure is orthogonal: `human_review: reviewed` or `ai_assistance: used` does not change P3 into a publisher-policy compliance engine.
 
 ## 7. Backend plane
 
@@ -153,9 +221,17 @@ The R adapter records the same `render-manifest@2` identity categories and the R
 
 The generated HTML pins `@observablehq/plot@0.6.17/+esm`. The manifest records that browser viewing still requires the CDN/network, so the artifact must not be described as offline environment-complete evidence.
 
+Claim-binding and process-disclosure records live in the figure evidence layer; rendering backends are not required to understand or verify their epistemic meaning.
+
 ## 8. Figure evidence plane
 
-`core/figure_evidence.py` creates `sci-render-kit/figure-evidence@1` after successful artifact checks.
+`core/figure_evidence.py` creates:
+
+```text
+sci-render-kit/figure-evidence@2
+```
+
+after successful artifact checks.
 
 It references available artifacts with SHA-256 rather than duplicating payloads and records:
 
@@ -166,11 +242,50 @@ It references available artifacts with SHA-256 rather than duplicating payloads 
 - uncertainty declaration;
 - runtime findings;
 - local reproducibility semantics;
-- `scientific_validity_claim: false`.
+- `figure-claim-binding@1` communication records;
+- `process-disclosure@1` AI/human-review metadata;
+- explicit scientific/statistical/causal/authorship/peer-review/publisher false-claim flags.
 
-This is the project-level bridge from research analysis evidence to scientific communication. It is intentionally separate from RO-Crate and W3C PROV semantics.
+### 8.1 Claim communication subprofile
 
-## 9. Reproducibility model
+```text
+sci-render-kit/figure-claim-binding@1
+```
+
+contains:
+
+```text
+claim_refs[]
+bindings[]
+binding_count
+inferred_bindings: false
+```
+
+A binding is useful because a later auditor can determine whether `panel:A` or `series:treated` was intended to communicate a particular upstream claim. It is not useful as a truth oracle.
+
+### 8.2 Process-disclosure subprofile
+
+```text
+sci-render-kit/process-disclosure@1
+```
+
+contains declared AI assistance/tool identifiers and human-review state.
+
+The field set is compatible in spirit with `auto-doc-engine` process disclosure and downstream/upstream references from `epistemic-pipeline/evidence-envelope@2`, but no repository import or shared runtime is required.
+
+## 9. Why the 2026-08-26 delta matters
+
+Recent autonomous-science work distinguishes generic operation telemetry from scientific claim/artifact auditability.
+
+- *Artifact-centered Claim-aware Observability for Autonomous Scientific Agents* argues for portable relations among claims, evidence, artifacts, runs and verification records rather than relying only on model-call logs.
+- *EarthVerse* evaluates package-scoped scientific investigations and reports a large gap between completing local answer units and satisfying strict end-to-end consistency across evidence, units, calculations and interpretation.
+- Nature Computational Science's August 2026 editorial position emphasizes transparency, accountability and human oversight in AI-assisted scientific publishing.
+
+For a visualization system, the bounded consequence is clear:
+
+> preserve what the recipe says a visual object communicates, preserve the process context, and do not silently upgrade either record into scientific validity.
+
+## 10. Reproducibility model
 
 Local terminology:
 
@@ -179,9 +294,9 @@ Local terminology:
 - **R2 Environment-bounded** — sufficient runtime/dependency assumptions are also captured;
 - **R3 Reproduced** — a separate rerun actually occurred and was compared under a declared criterion.
 
-A single successful render cannot self-award R3.
+A single successful render, a claim binding, or a process disclosure cannot self-award R3.
 
-## 10. Experimental plane
+## 11. Experimental plane
 
 Experimental modules remain outside the dispatcher.
 
@@ -193,7 +308,22 @@ Experimental modules remain outside the dispatcher.
 
 Historical filenames may remain for compatibility. Their documentation must describe implemented mechanics, not metaphorical physics.
 
-## 11. Maintenance architecture
+## 12. Cross-repository research architecture
+
+```text
+auto-doc-engine
+  research artifact identity + declared AI/human-review process context
+        ↓
+epistemic-pipeline
+  claim-index@1 + evidence-envelope@2 + provider/review disclosure
+        ↓
+sci-render-kit
+  figure-claim-binding@1 + uncertainty + accessibility + figure-evidence@2
+```
+
+The repositories remain independently runnable. Interoperability is expressed through artifacts and contracts, not hidden imports.
+
+## 13. Maintenance architecture
 
 Optional local commands may inspect repository contracts:
 
@@ -209,9 +339,12 @@ Hard rules for future work:
 2. A warning is not automatically an error.
 3. Publisher alignment is not publisher acceptance.
 4. Provenance is not truth.
-5. Interval semantics must be declared rather than guessed.
-6. Color semantics are project conventions unless stronger evidence exists.
-7. Whole-publication accessibility cannot be inferred from a figure sidecar.
-8. No experimental module may return fabricated metrics or pretend to implement an algorithm it does not implement.
-9. New evidence profiles must distinguish byte identity, structured identity and scientific meaning.
-10. Public docs, schemas, runtime rules and backend behavior must describe the same capability boundary.
+5. Visual-to-claim binding is not verified entailment.
+6. AI disclosure is not authorship adjudication.
+7. Human review is not peer review or scientific truth.
+8. Interval semantics must be declared rather than guessed.
+9. Color semantics are project conventions unless stronger evidence exists.
+10. Whole-publication accessibility cannot be inferred from a figure sidecar.
+11. No experimental module may return fabricated metrics or pretend to implement an algorithm it does not implement.
+12. New evidence profiles must distinguish byte identity, structured identity and scientific meaning.
+13. Public docs, schemas, runtime rules and backend behavior must describe the same capability boundary.
