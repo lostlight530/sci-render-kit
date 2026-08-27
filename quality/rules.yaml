@@ -1,5 +1,5 @@
 title: "Runtime Quality Rules"
-profile: sci-render-kit/runtime-quality@1
+profile: sci-render-kit/runtime-quality
 description: >
   渲染前后执行的项目级质量规则。规则用于检查明确的结构、可访问性、输出完整性与
   publisher-target preset 对齐属性；它们不是 GitHub 门禁、科学真值判定或期刊官方验证器。
@@ -58,11 +58,11 @@ rules:
       - id: text-alternative
         severity: error
         name: "文本替代"
-        rule: "require_alt_text=true 时必须提供 alt_text，面向 SC 1.1.1 支持"
+        rule: "require_alt_text=true 时必须提供 alt_text，面向 WCAG 2.2 SC 1.1.1 支持"
       - id: non-color-cue
         severity: error
         name: "非颜色冗余编码"
-        rule: "redundant_encoding=required 的多系列 line/scatter/bar 必须有可区分 marker/line_style/hatch，面向 SC 1.4.1"
+        rule: "redundant_encoding=required 的多系列 line/scatter/bar 必须有可区分 marker/line_style/hatch，面向 WCAG 2.2 SC 1.4.1"
       - id: cvd-contrast
         severity: warning
         name: "CVD 模拟增强检查"
