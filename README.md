@@ -1,138 +1,86 @@
 # sci-render-kit
 
-**声明式科研图件编译：把数据语义、claim 绑定、可访问性、出版目标、后端边界与证据旁车放进同一条可检查链**  
-*Declarative scientific-figure compilation with bounded claim bindings, publisher profiles, provenance, accessibility and figure evidence.*
+> Declarative scientific-figure compilation with explicit uncertainty semantics, accessibility intent, publisher-target boundaries, claim-to-visual communication, runtime audit and portable figure evidence.
 
-## 当前定位
+[Architecture](ARCHITECTURE.md) · [Research Contract](RESEARCH_CONTRACT.md) · [Figure Claim Contract](FIGURE_CLAIM_CONTRACT.md) · [Frontier Alignment](FRONTIER_ALIGNMENT.md) · [Four-Day Consolidation](FOUR_DAY_CONSOLIDATION.md) · [Examples](examples/README.md)
 
-`sci-render-kit` 不判断科研结论是否正确，也不把“画出一张图”包装成“完成复现”。它负责把一个声明式 recipe 转换成后端可实现的图件，并留下足够清楚的运行与沟通证据。
+## Positioning
 
-```text
-Recipe + research context + claim bindings + uncertainty + process disclosure
-        ↓ P0 schema
-Runtime visual/accessibility rules
-        ↓ P1 findings (error / warning / info)
-Backend capability resolution
-        ↓
-Render
-        ↓
-Render manifest + provenance + accessibility sidecar
-        ↓ P2 artifact integrity
-Publisher-target alignment
-        ↓ P3 findings
-Figure Evidence Envelope @2
-```
-
-### 科研边界
+`sci-render-kit` does **not** decide whether a scientific conclusion is correct. It compiles a declarative recipe into a supported visual artifact while keeping communication semantics inspectable.
 
 ```text
-A rendered figure ≠ a true scientific conclusion
-A runtime rule pass ≠ scientific validity
-A publisher profile match ≠ journal acceptance
-A visual-to-claim binding ≠ verified entailment
-An interval ≠ a confidence interval unless its semantics say so
-A checksum ≠ independent reproduction
-Human review ≠ peer review
-AI/tool disclosure ≠ authorship adjudication
-An accessibility sidecar ≠ WCAG conformance of a whole publication
+recipe
+  ↓ schema structure
+visual/accessibility runtime checks
+  ↓
+claim/process communication audit
+  ↓
+backend render
+  ↓
+artifact/publisher-target checks
+  ↓
+render manifest + provenance/accessibility sidecars
+  ↓
+figure evidence
 ```
 
-## 快速开始
+The repository separates “can this figure be rendered?”, “does it satisfy project visual/accessibility predicates?”, and “are its declared claim-to-visual relations internally inspectable?” from “is the science true?”.
 
-```bash
-python3 sci_render.py recipes/line-chart.yaml --profile presentation --backend matplotlib
-python3 sci_render.py recipes/accessible-line-chart.yaml --profile presentation --backend matplotlib
-```
+## Stable internal identifiers
 
-成功路径根据实际能力生成：
+Project-owned identifiers are intentionally unversioned:
 
 ```text
-<figure>
-<figure>.manifest.json
-<figure>.prov.json       # Matplotlib path
-<figure>.a11y.json       # recipe declares accessibility
-<figure>.evidence.json   # unified CLI figure handoff
+sci-render-kit/runtime-quality
+sci-render-kit/render-manifest
+sci-render-kit/provenance
+sci-render-kit/figure-claim-binding
+sci-render-kit/figure-claim-audit
+sci-render-kit/process-disclosure
+sci-render-kit/figure-evidence
 ```
 
-## Runtime rules，不是 GitHub 门禁
+Decorative `@1/@2` or `/v1` suffixes are not used as pseudo-releases. Real external/runtime versions remain explicit when they are actual evidence—for example WCAG 2.2 references, Matplotlib/NumPy/Python versions recorded by a backend, or the pinned Observable Plot dependency.
 
-当前 active catalog 是：
+## Capability map
 
-```text
-quality/rules.yaml
-profile: sci-render-kit/runtime-quality@1
-```
+| Surface | Status | Boundary |
+|---|---|---|
+| `metadata/recipe.schema.yaml` | Implemented | validates declared recipe structure; schema success is not scientific validity |
+| `sci_render.py` | Implemented | unified schema/rule/backend/evidence path |
+| `core/accessibility.py` | Implemented | text alternatives and redundant style intent; not whole-publication WCAG certification |
+| `core/color_encoding.py`, `core/palettes.py`, `core/cvd_simulation.py` | Implemented | project visual safeguards, not universal perceptual guarantees |
+| `core/uncertainty_legend.py` | Implemented | explicit uncertainty terminology; does not infer statistical validity |
+| `core/claim_binding_audit.py` | Implemented | audits declared claim/process/reference consistency without reading pixels or deciding truth |
+| `core/figure_evidence.py` | Implemented | portable evidence index for figure/recipe/backend/upstream refs/audits |
+| Matplotlib backend | Implemented | PNG/SVG/PDF plus manifest/provenance evidence |
+| ggplot2 backend | Implemented where dependencies exist | PNG/SVG/PDF; environment-dependent |
+| Observable backend | Implemented | HTML; pinned view-time network dependency unless vendored |
+| experimental metaphorical modules | Experimental | not part of canonical scientific-communication contract |
 
-规则输出结构化 finding：
+## Recipe research context
 
-- `error`：当前声明无法可靠实现或产物契约失败，停止本次 render
-- `warning`：项目 safeguard / publisher-target mismatch，保留为证据但不冒充失败
-- `info`：解释性记录
-
-P0/P1/P2/P3 是**运行阶段**，不是 GitHub Actions、CI、branch protection 或 merge gate。
-
-### P0 — Recipe structure
-
-`metadata/recipe.schema.yaml` 约束 chart type、data、aesthetics、output，并支持：
-
-- `research_context`：上游 artifact / evidence / provenance / claim 引用
-- `research_context.claim_bindings`：显式 `visual_ref -> claim_refs[]` 沟通关系
-- `process_disclosure`：AI assistance / tool identifiers / human-review state
-- `uncertainty.kind` / `uncertainty.semantics` / `uncertainty.source_ref`
-- `accessibility`：text alternative、redundant encoding、adjacent pairs
-
-Schema 通过只说明 recipe 结构符合当前声明，不证明 claim、统计分析、AI disclosure 或 publisher compliance 正确。
-
-### P1 — Visual / accessibility semantics
-
-主要规则包括：
-
-- `text-alternative`：`require_alt_text: true` 时必须提供短文本替代
-- `non-color-cue`：需要 redundant encoding 时，颜色不能是唯一系列区分方式
-- `declared-adjacency`：只对声明为实际相邻且理解所需的图形边界检查 3:1
-- `text-contrast`：声明文字颜色时检查文字/背景对比度
-- `palette-adjacency`：可选的全色对项目严格策略，**不是 WCAG 的普遍要求**
-- `cvd-contrast`：Machado 2009 模拟的项目额外 safeguard，**不是 WCAG 强制测试**
-- `palette-name`：注册色板必须与图表语义类型匹配
-
-### P2 — Artifact integrity
-
-检查输出文件、扩展名、render manifest、Matplotlib provenance sidecar、可访问性 sidecar 等当前实现的 artifact contract。
-
-### P3 — Publisher-target alignment
-
-Publisher profile 是带来源状态的机器可读 preset，不是官方 submission validator。
-
-- `nature`：2026-08-24 已重新核对当前 Nature figure guidance 的主图尺寸/字体/编辑性与初稿 raster guidance
-- `science` / `cell` / `ieee`：保留 2026-08-19 snapshot，并明确标记 `snapshot_not_reverified_2026_08_24`
-- `presentation`：内部 preset，无外部 publisher authority
-
-P3 mismatch 默认是 warning；profile 内明确 `acceptance_claim: false`。
-
-## Research context、claim binding 与 uncertainty
-
-Recipe 可以把上游研究证据和 claim 关系带到图件 handoff：
+A recipe can explicitly reference upstream research artifacts:
 
 ```yaml
 research_context:
-  artifact_id: analysis-042
-  evidence_envelope_ref: evidence/run-042.evidence.json
-  provenance_ref: provenance/run-042.prov.json
+  artifact_id: result-figure
+  evidence_envelope_ref: ../epistemic/evidence/run.evidence.json
+  claim_audit_ref: ../epistemic/claim-audits/run.claim-audit.json
+  provenance_ref: ../epistemic/provenance/run.prov.json
+  data_artifact_ref: ./data/result.csv
   claim_refs: [claim_1, claim_2]
   claim_bindings:
-    - visual_ref: series:treated
-      claim_refs: [claim_2]
+    - visual_ref: panel:A
+      claim_refs: [claim_1]
       relation: illustrates
-      evidence_ref: evidence/run-042.evidence.json
-
-uncertainty:
-  kind: bootstrap-interval
-  level: 0.95
-  semantics: "95% percentile bootstrap interval over declared resamples"
-  source_ref: analysis-042
+    - visual_ref: series:treatment
+      claim_refs: [claim_2]
+      relation: supports
+      evidence_ref: ../epistemic/claim-audits/run.claim-audit.json
 ```
 
-允许的 claim binding relation：
+Supported declared relation vocabulary:
 
 ```text
 supports
@@ -142,157 +90,221 @@ compares
 derived-from
 ```
 
-这些只是 recipe **显式声明的沟通关系**。renderer 不分析标题、图例或像素来猜测缺失绑定，也不验证逻辑蕴含、因果支持或 evidence sufficiency。
-
-允许的 uncertainty kinds 包括：
+These are communication labels supplied by the recipe author/system.
 
 ```text
-standard-error
-standard-deviation
-confidence-interval
-credible-interval
-min-max-range
-quantile-interval
-bootstrap-interval
-heuristic-bound
+visual binding != verified entailment
+supports label != evidence sufficiency
+claim reference != claim truth
 ```
 
-只有明确声明统计语义时，区间才应被描述成 confidence / credible interval。
+The renderer never infers claim bindings from figure titles, legends, color or pixels.
+
+## Figure Claim Audit
+
+`core/claim_binding_audit.py` emits runtime findings under:
+
+```text
+sci-render-kit/figure-claim-audit
+```
+
+It checks declared metadata such as:
+
+- malformed or duplicate bindings;
+- binding claims absent from the figure-level claim index;
+- `supports` relations with no declared evidence/audit context;
+- contradictory AI-assistance/tool disclosure;
+- local-looking references that do not resolve;
+- a visual object participating in multiple declared relations.
+
+The audit does **not**:
+
+- inspect figure pixels;
+- query external literature;
+- verify citations;
+- determine entailment;
+- judge statistical, causal or scientific truth.
+
+A warning that `supports` lacks an evidence reference means only that the recipe lacks inspectable reference context. It is not a verdict that scientific support is insufficient.
+
+## Two runtime evidence planes
+
+The unified CLI deliberately keeps two summaries separate:
+
+```text
+runtime_validation
+  profile: sci-render-kit/runtime-quality
+
+communication_audit
+  profile: sci-render-kit/figure-claim-audit
+```
+
+`runtime-quality` covers visual/accessibility/artifact/publisher-target predicates. `figure-claim-audit` covers claim/process/reference metadata consistency.
+
+A claim warning is not relabelled as a plotting-quality failure, and a DPI/palette warning is not relabelled as a scientific claim problem.
+
+## Figure Evidence
+
+After a successful canonical render, `core/figure_evidence.py` writes `<figure>.evidence.json` under:
+
+```text
+sci-render-kit/figure-evidence
+```
+
+It can index:
+
+```text
+figure byte identity
+recipe canonical/file identity
+target-profile identity
+backend identity
+render/provenance/accessibility sidecars
+upstream evidence envelope
+upstream claim audit
+upstream provenance/data artifact refs
+whole-figure claim refs
+visual-to-claim bindings
+process disclosure
+uncertainty semantics
+runtime validation
+communication audit
+R1 replay-addressable status
+```
+
+Local referenced files can receive SHA-256 identity. Opaque references are retained without remote dereference.
+
+Scientific validity is never inherited from an upstream reference.
 
 ## Process disclosure
 
-Recipe 可以可选声明图件生成/准备过程：
+Recipes may declare:
 
 ```yaml
 process_disclosure:
   ai_assistance: used
   ai_tools:
-    - provider/model or tool identifier declared by the author
-  human_review: reviewed
-  disclosure_ref: methods/figure-disclosure.md
+    - declared provider/model/tool identifier
+  human_review: partial
+  disclosure_ref: methods.md
 ```
 
-字段语义是**过程披露**，不是作者资格或科学审查：
+Vocabulary:
 
 ```text
-ai_assistance: none|used|not_declared
-human_review: reviewed|partial|not_reviewed|not_declared
+ai_assistance: none | used | not_declared
+human_review: reviewed | partial | not_reviewed | not_declared
 ```
-
-缺失字段不会被解释成 `none` 或 `reviewed`。`ai_tools` 是人工/上游系统声明的标识，仓库不会向厂商 registry 自动验真。
-
-## Figure Evidence Envelope
-
-`core/figure_evidence.py` 输出：
 
 ```text
-sci-render-kit/figure-evidence@2
+AI disclosure != authorship adjudication
+human review != peer review
+provider/tool label != output validity
 ```
 
-它汇总：
+Unknown tool/model versions must not be guessed.
 
-- figure / recipe / profile / manifest / provenance / accessibility sidecar 的 SHA-256 引用
-- backend 与 output identity
-- 上游 `research_context`
-- `sci-render-kit/figure-claim-binding@1`：figure-level claim refs + visual-to-claim bindings
-- `sci-render-kit/process-disclosure@1`：AI assistance / tools / human-review disclosure
-- `uncertainty`
-- runtime validation findings
-- local reproducibility level
-- `scientific_validity_claim: false`
-- `statistical_validity_claim: false`
-- `causal_validity_claim: false`
-- `authorship_claim: false`
-- `peer_review_claim: false`
-- `publisher_acceptance_claim: false`
+## Uncertainty semantics
 
-`claim_communication.inferred_bindings` 固定为 `false`：只有 recipe 显式声明的绑定会进入证据包。
+A recipe that displays uncertainty should declare what it is:
 
-这是与 `epistemic-pipeline/evidence-envelope@2` 等上游对象衔接的项目 handoff contract，不是外部标准。
+```yaml
+uncertainty:
+  kind: confidence-interval
+  level: 0.95
+  semantics: "95% interval produced by the declared analysis method"
+  source_ref: analysis.json
+```
 
-详细语义见 [Figure Claim & Process Disclosure Contract](FIGURE_CLAIM_CONTRACT.md)。
+Supported kinds include standard error/deviation, confidence/credible/bootstrap/quantile intervals, min-max ranges, heuristic bounds, and not-applicable.
 
-## Backend truth
+The existence of lower/upper bounds is not enough to call them a confidence interval. The renderer records declared semantics; it does not independently validate the statistical procedure.
 
-| Backend | Outputs | 当前证据边界 |
-|---|---|---|
-| Matplotlib | PNG / SVG / PDF | `render-manifest@2` + `provenance@2`; non-color series styling implemented |
-| ggplot2 | PNG / SVG / PDF | `render-manifest@2`; R environment recorded when run |
-| Observable Plot | HTML | `render-manifest@2`; generated HTML pins Plot 0.6.17 ESM CDN and records browser network dependency |
+## Accessibility semantics
 
-Matplotlib 不再偷偷把声明 DPI 强制抬到 300；最终 DPI 来自 profile/recipe 的实际声明。
+The project uses WCAG 2.2 concepts carefully:
 
-Matplotlib accessibility adapter 通过显式 `render_logic_fn` / `metadata_fn` 注入扩展 base renderer，不再在 render 期间修改全局 base 函数。
+- **SC 1.4.1 Use of Color** — color should not be the sole visual means when information requires another cue;
+- **SC 1.4.11 Non-text Contrast** — the 3:1 requirement is relevant to graphical boundaries/components required for understanding;
+- **SC 1.4.3 Contrast (Minimum)** — text contrast support where declared;
+- **SC 1.1.1 Non-text Content** — text-alternative support.
 
-## Accessibility
+`adjacency_check=true` intentionally applies a stricter project all-pairs palette safeguard. It is **not** presented as a universal WCAG requirement.
 
-`core/accessibility.py` 生成 `sci-render-kit/a11y@1` sidecar，并明确：
+CVD simulation is an additional project safeguard, not a WCAG-mandated certification test.
+
+## Publisher-target profiles
+
+Publisher/profile presets are configuration targets. Runtime checks can compare explicit properties such as preferred/required formats, declared raster DPI and dimensions when the profile contains those values.
 
 ```text
-conformance_claim: false
+profile alignment != publisher certification
+profile alignment != acceptance
+profile alignment != complete submission compliance
 ```
 
-当前设计支持映射到 WCAG 2.2：
+The repository does not claim to be an official Nature/Science/Cell/IEEE validator.
 
-- SC 1.1.1 — text alternative support
-- SC 1.4.1 — color is not the only required information channel
-- SC 1.4.11 — required graphical object/boundary contrast where applicable
+## Backends and real runtime versions
 
-完整 PDF / HTML / 论文的 accessibility 仍取决于发布层如何关联文本、图件与交互内容。
+Project profile IDs are unversioned, but runtime evidence records actual software versions where known:
 
-## Color semantics
+- Matplotlib provenance records Matplotlib, NumPy and Python versions;
+- ggplot2 manifest records installed ggplot2 and R runtime versions;
+- Observable HTML pins `@observablehq/plot` 0.6.17 and records the view-time dependency.
 
-`CognitiveColorEncoder` 类名为兼容保留。当前实现语义是：
+These are factual execution/dependency identities, not internal release decoration.
 
-> project color convention + sRGB color utilities
+## Reproducibility
 
-`positive -> green`、`stable -> blue` 等是项目映射，不是普世认知心理规律。WCAG contrast 使用当前 sRGB relative-luminance 计算；CVD simulation 是额外 robustness signal。
+Shared project terminology:
 
-## Experimental modules
+- **R0 Traceable** — artifact/source identity can be located.
+- **R1 Replay-addressable** — recipe/data/profile/backend identities describe the intended replay.
+- **R2 Environment-bounded** — relevant execution environment/dependencies are also captured.
+- **R3 Reproduced** — a separate rerun occurred and was compared under a declared criterion.
 
-Experimental 不等于 canonical capability：
+A manifest, provenance sidecar, figure evidence record or matching hash alone does not establish R3.
 
-- `projection.py`：真实 centered-SVD PCA + rank-based trustworthiness / continuity；t-SNE 未实现时明确 `NotImplementedError`
-- `uncertainty_legend.py`：typed interval/heuristic-bound visual metadata，不再借海森堡不确定性解释普通区间
-- `superposition.py`：deterministic variant layering；量子干涉未实现
-- `time_crystal.py`：periodic waveform utility；不是物理 time-crystal simulator
-- `observer_dashboard.py`：caller-supplied interaction telemetry accumulator；不自动推断 comprehension 或因果
+## Cross-repository handoff
 
-## Reproducibility semantics
-
-本仓使用局部 R0–R3 术语：
-
-- **R0 Traceable** — figure 与声明来源可关联
-- **R1 Replay-addressable** — recipe/data/profile/output identity 与 hash 可定位
-- **R2 Environment-bounded** — 运行环境与关键依赖边界也被记录
-- **R3 Reproduced** — 实际执行了独立 rerun，并按声明 criterion 比较
-
-生成 `.manifest.json` / `.prov.json` / `.evidence.json` 本身不等于 R3。
-
-## 本地维护
-
-```bash
-python -m pip install pyyaml jsonschema matplotlib numpy pillow
-make test
+```text
+auto-doc-engine
+artifact-record
+      ↓
+epistemic-pipeline
+claim-verification + evidence-envelope
+      ↓
+sci-render-kit
+figure-claim-audit + figure-evidence
 ```
 
-这些命令只是可选的本地维护工具。**仓库不需要 GitHub Actions / CI / CodeQL / merge gate 来定义科研架构。** 本轮维护不以运行测试为目标。
+Preferred upstream identifiers:
 
-## 文档
+```text
+auto-doc-engine/artifact-record
+epistemic-pipeline/claim-verification
+epistemic-pipeline/evidence-envelope
+```
 
-- [Research Contract](RESEARCH_CONTRACT.md)
-- [Figure Claim & Process Disclosure Contract](FIGURE_CLAIM_CONTRACT.md)
-- [Frontier Alignment](FRONTIER_ALIGNMENT.md)
-- [Architecture](ARCHITECTURE.md)
-- [Profile Guide](profiles/README.md)
-- [Examples](examples/README.md)
-- [Agent Guide](AGENTS.md)
-- [Manifest](MANIFEST.yaml)
+No direct Python import between repositories is required.
 
-## Research software citation
+## Current global research calibration
 
-仓库提供 Citation File Format 1.2.0 `CITATION.cff`。
+The four-day architecture was rechecked against recent 2026 work on re-openable provenance, transparent AI-assisted scientific publishing, artifact-centered claim-aware observability, evidence-constrained claim qualification, trajectory-to-evidence conversion and strict end-to-end scientific-agent evaluation. Those directions support making claim/artifact/process relations inspectable; they do not certify this repository.
 
-## License
+## Scientific-integrity boundaries
 
-MIT License
+- Render success is not scientific validity.
+- A figure is not evidence merely because it exists.
+- A visual binding is not verified entailment.
+- A `supports` label is not evidence sufficiency.
+- Uncertainty labels are not statistically valid unless the upstream method justifies them.
+- Accessibility checks support design; they do not certify an entire publication.
+- Publisher-target alignment is not publisher acceptance.
+- Provenance is not truth.
+- Human review is not peer review.
+- Metadata is not reproduction.
+
+## Governance boundary
+
+No GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions or merge gates are part of this research architecture. Existing local checks remain optional maintenance aids. No test suite is used as the completion criterion for the 2026-08-27 consolidation.
