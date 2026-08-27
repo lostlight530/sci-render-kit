@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """sci-render-kit unified CLI: schema, runtime rules, backend dispatch, evidence.
 
-The CLI evaluates explicit project rules before and after rendering. Only
-``severity: error`` findings stop the run. Warnings remain evidence; they are
-not GitHub merge policy, scientific-validity decisions, WCAG certification, or
-publisher acceptance decisions.
+The CLI evaluates explicit project rules before and after rendering. It also
+runs the separate ``figure-claim-audit@1`` over declared research/process
+metadata so claim-binding inconsistencies remain visible instead of being
+silently normalized by the evidence writer.
+
+Only ``severity: error`` findings stop the run. Warnings remain evidence; they
+are not GitHub merge policy, scientific-validity decisions, WCAG certification,
+claim-truth decisions, or publisher acceptance decisions.
 """
 
 from __future__ import annotations
@@ -27,6 +31,7 @@ from core.accessibility import (
     resolve_series_styles,
     write_accessibility_manifest,
 )
+from core.claim_binding_audit import audit_claim_communication
 from core.color_encoding import CognitiveColorEncoder
 from core.figure_evidence import build_figure_evidence, write_figure_evidence
 from core.palettes import describe_palette, resolve_categorical
@@ -421,6 +426,8 @@ def main() -> None:
         raise SystemExit(1)
 
     findings = evaluate_pre_render_rules(recipe, profile, rules)
+    claim_audit_findings = audit_claim_communication(recipe)
+    findings.extend(claim_audit_findings)
     print_findings(findings, "P1 runtime findings:")
     if has_errors(findings):
         print("PRE_RENDER_RULE_FAILURE")
