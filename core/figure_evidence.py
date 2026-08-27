@@ -4,8 +4,19 @@
 The figure evidence record is a project-owned cross-tool handoff object. It
 indexes the rendered figure, recipe, publisher/profile preset, backend sidecars,
 upstream research references, declared claim-to-visual bindings, process
-disclosure and runtime-rule findings without claiming that a successful render
-establishes scientific validity, authorship, peer review, or publisher acceptance.
+disclosure and runtime findings without claiming that a successful render
+establishes scientific validity, authorship, peer review, entailment, source
+credibility, or publisher acceptance.
+
+The 2026-08-27 consolidation keeps two runtime evidence planes distinct:
+
+- ``sci-render-kit/runtime-quality@1`` for visual/accessibility/artifact/publisher
+  predicates;
+- ``sci-render-kit/figure-claim-audit@1`` for consistency of declared
+  claim/process/reference metadata.
+
+This prevents a claim-communication warning from being silently re-labelled as
+a plotting-quality rule or vice versa.
 """
 
 from __future__ import annotations
@@ -16,6 +27,11 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, Optional
+
+from core.claim_binding_audit import (
+    PROFILE as CLAIM_AUDIT_PROFILE,
+    summarize_claim_audit,
+)
 
 PROFILE = "sci-render-kit/figure-evidence@2"
 CLAIM_BINDING_PROFILE = "sci-render-kit/figure-claim-binding@1"
@@ -180,7 +196,16 @@ def build_figure_evidence(
     if not output_path.is_file():
         raise ValueError(f"figure output does not exist: {output_path}")
 
-    runtime_validation = summarize_findings(findings)
+    all_findings = [dict(item) for item in findings if isinstance(item, dict)]
+    claim_audit_findings = [
+        item for item in all_findings if item.get("profile") == CLAIM_AUDIT_PROFILE
+    ]
+    runtime_findings = [
+        item for item in all_findings if item.get("profile") != CLAIM_AUDIT_PROFILE
+    ]
+    runtime_validation = summarize_findings(runtime_findings)
+    communication_audit = summarize_claim_audit(claim_audit_findings)
+
     research_context = recipe.get("research_context") or {}
     if not isinstance(research_context, dict):
         research_context = {}
@@ -211,9 +236,11 @@ def build_figure_evidence(
         "artifact_id": research_context.get("artifact_id"),
         "source_refs": _string_list(research_context.get("source_refs")),
         "evidence_envelope": _reference(research_context.get("evidence_envelope_ref")),
+        "claim_audit": _reference(research_context.get("claim_audit_ref")),
         "provenance": _reference(research_context.get("provenance_ref")),
         "data_artifact": _reference(research_context.get("data_artifact_ref")),
         "claim_refs": claim_refs,
+        "scientific_validity_inherited": False,
     }
 
     return {
@@ -253,6 +280,7 @@ def build_figure_evidence(
                 "not verified entailment, evidence sufficiency, or scientific truth"
             ),
         },
+        "communication_audit": communication_audit,
         "process_disclosure": _normalize_process_disclosure(recipe.get("process_disclosure")),
         "uncertainty": {
             "kind": uncertainty.get("kind", "not_declared"),
