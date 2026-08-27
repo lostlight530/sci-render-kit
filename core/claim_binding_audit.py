@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 """Runtime audit for declared claim-to-visual communication relationships.
 
-``sci-render-kit/figure-claim-audit@1`` evaluates only explicit recipe metadata.
+``sci-render-kit/figure-claim-audit`` evaluates only explicit recipe metadata.
 It never inspects pixels, infers claims from titles/legends, dereferences remote
 resources, or decides whether a scientific claim is true.
 
-The audit exists to prevent a more mundane but important failure mode: a recipe
-can be syntactically valid while its handoff metadata is internally
-inconsistent. Examples include duplicate visual bindings, a ``supports``
-relation with no evidence context, or AI tool identifiers declared while the
-AI-assistance field says ``none``.
+The audit exists because a recipe can be syntactically valid while its handoff
+metadata is internally inconsistent. Such inconsistencies become explicit
+findings rather than being silently dropped by the evidence writer.
 """
 
 from __future__ import annotations
@@ -18,7 +16,7 @@ from pathlib import Path
 from typing import Any, Iterable
 from urllib.parse import urlsplit
 
-PROFILE = "sci-render-kit/figure-claim-audit@1"
+PROFILE = "sci-render-kit/figure-claim-audit"
 CLAIM_RELATIONS = {"supports", "illustrates", "contextualizes", "compares", "derived-from"}
 
 
@@ -101,8 +99,6 @@ def audit_claim_communication(recipe: dict) -> list[dict]:
         evidence_ref = str(item.get("evidence_ref") or "").strip()
 
         if not visual_ref or not claim_refs or relation not in CLAIM_RELATIONS:
-            # JSON Schema should normally catch these, but keeping a runtime
-            # finding makes direct callers of this helper fail visibly too.
             findings.append(
                 _issue(
                     "claim-binding-structure",
