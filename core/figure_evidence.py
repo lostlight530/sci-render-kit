@@ -11,7 +11,8 @@ credibility, or publisher acceptance.
 Two evidence planes remain distinct:
 
 - ``sci-render-kit/runtime-quality`` for visual/accessibility/artifact/publisher predicates;
-- ``sci-render-kit/figure-claim-audit`` for consistency of declared claim/process/reference metadata.
+- ``sci-render-kit/figure-claim-audit`` for consistency and coverage of declared
+  claim/process/reference metadata.
 """
 
 from __future__ import annotations
@@ -23,7 +24,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, Optional
 
-from core.claim_binding_audit import PROFILE as CLAIM_AUDIT_PROFILE, summarize_claim_audit
+from core.claim_binding_audit import (
+    PROFILE as CLAIM_AUDIT_PROFILE,
+    claim_communication_coverage,
+    summarize_claim_audit,
+)
 
 PROFILE = "sci-render-kit/figure-evidence"
 CLAIM_BINDING_PROFILE = "sci-render-kit/figure-claim-binding"
@@ -66,7 +71,12 @@ def _file_ref(kind: str, path: str | Path | None) -> Optional[dict]:
     digest = file_sha256(path)
     if not digest:
         return None
-    return {"kind": kind, "path": str(path), "file_sha256": digest}
+    return {
+        "kind": kind,
+        "path": str(path),
+        "file_sha256": digest,
+        "identity_basis": "runtime-observed-local-bytes",
+    }
 
 
 def _reference(value: Any) -> Optional[dict]:
@@ -81,8 +91,10 @@ def _reference(value: Any) -> Optional[dict]:
     if digest:
         result["file_sha256"] = digest
         result["resolution"] = "local-file"
+        result["resolution_basis"] = "runtime-observed-local-filesystem"
     else:
         result["resolution"] = "opaque-reference-not-dereferenced"
+        result["resolution_basis"] = "declared-reference"
     return result
 
 
@@ -116,6 +128,7 @@ def _normalize_claim_bindings(value: Any) -> list[dict]:
             "visual_ref": visual_ref,
             "claim_refs": claim_refs,
             "relation": relation,
+            "assertion_basis": "recipe-declared",
         }
         evidence_ref = str(item.get("evidence_ref") or "").strip()
         note = str(item.get("note") or "").strip()
@@ -143,12 +156,15 @@ def _normalize_process_disclosure(value: Any) -> dict:
     disclosure_ref = str(value.get("disclosure_ref") or "").strip()
     result = {
         "profile": PROCESS_DISCLOSURE_PROFILE,
+        "basis": "recipe-declared",
+        "basis_inferred": False,
+        "automatic_ai_detection_used": False,
         "ai_assistance": ai_assistance,
         "ai_tools": _string_list(value.get("ai_tools")),
         "human_review": human_review,
         "semantics": (
-            "declared figure-generation/communication process metadata only; "
-            "not authorship adjudication, peer review, scientific validity, or publisher compliance"
+            "declared figure-generation/communication process metadata only; not AI-content detection, "
+            "authorship adjudication, peer review, scientific validity, or publisher compliance"
         ),
     }
     if disclosure_ref:
@@ -198,6 +214,7 @@ def build_figure_evidence(
     ]
     runtime_validation = summarize_findings(runtime_findings)
     communication_audit = summarize_claim_audit(claim_audit_findings)
+    communication_audit["coverage"] = claim_communication_coverage(recipe)
 
     research_context = recipe.get("research_context") or {}
     if not isinstance(research_context, dict):
@@ -233,6 +250,7 @@ def build_figure_evidence(
         "provenance": _reference(research_context.get("provenance_ref")),
         "data_artifact": _reference(research_context.get("data_artifact_ref")),
         "claim_refs": claim_refs,
+        "assertion_basis": "recipe-declared-with-optional-local-resolution",
         "scientific_validity_inherited": False,
     }
 
@@ -246,18 +264,21 @@ def build_figure_evidence(
             "path": str(output_path),
             "file_sha256": file_sha256(output_path),
             "format": output_path.suffix.lower().lstrip("."),
+            "identity_basis": "runtime-observed-local-bytes",
         },
         "recipe": {
             "id": recipe.get("id"),
             "path": recipe_path,
             "canonical_sha256": canonical_sha256(recipe),
             "file_sha256": file_sha256(recipe_path),
+            "identity_basis": "runtime-observed-local-bytes-and-canonical-serialization",
         },
         "profile_target": {
             "id": profile.get("name"),
             "path": profile_path,
             "canonical_sha256": canonical_sha256(profile),
             "file_sha256": file_sha256(profile_path),
+            "identity_basis": "runtime-observed-local-bytes-and-canonical-serialization",
             "publisher_compliance_claim": False,
         },
         "artifacts": artifact_refs,
@@ -268,6 +289,7 @@ def build_figure_evidence(
             "bindings": claim_bindings,
             "binding_count": len(claim_bindings),
             "inferred_bindings": False,
+            "assertion_basis": "recipe-declared",
             "semantics": (
                 "recipe-declared relationships between visual references and upstream claim IDs; "
                 "not verified entailment, evidence sufficiency, or scientific truth"
@@ -283,6 +305,7 @@ def build_figure_evidence(
                 "No uncertainty semantics were declared in the recipe.",
             ),
             "source_ref": uncertainty.get("source_ref"),
+            "assertion_basis": "recipe-declared",
         },
         "runtime_validation": runtime_validation,
         "reproducibility": {
