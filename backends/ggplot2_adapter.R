@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 # ggplot2 backend for declarative scientific figure recipes.
 # Dependencies: ggplot2, yaml, jsonlite, digest.
-# The backend writes sci-render-kit/render-manifest@2 replay-addressable evidence.
+# The backend writes sci-render-kit/render-manifest replay-addressable evidence.
 
 library(yaml)
 library(jsonlite)
@@ -9,7 +9,7 @@ library(digest)
 library(ggplot2)
 
 `%||%` <- function(a, b) if (is.null(a)) b else a
-MANIFEST_PROFILE <- "sci-render-kit/render-manifest@2"
+MANIFEST_PROFILE <- "sci-render-kit/render-manifest"
 
 load_recipe <- function(path) {
   value <- yaml.load_file(path)
@@ -131,7 +131,6 @@ build_plot <- function(recipe, profile) {
     df <- do.call(rbind, records)
     df$Row <- factor(df$Row, levels=rev(row_labels))
     df$Col <- factor(df$Col, levels=col_labels)
-    # R backend uses a documented ggplot2 gradient instead of pretending every Matplotlib cmap name exists in R.
     p <- ggplot(df, aes(x=Col, y=Row, fill=Value)) +
       geom_tile(color="white") +
       scale_fill_viridis_c(option="D") +

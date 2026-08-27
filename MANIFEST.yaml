@@ -1,70 +1,64 @@
 name: sci-render-kit
-purpose: "声明式、证据可追踪、可访问性可检查的科研图件编译工具 | Declarative scientific-figure compilation with inspectable evidence and accessibility contracts"
+purpose: "声明式科研图件编译与证据化表达 | Declarative scientific-figure compilation with inspectable evidence"
+calibrated: "2026-08-27"
 
-architecture_version: "2026-08-26"
+principles:
+  - 声明优先: "data / aesthetics / research_context / claim_bindings / uncertainty / process_disclosure / accessibility 由 recipe 显式声明"
+  - claim绑定不推断: "visual_ref -> claim_refs 仅记录声明，不从标题/图例/像素/数据内容猜测"
+  - 后端能力诚实: "schema 字段存在不等于所有 backend 已实现"
+  - 不幻觉: "未知 provider/model/version/review/source 状态保持 null 或 not_declared"
+  - 真实版本保留: "真实标准与运行环境版本属于 provenance，不按内部 profile 去版本规则删除"
+  - 科学边界: "render/profile/hash/provenance/claim-binding 不证明科研真值或独立复现"
+
+stable_project_profiles:
+  - sci-render-kit/runtime-quality
+  - sci-render-kit/render-manifest
+  - sci-render-kit/provenance
+  - sci-render-kit/a11y
+  - sci-render-kit/figure-claim-binding
+  - sci-render-kit/figure-claim-audit
+  - sci-render-kit/process-disclosure
+  - sci-render-kit/figure-evidence
+
+profile_identifier_policy:
+  decorative_versions_allowed: false
+  examples_forbidden: ["@1", "@2", "/v1"]
+  compatibility_source: "documented fields + semantics"
+  real_external_versions_preserved: true
 
 architecture:
   canonical_flow:
-    - recipe_research_context_claim_bindings_and_process_disclosure
+    - recipe_and_declared_research_context
     - p0_schema
-    - p1_runtime_findings
+    - p1_runtime_and_claim_audit
     - backend_capability_resolution
     - render
     - p2_artifact_integrity
     - p3_publisher_target_alignment
-    - figure_evidence_v2
+    - figure_evidence
   github_native_gate_required: false
 
-principles:
-  - 声明优先: "data / aesthetics / research_context / claim_bindings / uncertainty / process_disclosure / accessibility 由 recipe 显式声明"
-  - claim绑定不推断: "visual_ref -> claim_refs 仅记录 recipe 声明，不从标题/图例/像素/数据内容自动猜测"
-  - 后端能力诚实: "schema 字段存在不等于所有 backend 已实现"
-  - 运行时规则分级: "error 阻止当前 render；warning/info 保留为证据"
-  - 不确定性语义显式: "bounds 不自动等于 confidence interval"
-  - 过程披露有边界: "AI tool / human review 是声明式过程元数据，不决定 authorship / peer review / scientific validity"
-  - 出版目标有证据等级: "profile 标明 source_status / verified_date / verification_scope"
-  - 标准边界诚实: "WCAG 只按实际 success-criterion scope 映射，不声称整篇出版物 conformance"
-  - 科学边界: "render/profile/hash/provenance/claim-binding 不证明科研结论真值或独立复现"
-
-research_contract:
-  file: RESEARCH_CONTRACT.md
-  status: active
-  date: "2026-08-26"
-  companion_figure_claim_contract: FIGURE_CLAIM_CONTRACT.md
-  local_reproducibility_levels: [R0, R1, R2, R3]
-  r3_semantics: "requires a separate rerun plus a declared comparison criterion"
-
 runtime_quality:
-  profile: sci-render-kit/runtime-quality@1
+  profile: sci-render-kit/runtime-quality
   rules: quality/rules.yaml
   levels: [P0, P1, P2, P3]
   severities: [error, warning, info]
   stop_condition: "severity == error"
-  github_merge_policy: false
+  scientific_validity_claim: false
 
 recipes:
   schema: metadata/recipe.schema.yaml
-  types: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
-  optional_research_context:
-    - artifact_id
-    - source_refs
-    - data_artifact_ref
-    - evidence_envelope_ref
-    - provenance_ref
-    - claim_refs
-    - claim_bindings
+  chart_types: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
   claim_bindings:
-    profile: sci-render-kit/figure-claim-binding@1
+    profile: sci-render-kit/figure-claim-binding
     required_fields: [visual_ref, claim_refs, relation]
     relations: [supports, illustrates, contextualizes, compares, derived-from]
     inferred_by_renderer: false
     entailment_claim: false
-    evidence_sufficiency_claim: false
   process_disclosure:
-    profile: sci-render-kit/process-disclosure@1
+    profile: sci-render-kit/process-disclosure
     ai_assistance_values: [none, used, not_declared]
     human_review_values: [reviewed, partial, not_reviewed, not_declared]
-    publisher_compliance_claim: false
     authorship_claim: false
     peer_review_claim: false
     scientific_validity_claim: false
@@ -80,143 +74,104 @@ recipes:
 
 backends:
   matplotlib:
-    language: python
     adapter: backends/matplotlib_adapter.py
     base_adapter: backends/matplotlib_base.py
     outputs: [png, svg, pdf]
-    render_manifest: sci-render-kit/render-manifest@2
-    provenance: sci-render-kit/provenance@2
-    embedded_metadata: format_bounded
+    render_manifest: sci-render-kit/render-manifest
+    provenance: sci-render-kit/provenance
+    runtime_versions_recorded: true
     redundant_series_style: implemented
-    extension_model: explicit_function_injection
-    silent_minimum_dpi_override: false
   ggplot2:
-    language: r
     adapter: backends/ggplot2_adapter.R
     outputs: [png, svg, pdf]
-    render_manifest: sci-render-kit/render-manifest@2
+    render_manifest: sci-render-kit/render-manifest
+    runtime_versions_recorded: true
     runtime_environment: optional
     redundant_series_style: not_integrated
-    silent_minimum_dpi_override: false
   observable:
-    language: javascript
     adapter: backends/observable_adapter.js
     outputs: [html]
-    render_manifest: sci-render-kit/render-manifest@2
+    render_manifest: sci-render-kit/render-manifest
     plot_version: "0.6.17"
     browser_dependency: "@observablehq/plot@0.6.17/+esm via CDN"
     offline_environment_complete: false
-    redundant_series_style: not_integrated
 
 artifacts:
   render_manifest:
-    profile: sci-render-kit/render-manifest@2
-    schema: metadata/reproducibility.schema.yaml
+    profile: sci-render-kit/render-manifest
     sidecar: <output>.manifest.json
     default_reproducibility_semantics: R1
   provenance:
-    profile: sci-render-kit/provenance@2
+    profile: sci-render-kit/provenance
     sidecar: <output>.prov.json
     backend_scope: matplotlib
   accessibility:
-    profile: sci-render-kit/a11y@1
-    module: core/accessibility.py
+    profile: sci-render-kit/a11y
     sidecar: <output>.a11y.json
-    emitted_when: recipe_declares_accessibility
     conformance_claim: false
+  figure_claim_audit:
+    profile: sci-render-kit/figure-claim-audit
+    module: core/claim_binding_audit.py
+    scientific_validity_claim: false
   figure_evidence:
-    profile: sci-render-kit/figure-evidence@2
+    profile: sci-render-kit/figure-evidence
     module: core/figure_evidence.py
     sidecar: <output>.evidence.json
-    claim_binding_profile: sci-render-kit/figure-claim-binding@1
-    process_disclosure_profile: sci-render-kit/process-disclosure@1
-    inferred_claim_bindings: false
+    claim_binding_profile: sci-render-kit/figure-claim-binding
+    process_disclosure_profile: sci-render-kit/process-disclosure
     scientific_validity_claim: false
     statistical_validity_claim: false
     causal_validity_claim: false
     authorship_claim: false
     peer_review_claim: false
     publisher_acceptance_claim: false
-    payloads_embedded: false
 
 accessibility:
-  wcag_2_2_design_support:
-    - "1.1.1: text-alternative contract"
-    - "1.4.1: non-color redundant cue support"
-    - "1.4.11: required graphical object / declared adjacent-boundary contrast support"
-  all_pairs_palette_policy: "optional stricter project safeguard, not universal WCAG requirement"
-  cvd_simulation: "Machado 2009 project robustness safeguard, not WCAG-mandated test"
-  class_name_compatibility:
-    CognitiveColorEncoder: "historical API name; current semantics are project color convention + sRGB utilities"
+  wcag_version: "2.2"
+  supported_design_scope:
+    - "1.1.1 text-alternative support"
+    - "1.4.1 non-color cue support"
+    - "1.4.11 declared graphical-boundary contrast support"
+  all_pairs_palette_policy: "optional stricter project safeguard; not universal WCAG requirement"
+  cvd_simulation: "project safeguard; not WCAG-mandated test"
+  conformance_claim: false
 
 publisher_profiles:
-  nature:
-    source_status: publisher_guidance_reverified
-    verified_date: "2026-08-24"
-    acceptance_claim: false
-  science:
-    source_status: snapshot_not_reverified_2026_08_24
-    snapshot_date: "2026-08-19"
-    acceptance_claim: false
-  cell:
-    source_status: snapshot_not_reverified_2026_08_24
-    snapshot_date: "2026-08-19"
-    acceptance_claim: false
-  ieee:
-    source_status: snapshot_not_reverified_2026_08_24
-    snapshot_date: "2026-08-19"
-    acceptance_claim: false
-  presentation:
-    source_status: internal_project_preset
-    acceptance_claim: false
+  semantics: "project presets with source status; not official acceptance validators"
+  acceptance_claim: false
 
 interoperability:
-  upstream_epistemic:
-    profile: epistemic-pipeline/evidence-envelope@2
-    claim_index_profile: epistemic-pipeline/claim-index@1
+  upstream_auto_doc:
+    preferred: auto-doc-engine/artifact-record
     mode: optional_reference_handoff
-    direct_runtime_coupling: false
-  upstream_artifact_process_disclosure:
-    source: auto-doc-engine optional frontmatter/process disclosure
-    mode: optional_reference_or_recipe_copy
+  upstream_epistemic:
+    preferred: epistemic-pipeline/evidence-envelope
+    companion: epistemic-pipeline/claim-verification
+    mode: optional_reference_handoff
     direct_runtime_coupling: false
   ro_crate:
     version: "1.3"
     status: proposed
-    note: "figure-evidence/render-manifest/provenance/a11y sidecars are not RO-Crates"
+    note: "sci-render-kit sidecars are not RO-Crates"
 
-experimental_modules:
-  projection:
-    status: experimental
-    implemented: [centered_svd_pca, normalized_stress, trustworthiness, continuity]
-    not_implemented: [tsne]
-  uncertainty_legend:
-    status: experimental
-    semantics: typed_interval_or_heuristic_bound_metadata
-  superposition:
-    status: experimental
-    semantics: deterministic_variant_layering
-    quantum_interference_claim: false
-  time_crystal:
-    status: experimental
-    semantics: deterministic_periodic_waveform_utility
-    physical_time_crystal_claim: false
-  observer_dashboard:
-    status: experimental
-    semantics: caller_supplied_interaction_telemetry
-    comprehension_inference_claim: false
-    causal_effect_claim: false
+reproducibility:
+  local_levels: [R0, R1, R2, R3]
+  r3_rule: "requires an actual separate rerun plus declared comparison criterion"
 
 research_software:
   citation: CITATION.cff
   cff_version: "1.2.0"
 
+experimental_modules:
+  projection: "centered-SVD PCA and projection metrics; t-SNE not implemented"
+  uncertainty_legend: "typed uncertainty metadata"
+  superposition: "deterministic variant layering"
+  time_crystal: "periodic waveform utility; no physical time-crystal claim"
+  observer_dashboard: "caller-supplied telemetry; no automatic comprehension/causal claim"
+
 local_checks:
-  command: make test
   mode: manual_optional
-  tests_run_in_2026_08_26_refresh: false
   github_actions: false
   codeql: false
   merge_gate: false
-  python_dependencies: [pyyaml, jsonschema, matplotlib, numpy, pillow]
-  node_and_r_runtime: optional
+  tests_required_for_this_refresh: false

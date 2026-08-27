@@ -17,7 +17,7 @@ import os
 from pathlib import Path
 from typing import Dict, Iterable, List
 
-PROFILE = "sci-render-kit/a11y@1"
+PROFILE = "sci-render-kit/a11y"
 
 STYLE_CYCLE = [
     {"marker": "o", "line_style": "-", "hatch": ""},
