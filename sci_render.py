@@ -2,9 +2,9 @@
 """sci-render-kit unified CLI: schema, runtime rules, backend dispatch, evidence.
 
 The CLI evaluates explicit project rules before and after rendering. It also
-runs the separate ``figure-claim-audit@1`` over declared research/process
-metadata so claim-binding inconsistencies remain visible instead of being
-silently normalized by the evidence writer.
+runs the separate ``sci-render-kit/figure-claim-audit`` over declared
+research/process metadata so claim-binding inconsistencies remain visible
+instead of being silently normalized by the evidence writer.
 
 Only ``severity: error`` findings stop the run. Warnings remain evidence; they
 are not GitHub merge policy, scientific-validity decisions, WCAG certification,
@@ -387,7 +387,7 @@ def _update_render_manifest(manifest_path: Path, evidence_path: Path, findings: 
         target[severity] = target.get(severity, 0) + 1
 
     manifest["runtime_validation"] = {
-        "profile": "sci-render-kit/runtime-quality@1",
+        "profile": "sci-render-kit/runtime-quality",
         "status": "failed" if runtime_counts.get("error", 0) else (
             "passed_with_warnings" if runtime_counts.get("warning", 0) else "passed"
         ),
@@ -402,7 +402,7 @@ def _update_render_manifest(manifest_path: Path, evidence_path: Path, findings: 
         "details": "full findings are retained in the figure evidence sidecar",
     }
     manifest["figure_evidence"] = {
-        "profile": "sci-render-kit/figure-evidence@2",
+        "profile": "sci-render-kit/figure-evidence",
         "sidecar": evidence_path.name,
     }
     temp = manifest_path.with_suffix(".manifest.json.tmp")
