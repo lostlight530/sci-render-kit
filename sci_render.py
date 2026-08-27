@@ -31,7 +31,10 @@ from core.accessibility import (
     resolve_series_styles,
     write_accessibility_manifest,
 )
-from core.claim_binding_audit import audit_claim_communication
+from core.claim_binding_audit import (
+    PROFILE as CLAIM_AUDIT_PROFILE,
+    audit_claim_communication,
+)
 from core.color_encoding import CognitiveColorEncoder
 from core.figure_evidence import build_figure_evidence, write_figure_evidence
 from core.palettes import describe_palette, resolve_categorical
@@ -375,14 +378,28 @@ def _update_render_manifest(manifest_path: Path, evidence_path: Path, findings: 
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return
-    counts = {"error": 0, "warning": 0, "info": 0}
+
+    runtime_counts = {"error": 0, "warning": 0, "info": 0}
+    claim_counts = {"error": 0, "warning": 0, "info": 0}
     for item in findings:
         severity = str(item.get("severity") or "error")
-        counts[severity] = counts.get(severity, 0) + 1
+        target = claim_counts if item.get("profile") == CLAIM_AUDIT_PROFILE else runtime_counts
+        target[severity] = target.get(severity, 0) + 1
+
     manifest["runtime_validation"] = {
         "profile": "sci-render-kit/runtime-quality@1",
-        "status": "passed_with_warnings" if counts.get("warning", 0) else "passed",
-        "counts": counts,
+        "status": "failed" if runtime_counts.get("error", 0) else (
+            "passed_with_warnings" if runtime_counts.get("warning", 0) else "passed"
+        ),
+        "counts": runtime_counts,
+    }
+    manifest["claim_communication_audit"] = {
+        "profile": CLAIM_AUDIT_PROFILE,
+        "status": "failed" if claim_counts.get("error", 0) else (
+            "observations" if claim_counts.get("warning", 0) or claim_counts.get("info", 0) else "clean"
+        ),
+        "counts": claim_counts,
+        "details": "full findings are retained in the figure evidence sidecar",
     }
     manifest["figure_evidence"] = {
         "profile": "sci-render-kit/figure-evidence@2",
@@ -428,7 +445,7 @@ def main() -> None:
     findings = evaluate_pre_render_rules(recipe, profile, rules)
     claim_audit_findings = audit_claim_communication(recipe)
     findings.extend(claim_audit_findings)
-    print_findings(findings, "P1 runtime findings:")
+    print_findings(findings, "P1 runtime + claim-communication findings:")
     if has_errors(findings):
         print("PRE_RENDER_RULE_FAILURE")
         raise SystemExit(1)
