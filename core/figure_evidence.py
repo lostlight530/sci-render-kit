@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Versioned evidence envelope for rendered scientific figures.
+"""Evidence envelope for rendered scientific figures.
 
 The figure evidence record is a project-owned cross-tool handoff object. It
 indexes the rendered figure, recipe, publisher/profile preset, backend sidecars,
@@ -8,15 +8,10 @@ disclosure and runtime findings without claiming that a successful render
 establishes scientific validity, authorship, peer review, entailment, source
 credibility, or publisher acceptance.
 
-The 2026-08-27 consolidation keeps two runtime evidence planes distinct:
+Two evidence planes remain distinct:
 
-- ``sci-render-kit/runtime-quality@1`` for visual/accessibility/artifact/publisher
-  predicates;
-- ``sci-render-kit/figure-claim-audit@1`` for consistency of declared
-  claim/process/reference metadata.
-
-This prevents a claim-communication warning from being silently re-labelled as
-a plotting-quality rule or vice versa.
+- ``sci-render-kit/runtime-quality`` for visual/accessibility/artifact/publisher predicates;
+- ``sci-render-kit/figure-claim-audit`` for consistency of declared claim/process/reference metadata.
 """
 
 from __future__ import annotations
@@ -28,14 +23,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, Optional
 
-from core.claim_binding_audit import (
-    PROFILE as CLAIM_AUDIT_PROFILE,
-    summarize_claim_audit,
-)
+from core.claim_binding_audit import PROFILE as CLAIM_AUDIT_PROFILE, summarize_claim_audit
 
-PROFILE = "sci-render-kit/figure-evidence@2"
-CLAIM_BINDING_PROFILE = "sci-render-kit/figure-claim-binding@1"
-PROCESS_DISCLOSURE_PROFILE = "sci-render-kit/process-disclosure@1"
+PROFILE = "sci-render-kit/figure-evidence"
+CLAIM_BINDING_PROFILE = "sci-render-kit/figure-claim-binding"
+PROCESS_DISCLOSURE_PROFILE = "sci-render-kit/process-disclosure"
+RUNTIME_QUALITY_PROFILE = "sci-render-kit/runtime-quality"
 AI_ASSISTANCE_VALUES = {"none", "used", "not_declared"}
 HUMAN_REVIEW_VALUES = {"reviewed", "partial", "not_reviewed", "not_declared"}
 CLAIM_RELATIONS = {"supports", "illustrates", "contextualizes", "compares", "derived-from"}
@@ -173,7 +166,7 @@ def summarize_findings(findings: Iterable[dict]) -> dict:
         "passed_with_warnings" if counts.get("warning", 0) else "passed"
     )
     return {
-        "profile": "sci-render-kit/runtime-quality@1",
+        "profile": RUNTIME_QUALITY_PROFILE,
         "status": status,
         "counts": counts,
         "findings": items,
