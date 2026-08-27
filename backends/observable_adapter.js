@@ -3,9 +3,11 @@
  * Observable Plot backend for interactive HTML figures.
  *
  * The generated HTML pins @observablehq/plot 0.6.17 through the documented
- * jsDelivr ESM bundle. The artifact therefore has a declared runtime network
- * dependency unless the dependency is separately vendored; manifest evidence
- * is R1 replay-addressable, not an offline-reproduction claim.
+ * jsDelivr ESM bundle. That is a real runtime dependency version and remains
+ * explicit. The project-owned render-manifest identifier is stable and
+ * unversioned. The artifact has a runtime network dependency unless the
+ * dependency is separately vendored; manifest evidence is R1
+ * replay-addressable, not an offline-reproduction claim.
  */
 
 const fs = require('fs');
@@ -15,7 +17,7 @@ const crypto = require('crypto');
 
 const PLOT_VERSION = '0.6.17';
 const PLOT_ESM_URL = `https://cdn.jsdelivr.net/npm/@observablehq/plot@${PLOT_VERSION}/+esm`;
-const MANIFEST_PROFILE = 'sci-render-kit/render-manifest@2';
+const MANIFEST_PROFILE = 'sci-render-kit/render-manifest';
 
 function loadYaml(filePath) {
   const value = yaml.parse(fs.readFileSync(filePath, 'utf-8'));
