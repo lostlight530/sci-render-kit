@@ -125,6 +125,12 @@ properties:
         type: string
         minLength: 1
         description: "例如 epistemic-pipeline/evidence-envelope@2 的本地路径或 URI"
+      claim_audit_ref:
+        type: string
+        minLength: 1
+        description: >
+          例如 epistemic-pipeline/claim-verification@1 sidecar 的本地路径或 URI；
+          renderer 可记录/检查引用状态，但不把上游 audit_state 解释为 claim 真值。
       provenance_ref:
         type: string
         minLength: 1
