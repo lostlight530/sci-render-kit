@@ -4,8 +4,12 @@
 The backend renders supported recipes and writes two project-owned evidence
 sidecars:
 
-- ``sci-render-kit/render-manifest@2`` — replay-addressable render identity;
-- ``sci-render-kit/provenance@2`` — backend/run provenance metadata.
+- ``sci-render-kit/render-manifest`` — replay-addressable render identity;
+- ``sci-render-kit/provenance`` — backend/run provenance metadata.
+
+Actual runtime versions such as Matplotlib, NumPy and Python are retained as
+execution evidence. Project-owned profile identifiers remain stable and
+unversioned.
 
 These records support FAIR R1.2-style provenance practice, but they are not a
 claim of FAIR certification, scientific validity, publisher acceptance, or
@@ -53,8 +57,8 @@ SERIES_CHART_TYPES = (
     "histogram",
 )
 
-PROVENANCE_PROFILE = "sci-render-kit/provenance@2"
-MANIFEST_PROFILE = "sci-render-kit/render-manifest@2"
+PROVENANCE_PROFILE = "sci-render-kit/provenance"
+MANIFEST_PROFILE = "sci-render-kit/render-manifest"
 
 
 def _now() -> str:
@@ -175,7 +179,7 @@ def _savefig_metadata(provenance: dict, fmt: str, recipe: dict):
         return None
     prov_json = json.dumps(provenance, ensure_ascii=False, separators=(",", ":"))
     backend_version = (provenance.get("backend") or {}).get("version", "unknown")
-    creator = f"sci-render-kit/matplotlib@{backend_version}"
+    creator = f"sci-render-kit/matplotlib (Matplotlib {backend_version})"
     title = str(recipe.get("id", "figure"))
     if fmt == "png":
         return {"srk:provenance": prov_json, "Software": creator}
