@@ -1,148 +1,96 @@
 # Agent Guide — sci-render-kit
 
-This is the operational contract for agents modifying the repository. Public claims must stay aligned across runtime code, schemas, profiles, evidence sidecars, README, Architecture, Research Contract, Figure Claim Contract and Manifest.
+This is the operational contract for agents modifying the repository. Keep runtime code, schemas, profiles, evidence sidecars and public documentation semantically aligned.
 
-## 1. Canonical architecture
-
-```text
-metadata/recipe.schema.yaml
-  -> research_context / claim_bindings / uncertainty / process_disclosure / accessibility
-  -> sci_render.py
-     P0 schema
-     P1 runtime findings
-     backend capability resolution
-  -> backend adapter
-  -> figure + sidecars
-  -> P2 artifact findings
-  -> P3 publisher-target findings
-  -> core/figure_evidence.py
-     -> figure-claim-binding@1
-     -> process-disclosure@1
-     -> figure-evidence@2
-```
-
-Active runtime catalog:
+## Canonical architecture
 
 ```text
-quality/rules.yaml
-sci-render-kit/runtime-quality@1
+recipe
+  -> P0 schema
+  -> P1 runtime + claim communication audit
+  -> backend capability resolution
+  -> render
+  -> render-manifest / provenance / a11y
+  -> P2 artifact integrity
+  -> P3 publisher-target alignment
+  -> figure-evidence
 ```
 
-Do **not** reintroduce `quality/gates.yaml` or describe P0–P3 as GitHub merge gates.
+## Stable project identifiers
 
-## 2. Evidence profiles
+Use these names exactly:
 
-Current project profiles:
+```text
+sci-render-kit/runtime-quality
+sci-render-kit/render-manifest
+sci-render-kit/provenance
+sci-render-kit/a11y
+sci-render-kit/figure-claim-binding
+sci-render-kit/figure-claim-audit
+sci-render-kit/process-disclosure
+sci-render-kit/figure-evidence
+```
 
-- `sci-render-kit/render-manifest@2`
-- `sci-render-kit/provenance@2` — Matplotlib path
-- `sci-render-kit/a11y@1`
-- `sci-render-kit/figure-claim-binding@1`
-- `sci-render-kit/process-disclosure@1`
-- `sci-render-kit/figure-evidence@2`
+Do not invent `@1`, `@2`, `/v1` or similar internal counters. If compatibility ever needs explicit versioning, define a real compatibility policy first.
 
-These profiles record bounded implementation evidence. None proves scientific truth, claim entailment, authorship, peer review, journal acceptance, independent reproduction, or whole-publication WCAG conformance.
+Real external/runtime versions are different: keep WCAG 2.2, RO-Crate 1.3, CFF 1.2.0 and actual backend/library/runtime versions when they are genuinely observed.
 
-## 3. Runtime finding semantics
+## Hard rules
 
-Rules use `error / warning / info`.
+1. **Schema ≠ backend support.** Do not advertise behavior until a backend actually implements it.
+2. **No hidden overrides.** Do not silently change DPI, format, uncertainty semantics or declared data.
+3. **Claim bindings are explicit only.** Never infer visual-to-claim relations from titles, legends, pixels, labels, prose or data values.
+4. **Claim relation ≠ entailment.** `supports`, `illustrates` and related labels are communication declarations, not verified scientific inference.
+5. **Process disclosure is bounded.** Tool/model/provider identifiers and human review do not adjudicate authorship, peer review, truth or publisher compliance.
+6. **Unknown stays unknown.** Missing provider/model/version/review/source metadata remains `null`, absent or `not_declared`; never guess.
+7. **Uncertainty must be typed.** Bounds alone are not a confidence interval or probability model.
+8. **WCAG scope must stay exact.** SC 1.4.11 is not a universal all-palette-pairs rule; project all-pairs checks are extra safeguards.
+9. **CVD simulation is extra.** Do not describe it as a normative WCAG test.
+10. **Publisher presets are snapshots.** They are not acceptance validators.
+11. **Matplotlib extension model stays explicit.** Use function injection rather than hidden global monkeypatching.
+12. **Optional ecosystems stay optional.** R/Node adapter source does not prove runtime availability.
+13. **Figure evidence is handoff, not truth.** Upstream references are not independently scientifically validated by the renderer.
+14. **No fake algorithms.** Unsupported experimental methods must fail explicitly rather than fabricate output.
+15. **Experimental stays Experimental.** Importability does not promote a module into canonical capability.
+16. **No GitHub governance creep.** Do not add Actions, CI, CodeQL, dependency bots, branch-protection assumptions or merge-gate architecture.
 
-- `error`: current declared render/artifact contract cannot be satisfied;
-- `warning`: preserve as evidence without turning it into a hard failure;
-- `info`: explanatory signal.
+## Change ownership
 
-Do not convert project safeguards or publisher preferences into errors without an explicit architectural reason.
-
-## 4. Hard rules
-
-1. **Schema ≠ backend support.** Update capability matrices only after actual backend behavior exists.
-2. **No hidden rendering overrides.** Do not silently raise DPI, change output format, or replace declared uncertainty semantics.
-3. **Claim bindings are explicit only.** Never infer `visual_ref -> claim_refs` from titles, legends, pixels, labels or data values.
-4. **Claim relation ≠ entailment.** `supports` / `illustrates` / other binding labels are declared communication semantics, not verified scientific inference.
-5. **Process disclosure is bounded.** AI/tool identifiers and human-review state do not adjudicate authorship, peer review, scientific validity or publisher policy.
-6. **Missing disclosure stays unknown.** Do not turn absent process metadata into `none` or `reviewed`.
-7. **Uncertainty must be typed.** Bounds alone are not a confidence interval. Preserve `kind`, `semantics`, optional `level`, and source reference.
-8. **Use of Color.** If redundant encoding is required, supported multi-series figures need non-color cues.
-9. **WCAG scope.** SC 1.4.11 is about required graphical objects/boundaries against adjacent colors, not every pair in a palette. All-pairs checking is a project policy only.
-10. **CVD scope.** Machado simulation is a robustness safeguard, not a normative WCAG test.
-11. **Color semantics.** `positive -> green` and similar mappings are project conventions, not universal cognitive laws.
-12. **Publisher profiles are snapshots.** Preserve `source_status`, `verified_date`, `verification_scope`, and `acceptance_claim: false`.
-13. **Matplotlib extension model.** Use explicit `render_logic_fn` / `metadata_fn` injection. Do not restore global monkeypatching of base renderer functions.
-14. **Optional ecosystems stay optional.** Source code presence is not R/Node runtime verification.
-15. **Figure evidence is handoff, not truth.** Upstream evidence-envelope/provenance references are not independently validated by the renderer.
-16. **Upstream Epistemic profile.** Current preferred reference is `epistemic-pipeline/evidence-envelope@2`; direct runtime coupling remains false.
-17. **No fake algorithms.** Experimental modules must use `NotImplementedError` rather than return fabricated t-SNE/metric/physics outputs.
-18. **Experimental stays Experimental.** Importability does not promote a module into the canonical dispatcher.
-19. **No GitHub-native governance creep.** Do not add Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate language as repository architecture.
-
-## 5. Where to change what
-
-| Goal | Primary files | Required synchronization |
+| Goal | Primary files | Synchronize |
 |---|---|---|
-| recipe field | `metadata/recipe.schema.yaml` | runtime/backend/docs/evidence semantics |
-| claim binding | recipe schema + `core/figure_evidence.py` | Figure Claim Contract + README/Architecture/Manifest |
-| process disclosure | recipe schema + `core/figure_evidence.py` | Figure Claim Contract + public docs |
-| runtime rule | `quality/rules.yaml`, `sci_render.py` | severity + public docs |
-| uncertainty | recipe schema + consumer | semantics must remain explicit |
-| accessibility | `core/accessibility.py`, `sci_render.py` | a11y sidecar + backend capability truth |
-| Matplotlib render | `backends/matplotlib_base.py` | preserve explicit extension hooks |
-| Matplotlib accessibility | `backends/matplotlib_adapter.py` | preserve public API/direct-run bootstrap |
+| recipe field | `metadata/recipe.schema.yaml` | runtime + docs + evidence semantics |
+| claim binding/audit | `core/claim_binding_audit.py`, `core/figure_evidence.py` | Figure Claim Contract + Manifest |
+| process disclosure | recipe schema + figure evidence | public contracts |
+| runtime rule | `quality/rules.yaml`, `sci_render.py` | severity + docs |
+| accessibility | `core/accessibility.py`, `sci_render.py` | a11y profile + backend truth |
+| Matplotlib | `backends/matplotlib_base.py`, adapter | manifest/provenance semantics |
 | ggplot2 | `backends/ggplot2_adapter.R` | manifest/runtime boundary |
-| Observable | `backends/observable_adapter.js` | pinned Plot version/network dependency |
-| publisher profile | `profiles/*.yaml` | source evidence status + P3 semantics |
-| color registry | `core/palettes.py`, `core/color_encoding.py` | avoid unsupported CVD/perceptual claims |
-| figure evidence | `core/figure_evidence.py` | Research Contract + Figure Claim Contract + Manifest |
-| public capability | README / Architecture / Research Contract / Manifest | update together |
+| Observable | `backends/observable_adapter.js` | pinned real dependency + network boundary |
+| publisher profile | `profiles/*.yaml` | source status + acceptance false |
+| public capability | README / Architecture / Contracts / Manifest | update together |
 
-## 6. Figure claim/process boundaries
+## Cross-repository references
 
-Current recipe/evidence vocabulary can preserve:
+Preferred stable names:
 
 ```text
-claim_refs[]
-claim_bindings[].visual_ref
-claim_bindings[].claim_refs[]
-claim_bindings[].relation
-process_disclosure.ai_assistance
-process_disclosure.ai_tools[]
-process_disclosure.human_review
-process_disclosure.disclosure_ref
+auto-doc-engine/artifact-record
+epistemic-pipeline/claim-verification
+epistemic-pipeline/evidence-envelope
 ```
 
-Never upgrade these records into stronger claims:
+These are optional handoff references, not direct runtime coupling.
 
-```text
-visual binding ≠ verified entailment
-supports label ≠ evidence sufficiency
-AI disclosure ≠ authorship adjudication
-human review ≠ peer review
-```
+## Experimental semantics
 
-Detailed semantics live in `FIGURE_CLAIM_CONTRACT.md`.
-
-## 7. Experimental semantics
-
-Historical file names may be retained for compatibility, but their module-level descriptions must match implemented mechanics:
-
-- `projection`: PCA + projection-quality metrics; t-SNE not implemented here;
-- `uncertainty_legend`: typed bounds/interval metadata;
+- `projection`: PCA/projection metrics; t-SNE not implemented here;
+- `uncertainty_legend`: typed uncertainty metadata;
 - `superposition`: deterministic variant layering;
 - `time_crystal`: periodic waveform utility;
-- `observer_dashboard`: caller-fed interaction telemetry.
+- `observer_dashboard`: caller-fed telemetry.
 
-Do not use physics metaphors as evidence of statistical or scientific capability.
+Never use metaphorical filenames as evidence of scientific capability.
 
-## 8. Local maintenance
+## Local maintenance
 
-When useful:
-
-```bash
-python -m pip install pyyaml jsonschema matplotlib numpy pillow
-make test
-```
-
-These are optional local maintenance checks. This 2026-08-26 refresh does not rely on them as completion evidence and does not make them a GitHub merge policy.
-
-## 9. Consistency rule
-
-When code behavior changes, update the nearest machine-readable contract first, then public docs. Never leave an old test, profile, example, or historical design document presenting retired behavior as current architecture.
+Local commands may be used manually when useful. Their success is not evidence of scientific validity, real-provider behavior, publisher acceptance or independent reproduction.
