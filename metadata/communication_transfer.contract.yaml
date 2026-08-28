@@ -1,0 +1,47 @@
+profile: sci-render-kit/communication-transfer
+status: implemented
+calibrated: "2026-08-29"
+implementation: core/communication_transfer.py
+source_profile: sci-render-kit/figure-evidence
+
+copied_context:
+  - claim_communication
+  - upstream_research
+  - uncertainty
+  - process_disclosure
+  - communication_audit
+  - runtime_validation
+
+assertion_basis:
+  source_figure_evidence: runtime-observed-local-bytes
+  destination: caller-declared-or-not_declared
+  purpose: caller-declared-or-not_declared
+  basis_inferred: false
+
+transfer_constraints:
+  scientific_validity_inherited: false
+  entailment_inherited: false
+  evidence_sufficiency_inherited: false
+  statistical_validity_inherited: false
+  peer_review_inherited: false
+  publisher_acceptance_inherited: false
+  accessibility_conformance_inherited: false
+
+transfer_coverage:
+  dimensions:
+    - claim_ref_count
+    - binding_count
+    - upstream_context_field_count
+    - process_disclosure_field_count
+    - uncertainty_semantics_declared
+    - communication_audit_present
+    - runtime_validation_present
+  aggregate_score: null
+  entailment_claim: false
+  evidence_sufficiency_claim: false
+  scientific_quality_claim: false
+  publisher_acceptance_claim: false
+
+network_dereference: false
+pixel_based_inference: false
+automatic_ai_detection: false
