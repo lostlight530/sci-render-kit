@@ -8,6 +8,8 @@ This is the operational contract for agents modifying the repository. Keep runti
 recipe
   -> P0 schema
   -> P1 runtime + claim communication audit
+       ├─ assertion basis
+       └─ dimensional communication coverage
   -> backend capability resolution
   -> render
   -> render-manifest / provenance / a11y
@@ -17,8 +19,6 @@ recipe
 ```
 
 ## Stable project identifiers
-
-Use these names exactly:
 
 ```text
 sci-render-kit/runtime-quality
@@ -31,47 +31,59 @@ sci-render-kit/process-disclosure
 sci-render-kit/figure-evidence
 ```
 
-Do not invent `@1`, `@2`, `/v1` or similar internal counters. If compatibility ever needs explicit versioning, define a real compatibility policy first.
-
-Real external/runtime versions are different: keep WCAG 2.2, RO-Crate 1.3, CFF 1.2.0 and actual backend/library/runtime versions when they are genuinely observed.
+Do not invent decorative internal versions. Preserve real WCAG/external/runtime versions when genuinely known.
 
 ## Hard rules
 
-1. **Schema ≠ backend support.** Do not advertise behavior until a backend actually implements it.
-2. **No hidden overrides.** Do not silently change DPI, format, uncertainty semantics or declared data.
-3. **Claim bindings are explicit only.** Never infer visual-to-claim relations from titles, legends, pixels, labels, prose or data values.
-4. **Claim relation ≠ entailment.** `supports`, `illustrates` and related labels are communication declarations, not verified scientific inference.
-5. **Process disclosure is bounded.** Tool/model/provider identifiers and human review do not adjudicate authorship, peer review, truth or publisher compliance.
-6. **Unknown stays unknown.** Missing provider/model/version/review/source metadata remains `null`, absent or `not_declared`; never guess.
-7. **Uncertainty must be typed.** Bounds alone are not a confidence interval or probability model.
-8. **WCAG scope must stay exact.** SC 1.4.11 is not a universal all-palette-pairs rule; project all-pairs checks are extra safeguards.
-9. **CVD simulation is extra.** Do not describe it as a normative WCAG test.
-10. **Publisher presets are snapshots.** They are not acceptance validators.
-11. **Matplotlib extension model stays explicit.** Use function injection rather than hidden global monkeypatching.
-12. **Optional ecosystems stay optional.** R/Node adapter source does not prove runtime availability.
-13. **Figure evidence is handoff, not truth.** Upstream references are not independently scientifically validated by the renderer.
-14. **No fake algorithms.** Unsupported experimental methods must fail explicitly rather than fabricate output.
-15. **Experimental stays Experimental.** Importability does not promote a module into canonical capability.
-16. **No GitHub governance creep.** Do not add Actions, CI, CodeQL, dependency bots, branch-protection assumptions or merge-gate architecture.
+1. Schema does not imply backend support.
+2. Do not silently change DPI, format, uncertainty semantics or declared data.
+3. Claim bindings are explicit only; never infer them from titles, legends, pixels, prose or data values.
+4. Claim relation labels are communication declarations, not verified entailment.
+5. Process disclosure is bounded; tool/provider IDs and human review do not adjudicate authorship, peer review or truth.
+6. Unknown provider/model/version/review/source metadata remains unknown; never guess.
+7. The canonical renderer does not perform AI-text/pixel detection to infer AI authorship/use; preserve `automatic_ai_detection_used: false` unless a real separate detector is explicitly implemented.
+8. Assertion basis records how a field entered evidence; it never upgrades a value to correctness.
+9. Communication coverage remains dimensional. Do not create an unsupported aggregate scientific/communication quality score.
+10. Coverage ratios are not probability, entailment, evidence sufficiency or provenance soundness.
+11. Bounds alone are not a confidence interval or probability model.
+12. WCAG scope stays exact; project all-pairs checks are extra safeguards.
+13. CVD simulation is extra, not a normative WCAG certification test.
+14. Publisher presets are snapshots/config targets, not acceptance validators.
+15. Matplotlib extension remains explicit; avoid hidden monkeypatching.
+16. Optional R/Node source does not prove runtime availability.
+17. Figure evidence is handoff, not truth.
+18. Unsupported experimental methods fail explicitly rather than fabricate output.
+19. Experimental importability does not make canonical capability.
+20. Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions or merge-gate architecture.
+
+## Communication-audit invariants
+
+`core/claim_binding_audit.py` may record findings plus coverage dimensions such as binding counts and evidence-context ratios.
+
+```text
+assertion basis != correctness
+communication coverage != entailment
+coverage ratio != probability
+supports evidence-context coverage != evidence sufficiency
+coverage != provenance soundness
+```
+
+Keep `aggregate_score: null` unless a future validated evaluation design explicitly justifies a composite score.
 
 ## Change ownership
 
 | Goal | Primary files | Synchronize |
 |---|---|---|
 | recipe field | `metadata/recipe.schema.yaml` | runtime + docs + evidence semantics |
-| claim binding/audit | `core/claim_binding_audit.py`, `core/figure_evidence.py` | Figure Claim Contract + Manifest |
+| claim binding/audit/coverage | `core/claim_binding_audit.py`, `core/figure_evidence.py` | Assertion Basis + Figure Claim Contract + Manifest + examples |
 | process disclosure | recipe schema + figure evidence | public contracts |
 | runtime rule | `quality/rules.yaml`, `sci_render.py` | severity + docs |
-| accessibility | `core/accessibility.py`, `sci_render.py` | a11y profile + backend truth |
-| Matplotlib | `backends/matplotlib_base.py`, adapter | manifest/provenance semantics |
-| ggplot2 | `backends/ggplot2_adapter.R` | manifest/runtime boundary |
-| Observable | `backends/observable_adapter.js` | pinned real dependency + network boundary |
+| accessibility | `core/accessibility.py`, `sci_render.py` | a11y + backend truth |
+| backend | corresponding adapter | manifest/provenance capability truth |
 | publisher profile | `profiles/*.yaml` | source status + acceptance false |
 | public capability | README / Architecture / Contracts / Manifest | update together |
 
 ## Cross-repository references
-
-Preferred stable names:
 
 ```text
 auto-doc-engine/artifact-record
@@ -79,18 +91,18 @@ epistemic-pipeline/claim-verification
 epistemic-pipeline/evidence-envelope
 ```
 
-These are optional handoff references, not direct runtime coupling.
+These are optional handoff references, not direct coupling or inherited scientific validity.
 
 ## Experimental semantics
 
-- `projection`: PCA/projection metrics; t-SNE not implemented here;
+- `projection`: PCA/projection metrics; t-SNE not implemented;
 - `uncertainty_legend`: typed uncertainty metadata;
 - `superposition`: deterministic variant layering;
 - `time_crystal`: periodic waveform utility;
 - `observer_dashboard`: caller-fed telemetry.
 
-Never use metaphorical filenames as evidence of scientific capability.
+Metaphorical filenames are not scientific capability evidence.
 
 ## Local maintenance
 
-Local commands may be used manually when useful. Their success is not evidence of scientific validity, real-provider behavior, publisher acceptance or independent reproduction.
+Local commands may be used manually. Their success is not scientific validity, publisher acceptance, WCAG certification or independent reproduction.
