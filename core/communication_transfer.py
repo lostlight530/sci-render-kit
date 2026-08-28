@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 PROFILE = "sci-render-kit/communication-transfer"
+SOURCE_PROFILE = "sci-render-kit/figure-evidence"
 
 
 def _now() -> str:
@@ -38,6 +39,11 @@ def _load_json(path: str | Path) -> dict:
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     if not isinstance(data, dict):
         raise ValueError("figure evidence must be a JSON object")
+    source_profile = data.get("profile")
+    if source_profile != SOURCE_PROFILE:
+        raise ValueError(
+            f"communication transfer requires source profile {SOURCE_PROFILE!r}, got {source_profile!r}"
+        )
     return data
 
 
