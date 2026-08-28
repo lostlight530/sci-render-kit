@@ -1,14 +1,17 @@
 name: sci-render-kit
-purpose: "声明式科研图件编译与证据化表达 | Declarative scientific-figure compilation with inspectable evidence"
-calibrated: "2026-08-27"
+purpose: "声明式科研图件编译、断言来源与证据化表达 | Declarative scientific-figure compilation with assertion-aware inspectable evidence"
+calibrated: "2026-08-28"
 
 principles:
   - 声明优先: "data / aesthetics / research_context / claim_bindings / uncertainty / process_disclosure / accessibility 由 recipe 显式声明"
   - claim绑定不推断: "visual_ref -> claim_refs 仅记录声明，不从标题/图例/像素/数据内容猜测"
+  - 断言来源显式: "记录 figure/recipe/claim/process/uncertainty/ref 如何进入证据对象；basis 不等于 correctness"
+  - 沟通覆盖分维度: "claim binding / evidence context coverage 使用独立计数与比例，不合成科研质量总分"
   - 后端能力诚实: "schema 字段存在不等于所有 backend 已实现"
   - 不幻觉: "未知 provider/model/version/review/source 状态保持 null 或 not_declared"
-  - 真实版本保留: "真实标准与运行环境版本属于 provenance，不按内部 profile 去版本规则删除"
-  - 科学边界: "render/profile/hash/provenance/claim-binding 不证明科研真值或独立复现"
+  - 不做AI文本检测: "canonical renderer 不从 prose/pixels/metadata 推断 AI 使用或作者资格"
+  - 真实版本保留: "真实标准与运行环境版本属于 provenance"
+  - 科学边界: "render/profile/hash/provenance/claim-binding/basis/coverage 不证明科研真值或独立复现"
 
 stable_project_profiles:
   - sci-render-kit/runtime-quality
@@ -31,6 +34,7 @@ architecture:
     - recipe_and_declared_research_context
     - p0_schema
     - p1_runtime_and_claim_audit
+    - assertion_basis_and_communication_coverage
     - backend_capability_resolution
     - render
     - p2_artifact_integrity
@@ -53,24 +57,29 @@ recipes:
     profile: sci-render-kit/figure-claim-binding
     required_fields: [visual_ref, claim_refs, relation]
     relations: [supports, illustrates, contextualizes, compares, derived-from]
+    assertion_basis: recipe-declared
     inferred_by_renderer: false
     entailment_claim: false
   process_disclosure:
     profile: sci-render-kit/process-disclosure
+    assertion_basis: recipe-declared
+    automatic_ai_detection_used: false
     ai_assistance_values: [none, used, not_declared]
     human_review_values: [reviewed, partial, not_reviewed, not_declared]
     authorship_claim: false
     peer_review_claim: false
     scientific_validity_claim: false
-  uncertainty_kinds:
-    - standard-error
-    - standard-deviation
-    - confidence-interval
-    - credible-interval
-    - min-max-range
-    - quantile-interval
-    - bootstrap-interval
-    - heuristic-bound
+  uncertainty:
+    assertion_basis: recipe-declared
+    supported_kinds:
+      - standard-error
+      - standard-deviation
+      - confidence-interval
+      - credible-interval
+      - min-max-range
+      - quantile-interval
+      - bootstrap-interval
+      - heuristic-bound
 
 backends:
   matplotlib:
@@ -112,6 +121,27 @@ artifacts:
   figure_claim_audit:
     profile: sci-render-kit/figure-claim-audit
     module: core/claim_binding_audit.py
+    communication_coverage:
+      dimensions:
+        - figure_claim_count
+        - valid_binding_count
+        - distinct_visual_ref_count
+        - distinct_bound_claim_count
+        - indexed_claims_with_binding_count
+        - bindings_with_evidence_ref_count
+        - bindings_with_any_evidence_context_count
+        - supports_binding_count
+        - supports_with_evidence_context_count
+        - process_disclosure_declared_field_count
+      ratios:
+        - indexed_claim_binding_ratio
+        - binding_evidence_context_ratio
+        - supports_evidence_context_ratio
+      aggregate_score: null
+      entailment_claim: false
+      evidence_sufficiency_claim: false
+      provenance_soundness_claim: false
+      probability_claim: false
     scientific_validity_claim: false
   figure_evidence:
     profile: sci-render-kit/figure-evidence
@@ -119,6 +149,15 @@ artifacts:
     sidecar: <output>.evidence.json
     claim_binding_profile: sci-render-kit/figure-claim-binding
     process_disclosure_profile: sci-render-kit/process-disclosure
+    assertion_basis:
+      figure_identity: runtime-observed-local-bytes
+      recipe_profile_identity: runtime-observed-local-bytes-and-canonical-serialization
+      claim_communication: recipe-declared
+      process_disclosure: recipe-declared
+      uncertainty: recipe-declared
+      upstream_research: recipe-declared-with-optional-local-resolution
+      local_reference_resolution: runtime-observed-local-filesystem
+      automatic_ai_detection_used: false
     scientific_validity_claim: false
     statistical_validity_claim: false
     causal_validity_claim: false
@@ -131,6 +170,7 @@ accessibility:
   supported_design_scope:
     - "1.1.1 text-alternative support"
     - "1.4.1 non-color cue support"
+    - "1.4.3 text contrast support where applicable"
     - "1.4.11 declared graphical-boundary contrast support"
   all_pairs_palette_policy: "optional stricter project safeguard; not universal WCAG requirement"
   cvd_simulation: "project safeguard; not WCAG-mandated test"
@@ -157,6 +197,37 @@ interoperability:
 reproducibility:
   local_levels: [R0, R1, R2, R3]
   r3_rule: "requires an actual separate rerun plus declared comparison criterion"
+
+not_integrated:
+  - pixel_based_claim_inference
+  - scientific_entailment_validator
+  - evidence_sufficiency_validator
+  - provenance_soundness_validator
+  - automatic_ai_text_detection
+  - statistical_method_validator
+  - whole_publication_wcag_certifier
+  - official_publisher_acceptance_validator
+
+frontier_calibration:
+  checked_through: "2026-08-28"
+  signals:
+    - provenance_grounds_trust_in_autonomous_science
+    - responsible_transparent_ai_scientific_publishing
+    - artifact_centered_claim_aware_observability
+    - trajectories_to_evidence
+    - brain_researcher
+    - earthverse
+    - claim_level_auditability_provenance_coverage
+    - ai_detection_distinct_from_disclosure
+  borrowed_scope: "claim/artifact relations + assertion basis + dimensional communication coverage"
+  endorsement_or_certification_claim: false
+
+research_contract:
+  file: RESEARCH_CONTRACT.md
+  figure_claim_contract: FIGURE_CLAIM_CONTRACT.md
+  assertion_basis_communication_coverage: ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md
+  five_day_consolidation: FIVE_DAY_CONSOLIDATION.md
+  frontier_alignment: FRONTIER_ALIGNMENT.md
 
 research_software:
   citation: CITATION.cff

@@ -5,9 +5,9 @@
 It never inspects pixels, infers claims from titles/legends, dereferences remote
 resources, or decides whether a scientific claim is true.
 
-The audit exists because a recipe can be syntactically valid while its handoff
-metadata is internally inconsistent. Such inconsistencies become explicit
-findings rather than being silently dropped by the evidence writer.
+Day-5 semantics add a dimensional communication-coverage summary. Coverage
+answers which declared relationships are present or reference-backed; it is not
+an entailment, evidence-sufficiency, statistical-validity, or truth score.
 """
 
 from __future__ import annotations
@@ -55,6 +55,112 @@ def _reference_state(value: Any) -> tuple[str, str | None]:
     if Path(text).is_file():
         return "local-file", text
     return "local-or-opaque-reference-not-resolved", text
+
+
+def _ratio(count: int, total: int) -> float | None:
+    return (count / total) if total else None
+
+
+def claim_communication_coverage(recipe: dict) -> dict:
+    """Summarize declared communication coverage without producing a quality score."""
+    research = recipe.get("research_context") or {}
+    if not isinstance(research, dict):
+        research = {}
+    disclosure = recipe.get("process_disclosure") or {}
+    if not isinstance(disclosure, dict):
+        disclosure = {}
+
+    figure_claims = set(_string_list(research.get("claim_refs")))
+    bindings = research.get("claim_bindings") or []
+    if not isinstance(bindings, list):
+        bindings = []
+
+    valid_bindings: list[dict] = []
+    bound_claims: set[str] = set()
+    visual_refs: set[str] = set()
+    bindings_with_evidence_ref = 0
+    bindings_with_any_evidence_context = 0
+    supports_bindings = 0
+    supports_with_evidence_context = 0
+
+    upstream_evidence_present = any(
+        str(research.get(key) or "").strip()
+        for key in ("evidence_envelope_ref", "claim_audit_ref", "provenance_ref")
+    )
+
+    for item in bindings:
+        if not isinstance(item, dict):
+            continue
+        visual_ref = str(item.get("visual_ref") or "").strip()
+        relation = str(item.get("relation") or "").strip()
+        claim_refs = _string_list(item.get("claim_refs"))
+        if not visual_ref or not claim_refs or relation not in CLAIM_RELATIONS:
+            continue
+        evidence_ref = str(item.get("evidence_ref") or "").strip()
+        has_context = bool(evidence_ref or upstream_evidence_present)
+        valid_bindings.append(item)
+        visual_refs.add(visual_ref)
+        bound_claims.update(claim_refs)
+        if evidence_ref:
+            bindings_with_evidence_ref += 1
+        if has_context:
+            bindings_with_any_evidence_context += 1
+        if relation == "supports":
+            supports_bindings += 1
+            if has_context:
+                supports_with_evidence_context += 1
+
+    declared_process_fields: list[str] = []
+    if str(disclosure.get("ai_assistance") or "not_declared") != "not_declared":
+        declared_process_fields.append("ai_assistance")
+    if _string_list(disclosure.get("ai_tools")):
+        declared_process_fields.append("ai_tools")
+    if str(disclosure.get("human_review") or "not_declared") != "not_declared":
+        declared_process_fields.append("human_review")
+    if str(disclosure.get("disclosure_ref") or "").strip():
+        declared_process_fields.append("disclosure_ref")
+
+    counts = {
+        "figure_claim_count": len(figure_claims),
+        "valid_binding_count": len(valid_bindings),
+        "distinct_visual_ref_count": len(visual_refs),
+        "distinct_bound_claim_count": len(bound_claims),
+        "indexed_claims_with_binding_count": len(figure_claims.intersection(bound_claims)),
+        "bindings_with_evidence_ref_count": bindings_with_evidence_ref,
+        "bindings_with_any_evidence_context_count": bindings_with_any_evidence_context,
+        "supports_binding_count": supports_bindings,
+        "supports_with_evidence_context_count": supports_with_evidence_context,
+        "process_disclosure_declared_field_count": len(declared_process_fields),
+    }
+    return {
+        "counts": counts,
+        "ratios": {
+            "indexed_claim_binding_ratio": _ratio(
+                counts["indexed_claims_with_binding_count"], counts["figure_claim_count"]
+            ),
+            "binding_evidence_context_ratio": _ratio(
+                counts["bindings_with_any_evidence_context_count"], counts["valid_binding_count"]
+            ),
+            "supports_evidence_context_ratio": _ratio(
+                counts["supports_with_evidence_context_count"], counts["supports_binding_count"]
+            ),
+        },
+        "process_disclosure_declared_fields": declared_process_fields,
+        "assertion_basis": {
+            "claim_refs": "recipe-declared",
+            "claim_bindings": "recipe-declared",
+            "process_disclosure": "recipe-declared",
+            "local_reference_resolution": "runtime-observed-local-filesystem",
+            "automatic_ai_detection_used": False,
+            "basis_inferred": False,
+        },
+        "aggregate_score": None,
+        "semantics": (
+            "descriptive coverage of declared scientific-communication metadata. Ratios measure presence/reference "
+            "coverage only and do not establish entailment, evidence sufficiency, claim truth, statistical validity, "
+            "publisher acceptance, or scientific quality"
+        ),
+    }
 
 
 def audit_claim_communication(recipe: dict) -> list[dict]:
