@@ -1,9 +1,9 @@
 # Research Contract — sci-render-kit
 
 **Status:** active architecture contract  
-**Calibrated:** 2026-08-28
+**Calibrated:** 2026-08-29
 
-`sci-render-kit` is the scientific-communication plane of the research toolchain. It compiles a declared recipe into a backend-bounded figure plus inspectable evidence. It does **not** decide whether the underlying scientific conclusion is true.
+`sci-render-kit` is the scientific-communication plane of the research toolchain. It compiles a declared recipe into a backend-bounded figure plus inspectable evidence and optional downstream communication-transfer records. It does **not** decide whether the underlying scientific conclusion is true.
 
 ## Canonical flow
 
@@ -19,6 +19,8 @@ recipe + data + research_context + claim_bindings + uncertainty + process_disclo
   -> P2 artifact-integrity findings
   -> P3 publisher-target findings
   -> figure-evidence
+  -> optional communication-transfer
+       └─ explicit non-inheritance constraints
 ```
 
 P0–P3 are runtime phases, not GitHub merge gates.
@@ -34,13 +36,14 @@ sci-render-kit/figure-claim-binding
 sci-render-kit/figure-claim-audit
 sci-render-kit/process-disclosure
 sci-render-kit/figure-evidence
+sci-render-kit/communication-transfer
 ```
 
 Project-owned identifiers are unversioned. This does not remove real external/runtime versions such as WCAG 2.2, CFF 1.2.0 or actual backend/library versions.
 
 ## Scientific-integrity boundary
 
-A successful render does not prove scientific truth, causal validity, statistical validity, correct preprocessing/uncertainty estimation, claim entailment, source credibility, evidence sufficiency, authorship, peer review, publisher acceptance, accessibility conformance or independent reproduction.
+A successful render or transfer does not prove scientific truth, causal validity, statistical validity, correct preprocessing/uncertainty estimation, claim entailment, source credibility, evidence sufficiency, authorship, peer review, publisher acceptance, accessibility conformance or independent reproduction.
 
 ## Runtime validation semantics
 
@@ -73,7 +76,7 @@ supports label != evidence sufficiency
 
 ## Assertion-basis contract
 
-Day 5 separates recorded values from how they entered figure evidence.
+Recorded values remain distinct from how they entered figure evidence.
 
 | Surface | Basis |
 |---|---|
@@ -84,6 +87,7 @@ Day 5 separates recorded values from how they entered figure evidence.
 | uncertainty semantics | recipe-declared |
 | upstream refs | recipe-declared with optional local resolution |
 | local reference resolution | runtime-observed local filesystem |
+| communication-transfer destination/purpose | caller-declared or not-declared |
 
 ```text
 assertion basis != correctness
@@ -130,7 +134,42 @@ reference context != evidence sufficiency
 coverage != provenance soundness
 ```
 
-Current auditability research motivates treating coverage as one measurable dimension; this repository does not implement provenance soundness or scientific entailment validation.
+## Communication-transfer contract
+
+`sci-render-kit/communication-transfer` is a bounded downstream view over an existing figure-evidence sidecar.
+
+It may carry:
+
+```text
+claim refs / bindings
+upstream research context
+uncertainty semantics
+process disclosure
+communication audit
+runtime validation
+```
+
+It must explicitly preserve these non-inheritance constraints:
+
+```text
+scientific_validity_inherited: false
+entailment_inherited: false
+evidence_sufficiency_inherited: false
+statistical_validity_inherited: false
+peer_review_inherited: false
+publisher_acceptance_inherited: false
+accessibility_conformance_inherited: false
+```
+
+Destination and purpose are caller-declared when supplied. The transfer does not infer destination, publication status or review authority from filenames, captions or metadata.
+
+```text
+communication transfer != entailment
+upstream reference != inherited validity
+transfer != publisher acceptance
+```
+
+The machine-readable companion contract is `metadata/communication_transfer.contract.yaml`.
 
 ## Process disclosure
 
@@ -161,9 +200,10 @@ Lower/upper bounds alone do not establish a valid confidence/credible interval o
 - `sci-render-kit/render-manifest` preserves recipe/data/profile/output/backend context;
 - `sci-render-kit/provenance` on the Matplotlib path records artifact identity and actual runtime/library versions where available;
 - `sci-render-kit/a11y` records declared accessibility support with `conformance_claim: false`;
-- `sci-render-kit/figure-evidence` indexes figure/recipe/profile identity, sidecars, upstream research refs, claim communication, assertion basis, communication coverage, process disclosure, uncertainty, runtime validation and local reproducibility semantics.
+- `sci-render-kit/figure-evidence` indexes figure/recipe/profile identity, sidecars, upstream research refs, claim communication, assertion basis, communication coverage, process disclosure, uncertainty, runtime validation and local reproducibility semantics;
+- `sci-render-kit/communication-transfer` carries a bounded subset of that context to downstream workflows without inherited authority.
 
-Figure evidence is a project-owned handoff record, not an external standard or scientific proof object.
+Figure evidence and communication transfer are project-owned handoff records, not external standards or scientific proof objects.
 
 ## Reproducibility levels
 
@@ -172,7 +212,7 @@ Figure evidence is a project-owned handoff record, not an external standard or s
 - **R2 — Environment-bounded**: important backend/runtime/dependency assumptions recorded;
 - **R3 — Reproduced**: a separate rerun executed and compared under a declared criterion.
 
-No sidecar/hash/binding/coverage record self-awards R3.
+No sidecar/hash/binding/coverage/transfer record self-awards R3.
 
 ## Accessibility boundary
 
@@ -192,6 +232,7 @@ Publisher profiles are project presets, not official validators.
 ```text
 P3/profile match != publisher certification
 P3/profile match != acceptance
+communication transfer != acceptance
 ```
 
 ## Backend capability truth
@@ -208,30 +249,33 @@ Backend source presence does not prove runtime availability or semantic parity.
 
 ```text
 auto-doc-engine/artifact-record
-  assertion basis + artifact coverage
+        ↓
+auto-doc-engine/artifact-lineage
         ↓
 epistemic-pipeline/claim-verification
-  observation basis + claim coverage
+        ↓
+epistemic-pipeline/claim-transfer
         ↓
 epistemic-pipeline/evidence-envelope
         ↓
 sci-render-kit/figure-claim-audit
-  communication coverage
         ↓
 sci-render-kit/figure-evidence
+        ↓ optional downstream handoff
+sci-render-kit/communication-transfer
 ```
 
-References are optional handoff relationships, not direct runtime coupling or inherited scientific validity.
+References/transfers are optional handoff relationships, not direct runtime coupling or inherited scientific validity.
 
 ## RO-Crate interoperability
 
 RO-Crate 1.3 is a useful external packaging target, but this repository does not claim its sidecars are RO-Crates.
 
-## Five-day external calibration
+## Six-day external calibration
 
-The 2026-08-24 → 2026-08-28 design is informed by re-openable autonomous-science provenance, transparent AI use/human oversight, artifact-centered claim-aware observability, trajectory-to-evidence qualification, Brain Researcher evidence-bounded claims, EarthVerse strict end-to-end consistency and claim-level auditability separating coverage from soundness.
+The design is informed by re-openable autonomous-science provenance, transparent AI use/human oversight, artifact-centered claim-aware observability, trajectory-to-evidence qualification, Brain Researcher evidence-bounded claims, EarthVerse strict end-to-end consistency, claim-level auditability, **Praxist** solution/evidence lineages (arXiv:2608.25955) and **ReproAgent** persistent implementation/reference contracts (arXiv:2608.24291).
 
-Borrowed: explicit claim/artifact relations, assertion provenance and dimensional coverage.
+Borrowed: explicit claim/artifact relations, assertion provenance, dimensional coverage and persistence of interpretive constraints across downstream handoff.
 
 Not claimed: entailment verification, evidence sufficiency, provenance soundness, automatic AI detection, scientific validity, WCAG certification, peer review or publisher acceptance.
 
@@ -248,6 +292,8 @@ Assertion basis != correctness
 Communication coverage != entailment
 Coverage ratio != probability
 Visual-to-claim binding != verified entailment
+Communication transfer != entailment
+Upstream reference != inherited validity
 AI disclosure != authorship adjudication
 Human review != peer review
 Publisher alignment != acceptance
