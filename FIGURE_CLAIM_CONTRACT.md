@@ -1,16 +1,16 @@
 # Figure Claim & Process Disclosure Contract — sci-render-kit
 
 **Status:** implemented companion contract  
-**Calibrated:** 2026-08-27  
+**Calibrated:** 2026-08-28  
 **Primary record:** `sci-render-kit/figure-evidence`
 
-## 1. Purpose
+## Purpose
 
-A scientific figure may need to preserve which upstream claims it is intended to communicate, which visual object relates to which claim, which upstream evidence/provenance references were declared, and what AI/human-review process metadata was declared.
+A scientific figure may preserve which upstream claims it is intended to communicate, which visual object relates to which claim, which evidence/provenance refs were declared, how those declarations entered the record, and which communication dimensions are covered.
 
-This contract preserves those relationships without pretending the renderer can determine scientific truth.
+The contract never upgrades those relationships into scientific truth.
 
-## 2. Stable project identifiers
+## Stable project identifiers
 
 ```text
 sci-render-kit/figure-claim-binding
@@ -19,24 +19,21 @@ sci-render-kit/process-disclosure
 sci-render-kit/figure-evidence
 ```
 
-These identifiers intentionally have no project-invented `@1/@2` suffixes. Compatibility is defined by documented fields and semantics, not decorative counters.
+Internal identifiers remain unversioned; real external/runtime versions remain factual evidence when known.
 
-## 3. Figure-level claim references
+## Figure-level claim references
 
 ```yaml
 research_context:
   claim_refs: [claim_1, claim_2]
 ```
 
-These IDs are lineage/context pointers only.
-
 ```text
 claim reference != claim truth
 claim reference != evidence sufficiency
-claim reference != statistical validity
 ```
 
-## 4. Visual-to-claim bindings
+## Visual-to-claim bindings
 
 ```yaml
 research_context:
@@ -47,7 +44,7 @@ research_context:
       evidence_ref: evidence/run-042.evidence.json
 ```
 
-Required fields:
+Required:
 
 ```text
 visual_ref
@@ -55,14 +52,7 @@ claim_refs[]
 relation
 ```
 
-Optional fields:
-
-```text
-evidence_ref
-note
-```
-
-Allowed relation labels:
+Allowed relations:
 
 ```text
 supports
@@ -72,7 +62,7 @@ compares
 derived-from
 ```
 
-These are declared communication semantics, not automatically verified logical entailment. The renderer never infers missing bindings from titles, legends, pixels, labels, prose or data values.
+Bindings are **recipe-declared** communication semantics. They are never inferred from titles, legends, pixels, labels, prose or data values.
 
 ```text
 visual binding != verified entailment
@@ -81,19 +71,71 @@ illustrates label != causal support
 derived-from label != complete provenance proof
 ```
 
-## 5. Runtime claim communication audit
+## Assertion basis
 
-`core/claim_binding_audit.py` emits `sci-render-kit/figure-claim-audit` findings for bounded metadata consistency, including duplicate bindings, unresolved local/opaque references, inconsistent process-disclosure fields and support relations that lack declared evidence context.
+Figure-side evidence records how information entered the record:
 
-The audit:
+| Surface | Basis |
+|---|---|
+| claim refs / bindings | `recipe-declared` |
+| process disclosure | `recipe-declared` |
+| uncertainty | `recipe-declared` |
+| upstream refs | recipe-declared + optional local resolution |
+| figure bytes | runtime-observed local bytes |
+| local ref resolution | runtime-observed local filesystem |
 
-- does not inspect figure pixels;
-- does not infer claims from titles or legends;
-- does not dereference remote resources;
-- does not verify citations;
-- does not establish scientific validity or truth.
+```text
+assertion basis != correctness
+recipe-declared support != scientific verification
+```
 
-## 6. Process disclosure
+## Runtime claim communication audit
+
+`core/claim_binding_audit.py` emits `sci-render-kit/figure-claim-audit` findings for metadata consistency, including malformed/duplicate bindings, claim-index mismatches, support relations lacking declared evidence context, process-disclosure inconsistency and unresolved local-looking references.
+
+The audit does not inspect pixels, infer claims, dereference remote resources, verify citations or establish scientific validity.
+
+## Communication coverage
+
+The audit also exposes dimensional coverage:
+
+```text
+figure_claim_count
+valid_binding_count
+distinct_visual_ref_count
+distinct_bound_claim_count
+indexed_claims_with_binding_count
+bindings_with_evidence_ref_count
+bindings_with_any_evidence_context_count
+supports_binding_count
+supports_with_evidence_context_count
+process_disclosure_declared_field_count
+```
+
+Ratios:
+
+```text
+indexed_claim_binding_ratio
+binding_evidence_context_ratio
+supports_evidence_context_ratio
+```
+
+These are coverage ratios only.
+
+```text
+binding coverage != entailment
+supports evidence-context coverage != evidence sufficiency
+coverage ratio != probability
+coverage != provenance soundness
+```
+
+No aggregate communication-quality score is computed:
+
+```json
+{"aggregate_score": null}
+```
+
+## Process disclosure
 
 ```yaml
 process_disclosure:
@@ -110,59 +152,62 @@ ai_assistance: none | used | not_declared
 human_review: reviewed | partial | not_reviewed | not_declared
 ```
 
-Missing values stay `not_declared`. Tool/model/provider identifiers are retained as declarations and are not verified against a vendor registry.
+Figure evidence identifies the basis as `recipe-declared` and records:
+
+```json
+{"automatic_ai_detection_used": false}
+```
 
 ```text
+AI disclosure != AI detection
 AI disclosure != authorship adjudication
 AI tool identity != output authenticity proof
 human review != peer review
-human review != expert validation
 human review != truth
 ```
 
-## 7. Figure evidence
+## Figure evidence
 
-`core/figure_evidence.py` emits `sci-render-kit/figure-evidence`.
-
-Communication surfaces include:
+`core/figure_evidence.py` emits `sci-render-kit/figure-evidence` with separate surfaces:
 
 ```text
-claim_communication:
-  profile: sci-render-kit/figure-claim-binding
-  claim_refs: [...]
-  bindings: [...]
-  inferred_bindings: false
+claim_communication
+  -> declared bindings + assertion basis
 
-communication_audit:
-  profile: sci-render-kit/figure-claim-audit
+communication_audit
+  -> findings + dimensional coverage
 
-process_disclosure:
-  profile: sci-render-kit/process-disclosure
+process_disclosure
+  -> declared AI/human-review context + basis
 ```
 
-The record also preserves artifact identities, recipe/profile/backend context, uncertainty semantics, runtime findings and local reproducibility state.
+It also preserves artifact identities, recipe/profile/backend context, upstream refs, uncertainty semantics, runtime findings and local reproducibility state.
 
-Explicit non-claims remain false for authorship, peer review, scientific validity, statistical validity, causal validity and publisher acceptance.
+Scientific/statistical/causal/authorship/peer-review/publisher-acceptance claims remain false.
 
-## 8. Cross-repository handoff
+## Cross-repository handoff
 
 ```text
-auto-doc-engine
-artifact-record + process-disclosure
-        ↓ optional reference
-epistemic-pipeline
-claim-verification + evidence-envelope
-        ↓ optional reference
-sci-render-kit
-figure-claim-binding + figure-claim-audit + figure-evidence
+auto-doc-engine/artifact-record
+  assertion basis + artifact coverage
+        ↓
+epistemic-pipeline/claim-verification
+  observation basis + claim coverage
+        ↓
+epistemic-pipeline/evidence-envelope
+        ↓
+sci-render-kit/figure-claim-audit
+  communication coverage
+        ↓
+sci-render-kit/figure-evidence
 ```
 
-A Sci Render recipe may reference an Epistemic evidence envelope or claim-verification record and bind declared claim IDs to visual objects. Sci Render does not import Epistemic Pipeline and does not independently validate those upstream claims.
+A reference does not inherit truth.
 
-## 9. Research direction boundary
+## Research direction boundary
 
-Current scientific-agent research increasingly emphasizes portable artifact/claim/evidence/provenance records and human oversight. That direction motivates this engineering layer; it does not certify this project's implementation, prove novelty, or establish scientific correctness.
+Current scientific-agent work increasingly emphasizes portable claim/artifact/evidence records, auditability coverage, evidence-bounded claims and human oversight. The repository borrows those structural lessons only; it does not claim provenance soundness, entailment verification or scientific-review authority.
 
-## 10. Core rule
+## Core rule
 
-> Preserve what the figure declares it communicates and how it was produced, while refusing to silently upgrade those declarations into truth.
+> Preserve what the figure declares it communicates, the basis of those declarations, and the coverage of the communication record—without silently upgrading any of them into truth.
