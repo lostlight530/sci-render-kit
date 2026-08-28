@@ -1,8 +1,8 @@
 # sci-render-kit
 
-> Declarative scientific-figure compilation with explicit uncertainty semantics, accessibility intent, publisher-target boundaries, claim-to-visual communication, runtime audit and portable figure evidence.
+> Declarative scientific-figure compilation with explicit uncertainty semantics, accessibility intent, publisher-target boundaries, claim-to-visual communication, assertion basis, dimensional communication coverage, runtime audit and portable figure evidence.
 
-[Architecture](ARCHITECTURE.md) · [Research Contract](RESEARCH_CONTRACT.md) · [Figure Claim Contract](FIGURE_CLAIM_CONTRACT.md) · [Frontier Alignment](FRONTIER_ALIGNMENT.md) · [Four-Day Consolidation](FOUR_DAY_CONSOLIDATION.md) · [Examples](examples/README.md)
+[Architecture](ARCHITECTURE.md) · [Research Contract](RESEARCH_CONTRACT.md) · [Figure Claim Contract](FIGURE_CLAIM_CONTRACT.md) · [Assertion Basis & Communication Coverage](ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md) · [Frontier Alignment](FRONTIER_ALIGNMENT.md) · [Five-Day Consolidation](FIVE_DAY_CONSOLIDATION.md) · [Examples](examples/README.md)
 
 ## Positioning
 
@@ -14,6 +14,8 @@ recipe
 visual/accessibility runtime checks
   ↓
 claim/process communication audit
+  ├─ assertion basis
+  └─ dimensional communication coverage
   ↓
 backend render
   ↓
@@ -21,46 +23,43 @@ artifact/publisher-target checks
   ↓
 render manifest + provenance/accessibility sidecars
   ↓
-figure evidence
+figure-evidence
 ```
 
-The repository separates “can this figure be rendered?”, “does it satisfy project visual/accessibility predicates?”, and “are its declared claim-to-visual relations internally inspectable?” from “is the science true?”.
+The repository separates renderability, runtime visual/accessibility predicates, declared communication coverage and scientific validity.
 
 ## Stable internal identifiers
-
-Project-owned identifiers are intentionally unversioned:
 
 ```text
 sci-render-kit/runtime-quality
 sci-render-kit/render-manifest
 sci-render-kit/provenance
+sci-render-kit/a11y
 sci-render-kit/figure-claim-binding
 sci-render-kit/figure-claim-audit
 sci-render-kit/process-disclosure
 sci-render-kit/figure-evidence
 ```
 
-Decorative `@1/@2` or `/v1` suffixes are not used as pseudo-releases. Real external/runtime versions remain explicit when they are actual evidence—for example WCAG 2.2 references, Matplotlib/NumPy/Python versions recorded by a backend, or the pinned Observable Plot dependency.
+Project identifiers are unversioned. Real external/runtime versions remain evidence when genuinely known: WCAG 2.2 references, Matplotlib/NumPy/Python/ggplot2/R versions, and pinned Observable Plot 0.6.17.
 
 ## Capability map
 
 | Surface | Status | Boundary |
 |---|---|---|
-| `metadata/recipe.schema.yaml` | Implemented | validates declared recipe structure; schema success is not scientific validity |
+| `metadata/recipe.schema.yaml` | Implemented | recipe structure; schema success != scientific validity |
 | `sci_render.py` | Implemented | unified schema/rule/backend/evidence path |
-| `core/accessibility.py` | Implemented | text alternatives and redundant style intent; not whole-publication WCAG certification |
-| `core/color_encoding.py`, `core/palettes.py`, `core/cvd_simulation.py` | Implemented | project visual safeguards, not universal perceptual guarantees |
-| `core/uncertainty_legend.py` | Implemented | explicit uncertainty terminology; does not infer statistical validity |
-| `core/claim_binding_audit.py` | Implemented | audits declared claim/process/reference consistency without reading pixels or deciding truth |
-| `core/figure_evidence.py` | Implemented | portable evidence index for figure/recipe/backend/upstream refs/audits |
-| Matplotlib backend | Implemented | PNG/SVG/PDF plus manifest/provenance evidence |
-| ggplot2 backend | Implemented where dependencies exist | PNG/SVG/PDF; environment-dependent |
+| `core/accessibility.py` | Implemented | text alternatives/redundant style intent; not whole-publication WCAG certification |
+| `core/color_encoding.py`, `core/palettes.py`, `core/cvd_simulation.py` | Implemented | project safeguards, not universal perceptual guarantees |
+| `core/uncertainty_legend.py` | Implemented | explicit uncertainty terminology; not statistical-validity inference |
+| `core/claim_binding_audit.py` | Implemented | claim/process consistency + communication coverage; no pixel/entailment inference |
+| `core/figure_evidence.py` | Implemented | portable identity/upstream/basis/audit evidence index |
+| Matplotlib backend | Implemented | PNG/SVG/PDF + manifest/provenance evidence |
+| ggplot2 backend | Environment-dependent implementation | PNG/SVG/PDF where runtime exists |
 | Observable backend | Implemented | HTML; pinned view-time network dependency unless vendored |
-| experimental metaphorical modules | Experimental | not part of canonical scientific-communication contract |
+| experimental modules | Experimental | not canonical scientific-communication capability |
 
 ## Recipe research context
-
-A recipe can explicitly reference upstream research artifacts:
 
 ```yaml
 research_context:
@@ -80,7 +79,7 @@ research_context:
       evidence_ref: ../epistemic/claim-audits/run.claim-audit.json
 ```
 
-Supported declared relation vocabulary:
+Allowed declared relation labels:
 
 ```text
 supports
@@ -90,46 +89,91 @@ compares
 derived-from
 ```
 
-These are communication labels supplied by the recipe author/system.
-
 ```text
 visual binding != verified entailment
 supports label != evidence sufficiency
 claim reference != claim truth
 ```
 
-The renderer never infers claim bindings from figure titles, legends, color or pixels.
+Bindings are never inferred from titles, legends, colors, data values or pixels.
 
 ## Figure Claim Audit
 
-`core/claim_binding_audit.py` emits runtime findings under:
+`core/claim_binding_audit.py` emits findings under:
 
 ```text
 sci-render-kit/figure-claim-audit
 ```
 
-It checks declared metadata such as:
+It checks malformed/duplicate bindings, claim-index mismatch, `supports` relations lacking declared evidence context, process-disclosure inconsistency, unresolved local-looking references and visual-ref multiplicity.
 
-- malformed or duplicate bindings;
-- binding claims absent from the figure-level claim index;
-- `supports` relations with no declared evidence/audit context;
-- contradictory AI-assistance/tool disclosure;
-- local-looking references that do not resolve;
-- a visual object participating in multiple declared relations.
+It does not inspect pixels, query literature, verify citations, determine entailment or judge scientific truth.
 
-The audit does **not**:
+## Assertion basis
 
-- inspect figure pixels;
-- query external literature;
-- verify citations;
-- determine entailment;
-- judge statistical, causal or scientific truth.
+Day 5 records how figure-side evidence entered the record:
 
-A warning that `supports` lacks an evidence reference means only that the recipe lacks inspectable reference context. It is not a verdict that scientific support is insufficient.
+```text
+figure bytes            -> runtime-observed-local-bytes
+recipe/profile identity -> runtime-observed local bytes + canonical serialization
+claim refs/bindings      -> recipe-declared
+process disclosure       -> recipe-declared
+uncertainty semantics    -> recipe-declared
+upstream refs            -> recipe-declared-with-optional-local-resolution
+local ref resolution     -> runtime-observed-local-filesystem
+```
+
+```text
+assertion basis != correctness
+recipe-declared supports != verified support
+```
+
+The process path records `automatic_ai_detection_used: false`; the renderer does not infer AI authorship/use from captions, prose, pixels or metadata.
+
+See [ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md](ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md).
+
+## Dimensional communication coverage
+
+`claim_communication_coverage(recipe)` reports separate dimensions including:
+
+```text
+figure_claim_count
+valid_binding_count
+distinct_visual_ref_count
+distinct_bound_claim_count
+indexed_claims_with_binding_count
+bindings_with_evidence_ref_count
+bindings_with_any_evidence_context_count
+supports_binding_count
+supports_with_evidence_context_count
+process_disclosure_declared_field_count
+```
+
+Derived ratios:
+
+```text
+indexed_claim_binding_ratio
+binding_evidence_context_ratio
+supports_evidence_context_ratio
+```
+
+Example:
+
+```text
+supports_evidence_context_ratio = 1.0
+```
+
+means every declared `supports` binding has some declared evidence/audit/provenance context.
+
+It does **not** mean the support relation is correct, evidence is sufficient, the figure proves the claim, or truth probability is 1.0.
+
+```json
+{"aggregate_score": null}
+```
+
+No composite communication-quality score is manufactured.
 
 ## Two runtime evidence planes
-
-The unified CLI deliberately keeps two summaries separate:
 
 ```text
 runtime_validation
@@ -137,75 +181,45 @@ runtime_validation
 
 communication_audit
   profile: sci-render-kit/figure-claim-audit
+  coverage: {...}
 ```
 
-`runtime-quality` covers visual/accessibility/artifact/publisher-target predicates. `figure-claim-audit` covers claim/process/reference metadata consistency.
-
-A claim warning is not relabelled as a plotting-quality failure, and a DPI/palette warning is not relabelled as a scientific claim problem.
+Visual/accessibility/artifact/publisher predicates stay separate from claim/process/reference communication audit.
 
 ## Figure Evidence
 
-After a successful canonical render, `core/figure_evidence.py` writes `<figure>.evidence.json` under:
+After successful canonical rendering, `core/figure_evidence.py` writes `<figure>.evidence.json` under:
 
 ```text
 sci-render-kit/figure-evidence
 ```
 
-It can index:
+It can index figure/recipe/profile identity, backend/sidecars, upstream evidence/audit/provenance/data refs, claim bindings, assertion basis, communication coverage, process disclosure, uncertainty semantics, runtime validation and R1 replay-addressable status.
 
-```text
-figure byte identity
-recipe canonical/file identity
-target-profile identity
-backend identity
-render/provenance/accessibility sidecars
-upstream evidence envelope
-upstream claim audit
-upstream provenance/data artifact refs
-whole-figure claim refs
-visual-to-claim bindings
-process disclosure
-uncertainty semantics
-runtime validation
-communication audit
-R1 replay-addressable status
-```
-
-Local referenced files can receive SHA-256 identity. Opaque references are retained without remote dereference.
-
-Scientific validity is never inherited from an upstream reference.
+Scientific validity is never inherited from upstream references.
 
 ## Process disclosure
-
-Recipes may declare:
 
 ```yaml
 process_disclosure:
   ai_assistance: used
-  ai_tools:
-    - declared provider/model/tool identifier
+  ai_tools: [declared-provider-or-tool]
   human_review: partial
   disclosure_ref: methods.md
 ```
 
-Vocabulary:
+The evidence record identifies this as `recipe-declared` and records `automatic_ai_detection_used: false`.
 
 ```text
-ai_assistance: none | used | not_declared
-human_review: reviewed | partial | not_reviewed | not_declared
-```
-
-```text
+AI disclosure != AI detection
 AI disclosure != authorship adjudication
 human review != peer review
 provider/tool label != output validity
 ```
 
-Unknown tool/model versions must not be guessed.
-
 ## Uncertainty semantics
 
-A recipe that displays uncertainty should declare what it is:
+A displayed uncertainty object should declare its kind/semantics, for example:
 
 ```yaml
 uncertainty:
@@ -215,26 +229,22 @@ uncertainty:
   source_ref: analysis.json
 ```
 
-Supported kinds include standard error/deviation, confidence/credible/bootstrap/quantile intervals, min-max ranges, heuristic bounds, and not-applicable.
-
-The existence of lower/upper bounds is not enough to call them a confidence interval. The renderer records declared semantics; it does not independently validate the statistical procedure.
+Bounds alone do not establish a confidence interval, credible interval or valid uncertainty model. The renderer preserves declared semantics; it does not validate upstream statistics.
 
 ## Accessibility semantics
 
-The project uses WCAG 2.2 concepts carefully:
+WCAG 2.2 is used with scoped semantics:
 
-- **SC 1.4.1 Use of Color** — color should not be the sole visual means when information requires another cue;
-- **SC 1.4.11 Non-text Contrast** — the 3:1 requirement is relevant to graphical boundaries/components required for understanding;
-- **SC 1.4.3 Contrast (Minimum)** — text contrast support where declared;
-- **SC 1.1.1 Non-text Content** — text-alternative support.
+- SC 1.1.1 — text-alternative support;
+- SC 1.4.1 — do not use color as the sole required information channel;
+- SC 1.4.11 — required graphical objects/boundaries need sufficient contrast against adjacent colors;
+- SC 1.4.3 — text contrast support where applicable.
 
-`adjacency_check=true` intentionally applies a stricter project all-pairs palette safeguard. It is **not** presented as a universal WCAG requirement.
-
-CVD simulation is an additional project safeguard, not a WCAG-mandated certification test.
+`adjacency_check=true` is a stricter project all-pairs palette safeguard, **not** a universal WCAG requirement. CVD simulation is an extra robustness check, not WCAG certification.
 
 ## Publisher-target profiles
 
-Publisher/profile presets are configuration targets. Runtime checks can compare explicit properties such as preferred/required formats, declared raster DPI and dimensions when the profile contains those values.
+Publisher presets are machine-readable project configuration targets.
 
 ```text
 profile alignment != publisher certification
@@ -242,69 +252,71 @@ profile alignment != acceptance
 profile alignment != complete submission compliance
 ```
 
-The repository does not claim to be an official Nature/Science/Cell/IEEE validator.
+The repository is not an official Nature/Science/Cell/IEEE validator.
 
 ## Backends and real runtime versions
 
-Project profile IDs are unversioned, but runtime evidence records actual software versions where known:
+Internal profile IDs are unversioned, but factual runtime versions remain evidence:
 
 - Matplotlib provenance records Matplotlib, NumPy and Python versions;
-- ggplot2 manifest records installed ggplot2 and R runtime versions;
-- Observable HTML pins `@observablehq/plot` 0.6.17 and records the view-time dependency.
-
-These are factual execution/dependency identities, not internal release decoration.
+- ggplot2 manifest records installed ggplot2 and R versions;
+- Observable HTML pins `@observablehq/plot` 0.6.17 and records its view-time dependency.
 
 ## Reproducibility
 
-Shared project terminology:
+- **R0 Traceable** — artifact/source identity located.
+- **R1 Replay-addressable** — recipe/data/profile/backend identities locate intended replay.
+- **R2 Environment-bounded** — relevant execution environment/dependencies captured.
+- **R3 Reproduced** — separate rerun + declared comparison.
 
-- **R0 Traceable** — artifact/source identity can be located.
-- **R1 Replay-addressable** — recipe/data/profile/backend identities describe the intended replay.
-- **R2 Environment-bounded** — relevant execution environment/dependencies are also captured.
-- **R3 Reproduced** — a separate rerun occurred and was compared under a declared criterion.
+Sidecars/hashes do not self-award R3.
 
-A manifest, provenance sidecar, figure evidence record or matching hash alone does not establish R3.
+## Five-day research calibration
+
+The 2026-08-24 → 2026-08-28 architecture is informed by re-openable autonomous-science provenance, transparent AI use/human oversight, artifact-centered claim-aware observability, trajectory-to-evidence qualification, Brain Researcher evidence-bounded claims, EarthVerse strict end-to-end consistency gaps, claim-level auditability work distinguishing coverage from soundness, and current AI-detection reporting that reinforces the distinction between detection and disclosure.
+
+Borrowed: portable claim/artifact relations, assertion provenance and dimensional communication coverage.
+
+Not claimed: entailment verification, evidence sufficiency, provenance soundness, automatic AI detection, scientific validity, WCAG certification or publisher acceptance.
+
+See [FIVE_DAY_CONSOLIDATION.md](FIVE_DAY_CONSOLIDATION.md).
 
 ## Cross-repository handoff
 
 ```text
-auto-doc-engine
-artifact-record
-      ↓
-epistemic-pipeline
-claim-verification + evidence-envelope
-      ↓
-sci-render-kit
-figure-claim-audit + figure-evidence
-```
-
-Preferred upstream identifiers:
-
-```text
 auto-doc-engine/artifact-record
+  assertion basis + artifact coverage
+        ↓
 epistemic-pipeline/claim-verification
+  claim audit coverage + observation basis
+        ↓
 epistemic-pipeline/evidence-envelope
+        ↓
+sci-render-kit/figure-claim-audit
+  communication coverage
+        ↓
+sci-render-kit/figure-evidence
 ```
 
-No direct Python import between repositories is required.
-
-## Current global research calibration
-
-The four-day architecture was rechecked against recent 2026 work on re-openable provenance, transparent AI-assisted scientific publishing, artifact-centered claim-aware observability, evidence-constrained claim qualification, trajectory-to-evidence conversion and strict end-to-end scientific-agent evaluation. Those directions support making claim/artifact/process relations inspectable; they do not certify this repository.
+No direct Python imports are required.
 
 ## Scientific-integrity boundaries
 
-- Render success is not scientific validity.
-- A figure is not evidence merely because it exists.
-- A visual binding is not verified entailment.
-- A `supports` label is not evidence sufficiency.
-- Uncertainty labels are not statistically valid unless the upstream method justifies them.
-- Accessibility checks support design; they do not certify an entire publication.
-- Publisher-target alignment is not publisher acceptance.
-- Provenance is not truth.
-- Human review is not peer review.
-- Metadata is not reproduction.
+```text
+Render success != scientific validity
+Assertion basis != correctness
+Communication coverage != entailment
+Coverage ratio != probability
+Visual binding != verified entailment
+Supports label != evidence sufficiency
+Uncertainty label != statistical validity
+Accessibility support != whole-publication WCAG certification
+Publisher alignment != acceptance
+Provenance != truth
+Human review != peer review
+Metadata != reproduction
+```
 
 ## Governance boundary
 
-No GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions or merge gates are part of this research architecture. Existing local checks remain optional maintenance aids. No test suite is used as the completion criterion for the 2026-08-27 consolidation.
+GitHub Actions, CI, CodeQL, dependency bots, branch protection and merge gates remain outside this research architecture. Local checks are optional maintenance aids; test execution is not the completion criterion for this consolidation.
