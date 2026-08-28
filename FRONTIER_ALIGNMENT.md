@@ -1,7 +1,7 @@
 # Frontier Alignment — sci-render-kit
 
 **Status:** non-normative research-positioning snapshot  
-**Calibrated:** 2026-08-28
+**Calibrated:** 2026-08-29
 
 `sci-render-kit` addresses a narrow research-engineering problem: preserving scientific communication semantics when figures are produced inside AI-assisted or agentic workflows.
 
@@ -20,11 +20,12 @@ figure
 + process disclosure
 + runtime findings
 + provenance / upstream evidence refs
++ explicit downstream transfer constraints
 ```
 
-This does not make the renderer a scientific verifier; it makes the communication artifact more inspectable.
+This does not make the renderer a scientific verifier; it makes the communication artifact more inspectable and safer to hand downstream.
 
-## Day-5: assertion provenance
+## Assertion provenance
 
 A later auditor benefits from knowing whether a field was recipe-declared or runtime-observed.
 
@@ -38,9 +39,9 @@ upstream ref resolution              -> runtime-observed-local-filesystem
 assertion basis != correctness
 ```
 
-The renderer also records `automatic_ai_detection_used: false` for process disclosure. It does not infer AI authorship/use from figure captions, prose, pixels or metadata.
+The renderer records `automatic_ai_detection_used: false` for process disclosure. It does not infer AI authorship/use from captions, prose, pixels or metadata.
 
-## Day-5: communication coverage
+## Communication coverage
 
 Current claim-level auditability research separates coverage from stronger ideas such as provenance soundness. Sci Render adopts the part it can honestly compute at the communication layer:
 
@@ -58,6 +59,33 @@ communication coverage != entailment
 coverage ratio != probability
 coverage != provenance soundness
 reference context != evidence sufficiency
+```
+
+## Day-6: communication transfer without inherited authority
+
+A downstream manuscript/review/archive system may receive a figure after the original recipe and audit context are no longer in view. `core/communication_transfer.py` therefore creates a bounded transfer view over an existing figure-evidence sidecar.
+
+The transfer carries:
+
+```text
+claim refs / bindings
+upstream research context
+uncertainty semantics
+process disclosure
+communication audit
+runtime validation
+```
+
+and explicitly prevents automatic authority inheritance:
+
+```text
+scientific_validity_inherited: false
+entailment_inherited: false
+evidence_sufficiency_inherited: false
+statistical_validity_inherited: false
+peer_review_inherited: false
+publisher_acceptance_inherited: false
+accessibility_conformance_inherited: false
 ```
 
 ## Global signals used for calibration
@@ -108,13 +136,29 @@ Borrowed: preserve cross-layer relationships rather than treating a successful v
 
 *From Fluent to Verifiable* distinguishes provenance coverage, soundness, contradiction transparency and audit effort.
 
-Borrowed today: coverage as a separate measurable dimension.
+Borrowed: coverage as a separate measurable dimension.
 
 Not implemented: provenance soundness or scientific entailment verification.
 
+### Praxist — solution lineages
+
+**Praxist: From Experimental Artifacts to Solution Lineages** (arXiv:2608.25955, 26 Aug 2026) materializes typed evidence/solution lineage so later research generations can inherit explicit mechanisms, unresolved claims and constraints.
+
+Borrowed principle: scientific communication artifacts should carry forward the context needed to interpret them instead of depending on ephemeral conversation/history.
+
+Not borrowed: Praxist's evaluator authority, generational research runtime or benchmark claims.
+
+### ReproAgent — persistent contracts
+
+**ReproAgent: Contract-Guided Paper-to-Code Reproduction** (arXiv:2608.24291, 25 Aug 2026) preserves implementation requirements and reference evidence across long generation/repair trajectories.
+
+Borrowed principle: downstream handoff should preserve requirements/context explicitly rather than reconstruct them from final outputs.
+
+Not borrowed: its paper-to-code task or reported reproduction performance.
+
 ### AI detection versus disclosure
 
-Recent Nature reporting on AI-detection tools reinforces that automatic detection and explicit disclosure are separate mechanisms.
+Automatic detection and explicit disclosure are separate mechanisms.
 
 Sci Render preserves explicit recipe declarations; it does not silently classify content to infer AI authorship/use.
 
@@ -130,6 +174,8 @@ declared scientific communication semantics
 assertion basis + communication coverage
         ↓
 rendered figure + evidence sidecars
+        ↓
+communication-transfer with non-inheritance constraints
 ```
 
 That positioning is not “better than Matplotlib/ggplot2/Plotly” and is not a global uniqueness claim.
@@ -138,16 +184,16 @@ That positioning is not “better than Matplotlib/ggplot2/Plotly” and is not a
 
 ```text
 auto-doc-engine
-  artifact identity / assertion basis / artifact coverage
+  artifact identity / assertion basis / artifact coverage / artifact lineage
         ↓
 epistemic-pipeline
-  claim/evidence observations / claim coverage / provenance
+  claim/evidence observations / claim coverage / claim transfer / provenance
         ↓
 sci-render-kit
-  claim-aware communication / communication coverage / figure evidence
+  claim-aware communication / communication coverage / figure evidence / communication transfer
 ```
 
-Together the repositories explore evidence-aware research infrastructure across artifact, epistemic process and scientific communication planes.
+Together the repositories explore evidence-aware research infrastructure across artifact, epistemic process and scientific communication planes with explicit inheritance boundaries.
 
 ## Hard boundaries
 
@@ -157,6 +203,8 @@ assertion basis != correctness
 communication coverage != entailment
 coverage ratio != probability
 claim binding != entailment
+communication transfer != entailment
+upstream reference != inherited validity
 supports label != evidence sufficiency
 publisher preset != acceptance
 accessibility support != whole-document conformance
@@ -167,4 +215,4 @@ AI disclosure != authorship adjudication
 human review != peer review
 ```
 
-> Day 5 makes the communication layer more auditable by preserving both the basis and coverage of declared relationships while refusing to manufacture scientific-verification semantics.
+> Day 6 extends the communication plane from inspectable figure evidence to inspectable downstream handoff: context travels, authority does not.
