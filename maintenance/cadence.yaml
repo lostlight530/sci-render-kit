@@ -1,0 +1,51 @@
+{
+  "profile": "sci-render-kit/maintenance-cadence",
+  "calibrated": "2026-08-30",
+  "project_profile_prefix": "sci-render-kit/",
+  "canonical_paths": [
+    "MANIFEST.yaml",
+    "AGENTS.md",
+    "RESEARCH_CONTRACT.md",
+    "FRONTIER_ALIGNMENT.md",
+    "FIGURE_CLAIM_CONTRACT.md",
+    "COMMUNICATION_TRANSFER_CONTRACT.md",
+    "metadata/communication_transfer.contract.yaml",
+    "core/claim_binding_audit.py",
+    "core/figure_evidence.py",
+    "core/communication_transfer.py"
+  ],
+  "scan_paths": ["MANIFEST.yaml", "AGENTS.md", "RESEARCH_CONTRACT.md", "FRONTIER_ALIGNMENT.md", "core", "metadata", "quality"],
+  "forbidden_governance_paths": [".github/workflows"],
+  "history_patterns": ["*_DAY_CONSOLIDATION.md", "STAGE_*.md"],
+  "cadences": {
+    "daily": {
+      "purpose": "local recipe/figure-evidence/communication drift and new-fact maintenance without history rewrite",
+      "calibration_max_age_days": 2,
+      "baseline_hashes": false,
+      "history_inventory": false
+    },
+    "weekly": {
+      "purpose": "cross-day communication-contract reconciliation, backend-boundary review, and handoff consistency",
+      "calibration_max_age_days": 8,
+      "baseline_hashes": true,
+      "history_inventory": true
+    },
+    "monthly": {
+      "purpose": "month-to-date or explicit phase-close baseline, communication-stack inventory, and deprecation review",
+      "calibration_max_age_days": 35,
+      "baseline_hashes": true,
+      "history_inventory": true
+    }
+  },
+  "boundaries": {
+    "automatic_deletion": false,
+    "automatic_history_rewrite": false,
+    "github_actions": false,
+    "codeql": false,
+    "merge_gate": false,
+    "aggregate_quality_score": false,
+    "scientific_validity_claim": false,
+    "entailment_claim": false,
+    "publisher_acceptance_claim": false
+  }
+}
