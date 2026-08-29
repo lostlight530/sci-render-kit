@@ -1,13 +1,13 @@
 # Frontier Alignment — sci-render-kit
 
 **Status:** non-normative research-positioning snapshot  
-**Calibrated:** 2026-08-29
+**Calibrated:** 2026-08-30
 
-`sci-render-kit` addresses a narrow research-engineering problem: preserving scientific communication semantics when figures are produced inside AI-assisted or agentic workflows.
+`sci-render-kit` addresses preserving scientific communication semantics when figures are produced inside AI-assisted or agentic workflows
 
 ## Current engineering thesis
 
-The relevant artifact is not only an image. It is:
+The relevant artifact is not only an image
 
 ```text
 figure
@@ -23,11 +23,10 @@ figure
 + explicit downstream transfer constraints
 ```
 
-This does not make the renderer a scientific verifier; it makes the communication artifact more inspectable and safer to hand downstream.
+This does not make the renderer a scientific verifier
+It makes the communication artifact more inspectable and safer to hand downstream
 
 ## Assertion provenance
-
-A later auditor benefits from knowing whether a field was recipe-declared or runtime-observed.
 
 ```text
 claim binding / process / uncertainty -> recipe-declared
@@ -39,11 +38,11 @@ upstream ref resolution              -> runtime-observed-local-filesystem
 assertion basis != correctness
 ```
 
-The renderer records `automatic_ai_detection_used: false` for process disclosure. It does not infer AI authorship/use from captions, prose, pixels or metadata.
+The renderer records `automatic_ai_detection_used: false` and does not infer AI authorship/use from captions, prose, pixels, or metadata
 
 ## Communication coverage
 
-Current claim-level auditability research separates coverage from stronger ideas such as provenance soundness. Sci Render adopts the part it can honestly compute at the communication layer:
+Sci Render computes only the communication-layer coverage it can directly observe
 
 ```text
 claim-index/binding coverage
@@ -52,7 +51,7 @@ supports evidence-context coverage
 process-disclosure field coverage
 ```
 
-No aggregate quality score is computed.
+No aggregate scientific-quality score is computed
 
 ```text
 communication coverage != entailment
@@ -61,22 +60,11 @@ coverage != provenance soundness
 reference context != evidence sufficiency
 ```
 
-## Day-6: communication transfer without inherited authority
+## Day-6 communication transfer without inherited authority
 
-A downstream manuscript/review/archive system may receive a figure after the original recipe and audit context are no longer in view. `core/communication_transfer.py` therefore creates a bounded transfer view over an existing figure-evidence sidecar.
+`core/communication_transfer.py` creates a bounded transfer view over an existing figure-evidence sidecar
 
-The transfer carries:
-
-```text
-claim refs / bindings
-upstream research context
-uncertainty semantics
-process disclosure
-communication audit
-runtime validation
-```
-
-and explicitly prevents automatic authority inheritance:
+It carries claim communication, upstream research context, uncertainty semantics, process disclosure, communication audit, and runtime validation while explicitly preventing automatic authority inheritance
 
 ```text
 scientific_validity_inherited: false
@@ -88,83 +76,73 @@ publisher_acceptance_inherited: false
 accessibility_conformance_inherited: false
 ```
 
+## Day-7 phase-aware maintenance
+
+Long-horizon research studies increasingly show that workflow phase and recovery structure matter independently of model capability
+
+A behavioural case study of long-horizon autonomous architecture research reports clear phase transitions and recommends regime-aware re-validation
+
+ScienceFlow organizes long-horizon scientific/ML research into persistent research segments to preserve evolving state and recover from dead ends
+
+Autonomous-science provenance work likewise emphasizes re-openable records that can be audited and corrected
+
+Borrowed maintenance principle
+
+```text
+different drift horizons deserve different review scopes
+```
+
+The repository therefore distinguishes
+
+```text
+daily
+  local recipe / figure-evidence / backend-boundary drift
+
+weekly
+  cross-day communication-contract reconciliation
+
+monthly or explicit phase-close
+  canonical hash baseline / history inventory / deprecation review
+```
+
+This is implemented in `MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, `core/maintenance_cadence.py`, and `STAGE_2026_08_MAINTENANCE.md`
+
+The scanner is read-only and local
+It does not render figures, inspect pixels, run tests, validate statistics, certify WCAG conformance, or predict publisher acceptance
+
+On 2026-08-30 the August maintenance snapshot is month-to-date, not final calendar-month close
+
+```text
+maintenance clean != scientific validity
+weekly consistency != entailment
+monthly baseline != reproduction
+history inventory != deprecation decision
+```
+
 ## Global signals used for calibration
 
-### Re-openable provenance
+Current calibration includes
 
-Autonomous-science provenance work motivates durable, inspectable records that can be revisited and corrected.
+- re-openable provenance for autonomous science
+- transparent AI use and human oversight in scientific publishing
+- artifact-centered claim-aware observability
+- trajectory-to-evidence qualification
+- Brain Researcher evidence-bounded claims
+- EarthVerse end-to-end consistency gaps
+- claim-level auditability separating coverage from soundness
+- Praxist solution/evidence lineage
+- ReproAgent persistent implementation contracts
+- long-horizon autonomous architecture research with phase-aware re-validation
+- ScienceFlow segmented long-horizon research and recovery
+- living research-software maintenance and metadata
 
-Borrowed: figure artifacts should remain linked to inputs/context.
-
-Not borrowed: provenance establishes scientific truth.
-
-### Transparent AI use / human oversight
-
-Scientific-publishing guidance supports explicit process disclosure and accountability.
-
-Borrowed: preserve declared AI/human process context.
-
-Not borrowed: disclosure equals authorship adjudication or publisher-policy compliance.
-
-### Artifact-centered claim-aware observability
-
-Current scientific-agent observability research motivates portable artifact/claim/evidence relations beyond raw model-call logs.
-
-Borrowed: figure-to-claim communication should be explicit and independently inspectable.
-
-### From Trajectories to Evidence
-
-Completed execution is not automatically evidence.
-
-Borrowed: a generated figure is not automatically scientific evidence merely because a render completed.
-
-### Brain Researcher
-
-Evidence-bounded claims/review outcomes motivate explicit support/qualification records.
-
-Borrowed: declared support relations should carry inspectable context.
-
-Not borrowed: scientific accepted/rejected verdicts.
-
-### EarthVerse
-
-Strong local task performance can coexist with much weaker strict end-to-end scientific consistency.
-
-Borrowed: preserve cross-layer relationships rather than treating a successful visual as global correctness.
-
-### Claim-level auditability
-
-*From Fluent to Verifiable* distinguishes provenance coverage, soundness, contradiction transparency and audit effort.
-
-Borrowed: coverage as a separate measurable dimension.
-
-Not implemented: provenance soundness or scientific entailment verification.
-
-### Praxist — solution lineages
-
-**Praxist: From Experimental Artifacts to Solution Lineages** (arXiv:2608.25955, 26 Aug 2026) materializes typed evidence/solution lineage so later research generations can inherit explicit mechanisms, unresolved claims and constraints.
-
-Borrowed principle: scientific communication artifacts should carry forward the context needed to interpret them instead of depending on ephemeral conversation/history.
-
-Not borrowed: Praxist's evaluator authority, generational research runtime or benchmark claims.
-
-### ReproAgent — persistent contracts
-
-**ReproAgent: Contract-Guided Paper-to-Code Reproduction** (arXiv:2608.24291, 25 Aug 2026) preserves implementation requirements and reference evidence across long generation/repair trajectories.
-
-Borrowed principle: downstream handoff should preserve requirements/context explicitly rather than reconstruct them from final outputs.
-
-Not borrowed: its paper-to-code task or reported reproduction performance.
-
-### AI detection versus disclosure
-
-Automatic detection and explicit disclosure are separate mechanisms.
-
-Sci Render preserves explicit recipe declarations; it does not silently classify content to infer AI authorship/use.
+These sources calibrate architecture only
+They do not validate the renderer, certify a publisher target, establish WCAG conformance, or prove novelty
 
 ## Distinct layer
 
-Existing plotting libraries remain deeper/more mature at rendering itself. This repository's focus is the explicit handoff between:
+Existing plotting libraries remain deeper and more mature at rendering itself
+This repository focuses on explicit communication semantics and handoff
 
 ```text
 upstream research artifact / claim audit
@@ -178,22 +156,20 @@ rendered figure + evidence sidecars
 communication-transfer with non-inheritance constraints
 ```
 
-That positioning is not “better than Matplotlib/ggplot2/Plotly” and is not a global uniqueness claim.
-
 ## Cross-repository position
 
 ```text
 auto-doc-engine
-  artifact identity / assertion basis / artifact coverage / artifact lineage
+  artifact identity / basis / coverage / lineage
         ↓
 epistemic-pipeline
-  claim/evidence observations / claim coverage / claim transfer / provenance
+  claim/evidence audit / transfer / provenance
         ↓
 sci-render-kit
-  claim-aware communication / communication coverage / figure evidence / communication transfer
+  claim-aware communication / figure evidence / communication transfer
 ```
 
-Together the repositories explore evidence-aware research infrastructure across artifact, epistemic process and scientific communication planes with explicit inheritance boundaries.
+Together the repositories explore evidence-aware research infrastructure with explicit inheritance and maintenance boundaries
 
 ## Hard boundaries
 
@@ -208,11 +184,11 @@ upstream reference != inherited validity
 supports label != evidence sufficiency
 publisher preset != acceptance
 accessibility support != whole-document conformance
+maintenance clean != scientific validity
+monthly baseline != reproduction
 provenance != truth
 checksum != reproduction
 AI disclosure != AI detection
 AI disclosure != authorship adjudication
 human review != peer review
 ```
-
-> Day 6 extends the communication plane from inspectable figure evidence to inspectable downstream handoff: context travels, authority does not.
