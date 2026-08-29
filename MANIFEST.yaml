@@ -1,17 +1,20 @@
 name: sci-render-kit
-purpose: "声明式科研图件编译、断言来源与证据化表达 | Declarative scientific-figure compilation with assertion-aware inspectable evidence"
-calibrated: "2026-08-28"
+purpose: "声明式科研图件编译、断言来源、claim-aware evidence 与 transfer handoff | Declarative scientific-figure compilation with assertion-aware evidence and transfer handoff"
+calibrated: "2026-08-30"
 
 principles:
   - 声明优先: "data / aesthetics / research_context / claim_bindings / uncertainty / process_disclosure / accessibility 由 recipe 显式声明"
   - claim绑定不推断: "visual_ref -> claim_refs 仅记录声明，不从标题/图例/像素/数据内容猜测"
   - 断言来源显式: "记录 figure/recipe/claim/process/uncertainty/ref 如何进入证据对象；basis 不等于 correctness"
   - 沟通覆盖分维度: "claim binding / evidence context coverage 使用独立计数与比例，不合成科研质量总分"
+  - transfer不继承权威: "communication transfer 保留上下文但不继承 truth/entailment/statistical validity/acceptance"
+  - 维护分层: "daily 处理局部 drift，weekly 做跨日 contract reconciliation，monthly/phase-close 做 baseline 与 history inventory"
+  - 历史不重写: "历史 consolidation 是阶段证据；当前 contract 更新不自动改写历史"
   - 后端能力诚实: "schema 字段存在不等于所有 backend 已实现"
   - 不幻觉: "未知 provider/model/version/review/source 状态保持 null 或 not_declared"
   - 不做AI文本检测: "canonical renderer 不从 prose/pixels/metadata 推断 AI 使用或作者资格"
   - 真实版本保留: "真实标准与运行环境版本属于 provenance"
-  - 科学边界: "render/profile/hash/provenance/claim-binding/basis/coverage 不证明科研真值或独立复现"
+  - 科学边界: "render/profile/hash/provenance/claim-binding/basis/coverage/transfer/maintenance 不证明科研真值或独立复现"
 
 stable_project_profiles:
   - sci-render-kit/runtime-quality
@@ -22,6 +25,9 @@ stable_project_profiles:
   - sci-render-kit/figure-claim-audit
   - sci-render-kit/process-disclosure
   - sci-render-kit/figure-evidence
+  - sci-render-kit/communication-transfer
+  - sci-render-kit/maintenance-cadence
+  - sci-render-kit/maintenance-report
 
 profile_identifier_policy:
   decorative_versions_allowed: false
@@ -40,6 +46,7 @@ architecture:
     - p2_artifact_integrity
     - p3_publisher_target_alignment
     - figure_evidence
+    - optional_communication_transfer
   github_native_gate_required: false
 
 runtime_quality:
@@ -164,6 +171,44 @@ artifacts:
     authorship_claim: false
     peer_review_claim: false
     publisher_acceptance_claim: false
+  communication_transfer:
+    profile: sci-render-kit/communication-transfer
+    module: core/communication_transfer.py
+    machine_contract: metadata/communication_transfer.contract.yaml
+    source_profile: sci-render-kit/figure-evidence
+    destination_basis: caller_declared_or_not_declared
+    purpose_basis: caller_declared_or_not_declared
+    payloads_preserved:
+      - claim_communication
+      - upstream_research
+      - uncertainty
+      - process_disclosure
+      - communication_audit
+      - runtime_validation
+    transfer_constraints:
+      scientific_validity_inherited: false
+      entailment_inherited: false
+      evidence_sufficiency_inherited: false
+      statistical_validity_inherited: false
+      peer_review_inherited: false
+      publisher_acceptance_inherited: false
+      accessibility_conformance_inherited: false
+    aggregate_score: null
+  maintenance_cadence:
+    profile: sci-render-kit/maintenance-report
+    module: core/maintenance_cadence.py
+    config: maintenance/cadence.yaml
+    cadences: [daily, weekly, monthly]
+    mutates_repository: false
+    remote_dereference: false
+    tests_run_by_scanner: false
+    github_actions_used: false
+    automatic_deletion: false
+    automatic_history_rewrite: false
+    aggregate_score: null
+    scientific_validity_claim: false
+    entailment_claim: false
+    publisher_acceptance_claim: false
 
 accessibility:
   wcag_version: "2.2"
@@ -182,11 +227,15 @@ publisher_profiles:
 
 interoperability:
   upstream_auto_doc:
-    preferred: auto-doc-engine/artifact-record
+    preferred_profiles:
+      - auto-doc-engine/artifact-record
+      - auto-doc-engine/artifact-lineage
     mode: optional_reference_handoff
   upstream_epistemic:
-    preferred: epistemic-pipeline/evidence-envelope
-    companion: epistemic-pipeline/claim-verification
+    preferred_profiles:
+      - epistemic-pipeline/evidence-envelope
+      - epistemic-pipeline/claim-verification
+      - epistemic-pipeline/claim-transfer
     mode: optional_reference_handoff
     direct_runtime_coupling: false
   ro_crate:
@@ -198,6 +247,25 @@ reproducibility:
   local_levels: [R0, R1, R2, R3]
   r3_rule: "requires an actual separate rerun plus declared comparison criterion"
 
+maintenance:
+  contract: MAINTENANCE_CADENCE.md
+  config: maintenance/cadence.yaml
+  stage_index: STAGE_2026_08_MAINTENANCE.md
+  calendar_month_status_2026_08_30: month_to_date_not_final_close
+  daily:
+    scope: local_recipe_figure_evidence_backend_drift
+    history_rewrite: false
+  weekly:
+    scope: cross_day_communication_contract_reconciliation
+    canonical_hash_baseline: true
+    history_inventory: true
+  monthly:
+    scope: month_to_date_or_explicit_phase_close
+    canonical_hash_baseline: true
+    history_inventory: true
+    automatic_deletion: false
+    phase_close_must_be_explicit: true
+
 not_integrated:
   - pixel_based_claim_inference
   - scientific_entailment_validator
@@ -207,9 +275,11 @@ not_integrated:
   - statistical_method_validator
   - whole_publication_wcag_certifier
   - official_publisher_acceptance_validator
+  - automatic_repository_scheduler
+  - automatic_history_deletion
 
 frontier_calibration:
-  checked_through: "2026-08-28"
+  checked_through: "2026-08-30"
   signals:
     - provenance_grounds_trust_in_autonomous_science
     - responsible_transparent_ai_scientific_publishing
@@ -219,14 +289,24 @@ frontier_calibration:
     - earthverse
     - claim_level_auditability_provenance_coverage
     - ai_detection_distinct_from_disclosure
-  borrowed_scope: "claim/artifact relations + assertion basis + dimensional communication coverage"
+    - praxist_solution_lineages
+    - reproagent_persistent_contracts
+    - long_horizon_phase_behavior_and_regime_aware_revalidation
+    - scienceflow_segmented_research_and_recovery
+    - living_research_software_maintenance
+  borrowed_scope: "claim/artifact relations + assertion basis + dimensional communication coverage + non-inheritance transfer + phase-aware maintenance"
   endorsement_or_certification_claim: false
 
 research_contract:
   file: RESEARCH_CONTRACT.md
   figure_claim_contract: FIGURE_CLAIM_CONTRACT.md
   assertion_basis_communication_coverage: ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md
+  communication_transfer_contract: COMMUNICATION_TRANSFER_CONTRACT.md
+  communication_transfer_machine_contract: metadata/communication_transfer.contract.yaml
+  maintenance_contract: MAINTENANCE_CADENCE.md
+  maintenance_stage_index: STAGE_2026_08_MAINTENANCE.md
   five_day_consolidation: FIVE_DAY_CONSOLIDATION.md
+  six_day_consolidation: SIX_DAY_CONSOLIDATION.md
   frontier_alignment: FRONTIER_ALIGNMENT.md
 
 research_software:
@@ -246,3 +326,17 @@ local_checks:
   codeql: false
   merge_gate: false
   tests_required_for_this_refresh: false
+  maintenance_scanner: core/maintenance_cadence.py
+
+scientific_boundaries:
+  render_success_is_scientific_truth: false
+  assertion_basis_is_correctness: false
+  communication_coverage_is_entailment: false
+  coverage_ratio_is_probability: false
+  claim_binding_is_entailment: false
+  communication_transfer_is_entailment: false
+  publisher_profile_is_acceptance: false
+  accessibility_support_is_wcag_certification: false
+  maintenance_clean_is_scientific_validity: false
+  monthly_baseline_is_reproduction: false
+  provenance_is_truth: false
