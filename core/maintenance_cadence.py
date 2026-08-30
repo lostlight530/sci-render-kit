@@ -12,6 +12,7 @@ Python standard library
 from __future__ import annotations
 
 import argparse
+import calendar
 import hashlib
 import json
 import re
@@ -40,17 +41,18 @@ def _load_config(path: Path) -> dict:
 
 
 def _iter_text_files(root: Path, entries: Iterable[str]) -> Iterable[Path]:
+    allowed = {suffix.lower() for suffix in TEXT_SUFFIXES}
     seen: set[Path] = set()
     for entry in entries:
         candidate = root / entry
-        if candidate.is_file() and candidate.suffix.lower() in {s.lower() for s in TEXT_SUFFIXES}:
+        if candidate.is_file() and candidate.suffix.lower() in allowed:
             resolved = candidate.resolve()
             if resolved not in seen:
                 seen.add(resolved)
                 yield candidate
         elif candidate.is_dir():
             for path in sorted(candidate.rglob("*")):
-                if path.is_file() and path.suffix.lower() in {s.lower() for s in TEXT_SUFFIXES}:
+                if path.is_file() and path.suffix.lower() in allowed:
                     resolved = path.resolve()
                     if resolved not in seen:
                         seen.add(resolved)
@@ -76,6 +78,39 @@ def _age_days(value: Optional[str], as_of: date) -> Optional[int]:
     except ValueError:
         return None
     return (as_of - parsed).days
+
+
+def _parse_date(value: Any) -> Optional[date]:
+    if not value:
+        return None
+    try:
+        return datetime.strptime(str(value), "%Y-%m-%d").date()
+    except ValueError:
+        return None
+
+
+def _calendar_month_status(as_of: date) -> str:
+    last_day = calendar.monthrange(as_of.year, as_of.month)[1]
+    return "calendar-month-close" if as_of.day == last_day else "month-to-date"
+
+
+def _stage_status(config: dict, as_of: date) -> dict:
+    stage = dict(config.get("stage") or {})
+    start = _parse_date(stage.get("window_start"))
+    close = _parse_date(stage.get("close_date"))
+    if start and as_of < start:
+        status = "not-started"
+    elif close and as_of >= close:
+        status = "closed"
+    else:
+        status = "active"
+    return {
+        "id": stage.get("id"),
+        "window_start": start.isoformat() if start else None,
+        "close_date": close.isoformat() if close else None,
+        "status": status,
+        "close_semantics": stage.get("close_semantics"),
+    }
 
 
 def _history_inventory(root: Path, patterns: Iterable[str]) -> list[str]:
@@ -167,6 +202,10 @@ def build_report(*, root: Path, config_path: Path, cadence: str, as_of: date) ->
         "as_of": as_of.isoformat(),
         "purpose": cadence_config.get("purpose"),
         "configuration": config_path.as_posix(),
+        "period_status": {
+            "calendar_month": _calendar_month_status(as_of),
+            "stage": _stage_status(config, as_of),
+        },
         "checks": {
             "canonical_path_count": len(canonical_paths),
             "missing_canonical_paths": missing,
@@ -193,8 +232,9 @@ def build_report(*, root: Path, config_path: Path, cadence: str, as_of: date) ->
             "accessibility_conformance_claim": False,
         },
         "semantics": (
-            "local deterministic maintenance evidence only; a clean report does not establish scientific truth, "
-            "claim entailment, statistical validity, WCAG conformance, publisher acceptance, peer review, or reproduction"
+            "local deterministic maintenance evidence only; calendar/stage close status is temporal metadata, "
+            "and a clean report does not establish scientific truth, claim entailment, statistical validity, "
+            "WCAG conformance, publisher acceptance, peer review, or reproduction"
         ),
     }
 
