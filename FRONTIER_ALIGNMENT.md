@@ -1,7 +1,7 @@
 # Frontier Alignment — sci-render-kit
 
 **Status:** non-normative research-positioning snapshot  
-**Calibrated:** 2026-08-30
+**Calibrated:** 2026-08-31
 
 `sci-render-kit` addresses preserving scientific communication semantics when figures are produced inside AI-assisted or agentic workflows
 
@@ -21,6 +21,7 @@ figure
 + runtime findings
 + provenance / upstream evidence refs
 + explicit downstream transfer constraints
++ current maintenance/document authority
 ```
 
 This does not make the renderer a scientific verifier
@@ -32,13 +33,14 @@ It makes the communication artifact more inspectable and safer to hand downstrea
 claim binding / process / uncertainty -> recipe-declared
 figure bytes                         -> runtime-observed-local-bytes
 upstream ref resolution              -> runtime-observed-local-filesystem
+transfer destination / purpose       -> caller-declared or not_declared
 ```
 
 ```text
 assertion basis != correctness
 ```
 
-The renderer records `automatic_ai_detection_used: false` and does not infer AI authorship/use from captions, prose, pixels, or metadata
+The renderer records `automatic_ai_detection_used: false` and does not infer AI authorship/use from captions, prose, pixels or metadata
 
 ## Communication coverage
 
@@ -60,11 +62,11 @@ coverage != provenance soundness
 reference context != evidence sufficiency
 ```
 
-## Day-6 communication transfer without inherited authority
+## Communication transfer without inherited authority
 
 `core/communication_transfer.py` creates a bounded transfer view over an existing figure-evidence sidecar
 
-It carries claim communication, upstream research context, uncertainty semantics, process disclosure, communication audit, and runtime validation while explicitly preventing automatic authority inheritance
+It carries claim communication, upstream research context, uncertainty semantics, process disclosure, communication audit and runtime validation while explicitly preventing automatic authority inheritance
 
 ```text
 scientific_validity_inherited: false
@@ -76,14 +78,18 @@ publisher_acceptance_inherited: false
 accessibility_conformance_inherited: false
 ```
 
-## Day-7 phase-aware maintenance
+```text
+transfer != entailment
+reference != inherited validity
+destination != acceptance
+```
+
+## Phase-aware maintenance and first complete cadence demonstration
 
 Long-horizon research studies increasingly show that workflow phase and recovery structure matter independently of model capability
 
-A behavioural case study of long-horizon autonomous architecture research reports clear phase transitions and recommends regime-aware re-validation
-
+A behavioural case study of long-horizon autonomous architecture research reports clear phase transitions and motivates regime-aware re-validation
 ScienceFlow organizes long-horizon scientific/ML research into persistent research segments to preserve evolving state and recover from dead ends
-
 Autonomous-science provenance work likewise emphasizes re-openable records that can be audited and corrected
 
 Borrowed maintenance principle
@@ -92,25 +98,40 @@ Borrowed maintenance principle
 different drift horizons deserve different review scopes
 ```
 
-The repository therefore distinguishes
+The repository distinguishes
 
 ```text
 daily
   local recipe / figure-evidence / backend-boundary drift
 
 weekly
-  cross-day communication-contract reconciliation
+  cross-day communication-contract and current-document reconciliation
 
 monthly or explicit phase-close
-  canonical hash baseline / history inventory / deprecation review
+  canonical hash baseline / history inventory / deprecation review / period status
 ```
 
-This is implemented in `MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, `core/maintenance_cadence.py`, and `STAGE_2026_08_MAINTENANCE.md`
+This is implemented in
+
+```text
+MAINTENANCE_CADENCE.md
+maintenance/cadence.yaml
+core/maintenance_cadence.py
+DOCUMENT_STATUS.md
+STAGE_2026_08_MAINTENANCE.md
+```
+
+The first complete Daily / Weekly / Monthly demonstration is recorded as a dated maintenance reference after running all three scanner modes on the 2026-08-31 branch state
 
 The scanner is read-only and local
-It does not render figures, inspect pixels, run tests, validate statistics, certify WCAG conformance, or predict publisher acceptance
+It does not render figures, inspect pixels, run tests, validate statistics, certify WCAG conformance or predict publisher acceptance
 
-On 2026-08-30 the August maintenance snapshot is month-to-date, not final calendar-month close
+On **2026-08-31** the configured August stage is a real calendar-month close and explicit research-phase close
+
+```text
+calendar_month: calendar-month-close
+stage: closed
+```
 
 ```text
 maintenance clean != scientific validity
@@ -118,6 +139,26 @@ weekly consistency != entailment
 monthly baseline != reproduction
 history inventory != deprecation decision
 ```
+
+## Document authority as part of research maintenance
+
+A recurring failure mode in long-lived research software is confusing historical design notes with current contracts
+
+This repository therefore separates
+
+```text
+CURRENT
+  active implementation / contract / maintenance authority
+
+HISTORICAL
+  earlier stage snapshots preserved as evidence
+
+REFERENCE / EXAMPLE
+  non-normative operational guidance
+```
+
+[DOCUMENT_STATUS.md](DOCUMENT_STATUS.md) is the current authority index
+Historical `FOUR_DAY_CONSOLIDATION.md`, `FIVE_DAY_CONSOLIDATION.md`, and `SIX_DAY_CONSOLIDATION.md` are intentionally preserved rather than rewritten into present truth
 
 ## Global signals used for calibration
 
@@ -137,7 +178,7 @@ Current calibration includes
 - living research-software maintenance and metadata
 
 These sources calibrate architecture only
-They do not validate the renderer, certify a publisher target, establish WCAG conformance, or prove novelty
+They do not validate the renderer, certify a publisher target, establish WCAG conformance or prove novelty
 
 ## Distinct layer
 
@@ -169,7 +210,7 @@ sci-render-kit
   claim-aware communication / figure evidence / communication transfer
 ```
 
-Together the repositories explore evidence-aware research infrastructure with explicit inheritance and maintenance boundaries
+Together the repositories explore evidence-aware research infrastructure with explicit inheritance, maintenance and document-authority boundaries
 
 ## Hard boundaries
 
@@ -186,6 +227,7 @@ publisher preset != acceptance
 accessibility support != whole-document conformance
 maintenance clean != scientific validity
 monthly baseline != reproduction
+calendar-month close != reproduction
 provenance != truth
 checksum != reproduction
 AI disclosure != AI detection
