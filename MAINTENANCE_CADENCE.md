@@ -128,6 +128,34 @@ The scanner reports configured canonical paths, forbidden governance paths, deco
 
 It does not render figures, inspect pixels, call external services, run tests, verify scientific entailment, validate statistics, certify WCAG conformance, or predict publisher acceptance
 
+## First complete Daily / Weekly / Monthly demonstration
+
+The first complete three-horizon worked example is
+
+```text
+maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+```
+
+Recommended read order
+
+```text
+MAINTENANCE_CADENCE.md
+        ↓ normative maintenance semantics
+DOCUMENT_STATUS.md
+        ↓ current vs historical document authority
+STAGE_2026_08_MAINTENANCE.md
+        ↓ closed scientific-communication stage
+FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+        ↓ worked commands and communication-layer interpretation
+```
+
+The demonstration intentionally does not fabricate a clean scanner run, hash baseline or findings that require execution
+
+```text
+reference demonstration != entailment evidence
+worked example != publisher acceptance
+```
+
 ## Document authority and history
 
 `DOCUMENT_STATUS.md` is the current map of authoritative, historical, example, and external-metadata documents
