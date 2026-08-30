@@ -12,6 +12,7 @@ principles:
   - 文档权威显式: "current/historical/example/external metadata 由 DOCUMENT_STATUS.md 分类"
   - 历史不重写: "历史 consolidation 是阶段证据；当前 contract 更新不自动改写历史"
   - 时间状态不猜测: "calendar-month 与 stage close 由日期/配置决定"
+  - 示范不冒充执行证据: "首个 Daily/Weekly/Monthly worked demonstration 是 reference，不伪造 clean scanner output"
   - 后端能力诚实: "schema 字段存在不等于所有 backend 已实现"
   - 不幻觉: "未知 provider/model/version/review/source 状态保持 null 或 not_declared"
   - 不做AI文本检测: "canonical renderer 不从 prose/pixels/metadata 推断 AI 使用或作者资格"
@@ -273,6 +274,9 @@ maintenance:
   config: maintenance/cadence.yaml
   document_status: DOCUMENT_STATUS.md
   stage_index: STAGE_2026_08_MAINTENANCE.md
+  first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+  demonstration_status: reference_non_normative
+  demonstration_is_runtime_proof: false
   current_calendar_status: calendar_month_close
   current_stage_status: closed
   daily:
@@ -330,6 +334,7 @@ research_contract:
   maintenance_contract: MAINTENANCE_CADENCE.md
   document_status: DOCUMENT_STATUS.md
   closed_stage_index: STAGE_2026_08_MAINTENANCE.md
+  first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
   historical_snapshots:
     - FOUR_DAY_CONSOLIDATION.md
     - FIVE_DAY_CONSOLIDATION.md
