@@ -1,14 +1,14 @@
 # Figure Claim & Process Disclosure Contract — sci-render-kit
 
 **Status:** implemented companion contract  
-**Calibrated:** 2026-08-28  
+**Calibrated:** 2026-08-31  
 **Primary record:** `sci-render-kit/figure-evidence`
 
 ## Purpose
 
-A scientific figure may preserve which upstream claims it is intended to communicate, which visual object relates to which claim, which evidence/provenance refs were declared, how those declarations entered the record, and which communication dimensions are covered.
+A scientific figure may preserve which upstream claims it is intended to communicate, which visual object relates to which claim, which evidence/provenance refs were declared, how those declarations entered the record, and which communication dimensions are covered
 
-The contract never upgrades those relationships into scientific truth.
+The contract never upgrades those relationships into scientific truth
 
 ## Stable project identifiers
 
@@ -17,9 +17,10 @@ sci-render-kit/figure-claim-binding
 sci-render-kit/figure-claim-audit
 sci-render-kit/process-disclosure
 sci-render-kit/figure-evidence
+sci-render-kit/communication-transfer
 ```
 
-Internal identifiers remain unversioned; real external/runtime versions remain factual evidence when known.
+Internal identifiers remain unversioned; real external/runtime versions remain factual evidence when known
 
 ## Figure-level claim references
 
@@ -44,7 +45,7 @@ research_context:
       evidence_ref: evidence/run-042.evidence.json
 ```
 
-Required:
+Required
 
 ```text
 visual_ref
@@ -52,7 +53,7 @@ claim_refs[]
 relation
 ```
 
-Allowed relations:
+Allowed relations
 
 ```text
 supports
@@ -62,7 +63,8 @@ compares
 derived-from
 ```
 
-Bindings are **recipe-declared** communication semantics. They are never inferred from titles, legends, pixels, labels, prose or data values.
+Bindings are **recipe-declared** communication semantics
+They are never inferred from titles, legends, pixels, labels, prose or data values
 
 ```text
 visual binding != verified entailment
@@ -73,7 +75,7 @@ derived-from label != complete provenance proof
 
 ## Assertion basis
 
-Figure-side evidence records how information entered the record:
+Figure-side evidence records how information entered the record
 
 | Surface | Basis |
 |---|---|
@@ -83,6 +85,7 @@ Figure-side evidence records how information entered the record:
 | upstream refs | recipe-declared + optional local resolution |
 | figure bytes | runtime-observed local bytes |
 | local ref resolution | runtime-observed local filesystem |
+| communication-transfer destination / purpose | caller-declared or `not_declared` |
 
 ```text
 assertion basis != correctness
@@ -91,13 +94,13 @@ recipe-declared support != scientific verification
 
 ## Runtime claim communication audit
 
-`core/claim_binding_audit.py` emits `sci-render-kit/figure-claim-audit` findings for metadata consistency, including malformed/duplicate bindings, claim-index mismatches, support relations lacking declared evidence context, process-disclosure inconsistency and unresolved local-looking references.
+`core/claim_binding_audit.py` emits `sci-render-kit/figure-claim-audit` findings for metadata consistency, including malformed/duplicate bindings, claim-index mismatches, support relations lacking declared evidence context, process-disclosure inconsistency and unresolved local-looking references
 
-The audit does not inspect pixels, infer claims, dereference remote resources, verify citations or establish scientific validity.
+The audit does not inspect pixels, infer claims, dereference remote resources, verify citations or establish scientific validity
 
 ## Communication coverage
 
-The audit also exposes dimensional coverage:
+The audit exposes dimensional coverage
 
 ```text
 figure_claim_count
@@ -112,7 +115,7 @@ supports_with_evidence_context_count
 process_disclosure_declared_field_count
 ```
 
-Ratios:
+Ratios
 
 ```text
 indexed_claim_binding_ratio
@@ -120,7 +123,7 @@ binding_evidence_context_ratio
 supports_evidence_context_ratio
 ```
 
-These are coverage ratios only.
+These are coverage ratios only
 
 ```text
 binding coverage != entailment
@@ -129,7 +132,7 @@ coverage ratio != probability
 coverage != provenance soundness
 ```
 
-No aggregate communication-quality score is computed:
+No aggregate communication-quality score is computed
 
 ```json
 {"aggregate_score": null}
@@ -145,14 +148,14 @@ process_disclosure:
   disclosure_ref: methods/figure-disclosure.md
 ```
 
-Allowed values:
+Allowed values
 
 ```text
 ai_assistance: none | used | not_declared
 human_review: reviewed | partial | not_reviewed | not_declared
 ```
 
-Figure evidence identifies the basis as `recipe-declared` and records:
+Figure evidence identifies the basis as `recipe-declared` and records
 
 ```json
 {"automatic_ai_detection_used": false}
@@ -168,7 +171,7 @@ human review != truth
 
 ## Figure evidence
 
-`core/figure_evidence.py` emits `sci-render-kit/figure-evidence` with separate surfaces:
+`core/figure_evidence.py` emits `sci-render-kit/figure-evidence` with separate surfaces
 
 ```text
 claim_communication
@@ -181,33 +184,57 @@ process_disclosure
   -> declared AI/human-review context + basis
 ```
 
-It also preserves artifact identities, recipe/profile/backend context, upstream refs, uncertainty semantics, runtime findings and local reproducibility state.
+It also preserves artifact identities, recipe/profile/backend context, upstream refs, uncertainty semantics, runtime findings and local reproducibility state
 
-Scientific/statistical/causal/authorship/peer-review/publisher-acceptance claims remain false.
+Scientific/statistical/causal/authorship/peer-review/publisher-acceptance claims remain false
+
+## Communication transfer
+
+`core/communication_transfer.py` can produce a bounded downstream view over an existing `sci-render-kit/figure-evidence` sidecar
+
+It preserves claim communication, upstream research references, uncertainty semantics, process disclosure, communication audit and runtime validation while carrying explicit non-inheritance constraints
+
+```text
+communication transfer != entailment
+upstream reference != inherited validity
+uncertainty metadata != statistical validation
+publisher target != acceptance
+accessibility metadata != WCAG certification
+```
+
+See [COMMUNICATION_TRANSFER_CONTRACT.md](COMMUNICATION_TRANSFER_CONTRACT.md)
 
 ## Cross-repository handoff
 
 ```text
 auto-doc-engine/artifact-record
-  assertion basis + artifact coverage
+auto-doc-engine/artifact-lineage
         ↓
 epistemic-pipeline/claim-verification
-  observation basis + claim coverage
-        ↓
+epistemic-pipeline/claim-transfer
 epistemic-pipeline/evidence-envelope
         ↓
 sci-render-kit/figure-claim-audit
-  communication coverage
-        ↓
 sci-render-kit/figure-evidence
+        ↓ optional bounded handoff
+sci-render-kit/communication-transfer
 ```
 
-A reference does not inherit truth.
+A reference or transfer does not inherit truth
+
+## Current document and maintenance authority
+
+Current document authority is indexed in [DOCUMENT_STATUS.md](DOCUMENT_STATUS.md)
+Daily / weekly / monthly repository maintenance is defined by [MAINTENANCE_CADENCE.md](MAINTENANCE_CADENCE.md)
+The August 2026 research-maintenance phase is closed in [STAGE_2026_08_MAINTENANCE.md](STAGE_2026_08_MAINTENANCE.md)
+
+Historical `*_DAY_CONSOLIDATION.md` files remain snapshots of earlier repository states and are not current contracts
 
 ## Research direction boundary
 
-Current scientific-agent work increasingly emphasizes portable claim/artifact/evidence records, auditability coverage, evidence-bounded claims and human oversight. The repository borrows those structural lessons only; it does not claim provenance soundness, entailment verification or scientific-review authority.
+Current scientific-agent work increasingly emphasizes portable claim/artifact/evidence records, auditability coverage, evidence-bounded claims, persistent handoff constraints and human oversight
+The repository borrows those structural lessons only; it does not claim provenance soundness, entailment verification or scientific-review authority
 
 ## Core rule
 
-> Preserve what the figure declares it communicates, the basis of those declarations, and the coverage of the communication record—without silently upgrading any of them into truth.
+> Preserve what the figure declares it communicates, the basis of those declarations, and the coverage of the communication record, without silently upgrading any of them into truth
