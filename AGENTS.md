@@ -87,9 +87,10 @@ Preserve real WCAG/external/runtime versions when genuinely known
 18. Communication transfer may copy declared context but must not inherit scientific validity, entailment, evidence sufficiency, statistical validity, peer review, publisher acceptance, or WCAG conformance
 19. Communication transfer must not infer context from pixels, captions, filenames, or prose
 20. Calendar/month/stage status must come from actual date/configuration rather than agent assumption
-21. Unsupported experimental methods fail explicitly rather than fabricate output
-22. Experimental importability does not make canonical capability
-23. Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture
+21. A worked maintenance demonstration must never be presented as a clean runtime result unless the scanner was actually executed and output preserved
+22. Unsupported experimental methods fail explicitly rather than fabricate output
+23. Experimental importability does not make canonical capability
+24. Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture
 
 ## Communication-audit invariants
 
@@ -178,7 +179,18 @@ calendar_month: calendar-month-close
 stage: closed
 ```
 
+First complete worked example
+
 ```text
+maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+```
+
+Read it after `MAINTENANCE_CADENCE.md` and `DOCUMENT_STATUS.md`
+It is a dated reference example, not a clean scanner log, entailment result, publisher verdict, or WCAG certificate
+If cadence semantics materially change later, create a new dated demonstration instead of rewriting this historical reference
+
+```text
+reference demonstration != runtime proof
 maintenance clean != scientific validity
 weekly consistency != entailment
 calendar-month close != reproduction
@@ -195,7 +207,7 @@ The scanner does not render figures, inspect pixels, run tests, validate statist
 | recipe field | `metadata/recipe.schema.yaml` | runtime + docs + evidence semantics |
 | claim binding/audit/coverage | `core/claim_binding_audit.py`, `core/figure_evidence.py` | Assertion Basis + Figure Claim Contract + Manifest + examples |
 | communication transfer | `core/communication_transfer.py` | Communication Transfer Contract + machine contract + examples + frontier notes |
-| maintenance cadence | `core/maintenance_cadence.py`, `maintenance/cadence.yaml` | Maintenance Cadence + Document Status + Stage index + Manifest + Agent Guide |
+| maintenance cadence | `core/maintenance_cadence.py`, `maintenance/cadence.yaml` | Maintenance Cadence + Document Status + Stage index + Manifest + Agent Guide; create a new dated demonstration only when a new reference example is required |
 | process disclosure | recipe schema + figure evidence | public contracts |
 | runtime rule | `quality/rules.yaml`, `sci_render.py` | severity + docs |
 | accessibility | `core/accessibility.py`, `sci_render.py` | a11y + backend truth |
@@ -228,7 +240,7 @@ Metaphorical filenames are not scientific capability evidence
 
 ## R3 discipline
 
-Render manifests, figure evidence, communication transfers, accessibility sidecars, maintenance reports, and canonical hash baselines never count as independent reproduction
+Render manifests, figure evidence, communication transfers, accessibility sidecars, maintenance reports, demonstrations, and canonical hash baselines never count as independent reproduction
 
 R3 requires an actual separate rerun plus declared comparison criterion
 
