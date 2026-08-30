@@ -56,14 +56,23 @@ historical snapshot != current contract
 later renderer capability != permission to rewrite history
 ```
 
-## Examples
+## Examples and reference demonstrations
 
 ```text
 examples/README.md
 examples/communication_transfer.md
+maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
 ```
 
 Examples demonstrate supported workflows but do not override implementation, Manifest, schemas, or active contracts
+
+The dated maintenance demonstration is the first complete Daily / Weekly / Monthly worked example for the communication stack
+It fixes commands and interpretation without pretending that a clean scanner execution was captured
+
+```text
+reference demonstration != entailment evidence
+worked maintenance example != publisher validation
+```
 
 ## External / citation metadata
 
@@ -93,12 +102,15 @@ Weekly maintenance reconciles communication semantics, backend truth, publisher/
 
 Monthly or explicit phase-close maintenance records a closed baseline and reviews historical/current/experimental status without automatic deletion
 
+The first complete cadence demonstration under `maintenance/` is reference material for onboarding future maintainers and agents after they read the active cadence contract
+
 ## Hard boundaries
 
 ```text
 document current != scientific validity
 historical snapshot != invalid
 maintenance consistency != entailment
+reference demonstration != runtime proof
 calendar close != publisher acceptance
 monthly baseline != reproduction
 ```
