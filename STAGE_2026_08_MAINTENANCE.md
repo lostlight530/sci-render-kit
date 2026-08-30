@@ -31,6 +31,7 @@ Day 8 / stage close
 complete document-authority reconciliation
 calendar-month close
 machine-readable stage-close status
+first complete Daily / Weekly / Monthly communication-maintenance demonstration
 ```
 
 Historical consolidation files remain historical snapshots and are not replaced by this stage index
@@ -80,6 +81,7 @@ The closed stage establishes these durable rules
 7. real runtime/library versions remain provenance while project-owned IDs remain stable and unversioned
 8. current documents and historical snapshots are explicitly distinguished
 9. calendar/month-stage status is derived from actual date/configuration rather than guessed
+10. Daily / Weekly / Monthly communication maintenance now has a first complete worked reference example with non-entailment and non-acceptance boundaries
 
 ## Daily maintenance baseline after stage close
 
@@ -149,6 +151,34 @@ The close review should
 - confirm current upstream profile names
 - identify stale-document candidates without automatic deletion
 
+## First complete maintenance-cadence reference
+
+The first complete worked Daily / Weekly / Monthly communication-maintenance example is
+
+```text
+maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+```
+
+It demonstrates
+
+```text
+daily
+  bounded recipe / evidence / backend-boundary drift review
+
+weekly
+  full communication-contract reconciliation + canonical hashes + history inventory
+
+monthly
+  closed calendar/stage baseline + complete communication/document review
+```
+
+The record does not fabricate a clean scanner execution, publisher verdict, WCAG verdict, or SHA-256 values that require runtime evidence
+
+```text
+reference demonstration != entailment evidence
+worked example != publisher validation
+```
+
 ## Current cross-repository handoff
 
 ```text
@@ -198,4 +228,5 @@ coverage != scientific quality
 weekly reconciliation != publisher validation
 calendar-month close != reproduction
 phase close != scientific authority
+reference demonstration != runtime proof
 ```
