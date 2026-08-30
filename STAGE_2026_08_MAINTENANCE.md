@@ -1,8 +1,9 @@
 # August 2026 Research-Maintenance Stage — sci-render-kit
 
-**Window represented:** 2026-08-24 through 2026-08-30  
-**Calendar-month status:** month-to-date, not final August close  
-**Role:** current stage index plus weekly/monthly scientific-communication baseline
+**Window represented:** 2026-08-24 through 2026-08-31  
+**Calendar-month status:** closed on 2026-08-31  
+**Research-phase status:** closed  
+**Role:** closed stage index and monthly scientific-communication baseline
 
 ## Stage progression
 
@@ -23,13 +24,20 @@ assertion basis and dimensional communication coverage
 Day 6
 communication-transfer and explicit non-inheritance boundaries
 
-Day 7 / stage maintenance
+Day 7
 formal daily / weekly / monthly maintenance cadence
+
+Day 8 / stage close
+complete document-authority reconciliation
+calendar-month close
+machine-readable stage-close status
 ```
 
 Historical consolidation files remain historical snapshots and are not replaced by this stage index
 
-## Current canonical communication stack
+See `DOCUMENT_STATUS.md` for the current authority/history map
+
+## Final canonical communication stack
 
 ```text
 recipe + research_context
@@ -59,36 +67,44 @@ communication-transfer
   non-inheritance constraints
 ```
 
-## Weekly consolidation — 2026-08-24 → 2026-08-30
+## Final weekly consolidation — 2026-08-24 → 2026-08-31
 
-The week's merged work establishes these durable rules
+The closed stage establishes these durable rules
 
 1. claim bindings are recipe-declared and never inferred from pixels or prose
 2. communication coverage does not imply entailment or evidence sufficiency
-3. uncertainty labels do not independently validate a statistical method
+3. uncertainty labels do not independently validate statistical methods
 4. WCAG support remains scoped and does not imply whole-publication conformance
 5. publisher presets remain project targets, not acceptance validators
 6. communication transfer does not inherit scientific validity, entailment, statistics, peer review, publisher acceptance, or accessibility conformance
 7. real runtime/library versions remain provenance while project-owned IDs remain stable and unversioned
+8. current documents and historical snapshots are explicitly distinguished
+9. calendar/month-stage status is derived from actual date/configuration rather than guessed
 
-## Daily maintenance baseline
+## Daily maintenance baseline after stage close
 
-A normal daily pass should primarily inspect
+Normal daily work should use current authority in `DOCUMENT_STATUS.md`
+
+Primary surfaces include
 
 ```text
+README.md
+ARCHITECTURE.md
 MANIFEST.yaml
 AGENTS.md
 RESEARCH_CONTRACT.md
-FRONTIER_ALIGNMENT.md
 FIGURE_CLAIM_CONTRACT.md
 COMMUNICATION_TRANSFER_CONTRACT.md
+ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md
+MAINTENANCE_CADENCE.md
+CONTRIBUTING.md
+FRONTIER_ALIGNMENT.md
+DOCUMENT_STATUS.md
+metadata/recipe.schema.yaml
 metadata/communication_transfer.contract.yaml
-core/claim_binding_audit.py
-core/figure_evidence.py
-core/communication_transfer.py
 ```
 
-Daily work should remain bounded unless current source demonstrates broader communication-contract drift
+Daily work remains bounded unless current source demonstrates broader communication-contract drift
 
 ## Weekly maintenance baseline
 
@@ -97,30 +113,41 @@ Weekly review reconciles
 ```text
 implementation
 ↔ machine contracts
-↔ Research Contract
-↔ Figure Claim Contract
-↔ Communication Transfer Contract
-↔ Agent maintenance rules
+↔ current research contracts
+↔ README / Architecture
+↔ Agent / Contributor guidance
+↔ examples
+↔ Document Status
 ↔ Frontier Alignment
 ↔ upstream cross-repository profile names
 ```
 
-Special attention belongs on uncertainty semantics, claim-binding explicitness, backend capability truth, WCAG scope, and publisher boundaries
+Special attention remains on uncertainty semantics, claim-binding explicitness, backend capability truth, WCAG scope, and publisher boundaries
 
-## Monthly / phase-close baseline
+## August calendar-month close
 
-At month close or explicit phase close
+As of 2026-08-31
+
+```text
+calendar_month: calendar-month-close
+stage: closed
+history_rewrite: false
+automatic_deletion: false
+scientific_validity_claim: false
+publisher_acceptance_claim: false
+accessibility_conformance_claim: false
+reproduction_claim: false
+```
+
+The close review should
 
 - inventory historical snapshots
-- hash canonical communication-contract files
+- hash configured canonical files using `core/maintenance_cadence.py monthly --as-of 2026-08-31`
 - review integrated / experimental / proposed / not-integrated labels
-- review stale-document candidates manually
-- reconcile all merged month changes against current figure evidence and communication transfer
+- reconcile the complete current document set
 - confirm exact WCAG / publisher / uncertainty boundaries
 - confirm current upstream profile names
-- record whether the phase is actually closed
-
-No automatic deletion or history rewrite is permitted
+- identify stale-document candidates without automatic deletion
 
 ## Current cross-repository handoff
 
@@ -137,9 +164,9 @@ sci-render-kit/figure-evidence
 sci-render-kit/communication-transfer
 ```
 
-## Current external calibration
+## External calibration at close
 
-The stage is informed by work on
+The stage remains informed by work on
 
 - re-openable provenance for autonomous science
 - transparent AI use and human oversight
@@ -148,6 +175,7 @@ The stage is informed by work on
 - claim-level auditability
 - long-horizon phase behavior and regime-aware re-validation
 - ScienceFlow-style segmented recovery
+- process-level long-horizon evaluation beyond final scores
 - Praxist solution/evidence lineage
 - ReproAgent persistent implementation contracts
 - living research-software maintenance and metadata
@@ -168,5 +196,6 @@ claim binding != entailment
 communication transfer != acceptance
 coverage != scientific quality
 weekly reconciliation != publisher validation
-monthly baseline != reproduction
+calendar-month close != reproduction
+phase close != scientific authority
 ```
