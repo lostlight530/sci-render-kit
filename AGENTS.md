@@ -1,7 +1,27 @@
 # Agent Guide — sci-render-kit
 
 This is the operational contract for agents modifying the repository
-Keep runtime code, schemas, profiles, evidence sidecars, maintenance records, and public documentation semantically aligned
+
+Keep runtime code, schemas, profiles, evidence sidecars, maintenance records, current documentation, and historical-document status semantically aligned
+
+## Document authority
+
+Read `DOCUMENT_STATUS.md` before broad documentation maintenance
+
+Current authoritative documents may evolve when current source truth changes
+
+Historical consolidation snapshots remain time-scoped records rather than current contracts
+
+```text
+FOUR_DAY_CONSOLIDATION.md
+FIVE_DAY_CONSOLIDATION.md
+SIX_DAY_CONSOLIDATION.md
+```
+
+```text
+historical snapshot != current contract
+later renderer capability != permission to rewrite history
+```
 
 ## Canonical architecture
 
@@ -19,6 +39,10 @@ recipe
   -> figure-evidence
   -> optional communication-transfer
        └─ explicit non-inheritance constraints
+
+repository state
+  -> daily / weekly / monthly maintenance
+       └─ current-document / calendar / stage reconciliation
 ```
 
 ## Stable project identifiers
@@ -38,6 +62,7 @@ sci-render-kit/maintenance-report
 ```
 
 Do not invent decorative internal versions
+
 Preserve real WCAG/external/runtime versions when genuinely known
 
 ## Hard rules
@@ -61,9 +86,11 @@ Preserve real WCAG/external/runtime versions when genuinely known
 17. Figure evidence is handoff, not truth
 18. Communication transfer may copy declared context but must not inherit scientific validity, entailment, evidence sufficiency, statistical validity, peer review, publisher acceptance, or WCAG conformance
 19. Communication transfer must not infer context from pixels, captions, filenames, or prose
-20. Unsupported experimental methods fail explicitly rather than fabricate output
-21. Experimental importability does not make canonical capability
-22. Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture
+20. Calendar/month/stage status must come from actual date/configuration rather than agent assumption
+21. A worked maintenance demonstration must never be presented as a clean runtime result unless the scanner was actually executed and output preserved
+22. Unsupported experimental methods fail explicitly rather than fabricate output
+23. Experimental importability does not make canonical capability
+24. Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture
 
 ## Communication-audit invariants
 
@@ -82,6 +109,8 @@ Keep `aggregate_score: null` unless a future validated evaluation design explici
 ## Communication-transfer invariants
 
 `core/communication_transfer.py` is a bounded view over an existing figure-evidence sidecar
+
+The source must carry the expected `sci-render-kit/figure-evidence` profile
 
 It may carry
 
@@ -109,7 +138,7 @@ Destination and purpose are caller-declared when present and must not be inferre
 
 ## Maintenance cadence
 
-`MAINTENANCE_CADENCE.md` and `maintenance/cadence.yaml` define the active daily / weekly / monthly maintenance contract
+`MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `STAGE_2026_08_MAINTENANCE.md`, and `maintenance/cadence.yaml` define active maintenance/document governance
 
 Local scanner
 
@@ -122,29 +151,49 @@ python core/maintenance_cadence.py monthly --as-of YYYY-MM-DD
 Daily maintenance
 
 - start from current `main`
-- correct demonstrated recipe/evidence/backend/profile drift only
+- correct demonstrated recipe/evidence/backend/profile/document drift only
+- use `DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
 - preserve explicit claim bindings, uncertainty labels, WCAG scope, publisher boundaries, and real runtime versions
-- do not rewrite historical snapshots or invent a daily feature
+- do not invent a daily feature merely to produce activity
 
 Weekly maintenance
 
-- reconcile implementation, machine contracts, Research Contract, Figure Claim Contract, Communication Transfer Contract, Agent Guide, Frontier Alignment, and upstream profile names
+- reconcile implementation, machine contracts, Research Contract, Figure Claim Contract, Communication Transfer Contract, README/Architecture, Agent/Contributor guidance, examples, Document Status, Frontier Alignment, and upstream profile names
 - review backend capability truth, uncertainty semantics, WCAG scope, publisher wording, and communication-transfer non-inheritance
-- inventory the prior seven days of stage snapshots without rewriting them
+- inventory historical snapshots without rewriting them
 
 Monthly or explicit phase-close maintenance
 
-- build a month-to-date or explicit phase-close canonical hash baseline
+- derive calendar status from the actual date
+- reconcile the complete current document/machine-contract set
+- build canonical hash baselines when useful
 - inventory historical snapshots and review deprecation candidates manually
 - confirm no publisher/accessibility/runtime finding has become a scientific verdict
-- state explicitly whether the month or research phase is actually closed
+- record whether the research phase is active or closed
 
-On 2026-08-30 the August maintenance record is month-to-date, not final calendar-month close
+Current closed stage
 
 ```text
+as_of: 2026-08-31
+calendar_month: calendar-month-close
+stage: closed
+```
+
+First complete worked example
+
+```text
+maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+```
+
+Read it after `MAINTENANCE_CADENCE.md` and `DOCUMENT_STATUS.md`
+It is a dated reference example, not a clean scanner log, entailment result, publisher verdict, or WCAG certificate
+If cadence semantics materially change later, create a new dated demonstration instead of rewriting this historical reference
+
+```text
+reference demonstration != runtime proof
 maintenance clean != scientific validity
 weekly consistency != entailment
-monthly baseline != reproduction
+calendar-month close != reproduction
 publisher profile != acceptance
 accessibility support != WCAG certification
 ```
@@ -158,7 +207,7 @@ The scanner does not render figures, inspect pixels, run tests, validate statist
 | recipe field | `metadata/recipe.schema.yaml` | runtime + docs + evidence semantics |
 | claim binding/audit/coverage | `core/claim_binding_audit.py`, `core/figure_evidence.py` | Assertion Basis + Figure Claim Contract + Manifest + examples |
 | communication transfer | `core/communication_transfer.py` | Communication Transfer Contract + machine contract + examples + frontier notes |
-| maintenance cadence | `core/maintenance_cadence.py`, `maintenance/cadence.yaml` | Maintenance Cadence + Stage index + Manifest + Agent Guide |
+| maintenance cadence | `core/maintenance_cadence.py`, `maintenance/cadence.yaml` | Maintenance Cadence + Document Status + Stage index + Manifest + Agent Guide; create a new dated demonstration only when a new reference example is required |
 | process disclosure | recipe schema + figure evidence | public contracts |
 | runtime rule | `quality/rules.yaml`, `sci_render.py` | severity + docs |
 | accessibility | `core/accessibility.py`, `sci_render.py` | a11y + backend truth |
@@ -189,7 +238,14 @@ These are optional handoff references, not direct coupling or inherited scientif
 
 Metaphorical filenames are not scientific capability evidence
 
+## R3 discipline
+
+Render manifests, figure evidence, communication transfers, accessibility sidecars, maintenance reports, demonstrations, and canonical hash baselines never count as independent reproduction
+
+R3 requires an actual separate rerun plus declared comparison criterion
+
 ## Local maintenance boundary
 
-Manual commands may be used when useful
+Manual/local commands may be used when useful
+
 Their success is not scientific validity, publisher acceptance, WCAG certification, or independent reproduction

@@ -1,12 +1,17 @@
 # Examples
 
+These examples show current repository entry points
+They are not GitHub workflow instructions and do not imply scientific validation
+
+See [../DOCUMENT_STATUS.md](../DOCUMENT_STATUS.md) for current-versus-historical document authority
+
 ## Baseline render
 
 ```bash
 python3 sci_render.py examples/line_chart.yaml --profile nature --backend matplotlib
 ```
 
-A successful unified render may produce:
+A successful unified render may produce
 
 ```text
 <figure>
@@ -16,7 +21,8 @@ A successful unified render may produce:
 <figure>.evidence.json
 ```
 
-Project evidence identifiers are stable semantic names. File existence does not imply scientific validity.
+Project evidence identifiers are stable semantic names
+File existence does not imply scientific validity
 
 ## Claim communication example
 
@@ -46,7 +52,7 @@ human review != peer review
 
 ## Assertion basis in figure evidence
 
-A bounded evidence excerpt can look like:
+A bounded evidence excerpt can look like
 
 ```json
 {
@@ -72,7 +78,7 @@ recipe-declared != scientifically verified
 
 ## Communication coverage example
 
-`communication_audit.coverage` may contain:
+`communication_audit.coverage` may contain
 
 ```json
 {
@@ -91,7 +97,7 @@ recipe-declared != scientifically verified
 }
 ```
 
-Interpretation:
+Interpretation
 
 ```text
 indexed_claim_binding_ratio=1.0
@@ -103,6 +109,29 @@ supports_evidence_context_ratio=1.0
 neither ratio = truth / entailment / evidence sufficiency / probability
 ```
 
+## Communication transfer example
+
+After a figure-evidence sidecar exists
+
+```bash
+python core/communication_transfer.py \
+  output/figure.evidence.json \
+  --destination manuscript-main-text \
+  --purpose publication-handoff \
+  --output output/figure.communication-transfer.json
+```
+
+The transfer preserves bounded communication context and explicit non-inheritance constraints
+
+```text
+communication transfer != entailment
+upstream reference != inherited scientific validity
+publisher destination != acceptance
+human review != peer review
+```
+
+The machine companion contract is `metadata/communication_transfer.contract.yaml`
+
 ## Accessibility example
 
 ```yaml
@@ -112,7 +141,7 @@ accessibility:
   redundant_encoding: required
 ```
 
-WCAG-related checks are scoped design support, not whole-document conformance certification.
+WCAG-related checks are scoped design support, not whole-document conformance certification
 
 ## Uncertainty example
 
@@ -124,7 +153,7 @@ uncertainty:
   source_ref: analysis.json
 ```
 
-The renderer preserves this declaration but does not validate the upstream statistical method.
+The renderer preserves this declaration but does not validate the upstream statistical method
 
 ## Optional backends
 
@@ -133,8 +162,56 @@ python3 sci_render.py examples/line_chart.yaml --profile presentation --backend 
 python3 sci_render.py examples/line_chart.yaml --profile presentation --backend observable
 ```
 
-Adapter source presence does not prove optional R/Node runtime availability. Observable HTML retains a declared external Plot dependency unless separately vendored.
+Adapter source presence does not prove optional R/Node runtime availability
+Observable HTML retains a declared external Plot dependency unless separately vendored
 
-## Local maintenance
+## Daily / weekly / monthly maintenance examples
 
-Local checks are optional maintenance aids, not GitHub merge gates, scientific validation, WCAG certification or publisher acceptance.
+The local scanner can be invoked at each maintenance horizon
+
+```bash
+python core/maintenance_cadence.py daily --as-of 2026-08-31
+python core/maintenance_cadence.py weekly --as-of 2026-08-31
+python core/maintenance_cadence.py monthly --as-of 2026-08-31
+```
+
+Interpretation
+
+```text
+daily
+  local current-surface drift
+  no canonical hash baseline
+  no history inventory
+
+weekly
+  current-document / machine-contract reconciliation
+  canonical SHA-256 baseline
+  history snapshot inventory
+
+monthly
+  calendar-month / phase-close baseline
+  canonical SHA-256 baseline
+  history snapshot inventory
+  explicit period_status
+```
+
+On 2026-08-31 the configured August stage should report
+
+```text
+calendar_month: calendar-month-close
+stage: closed
+```
+
+These scanner results are maintenance evidence only
+
+```text
+maintenance clean != scientific validity
+weekly hash baseline != semantic equivalence
+calendar-month close != reproduction
+```
+
+The dated first complete three-cadence demonstration is recorded under `maintenance/` and is a reference example, not a normative contract
+
+## Local maintenance boundary
+
+Local checks are optional maintenance aids, not GitHub merge gates, scientific validation, WCAG certification or publisher acceptance

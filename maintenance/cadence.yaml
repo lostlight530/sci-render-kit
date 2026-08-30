@@ -1,20 +1,56 @@
 {
   "profile": "sci-render-kit/maintenance-cadence",
-  "calibrated": "2026-08-30",
+  "calibrated": "2026-08-31",
   "project_profile_prefix": "sci-render-kit/",
+  "stage": {
+    "id": "2026-08-scientific-communication",
+    "window_start": "2026-08-24",
+    "close_date": "2026-08-31",
+    "close_semantics": "calendar-month-close-and-explicit-research-phase-close"
+  },
   "canonical_paths": [
+    "README.md",
+    "ARCHITECTURE.md",
     "MANIFEST.yaml",
     "AGENTS.md",
     "RESEARCH_CONTRACT.md",
     "FRONTIER_ALIGNMENT.md",
     "FIGURE_CLAIM_CONTRACT.md",
     "COMMUNICATION_TRANSFER_CONTRACT.md",
+    "ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md",
+    "MAINTENANCE_CADENCE.md",
+    "DOCUMENT_STATUS.md",
+    "STAGE_2026_08_MAINTENANCE.md",
+    "CONTRIBUTING.md",
+    "examples/README.md",
+    "maintenance/cadence.yaml",
+    "metadata/recipe.schema.yaml",
     "metadata/communication_transfer.contract.yaml",
+    "core/maintenance_cadence.py",
     "core/claim_binding_audit.py",
     "core/figure_evidence.py",
     "core/communication_transfer.py"
   ],
-  "scan_paths": ["MANIFEST.yaml", "AGENTS.md", "RESEARCH_CONTRACT.md", "FRONTIER_ALIGNMENT.md", "core", "metadata", "quality"],
+  "scan_paths": [
+    "README.md",
+    "ARCHITECTURE.md",
+    "MANIFEST.yaml",
+    "AGENTS.md",
+    "RESEARCH_CONTRACT.md",
+    "FRONTIER_ALIGNMENT.md",
+    "FIGURE_CLAIM_CONTRACT.md",
+    "COMMUNICATION_TRANSFER_CONTRACT.md",
+    "ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md",
+    "MAINTENANCE_CADENCE.md",
+    "DOCUMENT_STATUS.md",
+    "STAGE_2026_08_MAINTENANCE.md",
+    "CONTRIBUTING.md",
+    "examples",
+    "maintenance",
+    "core",
+    "metadata",
+    "quality"
+  ],
   "forbidden_governance_paths": [".github/workflows"],
   "history_patterns": ["*_DAY_CONSOLIDATION.md", "STAGE_*.md"],
   "cadences": {
@@ -25,13 +61,13 @@
       "history_inventory": false
     },
     "weekly": {
-      "purpose": "cross-day communication-contract reconciliation, backend-boundary review, and handoff consistency",
+      "purpose": "cross-day communication-contract reconciliation, document-authority review, backend-boundary review, and handoff consistency",
       "calibration_max_age_days": 8,
       "baseline_hashes": true,
       "history_inventory": true
     },
     "monthly": {
-      "purpose": "month-to-date or explicit phase-close baseline, communication-stack inventory, and deprecation review",
+      "purpose": "calendar-month or explicit phase-close baseline, full communication/document inventory, and deprecation review",
       "calibration_max_age_days": 35,
       "baseline_hashes": true,
       "history_inventory": true
@@ -46,6 +82,7 @@
     "aggregate_quality_score": false,
     "scientific_validity_claim": false,
     "entailment_claim": false,
-    "publisher_acceptance_claim": false
+    "publisher_acceptance_claim": false,
+    "calendar_close_is_reproduction": false
   }
 }

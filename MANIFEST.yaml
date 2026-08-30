@@ -1,6 +1,6 @@
 name: sci-render-kit
-purpose: "声明式科研图件编译、断言来源、claim-aware evidence 与 transfer handoff | Declarative scientific-figure compilation with assertion-aware evidence and transfer handoff"
-calibrated: "2026-08-30"
+purpose: "声明式科研图件编译、断言来源、claim-aware evidence、transfer handoff 与阶段化维护 | Declarative scientific-figure compilation with assertion-aware evidence, transfer handoff, and phase-aware maintenance"
+calibrated: "2026-08-31"
 
 principles:
   - 声明优先: "data / aesthetics / research_context / claim_bindings / uncertainty / process_disclosure / accessibility 由 recipe 显式声明"
@@ -8,8 +8,11 @@ principles:
   - 断言来源显式: "记录 figure/recipe/claim/process/uncertainty/ref 如何进入证据对象；basis 不等于 correctness"
   - 沟通覆盖分维度: "claim binding / evidence context coverage 使用独立计数与比例，不合成科研质量总分"
   - transfer不继承权威: "communication transfer 保留上下文但不继承 truth/entailment/statistical validity/acceptance"
-  - 维护分层: "daily 处理局部 drift，weekly 做跨日 contract reconciliation，monthly/phase-close 做 baseline 与 history inventory"
+  - 维护分层: "daily 处理局部 drift，weekly 做全当前文档与 communication contract reconciliation，monthly/phase-close 做 baseline 与 history inventory"
+  - 文档权威显式: "current/historical/example/external metadata 由 DOCUMENT_STATUS.md 分类"
   - 历史不重写: "历史 consolidation 是阶段证据；当前 contract 更新不自动改写历史"
+  - 时间状态不猜测: "calendar-month 与 stage close 由日期/配置决定"
+  - 示范不冒充执行证据: "首个 Daily/Weekly/Monthly worked demonstration 是 reference，不伪造 clean scanner output"
   - 后端能力诚实: "schema 字段存在不等于所有 backend 已实现"
   - 不幻觉: "未知 provider/model/version/review/source 状态保持 null 或 not_declared"
   - 不做AI文本检测: "canonical renderer 不从 prose/pixels/metadata 推断 AI 使用或作者资格"
@@ -35,6 +38,18 @@ profile_identifier_policy:
   compatibility_source: "documented fields + semantics"
   real_external_versions_preserved: true
 
+stage_close:
+  id: 2026-08-scientific-communication
+  window: ["2026-08-24", "2026-08-31"]
+  calendar_month_status: calendar-month-close
+  research_phase_status: closed
+  history_rewrite: false
+  automatic_deletion: false
+  scientific_validity_claim: false
+  publisher_acceptance_claim: false
+  accessibility_conformance_claim: false
+  reproduction_claim: false
+
 architecture:
   canonical_flow:
     - recipe_and_declared_research_context
@@ -59,6 +74,7 @@ runtime_quality:
 
 recipes:
   schema: metadata/recipe.schema.yaml
+  document_status: current_machine_contract
   chart_types: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
   claim_bindings:
     profile: sci-render-kit/figure-claim-binding
@@ -175,7 +191,9 @@ artifacts:
     profile: sci-render-kit/communication-transfer
     module: core/communication_transfer.py
     machine_contract: metadata/communication_transfer.contract.yaml
+    machine_contract_status: current
     source_profile: sci-render-kit/figure-evidence
+    wrong_profile_behavior: fail_explicitly
     destination_basis: caller_declared_or_not_declared
     purpose_basis: caller_declared_or_not_declared
     payloads_preserved:
@@ -199,6 +217,10 @@ artifacts:
     module: core/maintenance_cadence.py
     config: maintenance/cadence.yaml
     cadences: [daily, weekly, monthly]
+    calendar_status_is_date_derived: true
+    stage_status_is_config_derived: true
+    current_calendar_status: calendar-month-close
+    current_stage_status: closed
     mutates_repository: false
     remote_dereference: false
     tests_run_by_scanner: false
@@ -250,21 +272,26 @@ reproducibility:
 maintenance:
   contract: MAINTENANCE_CADENCE.md
   config: maintenance/cadence.yaml
+  document_status: DOCUMENT_STATUS.md
   stage_index: STAGE_2026_08_MAINTENANCE.md
-  calendar_month_status_2026_08_30: month_to_date_not_final_close
+  first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+  demonstration_status: reference_non_normative
+  demonstration_is_runtime_proof: false
+  current_calendar_status: calendar_month_close
+  current_stage_status: closed
   daily:
-    scope: local_recipe_figure_evidence_backend_drift
+    scope: local_recipe_figure_evidence_backend_document_drift
     history_rewrite: false
   weekly:
-    scope: cross_day_communication_contract_reconciliation
+    scope: full_current_communication_document_contract_reconciliation
     canonical_hash_baseline: true
     history_inventory: true
   monthly:
-    scope: month_to_date_or_explicit_phase_close
+    scope: calendar_month_or_explicit_phase_close
     canonical_hash_baseline: true
     history_inventory: true
     automatic_deletion: false
-    phase_close_must_be_explicit: true
+    phase_close_must_be_explicit_or_configured: true
 
 not_integrated:
   - pixel_based_claim_inference
@@ -279,7 +306,7 @@ not_integrated:
   - automatic_history_deletion
 
 frontier_calibration:
-  checked_through: "2026-08-30"
+  checked_through: "2026-08-31"
   signals:
     - provenance_grounds_trust_in_autonomous_science
     - responsible_transparent_ai_scientific_publishing
@@ -293,8 +320,9 @@ frontier_calibration:
     - reproagent_persistent_contracts
     - long_horizon_phase_behavior_and_regime_aware_revalidation
     - scienceflow_segmented_research_and_recovery
+    - beyond_final_scores_long_horizon_process_evaluation
     - living_research_software_maintenance
-  borrowed_scope: "claim/artifact relations + assertion basis + dimensional communication coverage + non-inheritance transfer + phase-aware maintenance"
+  borrowed_scope: "claim/artifact relations + assertion basis + dimensional communication coverage + non-inheritance transfer + phase-aware maintenance + document-authority reconciliation"
   endorsement_or_certification_claim: false
 
 research_contract:
@@ -304,9 +332,13 @@ research_contract:
   communication_transfer_contract: COMMUNICATION_TRANSFER_CONTRACT.md
   communication_transfer_machine_contract: metadata/communication_transfer.contract.yaml
   maintenance_contract: MAINTENANCE_CADENCE.md
-  maintenance_stage_index: STAGE_2026_08_MAINTENANCE.md
-  five_day_consolidation: FIVE_DAY_CONSOLIDATION.md
-  six_day_consolidation: SIX_DAY_CONSOLIDATION.md
+  document_status: DOCUMENT_STATUS.md
+  closed_stage_index: STAGE_2026_08_MAINTENANCE.md
+  first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+  historical_snapshots:
+    - FOUR_DAY_CONSOLIDATION.md
+    - FIVE_DAY_CONSOLIDATION.md
+    - SIX_DAY_CONSOLIDATION.md
   frontier_alignment: FRONTIER_ALIGNMENT.md
 
 research_software:
@@ -325,7 +357,7 @@ local_checks:
   github_actions: false
   codeql: false
   merge_gate: false
-  tests_required_for_this_refresh: false
+  tests_required_for_2026_08_31_stage_close: false
   maintenance_scanner: core/maintenance_cadence.py
 
 scientific_boundaries:
@@ -339,4 +371,5 @@ scientific_boundaries:
   accessibility_support_is_wcag_certification: false
   maintenance_clean_is_scientific_validity: false
   monthly_baseline_is_reproduction: false
+  calendar_month_close_is_reproduction: false
   provenance_is_truth: false
