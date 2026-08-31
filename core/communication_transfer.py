@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Portable scientific-communication handoff for sci-render-kit.
 
-The transfer record summarizes an existing ``sci-render-kit/figure-evidence``
-sidecar for downstream publication, review, archival or agent workflows. It
-preserves declared claim bindings, upstream research references, uncertainty,
-process disclosure and audit summaries without inheriting truth, entailment,
-statistical validity, peer review or publisher acceptance.
+The transfer summarizes an existing ``sci-render-kit/figure-evidence`` sidecar
+for downstream publication, review, archival or agent workflows. It preserves
+declared claim bindings, upstream research references, uncertainty, process
+disclosure, audit summaries, runtime validation and reproducibility context
+without inheriting truth, entailment, statistical validity, peer review,
+publisher acceptance, accessibility conformance or independent reproduction.
 """
 
 from __future__ import annotations
@@ -69,6 +70,7 @@ def _coverage(evidence: dict) -> dict:
     upstream = evidence.get("upstream_research") or {}
     uncertainty = evidence.get("uncertainty") or {}
     disclosure = evidence.get("process_disclosure") or {}
+    reproducibility = evidence.get("reproducibility") or {}
 
     upstream_fields = [
         key
@@ -81,6 +83,7 @@ def _coverage(evidence: dict) -> dict:
         if disclosure.get(key) not in (None, "", [], "not_declared")
     ]
     uncertainty_declared = uncertainty.get("kind") not in (None, "", "not_declared")
+    reproducibility_present = isinstance(reproducibility, dict) and bool(reproducibility)
 
     return {
         "claim_ref_count": len(claim_refs),
@@ -92,10 +95,13 @@ def _coverage(evidence: dict) -> dict:
         "uncertainty_semantics_declared": bool(uncertainty_declared),
         "communication_audit_present": isinstance(evidence.get("communication_audit"), dict),
         "runtime_validation_present": isinstance(evidence.get("runtime_validation"), dict),
+        "reproducibility_context_present": reproducibility_present,
         "aggregate_score": None,
         "semantics": (
-            "descriptive communication-handoff coverage only; not entailment, evidence sufficiency, "
-            "statistical validity, scientific quality, accessibility conformance, or publisher acceptance"
+            "descriptive communication-handoff coverage only; reproducibility-context presence means the "
+            "source sidecar carried replay/reproduction semantics, not that independent reproduction occurred. "
+            "Coverage is not entailment, evidence sufficiency, statistical validity, scientific quality, "
+            "accessibility conformance, or publisher acceptance"
         ),
     }
 
@@ -136,6 +142,7 @@ def build_communication_transfer(
         "process_disclosure": dict(evidence.get("process_disclosure") or {}),
         "communication_audit": dict(evidence.get("communication_audit") or {}),
         "runtime_validation": dict(evidence.get("runtime_validation") or {}),
+        "reproducibility": dict(evidence.get("reproducibility") or {}),
         "transfer_coverage": _coverage(evidence),
         "transfer_constraints": {
             "scientific_validity_inherited": False,
@@ -145,9 +152,11 @@ def build_communication_transfer(
             "peer_review_inherited": False,
             "publisher_acceptance_inherited": False,
             "accessibility_conformance_inherited": False,
+            "independent_reproduction_inherited": False,
         },
         "assertion_basis": {
             "figure_evidence": "copied-from-local-figure-evidence-sidecar",
+            "reproducibility": "copied-from-local-figure-evidence-sidecar",
             "destination": "caller-declared" if destination else "not_declared",
             "purpose": "caller-declared" if purpose else "not_declared",
             "basis_inferred": False,
@@ -155,6 +164,7 @@ def build_communication_transfer(
         "scientific_validity_claim": False,
         "publisher_acceptance_claim": False,
         "peer_review_claim": False,
+        "independent_reproduction_claim": False,
     }
 
 

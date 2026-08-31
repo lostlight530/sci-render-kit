@@ -1,6 +1,6 @@
 {
   "profile": "sci-render-kit/maintenance-cadence",
-  "calibrated": "2026-08-31",
+  "calibrated": "2026-09-01",
   "project_profile_prefix": "sci-render-kit/",
   "stage": {
     "id": "2026-08-scientific-communication",
@@ -21,6 +21,7 @@
     "MAINTENANCE_CADENCE.md",
     "DOCUMENT_STATUS.md",
     "STAGE_2026_08_MAINTENANCE.md",
+    "POST_STAGE_REPAIR_2026_09_01.md",
     "CONTRIBUTING.md",
     "examples/README.md",
     "maintenance/cadence.yaml",
@@ -44,6 +45,7 @@
     "MAINTENANCE_CADENCE.md",
     "DOCUMENT_STATUS.md",
     "STAGE_2026_08_MAINTENANCE.md",
+    "POST_STAGE_REPAIR_2026_09_01.md",
     "CONTRIBUTING.md",
     "examples",
     "maintenance",
@@ -83,6 +85,8 @@
     "scientific_validity_claim": false,
     "entailment_claim": false,
     "publisher_acceptance_claim": false,
-    "calendar_close_is_reproduction": false
+    "calendar_close_is_reproduction": false,
+    "scan_scope_outside_repository": false,
+    "absolute_repository_root_in_report": false
   }
 }
