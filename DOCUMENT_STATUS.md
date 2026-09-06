@@ -66,17 +66,21 @@ SIX_DAY_CONSOLIDATION.md
 
 These remain historical records of earlier repository states. They are not current publisher, accessibility, uncertainty, backend, or figure-evidence contracts and should not be rewritten merely because later behavior changed.
 
-## Dated maintenance / correction records
+## Dated maintenance / correction / research-calibration records
 
 ```text
 maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
 POST_STAGE_REPAIR_2026_09_01.md
 maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
+maintenance/FRONTIER_REFRESH_2026_09_01_THROUGH_2026_09_06.md
 ```
 
-The 2026-09-06 record documents a real Daily/Weekly authority/cadence reconciliation. It does not assert a scanner run, render, backend execution, test run, publisher verdict, WCAG result, or scientific validation.
+- the 2026-09-06 Daily/Weekly record documents a real authority/cadence reconciliation and does not assert a scanner run, render, backend execution, test run, publisher verdict, WCAG result, or scientific validation;
+- the 2026-09-01 through 2026-09-06 frontier refresh is **post-stage, non-normative, source-bounded research calibration** for scientific communication under fast-changing model versions, persistent agents, provider reliability events and enterprise workspaces. It does not change renderer capability, figure-evidence semantics, publisher/WCAG boundaries, or the active Research Contract.
 
-Dated records are time-scoped maintenance evidence and do not override later implementation changes.
+`FRONTIER_ALIGNMENT.md` remains the August stage-close positioning snapshot. The dated frontier refresh is the newer external-research observation record through 2026-09-06 and must not be interpreted as runtime, publisher, accessibility or scientific proof.
+
+Dated records are time-scoped maintenance/research evidence and do not override later implementation changes.
 
 ## Historical coding-agent / PR narratives
 
@@ -116,7 +120,7 @@ calendar_month: closed
 research_phase: closed
 ```
 
-The 2026-09-01 repair and 2026-09-06 maintenance reconciliation do not extend or reopen that window.
+The 2026-09-01 repair, 2026-09-06 maintenance reconciliation, and 2026-09-01 through 2026-09-06 frontier refresh do not extend or reopen that window.
 
 ## Maintenance rule
 
@@ -134,6 +138,8 @@ Monthly or explicit phase-close maintenance records a closed baseline and review
 document current != scientific validity
 historical snapshot != invalid
 post-stage repair != stage rewrite
+frontier calibration != renderer verification
+external model event != figure validity
 maintenance consistency != entailment
 reference demonstration != runtime proof
 calendar close != publisher acceptance
