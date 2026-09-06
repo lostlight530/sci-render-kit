@@ -8,6 +8,8 @@ Keep runtime code, schemas, profiles, evidence sidecars, maintenance records, cu
 
 Read `DOCUMENT_STATUS.md` before broad documentation maintenance
 
+Read `JULES_CORRECTION_RECORD.md` before using early Jules task/PR prose as current renderer, backend, publisher, accessibility, or scientific evidence
+
 Current authoritative documents may evolve when current source truth changes
 
 Historical consolidation snapshots remain time-scoped records rather than current contracts
@@ -21,7 +23,25 @@ SIX_DAY_CONSOLIDATION.md
 ```text
 historical snapshot != current contract
 later renderer capability != permission to rewrite history
+historical agent PR narrative != current communication contract
 ```
+
+### Recovery order
+
+```text
+current main implementation
+> MANIFEST.yaml and current machine-readable schemas/contracts/configuration
+> latest dated repair / current maintenance record
+> DOCUMENT_STATUS.md
+> AGENTS.md
+> active communication/scientific-integrity contracts
+> MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
+> Architecture / README
+> historical consolidation snapshots
+> historical PR / task narratives
+```
+
+An agent-generated PR body is proposal/delivery metadata, not a substitute for inspecting the actual current tree and runtime evidence.
 
 ## Canonical architecture
 
@@ -91,6 +111,9 @@ Preserve real WCAG/external/runtime versions when genuinely known
 22. Unsupported experimental methods fail explicitly rather than fabricate output
 23. Experimental importability does not make canonical capability
 24. Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture
+25. Jules/Codex/other agent task text, PR bodies, generated summaries, and backend/test/completeness claims are proposal/delivery metadata, not automatic repository authority
+26. Historical `tests passed`, backend execution, checksum, `complete`, `fully aligned`, `fixed`, or similar claims require current re-verification before reuse as current facts
+27. Correct historical agent overstatement forward in current records; do not silently edit old PR history or turn later correction into an earlier fact
 
 ## Communication-audit invariants
 
@@ -136,9 +159,37 @@ human review != peer review
 
 Destination and purpose are caller-declared when present and must not be inferred
 
+## Coding-agent provenance rules
+
+Early Jules PRs are historical development records, not present-tense capability contracts.
+
+Before reusing a historical agent statement, distinguish:
+
+```text
+what the PR body claimed
+what actually entered merged main
+what current main does now
+what current machine contracts say
+what was actually re-run or re-verified now
+```
+
+In particular:
+
+- historical claims that all backends are complete or executable do not establish current backend availability;
+- historical checksum/test/render claims do not establish current execution success;
+- historical P2/P3 or publisher wording does not establish publisher acceptance;
+- output hygiene/security wording does not replace current code inspection;
+- render success, current or historical, does not establish scientific validity, entailment, WCAG certification, or independent reproduction.
+
+```text
+requires re-verification != false
+historical != current
+agent completion language != scientific/publisher verdict
+```
+
 ## Maintenance cadence
 
-`MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `STAGE_2026_08_MAINTENANCE.md`, and `maintenance/cadence.yaml` define active maintenance/document governance
+`MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `JULES_CORRECTION_RECORD.md`, `STAGE_2026_08_MAINTENANCE.md`, and `maintenance/cadence.yaml` define active maintenance/document governance
 
 Local scanner
 
@@ -151,16 +202,20 @@ python core/maintenance_cadence.py monthly --as-of YYYY-MM-DD
 Daily maintenance
 
 - start from current `main`
-- correct demonstrated recipe/evidence/backend/profile/document drift only
+- correct demonstrated recipe/evidence/backend/profile/document/governance drift only
 - use `DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
+- read the latest dated repair/current maintenance record before older PR/task narratives
 - preserve explicit claim bindings, uncertainty labels, WCAG scope, publisher boundaries, and real runtime versions
+- do not rewrite historical snapshots or historical PR prose
 - do not invent a daily feature merely to produce activity
 
 Weekly maintenance
 
-- reconcile implementation, machine contracts, Research Contract, Figure Claim Contract, Communication Transfer Contract, README/Architecture, Agent/Contributor guidance, examples, Document Status, Frontier Alignment, and upstream profile names
-- review backend capability truth, uncertainty semantics, WCAG scope, publisher wording, and communication-transfer non-inheritance
+- reconcile implementation, machine contracts, Research Contract, Figure Claim Contract, Communication Transfer Contract, README/Architecture, Agent/Contributor guidance, examples, Document Status, Frontier Alignment, current correction/maintenance records, and upstream profile names
+- review backend capability truth, uncertainty semantics, WCAG scope, publisher wording, communication-transfer non-inheritance, and coding-agent provenance handling
 - inventory historical snapshots without rewriting them
+
+If the same pass performs Daily and Weekly maintenance, one branch and one final PR should carry the combined real work whenever practical. Do not create duplicate churn solely because two cadence labels apply.
 
 Monthly or explicit phase-close maintenance
 
@@ -185,9 +240,13 @@ First complete worked example
 maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
 ```
 
-Read it after `MAINTENANCE_CADENCE.md` and `DOCUMENT_STATUS.md`
-It is a dated reference example, not a clean scanner log, entailment result, publisher verdict, or WCAG certificate
-If cadence semantics materially change later, create a new dated demonstration instead of rewriting this historical reference
+Current Daily/Weekly governance reconciliation
+
+```text
+maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
+```
+
+Dated records are time-scoped maintenance evidence, not automatic runtime, publisher, accessibility, or scientific proof.
 
 ```text
 reference demonstration != runtime proof
@@ -196,9 +255,10 @@ weekly consistency != entailment
 calendar-month close != reproduction
 publisher profile != acceptance
 accessibility support != WCAG certification
+agent narrative != current verification
 ```
 
-The scanner does not render figures, inspect pixels, run tests, validate statistics, certify WCAG conformance, or predict publisher acceptance
+The scanner does not render figures, inspect pixels, run tests, validate statistics, certify WCAG conformance, predict publisher acceptance, or validate historical Jules claims
 
 ## Change ownership
 
@@ -207,7 +267,7 @@ The scanner does not render figures, inspect pixels, run tests, validate statist
 | recipe field | `metadata/recipe.schema.yaml` | runtime + docs + evidence semantics |
 | claim binding/audit/coverage | `core/claim_binding_audit.py`, `core/figure_evidence.py` | Assertion Basis + Figure Claim Contract + Manifest + examples |
 | communication transfer | `core/communication_transfer.py` | Communication Transfer Contract + machine contract + examples + frontier notes |
-| maintenance cadence | `core/maintenance_cadence.py`, `maintenance/cadence.yaml` | Maintenance Cadence + Document Status + Stage index + Manifest + Agent Guide; create a new dated demonstration only when a new reference example is required |
+| maintenance cadence / agent provenance | `core/maintenance_cadence.py`, `maintenance/cadence.yaml`, `JULES_CORRECTION_RECORD.md` | Maintenance Cadence + Document Status + Agent Guide + current dated maintenance record; synchronize runtime scanner/Manifest only when executable/profile semantics change |
 | process disclosure | recipe schema + figure evidence | public contracts |
 | runtime rule | `quality/rules.yaml`, `sci_render.py` | severity + docs |
 | accessibility | `core/accessibility.py`, `sci_render.py` | a11y + backend truth |
