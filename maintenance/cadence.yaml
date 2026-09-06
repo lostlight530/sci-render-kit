@@ -1,6 +1,6 @@
 {
   "profile": "sci-render-kit/maintenance-cadence",
-  "calibrated": "2026-09-01",
+  "calibrated": "2026-09-06",
   "project_profile_prefix": "sci-render-kit/",
   "stage": {
     "id": "2026-08-scientific-communication",
@@ -19,6 +19,7 @@
     "COMMUNICATION_TRANSFER_CONTRACT.md",
     "ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md",
     "MAINTENANCE_CADENCE.md",
+    "JULES_CORRECTION_RECORD.md",
     "DOCUMENT_STATUS.md",
     "STAGE_2026_08_MAINTENANCE.md",
     "POST_STAGE_REPAIR_2026_09_01.md",
@@ -43,6 +44,7 @@
     "COMMUNICATION_TRANSFER_CONTRACT.md",
     "ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md",
     "MAINTENANCE_CADENCE.md",
+    "JULES_CORRECTION_RECORD.md",
     "DOCUMENT_STATUS.md",
     "STAGE_2026_08_MAINTENANCE.md",
     "POST_STAGE_REPAIR_2026_09_01.md",
@@ -57,13 +59,13 @@
   "history_patterns": ["*_DAY_CONSOLIDATION.md", "STAGE_*.md"],
   "cadences": {
     "daily": {
-      "purpose": "local recipe/figure-evidence/communication drift and new-fact maintenance without history rewrite",
+      "purpose": "local recipe/figure-evidence/communication drift and new-fact maintenance without history rewrite; current repository evidence outranks coding-agent task or PR narrative",
       "calibration_max_age_days": 2,
       "baseline_hashes": false,
       "history_inventory": false
     },
     "weekly": {
-      "purpose": "cross-day communication-contract reconciliation, document-authority review, backend-boundary review, and handoff consistency",
+      "purpose": "cross-day communication-contract reconciliation, document-authority review, backend-boundary and agent-provenance review, and handoff consistency; Daily and Weekly may coalesce into one real final PR",
       "calibration_max_age_days": 8,
       "baseline_hashes": true,
       "history_inventory": true
@@ -87,6 +89,8 @@
     "publisher_acceptance_claim": false,
     "calendar_close_is_reproduction": false,
     "scan_scope_outside_repository": false,
-    "absolute_repository_root_in_report": false
+    "absolute_repository_root_in_report": false,
+    "agent_pr_narrative_is_authority": false,
+    "cadence_requires_duplicate_prs": false
   }
 }
