@@ -20,7 +20,7 @@ tests/
 Makefile
 package.json
 README.md
-ARCHITECTURE.md
+docs/01-source-and-explanation/ARCHITECTURE.md
 ```
 
 Implementation determines actual renderer/audit/transfer behavior. README/Architecture explain current behavior and must follow implemented and contracted boundaries.
@@ -37,10 +37,10 @@ metadata/
 profiles/
 quality/
 recipes/
-RESEARCH_CONTRACT.md
-FIGURE_CLAIM_CONTRACT.md
-COMMUNICATION_TRANSFER_CONTRACT.md
-ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md
+docs/02-examples-and-contracts/RESEARCH_CONTRACT.md
+docs/02-examples-and-contracts/FIGURE_CLAIM_CONTRACT.md
+docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md
+docs/02-examples-and-contracts/ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md
 examples/
 AGENTS.md
 CONTRIBUTING.md
@@ -55,32 +55,37 @@ LICENSE
 Current maintenance/governance surfaces:
 
 ```text
-DOCUMENT_STATUS.md
-MAINTENANCE_CADENCE.md
+docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md
 maintenance/cadence.yaml
-JULES_CORRECTION_RECORD.md
 docs/03-maintenance-and-audit/independent-gpt/README.md
 ```
 
 The Independent GPT file is a public cold-start recovery router inside Class 03. It does not create a fourth document class and does not outrank implementation, machine configuration, or active subject-specific scientific/communication contracts.
 
-Dated/stage/historical evidence:
+Dated maintenance evidence:
 
 ```text
 maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
-STAGE_2026_08_MAINTENANCE.md
-POST_STAGE_REPAIR_2026_09_01.md
+maintenance/POST_STAGE_REPAIR_2026_09_01.md
 maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
 maintenance/FRONTIER_REFRESH_2026_09_01_THROUGH_2026_09_06.md
 maintenance/DAILY_WEEKLY_MONTH_TO_DATE_RECONCILIATION_2026_09_13.md
-FRONTIER_ALIGNMENT.md
-FOUR_DAY_CONSOLIDATION.md
-FIVE_DAY_CONSOLIDATION.md
-SIX_DAY_CONSOLIDATION.md
+```
+
+Closed-stage / historical evidence:
+
+```text
+docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md
+docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md
+docs/03-maintenance-and-audit/history/FOUR_DAY_CONSOLIDATION.md
+docs/03-maintenance-and-audit/history/FIVE_DAY_CONSOLIDATION.md
+docs/03-maintenance-and-audit/history/SIX_DAY_CONSOLIDATION.md
+docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md
 docs/03-maintenance-and-audit/history/superpowers/
 ```
 
-The archived Superpowers material is superseded historical design evidence. Its relocation does not make it current authority.
+The Jules correction record is retained at its 2026-09-06 calibration boundary. Its durable lesson—agent/PR narrative is not repository truth and later correction does not rewrite history—is absorbed into current governance here; its older authority-order wording is not current authority.
 
 ## Recovery authority
 
@@ -89,9 +94,9 @@ Use **subject-scoped** authority in this order:
 ```text
 current merged main implementation
 > current machine-readable capability contract / schema / configuration for that subject
-> active RESEARCH_CONTRACT.md and active specialized contract for that subject
+> active docs/02-examples-and-contracts/RESEARCH_CONTRACT.md and active specialized contract for that subject
 > operational examples / configuration / test evidence for supported use
-> README / Architecture / current explanatory documentation
+> README / docs/01-source-and-explanation/ARCHITECTURE.md / current explanatory documentation
 > maintenance / audit / reconciliation evidence
 > historical snapshots / superseded plans / PR-task narratives
 ```
@@ -101,8 +106,8 @@ Important consequences:
 - a newer dated maintenance record does not outrank an active renderer/communication/scientific contract merely because its date is later;
 - backend source, machine schema, publisher profile, accessibility rule, and recipe each have subject-scoped authority only for what they actually define;
 - `maintenance/cadence.yaml` is authoritative for its local maintenance/scanner configuration, not for figure validity, publisher acceptance, WCAG conformance, statistical validity, or communication-transfer semantics;
-- `DOCUMENT_STATUS.md` routes documents but does not override implementation or active subject contracts;
-- `AGENTS.md` remains operational guidance and its hard rules remain active; if an older embedded recovery-order list conflicts with this 2026-09-15 router, this current router/taxonomy governs document recovery;
+- this Document Status router does not override implementation or active subject contracts;
+- `AGENTS.md` remains operational guidance and its hard rules remain active; current taxonomy and this router govern document recovery when an older embedded path/order statement differs;
 - execution evidence exists only when the execution actually occurred and its result was preserved.
 
 ## Dated evidence interpretation
@@ -124,9 +129,9 @@ NO_CHANGE_REQUIRED != skipped inspection
 
 ## Historical preservation
 
-`FOUR_DAY_CONSOLIDATION.md`, `FIVE_DAY_CONSOLIDATION.md`, `SIX_DAY_CONSOLIDATION.md`, closed-stage records, superseded design files, and historical PR/task narratives remain point-in-time evidence.
+The Class-03 history directory preserves closed-stage consolidations, frontier/stage evidence, the dated Jules correction, superseded design files, and related point-in-time evidence.
 
-Do not rewrite them merely because current terminology or behavior changed. Correct forward through a current file, correction, reconciliation, or later time-point record.
+Do not rewrite those bodies merely because current terminology, path placement, or behavior changed. Correct forward through a current file, correction, reconciliation, or later time-point record.
 
 ```text
 historical snapshot != current contract

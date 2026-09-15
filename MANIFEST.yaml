@@ -13,7 +13,7 @@ principles:
   - 维护范围有界: "maintenance scanner configured paths 必须保持 repository-local；越界配置 fail closed"
   - 报告可移植: "repo-local paths 使用 repository-relative identity；config bytes 使用 SHA-256 绑定"
   - 写入语义诚实: "scanner 不修改 inspected files；--output 仅写 caller-requested report 并显式记录"
-  - 文档权威显式: "current/historical/example/external metadata 由 DOCUMENT_STATUS.md 分类"
+  - 文档权威显式: "current/historical/example/external metadata 由 docs/03-maintenance-and-audit/DOCUMENT_STATUS.md 分类"
   - 历史不重写: "历史 consolidation 是阶段证据；当前 contract 更新不自动改写历史"
   - 时间状态不猜测: "calendar-month 与 stage close 由日期/配置决定；closed stage 与 current calendar status 分开"
   - 示范不冒充执行证据: "首个 Daily/Weekly/Monthly worked demonstration 是 reference，不伪造 clean scanner output"
@@ -297,11 +297,11 @@ reproducibility:
   r3_rule: "requires an actual separate rerun plus declared comparison criterion"
 
 maintenance:
-  contract: MAINTENANCE_CADENCE.md
+  contract: docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md
   config: maintenance/cadence.yaml
-  document_status: DOCUMENT_STATUS.md
-  stage_index: STAGE_2026_08_MAINTENANCE.md
-  post_stage_repair: POST_STAGE_REPAIR_2026_09_01.md
+  document_status: docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+  stage_index: docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md
+  post_stage_repair: maintenance/POST_STAGE_REPAIR_2026_09_01.md
   first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
   demonstration_status: reference_non_normative
   demonstration_is_runtime_proof: false
@@ -357,21 +357,21 @@ frontier_calibration:
   endorsement_or_certification_claim: false
 
 research_contract:
-  file: RESEARCH_CONTRACT.md
-  figure_claim_contract: FIGURE_CLAIM_CONTRACT.md
-  assertion_basis_communication_coverage: ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md
-  communication_transfer_contract: COMMUNICATION_TRANSFER_CONTRACT.md
+  file: docs/02-examples-and-contracts/RESEARCH_CONTRACT.md
+  figure_claim_contract: docs/02-examples-and-contracts/FIGURE_CLAIM_CONTRACT.md
+  assertion_basis_communication_coverage: docs/02-examples-and-contracts/ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md
+  communication_transfer_contract: docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md
   communication_transfer_machine_contract: metadata/communication_transfer.contract.yaml
-  maintenance_contract: MAINTENANCE_CADENCE.md
-  document_status: DOCUMENT_STATUS.md
-  closed_stage_index: STAGE_2026_08_MAINTENANCE.md
-  post_stage_repair: POST_STAGE_REPAIR_2026_09_01.md
+  maintenance_contract: docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md
+  document_status: docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+  closed_stage_index: docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md
+  post_stage_repair: maintenance/POST_STAGE_REPAIR_2026_09_01.md
   first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
   historical_snapshots:
-    - FOUR_DAY_CONSOLIDATION.md
-    - FIVE_DAY_CONSOLIDATION.md
-    - SIX_DAY_CONSOLIDATION.md
-  frontier_alignment: FRONTIER_ALIGNMENT.md
+    - docs/03-maintenance-and-audit/history/FOUR_DAY_CONSOLIDATION.md
+    - docs/03-maintenance-and-audit/history/FIVE_DAY_CONSOLIDATION.md
+    - docs/03-maintenance-and-audit/history/SIX_DAY_CONSOLIDATION.md
+  frontier_alignment: docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md
 
 research_software:
   citation: CITATION.cff

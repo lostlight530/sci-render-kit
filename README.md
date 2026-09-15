@@ -2,7 +2,7 @@
 
 > Declarative scientific-figure compilation with explicit uncertainty semantics, accessibility intent, publisher-target boundaries, claim-to-visual communication, assertion basis, dimensional communication coverage, runtime audit, portable figure evidence, bounded communication transfer, and phase-aware maintenance
 
-[Architecture](ARCHITECTURE.md) · [Research Contract](RESEARCH_CONTRACT.md) · [Figure Claim Contract](FIGURE_CLAIM_CONTRACT.md) · [Communication Transfer](COMMUNICATION_TRANSFER_CONTRACT.md) · [Assertion Basis & Communication Coverage](ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md) · [Maintenance](MAINTENANCE_CADENCE.md) · [Document Status](DOCUMENT_STATUS.md) · [August Stage Close](STAGE_2026_08_MAINTENANCE.md) · [Frontier Alignment](FRONTIER_ALIGNMENT.md) · [Examples](examples/README.md)
+[Architecture](docs/01-source-and-explanation/ARCHITECTURE.md) · [Research Contract](docs/02-examples-and-contracts/RESEARCH_CONTRACT.md) · [Figure Claim Contract](docs/02-examples-and-contracts/FIGURE_CLAIM_CONTRACT.md) · [Communication Transfer](docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md) · [Assertion Basis & Communication Coverage](docs/02-examples-and-contracts/ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md) · [Maintenance](docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md) · [Document Status](docs/03-maintenance-and-audit/DOCUMENT_STATUS.md) · [August Stage Close](docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md) · [Frontier Alignment](docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md) · [Examples](examples/README.md)
 
 ## Positioning
 
@@ -330,11 +330,11 @@ Sidecars/hashes/transfers/maintenance baselines do not self-award R3
 
 ## Daily / weekly / monthly maintenance
 
-Maintenance is defined in [MAINTENANCE_CADENCE.md](MAINTENANCE_CADENCE.md)
+Maintenance is defined in [MAINTENANCE_CADENCE.md](docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md)
 
-Current document authority is defined in [DOCUMENT_STATUS.md](DOCUMENT_STATUS.md)
+Current document authority is defined in [DOCUMENT_STATUS.md](docs/03-maintenance-and-audit/DOCUMENT_STATUS.md)
 
-The closed August baseline is [STAGE_2026_08_MAINTENANCE.md](STAGE_2026_08_MAINTENANCE.md)
+The closed August baseline is [STAGE_2026_08_MAINTENANCE.md](docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md)
 
 ```bash
 python core/maintenance_cadence.py daily
@@ -352,7 +352,7 @@ stage: closed
 
 The scanner is read-only and does not render figures, inspect pixels, run tests, validate statistics, certify WCAG, predict publisher acceptance, call GitHub, or establish scientific validity
 
-Historical `FOUR_DAY_CONSOLIDATION.md`, `FIVE_DAY_CONSOLIDATION.md`, and `SIX_DAY_CONSOLIDATION.md` remain historical snapshots rather than current contracts
+Historical `docs/03-maintenance-and-audit/history/FOUR_DAY_CONSOLIDATION.md`, `FIVE_DAY_CONSOLIDATION.md`, and `SIX_DAY_CONSOLIDATION.md` remain historical snapshots rather than current contracts
 
 ## Stage-close research calibration
 
@@ -375,6 +375,8 @@ The 2026-08-24 → 2026-08-31 architecture is informed by work on
 Borrowed: portable claim/artifact relations, assertion provenance, dimensional communication coverage, explicit transfer constraints, and phase-aware maintenance
 
 Not claimed: entailment verification, evidence sufficiency, provenance soundness, automatic AI detection, scientific validity, WCAG certification, publisher acceptance, or independent reproduction
+
+See [FRONTIER_ALIGNMENT.md](docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md)
 
 ## Cross-repository handoff
 
