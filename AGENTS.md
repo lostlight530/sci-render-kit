@@ -8,7 +8,7 @@ Keep runtime code, schemas, profiles, evidence sidecars, maintenance records, cu
 
 Read `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` before broad documentation maintenance
 
-Read `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` before using early Jules task/PR prose as current renderer, backend, publisher, accessibility, or scientific evidence
+Use `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` only when interpreting early Jules task/PR prose as historical renderer, backend, publisher, accessibility, or scientific evidence. It is a dated correction record, not a current authority layer.
 
 Current authoritative documents may evolve when current source truth changes
 
@@ -30,12 +30,11 @@ historical agent PR narrative != current communication contract
 
 ```text
 current main implementation
-> MANIFEST.yaml and current machine-readable schemas/contracts/configuration
+> current machine-readable capability contract / schema / configuration for the subject
 > active contracts under docs/02-examples-and-contracts/
-> operational examples / configuration / test evidence
-> README / docs/01-source-and-explanation/ARCHITECTURE.md
-> docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
-> docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
+> operational examples / configuration / test evidence for supported use
+> root README / docs/01-source-and-explanation/ARCHITECTURE.md
+> docs/03-maintenance-and-audit/DOCUMENT_STATUS.md and MAINTENANCE_CADENCE.md
 > dated maintenance evidence
 > docs/03-maintenance-and-audit/history/
 > historical PR / task narratives
@@ -114,6 +113,7 @@ Preserve real WCAG/external/runtime versions when genuinely known
 25. Jules/Codex/other agent task text, PR bodies, generated summaries, and backend/test/completeness claims are proposal/delivery metadata, not automatic repository authority
 26. Historical `tests passed`, backend execution, checksum, `complete`, `fully aligned`, `fixed`, or similar claims require current re-verification before reuse as current facts
 27. Correct historical agent overstatement forward in current records; do not silently edit old PR history or turn later correction into an earlier fact
+28. Path relocation does not change semantic status; update current path consumers without rewriting historical bodies.
 
 ## Communication-audit invariants
 
@@ -173,13 +173,7 @@ what current machine contracts say
 what was actually re-run or re-verified now
 ```
 
-In particular:
-
-- historical claims that all backends are complete or executable do not establish current backend availability;
-- historical checksum/test/render claims do not establish current execution success;
-- historical P2/P3 or publisher wording does not establish publisher acceptance;
-- output hygiene/security wording does not replace current code inspection;
-- render success, current or historical, does not establish scientific validity, entailment, WCAG certification, or independent reproduction.
+Historical claims that all backends are complete or executable do not establish current backend availability; historical checksum/test/render claims do not establish current execution success; historical P2/P3 or publisher wording does not establish publisher acceptance; output hygiene/security wording does not replace current code inspection; render success does not establish scientific validity, entailment, WCAG certification, or independent reproduction.
 
 ```text
 requires re-verification != false
@@ -189,7 +183,7 @@ agent completion language != scientific/publisher verdict
 
 ## Maintenance cadence
 
-`docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md`, `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`, and `maintenance/cadence.yaml` define current maintenance/document governance. The dated `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` and closed-stage records under `docs/03-maintenance-and-audit/history/` remain historical evidence.
+`docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md`, `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`, and `maintenance/cadence.yaml` define current maintenance/document governance. The dated Jules correction and closed-stage records under `docs/03-maintenance-and-audit/history/` remain historical evidence inputs.
 
 Local scanner
 
@@ -204,7 +198,7 @@ Daily maintenance
 - start from current `main`
 - correct demonstrated recipe/evidence/backend/profile/document/governance drift only
 - use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
-- read the latest dated repair/current maintenance record before older PR/task narratives
+- read the latest relevant dated repair/current maintenance record before older PR/task narratives
 - preserve explicit claim bindings, uncertainty labels, WCAG scope, publisher boundaries, and real runtime versions
 - do not rewrite historical snapshots or historical PR prose
 - do not invent a daily feature merely to produce activity
@@ -267,7 +261,7 @@ The scanner does not render figures, inspect pixels, run tests, validate statist
 | recipe field | `metadata/recipe.schema.yaml` | runtime + docs + evidence semantics |
 | claim binding/audit/coverage | `core/claim_binding_audit.py`, `core/figure_evidence.py` | `docs/02-examples-and-contracts/ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md` + `docs/02-examples-and-contracts/FIGURE_CLAIM_CONTRACT.md` + Manifest + examples |
 | communication transfer | `core/communication_transfer.py` | `docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md` + machine contract + examples + historical frontier notes when relevant |
-| maintenance cadence / agent provenance | `core/maintenance_cadence.py`, `maintenance/cadence.yaml` | current Maintenance Cadence + Document Status + Agent Guide + current dated maintenance record; use history records as evidence, not current authority; synchronize runtime scanner/Manifest only when executable/profile semantics change |
+| maintenance cadence / agent provenance | `core/maintenance_cadence.py`, `maintenance/cadence.yaml` | current Maintenance Cadence + Document Status + Agent Guide + current dated maintenance record; use history records as evidence, not current authority; synchronize runtime scanner/Manifest only when executable/profile semantics or machine path contracts actually change |
 | process disclosure | recipe schema + figure evidence | public contracts |
 | runtime rule | `quality/rules.yaml`, `sci_render.py` | severity + docs |
 | accessibility | `core/accessibility.py`, `sci_render.py` | a11y + backend truth |
