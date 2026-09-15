@@ -10,10 +10,9 @@ Do not introduce GitHub Actions, CI, CodeQL, dependency bots, branch-protection 
 
 ## Current document authority
 
-Before changing repository semantics, read [DOCUMENT_STATUS.md](DOCUMENT_STATUS.md)
+Before changing repository semantics, read [Document Status](docs/03-maintenance-and-audit/DOCUMENT_STATUS.md)
 
-Current contracts are authoritative for present behavior
-Historical `*_DAY_CONSOLIDATION.md` files are snapshots of earlier stages and must not be silently rewritten into current truth
+Current contracts under `docs/02-examples-and-contracts/` are authoritative for their named present behavior. Historical `*_DAY_CONSOLIDATION.md` files under `docs/03-maintenance-and-audit/history/` are snapshots of earlier stages and must not be silently rewritten into current truth
 
 ```text
 historical snapshot != current contract
@@ -98,12 +97,12 @@ A transfer must not infer destination, publication status, review authority or c
 Synchronize
 
 ```text
-COMMUNICATION_TRANSFER_CONTRACT.md
+docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md
 metadata/communication_transfer.contract.yaml
-RESEARCH_CONTRACT.md
+docs/02-examples-and-contracts/RESEARCH_CONTRACT.md
 MANIFEST.yaml
 examples/README.md
-FRONTIER_ALIGNMENT.md
+docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md
 ```
 
 ## Compatibility
@@ -138,7 +137,7 @@ sci-render-kit/communication-transfer
 
 ## Daily / weekly / monthly maintenance
 
-The active cadence contract is [MAINTENANCE_CADENCE.md](MAINTENANCE_CADENCE.md)
+The active cadence contract is [Maintenance Cadence](docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md)
 
 ```text
 daily
