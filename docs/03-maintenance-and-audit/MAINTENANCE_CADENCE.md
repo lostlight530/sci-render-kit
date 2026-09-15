@@ -1,27 +1,26 @@
 # Maintenance Cadence — sci-render-kit
 
 **Status:** active maintenance contract  
-**Calibrated:** 2026-09-13  
+**Calibrated:** 2026-09-15  
 **Current closed stage:** 2026-08-24 through 2026-08-31
 
 This contract separates daily, weekly, and monthly maintenance for the scientific-communication layer. It is not a scheduler, scientific validator, publisher validator, or GitHub merge gate.
 
 ## Authority recovery before every pass
 
+Use the most specific current subject authority rather than document date or legacy path placement:
+
 ```text
 current main implementation
-> MANIFEST.yaml and current machine-readable schemas/contracts/configuration
-> latest dated repair / current maintenance record
-> DOCUMENT_STATUS.md
-> AGENTS.md
-> active communication/scientific-integrity contracts
-> this cadence contract / maintenance configuration
-> Architecture / README
-> historical consolidation snapshots
-> historical PR / task narratives
+> current machine-readable capability contract / schema / configuration for the subject
+> active docs/02-examples-and-contracts/RESEARCH_CONTRACT.md and active specialized contract for the subject
+> operational examples / configuration / test evidence for supported use
+> README / docs/01-source-and-explanation/ARCHITECTURE.md / current explanatory documentation
+> maintenance / audit / reconciliation evidence
+> historical snapshots / superseded plans / PR-task narratives
 ```
 
-Read `JULES_CORRECTION_RECORD.md` before using historical Jules task/PR text as evidence of current renderer or communication behavior.
+The historical `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` records the 2026-09-06 correction boundary for earlier coding-agent task/PR narratives. Its historical authority-order wording does not override the current subject-scoped order above.
 
 ## Cadence model
 
@@ -41,8 +40,8 @@ monthly or explicit phase-close
 Required checks:
 
 - start from current `main`;
-- use `DOCUMENT_STATUS.md` to identify current authoritative documentation;
-- read the latest dated repair/current maintenance record before older snapshots or PR narratives;
+- use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to identify current authoritative documentation;
+- read the latest relevant dated repair/current maintenance record before older snapshots or PR narratives;
 - verify claim bindings remain explicit and non-inferred;
 - verify figure-evidence and communication-transfer profile names remain stable;
 - preserve reproducibility context through communication transfer without upgrading it to independent reproduction;
@@ -60,10 +59,10 @@ Daily maintenance must not infer claim relations from pixels/captions/legends/pr
 
 Weekly maintenance includes daily checks plus complete current-communication reconciliation:
 
-- implementation ↔ machine contracts ↔ Research Contract ↔ Figure Claim Contract ↔ Communication Transfer Contract;
-- README / Architecture / Contributor / Examples consistency;
-- `DOCUMENT_STATUS.md` against files actually present;
-- current correction/maintenance records, including `JULES_CORRECTION_RECORD.md`;
+- implementation ↔ machine contracts ↔ active contracts under `docs/02-examples-and-contracts/`;
+- root README / `docs/01-source-and-explanation/ARCHITECTURE.md` / Contributor / Examples consistency;
+- `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` against files actually present;
+- current dated maintenance records;
 - claim communication audit ↔ figure evidence ↔ communication transfer consistency;
 - reproducibility-context preservation across figure evidence and transfer;
 - upstream Auto / Epistemic profile names;
@@ -101,6 +100,8 @@ On and after 2026-09-01 that stage remains closed; post-stage hardening and late
 
 Before the natural September month boundary, a monthly maintenance pass records `month-to-date`; it must not be represented as a calendar-month close.
 
+Historical consolidation and closed-stage inventory lives under `docs/03-maintenance-and-audit/history/`.
+
 ## Deterministic local scanner
 
 ```bash
@@ -115,17 +116,7 @@ Optional report output:
 python core/maintenance_cadence.py daily --as-of 2026-09-06 --output output/communication-maintenance-2026-09-06.json
 ```
 
-### 2026-09-01 portability and scope repair
-
-- configured canonical / scan / governance paths must be repository-relative;
-- absolute paths, `..`, and resolutions outside the repository root fail closed;
-- historical inventory paths are repository-relative rather than machine-local absolute paths;
-- repo-local configuration is recorded by relative path plus `configuration_file_sha256`;
-- external configuration is labeled external without embedding the full machine path;
-- duplicate configured paths are warnings;
-- `repository_scope_enforced: true` is explicit.
-
-The precise write boundary remains:
+Configured canonical / scan / governance paths must be repository-relative; absolute paths, `..`, and resolutions outside the repository fail closed; repository-local config identity is SHA-256-bound; duplicate paths are warnings; and report output is only written when explicitly requested.
 
 ```text
 inspected_files_mutated: false
@@ -133,15 +124,9 @@ report_output_write_requested: true | false
 report_output_inside_repository: true | false | null
 ```
 
-The scanner does not rewrite inspected recipe/evidence/code/configuration/history. It may write only the report explicitly requested by the caller.
+The scanner does not render figures, inspect pixels, call external services, run tests, verify scientific entailment, validate statistics, certify WCAG conformance, predict publisher acceptance, establish independent reproduction, or validate historical Jules PR/task claims.
 
-## Scanner checks
-
-The scanner reports configured paths, scope violations, forbidden governance paths, decorative project versions, Manifest freshness, configuration identity, optional canonical hashes, historical snapshots, calendar-month status, and configured stage status.
-
-It does not render figures, inspect pixels, call external services, run tests, verify scientific entailment, validate statistics, certify WCAG conformance, predict publisher acceptance, establish independent reproduction, or validate historical Jules PR/task claims.
-
-## First complete cadence demonstration
+## Dated maintenance evidence
 
 The first complete worked example remains:
 
@@ -149,7 +134,11 @@ The first complete worked example remains:
 maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
 ```
 
-It is reference material, not a fabricated clean scanner result.
+The post-stage repair is:
+
+```text
+maintenance/POST_STAGE_REPAIR_2026_09_01.md
+```
 
 The previous Daily/Weekly governance reconciliation is:
 
@@ -164,6 +153,10 @@ maintenance/DAILY_WEEKLY_MONTH_TO_DATE_RECONCILIATION_2026_09_13.md
 ```
 
 These are dated maintenance records, not renderer/runtime/publisher/accessibility/scientific-validation evidence. The 2026-09-13 record keeps `MANIFEST.yaml` capability/frontier calibration distinct from maintenance-layer freshness unless actual renderer/communication semantics change.
+
+## Historical evidence
+
+Closed-stage consolidations, frontier alignment, and the dated Jules correction live under `docs/03-maintenance-and-audit/history/`. Their paths changed; their point-in-time claims did not.
 
 ## External calibration
 
@@ -186,4 +179,5 @@ agent task / PR narrative != current repository truth
 claimed backend/test success != current runtime verification
 cadence label != requirement for duplicate PR churn
 maintenance calibration != renderer capability transition
+path relocation != semantic change
 ```
