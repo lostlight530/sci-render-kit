@@ -6,18 +6,18 @@ Keep runtime code, schemas, profiles, evidence sidecars, maintenance records, cu
 
 ## Document authority
 
-Read `DOCUMENT_STATUS.md` before broad documentation maintenance
+Read `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` before broad documentation maintenance
 
-Read `JULES_CORRECTION_RECORD.md` before using early Jules task/PR prose as current renderer, backend, publisher, accessibility, or scientific evidence
+Read `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` before using early Jules task/PR prose as current renderer, backend, publisher, accessibility, or scientific evidence
 
 Current authoritative documents may evolve when current source truth changes
 
 Historical consolidation snapshots remain time-scoped records rather than current contracts
 
 ```text
-FOUR_DAY_CONSOLIDATION.md
-FIVE_DAY_CONSOLIDATION.md
-SIX_DAY_CONSOLIDATION.md
+docs/03-maintenance-and-audit/history/FOUR_DAY_CONSOLIDATION.md
+docs/03-maintenance-and-audit/history/FIVE_DAY_CONSOLIDATION.md
+docs/03-maintenance-and-audit/history/SIX_DAY_CONSOLIDATION.md
 ```
 
 ```text
@@ -31,13 +31,13 @@ historical agent PR narrative != current communication contract
 ```text
 current main implementation
 > MANIFEST.yaml and current machine-readable schemas/contracts/configuration
-> latest dated repair / current maintenance record
-> DOCUMENT_STATUS.md
-> AGENTS.md
-> active communication/scientific-integrity contracts
-> MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
-> Architecture / README
-> historical consolidation snapshots
+> active contracts under docs/02-examples-and-contracts/
+> operational examples / configuration / test evidence
+> README / docs/01-source-and-explanation/ARCHITECTURE.md
+> docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+> docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
+> dated maintenance evidence
+> docs/03-maintenance-and-audit/history/
 > historical PR / task narratives
 ```
 
@@ -189,7 +189,7 @@ agent completion language != scientific/publisher verdict
 
 ## Maintenance cadence
 
-`MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `JULES_CORRECTION_RECORD.md`, `STAGE_2026_08_MAINTENANCE.md`, and `maintenance/cadence.yaml` define active maintenance/document governance
+`docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md`, `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`, and `maintenance/cadence.yaml` define current maintenance/document governance. The dated `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` and closed-stage records under `docs/03-maintenance-and-audit/history/` remain historical evidence.
 
 Local scanner
 
@@ -203,7 +203,7 @@ Daily maintenance
 
 - start from current `main`
 - correct demonstrated recipe/evidence/backend/profile/document/governance drift only
-- use `DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
+- use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
 - read the latest dated repair/current maintenance record before older PR/task narratives
 - preserve explicit claim bindings, uncertainty labels, WCAG scope, publisher boundaries, and real runtime versions
 - do not rewrite historical snapshots or historical PR prose
@@ -211,7 +211,7 @@ Daily maintenance
 
 Weekly maintenance
 
-- reconcile implementation, machine contracts, Research Contract, Figure Claim Contract, Communication Transfer Contract, README/Architecture, Agent/Contributor guidance, examples, Document Status, Frontier Alignment, current correction/maintenance records, and upstream profile names
+- reconcile implementation, machine contracts, active contracts under `docs/02-examples-and-contracts/`, root README, `docs/01-source-and-explanation/ARCHITECTURE.md`, Agent/Contributor guidance, examples, current Document Status, current Maintenance Cadence, historical Frontier Alignment, current maintenance records, and upstream profile names
 - review backend capability truth, uncertainty semantics, WCAG scope, publisher wording, communication-transfer non-inheritance, and coding-agent provenance handling
 - inventory historical snapshots without rewriting them
 
@@ -265,15 +265,15 @@ The scanner does not render figures, inspect pixels, run tests, validate statist
 | Goal | Primary files | Synchronize |
 |---|---|---|
 | recipe field | `metadata/recipe.schema.yaml` | runtime + docs + evidence semantics |
-| claim binding/audit/coverage | `core/claim_binding_audit.py`, `core/figure_evidence.py` | Assertion Basis + Figure Claim Contract + Manifest + examples |
-| communication transfer | `core/communication_transfer.py` | Communication Transfer Contract + machine contract + examples + frontier notes |
-| maintenance cadence / agent provenance | `core/maintenance_cadence.py`, `maintenance/cadence.yaml`, `JULES_CORRECTION_RECORD.md` | Maintenance Cadence + Document Status + Agent Guide + current dated maintenance record; synchronize runtime scanner/Manifest only when executable/profile semantics change |
+| claim binding/audit/coverage | `core/claim_binding_audit.py`, `core/figure_evidence.py` | `docs/02-examples-and-contracts/ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md` + `docs/02-examples-and-contracts/FIGURE_CLAIM_CONTRACT.md` + Manifest + examples |
+| communication transfer | `core/communication_transfer.py` | `docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md` + machine contract + examples + historical frontier notes when relevant |
+| maintenance cadence / agent provenance | `core/maintenance_cadence.py`, `maintenance/cadence.yaml` | current Maintenance Cadence + Document Status + Agent Guide + current dated maintenance record; use history records as evidence, not current authority; synchronize runtime scanner/Manifest only when executable/profile semantics change |
 | process disclosure | recipe schema + figure evidence | public contracts |
 | runtime rule | `quality/rules.yaml`, `sci_render.py` | severity + docs |
 | accessibility | `core/accessibility.py`, `sci_render.py` | a11y + backend truth |
 | backend | corresponding adapter | manifest/provenance capability truth |
 | publisher profile | `profiles/*.yaml` | source status + acceptance false |
-| public capability | README / Architecture / Contracts / Manifest | update together when semantics change |
+| public capability | root README / `docs/01-source-and-explanation/ARCHITECTURE.md` / contracts under `docs/02-examples-and-contracts/` / Manifest | update together when semantics change |
 
 ## Cross-repository references
 
