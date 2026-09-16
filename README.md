@@ -1,5 +1,7 @@
 # sci-render-kit
 
+[![DOI](https://zenodo.org/badge/1274159885.svg)](https://zenodo.org/badge/latestdoi/1274159885)
+
 > Declarative scientific-figure compilation with explicit uncertainty semantics, accessibility intent, publisher-target boundaries, claim-to-visual communication, assertion basis, dimensional communication coverage, runtime audit, portable figure evidence, bounded communication transfer, and phase-aware maintenance
 
 [Architecture](docs/01-source-and-explanation/ARCHITECTURE.md) · [Research Contract](docs/02-examples-and-contracts/RESEARCH_CONTRACT.md) · [Figure Claim Contract](docs/02-examples-and-contracts/FIGURE_CLAIM_CONTRACT.md) · [Communication Transfer](docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md) · [Assertion Basis & Communication Coverage](docs/02-examples-and-contracts/ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md) · [Maintenance](docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md) · [Document Status](docs/03-maintenance-and-audit/DOCUMENT_STATUS.md) · [August Stage Close](docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md) · [Frontier Alignment](docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md) · [Examples](examples/README.md)
