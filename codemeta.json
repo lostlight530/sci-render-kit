@@ -1,0 +1,24 @@
+{
+  "@context": "https://w3id.org/codemeta/3.1",
+  "@type": "SoftwareSourceCode",
+  "name": "sci-render-kit",
+  "description": "Declarative scientific-figure compilation with backend-bounded rendering, provenance and figure-evidence sidecars, explicit uncertainty semantics, accessibility contracts, and publisher-target boundaries.",
+  "codeRepository": "https://github.com/lostlight530/sci-render-kit",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "author": {
+    "@type": "Person",
+    "name": "lostlight530",
+    "url": "https://github.com/lostlight530"
+  },
+  "applicationCategory": "Research Software",
+  "isAccessibleForFree": true,
+  "programmingLanguage": "Python",
+  "keywords": [
+    "research software",
+    "scientific visualization",
+    "figure provenance",
+    "uncertainty semantics",
+    "accessibility",
+    "reproducibility"
+  ]
+}
