@@ -1,21 +1,19 @@
 cff-version: 1.2.0
-message: "If you use this research software, please cite it using the metadata below."
+message: "If you use this repository in your work, please cite it using the metadata below."
 title: "sci-render-kit"
-type: software
 authors:
-  - alias: lostlight530
+  - name: "lostlight530"
+    website: "https://github.com/lostlight530"
 repository-code: "https://github.com/lostlight530/sci-render-kit"
 license: MIT
-abstract: >
+abstract: >-
   Declarative scientific-figure compilation with backend-bounded rendering,
   provenance and figure-evidence sidecars, explicit uncertainty semantics,
-  accessibility contracts, and source-scoped publisher-target profiles.
+  accessibility contracts, and publisher-target boundaries.
 keywords:
-  - scientific visualization
   - research software
+  - scientific visualization
   - figure provenance
-  - evidence handoff
   - uncertainty semantics
   - accessibility
-  - reproducibility metadata
-  - declarative rendering
+  - reproducibility
