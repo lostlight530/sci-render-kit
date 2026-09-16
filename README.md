@@ -1,6 +1,6 @@
 # sci-render-kit
 
-[![DOI](https://zenodo.org/badge/1274159885.svg)](https://zenodo.org/badge/latestdoi/1274159885)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22791375.svg)](https://doi.org/10.5281/zenodo.22791375)
 
 > Declarative scientific-figure compilation with explicit uncertainty semantics, accessibility intent, publisher-target boundaries, claim-to-visual communication, assertion basis, dimensional communication coverage, runtime audit, portable figure evidence, bounded communication transfer, and phase-aware maintenance
 
