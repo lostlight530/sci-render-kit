@@ -1,54 +1,56 @@
-## Outcome and exact scope
-What changed, why, and what remains intentionally unchanged?
+## Summary
 
-## Repository basis
-- Base revision / current `main` observed:
-- Owning implementation / maintenance surface:
-- Logical period or evidence window, when applicable:
-- Producer / maintainer:
-- Run identity, when available:
-- Machine contracts / current documents affected:
+What problem does this change address, and what changed?
 
-## Live ownership
-- [ ] Open PRs / live branches were checked before writing
-- [ ] Overlap is coordinated rather than duplicated
-- [ ] This PR is not activity-only churn for a `NO_CHANGE_REQUIRED` inspection
+## Change type
 
-## Evidence boundary
-- [ ] Rendering success, metadata completeness, claim communication, and scientific validity are not conflated
-- [ ] Claim binding is not presented as entailment
-- [ ] Uncertainty metadata is not presented as statistical validation
-- [ ] Publisher alignment is not presented as acceptance
-- [ ] Accessibility support is not presented as WCAG certification
-- [ ] Imported evidence semantics are not silently strengthened
-- [ ] Unknown, missing, or unverified state remains explicit
+- [ ] renderer / backend bug fix
+- [ ] tests / quality / accessibility checks
+- [ ] schema / profile / recipe / Manifest
+- [ ] claim / uncertainty / communication contract
+- [ ] documentation / examples
+- [ ] repository infrastructure / metadata
+- [ ] maintenance / governance
 
-## Synchronization
-List every `MANIFEST.yaml`, recipe/schema/profile/quality contract, communication contract, status document, maintenance configuration, operator guide, metadata surface, or example that must remain consistent with the owning change.
+## Affected surfaces
 
-## Verification actually performed
-List checks actually run and results at the revision observed.
+List the renderer, backend, schema/profile, quality rule, communication contract, example, documentation, or public metadata affected. Note related surfaces intentionally left unchanged.
 
-## Verification not performed
-Record relevant unrun checks as `NOT_EXECUTED`; use `EXECUTION_NOT_OBSERVED` when execution itself was not observed. Source/contract inspection is not a PASS.
+## Scientific communication impact
 
-## Aggregate diff and delivery
-- [ ] Final `main...branch` diff was reviewed
-- [ ] Current `main` / overlap state was refreshed before delivery
-- [ ] Delivery is a bounded Draft PR for maintainer review
-- [ ] No auto-merge, force-push, or direct maintenance write to `main` is requested
+Describe changes to claim binding, uncertainty semantics, assertion basis, coverage, accessibility, publisher targeting, figure evidence, or communication transfer.
 
-## Historical preservation
-- [ ] Dated maintenance records and historical snapshots remain point-in-time evidence
-- [ ] Corrections move forward rather than silently rewriting historical execution
+Keep rendering success, entailment, statistical validity, accessibility conformance, and publisher acceptance separate.
+
+## Verification performed
+
+List exact tests, render commands, schema/profile checks, accessibility checks, or external tools actually run and their observed results.
+
+## Known limits / verification not performed
+
+List relevant backends, environments, publisher validators, accessibility audits, or scientific checks not exercised.
+
+## Synchronization and historical impact
+
+State which machine contracts, profiles, examples, explanatory docs, or metadata must remain synchronized. Preserve historical point-in-time evidence when a current-document correction is sufficient.
 
 ## Security and privacy
-State relevant rendering input, output, disclosure, external-tool, or data impact. Do not publish credentials, private Jules prompts, hidden reasoning, repository memory, or unrelated operator context. Follow `SECURITY.md` for sensitive details.
+
+Describe rendering-input, output, external-tool, permission, or sensitive-data impact. Follow `SECURITY.md` for sensitive reports.
+
+## Publication / metadata impact
+
+State whether `CITATION.cff`, `codemeta.json`, `RELEASE_POLICY.md`, README, or other discovery surfaces must remain synchronized.
 
 ## Rollback
+
 Describe the smallest safe rollback.
 
-## Final review
-- [ ] Change is focused and reviewable
-- [ ] No unrelated renderer/communication/cadence redesign is bundled into this PR
-- [ ] Draft PR status is not presented as validation or merge success
+## Review checklist
+
+- [ ] The diff is limited to the stated purpose.
+- [ ] Tests/checks described as passing were actually executed.
+- [ ] Claim binding is not presented as entailment or evidence sufficiency.
+- [ ] Accessibility support is not presented as WCAG certification unless independently established.
+- [ ] Historical evidence was not silently rewritten to match later state.
+- [ ] No credentials, private data, caches, or unrelated generated/local state is included.

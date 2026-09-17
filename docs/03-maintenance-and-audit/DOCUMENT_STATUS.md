@@ -2,15 +2,15 @@
 
 **Status:** active document-governance router  
 **Calibrated:** 2026-09-17  
-**Stage:** August 2026 scientific-communication phase closed on 2026-08-31
+**Stage note:** the August 2026 scientific-communication phase closed on 2026-08-31
 
-This file routes repository materials by current role and authority. It is a classifier/router, not an independent source of renderer, backend, publisher, accessibility, communication, or scientific truth.
+This file classifies current repository surfaces by role and authority. It is a router, not an independent source of renderer behavior, backend availability, publisher acceptance, accessibility conformance, communication validity, or scientific truth.
 
-See `docs/README.md` for the three-class taxonomy.
+See `docs/README.md` for the repository documentation taxonomy.
 
-## Class 01 — source and explanation
+## Class 01 — implementation and explanation
 
-Primary implementation/explanatory surfaces include:
+Primary implementation and explanatory surfaces:
 
 ```text
 sci_render.py
@@ -23,11 +23,13 @@ README.md
 docs/01-source-and-explanation/ARCHITECTURE.md
 ```
 
-Implementation determines actual renderer/audit/transfer behavior. `core/maintenance_cadence.py` is executable source; source presence is not scanner execution.
+Implementation determines actual renderer, audit, transfer, and sidecar behavior. README and Architecture explain current behavior and must remain bounded by implementation and active contracts.
 
-## Class 02 — examples and contracts
+`core/maintenance_cadence.py` is executable source. Source presence is not scanner execution.
 
-Current capability/configuration surfaces include:
+## Class 02 — machine configuration, communication contracts, examples, and scholarly metadata
+
+Current capability and communication constraints include:
 
 ```text
 MANIFEST.yaml
@@ -43,14 +45,25 @@ examples/
 AGENTS.md
 CONTRIBUTING.md
 CITATION.cff
+codemeta.json
+RELEASE_POLICY.md
 LICENSE
 ```
 
-Machine-readable presence does not itself establish scientific validity, publisher acceptance, WCAG certification, backend runtime availability, statistical validity, or entailment.
+Machine-readable presence does not establish scientific validity, publisher acceptance, WCAG certification, backend runtime availability, statistical validity, or entailment.
 
-## Class 03 — maintenance and audit
+`CITATION.cff`, `codemeta.json`, and `RELEASE_POLICY.md` describe public software discovery, citation, release, and archival identity.
 
-Current maintenance/governance surfaces:
+```text
+repository DOI != figure validity
+citation metadata != publisher acceptance
+publication identity != backend availability
+DOI != R3 reproduction
+```
+
+## Class 03 — current maintenance and repository governance
+
+Current maintenance surfaces include:
 
 ```text
 docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
@@ -59,59 +72,51 @@ docs/03-maintenance-and-audit/README.md
 docs/03-maintenance-and-audit/independent-gpt/README.md
 maintenance/cadence.yaml
 .github/pull_request_template.md
-.github/ISSUE_TEMPLATE/governance.md
+.github/ISSUE_TEMPLATE/
 ```
 
-The Independent GPT file is a public cold-start recovery/delivery router inside Class 03. It does not create a fourth class or outrank implementation/machine contracts/active subject contracts.
+These files govern maintenance, recovery, contribution, and delivery behavior. They do not outrank implementation, machine configuration, or subject-specific communication contracts for renderer/scientific semantics.
 
-Dated maintenance records, including the August demonstration, 2026-09-01 repair, 2026-09-06 reconciliation, frontier refresh, and 2026-09-13 month-to-date reconciliation, remain point-in-time maintenance evidence.
+## Historical and dated evidence
 
-Closed-stage/frontier/FOUR/FIVE/SIX_DAY/Jules-correction/superseded-plan material under `history/` remains historical evidence.
+Dated maintenance records and materials under `history/` remain point-in-time evidence. The August stage, frontier material, FOUR/FIVE/SIX_DAY consolidations, correction records, demonstrations, and later dated reconciliations remain recoverable at their original time boundary.
 
-## Two authority questions must not be collapsed
+```text
+historical snapshot != current contract
+current path presence != earlier execution
+later success != earlier success
+correction != history rewrite
+```
 
-### Renderer / communication semantics
+A later current document can narrow or correct interpretation without pretending that the corrected meaning existed at the earlier observation time.
+
+## Current authority by question
+
+### Renderer / communication question
 
 ```text
 current implementation
 > current schema/profile/configuration/machine contract for the subject
 > active subject-specific contract
-> executable/operational evidence for supported use
+> revision-matched executable/operational evidence
 > current explanatory documentation
-> maintenance evidence
+> current maintenance/document router
 > historical records
 ```
 
-### Maintenance-control recovery
+### Publication or citation question
 
 ```text
-current merged main implementation
-> MANIFEST.yaml / metadata / profiles / quality / recipes / machine configuration
-> latest relevant dated repair or current maintenance record
-> DOCUMENT_STATUS.md
-> AGENTS.md
-> active subject-specific contracts
-> MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
-> current Architecture / README explanation
-> historical snapshots / superseded plans / PR-task narratives
+CITATION.cff / codemeta.json / RELEASE_POLICY.md / DOI record
 ```
 
-A newer maintenance record does not outrank implementation for renderer behavior, publisher acceptance, accessibility conformance, or scientific validity.
+These identify the software publication and citation surface; they do not validate a figure, source claim, uncertainty method, accessibility conformance, or publisher acceptance.
 
-## Maintenance task ownership
+### Maintenance/document-routing question
 
-```text
-repository
-+ owning surface/task
-+ logical period/evidence window
-+ producer/maintainer
-+ exact base revision
-+ run identity when available
-```
+Use the current maintenance contract, this router, cadence configuration, and current repository state. Dated maintenance records inform history but remain time-scoped.
 
-Before writing, inspect open PRs/live branches for overlapping ownership. Same owning surface/period with another live owner means `COORDINATE`. No confirmed defect means `NO_CHANGE_REQUIRED` and no activity-only branch/PR. **Write never probes.**
-
-## Communication hard boundaries
+## Scientific communication hard boundaries
 
 ```text
 render success != scientific validity
@@ -127,18 +132,6 @@ coverage != quality
 coverage ratio != probability
 ```
 
-## Dated evidence interpretation
-
-The 2026-08-31 demonstration is historical/reference evidence, not an automatically preserved clean scanner/render/test run. The 2026-09-01 repair does not reopen August. The frontier refresh is source-bounded calibration, not renderer execution or scientific validation.
-
-The 2026-09-13 reconciliation remains valid point-in-time evidence that the pass found `NO_CHANGE_REQUIRED` for renderer/communication semantics, refreshed maintenance observation through 2026-09-13, kept September month-to-date, and did not fabricate absent scanner/render/test execution. It does not mechanically advance `MANIFEST.yaml` capability/frontier calibration.
-
-```text
-maintenance freshness != renderer/communication capability calibration
-latest observation != highest semantic authority
-NO_CHANGE_REQUIRED != skipped inspection
-```
-
 ## Execution evidence boundary
 
 ```text
@@ -149,36 +142,10 @@ contract inspection != checker PASS
 historical render/test PASS != current PASS
 ```
 
-Unrun checks are `NOT_EXECUTED`. Unobserved scheduler/workflow execution is `EXECUTION_NOT_OBSERVED` when material.
+Unknown or unexecuted evidence remains unknown or unexecuted. A documentation, metadata, or profile update must not manufacture render/runtime evidence.
 
-## Historical preservation
+## Current stage interpretation
 
-Do not rewrite historical bodies merely because current terminology, paths, or behavior changed. Correct forward through a current owning file or later dated reconciliation.
+The 2026-08-24 through 2026-08-31 scientific-communication phase is closed. Later maintenance and publication updates do not reopen that historical phase.
 
-```text
-historical snapshot != current contract
-historical != invalid
-later success != earlier success
-correction != history rewrite
-agent completion claim != current verification
-path relocation != semantic change
-```
-
-## Stage status
-
-```text
-window: 2026-08-24 -> 2026-08-31
-calendar_month: closed
-research_phase: closed
-September 2026: month-to-date until natural month close
-```
-
-## Delivery boundary
-
-For a confirmed repair, verify aggregate diff and live overlap, open one bounded **Draft PR**, and stop for maintainer review. Do not auto-merge, force-push, or write maintenance repairs directly to `main`.
-
-```text
-Draft PR != validation success
-classification != deletion authority
-calendar close != reproduction
-```
+Current September state must be recovered from current repository truth and current dated records rather than copied from an August or earlier September snapshot.
