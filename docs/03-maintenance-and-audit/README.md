@@ -1,21 +1,21 @@
 # 03 — Maintenance and Audit
 
-This class answers: **what maintenance/governance rule applied, what was inspected at a given time, what was concluded, and what historical evidence must remain reviewable?**
+This class answers: **what maintenance/governance rule applied, what was inspected, what was concluded, who owned the maintenance surface, and what historical evidence must remain reviewable?**
 
-It does **not** define the repository's scientific or runtime semantics merely because a record is newer than an active contract.
+It does **not** define renderer, backend, publisher, accessibility, communication, or scientific truth merely because a record is newer than an active contract.
 
 ## Current maintenance / governance surfaces
 
-- [`DOCUMENT_STATUS.md`](DOCUMENT_STATUS.md) — current document-governance router and subject-scoped authority classifier
-- [`MAINTENANCE_CADENCE.md`](MAINTENANCE_CADENCE.md) — human-readable repository-maintenance contract
-- root `maintenance/cadence.yaml` — machine-readable local maintenance/scanner configuration; classified here by function
-- [`independent-gpt/README.md`](independent-gpt/README.md) — current public cold-start recovery kernel for a memoryless independent reviewer; it does not override subject-scoped authority
+- [`DOCUMENT_STATUS.md`](DOCUMENT_STATUS.md) — current document-governance router
+- [`MAINTENANCE_CADENCE.md`](MAINTENANCE_CADENCE.md) — active human-readable maintenance contract
+- root `maintenance/cadence.yaml` — machine-readable maintenance/scanner configuration and control metadata
+- [`independent-gpt/README.md`](independent-gpt/README.md) — public cold-start recovery/delivery kernel
+- root `AGENTS.md` — operational agent guidance
+- root `CONTRIBUTING.md` plus `.github/pull_request_template.md` and `.github/ISSUE_TEMPLATE/governance.md` — collaboration/delivery entry points
 
-`core/maintenance_cadence.py` remains **Class 01 source** because it is executable implementation. Its presence or a successful local scan is not the same thing as an external governance patrol, GitHub-state audit, scientific validation, or a preserved historical run.
+`core/maintenance_cadence.py` remains **Class 01 executable source**. Its source/configuration review does not prove the scanner ran.
 
-## Coordinated research-infrastructure context
-
-This repository participates in a coordinated research-infrastructure set with:
+## Coordinated context
 
 ```text
 lostlight530/auto-doc-engine
@@ -23,48 +23,63 @@ lostlight530/epistemic-pipeline
 lostlight530/sci-render-kit
 ```
 
-Coordination allows shared inspection windows and cross-repository checks for profile names, contract names, and handoff vocabulary. It does **not** create cross-repository authority. Each repository recovers from and is governed by its own current `main`, implementation, machine-readable contracts/configuration, active subject contracts, current document router, maintenance evidence, and preserved history.
+Coordination permits shared inspection windows and handoff-vocabulary review. It does not create cross-repository authority.
 
-A generic historical authority ordering is not a permanent repository law. When older maintenance or correction prose conflicts with the current subject-scoped recovery order in `DOCUMENT_STATUS.md`, the current subject-scoped order governs present interpretation.
-
-Periodic maintenance is an opportunity to inspect current truth, not a requirement to manufacture changes. `NO_CHANGE_REQUIRED` is a valid outcome. Weekly or monthly synthesis is justified by the current contract, a natural calendar/phase boundary, accumulated evidence, demonstrated drift, or another explicit maintenance need rather than by schedule alone.
-
-## Dated maintenance / calibration evidence
-
-- root `maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md`
-- root `maintenance/POST_STAGE_REPAIR_2026_09_01.md`
-- root `maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md`
-- root `maintenance/FRONTIER_REFRESH_2026_09_01_THROUGH_2026_09_06.md`
-- root `maintenance/DAILY_WEEKLY_MONTH_TO_DATE_RECONCILIATION_2026_09_13.md`
-
-The 2026-08-24 through 2026-08-31 research stage remains closed historical evidence. The 2026-09-01 post-stage repair is the dated starting checkpoint for steady-state maintenance, while current merged `main` may supersede that checkpoint through explicit current evidence or reconciliation.
-
-These records are point-in-time evidence. A later dated record may report a newer observation, correction, or maintenance result, but it does not silently override current implementation, machine contracts, or active scientific/specialized contracts.
-
-## Stage / historical evidence
-
-- [`history/STAGE_2026_08_MAINTENANCE.md`](history/STAGE_2026_08_MAINTENANCE.md)
-- [`history/FRONTIER_ALIGNMENT.md`](history/FRONTIER_ALIGNMENT.md)
-- [`history/FOUR_DAY_CONSOLIDATION.md`](history/FOUR_DAY_CONSOLIDATION.md)
-- [`history/FIVE_DAY_CONSOLIDATION.md`](history/FIVE_DAY_CONSOLIDATION.md)
-- [`history/SIX_DAY_CONSOLIDATION.md`](history/SIX_DAY_CONSOLIDATION.md)
-- [`history/JULES_CORRECTION_RECORD.md`](history/JULES_CORRECTION_RECORD.md) — dated correction/authority evidence retained at its original calibration boundary, not a current top-level authority
-- `history/superpowers/` — superseded/historical implementation design and planning evidence
-
-Historical records remain reviewable at their original time boundary. Physical reclassification does not rewrite their claims.
-
-## Interpretation rules
+## Maintenance-control recovery
 
 ```text
-maintenance record != current implementation semantics
-latest date != highest semantic authority
-scanner source != scanner execution
-file presence != runtime evidence
-local scan != scientific validation
-later success != earlier success
-correction != history rewrite
-historical snapshot != invalid evidence
-NO_CHANGE_REQUIRED != missing inspection
+current merged main implementation
+> MANIFEST.yaml / metadata / profiles / quality / recipes / current machine configuration
+> latest relevant dated repair or current maintenance record
+> DOCUMENT_STATUS.md
+> AGENTS.md
+> active subject-specific contracts
+> MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
+> current Architecture / README explanation
+> historical snapshots / superseded plans / PR-task narratives
 ```
 
-When current state conflicts with a dated record, preserve the dated record and correct forward in current governance or a later correction/reconciliation record.
+For renderer/communication semantics, continue to use the most specific implementation, machine contract/configuration, and active subject contract.
+
+## Idempotent ownership
+
+```text
+repository + owning surface/task + logical period/evidence window
++ producer/maintainer + exact base revision + run identity when available
+```
+
+Before writing, inspect open PRs/live branches for overlapping ownership. Overlap means `COORDINATE`; no confirmed defect means `NO_CHANGE_REQUIRED` and no activity-only branch/PR. **Write never probes.**
+
+## Dated / historical evidence
+
+The August demonstration, 2026-09-01 repair, 2026-09-06 reconciliation, frontier refresh, and 2026-09-13 month-to-date reconciliation remain point-in-time maintenance evidence. Closed-stage/frontier/FOUR/FIVE/SIX_DAY/Jules-correction/superseded-plan material under `history/` remains historical evidence.
+
+A later record may report a newer observation or correction, but it does not silently override implementation, machine contracts, publisher/accessibility/runtime facts, or active scientific/communication contracts.
+
+## Communication boundaries
+
+```text
+render success != scientific validity
+claim binding != entailment
+uncertainty metadata != statistical validation
+publisher profile/alignment != acceptance
+accessibility support != WCAG certification
+backend source != runtime availability
+communication transfer != inherited scientific authority
+```
+
+## Validation and delivery boundary
+
+```text
+checker available != checker executed
+checker executed != checker passed
+historical render/test pass != current pass
+contract inspection != runtime verification
+Draft PR != merge approval or validation success
+```
+
+Record an unrun check as `NOT_EXECUTED`; use `EXECUTION_NOT_OBSERVED` when execution itself was not observed.
+
+When a real repair exists, verify aggregate branch diff, refresh current-main/overlap state, open one bounded **Draft PR**, and stop for maintainer review. Do not auto-merge or write maintenance repairs directly to `main`.
+
+When current state conflicts with a dated record, preserve the dated record and correct forward in current governance or a later reconciliation record.
