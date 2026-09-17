@@ -4,6 +4,8 @@
   "name": "sci-render-kit",
   "description": "Declarative scientific-figure compilation with backend-bounded rendering, provenance and figure-evidence sidecars, explicit uncertainty semantics, accessibility contracts, and publisher-target boundaries.",
   "codeRepository": "https://github.com/lostlight530/sci-render-kit",
+  "identifier": "https://doi.org/10.5281/zenodo.22791375",
+  "datePublished": "2026-09-16",
   "license": "https://spdx.org/licenses/MIT.html",
   "author": {
     "@type": "Person",
