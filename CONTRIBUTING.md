@@ -1,131 +1,84 @@
 # Contributing
 
-Contributions should strengthen explicit scientific-figure semantics, communication integrity, or maintenance clarity rather than only increase renderer/module count.
+Contributions should strengthen scientific-figure semantics, renderer correctness, communication integrity, accessibility, reproducibility, documentation, or public metadata without turning presentation success into scientific validation.
 
-## Repository boundaries
+## Start from the owning surface
 
-Keep changes scoped to the owning layer: recipe schema, runtime rules, backend adapter, accessibility, publisher preset, claim communication, assertion basis, communication coverage, figure evidence, communication transfer, maintenance, or documentation.
+Keep a change with the layer that owns it:
 
-Do not introduce GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture as ordinary maintenance.
+- renderer/runtime implementation and tests;
+- recipe schemas and machine-readable metadata;
+- backend adapters and capability boundaries;
+- quality, accessibility, publisher-target, uncertainty, and communication contracts;
+- figure evidence and communication-transfer records;
+- `MANIFEST.yaml` and active contracts;
+- current explanatory documentation;
+- repository infrastructure such as `.github/`, security, citation, CodeMeta, and release metadata.
 
-## Before changing the repository
-
-Read current authority and maintenance surfaces:
-
-```text
-docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
-docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md
-docs/03-maintenance-and-audit/independent-gpt/README.md
-AGENTS.md
-MANIFEST.yaml
-```
-
-For maintenance work, start from exact current merged `main`, inspect live PRs/branches for overlapping ownership, and identify the owning surface before writing.
-
-Record, when applicable:
-
-```text
-repository + owning surface/task + logical period/evidence window
-+ producer/maintainer + exact base revision + run identity when available
-```
-
-Overlap means `COORDINATE`. No confirmed defect means `NO_CHANGE_REQUIRED` and no activity-only branch/PR. **Write never probes.**
-
-## Current document authority
-
-Current implementation/machine contracts/active contracts own present behavior for their subjects. Historical `*_DAY_CONSOLIDATION.md` and other records under `docs/03-maintenance-and-audit/history/` remain point-in-time evidence.
-
-```text
-historical snapshot != current contract
-current contract != permission to rewrite history
-```
+Use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to distinguish current contracts from dated/historical records.
 
 ## Scientific communication integrity
+
+Keep these boundaries explicit:
 
 ```text
 render success != scientific validity
 claim binding != entailment
 uncertainty metadata != statistical validation
-publisher profile/alignment != acceptance
+publisher profile != acceptance
 accessibility support != WCAG certification
 backend source != runtime availability
 communication transfer != inherited scientific authority
 assertion basis != correctness
-communication coverage != entailment
 coverage ratio != probability
-coverage != provenance soundness
+repository DOI != figure validity
 ```
 
-Unknown metadata stays unknown. Never invent provider, model, version, source, review, runtime availability, publisher acceptance, WCAG conformance, or validation status.
+Unknown metadata stays unknown. Do not invent provider/model versions, publisher acceptance, accessibility conformance, source authority, or review state.
 
-Claim relations remain explicit and must not be inferred from pixels, captions, filenames, legends, prose, or data values.
+Claim relations remain explicit declarations and must not be inferred from pixels, captions, filenames, legends, prose, or data values.
 
-## Communication transfer
+## Implementation and contract changes
 
-Preserve explicit non-inheritance:
+For executable or machine-contract changes:
 
-```text
-scientific_validity_inherited: false
-entailment_inherited: false
-evidence_sufficiency_inherited: false
-statistical_validity_inherited: false
-peer_review_inherited: false
-publisher_acceptance_inherited: false
-accessibility_conformance_inherited: false
-```
+1. define or reproduce the behavior at a named revision;
+2. add or update proportionate tests/fixtures;
+3. update the owning schema/profile/quality/communication contract when semantics change;
+4. synchronize `MANIFEST.yaml`, examples, and explanatory docs where required;
+5. retain explicit non-inheritance constraints for communication transfer.
 
-A transfer must not infer destination, publication status, review authority, or claim meaning from filenames, captions, pixels, or prose.
+Backend source presence is not evidence that a backend runtime is installed or semantically equivalent to another backend.
 
-## Compatibility and cross-repository semantics
+## Verification
 
-When a public field/semantic changes, synchronize the owning code or machine contract, active communication contracts, Manifest, examples, and public documentation as required.
+Run tests, rendering checks, schema/profile validation, accessibility checks, or external tools relevant to the changed surface and supported by the environment. Record exact commands and observed results.
 
-Do not strengthen upstream references silently:
+Do not report an unrun backend, publisher validator, accessibility audit, or renderer check as passed. Engineering validation of a rendered artifact is not scientific validation of the underlying claim.
 
-```text
-artifact/claim ref -> trusted evidence       # prohibited
-claim audit coverage -> scientific validity # prohibited
-human review -> peer review                 # prohibited
-supports relation -> proof                  # prohibited
-claim transfer -> accepted claim            # prohibited
-```
+## Documentation and historical evidence
 
-## Maintenance workflow
+Prefer the smallest current owning document. Do not rewrite historical snapshots merely because terminology or current behavior changed. Correct current interpretation forward while retaining earlier point-in-time evidence.
 
-```text
-daily -> bounded demonstrated recipe/evidence/backend/document drift
-weekly -> current implementation / machine contract / documentation reconciliation
-monthly -> calendar-month or explicit phase-close baseline
-```
+## Publication and citation metadata
 
-Cadence is not an obligation to manufacture a change. Daily/Weekly work may coalesce into one real branch/PR when they own the same correction.
+`CITATION.cff`, `codemeta.json`, and `RELEASE_POLICY.md` describe the public software publication. A DOI identifies an archived software object; it does not prove scientific validity, publisher acceptance, accessibility conformance, backend availability, or R3 reproduction.
 
-The maintenance scanner `.py` implementation is not rewritten merely to synchronize governance prose. Source/config inspection is not scanner execution.
+## Pull requests
 
-Before delivery:
+Use the repository pull-request template and include:
 
-1. verify aggregate diff against exact base;
-2. refresh current `main` and live overlap;
-3. list checks actually executed and checks not run;
-4. open one bounded **Draft PR**;
-5. stop for maintainer review.
+- the problem and bounded change;
+- affected renderer/schema/profile/contract/example/documentation/metadata surfaces;
+- scientific-communication implications;
+- verification actually performed;
+- relevant backends/tools/checks not exercised;
+- compatibility and historical impact;
+- security/privacy impact;
+- a practical rollback.
 
-Use `NOT_EXECUTED` for an unrun checker/test and `EXECUTION_NOT_OBSERVED` when execution itself was not observed.
+## Security, privacy, license, and attribution
 
-```text
-maintenance clean != scientific validity
-weekly consistency != entailment
-calendar-month close != reproduction
-checker source != checker execution
-Draft PR != validation success
-```
+Follow `SECURITY.md` for sensitive reports. Do not publish credentials, private data, or exploit details requiring coordinated disclosure.
 
-## Public/private boundary
-
-Do not publish private Jules prompts, repository memory, hidden reasoning, credentials, or unrelated operator context. Public governance may encode the effect of a rule without copying private control text.
-
-Final review, doctrine, and merge authority remains with the maintainer.
-
-## License
-
-Contributions are licensed under the repository license.
+Contributions to repository-owned work are licensed under the repository license. Third-party material retains its original attribution and licensing, and Git/PR history remains the source of contribution attribution.
