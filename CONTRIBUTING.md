@@ -1,86 +1,68 @@
 # Contributing
 
-Contributions should strengthen explicit scientific-figure semantics rather than only increase renderer/module count
+Contributions should strengthen explicit scientific-figure semantics, communication integrity, or maintenance clarity rather than only increase renderer/module count.
 
 ## Repository boundaries
 
-Keep changes scoped to the owning layer: recipe schema, runtime rules, backend adapter, accessibility, publisher preset, claim communication, assertion basis, communication coverage, figure evidence, communication transfer, maintenance or documentation
+Keep changes scoped to the owning layer: recipe schema, runtime rules, backend adapter, accessibility, publisher preset, claim communication, assertion basis, communication coverage, figure evidence, communication transfer, maintenance, or documentation.
 
-Do not introduce GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions or merge-gate architecture as ordinary maintenance
+Do not introduce GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture as ordinary maintenance.
+
+## Before changing the repository
+
+Read current authority and maintenance surfaces:
+
+```text
+docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md
+docs/03-maintenance-and-audit/independent-gpt/README.md
+AGENTS.md
+MANIFEST.yaml
+```
+
+For maintenance work, start from exact current merged `main`, inspect live PRs/branches for overlapping ownership, and identify the owning surface before writing.
+
+Record, when applicable:
+
+```text
+repository + owning surface/task + logical period/evidence window
++ producer/maintainer + exact base revision + run identity when available
+```
+
+Overlap means `COORDINATE`. No confirmed defect means `NO_CHANGE_REQUIRED` and no activity-only branch/PR. **Write never probes.**
 
 ## Current document authority
 
-Before changing repository semantics, read [Document Status](docs/03-maintenance-and-audit/DOCUMENT_STATUS.md)
-
-Current contracts under `docs/02-examples-and-contracts/` are authoritative for their named present behavior. Historical `*_DAY_CONSOLIDATION.md` files under `docs/03-maintenance-and-audit/history/` are snapshots of earlier stages and must not be silently rewritten into current truth
+Current implementation/machine contracts/active contracts own present behavior for their subjects. Historical `*_DAY_CONSOLIDATION.md` and other records under `docs/03-maintenance-and-audit/history/` remain point-in-time evidence.
 
 ```text
 historical snapshot != current contract
 current contract != permission to rewrite history
 ```
 
-## Stable internal identifiers
-
-Project-owned profiles use stable unversioned names
-Real external standards and observed runtime/library versions remain legitimate provenance when known
-
-Do not add decorative internal `@1/@2` or `/v1` counters unless a real compatibility regime is deliberately introduced
-
-## Scientific integrity
-
-Do not present schema success, render success, runtime findings, claim bindings, checksums/provenance, human-review declarations, communication coverage, communication transfer, publisher-preset alignment, accessibility sidecars or visual similarity as scientific validation
-
-Unknown metadata stays unknown
-Never invent provider, model, version, source, review or validation status
-
-## Assertion-basis rule
-
-New evidence fields should state how their values were obtained when this repository can know that honestly
-
-Examples
+## Scientific communication integrity
 
 ```text
-recipe-declared
-runtime-observed-local-bytes
-runtime-observed-local-filesystem
-recipe-declared-with-optional-local-resolution
-copied-from-local-figure-evidence-sidecar
-caller-declared
-```
-
-```text
+render success != scientific validity
+claim binding != entailment
+uncertainty metadata != statistical validation
+publisher profile/alignment != acceptance
+accessibility support != WCAG certification
+backend source != runtime availability
+communication transfer != inherited scientific authority
 assertion basis != correctness
-```
-
-Do not add AI-text/pixel inference to process disclosure unless a separate explicit detector architecture is designed
-The current canonical path records `automatic_ai_detection_used: false`
-
-## Communication-coverage rule
-
-Coverage stays dimensional and transparent
-
-```text
-binding counts
-claim-index/binding coverage
-evidence-context coverage
-supports evidence-context coverage
-process-disclosure field coverage
-```
-
-Do not manufacture a composite research-quality score
-
-```text
 communication coverage != entailment
 coverage ratio != probability
 coverage != provenance soundness
-reference context != evidence sufficiency
 ```
 
-`aggregate_score` remains `null` under the current contract
+Unknown metadata stays unknown. Never invent provider, model, version, source, review, runtime availability, publisher acceptance, WCAG conformance, or validation status.
 
-## Communication-transfer rule
+Claim relations remain explicit and must not be inferred from pixels, captions, filenames, legends, prose, or data values.
 
-When changing `core/communication_transfer.py`, preserve
+## Communication transfer
+
+Preserve explicit non-inheritance:
 
 ```text
 scientific_validity_inherited: false
@@ -92,27 +74,13 @@ publisher_acceptance_inherited: false
 accessibility_conformance_inherited: false
 ```
 
-A transfer must not infer destination, publication status, review authority or claim meaning from filenames, captions, pixels or prose
+A transfer must not infer destination, publication status, review authority, or claim meaning from filenames, captions, pixels, or prose.
 
-Synchronize
+## Compatibility and cross-repository semantics
 
-```text
-docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md
-metadata/communication_transfer.contract.yaml
-docs/02-examples-and-contracts/RESEARCH_CONTRACT.md
-MANIFEST.yaml
-examples/README.md
-docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md
-```
+When a public field/semantic changes, synchronize the owning code or machine contract, active communication contracts, Manifest, examples, and public documentation as required.
 
-## Compatibility
-
-When changing a public field or semantic, update code, machine-readable contracts, Figure Claim Contract, Assertion Basis contract, Manifest, examples and public documentation together
-Prefer explicit additive changes over silent reinterpretation
-
-## Cross-repository semantics
-
-Do not strengthen upstream references silently
+Do not strengthen upstream references silently:
 
 ```text
 artifact/claim ref -> trusted evidence       # prohibited
@@ -122,49 +90,42 @@ supports relation -> proof                  # prohibited
 claim transfer -> accepted claim            # prohibited
 ```
 
-Current handoff vocabulary includes
+## Maintenance workflow
 
 ```text
-auto-doc-engine/artifact-record
-auto-doc-engine/artifact-lineage
-epistemic-pipeline/claim-verification
-epistemic-pipeline/claim-transfer
-epistemic-pipeline/evidence-envelope
-sci-render-kit/figure-claim-audit
-sci-render-kit/figure-evidence
-sci-render-kit/communication-transfer
+daily -> bounded demonstrated recipe/evidence/backend/document drift
+weekly -> current implementation / machine contract / documentation reconciliation
+monthly -> calendar-month or explicit phase-close baseline
 ```
 
-## Daily / weekly / monthly maintenance
+Cadence is not an obligation to manufacture a change. Daily/Weekly work may coalesce into one real branch/PR when they own the same correction.
 
-The active cadence contract is [Maintenance Cadence](docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md)
+The maintenance scanner `.py` implementation is not rewritten merely to synchronize governance prose. Source/config inspection is not scanner execution.
 
-```text
-daily
-  local demonstrated drift only
+Before delivery:
 
-weekly
-  current implementation / machine contract / documentation reconciliation
+1. verify aggregate diff against exact base;
+2. refresh current `main` and live overlap;
+3. list checks actually executed and checks not run;
+4. open one bounded **Draft PR**;
+5. stop for maintainer review.
 
-monthly or explicit phase-close
-  calendar baseline + history inventory + manual deprecation review
-```
-
-On 2026-08-31 the August calendar month and the 2026-08 research-maintenance phase are explicitly closed
+Use `NOT_EXECUTED` for an unrun checker/test and `EXECUTION_NOT_OBSERVED` when execution itself was not observed.
 
 ```text
 maintenance clean != scientific validity
 weekly consistency != entailment
 calendar-month close != reproduction
+checker source != checker execution
+Draft PR != validation success
 ```
 
-The local maintenance scanner is evidence about configured repository structure only
-It is not a test suite, publisher validator or scientific-review engine
+## Public/private boundary
 
-## Local maintenance
+Do not publish private Jules prompts, repository memory, hidden reasoning, credentials, or unrelated operator context. Public governance may encode the effect of a rule without copying private control text.
 
-Local checks may be run manually when useful, but they are not repository governance and are not scientific evidence
+Final review, doctrine, and merge authority remains with the maintainer.
 
 ## License
 
-Contributions are licensed under the repository license
+Contributions are licensed under the repository license.
