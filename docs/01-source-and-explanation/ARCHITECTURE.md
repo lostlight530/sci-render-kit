@@ -1,3 +1,14 @@
+> [!NOTE]
+> **Current architecture interpretation — 2026-09-18**
+> - **Subject class:** `DEFINITION / ARCHITECTURE`
+> - **Role:** Current architecture map for recipe validation, runtime quality, claim communication, rendering backends, figure evidence, transfer, accessibility, and publisher-target boundaries
+> - **Authority:** Current architecture authority for implemented sci-render-kit semantics
+> - **Current meaning:** Interpret a figure as a bounded transformation from declared data/specification into visual artifacts plus inspectable communication/evidence metadata
+> - **Evidence / implementation boundary:** render success is not scientific validity; claim bindings are declarations, not entailment; uncertainty metadata is not statistical validation; publisher presets and accessibility support are not acceptance or certification
+> - **Cross-repository relation:** Upstream epistemic claim/evidence context may be referenced, but rendering and communication never strengthen upstream evidence or silently inherit scientific authority
+> - **Update trigger:** Update only when the owned rendering/evidence/communication contract, implemented mechanics, or handoff constraints materially change
+> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current architecture without rewriting historical stage evidence
+
 # Architecture — sci-render-kit
 
 > Calibrated 2026-08-31. This document describes scientific-figure runtime/evidence semantics, communication transfer, and maintenance/document governance, not GitHub platform governance

@@ -1,3 +1,14 @@
+> [!NOTE]
+> **Current architecture interpretation — 2026-09-18**
+> - **Subject class:** `METHOD / TRANSFER CONTRACT`
+> - **Role:** Current bounded downstream handoff contract over an existing figure-evidence sidecar
+> - **Authority:** Owning prose authority for communication-transfer content and non-inheritance constraints
+> - **Current meaning:** Transfer preserves declared claim/upstream/uncertainty/process/runtime context while retaining explicit limits on what downstream consumers may infer
+> - **Evidence / implementation boundary:** communication transfer is not entailment, scientific validity, statistical validity, peer review, publisher acceptance, or accessibility conformance
+> - **Cross-repository relation:** Upstream epistemic claim/evidence context may be referenced, but rendering and communication never strengthen upstream evidence or silently inherit scientific authority
+> - **Update trigger:** Update only when the owned rendering/evidence/communication contract, implemented mechanics, or handoff constraints materially change
+> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current architecture without rewriting historical stage evidence
+
 # Scientific Communication Transfer Contract — sci-render-kit
 
 **Status:** implemented project-owned handoff contract  

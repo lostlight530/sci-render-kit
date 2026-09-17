@@ -1,3 +1,14 @@
+> [!NOTE]
+> **Current architecture interpretation — 2026-09-18**
+> - **Subject class:** `METHOD / COMMUNICATION CONTRACT`
+> - **Role:** Current contract for figure-level claim references, visual-to-claim bindings, communication audit, assertion basis, and figure evidence
+> - **Authority:** Owning prose authority for project figure-claim communication semantics
+> - **Current meaning:** Relations such as supports/illustrates/contextualizes/compares/derived-from remain recipe-declared communication semantics, never pixel-inferred proof
+> - **Evidence / implementation boundary:** claim reference is not claim truth; visual binding is not verified entailment; evidence context is not evidence sufficiency; human review is not peer review
+> - **Cross-repository relation:** Upstream epistemic claim/evidence context may be referenced, but rendering and communication never strengthen upstream evidence or silently inherit scientific authority
+> - **Update trigger:** Update only when the owned rendering/evidence/communication contract, implemented mechanics, or handoff constraints materially change
+> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current architecture without rewriting historical stage evidence
+
 # Figure Claim & Process Disclosure Contract — sci-render-kit
 
 **Status:** implemented companion contract  

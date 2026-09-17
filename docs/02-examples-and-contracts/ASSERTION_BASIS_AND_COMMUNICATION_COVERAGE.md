@@ -1,3 +1,14 @@
+> [!NOTE]
+> **Current architecture interpretation — 2026-09-18**
+> - **Subject class:** `METHOD / EVIDENCE CONTRACT`
+> - **Role:** Current contract separating figure-side assertion basis, communication coverage, runtime validation, and scientific validity
+> - **Authority:** Owning prose authority for how communication metadata enters figure evidence and what coverage ratios mean
+> - **Current meaning:** Use basis to identify declaration/observation origin and coverage to describe inspectable metadata dimensions; keep them separate from scientific correctness
+> - **Evidence / implementation boundary:** recipe-declared support is not verified support; copied sidecar context is not reverified; coverage ratio is not probability, entailment, publisher readiness, or evidence sufficiency
+> - **Cross-repository relation:** Upstream epistemic claim/evidence context may be referenced, but rendering and communication never strengthen upstream evidence or silently inherit scientific authority
+> - **Update trigger:** Update only when the owned rendering/evidence/communication contract, implemented mechanics, or handoff constraints materially change
+> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current architecture without rewriting historical stage evidence
+
 # Assertion Basis & Communication Coverage — sci-render-kit
 
 **Calibration:** 2026-08-31  

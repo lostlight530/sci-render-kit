@@ -1,3 +1,14 @@
+> [!NOTE]
+> **Current architecture interpretation — 2026-09-18**
+> - **Subject class:** `DEFINITION / RESEARCH CONTRACT`
+> - **Role:** Top-level scientific-communication integrity contract for runtime phases, figure claims, evidence, uncertainty, accessibility, publisher targets, transfer, and reproducibility
+> - **Authority:** Repository-native integration authority for sci-render-kit research semantics
+> - **Current meaning:** Use this contract to keep rendering, runtime checks, communication audit, evidence sidecars, transfer, accessibility, publisher alignment, and reproduction as distinct planes
+> - **Evidence / implementation boundary:** successful rendering/audit/transfer/maintenance does not establish truth, causal/statistical validity, entailment, source credibility, WCAG conformance, publisher acceptance, or R3 reproduction
+> - **Cross-repository relation:** Upstream epistemic claim/evidence context may be referenced, but rendering and communication never strengthen upstream evidence or silently inherit scientific authority
+> - **Update trigger:** Update only when the owned rendering/evidence/communication contract, implemented mechanics, or handoff constraints materially change
+> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current architecture without rewriting historical stage evidence
+
 # Research Contract — sci-render-kit
 
 **Status:** active architecture contract  
