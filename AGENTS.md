@@ -1,24 +1,14 @@
 # Agent Guide — sci-render-kit
 
-This is the operational contract for agents modifying the repository
+This is the operational contract for agents modifying the repository.
 
-Keep runtime code, schemas, profiles, evidence sidecars, maintenance records, current documentation, and historical-document status semantically aligned
+Keep runtime code, schemas, profiles, evidence sidecars, maintenance control, current documentation, and historical-document status semantically aligned without turning agent narrative into renderer or scientific truth.
 
 ## Document authority
 
-Read `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` before broad documentation maintenance
+Read `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` before broad documentation or governance maintenance.
 
-Use `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` only when interpreting early Jules task/PR prose as historical renderer, backend, publisher, accessibility, or scientific evidence. It is a dated correction record, not a current authority layer.
-
-Current authoritative documents may evolve when current source truth changes
-
-Historical consolidation snapshots remain time-scoped records rather than current contracts
-
-```text
-docs/03-maintenance-and-audit/history/FOUR_DAY_CONSOLIDATION.md
-docs/03-maintenance-and-audit/history/FIVE_DAY_CONSOLIDATION.md
-docs/03-maintenance-and-audit/history/SIX_DAY_CONSOLIDATION.md
-```
+Use `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` only when interpreting early Jules task/PR prose as historical renderer/backend/publisher/accessibility/scientific evidence. It is dated correction evidence, not a current authority layer.
 
 ```text
 historical snapshot != current contract
@@ -26,21 +16,59 @@ later renderer capability != permission to rewrite history
 historical agent PR narrative != current communication contract
 ```
 
-### Recovery order
+## Recovery orders
+
+### Maintenance-control recovery
 
 ```text
-current main implementation
-> current machine-readable capability contract / schema / configuration for the subject
-> active contracts under docs/02-examples-and-contracts/
-> operational examples / configuration / test evidence for supported use
-> root README / docs/01-source-and-explanation/ARCHITECTURE.md
-> docs/03-maintenance-and-audit/DOCUMENT_STATUS.md and MAINTENANCE_CADENCE.md
-> dated maintenance evidence
-> docs/03-maintenance-and-audit/history/
-> historical PR / task narratives
+current merged main implementation
+> MANIFEST.yaml / metadata / profiles / quality / recipes / machine configuration
+> latest relevant dated repair or current maintenance record
+> docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+> AGENTS.md
+> active subject-specific contracts
+> docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
+> current Architecture / README explanation
+> historical snapshots / superseded plans / PR-task narratives
 ```
 
-An agent-generated PR body is proposal/delivery metadata, not a substitute for inspecting the actual current tree and runtime evidence.
+### Renderer / communication semantics
+
+```text
+current implementation
+> current schema/profile/configuration/machine contract for the subject
+> active subject-specific contract
+> executable/operational evidence for supported use
+> current explanatory documentation
+> maintenance evidence
+> historical records
+```
+
+A newer maintenance record does not become stronger renderer, publisher, accessibility, or scientific authority merely because of date.
+
+## Maintenance task identity
+
+Record, when applicable:
+
+```text
+repository
++ owning surface / task
++ logical period or evidence window
++ producer / maintainer
++ exact base revision
++ run identity when available
+```
+
+Before any write, inspect open PRs/live branches for the same owning surface and logical period.
+
+```text
+overlap -> COORDINATE
+no confirmed defect -> NO_CHANGE_REQUIRED
+confirmed current drift -> REPAIR
+unsafe or unrecoverable evidence/access -> BLOCKED
+```
+
+Do not create repository objects to test write access. **Write never probes.**
 
 ## Canonical architecture
 
@@ -61,63 +89,46 @@ recipe
 
 repository state
   -> daily / weekly / monthly maintenance
-       └─ current-document / calendar / stage reconciliation
+       └─ current-document / calendar / stage / delivery reconciliation
 ```
 
 ## Stable project identifiers
 
-```text
-sci-render-kit/runtime-quality
-sci-render-kit/render-manifest
-sci-render-kit/provenance
-sci-render-kit/a11y
-sci-render-kit/figure-claim-binding
-sci-render-kit/figure-claim-audit
-sci-render-kit/process-disclosure
-sci-render-kit/figure-evidence
-sci-render-kit/communication-transfer
-sci-render-kit/maintenance-cadence
-sci-render-kit/maintenance-report
-```
-
-Do not invent decorative internal versions
-
-Preserve real WCAG/external/runtime versions when genuinely known
+Use stable unversioned project-owned profile names. Preserve real WCAG/external/runtime versions when genuinely known. Do not invent decorative internal versions.
 
 ## Hard rules
 
-1. Schema does not imply backend support
-2. Do not silently change DPI, format, uncertainty semantics, or declared data
-3. Claim bindings are explicit only and are never inferred from titles, legends, pixels, prose, or data values
-4. Claim relation labels are communication declarations, not verified entailment
-5. Process disclosure is bounded and does not adjudicate authorship, peer review, or truth
-6. Unknown provider/model/version/review/source metadata remains unknown
-7. The canonical renderer does not perform AI-text/pixel detection to infer AI authorship/use
-8. Assertion basis records how a field entered evidence and never upgrades a value to correctness
-9. Communication coverage remains dimensional and must not become an unsupported aggregate quality score
-10. Coverage ratios are not probability, entailment, evidence sufficiency, or provenance soundness
-11. Bounds alone are not a confidence interval or probability model
-12. WCAG scope stays exact and project all-pairs checks remain extra safeguards
-13. CVD simulation is extra and not a normative WCAG certification test
-14. Publisher presets are snapshots/config targets, not acceptance validators
-15. Matplotlib extension remains explicit and must avoid hidden monkeypatching
-16. Optional R/Node source does not prove runtime availability
-17. Figure evidence is handoff, not truth
-18. Communication transfer may copy declared context but must not inherit scientific validity, entailment, evidence sufficiency, statistical validity, peer review, publisher acceptance, or WCAG conformance
-19. Communication transfer must not infer context from pixels, captions, filenames, or prose
-20. Calendar/month/stage status must come from actual date/configuration rather than agent assumption
-21. A worked maintenance demonstration must never be presented as a clean runtime result unless the scanner was actually executed and output preserved
-22. Unsupported experimental methods fail explicitly rather than fabricate output
-23. Experimental importability does not make canonical capability
-24. Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture
-25. Jules/Codex/other agent task text, PR bodies, generated summaries, and backend/test/completeness claims are proposal/delivery metadata, not automatic repository authority
-26. Historical `tests passed`, backend execution, checksum, `complete`, `fully aligned`, `fixed`, or similar claims require current re-verification before reuse as current facts
-27. Correct historical agent overstatement forward in current records; do not silently edit old PR history or turn later correction into an earlier fact
-28. Path relocation does not change semantic status; update current path consumers without rewriting historical bodies.
+1. Schema does not imply backend support.
+2. Do not silently change DPI, format, uncertainty semantics, or declared data.
+3. Claim bindings are explicit only and never inferred from titles, legends, pixels, prose, filenames, or data values.
+4. Claim relation labels are communication declarations, not verified entailment.
+5. Process disclosure is bounded and does not adjudicate authorship, peer review, or truth.
+6. Unknown provider/model/version/review/source metadata remains unknown.
+7. The canonical renderer does not infer AI authorship/use from text or pixels.
+8. Assertion basis records how a field entered evidence and never upgrades a value to correctness.
+9. Communication coverage remains dimensional and must not become an unsupported aggregate quality score.
+10. Coverage ratios are not probability, entailment, evidence sufficiency, or provenance soundness.
+11. Bounds alone are not a confidence interval or probability model.
+12. WCAG scope stays exact; project all-pairs checks remain extra safeguards.
+13. CVD simulation is extra and not normative WCAG certification.
+14. Publisher presets are snapshots/config targets, not acceptance validators.
+15. Optional backend source does not prove runtime availability.
+16. Figure evidence is handoff, not truth.
+17. Communication transfer may copy declared context but must not inherit scientific validity, entailment, evidence sufficiency, statistical validity, peer review, publisher acceptance, or WCAG conformance.
+18. Unsupported experimental methods fail explicitly rather than fabricate output.
+19. Calendar/month/stage status comes from actual date/configuration.
+20. A worked maintenance demonstration is not a clean runtime result unless the scanner actually ran and output was preserved.
+21. Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture as routine maintenance.
+22. Agent task text/PR bodies/summaries/completion claims are proposal/delivery metadata, not automatic repository authority.
+23. Historical `tests passed`, backend execution, checksum, `complete`, `fully aligned`, or `fixed` require current re-verification before reuse.
+24. Correct historical overstatement forward; do not rewrite old PR history.
+25. Path relocation does not change semantic status.
+26. Scanner/checker source or configuration inspection is not execution.
+27. Unrun checks are `NOT_EXECUTED`; unobserved scheduler/workflow execution is `EXECUTION_NOT_OBSERVED` when material.
+28. A Draft PR is a review boundary, not renderer/test/scientific/merge success.
+29. No confirmed maintenance defect means no activity-only branch or PR.
 
 ## Communication-audit invariants
-
-`core/claim_binding_audit.py` may record findings plus coverage dimensions such as binding counts and evidence-context ratios
 
 ```text
 assertion basis != correctness
@@ -127,26 +138,9 @@ supports evidence-context coverage != evidence sufficiency
 coverage != provenance soundness
 ```
 
-Keep `aggregate_score: null` unless a future validated evaluation design explicitly justifies a composite score
+Keep `aggregate_score: null` unless a future validated evaluation design explicitly justifies a composite score.
 
 ## Communication-transfer invariants
-
-`core/communication_transfer.py` is a bounded view over an existing figure-evidence sidecar
-
-The source must carry the expected `sci-render-kit/figure-evidence` profile
-
-It may carry
-
-```text
-claim communication
-upstream research refs
-uncertainty semantics
-process disclosure
-communication audit
-runtime validation
-```
-
-Required boundaries
 
 ```text
 transfer != entailment
@@ -157,11 +151,9 @@ accessibility metadata != WCAG certification
 human review != peer review
 ```
 
-Destination and purpose are caller-declared when present and must not be inferred
+Destination and purpose are caller-declared when present and must not be inferred.
 
-## Coding-agent provenance rules
-
-Early Jules PRs are historical development records, not present-tense capability contracts.
+## Coding-agent provenance
 
 Before reusing a historical agent statement, distinguish:
 
@@ -173,19 +165,24 @@ what current machine contracts say
 what was actually re-run or re-verified now
 ```
 
-Historical claims that all backends are complete or executable do not establish current backend availability; historical checksum/test/render claims do not establish current execution success; historical P2/P3 or publisher wording does not establish publisher acceptance; output hygiene/security wording does not replace current code inspection; render success does not establish scientific validity, entailment, WCAG certification, or independent reproduction.
-
-```text
-requires re-verification != false
-historical != current
-agent completion language != scientific/publisher verdict
-```
+Historical backend/test/render/checksum/publisher wording does not establish current runtime success, publisher acceptance, WCAG certification, scientific validity, entailment, or independent reproduction.
 
 ## Maintenance cadence
 
-`docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md`, `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`, and `maintenance/cadence.yaml` define current maintenance/document governance. The dated Jules correction and closed-stage records under `docs/03-maintenance-and-audit/history/` remain historical evidence inputs.
+The active maintenance system is jointly owned by:
 
-Local scanner
+```text
+docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md
+docs/03-maintenance-and-audit/README.md
+docs/03-maintenance-and-audit/independent-gpt/README.md
+maintenance/cadence.yaml
+core/maintenance_cadence.py
+```
+
+The `.py` scanner is executable implementation. Governance prose changes do not by themselves require rewriting it, and source/config inspection is not scanner execution.
+
+Local scanner:
 
 ```bash
 python core/maintenance_cadence.py daily
@@ -193,81 +190,35 @@ python core/maintenance_cadence.py weekly
 python core/maintenance_cadence.py monthly --as-of YYYY-MM-DD
 ```
 
-Daily maintenance
+Daily corrects demonstrated recipe/evidence/backend/profile/document/governance drift only and permits `NO_CHANGE_REQUIRED` without branch/PR churn.
 
-- start from current `main`
-- correct demonstrated recipe/evidence/backend/profile/document/governance drift only
-- use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
-- read the latest relevant dated repair/current maintenance record before older PR/task narratives
-- preserve explicit claim bindings, uncertainty labels, WCAG scope, publisher boundaries, and real runtime versions
-- do not rewrite historical snapshots or historical PR prose
-- do not invent a daily feature merely to produce activity
+Weekly reconciles implementation, machine contracts, active communication contracts, README/Architecture, Agent/Contributor guidance, examples, document status, maintenance configuration/records, checker ownership, and upstream profile names.
 
-Weekly maintenance
+Monthly/phase-close derives calendar/phase state from the actual date and never converts closure into reproduction or scientific validation.
 
-- reconcile implementation, machine contracts, active contracts under `docs/02-examples-and-contracts/`, root README, `docs/01-source-and-explanation/ARCHITECTURE.md`, Agent/Contributor guidance, examples, current Document Status, current Maintenance Cadence, historical Frontier Alignment, current maintenance records, and upstream profile names
-- review backend capability truth, uncertainty semantics, WCAG scope, publisher wording, communication-transfer non-inheritance, and coding-agent provenance handling
-- inventory historical snapshots without rewriting them
+If Daily and Weekly own the same real correction, one branch and one final Draft PR should carry it whenever practical.
 
-If the same pass performs Daily and Weekly maintenance, one branch and one final PR should carry the combined real work whenever practical. Do not create duplicate churn solely because two cadence labels apply.
-
-Monthly or explicit phase-close maintenance
-
-- derive calendar status from the actual date
-- reconcile the complete current document/machine-contract set
-- build canonical hash baselines when useful
-- inventory historical snapshots and review deprecation candidates manually
-- confirm no publisher/accessibility/runtime finding has become a scientific verdict
-- record whether the research phase is active or closed
-
-Current closed stage
+## Execution evidence
 
 ```text
-as_of: 2026-08-31
-calendar_month: calendar-month-close
-stage: closed
+scanner source present != scanner executed
+scanner executed != scanner passed
+historical render/test pass != current pass
+contract inspection != runtime verification
 ```
-
-First complete worked example
-
-```text
-maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
-```
-
-Current Daily/Weekly governance reconciliation
-
-```text
-maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
-```
-
-Dated records are time-scoped maintenance evidence, not automatic runtime, publisher, accessibility, or scientific proof.
-
-```text
-reference demonstration != runtime proof
-maintenance clean != scientific validity
-weekly consistency != entailment
-calendar-month close != reproduction
-publisher profile != acceptance
-accessibility support != WCAG certification
-agent narrative != current verification
-```
-
-The scanner does not render figures, inspect pixels, run tests, validate statistics, certify WCAG conformance, predict publisher acceptance, or validate historical Jules claims
 
 ## Change ownership
 
 | Goal | Primary files | Synchronize |
 |---|---|---|
 | recipe field | `metadata/recipe.schema.yaml` | runtime + docs + evidence semantics |
-| claim binding/audit/coverage | `core/claim_binding_audit.py`, `core/figure_evidence.py` | `docs/02-examples-and-contracts/ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md` + `docs/02-examples-and-contracts/FIGURE_CLAIM_CONTRACT.md` + Manifest + examples |
-| communication transfer | `core/communication_transfer.py` | `docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md` + machine contract + examples + historical frontier notes when relevant |
-| maintenance cadence / agent provenance | `core/maintenance_cadence.py`, `maintenance/cadence.yaml` | current Maintenance Cadence + Document Status + Agent Guide + current dated maintenance record; use history records as evidence, not current authority; synchronize runtime scanner/Manifest only when executable/profile semantics or machine path contracts actually change |
-| process disclosure | recipe schema + figure evidence | public contracts |
-| runtime rule | `quality/rules.yaml`, `sci_render.py` | severity + docs |
-| accessibility | `core/accessibility.py`, `sci_render.py` | a11y + backend truth |
-| backend | corresponding adapter | manifest/provenance capability truth |
+| claim binding/audit/coverage | claim-audit / figure-evidence implementation | communication contracts + Manifest + examples |
+| communication transfer | transfer implementation | transfer contract + machine contract + examples |
+| maintenance cadence / agent provenance | `core/maintenance_cadence.py`, `maintenance/cadence.yaml` | Maintenance Cadence + Document Status + maintenance README + Independent GPT router + Agent Guide + current dated maintenance record; synchronize runtime scanner/Manifest only when executable/profile/path semantics actually change |
+| accessibility | accessibility implementation/runtime | a11y + backend truth |
+| backend | corresponding adapter | Manifest/provenance capability truth |
 | publisher profile | `profiles/*.yaml` | source status + acceptance false |
-| public capability | root README / `docs/01-source-and-explanation/ARCHITECTURE.md` / contracts under `docs/02-examples-and-contracts/` / Manifest | update together when semantics change |
+| public capability | README / Architecture / active contracts / Manifest | update together when semantics change |
 
 ## Cross-repository references
 
@@ -280,26 +231,28 @@ epistemic-pipeline/evidence-envelope
 sci-render-kit/communication-transfer
 ```
 
-These are optional handoff references, not direct coupling or inherited scientific validity
+These are optional handoff references, not direct coupling or inherited scientific validity.
 
-## Experimental semantics
+## Experimental semantics and R3
 
-- `projection`: PCA/projection metrics and t-SNE not implemented
-- `uncertainty_legend`: typed uncertainty metadata
-- `superposition`: deterministic variant layering
-- `time_crystal`: periodic waveform utility
-- `observer_dashboard`: caller-fed telemetry
+Metaphorical filenames are not scientific capability evidence. Experimental/importable modules are not canonical capability until intentionally integrated.
 
-Metaphorical filenames are not scientific capability evidence
+Render manifests, figure evidence, communication transfers, accessibility sidecars, maintenance reports, demonstrations, and canonical hash baselines never count as independent reproduction. R3 requires an actual separate rerun plus a declared comparison criterion.
 
-## R3 discipline
+## Delivery boundary
 
-Render manifests, figure evidence, communication transfers, accessibility sidecars, maintenance reports, demonstrations, and canonical hash baselines never count as independent reproduction
+For a confirmed maintenance repair:
 
-R3 requires an actual separate rerun plus declared comparison criterion
+1. branch from exact observed current `main`;
+2. synchronize owning control surfaces and true dependencies only;
+3. inspect aggregate branch diff;
+4. refresh current-main/open-PR overlap;
+5. record executed/unexecuted checks separately;
+6. open one bounded **Draft PR**;
+7. stop for maintainer review.
 
-## Local maintenance boundary
+Do not auto-merge, force-push, or write maintenance repairs directly to `main`. Final doctrine and merge authority remains with the maintainer.
 
-Manual/local commands may be used when useful
+## Public boundary
 
-Their success is not scientific validity, publisher acceptance, WCAG certification, or independent reproduction
+Do not publish private Jules prompts, repository memory, hidden reasoning, credentials, or unrelated operator context. Public governance may preserve the effect of a rule without copying private control text.
