@@ -1,13 +1,13 @@
 > [!NOTE]
 > **Current architecture interpretation — 2026-09-18**
-> - **Subject class:** `DEFINITION / ARCHITECTURE`
-> - **Role:** Current architecture map for recipe validation, runtime quality, claim communication, rendering backends, figure evidence, transfer, accessibility, and publisher-target boundaries
-> - **Authority:** Current architecture authority for implemented sci-render-kit semantics
-> - **Current meaning:** Interpret a figure as a bounded transformation from declared data/specification into visual artifacts plus inspectable communication/evidence metadata
-> - **Evidence / implementation boundary:** render success is not scientific validity; claim bindings are declarations, not entailment; uncertainty metadata is not statistical validation; publisher presets and accessibility support are not acceptance or certification
-> - **Cross-repository relation:** Upstream epistemic claim/evidence context may be referenced, but rendering and communication never strengthen upstream evidence or silently inherit scientific authority
-> - **Update trigger:** Update only when the owned rendering/evidence/communication contract, implemented mechanics, or handoff constraints materially change
-> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current architecture without rewriting historical stage evidence
+> - **Subject class:** `ARCHITECTURE`
+> - **Role:** Current architecture explanation for recipe validation, communication audit, rendering, evidence sidecars, and downstream transfer
+> - **Authority:** Current repository-native authority for the scientific-communication semantics explicitly owned by this file; current renderer/runtime and machine contracts remain the executable-behavior boundary
+> - **Current meaning:** Read this subject inside the `declared recipe/data → communication audit → render → figure evidence → bounded transfer` chain. It preserves what a figure declares and how that declaration was recorded without silently upgrading communication into scientific proof
+> - **Evidence / implementation boundary:** Render success is not scientific truth; a `supports` binding is not entailment; communication coverage is not evidence sufficiency or probability; uncertainty metadata is not statistical validation; accessibility support is not WCAG certification; publisher profile alignment is not acceptance; downstream transfer does not inherit validity
+> - **Cross-document relation:** Architecture integrates the full figure pipeline; specialized contracts own binding/coverage/transfer semantics; current code and machine contracts bound implementation; `DOCUMENT_STATUS.md` separates current contracts from historical snapshots
+> - **Update trigger:** Update when owned figure/evidence/transfer semantics or implemented mechanics materially change, or when a confirmed current-authority conflict appears
+> - **Preservation rule:** Existing technical content and dated stage calibration remain intact. Historical stage-close or research-language passages retain their own evidence boundary
 
 # Architecture — sci-render-kit
 

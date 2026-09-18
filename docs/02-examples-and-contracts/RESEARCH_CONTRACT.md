@@ -1,13 +1,13 @@
 > [!NOTE]
 > **Current architecture interpretation — 2026-09-18**
-> - **Subject class:** `DEFINITION / RESEARCH CONTRACT`
-> - **Role:** Top-level scientific-communication integrity contract for runtime phases, figure claims, evidence, uncertainty, accessibility, publisher targets, transfer, and reproducibility
-> - **Authority:** Repository-native integration authority for sci-render-kit research semantics
-> - **Current meaning:** Use this contract to keep rendering, runtime checks, communication audit, evidence sidecars, transfer, accessibility, publisher alignment, and reproduction as distinct planes
-> - **Evidence / implementation boundary:** successful rendering/audit/transfer/maintenance does not establish truth, causal/statistical validity, entailment, source credibility, WCAG conformance, publisher acceptance, or R3 reproduction
-> - **Cross-repository relation:** Upstream epistemic claim/evidence context may be referenced, but rendering and communication never strengthen upstream evidence or silently inherit scientific authority
-> - **Update trigger:** Update only when the owned rendering/evidence/communication contract, implemented mechanics, or handoff constraints materially change
-> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current architecture without rewriting historical stage evidence
+> - **Subject class:** `RESEARCH CONTRACT`
+> - **Role:** Repository-level scientific-communication research contract
+> - **Authority:** Current repository-native authority for the scientific-communication semantics explicitly owned by this file; current renderer/runtime and machine contracts remain the executable-behavior boundary
+> - **Current meaning:** Read this subject inside the `declared recipe/data → communication audit → render → figure evidence → bounded transfer` chain. It preserves what a figure declares and how that declaration was recorded without silently upgrading communication into scientific proof
+> - **Evidence / implementation boundary:** Render success is not scientific truth; a `supports` binding is not entailment; communication coverage is not evidence sufficiency or probability; uncertainty metadata is not statistical validation; accessibility support is not WCAG certification; publisher profile alignment is not acceptance; downstream transfer does not inherit validity
+> - **Cross-document relation:** Architecture integrates the full figure pipeline; specialized contracts own binding/coverage/transfer semantics; current code and machine contracts bound implementation; `DOCUMENT_STATUS.md` separates current contracts from historical snapshots
+> - **Update trigger:** Update when owned figure/evidence/transfer semantics or implemented mechanics materially change, or when a confirmed current-authority conflict appears
+> - **Preservation rule:** Existing technical content and dated stage calibration remain intact. Historical stage-close or research-language passages retain their own evidence boundary
 
 # Research Contract — sci-render-kit
 
