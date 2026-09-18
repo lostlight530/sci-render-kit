@@ -1,3 +1,14 @@
+> [!NOTE]
+> **Current architecture interpretation — 2026-09-18**
+> - **Subject class:** `METHOD / EVIDENCE CONTRACT`
+> - **Role:** Current contract for assertion basis and dimensional communication coverage
+> - **Authority:** Current repository-native authority for the scientific-communication semantics explicitly owned by this file; current renderer/runtime and machine contracts remain the executable-behavior boundary
+> - **Current meaning:** Read this subject inside the `declared recipe/data → communication audit → render → figure evidence → bounded transfer` chain. It preserves what a figure declares and how that declaration was recorded without silently upgrading communication into scientific proof
+> - **Evidence / implementation boundary:** Render success is not scientific truth; a `supports` binding is not entailment; communication coverage is not evidence sufficiency or probability; uncertainty metadata is not statistical validation; accessibility support is not WCAG certification; publisher profile alignment is not acceptance; downstream transfer does not inherit validity
+> - **Cross-document relation:** Architecture integrates the full figure pipeline; specialized contracts own binding/coverage/transfer semantics; current code and machine contracts bound implementation; `DOCUMENT_STATUS.md` separates current contracts from historical snapshots
+> - **Update trigger:** Update when owned figure/evidence/transfer semantics or implemented mechanics materially change, or when a confirmed current-authority conflict appears
+> - **Preservation rule:** Existing technical content and dated stage calibration remain intact. Historical stage-close or research-language passages retain their own evidence boundary
+
 # Assertion Basis & Communication Coverage — sci-render-kit
 
 **Calibration:** 2026-08-31  
