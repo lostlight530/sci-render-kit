@@ -1,6 +1,6 @@
 name: sci-render-kit
 purpose: "声明式科研图件编译、断言来源、claim-aware evidence、transfer handoff 与阶段化维护 | Declarative scientific-figure compilation with assertion-aware evidence, transfer handoff, and phase-aware maintenance"
-calibrated: "2026-09-01"
+calibrated: "2026-09-22"
 
 principles:
   - 声明优先: "data / aesthetics / research_context / claim_bindings / uncertainty / process_disclosure / accessibility 由 recipe 显式声明"
@@ -55,7 +55,7 @@ stage_close:
   reproduction_claim: false
 
 current_temporal_status:
-  as_of: "2026-09-01"
+  as_of: "2026-09-22"
   calendar_month_status: month-to-date
   closed_stage_status: closed
   stage_reopened_by_repair: false
