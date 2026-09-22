@@ -170,3 +170,17 @@ Unknown or unexecuted evidence remains unknown or unexecuted. A documentation, m
 The 2026-08-24 through 2026-08-31 scientific-communication phase is closed. Later maintenance and publication updates do not reopen that historical phase.
 
 Current September state must be recovered from current repository truth and current dated records rather than copied from an August or earlier September snapshot.
+
+
+## Nightly September reconciliation — 2026-09-22
+
+Current-main review covers September maintenance through 2026-09-22, including the merged Stage C 2024-Q3 frontier reconstruction and the active figure/communication evidence contracts.
+
+Current interpretation:
+- the August scientific-communication stage remains closed;
+- September remains month-to-date;
+- Stage C reconstruction is research documentation and does not establish renderer/backend runtime success, publisher acceptance, WCAG conformance, statistical validity, entailment, or independent reproduction;
+- current implementation and machine contracts remain authoritative for capability claims;
+- no render/test/scanner execution is claimed by documentary maintenance alone.
+
+No standalone maintenance/audit sidecar is created by this nightly pass.
