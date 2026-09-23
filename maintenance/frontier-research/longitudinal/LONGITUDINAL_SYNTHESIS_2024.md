@@ -63,3 +63,20 @@ NO_CONTRACT_CHANGE
 ```
 
 Future work should execute cross-representation equivalence and assistive-technology tests against fixed recipe/data/revision identities rather than treating this documentary synthesis as runtime validation.
+
+
+## Current reconciliation — 2026-09-23
+
+The A→D research sequence is complete as a documentation/communication study on current main.
+
+Its closure remains bounded:
+
+```text
+DOCUMENTARY_CLOSURE
+!= SCIENTIFIC_VALIDITY
+!= STATISTICAL_VALIDATION
+!= ACCESSIBILITY_CERTIFICATION
+!= PUBLISHER_ACCEPTANCE
+```
+
+Claim binding, uncertainty metadata, accessibility support, backend information, and publisher-target profiles retain their separate evidentiary meanings.
