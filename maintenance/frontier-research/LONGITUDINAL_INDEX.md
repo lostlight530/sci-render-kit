@@ -52,6 +52,24 @@ Four completed Stages now cover 2024. The formal additive synthesis is instantia
 
 For Stage A begin with `stage-a-2024-q1/STAGE_BRIEF.md`; Stage B with `stage-b-2024-q2/STAGE_BRIEF.md`; Stage C with `stage-c-2024-q3/STAGE_BRIEF.md`; Stage D with `stage-d-2024-q4/STAGE_BRIEF.md`. Read thematic Parts and month reconstructions before each synthesis/review. Use `longitudinal/LONGITUDINAL_SYNTHESIS_2024.md` for the additive full-year interpretation.
 
+
+## A2 current-state reconciliation — 2026-09-23
+
+Stage D / 2024-Q4 and the A→D longitudinal synthesis are now present on current main as communication-research documentation.
+
+```text
+STAGE_D_PRESENT
+!= RENDER_VALIDITY
+
+LONGITUDINAL_RELATION
+!= CLAIM_ENTAILMENT
+
+RESEARCH_HANDOFF
+!= PUBLISHER_ACCEPTANCE
+```
+
+Earlier stages remain point-in-time evidence. The index routes documentation and does not upgrade scientific or communication authority.
+
 ## SEPTEMBER_DUAL_CUTOFF_MAINTENANCE_2026-09-23
 
 ### A1 / N-1 cutoff — 2026-09-22
@@ -60,3 +78,10 @@ For Stage A begin with `stage-a-2024-q1/STAGE_BRIEF.md`; Stage B with `stage-b-2
 - Preserve render success != scientific validity, claim binding != entailment, accessibility representation != certification, and publisher profile != acceptance.
 - The 2026-09-22 router/manifest remains a point-in-time cutoff; later Stage D material is not retroactive evidence.
 - Documentary handoff carries communication context and uncertainty, not scientific truth or reproduction.
+
+### A2 / N cutoff — 2026-09-23
+
+- Stage D / 2024-Q4 and the A→D longitudinal communication-research surfaces are later current state.
+- Documentary closure does not establish statistical/scientific validity, accessibility certification, publisher acceptance, or independent reproduction.
+- Current routing may include Stage D without rewriting the earlier router cutoff.
+- This A2 note extends A1 and preserves the prior stage chronology and evidence limits.
