@@ -22,3 +22,18 @@ handoff != authority transfer
 communication support != scientific validity
 accessibility evidence != universal conformance
 ```
+
+
+## A2 handoff calibration — 2026-09-23
+
+The Stage D handoff transfers communication-research context only.
+
+```text
+COMMUNICATION_HANDOFF
+!= SCIENTIFIC_AUTHORITY_TRANSFER
+!= ENTAILMENT
+!= ACCEPTANCE
+!= INDEPENDENT_REPRODUCTION
+```
+
+Downstream use must re-establish claim/evidence fit, uncertainty validity, backend/runtime availability, accessibility requirements, and publisher-specific acceptance independently.
