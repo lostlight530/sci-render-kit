@@ -4,8 +4,8 @@
 
 - **Repository:** `lostlight530/sci-render-kit`
 - **Specification:** `2026-09-19-first-batch`
-- **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3`
-- **Updated:** `2026-09-22`
+- **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4`
+- **Updated:** `2026-09-23`
 
 ## Boundary
 
@@ -22,7 +22,7 @@ index != current repository authority
 |---|---|---|---|---|---|---|---|---|---|
 | A | 2024-Q1 | 2024-01-01 through 2024-03-31 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-a-2024-q1/STAGE_SYNTHESIS.md | stage-a-2024-q1/RESEARCH_REVIEW.md | stage-a-2024-q1/STAGE_HANDOFF.md |
 | B | 2024-Q2 | 2024-04-01 through 2024-06-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-b-2024-q2/STAGE_SYNTHESIS.md | stage-b-2024-q2/RESEARCH_REVIEW.md | stage-b-2024-q2/STAGE_HANDOFF.md |
-| C | 2024-Q3 | 2024-07-01 through 2024-09-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-c-2024-q3/STAGE_SYNTHESIS.md | stage-c-2024-q3/RESEARCH_REVIEW.md | stage-c-2024-q3/STAGE_HANDOFF.md |
+| C | 2024-Q3 | 2024-07-01 through 2024-09-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-c-2024-q3/STAGE_SYNTHESIS.md | stage-c-2024-q3/RESEARCH_REVIEW.md | stage-c-2024-q3/STAGE_HANDOFF.md |\n| D | 2024-Q4 | 2024-10-01 through 2024-12-31 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-d-2024-q4/STAGE_SYNTHESIS.md | stage-d-2024-q4/RESEARCH_REVIEW.md | stage-d-2024-q4/STAGE_HANDOFF.md |
 
 ## Correction registry
 
@@ -34,11 +34,11 @@ No Stage A correction record exists at initial close.
 |---|---|---|---|
 | A | 2026-09-19-first-batch | initial software-release set expanded with January uncertainty/interpretation research and Chart4Blind code history for month-complete research | baseline for later stages |
 | B | 2026-09-19-first-batch | Q2 object set fixed before synthesis; no material amendment | comparable on visual-semantics versioning, representation-specific accessibility, user-control state, and render provenance |
-| C | 2026-09-19-first-batch | Q3 object set fixed before synthesis; no material amendment | comparable on renderer/version provenance, representation-specific validation and communication-state boundaries |
+| C | 2026-09-19-first-batch | Q3 object set fixed before synthesis; no material amendment | comparable on renderer/version provenance, representation-specific validation and communication-state boundaries |\n| D | 2026-09-19-first-batch | Q4 object set fixed before synthesis; no material amendment | comparable on modality/interaction provenance, wrapper renderer, temporal state and bounded accessibility evidence |
 
 ## Longitudinal synthesis registry
 
-Three completed Stages now exist. A formal Stage A→B→C longitudinal synthesis is methodologically eligible but is NOT_INSTANTIATED in this Stage-close pass.
+Four completed Stages now cover 2024. The formal additive synthesis is instantiated at `longitudinal/LONGITUDINAL_SYNTHESIS_2024.md`; it does not rewrite Stages A-D.
 
 ## Known gaps
 
@@ -50,4 +50,4 @@ Three completed Stages now exist. A formal Stage A→B→C longitudinal synthesi
 
 ## Navigation
 
-For Stage A begin with `stage-a-2024-q1/STAGE_BRIEF.md`; for Stage B begin with `stage-b-2024-q2/STAGE_BRIEF.md`; for Stage C begin with `stage-c-2024-q3/STAGE_BRIEF.md`. Read thematic Parts and month reconstructions before register/chart/synthesis/review. Use each Stage handoff for bounded L3 transfer only.
+For Stage A begin with `stage-a-2024-q1/STAGE_BRIEF.md`; Stage B with `stage-b-2024-q2/STAGE_BRIEF.md`; Stage C with `stage-c-2024-q3/STAGE_BRIEF.md`; Stage D with `stage-d-2024-q4/STAGE_BRIEF.md`. Read thematic Parts and month reconstructions before each synthesis/review. Use `longitudinal/LONGITUDINAL_SYNTHESIS_2024.md` for the additive full-year interpretation.
