@@ -186,22 +186,20 @@ Current interpretation:
 No standalone maintenance/audit sidecar is created by this nightly pass.
 
 
-## 2026-09-23 n-1 calibration of the 2026-09-22 router
+## 2026-09-23 dual-view annotation on the 2026-09-22 router
 
-The 2026-09-22 router calibration remains a historical current-state cutoff. The later Stage D / 2024-Q4 communication-research delivery is current later state and must not be projected backward.
+### View 1 — N-1 / 2026-09-22 router state
+
+The router remains the point-in-time communication/document authority map for that cut.
+
+### View 2 — N / 2026-09-23 current interpretation
+
+Stage D / 2024-Q4 is later current repository state. Its presence updates current communication-research routing but does not become retroactive 2026-09-22 evidence.
 
 ```text
-LATER_STAGE_D_PRESENT
-!= EARLIER_STAGE_D_AVAILABLE
-
-RENDER_SUCCESS
+N_MINUS_1_ROUTER_STATE
++
+N_CURRENT_ROUTER_INTERPRETATION
+!= EARLIER_AVAILABILITY_REWRITE
 != SCIENTIFIC_VALIDITY
-
-CLAIM_BINDING
-!= ENTAILMENT
-
-PUBLISHER_PROFILE
-!= ACCEPTANCE
 ```
-
-This forward calibration preserves the 2026-09-22 state while keeping the current scientific-communication boundaries explicit.
