@@ -51,3 +51,12 @@ Four completed Stages now cover 2024. The formal additive synthesis is instantia
 ## Navigation
 
 For Stage A begin with `stage-a-2024-q1/STAGE_BRIEF.md`; Stage B with `stage-b-2024-q2/STAGE_BRIEF.md`; Stage C with `stage-c-2024-q3/STAGE_BRIEF.md`; Stage D with `stage-d-2024-q4/STAGE_BRIEF.md`. Read thematic Parts and month reconstructions before each synthesis/review. Use `longitudinal/LONGITUDINAL_SYNTHESIS_2024.md` for the additive full-year interpretation.
+
+## SEPTEMBER_DUAL_CUTOFF_MAINTENANCE_2026-09-23
+
+### A1 / N-1 cutoff — 2026-09-22
+
+- September review scope includes Stage A, B, and C communication-research sets delivered on 2026-09-21, including evidence charts, source registers, reconstructions, reviews, syntheses, and handoffs.
+- Preserve render success != scientific validity, claim binding != entailment, accessibility representation != certification, and publisher profile != acceptance.
+- The 2026-09-22 router/manifest remains a point-in-time cutoff; later Stage D material is not retroactive evidence.
+- Documentary handoff carries communication context and uncertainty, not scientific truth or reproduction.

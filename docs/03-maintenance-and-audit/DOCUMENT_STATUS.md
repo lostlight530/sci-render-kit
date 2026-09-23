@@ -184,3 +184,22 @@ Current interpretation:
 - no render/test/scanner execution is claimed by documentary maintenance alone.
 
 No standalone maintenance/audit sidecar is created by this nightly pass.
+
+
+## 2026-09-23 dual-view annotation on the 2026-09-22 router
+
+### View 1 — N-1 / 2026-09-22 router state
+
+The router remains the point-in-time communication/document authority map for that cut.
+
+### View 2 — N / 2026-09-23 current interpretation
+
+Stage D / 2024-Q4 is later current repository state. Its presence updates current communication-research routing but does not become retroactive 2026-09-22 evidence.
+
+```text
+N_MINUS_1_ROUTER_STATE
++
+N_CURRENT_ROUTER_INTERPRETATION
+!= EARLIER_AVAILABILITY_REWRITE
+!= SCIENTIFIC_VALIDITY
+```
