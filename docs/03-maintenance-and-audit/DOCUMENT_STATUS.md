@@ -184,3 +184,24 @@ Current interpretation:
 - no render/test/scanner execution is claimed by documentary maintenance alone.
 
 No standalone maintenance/audit sidecar is created by this nightly pass.
+
+
+## 2026-09-23 n-1 calibration of the 2026-09-22 router
+
+The 2026-09-22 router calibration remains a historical current-state cutoff. The later Stage D / 2024-Q4 communication-research delivery is current later state and must not be projected backward.
+
+```text
+LATER_STAGE_D_PRESENT
+!= EARLIER_STAGE_D_AVAILABLE
+
+RENDER_SUCCESS
+!= SCIENTIFIC_VALIDITY
+
+CLAIM_BINDING
+!= ENTAILMENT
+
+PUBLISHER_PROFILE
+!= ACCEPTANCE
+```
+
+This forward calibration preserves the 2026-09-22 state while keeping the current scientific-communication boundaries explicit.
