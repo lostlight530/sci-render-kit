@@ -85,3 +85,11 @@ Earlier stages remain point-in-time evidence. The index routes documentation and
 - Documentary closure does not establish statistical/scientific validity, accessibility certification, publisher acceptance, or independent reproduction.
 - Current routing may include Stage D without rewriting the earlier router cutoff.
 - This A2 note extends A1 and preserves the prior stage chronology and evidence limits.
+## SEPTEMBER_DUAL_CUTOFF_MAINTENANCE_2026-09-24
+
+### A1 / N-1 cutoff — full September Stage A→D review through 2026-09-23
+
+- Re-read Stage A, B, C and D communication-research sets, evidence charts/source registers, month reconstructions, reviews, syntheses, handoffs and the A→D longitudinal synthesis/current routing.
+- Preserve render success != scientific validity, claim binding != entailment, uncertainty metadata != statistical validation, accessibility support != certification, publisher profile != acceptance, and checksum != reproduction.
+- Current Stage D / longitudinal routing does not become retroactive evidence for earlier stage availability.
+- Communication handoff carries bounded context, not scientific authority or independent reproduction.
