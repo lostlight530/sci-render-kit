@@ -80,3 +80,19 @@ DOCUMENTARY_CLOSURE
 ```
 
 Claim binding, uncertainty metadata, accessibility support, backend information, and publisher-target profiles retain their separate evidentiary meanings.
+## A2 current reconciliation — 2026-09-24
+
+The A1 full-period annotations remain intact. Current main still presents Stage A→D as the completed 2024 communication-research sequence.
+
+No later Stage E research object is retained at this cut. That absence is a current repository fact only.
+
+```text
+A_TO_D_SYNTHESIS_PRESENT
+!= SCIENTIFIC_VALIDITY
+!= STATISTICAL_VALIDATION
+!= ACCESSIBILITY_CERTIFICATION
+!= PUBLISHER_ACCEPTANCE
+!= INDEPENDENT_REPRODUCTION
+```
+
+Current communication relationships remain bounded to the declared evidence and claim-binding semantics.

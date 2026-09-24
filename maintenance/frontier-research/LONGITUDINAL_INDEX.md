@@ -93,3 +93,22 @@ Earlier stages remain point-in-time evidence. The index routes documentation and
 - Preserve render success != scientific validity, claim binding != entailment, uncertainty metadata != statistical validation, accessibility support != certification, publisher profile != acceptance, and checksum != reproduction.
 - Current Stage D / longitudinal routing does not become retroactive evidence for earlier stage availability.
 - Communication handoff carries bounded context, not scientific authority or independent reproduction.
+### A2 / N cutoff — 2026-09-24 current-state reconciliation
+
+The merged A1 review already covers the full September Stage A→D communication-research history through 2026-09-23.
+
+At the 2026-09-24 current cut:
+- Stage A, B, C and D remain the complete retained frontier-research stage set.
+- No Stage E / later-stage directory is retained on current main.
+- A→D longitudinal synthesis remains the current additive communication-research owner.
+- Render success, claim binding, uncertainty metadata, accessibility support, publisher profile and checksum retain their separate evidentiary meanings.
+- Current routing does not back-project Stage D into earlier stage availability or convert documentary closure into scientific validity.
+
+```text
+CURRENT_STAGE_SET = A_TO_D
+NO_STAGE_E_PATH_OBSERVED
+!= FUTURE_STAGE_IMPOSSIBLE
+DOCUMENTARY_CLOSURE
+!= SCIENTIFIC_VALIDITY
+!= INDEPENDENT_REPRODUCTION
+```
