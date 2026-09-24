@@ -203,3 +203,23 @@ N_CURRENT_ROUTER_INTERPRETATION
 != EARLIER_AVAILABILITY_REWRITE
 != SCIENTIFIC_VALIDITY
 ```
+## 2026-09-24 A1 full-period reconciliation
+
+Cutoff: 2026-09-23.
+
+Re-read the complete September Stage A→D communication-research sequence together with evidence/source records, reconstructions, reviews, syntheses, handoffs, current manifest/router and longitudinal owners.
+
+```text
+RENDER_SUCCESS
+!= SCIENTIFIC_VALIDITY
+CLAIM_BINDING
+!= ENTAILMENT
+ACCESSIBILITY_SUPPORT
+!= CERTIFICATION
+PUBLISHER_PROFILE
+!= ACCEPTANCE
+CHECKSUM
+!= REPRODUCTION
+```
+
+No external audit file is created. Historical stage communication evidence remains point-in-time evidence.
