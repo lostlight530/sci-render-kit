@@ -37,3 +37,17 @@ COMMUNICATION_HANDOFF
 ```
 
 Downstream use must re-establish claim/evidence fit, uncertainty validity, backend/runtime availability, accessibility requirements, and publisher-specific acceptance independently.
+## A2 handoff calibration — 2026-09-24
+
+Stage D remains the latest retained stage handoff on current main at this cut.
+
+The handoff transfers scoped communication-research context only. It does not create Stage E, does not transfer scientific authority, and does not establish entailment, acceptance or reproduction.
+
+```text
+LATEST_RETAINED_STAGE_HANDOFF = STAGE_D
+COMMUNICATION_HANDOFF
+!= SCIENTIFIC_AUTHORITY_TRANSFER
+!= ENTAILMENT
+!= ACCEPTANCE
+!= REPRODUCTION
+```
