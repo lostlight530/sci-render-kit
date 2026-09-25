@@ -237,3 +237,17 @@ STAGE_E_RESEARCH_PRESENT
 != PUBLISHER_ACCEPTANCE
 != INDEPENDENT_REPRODUCTION
 ~~~
+## Stage F current document-routing reconciliation — 2026-09-25
+
+Current frontier-research documentation now includes `stage-f-2025-q2/` and `longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q2.md`.
+
+Stage E remains preserved point-in-time research. Stage F advances current research routing only.
+
+~~~text
+STAGE_F_RESEARCH_PRESENT
+!= RENDER_VALIDITY
+!= SCIENTIFIC_VALIDITY
+!= ACCESSIBILITY_CERTIFICATION
+!= PUBLISHER_ACCEPTANCE
+!= INDEPENDENT_REPRODUCTION
+~~~
