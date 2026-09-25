@@ -214,3 +214,25 @@ CHECKSUM
 LATER_STAGE_F
 != 2026_09_24_CUTOFF_STATE
 ```
+
+
+## 2026-09-25 A2 — current longitudinal relation with Stage F
+
+Base revision after merged A1: `d7856f5493817fbdaa42995cb968e60c27fdef39`. N-day delivery input: Stage F / 2025-Q2 communication narrative merged on 2026-09-25.
+
+Current relational evolution:
+- The merged A1 cutoff through 2026-09-24 remains intact and excludes Stage F from the earlier cutoff state.
+- Stage F is now later current repository state and extends current communication/renderer routing for its 2025-Q2 logical research period.
+- Render success, claim binding, uncertainty metadata, accessibility support, publisher profile, checksum, and independent reproduction remain separate evidence boundaries.
+- Delivery on 2026-09-25 does not back-project Stage F into earlier availability or create scientific validity, entailment, certification, publisher acceptance, or reproduction evidence.
+
+```text
+CURRENT_STAGE_F_PRESENT
+!= EARLIER_STAGE_F_AVAILABLE
+RENDER_SUCCESS
+!= SCIENTIFIC_VALIDITY
+CLAIM_BINDING
+!= ENTAILMENT
+CHECKSUM
+!= REPRODUCTION
+```
