@@ -173,3 +173,22 @@ CLAIM_BINDING
 CHECKSUM
 != REPRODUCTION
 ```
+
+## 中秋加班维护补充 — A2 / N = 2026-09-24
+
+A1 已完成历史复核. 对 N = 2026-09-24 的 A2, 需要保留同一天内部的先后关系: 早先 A2 cut 只观察到 Stage A→D, Stage E / 2025-Q1 是随后同日才进入 current main 的 later-same-day delivery.
+
+新的 relational view 可以记录 9 月 24 日最终已经出现 Stage E, 但不能修改早先 cut 的可见性事实. 9 月 25 日 Stage F 继续作为 next-day evidence. Communication research 的扩展也不改变 render success、claim binding、uncertainty、accessibility、publisher profile 和 scientific validity 之间的边界.
+
+因此本轮只更新 longitudinal relationship, 不把后来的 communication artifact 提前为早先 evidence, 也不把生成成功写成科学验证.
+
+```text
+EARLIER_2026_09_24_CUT = A_TO_D
+LATER_SAME_DAY_DELIVERY = STAGE_E
+NEXT_DAY_DELIVERY = STAGE_F
+
+RECONCILIATION
+!= HISTORY_REWRITE
+RENDER_SUCCESS
+!= SCIENTIFIC_VALIDITY
+```
