@@ -152,3 +152,24 @@ STAGE_F_RESEARCH
 != ACCESSIBILITY_CERTIFICATION
 != RUNTIME_CHANGE
 ~~~
+
+## 中秋加班维护补充 — A1 / 2026-09-24
+
+本段记录 2026-09-24 作为 N 日的中秋加班 A1 复核. 当前 main 后来已经进入 Stage E/F, 这些更新保留为后续状态, 不回写为 9 月 23 日以前已经存在的 communication evidence.
+
+9 月 1 日至 9 月 23 日的完整复核继续把 recipe、figure evidence、claim binding、uncertainty metadata、accessibility、publisher profile 与 checksum 分开理解. Render 成功可以证明工件产生, 但不能单独证明 scientific validity. Claim binding 记录关联, 不自动构成 entailment. Accessibility support 也不是 certification.
+
+后来的纵向研究可以扩大当前 context, 但不自动继承上游科学权威, 不把 communication transfer 变成 validation, 也不把 checksum 变成 reproduction.
+
+本轮只补充 longitudinal relation, 不为了中秋主题机械修改所有旧图表或 Stage 文档.
+
+```text
+LATER_STAGE_DELIVERY
+!= EARLIER_STAGE_AVAILABILITY
+RENDER_SUCCESS
+!= SCIENTIFIC_VALIDITY
+CLAIM_BINDING
+!= ENTAILMENT
+CHECKSUM
+!= REPRODUCTION
+```
