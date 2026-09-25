@@ -192,3 +192,25 @@ RECONCILIATION
 RENDER_SUCCESS
 != SCIENTIFIC_VALIDITY
 ```
+
+
+## 2026-09-25 A1 — full September coverage through 2026-09-24
+
+Base revision: `3007800b21832c52100505800252de795426ca2a`. Cutoff: 2026-09-24 Asia/Shanghai.
+
+Coverage decision summary:
+- September Stage A-D communication research, evidence/source records, reconstructions, reviews, syntheses, handoffs, router/manifest, and longitudinal owners were re-read through the cutoff.
+- Previously reviewed A-D artifacts remain `NO_FOLLOW_UP` unless an existing dated reconciliation already owns the correction.
+- Render success, claim binding, uncertainty metadata, accessibility support, publisher profile, checksum, and independent reproduction remain separate evidence boundaries.
+- Stage F material delivered on 2026-09-25 is later current evidence and is outside this A1 cutoff.
+
+```text
+RENDER_SUCCESS
+!= SCIENTIFIC_VALIDITY
+CLAIM_BINDING
+!= ENTAILMENT
+CHECKSUM
+!= REPRODUCTION
+LATER_STAGE_F
+!= 2026_09_24_CUTOFF_STATE
+```
