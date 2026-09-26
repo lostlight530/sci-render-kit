@@ -4,8 +4,8 @@
 
 - **Repository:** `lostlight530/sci-render-kit`
 - **Specification:** `2026-09-19-first-batch`
-- **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2`
-- **Updated:** `2026-09-25`
+- **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3`
+- **Updated:** `2026-09-26`
 
 ## Boundary
 
@@ -25,6 +25,7 @@ index != current repository authority
 | C | 2024-Q3 | 2024-07-01 through 2024-09-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-c-2024-q3/STAGE_SYNTHESIS.md | stage-c-2024-q3/RESEARCH_REVIEW.md | stage-c-2024-q3/STAGE_HANDOFF.md |\n| D | 2024-Q4 | 2024-10-01 through 2024-12-31 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-d-2024-q4/STAGE_SYNTHESIS.md | stage-d-2024-q4/RESEARCH_REVIEW.md | stage-d-2024-q4/STAGE_HANDOFF.md |
 | E | 2025-Q1 | 2025-01-01 through 2025-03-31 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-e-2025-q1/STAGE_SYNTHESIS.md | stage-e-2025-q1/RESEARCH_REVIEW.md | stage-e-2025-q1/STAGE_HANDOFF.md |
 | F | 2025-Q2 | 2025-04-01 through 2025-06-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-f-2025-q2/STAGE_SYNTHESIS.md | stage-f-2025-q2/RESEARCH_REVIEW.md | stage-f-2025-q2/STAGE_HANDOFF.md |
+| G | 2025-Q3 | 2025-07-01 through 2025-09-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-g-2025-q3/STAGE_SYNTHESIS.md | stage-g-2025-q3/RESEARCH_REVIEW.md | stage-g-2025-q3/STAGE_HANDOFF.md |
 
 ## Correction registry
 
@@ -39,22 +40,23 @@ No Stage A correction record exists at initial close.
 | C | 2026-09-19-first-batch | Q3 object set fixed before synthesis; no material amendment | comparable on renderer/version provenance, representation-specific validation and communication-state boundaries |\n| D | 2026-09-19-first-batch | Q4 object set fixed before synthesis; no material amendment | comparable on modality/interaction provenance, wrapper renderer, temporal state and bounded accessibility evidence |
 | E | 2026-09-19-first-batch | Q1 2025 release-object set fixed before synthesis; no local render/replay performed | comparable on renderer/wrapper revision, serialization, package/runtime identity and communication-state boundaries |
 | F | 2026-09-19-first-batch | Q2 2025 migration/release set fixed before synthesis; no local render/browser/accessibility replay | comparable on compatibility state, backend stabilization, delivery integrity and accessibility metadata |
+| G | 2026-09-19-first-batch | Q3 2025 release-object set fixed before synthesis; no package install, browser/export, interaction or accessibility replay | comparable on runtime/platform identity, renderer/browser identity, and interaction/tooltip semantics |
 
 ## Longitudinal synthesis registry
 
-Six completed Stages now cover 2024-Q1 through 2025-Q2. Prior 2024 and A→E syntheses remain preserved; the latest additive extension is `longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q2.md`.
+Seven completed Stages now cover 2024-Q1 through 2025-Q3. Earlier syntheses remain preserved; the latest additive extension is `longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q3.md`.
 
 ## Known gaps
 
 - periods before 2024-Q1 are not researched in this sequence;
-- 2025-Q3+ is not yet instantiated;
-- the additive cross-year synthesis currently ends at 2025-Q2;
+- 2025-Q4+ is not yet instantiated;
+- the additive cross-year synthesis currently ends at 2025-Q3;
 - no exhaustive visualization-literature, accessibility, or renderer survey is claimed;
 - no independent rendering/accessibility reproduction was executed.
 
 ## Navigation
 
-For Stage A begin with `stage-a-2024-q1/STAGE_BRIEF.md`; Stage B with `stage-b-2024-q2/STAGE_BRIEF.md`; Stage C with `stage-c-2024-q3/STAGE_BRIEF.md`; Stage D with `stage-d-2024-q4/STAGE_BRIEF.md`; Stage E with `stage-e-2025-q1/STAGE_BRIEF.md`; Stage F with `stage-f-2025-q2/STAGE_BRIEF.md`. Read thematic Parts and month reconstructions before each synthesis/review. Preserve prior syntheses and use `longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q2.md` for the latest cross-year view.
+For Stage A begin with `stage-a-2024-q1/STAGE_BRIEF.md`; Stage B with `stage-b-2024-q2/STAGE_BRIEF.md`; Stage C with `stage-c-2024-q3/STAGE_BRIEF.md`; Stage D with `stage-d-2024-q4/STAGE_BRIEF.md`; Stage E with `stage-e-2025-q1/STAGE_BRIEF.md`; Stage F with `stage-f-2025-q2/STAGE_BRIEF.md`; Stage G with `stage-g-2025-q3/STAGE_BRIEF.md`. Read thematic Parts and month reconstructions before each synthesis/review. Preserve prior syntheses and use `longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q3.md` for the latest cross-year view.
 
 
 ## A2 current-state reconciliation — 2026-09-23
@@ -236,3 +238,21 @@ CLAIM_BINDING
 CHECKSUM
 != REPRODUCTION
 ```
+
+
+## Stage G current reconciliation — 2026-09-26
+
+Stage G / 2025-Q3 extends current communication-research routing from A→F to A→G.
+
+```text
+STAGE_G_RESEARCH_PRESENT
+!= LOCAL_RENDER_EXECUTION
+!= SCIENTIFIC_VALIDITY
+!= ACCESSIBILITY_CERTIFICATION
+!= PUBLISHER_ACCEPTANCE
+
+RECIPE_IDENTITY
+!= COMPLETE_RUNTIME_IDENTITY
+```
+
+Earlier Stage A→F research remains point-in-time communication evidence. The A→G synthesis is additive and does not rewrite earlier release/runtime availability.
