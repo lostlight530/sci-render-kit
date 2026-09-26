@@ -590,3 +590,25 @@ Earlier Stage A→F research remains point-in-time communication evidence. The A
 - 2026-09-26 sci-render relation: STAGE_G_PLUS_CHRONOLOGY_CALIBRATION_INTEGRATED.
 - Historical rewrite: NO.
 - New scientific-validity/certification/reproduction/independence credit: NONE.
+
+
+## Stage H / 2025-Q4 — Wrapper, Dependency, and Render-Environment Identity
+
+Stage H extends A→G without forcing a release into every month.
+
+- October: Matplotlib 3.10.7 makes dependency-floor identity explicit.
+- November: Plotly.py 6.4/6.5 and Altair 6.0.0 strengthen wrapper↔engine/grammar and runtime/spec-generation identity.
+- December: `NO_NEW_SELECTED_OBJECT` under search-bounded selection; no event is fabricated for cadence.
+
+```text
+recipe
+-> wrapper
+-> grammar / JS engine
+-> dependency floor + runtime
+-> generated spec
+-> browser/export artifact
+```
+
+Boundary: environment identity improves reproducibility evidence but does not establish scientific validity, certification, or pixel equivalence.
+
+Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
