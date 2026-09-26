@@ -564,3 +564,29 @@ Earlier Stage A→F research remains point-in-time communication evidence. The A
 - Coverage through 2026-09-25: VERIFIED_IN_CURRENT_LONGITUDINAL_OWNER.
 - Historical rewrite required: NO.
 - New scientific-validity/certification/reproduction/independence credit: NONE.
+
+
+## A2_CURRENT_MONTH_RELATION_2026-09-26
+
+- Logical maintenance date: 2026-09-26
+- Exact A1-merged base main: `846d9a36d7d2b12a71cb7dc751f0e5557d317865`
+- Current-month relation window: 2026-09-01 through 2026-09-26
+- A1 coverage through 2026-09-25: INHERITED_FROM_MERGED_A1.
+
+### N-day integration — rendering lineage
+- Stage G / 2025-Q3 is visible on current main and extends the communication/rendering lineage beyond the Stage F cut retained by A1.
+- 2026-09-26 annotation/support artifacts are integrated as narrative calibration only; they do not create a new system role or authority layer.
+- Current chronology calibration keeps Plotly.py 6.0.0 at 2025-01-28, Matplotlib 3.10.5 at 2025-07-31, and Plotly.py 6.3.0 at 2025-08-12.
+- Matplotlib 3.10.0 retains distinct official date surfaces: What's new = 2024-12-13; GitHub statistics/tag surface = 2024-12-14.
+- Density/line-count signals remain descriptive, not specification gates.
+
+### Relation boundary
+- render metadata != scientific validity.
+- accessibility support != certification; checksum != reproduction.
+- current support review does not retroactively establish historical review independence.
+- September remains OPEN; natural-month close is NOT_DUE.
+
+### A2 disposition
+- 2026-09-26 sci-render relation: STAGE_G_PLUS_CHRONOLOGY_CALIBRATION_INTEGRATED.
+- Historical rewrite: NO.
+- New scientific-validity/certification/reproduction/independence credit: NONE.
