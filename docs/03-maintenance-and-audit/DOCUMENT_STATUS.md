@@ -251,3 +251,20 @@ STAGE_F_RESEARCH_PRESENT
 != PUBLISHER_ACCEPTANCE
 != INDEPENDENT_REPRODUCTION
 ~~~
+
+
+## Stage G current document-routing reconciliation — 2026-09-26
+
+Current frontier-research documentation now includes `stage-g-2025-q3/` and `longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q3.md`.
+
+Stage A→F communication research remains preserved point-in-time documentation. Stage G advances current research routing only.
+
+```text
+STAGE_G_RESEARCH_PRESENT
+!= LOCAL_RENDER_EXECUTION
+!= RENDER_VALIDITY
+!= SCIENTIFIC_VALIDITY
+!= ACCESSIBILITY_CERTIFICATION
+!= PUBLISHER_ACCEPTANCE
+!= INDEPENDENT_REPRODUCTION
+```

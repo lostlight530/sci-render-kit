@@ -425,3 +425,9 @@ scientific_boundaries:
 # 2026-09-25 Stage F frontier-research reconciliation:
 # Stage F / 2025-Q2 and the additive A→F synthesis are now present as non-normative communication research.
 # Migration/backend/SRI/ARIA research adds no render validity, accessibility certification, publisher acceptance or reproduction claim.
+
+
+# 2026-09-26 Stage G frontier-research reconciliation:
+# Stage G / 2025-Q3 and the additive A→G synthesis are now present as non-normative communication research.
+# Matplotlib / Plotly.py / Vega-Lite release research adds no local package/runtime/browser execution,
+# render validity, accessibility certification, publisher acceptance, scientific validity, or reproduction claim.
