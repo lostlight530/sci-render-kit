@@ -21,7 +21,7 @@ sci-render 仓的轴=**科学图表的通信身份**：一张图被正确解读�
 - [决定] NO_FOLLOW_UP + UNKNOWN 1
 
 ### Stage D / 2024-Q4
-- [事实核验] **Matplotlib 3.10.0 于 2024-12-14 发布**（后续 3.10.x 补丁线的起点版本——时间轴锚点）；Q4 渲染侧的 environment 敏感性议题（headless 渲染/font 缓存）为"runtime identity"命题的前哨
+- [事实核验] **Matplotlib 3.10.0 的官方 What's new 标注 2024-12-13；同站 GitHub statistics/tag 表面标注 2024-12-14**（后续 3.10.x 补丁线的起点版本——时间轴锚点）；Q4 渲染侧的 environment 敏感性议题（headless 渲染/font 缓存）为"runtime identity"命题的前哨
 - [决定] APPEND_RELATION：3.10.0 锚
 
 ### Stage E / 2025-Q1
