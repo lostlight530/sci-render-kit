@@ -17,23 +17,23 @@ sci-render 仓的轴=**科学图表的通信身份**：一张图被正确解读�
 - [决定] APPEND_RELATION：双锚
 
 ### Stage C / 2024-Q3
-- [事实核验] Q3：Matplotlib 3.9 发布线（2024 下半年，UNKNOWN 精确日）；colormap/色觉无障碍（viridis 系之后 perceptually-uniform 线）持续；SVG 可访问性标准（W3C SVG a11y）无单点事件
+- [事实核验] Q3：Matplotlib 3.9.0 基线实际在 2024-05-15（Q2）；Q3 对应的是 3.9.1（07-04）与 3.9.2（08-12）补丁线。colormap/色觉无障碍议题持续；SVG 可访问性标准无单一 Q3 发布事件
 - [决定] NO_FOLLOW_UP + UNKNOWN 1
 
 ### Stage D / 2024-Q4
-- [事实核验] **Matplotlib 3.10.0 于 2024-12-13 前后发布**（G 阶段 3.10.5 的起点版本——时间轴锚点）；Q4 渲染侧的 environment 敏感性议题（headless 渲染/font 缓存）为"runtime identity"命题的前哨
+- [事实核验] **Matplotlib 3.10.0 于 2024-12-14 发布**（后续 3.10.x 补丁线的起点版本——时间轴锚点）；Q4 渲染侧的 environment 敏感性议题（headless 渲染/font 缓存）为"runtime identity"命题的前哨
 - [决定] APPEND_RELATION：3.10.0 锚
 
 ### Stage E / 2025-Q1
-- [事实核验] Q1：Plotly.py 5.x 末期与 6.0 预热（**6.0 实际 2025-03-06 发布——若 E 文件按 Q1 窗口记 6.0 即越界一个半月，VERIFY_IN_PLACE**）；Vega-Lite 5.x→6.0 预热；Matplotlib 3.10.x 补丁线
-- [决定] VERIFY_IN_PLACE 一处 + NO_FOLLOW_UP
+- [事实核验] Q1：Plotly.py 6.0.0 官方 changelog 日期为 **2025-01-28**，明确属于 Q1；因此“若 E 文件按 Q1 记录 6.0 则越界”的原判断撤销。Vega-Lite 5.x→6.0 线与 Matplotlib 3.10.x 补丁线仍作为同期背景
+- [决定] Plotly.py 6.0 时间边界已校正；其余对象按现有证据继续 NO_FOLLOW_UP / VERIFY_IN_PLACE
 
 ### Stage F / 2025-Q2
-- [事实核验] **Plotly.py 6.0（2025-03-06，Q1 末/Q2 初边界）**——大版本（Plotly.js 3.0 底座）；**Matplotlib 3.10.5 于 2025-06 前后（G 阶段对象的先行补丁线）**；科学出版侧 figure 溯源议题（journal 的 reproducibility figure 要求）持续
-- [决定] APPEND_RELATION：两锚（日期 UNKNOWN 项标注）
+- [事实核验] Plotly.py 6.0.0 实际为 **2025-01-28（Q1）**，因此不再作为 Q2 边界事件；Matplotlib 3.10.5 实际为 **2025-07-31（Q3）**，也不属于 Stage F。Stage F 的叙事应避免用这两个版本节点支撑 Q2 时间线；科学出版侧 figure 溯源与 reproducibility 要求可继续作为背景议题
+- [决定] 删除 Plotly 6.0 / Matplotlib 3.10.5 作为 Q2 时间锚的建议；Stage F 若扩展应重新选择 Q2 内真实版本节点
 
 ### Stage G / 2025-Q3
-- [事实核验] **G 三对象与版本线精确对齐：Matplotlib 3.10.5（wheel/运行时平台目标变化）、Plotly.py 6.3（browser acquisition+Plotly.js 版本成为显式导出依赖）、Vega-Lite 6.3/6.4（interaction/tooltip 语义版本敏感）**——G 选题是本仓七阶段最准切片；"renderer update != scientific validity"边界句为仓哲学代表句
+- [事实核验] **G 的 Matplotlib 3.10.5（2025-07-31）与 Plotly.py 6.3.0（2025-08-12）均落在 Q3**；Vega-Lite 6.3/6.4 的精确发布日期仍需单独核验。G 的对象选择与 runtime/browser/interaction version-sensitivity 主题保持一致；"renderer update != scientific validity"边界句成立
 - [决定] CONFIRMED（对象-版本对齐成立）
 
 ## 2. 治理件横切批注
@@ -49,6 +49,6 @@ sci-render 仓的轴=**科学图表的通信身份**：一张图被正确解读�
 - MCP 事件：本仓无涉（NO_RELATION 声明）
 
 ## 4. Search log
-Pandoc 3.2/NumPy 2.0/Plotly 6.0/Vega-Lite 6.0 查询部分命中（噪音滤除后 3.2/2.0 确认）；Matplotlib 3.10.0/3.10.5、Plotly 6.3、Vega-Lite 6.3/6.4 精确日未验证——UNKNOWN 标注。2026-09-26。
+本轮补核：Matplotlib 3.9.0=2024-05-15、3.9.1=2024-07-04、3.9.2=2024-08-12；Matplotlib 3.10.0=2024-12-14、3.10.5=2025-07-31；Plotly.py 6.0.0=2025-01-28、6.3.0=2025-08-12。Vega-Lite 6.3/6.4 精确日仍未在本批注中建立，继续 UNKNOWN / VERIFY_IN_PLACE。2026-09-26。
 ---
 *Annotation ends. 历史文件零改动。*
