@@ -49,6 +49,6 @@ sci-render 仓的轴=**科学图表的通信身份**：一张图被正确解读�
 - MCP 事件：本仓无涉（NO_RELATION 声明）
 
 ## 4. Search log
-本轮补核：Matplotlib 3.9.0=2024-05-15、3.9.1=2024-07-04、3.9.2=2024-08-12；Matplotlib 3.10.0=2024-12-14、3.10.5=2025-07-31；Plotly.py 6.0.0=2025-01-28、6.3.0=2025-08-12。Vega-Lite 6.3/6.4 精确日仍未在本批注中建立，继续 UNKNOWN / VERIFY_IN_PLACE。2026-09-26。
+本轮补核：Matplotlib 3.9.0=2024-05-15、3.9.1=2024-07-04、3.9.2=2024-08-12；Matplotlib 3.10.0 What's new=2024-12-13 / GitHub statistics(tag surface)=2024-12-14、3.10.5=2025-07-31；Plotly.py 6.0.0=2025-01-28、6.3.0=2025-08-12。Vega-Lite 6.3/6.4 精确日仍未在本批注中建立，继续 UNKNOWN / VERIFY_IN_PLACE。2026-09-26。
 ---
 *Annotation ends. 历史文件零改动。*
