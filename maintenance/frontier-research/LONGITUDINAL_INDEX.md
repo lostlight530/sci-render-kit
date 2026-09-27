@@ -635,3 +635,29 @@ Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
 - 2026-09-26 sci-render relation: NO_FOLLOW_UP.
 - Historical rewrite required: NO.
 - New scientific-validity/certification/reproduction/source-independence credit: NONE.
+
+## A2_CURRENT_MONTH_RELATION_2026-09-27
+
+- Logical maintenance date: 2026-09-27
+- Exact A1-merged base main: `28244571f77cb71da15b3b78b50870b23e32bab5`
+- Current-month relation window: 2026-09-01 through 2026-09-27
+- A1 coverage through 2026-09-26: INHERITED_FROM_MERGED_A1.
+
+### N-day integration — Stage H / rendering lineage
+- Stage H / 2025-Q4 retrospective is present as SEARCH_BOUNDED reconstructed research and extends the communication/rendering lineage beyond Stage G.
+- Retained selected objects include Matplotlib 3.10.7, Plotly.py 6.4/6.5 and Altair 6.0 within their exact release/source identities.
+- December records NO_NEW_SELECTED_OBJECT under the bounded search. This is not promoted into a claim that no ecosystem activity occurred.
+- Wrapper behavior remains distinct from renderer behavior; dependency floors do not prove local replay; stable specs do not imply identical pixels; accessibility support is not certification.
+- Current repository assessment remains NO_CURRENT_REPOSITORY_DRIFT / NO_RUNTIME_CHANGE / NO_CONTRACT_CHANGE within the Stage H review scope.
+
+### Relation boundary
+- NO_NEW_SELECTED_OBJECT != NO_ECOSYSTEM_ACTIVITY.
+- wrapper != renderer.
+- format/accessibility support != certification or scientific validity.
+- SEARCH_BOUNDED != exhaustive release coverage.
+- September remains OPEN / NATURAL_MONTH_CLOSE_NOT_DUE.
+
+### A2 disposition
+- 2026-09-27 sci-render relation: STAGE_H_INTEGRATED_WITH_NON_MANUFACTURE_BOUNDARY.
+- New scientific-validity/certification/reproduction/source-independence credit: NONE.
+- Historical rewrite: NO.
