@@ -612,3 +612,26 @@ recipe
 Boundary: environment identity improves reproducibility evidence but does not establish scientific validity, certification, or pixel equivalence.
 
 Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
+
+## A1_MONTH_TO_DATE_REVALIDATION_2026-09-27
+
+- Logical maintenance date: 2026-09-27
+- Cutoff: 2026-09-26
+- Exact base main: `8da3b75de697c910f666fd75c4f6e8fe3e0df71f`
+- Scope: September rendering/communication stage lineage through Stage G and the longitudinal owner; 2026-09-27 Stage H is reserved for A2.
+
+### Coverage decisions
+- 2026-09-01 through 2026-09-25: REVIEWED / RETAIN_EXISTING_DECISIONS
+- 2026-09-26 Stage G + chronology calibration: REVIEWED / RETAIN_STAGE_G_RELATION / NO_FOLLOW_UP
+- Rendering metadata and chronology remain evidence-scoped.
+
+### Boundary
+- render success != scientific validity.
+- accessibility support != certification.
+- checksum != reproduction; wrapper != renderer.
+- September remains OPEN / NATURAL_MONTH_CLOSE_NOT_DUE.
+
+### A1 disposition
+- 2026-09-26 sci-render relation: NO_FOLLOW_UP.
+- Historical rewrite required: NO.
+- New scientific-validity/certification/reproduction/source-independence credit: NONE.
