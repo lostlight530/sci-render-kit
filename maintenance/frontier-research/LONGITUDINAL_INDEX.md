@@ -661,3 +661,28 @@ Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
 - 2026-09-27 sci-render relation: STAGE_H_INTEGRATED_WITH_NON_MANUFACTURE_BOUNDARY.
 - New scientific-validity/certification/reproduction/source-independence credit: NONE.
 - Historical rewrite: NO.
+
+## A1_MONTH_TO_DATE_REVALIDATION_2026-09-28
+
+- Logical maintenance date: 2026-09-28
+- Cutoff: 2026-09-27
+- Exact base main: `269ec8ea96a9438a6bd84335972105916f42363f`
+- The 2026-09-28 Stage H document-routing reconciliation is visible on current main but excluded from A1 and reserved for A2.
+
+### Coverage decisions
+- 2026-09-01 through 2026-09-26: REVIEWED / RETAIN_MERGED_LONGITUDINAL_DECISIONS.
+- 2026-09-27 Stage H / 2025-Q4 retrospective: REVIEWED / RETAIN_NON_MANUFACTURE_AND_RENDERING_BOUNDARIES / NO_FOLLOW_UP.
+- NO_NEW_SELECTED_OBJECT remains bounded-search output and is not widened to NO_ECOSYSTEM_ACTIVITY.
+
+### Boundary
+- wrapper != renderer.
+- accessibility support != certification.
+- checksum != reproduction.
+- current 2026-09-28 routing correction != A1 evidence eligibility.
+- September remains OPEN / NATURAL_MONTH_CLOSE_NOT_DUE.
+
+### A1 disposition
+- Coverage through N-1 = 2026-09-27: VERIFIED_IN_CURRENT_LONGITUDINAL_OWNER.
+- Historical rewrite required: NO.
+- 2026-09-28 routing correction consumed by A1: NO.
+- New scientific-validity/certification/reproduction/source-independence credit: NONE.
