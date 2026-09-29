@@ -711,3 +711,27 @@ Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
 - 2026-09-28 sci-render relation: STAGE_H_ROUTING_RECONCILIATION_INTEGRATED.
 - New render/scientific-validity/certification/reproduction credit: NONE.
 - Historical rewrite: NO.
+
+## A1_MONTH_TO_DATE_REVALIDATION_2026-09-29
+
+- Logical maintenance date: 2026-09-29
+- Cutoff: 2026-09-28
+- Exact base main: `fa79cbebd27946fdc04f51bb47d124c6f04a1cae`
+
+### Coverage decisions
+- Through 2026-09-27 Stage H / 2025-Q4: REVIEWED / RETAIN_NON_MANUFACTURE_AND_RENDERING_BOUNDARIES.
+- 2026-09-28 current document-routing reconciliation: REVIEWED / RETAIN_ROUTING_CORRECTION / NO_FOLLOW_UP.
+- DOCUMENT_STATUS / MANIFEST acknowledge Stage H current routing while physical synthesis still ends at 2025-Q3.
+- NO_NEW_SELECTED_OBJECT remains bounded-search output and is not widened to NO_ECOSYSTEM_ACTIVITY.
+
+### Boundary
+- render success != scientific validity.
+- accessibility support != certification.
+- Stage H presence != runtime capability.
+- LONGITUDINAL_INDEX relation != physical synthesis artifact.
+- September remains OPEN / NATURAL_MONTH_CLOSE_NOT_DUE.
+
+### A1 disposition
+- Coverage through N-1 = 2026-09-28: VERIFIED_IN_CURRENT_LONGITUDINAL_OWNER.
+- Historical rewrite required: NO.
+- New render/scientific-validity/certification/reproduction credit: NONE.
