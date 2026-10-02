@@ -820,3 +820,48 @@ A2 disposition: OCTOBER_DAY_1_ROUTING_INTEGRATED / NO_NEW_STAGE_OBJECT_OBSERVED_
 Historical rewrite: NO.
 Extra audit executed: NO.
 New render/scientific-validity/certification/reproduction/source-independence credit: NONE.
+
+
+## A1_FULL_COVERAGE_2026-10-02
+
+- Logical maintenance date: 2026-10-02
+- Exact base main: `565cb3fd6f66368e851706065952d8707e5069ac`
+- Coverage window: 2026-10-01
+- Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE
+- A1 rule: REVIEWED != MODIFIED
+- Pipeline cadence: STAGE_STATE_TRIGGERED
+- Extra renderer/browser/scientific-validation execution: NOT_PERFORMED
+- Historical rewrite: NO
+
+### Coverage decisions
+
+| In-scope October-1 surface | Decision | Preserved boundary |
+| --- | --- | --- |
+| `maintenance/OCTOBER_OPEN_RECONCILIATION_2026_10_01.md` | REVIEWED / NO_FOLLOW_UP | month-open reconciliation is current routing evidence, not a new communication-research stage |
+| `MANIFEST.yaml` October routing update | REVIEWED / NO_FOLLOW_UP | manifest/profile presence does not establish scientific validity or publisher acceptance |
+| `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` October status update | REVIEWED / NO_FOLLOW_UP | render/claim-binding/accessibility fields retain separate meanings |
+| current `LONGITUDINAL_INDEX.md` through the 2026-10-01 A2 section | REVIEWED / NO_FOLLOW_UP | Stage H remains current; no A→H physical synthesis artifact is manufactured |
+
+### A1 disposition
+
+- Coverage completeness: COMPLETE_FOR_2026-10-01
+- Decision completeness: COMPLETE_FOR_2026-10-01
+- Original render/communication artifact mutation required: NO
+- New Stage I or later object established by A1: NO
+- New scientific-validity/certification/reproduction credit: NONE
+
+```text
+STAGE_STATE_TRIGGERED
+!= DAILY_CADENCE_REQUIREMENT
+
+RENDER_SUCCESS
+!= SCIENTIFIC_VALIDITY
+
+ACCESSIBILITY_SUPPORT
+!= CERTIFICATION
+
+CHECKSUM
+!= REPRODUCTION
+```
+
+A1 result: VERIFIED_FULL_COVERAGE_THROUGH_2026-10-01.
