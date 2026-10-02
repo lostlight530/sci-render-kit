@@ -905,3 +905,83 @@ CHECKSUM
 
 A2 disposition: OCTOBER_CURRENT_THROUGH_2026-10-02 / STAGE_H_CURRENT / NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK.
 New render/scientific-validity/certification/reproduction credit: NONE.
+
+## A1_FULL_COVERAGE_2026-10-03
+
+- Logical maintenance date: 2026-10-03
+- Exact base main: `9791a541c4e74ff84c070266f1de485492d0b9e8`
+- Coverage window: 2026-10-01 through 2026-10-02
+- Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE
+- Trigger: a repository-native retrospective D30 audit was merged after the 2026-10-02 A2 cutoff
+- A1 rule: REVIEWED != MODIFIED
+- Pipeline cadence: STAGE_STATE_TRIGGERED
+- Extra renderer/browser/compiler/benchmark/scientific-statistical/accessibility execution: NOT_EXECUTED
+- Historical rewrite: NO
+
+### Coverage decisions
+
+| In-scope October-2 surface | Decision | Preserved boundary |
+| --- | --- | --- |
+| 2026-10-02 A1 full-coverage section in `LONGITUDINAL_INDEX.md` | REVIEWED / RETAIN | communication coverage does not establish scientific validity |
+| 2026-10-02 A2 current-relation section in `LONGITUDINAL_INDEX.md` | REVIEWED / RETAIN_AS_POINT_IN_TIME_CUTOFF | its `OCTOBER_CURRENT_THROUGH_2026-10-02` state predates the later D30 merge |
+| `maintenance/2026-10-02-september-d30-independent-gpt-audit.md` | REVIEWED / INTEGRATE_AS_LATER_10_02_EVIDENCE | retrospective audit; no renderer/runtime/certification/reproduction promotion |
+| current Stage H / 2025-Q4 communication routing | REVIEWED / RETAIN | no native Stage I/later communication-research object is established by the audit |
+
+### Cutoff repair
+
+The 2026-10-02 A2 merge preceded the D30 audit merge. The earlier A2 remains valid for its exact review cut. This A1 closes the later same-day evidence gap without rewriting historical research or asserting execution that did not occur.
+
+```text
+A2_CURRENT_THROUGH_2026-10-02
+!= ALL_FUTURE_10_02_MERGES_ALREADY_COVERED
+
+D30_AUDIT_PRESENT
+!= RENDER_SUCCESS
+!= SCIENTIFIC_VALIDITY
+!= ACCESSIBILITY_CERTIFICATION
+!= INDEPENDENT_REPRODUCTION
+
+UNCERTAINTY_METADATA
+!= STATISTICAL_VALIDATION
+```
+
+### A1 disposition
+
+- Coverage completeness: COMPLETE_THROUGH_2026-10-02_AT_THIS_CHECK
+- Decision completeness: COMPLETE_THROUGH_2026-10-02_AT_THIS_CHECK
+- D30 audit routed as later same-day repository evidence: YES
+- Original render/communication/audit/stage mutation required: NO
+- New Stage I or later object established by A1: NO
+- New render/scientific/certification/reproduction credit: NONE
+
+### A2 / current October relation — 2026-10-03
+
+- Exact A1 producer base main: `9791a541c4e74ff84c070266f1de485492d0b9e8`
+- A1 full coverage through 2026-10-02: ESTABLISHED_BY_THIS_CHANGE
+- Current-main stage check: NO_NEW_STAGE_I_OR_LATER_OBJECT_OBSERVED_AT_THIS_CHECK
+- Current retained frontier narrative: Stage H / 2025-Q4
+- Current communication routing: Stage H retained
+- The D30 audit remains retrospective September audit evidence and does not create renderer/backend runtime proof, publisher acceptance, accessibility certification, scientific/statistical validity, or reproduction
+- Renderer/browser/compiler/benchmark/scientific-statistical/accessibility execution by this maintenance pass: NOT_EXECUTED
+- Historical rewrite: NO
+
+```text
+STAGE_STATE_TRIGGERED
+!= DAILY_CADENCE_REQUIREMENT
+
+RENDER_SUCCESS
+!= SCIENTIFIC_VALIDITY
+
+ACCESSIBILITY_SUPPORT
+!= WCAG_CERTIFICATION
+
+CHECKSUM
+!= INDEPENDENT_REPRODUCTION
+
+NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK
+!= VERIFIED_NO_EXTERNAL_CHANGE
+```
+
+A2 disposition: OCTOBER_CURRENT_THROUGH_2026-10-03_AT_THIS_CHECK / STAGE_H_CURRENT / D30_AUDIT_ROUTED / NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK.
+New render/scientific/certification/reproduction credit: NONE.
+
