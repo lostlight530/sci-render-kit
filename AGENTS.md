@@ -169,6 +169,9 @@ Historical backend/test/render/checksum/publisher wording does not establish cur
 
 ## Maintenance cadence
 
+Temporal-date rule: scanner/report `as_of` is an observation date; `MANIFEST.yaml.current_temporal_status.as_of` is the last explicit calendar-state reconciliation represented by the static manifest and is not a daily heartbeat. Do not bump the manifest date solely because render/evidence or longitudinal maintenance ran while the calendar state is unchanged.
+
+
 The active maintenance system is jointly owned by:
 
 ```text
