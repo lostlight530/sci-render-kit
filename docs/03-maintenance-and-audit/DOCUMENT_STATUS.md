@@ -33,6 +33,8 @@ Current capability and communication constraints include:
 
 ```text
 MANIFEST.yaml
+OPEN_RESEARCH.md
+RESEARCH_TEMPLATE.md
 metadata/
 profiles/
 quality/
@@ -49,6 +51,8 @@ codemeta.json
 RELEASE_POLICY.md
 LICENSE
 ```
+
+`OPEN_RESEARCH.md` is the durable repository-level open-research method and positioning guide. `RESEARCH_TEMPLATE.md` is prospective scaffolding for bounded research records. Both remain subordinate to current implementation, `MANIFEST.yaml`, machine configuration, and more specific figure/communication contracts; neither replaces the native `maintenance/frontier-research/` specification/templates nor rewrites historical Stage/Part records.
 
 Machine-readable presence does not establish scientific validity, publisher acceptance, WCAG certification, backend runtime availability, statistical validity, or entailment.
 

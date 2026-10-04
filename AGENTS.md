@@ -8,6 +8,8 @@ Keep runtime code, schemas, profiles, evidence sidecars, maintenance control, cu
 
 Read `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` before broad documentation or governance maintenance.
 
+For repository-level open-research positioning or independent research-production work, read `OPEN_RESEARCH.md`. Use `RESEARCH_TEMPLATE.md` only for prospective bounded records when no more specific native template owns the surface. Neither file supersedes implementation, `MANIFEST.yaml`, machine configuration, subject-specific figure/communication contracts, or the native `maintenance/frontier-research/` specification/history.
+
 Use `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` only when interpreting early Jules task/PR prose as historical renderer/backend/publisher/accessibility/scientific evidence. It is dated correction evidence, not a current authority layer.
 
 ```text
