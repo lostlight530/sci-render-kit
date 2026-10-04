@@ -1,5 +1,9 @@
 # Contributing
 
+## Open research contributions
+
+For independent research-method or positioning changes, start with [`OPEN_RESEARCH.md`](./OPEN_RESEARCH.md). For new bounded research records, use [`RESEARCH_TEMPLATE.md`](./RESEARCH_TEMPLATE.md). Implementation, MANIFEST, figure/communication contracts, maintenance, and historical evidence remain authoritative for their own surfaces.
+
 Contributions should strengthen scientific-figure semantics, renderer correctness, communication integrity, accessibility, reproducibility, documentation, or public metadata without turning presentation success into scientific validation.
 
 ## Start from the owning surface
