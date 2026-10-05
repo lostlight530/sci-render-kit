@@ -1441,3 +1441,137 @@ HISTORICAL_NARRATIVE_CLOSEOUT
 - New research credit: NONE.
 - New source-independence credit: NONE.
 - Historical rewrite: NO.
+
+## A1 FULL COVERAGE — 2026-10-05 — SCI_RENDER
+
+- Repository: `lostlight530/sci-render-kit`
+- Plane: A1 / FULL_COVERAGE_MAINTENANCE
+- Logical maintenance date: 2026-10-05
+- Exact base main: `818b2f4cb941b9b6ee65fbaa4dea0d2f20ad54e4`
+- Coverage window: 2026-10-01..2026-10-04
+- N-day excluded: 2026-10-05
+- Owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Native cadence: STAGE_STATE_TRIGGERED
+- Historical rewrite: NO
+- Renderer/browser/compiler execution: NOT_PERFORMED
+- New stage credit: NONE
+
+### Prior chain
+- 10/1–10/4 A1/A2 chain retained.
+- Special #93 synchronized Stage H communication historical identity.
+- Open Research #94 merged after the special.
+- Stage H remains current.
+- No producer-native Stage I is established.
+
+### 2026-10-01 coverage
+- Month-open Stage H relation retained.
+- Render success remains distinct from scientific validity.
+- Decision: RETAIN.
+- New stage/runtime credit: NONE.
+
+### 2026-10-02 coverage
+- D30 remains retrospective.
+- Accessibility support remains distinct from certification.
+- Decision: RETAIN.
+- New stage/runtime credit: NONE.
+
+### 2026-10-03 coverage
+- Successor relation retained.
+- Checksum remains distinct from independent reproduction.
+- Decision: RETAIN.
+- New stage/runtime credit: NONE.
+
+### 2026-10-04 coverage
+- Temporal as_of semantics retained.
+- Stage H historical closeout retained.
+- Index coverage A→H remains distinct from synthesis coverage A→G.
+- Decision: RETAIN.
+- New stage/runtime credit: NONE.
+
+### Open Research / scholarly-submission relation
+- OPEN_RESEARCH.md is present.
+- RESEARCH_TEMPLATE.md is present.
+- README and CONTRIBUTING expose research entry points.
+- Root template is supplementary to frontier-research native templates.
+- Stage Brief / Research Part / Evidence Chart / Synthesis / Review / Handoff remain stronger.
+- Open Research does not create Stage I.
+- Open Research does not certify rendering.
+- Scholarly metadata does not prove scientific validity.
+- External classification does not define repository identity.
+- Publication does not prove renderer correctness.
+- Citation does not prove reproduction.
+- Semantic-drift audit is metadata governance, not scientific validation.
+- Historical Stage A–H records are not retrofitted to the new template.
+- MANIFEST temporal status remains explicit reconciliation, not heartbeat.
+- A→G synthesis boundary remains preserved.
+
+### Surface matrix
+| Surface | A1 state | Boundary |
+| --- | --- | --- |
+| Stage A–H | REVIEWED | historical continuity |
+| Stage H | CURRENT | no Stage I inference |
+| Longitudinal Index | REVIEWED | current owner |
+| A→G synthesis | RETAINED | no silent H expansion |
+| Open Research | REVIEWED | supplementary guide |
+| Research Template | REVIEWED | prospective only |
+| Scholarly metadata | REVIEW_BY_RELATION | no validation promotion |
+| 2026-10-05 routing | BOUNDARY_ONLY | defer to A2 |
+
+### 2026-10-05 boundary
+- Open-research routing reconciliation PR #95 is merged on the 2026-10-05 execution date.
+- It reconciles root Open Research routing with repository-native render/frontier-research contracts.
+- It is not consumed by A1.
+- A2 will consume it after A1 merge and fresh-read main.
+
+### Evidence invariants
+- STAGE_STATE_TRIGGERED != DAILY_CADENCE_REQUIREMENT.
+- NO_NEW_STAGE_OBJECT != STAGE_FAILURE.
+- STAGE_H_PRESENT != A_TO_H_SYNTHESIS_PRESENT.
+- RENDER_SUCCESS != SCIENTIFIC_VALIDITY.
+- CLAIM_BINDING != ENTAILMENT.
+- ACCESSIBILITY_SUPPORT != CERTIFICATION.
+- CHECKSUM != INDEPENDENT_REPRODUCTION.
+- MANIFEST_TEMPORAL_STATUS_AS_OF != DAILY_HEARTBEAT.
+- PUBLICATION != VALIDATION.
+- CITATION != REPRODUCTION.
+- EXTERNAL_CLASSIFICATION != REPOSITORY_IDENTITY.
+- OPEN_RESEARCH_GUIDE != NATIVE_FRONTIER_RESEARCH_CONTRACT.
+- RESEARCH_TEMPLATE != HISTORICAL_RECORD_REWRITE.
+- SOURCE_CODE != EXECUTED_BEHAVIOR.
+- TEST_SOURCE != TEST_EXECUTION.
+- A1_MAINTENANCE != A2_RELATIONAL_VERSION.
+
+### Completeness
+- 10/1 represented: YES.
+- 10/2 represented: YES.
+- 10/3 represented: YES.
+- 10/4 represented: YES.
+- MonthStart→N-1 complete: YES.
+- Stage H reviewed: YES.
+- Open Research reviewed: YES.
+- Scholarly/submission boundary reviewed: YES.
+- Stage I fabricated: NO.
+- Renderer execution invented: NO.
+- Scientific validation invented: NO.
+- Reproduction invented: NO.
+- Historical rewrite: NO.
+- Natural-month final manufactured: NO.
+- 10/5 consumed by A1: NO.
+- A2 before A1 merge: NO.
+
+### A1 disposition
+- Coverage: COMPLETE_THROUGH_2026-10-04_AT_THIS_CHECK.
+- Current retained stage: STAGE_H.
+- Open Research framework: PRESENT / RELATION_REVIEWED.
+- Historical narrative: CURRENT_THROUGH_10_04_SPECIAL.
+- A→G synthesis boundary: PRESERVED.
+- New Stage I/runtime/scientific/publication credit: NONE.
+- A2 dependency: MUST_MERGE_THIS_A1_THEN_FRESH_READ_CURRENT_MAIN.
+
+```text
+OCTOBER_1_TO_4_FULL_COVERAGE
++ STAGE_H_HISTORY_PRESERVED
++ OPEN_RESEARCH_RELATION_REVIEWED
++ N_DAY_2026_10_05_EXCLUDED
+= A1_COMPLETE_FOR_2026_10_05
+```
