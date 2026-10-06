@@ -1918,3 +1918,182 @@ OCTOBER_1_TO_5_FULL_COVERAGE
 + N_DAY_NO_NEW_STAGE_NOT_MISSING
 = A1_COMPLETE_FOR_2026_10_06
 ```
+
+
+## A2 CURRENT MONTH RELATION — 2026-10-06 — SCI_RENDER
+
+- Repository: `lostlight530/sci-render-kit`
+- Plane: `A2 / CURRENT_MONTH_RELATIONAL_VERSION`
+- Logical maintenance date: `2026-10-06`
+- Exact A1-merged base main: `3ae7f746d7f892b7d5eae4dc84adaebe6b4e8844`
+- Required predecessor A1: PR #98 / MERGED
+- Fresh-read after A1 merge: YES
+- Current month relation window: `2026-10-01..2026-10-06`
+- Owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Native cadence: `STAGE_STATE_TRIGGERED`
+- Current retained producer stage: `STAGE_H`
+- Historical rewrite: NO
+- Stage replay: NO
+- Renderer/browser/compiler execution by maintenance: NOT_PERFORMED
+- New render/scientific credit: NONE
+- Natural-month final: NOT_DUE
+
+### 1. A1 dependency consumption
+- A1 #98 is present on this exact base.
+- A1 supplies complete MonthStart→2026-10-05 coverage.
+- A2 does not rerun or replace A1.
+- A2 evaluates 2026-10-06 current repository state under the stage/state-triggered contract.
+- Prior Stage, D30, Special, A1, and A2 records remain point-in-time history.
+- The Longitudinal Index remains the one relational owner.
+- Communication evidence remains separate from scientific validity.
+- No producer-native Stage I or later object is observed.
+
+### 2. Inherited 2026-10-01 relation
+- Stage H month-open relation remains retained.
+- Render success remains distinct from scientific validity.
+- Claim binding remains distinct from entailment.
+- No new rendering or scientific credit is created by inheritance.
+
+### 3. Inherited 2026-10-02 relation
+- D30 remains retrospective and separate from native stage work.
+- Accessibility support remains distinct from certification.
+- Publisher profile support remains distinct from acceptance.
+- Audit coverage does not become render execution.
+
+### 4. Inherited 2026-10-03 relation
+- Successor Stage H history remains retained.
+- Checksum remains distinct from independent reproduction.
+- Backend source existence remains distinct from runtime availability.
+- Runtime availability remains distinct from semantic parity.
+
+### 5. Inherited 2026-10-04 relation
+- Temporal_as_of semantics remain state reconciliation rather than heartbeat.
+- Stage H historical communication closeout remains documentary.
+- Index A→H and synthesis A→G remain distinct scopes.
+- Open Research remains supplementary to native render/frontier-research contracts.
+
+### 6. Inherited 2026-10-05 relation
+- Open-research routing reconciliation remains maintenance/document-routing state.
+- Routing does not execute a renderer.
+- Routing does not execute a browser or compiler.
+- Routing does not certify accessibility or publisher acceptance.
+- The prior A2 relation through 2026-10-05 remains a predecessor state.
+
+### 7. 2026-10-06 current-state read
+- Current main after A1 merge was freshly read.
+- No producer-native Stage I or later object is observed.
+- No new Stage Brief requiring advancement is observed.
+- No new Research Part set requiring advancement is observed.
+- No new Source/Object Register requiring advancement is observed.
+- No new Evidence Chart requiring advancement is observed.
+- No new Reconstruction requiring advancement is observed.
+- No new Stage Synthesis requiring advancement is observed.
+- No new Research Review requiring advancement is observed.
+- No new Stage Handoff requiring advancement is observed.
+- This state is classified as `NO_NEW_STAGE_OBJECT`.
+- It is not classified as `MISSING_WORK`.
+- It is not classified as `SCHEDULER_FAILURE`.
+- It creates zero render or stage credit.
+
+### 8. Figure/evidence relation
+- Figure evidence remains tied to its explicit recipe and source provenance.
+- Render completion does not establish scientific correctness.
+- Claim binding records a communication relation, not entailment.
+- Uncertainty metadata records declared uncertainty, not statistical validation.
+- Publisher-target checks remain formatting/communication checks rather than acceptance.
+- Accessibility support remains implementation support rather than certification.
+- Checksum remains an identity witness rather than independent reproduction.
+- No 2026-10-06 maintenance action changes those semantic layers.
+
+### 9. Backend/runtime relation
+- Backend source presence is not treated as runtime availability.
+- Runtime availability is not treated as semantic parity.
+- No renderer invocation is executed by maintenance.
+- No browser execution is performed by maintenance.
+- No compiler execution is performed by maintenance.
+- No publisher conformance run is performed by maintenance.
+- No accessibility audit is performed by maintenance.
+- No independent reproduction is performed by maintenance.
+- These NOT_PERFORMED states remain explicit.
+
+### 10. Implementation / MANIFEST relation
+- Current implementation remains the highest authority.
+- MANIFEST remains below implementation and above historical snapshots.
+- No implementation-versus-MANIFEST drift is identified in this relational pass.
+- No Daily heartbeat semantics are imposed on temporal status.
+- No producer-stage object is manufactured for visual cadence continuity.
+- This A2 remains maintenance relation work rather than a render validation run.
+
+### 11. Current relation matrix
+| Surface | Current A2 state | Boundary |
+| --- | --- | --- |
+| 10/1 | RETAINED | render/scientific separation |
+| 10/2 | RETAINED | accessibility/publisher boundaries |
+| 10/3 | RETAINED | checksum/runtime boundaries |
+| 10/4 | RETAINED | temporal closeout / Open Research |
+| 10/5 | RETAINED | routing maintenance |
+| 10/6 producer stage | NO_NEW_STAGE_OBJECT | state-triggered, not missing |
+| Stage H | CURRENT_RETAINED | no Stage I inference |
+| Figure/claim evidence | UNCHANGED_BY_MAINTENANCE | no entailment promotion |
+| Accessibility/publisher state | UNCHANGED | no certification/acceptance |
+| Longitudinal Index | CURRENT_THROUGH_2026-10-06 | relational owner |
+
+### 12. Evidence invariants
+- `RENDER_SUCCESS != SCIENTIFIC_VALIDITY`.
+- `CLAIM_BINDING != ENTAILMENT`.
+- `UNCERTAINTY_METADATA != STATISTICAL_VALIDATION`.
+- `PUBLISHER_PROFILE != ACCEPTANCE`.
+- `ACCESSIBILITY_SUPPORT != WCAG_CERTIFICATION`.
+- `CHECKSUM != INDEPENDENT_REPRODUCTION`.
+- `COMMUNICATION_TRANSFER != INHERITED_AUTHORITY`.
+- `BACKEND_SOURCE_PRESENT != RUNTIME_AVAILABLE`.
+- `RUNTIME_AVAILABLE != SEMANTIC_PARITY`.
+- `STAGE_STATE_TRIGGERED != DAILY_CADENCE_REQUIREMENT`.
+- `NO_NEW_STAGE_OBJECT != MISSING_WORK`.
+- `NO_NEW_STAGE_OBJECT != SCHEDULER_FAILURE`.
+- `STAGE_H_PRESENT != A_TO_H_SYNTHESIS_PRESENT`.
+- `A1_MAINTENANCE != A2_RELATIONAL_VERSION`.
+- `CURRENT_MONTH_RELATION != NATURAL_MONTH_FINAL`.
+
+### 13. Validation checklist
+- A1 #98 merged before A2 branch: YES.
+- A2 base equals fresh post-A1 main: YES.
+- 10/1–10/5 coverage retained: YES.
+- 10/6 current state freshly read: YES.
+- Stage I observed: NO.
+- Stage I fabricated: NO.
+- Missing Daily fabricated: NO.
+- Scheduler failure fabricated: NO.
+- Renderer execution invented: NO.
+- Browser/compiler execution invented: NO.
+- Scientific validity invented: NO.
+- Claim entailment invented: NO.
+- Statistical validation invented: NO.
+- Accessibility certification invented: NO.
+- Publisher acceptance invented: NO.
+- Independent reproduction invented: NO.
+- Historical stage record rewritten: NO.
+- Natural-month final manufactured: NO.
+- Parallel owner created: NO.
+
+### 14. A2 disposition
+- Current October relation: `CURRENT_THROUGH_2026-10-06`.
+- October version state: `OPEN`.
+- Current retained stage: `STAGE_H`.
+- 2026-10-06 producer-stage delta: `NO_NEW_STAGE_OBJECT`.
+- Cadence interpretation: `VALID_STATE_TRIGGERED_NO_CHANGE`.
+- Render/scientific boundaries: `PRESERVED`.
+- Runtime/render execution: `NOT_PERFORMED_BY_MAINTENANCE`.
+- Historical chronology: `PRESERVED`.
+- New stage/render/scientific/reproduction credit: `NONE`.
+- Successor dependency: `FUTURE_A1_MUST_FRESH_READ_THIS_MERGED_MAIN`.
+
+```text
+MERGED_A1
++ FRESH_MAIN_READ
++ NO_NEW_STAGE_OBJECT
++ COMMUNICATION_VALIDITY_BOUNDARIES_PRESERVED
++ STAGE_H_RETAINED
+= CURRENT_MONTH_RELATION_THROUGH_2026_10_06
+NO_NEW_STAGE_OBJECT != MISSING_WORK
+```
