@@ -1740,3 +1740,181 @@ MERGED_A1 + FRESH_MAIN_READ + 2026_10_05_ROUTING_RECONCILIATION
 = CURRENT_MONTH_RELATION_THROUGH_2026_10_05
 ROUTING_MAINTENANCE != NEW_RESEARCH_STAGE
 ```
+
+
+## A1 FULL-COVERAGE MAINTENANCE — 2026-10-06 — SCI_RENDER
+
+- Repository: `lostlight530/sci-render-kit`
+- Plane: `A1 / FULL-COVERAGE MAINTENANCE`
+- Logical maintenance date: `2026-10-06`
+- Exact base main: `73e1c7a9a316750f59b4d9a2ea2f6f08bc280385`
+- Coverage window: `2026-10-01..2026-10-05`
+- N-day boundary: `2026-10-06`
+- Owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Native cadence: `STAGE_STATE_TRIGGERED`
+- Current retained stage: `STAGE_H`
+- Historical rewrite: NO
+- Stage replay: NO
+- Renderer/browser/compiler execution by maintenance: NOT_PERFORMED
+- Natural-month final: NOT_DUE
+- New render/scientific credit: NONE
+
+### 1. Fresh-start gate
+- Current main was re-read before branch creation.
+- Open PR overlap was checked before this write.
+- No conflicting open PR touched the longitudinal owner.
+- The branch starts from the exact current main recorded above.
+- Current implementation remains the highest repository authority.
+- Communication artifacts remain separate from scientific validation.
+- Stage-triggered workload is not converted into a Daily cadence requirement.
+- Prior A1/A2 and historical Special blocks remain point-in-time history.
+- The existing Longitudinal Index remains the single maintenance owner.
+
+### 2. Coverage denominator
+- 01. 2026-10-01 Stage H month-open relation reviewed.
+- 02. 2026-10-01 render-success versus scientific-validity boundary reviewed.
+- 03. 2026-10-02 D30 retrospective relation reviewed separately.
+- 04. 2026-10-02 accessibility-support versus certification boundary reviewed.
+- 05. 2026-10-03 successor Stage H relation reviewed.
+- 06. 2026-10-03 checksum versus independent-reproduction boundary reviewed.
+- 07. 2026-10-04 temporal-as_of semantics reviewed.
+- 08. 2026-10-04 Stage H communication closeout relation reviewed.
+- 09. 2026-10-04 Open Research / template relation reviewed below native render contracts.
+- 10. 2026-10-04 index A→H versus synthesis A→G boundary reviewed.
+- 11. 2026-10-05 open-research routing reconciliation reviewed.
+- 12. 2026-10-05 document-routing versus renderer execution boundary reviewed.
+- 13. Claim binding versus entailment boundary reviewed.
+- 14. Publisher profile versus acceptance boundary reviewed.
+- 15. Longitudinal Index current owner state reviewed through the cutoff.
+
+### 3. 2026-10-01 decision
+- Decision: `NO_FOLLOW_UP / RETAIN`.
+- Stage H remains the current retained documentary stage.
+- Render success remains separate from scientific validity.
+- Claim binding remains separate from semantic entailment.
+- No Daily cadence is inferred from stage-triggered production.
+- Coverage for 2026-10-01 is complete.
+
+### 4. 2026-10-02 decision
+- Decision: `NO_FOLLOW_UP / RETAIN_ACCESSIBILITY_BOUNDARY`.
+- D30 retrospective material remains separate from producer-native stage history.
+- Accessibility support does not establish WCAG or publisher certification.
+- Publisher profile support does not establish acceptance.
+- Audit success does not create rendering or scientific-validation credit.
+- Coverage for 2026-10-02 is complete.
+
+### 5. 2026-10-03 decision
+- Decision: `NO_FOLLOW_UP / RETAIN_REPRODUCTION_BOUNDARY`.
+- Successor Stage H history remains documentary.
+- Checksum equality does not establish independent reproduction.
+- Backend source existence does not establish runtime availability.
+- Runtime availability does not establish semantic parity.
+- Coverage for 2026-10-03 is complete.
+
+### 6. 2026-10-04 decision
+- Decision: `NO_FOLLOW_UP / RETAIN_RELATIONS`.
+- MANIFEST temporal state remains state reconciliation, not heartbeat.
+- Stage H historical closeout does not create a new stage.
+- Index coverage A→H remains distinct from synthesis coverage A→G.
+- Open Research remains supplementary to stricter render/frontier-research contracts.
+- Coverage for 2026-10-04 is complete.
+
+### 7. 2026-10-05 decision
+- Decision: `NO_FOLLOW_UP / RETAIN_ROUTING_RELATION`.
+- Open-research routing reconciliation PR #95 remains maintenance/document-routing state.
+- It does not create Stage I.
+- It does not execute a renderer.
+- It does not execute a browser or compiler.
+- It does not certify accessibility.
+- It does not extend A→G longitudinal synthesis coverage.
+- The prior 2026-10-05 A2 relation remains the latest pre-N relation.
+- Coverage for 2026-10-05 is complete.
+
+### 8. Artifact-class matrix
+| Surface | A1 decision | Boundary |
+| --- | --- | --- |
+| Stage A–H historical objects | REVIEWED | point-in-time stage history |
+| Stage H retained state | RETAIN | no Stage I inference |
+| Longitudinal Index | APPEND_RELATION | maintenance owner |
+| A→G synthesis artifact | RETAIN | not silently expanded to H |
+| D30 / retrospective material | REVIEWED_IF_PRESENT | separate audit plane |
+| OPEN_RESEARCH.md | RETAIN | supplementary guide |
+| RESEARCH_TEMPLATE.md | RETAIN | prospective only |
+| Figure / claim-binding metadata | REVIEW_BY_SEMANTICS | binding is not entailment |
+| Accessibility / publisher profile | REVIEW_BY_SEMANTICS | support is not certification/acceptance |
+| 2026-10-06 producer-native stage | NOT_OBSERVED / BOUNDARY_ONLY | not missing by cadence |
+
+### 9. N-day boundary
+- No new producer-native Stage I or later object is observed on current main for 2026-10-06.
+- Stage/state-triggered cadence means this is not a missing Daily.
+- Current main remains at the merged 2026-10-05 A2 maintenance relation.
+- No synthetic 2026-10-06 render or stage artifact is created.
+- No renderer/browser/compiler execution is fabricated.
+- No accessibility certification or publisher acceptance is fabricated.
+- A2 may consume a `NO_NEW_STAGE_OBJECT` current relation after A1 merges.
+- A1 creates no render, scientific-validation, reproduction, or source-independence credit.
+
+### 10. Permanent evidence invariants
+- `RENDER_SUCCESS != SCIENTIFIC_VALIDITY`
+- `CLAIM_BINDING != ENTAILMENT`
+- `UNCERTAINTY_METADATA != STATISTICAL_VALIDATION`
+- `PUBLISHER_PROFILE != ACCEPTANCE`
+- `ACCESSIBILITY_SUPPORT != WCAG_CERTIFICATION`
+- `CHECKSUM != INDEPENDENT_REPRODUCTION`
+- `COMMUNICATION_TRANSFER != INHERITED_AUTHORITY`
+- `BACKEND_SOURCE_PRESENT != RUNTIME_AVAILABLE`
+- `RUNTIME_AVAILABLE != SEMANTIC_PARITY`
+- `STAGE_STATE_TRIGGERED != DAILY_CADENCE_REQUIREMENT`
+- `NO_NEW_STAGE_OBJECT != STAGE_FAILURE`
+- `STAGE_H_PRESENT != A_TO_H_SYNTHESIS_PRESENT`
+- `INDEX_COVERAGE_A_TO_H != SYNTHESIS_COVERAGE_A_TO_H`
+- `A1_MAINTENANCE != A2_RELATIONAL_VERSION`
+
+### 11. Repository-specific invariants
+- `DOCUMENT_ROUTING != RENDERER_EXECUTION`
+- `GENERATED_FIGURE != SCIENTIFIC_VALIDATION`
+- `STAGE_HANDOFF != AUTHORITY_TRANSFER`
+- `TEMPORAL_METADATA_CORRECTNESS != SCIENTIFIC_VALIDITY`
+- `OPEN_RESEARCH_GUIDE != NATIVE_RENDER_CONTRACT`
+- `LONGITUDINAL_INDEX_UPDATE != NEW_STAGE_PRODUCTION`
+
+### 12. Decision completeness
+- 2026-10-01: REVIEWED.
+- 2026-10-02: REVIEWED.
+- 2026-10-03: REVIEWED.
+- 2026-10-04: REVIEWED.
+- 2026-10-05: REVIEWED.
+- MonthStart→N-1 coverage: COMPLETE.
+- Stage H history reviewed: YES.
+- Stage I fabricated: NO.
+- N-day missing Daily fabricated: NO.
+- Renderer execution invented: NO.
+- Browser/compiler execution invented: NO.
+- Scientific validity invented: NO.
+- Claim entailment invented: NO.
+- Accessibility certification invented: NO.
+- Publisher acceptance invented: NO.
+- Independent reproduction invented: NO.
+- Historical stage record rewritten: NO.
+- Natural-month final manufactured: NO.
+- Parallel owner created: NO.
+- A2 before A1 merge: NO.
+
+### 13. A1 disposition
+- Coverage completeness: `COMPLETE_THROUGH_2026-10-05_AT_THIS_CHECK`.
+- Decision completeness: `COMPLETE_THROUGH_2026-10-05_AT_THIS_CHECK`.
+- Current retained stage: `STAGE_H`.
+- 2026-10-06 new native stage: `NONE_OBSERVED / NOT_REQUIRED_BY_DAILY_CADENCE`.
+- Render/science/communication boundaries: `PRESERVED`.
+- Required correction-in-place: `NONE_IDENTIFIED`.
+- Required conflict record: `NONE_IDENTIFIED`.
+- New stage/render/scientific/reproduction credit: `NONE`.
+- A2 dependency: `MUST_MERGE_THIS_A1_THEN_FRESH_READ_CURRENT_MAIN`.
+
+```text
+OCTOBER_1_TO_5_FULL_COVERAGE
++ SCIENTIFIC_COMMUNICATION_BOUNDARIES_PRESERVED
++ STAGE_TRIGGERED_CADENCE_PRESERVED
++ N_DAY_NO_NEW_STAGE_NOT_MISSING
+= A1_COMPLETE_FOR_2026_10_06
+```
