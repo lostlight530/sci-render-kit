@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
 - **Stage registry / identity updated:** `2026-10-04`
-- **Current maintenance relation through:** `2026-10-06`
+- **Current maintenance relation through:** `2026-10-07`
 
 ## Boundary
 
@@ -2289,4 +2289,162 @@ OCTOBER_1_TO_6_FULL_COVERAGE
 + COMMUNICATION_VALIDITY_BOUNDARIES_PRESERVED
 + N_DAY_NO_NEW_STAGE_NOT_MISSING
 = A1_COMPLETE_FOR_2026_10_07
+```
+
+
+## A2 CURRENT MONTH RELATION — 2026-10-07 — SCI_RENDER
+
+- Repository: `lostlight530/sci-render-kit`
+- Plane: `A2 / CURRENT_MONTH_RELATIONAL_VERSION`
+- Logical maintenance date: `2026-10-07`
+- Exact A1-merged base main: `ad43d255179d4550d5f612c0ffabf67fbaab60c8`
+- Required predecessor A1: PR #101 / MERGED
+- Fresh-read after A1 merge: YES
+- Current relation window: `2026-10-01..2026-10-07`
+- Owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Native cadence: `STAGE_STATE_TRIGGERED`
+- Current retained producer stage: `STAGE_H`
+- Historical rewrite: NO
+- Stage replay: NO
+- Renderer/browser/compiler execution by maintenance: NOT_PERFORMED
+- New render/scientific credit: NONE
+
+### 1. A1 dependency consumption
+- A1 #101 is present on this exact base.
+- A1 supplies complete 10/1→10/6 coverage.
+- A2 fresh-reads current main before evaluating N-day relation.
+- Date-semantics correction remains current.
+- Communication/render evidence remains separate from scientific validity.
+- The Longitudinal Index remains the single owner.
+
+### 2. Header current-state update
+- Stage registry / identity date remains `2026-10-04`.
+- Current maintenance relation-through advances to `2026-10-07`.
+- The header records maintenance recency only.
+- Stage H identity is unchanged.
+- No Stage I is created by the header update.
+- Historical A1 blocks remain valid point-in-time evidence.
+
+### 3. Inherited 10/1→10/6 relation
+- Render success remains distinct from scientific validity.
+- Accessibility support remains distinct from certification.
+- Checksum remains distinct from independent reproduction.
+- Backend source remains distinct from runtime availability.
+- Temporal_as_of remains state reconciliation rather than heartbeat.
+- 10/5 routing maintenance remains retained.
+- 10/6 no-new-stage and no-promotion relation remains retained.
+
+### 4. 2026-10-07 producer-state read
+- No producer-native Stage I or later object is observed.
+- No new Stage Brief requiring advancement is observed.
+- No new Research Part set requiring advancement is observed.
+- No new Source/Object Register requiring advancement is observed.
+- No new Evidence Chart requiring advancement is observed.
+- No new Reconstruction requiring advancement is observed.
+- No new Stage Synthesis requiring advancement is observed.
+- No new Research Review requiring advancement is observed.
+- No new Stage Handoff requiring advancement is observed.
+- Current producer-stage delta is `NO_NEW_STAGE_OBJECT`.
+
+### 5. Cadence interpretation
+- The workload is stage/state-triggered.
+- `NO_NEW_STAGE_OBJECT` is not MISSING_WORK.
+- `NO_NEW_STAGE_OBJECT` is not SCHEDULER_FAILURE.
+- No synthetic Daily is created.
+- No Stage I placeholder is created.
+- No renderer execution is inferred.
+- No scientific-validity result is manufactured.
+
+### 6. Figure/evidence relation
+- Figure evidence remains tied to explicit recipe and provenance.
+- Render completion does not establish scientific correctness.
+- Claim binding is not entailment.
+- Uncertainty metadata is not statistical validation.
+- Publisher-target checks are not acceptance.
+- Accessibility support is not certification.
+- Checksum is not independent reproduction.
+- No 10/7 maintenance action changes these semantic layers.
+
+### 7. Runtime/backend relation
+- Backend source presence is not runtime availability.
+- Runtime availability is not semantic parity.
+- No renderer invocation is executed.
+- No browser execution is performed.
+- No compiler execution is performed.
+- No publisher conformance run is performed.
+- No accessibility audit is performed.
+- No independent reproduction is performed.
+
+### 8. Current relation matrix
+| Surface | A2 state | Boundary |
+| --- | --- | --- |
+| 10/1–10/4 | RETAINED | historical render/scientific relations |
+| 10/5 | RETAINED | routing maintenance |
+| 10/6 | RETAINED | no stage / no promotion |
+| 10/7 producer stage | NO_NEW_STAGE_OBJECT | not missing |
+| Stage H | CURRENT_RETAINED | no Stage I inference |
+| Figure/claim evidence | UNCHANGED | no entailment promotion |
+| Accessibility/publisher | UNCHANGED | no certification/acceptance |
+| Stage registry date | 2026-10-04 | identity date |
+| Maintenance relation-through | 2026-10-07 | current owner recency |
+
+### 9. Implementation / MANIFEST relation
+- Current implementation remains highest authority.
+- MANIFEST remains below implementation and above historical snapshots.
+- No implementation-versus-MANIFEST drift is identified in this relation pass.
+- No daily-heartbeat semantics are imposed on temporal metadata.
+- Header relation-through records maintenance recency, not producer cadence.
+- Full repository runtime/render checks remain NOT_PERFORMED.
+
+### 10. Evidence invariants
+- `RENDER_SUCCESS != SCIENTIFIC_VALIDITY`.
+- `CLAIM_BINDING != ENTAILMENT`.
+- `UNCERTAINTY_METADATA != STATISTICAL_VALIDATION`.
+- `PUBLISHER_PROFILE != ACCEPTANCE`.
+- `ACCESSIBILITY_SUPPORT != WCAG_CERTIFICATION`.
+- `CHECKSUM != INDEPENDENT_REPRODUCTION`.
+- `BACKEND_SOURCE_PRESENT != RUNTIME_AVAILABLE`.
+- `RUNTIME_AVAILABLE != SEMANTIC_PARITY`.
+- `STAGE_STATE_TRIGGERED != DAILY_CADENCE_REQUIREMENT`.
+- `NO_NEW_STAGE_OBJECT != MISSING_WORK`.
+- `STAGE_REGISTRY_IDENTITY_DATE != CURRENT_MAINTENANCE_RELATION_THROUGH_DATE`.
+- `A1_MAINTENANCE != A2_RELATIONAL_VERSION`.
+
+### 11. Validation checklist
+- A1 #101 merged before A2 branch: YES.
+- Fresh post-A1 main used: YES.
+- 10/1→10/6 relation retained: YES.
+- Header relation-through advanced to 10/7: YES.
+- Stage registry identity date rewritten: NO.
+- Stage I observed: NO.
+- Stage I fabricated: NO.
+- Missing Daily fabricated: NO.
+- Scheduler failure fabricated: NO.
+- Renderer/browser/compiler execution invented: NO.
+- Scientific validity invented: NO.
+- Claim entailment invented: NO.
+- Accessibility certification invented: NO.
+- Publisher acceptance invented: NO.
+- Independent reproduction invented: NO.
+- Natural-month final manufactured: NO.
+- Parallel owner created: NO.
+
+### 12. A2 disposition
+- Current October relation: `CURRENT_THROUGH_2026-10-07`.
+- Current retained stage: `STAGE_H`.
+- N-day producer delta: `NO_NEW_STAGE_OBJECT`.
+- Cadence interpretation: `VALID_STATE_TRIGGERED_NO_CHANGE`.
+- Stage registry identity date: `2026-10-04`.
+- Maintenance relation-through: `2026-10-07`.
+- Render/scientific boundaries: `PRESERVED`.
+- New stage/render/scientific/reproduction credit: `NONE`.
+- Next A1 must fresh-read this merged main.
+
+```text
+MERGED_A1
++ FRESH_MAIN_READ
++ NO_NEW_STAGE_OBJECT
++ RENDER_SCIENCE_BOUNDARIES_PRESERVED
++ HEADER_RELATION_THROUGH_2026_10_07
+= CURRENT_MONTH_RELATION_THROUGH_2026_10_07
 ```
