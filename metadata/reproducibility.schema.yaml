@@ -19,7 +19,7 @@ required:
 properties:
   profile:
     type: string
-    description: "manifest profile，例如 sci-render-kit/render-manifest@2"
+    description: "manifest profile，例如 sci-render-kit/render-manifest"
   generated_at:
     type: string
     format: date-time
@@ -91,7 +91,7 @@ x-local-reproducibility-levels:
   R3: "Reproduced: a separate rerun was actually performed and compared under a declared criterion."
 
 example:
-  profile: "sci-render-kit/render-manifest@2"
+  profile: "sci-render-kit/render-manifest"
   generated_at: "2026-08-24T00:00:00+00:00"
   generator: "sci-render-kit"
   recipe:
@@ -117,3 +117,4 @@ example:
     level: R1
     semantics: "Replay-addressable render evidence; no independent rerun claimed."
     independently_rerun: false
+
