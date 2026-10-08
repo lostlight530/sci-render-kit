@@ -20,7 +20,7 @@ import yaml
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from core.figure_evidence import PROFILE as FIGURE_EVIDENCE_PROFILE, build_figure_evidence
-from core.projection import PCAProjection, ProjectionQualityMetrics, TSNEProjection
+from core.projection import PCAProjection, ProjectionMetrics, TSNEProjection
 from core.uncertainty_legend import UncertaintyBound
 from sci_render import _rule_index, has_errors
 
@@ -34,7 +34,7 @@ class TestRepositoryContracts(unittest.TestCase):
             "metadata/recipe.schema.yaml",
             "metadata/reproducibility.schema.yaml",
             "quality/rules.yaml",
-            "RESEARCH_CONTRACT.md",
+            "docs/02-examples-and-contracts/RESEARCH_CONTRACT.md",
             "MANIFEST.yaml",
         ):
             self.assertTrue((ROOT / relative).is_file(), relative)
@@ -42,7 +42,7 @@ class TestRepositoryContracts(unittest.TestCase):
 
     def test_runtime_rule_catalog_is_severity_aware(self):
         catalog = yaml.safe_load((ROOT / "quality/rules.yaml").read_text(encoding="utf-8"))
-        self.assertEqual(catalog["profile"], "sci-render-kit/runtime-quality@1")
+        self.assertEqual(catalog["profile"], "sci-render-kit/runtime-quality")
         index = _rule_index(catalog)
         self.assertIn("text-alternative", index)
         self.assertEqual(index["text-alternative"]["severity"], "error")
@@ -65,7 +65,7 @@ class TestRepositoryContracts(unittest.TestCase):
 
     def test_render_manifest_schema_is_r1_not_r3_claim(self):
         schema = yaml.safe_load((ROOT / "metadata/reproducibility.schema.yaml").read_text(encoding="utf-8"))
-        self.assertEqual(schema["properties"]["profile"]["const"], "sci-render-kit/render-manifest@2")
+        self.assertEqual(schema["example"]["profile"], "sci-render-kit/render-manifest")
         rendered = json.dumps(schema, ensure_ascii=False)
         self.assertIn("R1", rendered)
         self.assertNotIn('"level": "R3"', rendered)
@@ -95,7 +95,7 @@ class TestFigureEvidence(unittest.TestCase):
             recipe.write_text("id: r\n", encoding="utf-8")
             profile.write_text("name: p\n", encoding="utf-8")
             output.write_bytes(b"figure")
-            manifest.write_text('{"profile":"sci-render-kit/render-manifest@2"}\n', encoding="utf-8")
+            manifest.write_text('{"profile":"sci-render-kit/render-manifest"}\n', encoding="utf-8")
 
             evidence = build_figure_evidence(
                 recipe={
@@ -111,18 +111,16 @@ class TestFigureEvidence(unittest.TestCase):
                 profile_path=str(profile),
                 backend="matplotlib",
                 output_path=str(output),
-                manifest_path=str(manifest),
-                provenance_path=None,
-                accessibility_path=None,
-                runtime_findings=[{"severity": "warning", "check_id": "example"}],
+                findings=[{"severity": "warning", "check_id": "example"}],
+                sidecars={"render-manifest": str(manifest)},
             )
 
             self.assertEqual(evidence["profile"], FIGURE_EVIDENCE_PROFILE)
-            self.assertEqual(FIGURE_EVIDENCE_PROFILE, "sci-render-kit/figure-evidence@1")
+            self.assertEqual(FIGURE_EVIDENCE_PROFILE, "sci-render-kit/figure-evidence")
             self.assertFalse(evidence["scientific_validity_claim"])
             self.assertEqual(evidence["reproducibility"]["level"], "R1")
             self.assertEqual(
-                evidence["research_context"]["evidence_envelope_ref"],
+                evidence["upstream_research"]["evidence_envelope"]["ref"],
                 "upstream.evidence.json",
             )
             self.assertEqual(evidence["uncertainty"]["kind"], "heuristic-bound")
@@ -132,12 +130,12 @@ class TestExperimentalHonesty(unittest.TestCase):
     def test_uncertainty_bound_does_not_default_to_confidence_interval(self):
         bound = UncertaintyBound(
             value=10.0,
-            lower_bound=8.0,
-            upper_bound=12.0,
+            lower=8.0,
+            upper=12.0,
             semantics="engineering tolerance supplied by caller",
         )
         self.assertEqual(bound.kind, "heuristic-bound")
-        self.assertEqual(bound.interval_width, 4.0)
+        self.assertEqual(bound.interval_width(), 4.0)
         self.assertEqual(bound.confidence_interval_width(), 4.0)
 
     def test_tsne_is_explicitly_not_implemented(self):
@@ -152,11 +150,11 @@ class TestExperimentalHonesty(unittest.TestCase):
         data = np.array([[0.0, 0.0, 0.0], [1.0, 1.0, 0.0], [2.0, 2.0, 0.1], [3.0, 3.0, 0.0]])
         projected = PCAProjection(n_components=2).fit_transform(data)
         self.assertEqual(projected.shape, (4, 2))
-        stress = ProjectionQualityMetrics.stress(data, projected)
+        stress = ProjectionMetrics.normalized_stress(data, projected)
         self.assertGreaterEqual(stress, 0.0)
         self.assertLessEqual(stress, 1.0)
-        trust = ProjectionQualityMetrics.trustworthiness(data, projected, k=1)
-        cont = ProjectionQualityMetrics.continuity(data, projected, k=1)
+        trust = ProjectionMetrics.trustworthiness(data, projected, k=1)
+        cont = ProjectionMetrics.continuity(data, projected, k=1)
         self.assertGreaterEqual(trust, 0.0)
         self.assertLessEqual(trust, 1.0)
         self.assertGreaterEqual(cont, 0.0)
@@ -165,3 +163,4 @@ class TestExperimentalHonesty(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
