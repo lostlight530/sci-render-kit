@@ -1,5 +1,5 @@
 title: "Render Manifest Schema"
-profile: sci-render-kit/render-manifest-schema@2
+profile: sci-render-kit/render-manifest-schema
 description: >
   每次后端渲染生成的工程元数据结构。Manifest 记录配方、数据、后端、输出与参数身份，
   用于 trace/replay 定位；其存在不等于独立复现（R3）或科学正确性。
