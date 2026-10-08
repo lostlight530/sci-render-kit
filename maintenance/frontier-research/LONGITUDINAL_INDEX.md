@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
 - **Stage registry / identity updated:** `2026-10-04`
-- **Current maintenance relation through:** `2026-10-07`
+- **Current maintenance relation through:** `2026-10-08`
 
 ## Boundary
 
@@ -2634,3 +2634,186 @@ INDEPENDENT_RUNTIME_OR_SCIENTIFIC_VERIFICATION
 - Confirm no producer/native or foreign PR inserted between A1 merge and A2 base recovery.
 - A2 may then consume the 2026-10-08 native layer together with this merged A1.
 - A2 must preserve the same source/runtime/history boundaries and must not duplicate prior credit.
+
+## A2 CURRENT-MONTH RELATION — 2026-10-08
+
+- Repository: `lostlight530/sci-render-kit`
+- Plane: `A2 / CURRENT_MONTH_RELATION`
+- Logical maintenance date: `2026-10-08`
+- Window: `2026-10-01..2026-10-08`
+- Fresh post-A1 base: `2382022038bb68bcfa61aa01d1bab1916ae36675`
+- A1 dependency: `PRESENT_AND_CONSUMED`
+- Stage registry identity: `2026-10-04`
+- Maintenance relation-through: `2026-10-08`
+- Historical rewrite: `NO`
+- New research credit: `NONE`
+- New runtime credit: `NONE`
+- Natural-month final: `NOT_DUE`
+
+### Freshness proof
+
+- A1 merged before this A2.
+- Base main was re-read after A1.
+- Open PR count at that cut was zero.
+- No pre-A1 base is reused.
+- Prior A1/A2 blocks remain history.
+
+### N-day current-state review
+
+- No new Stage I object was observed for 2026-10-08.
+- This is a state-triggered research system.
+- No new stage object is not missing work.
+- No new stage object is not scheduler failure.
+- No new stage object is not a failed daily producer run.
+- Relation-through advances because repository state was reviewed through N.
+- Stage identity stays at 2026-10-04.
+- No research object is fabricated.
+- No rendering runtime is claimed.
+- No independent-source credit is added.
+
+### Coverage matrix
+
+#### 2026-10-01
+- Relation source: merged A1.
+- Producer state: preserved.
+- Maintenance state: preserved.
+- Stage identity: unchanged.
+- Research credit: unchanged.
+- Runtime credit: unchanged.
+- Historical rewrite: no.
+- A2 action: inherit without replay.
+
+#### 2026-10-02
+- Relation source: merged A1.
+- Producer state: preserved.
+- Maintenance state: preserved.
+- Stage identity: unchanged.
+- Research credit: unchanged.
+- Runtime credit: unchanged.
+- Historical rewrite: no.
+- A2 action: inherit without replay.
+
+#### 2026-10-03
+- Relation source: merged A1.
+- Producer state: preserved.
+- Maintenance state: preserved.
+- Stage identity: unchanged.
+- Research credit: unchanged.
+- Runtime credit: unchanged.
+- Historical rewrite: no.
+- A2 action: inherit without replay.
+
+#### 2026-10-04
+- Relation source: merged A1.
+- Producer state: preserved.
+- Maintenance state: preserved.
+- Stage identity: unchanged.
+- Research credit: unchanged.
+- Runtime credit: unchanged.
+- Historical rewrite: no.
+- A2 action: inherit without replay.
+
+#### 2026-10-05
+- Relation source: merged A1.
+- Producer state: preserved.
+- Maintenance state: preserved.
+- Stage identity: unchanged.
+- Research credit: unchanged.
+- Runtime credit: unchanged.
+- Historical rewrite: no.
+- A2 action: inherit without replay.
+
+#### 2026-10-06
+- Relation source: merged A1.
+- Producer state: preserved.
+- Maintenance state: preserved.
+- Stage identity: unchanged.
+- Research credit: unchanged.
+- Runtime credit: unchanged.
+- Historical rewrite: no.
+- A2 action: inherit without replay.
+
+#### 2026-10-07
+- Relation source: merged A1.
+- Producer state: preserved.
+- Maintenance state: preserved.
+- Stage identity: unchanged.
+- Research credit: unchanged.
+- Runtime credit: unchanged.
+- Historical rewrite: no.
+- A2 action: inherit without replay.
+
+#### 2026-10-08
+- Relation source: fresh post-A1 main.
+- New stage object: `NO_NEW_STAGE_OBJECT_OBSERVED`.
+- Missing-work inference: `NO`.
+- Scheduler-failure inference: `NO`.
+- Stage identity change: `NO`.
+- Relation-through change: `YES / TO_2026-10-08`.
+- New research credit: `NONE`.
+- New runtime credit: `NONE`.
+
+### Boundary ledger
+
+- `NO_NEW_STAGE_OBJECT != MISSING_WORK`.
+- `NO_NEW_STAGE_OBJECT != SCHEDULER_FAILURE`.
+- `STAGE_IDENTITY_DATE != MAINTENANCE_RELATION_THROUGH_DATE`.
+- `INDEX_UPDATE != PRODUCER_EXECUTION`.
+- `RELATION_ADVANCE != NEW_RESEARCH_STAGE`.
+- `NO_RUNTIME_EXECUTION != RUNTIME_PASS`.
+- Unknown remains unknown.
+- Documentary state remains documentary state.
+- Maintenance remains governance-plane work.
+
+### Artifact disposition
+
+- Longitudinal index: update current recency.
+- Stage registry: preserve 2026-10-04 identity.
+- Prior A1: retain.
+- Prior A2: retain.
+- Producer stages: no synthetic addition.
+- Source credit: no synthetic addition.
+- Runtime credit: no synthetic addition.
+- Month closure: remain open.
+
+### Completeness check
+
+- A1 dependency consumed: yes.
+- N-day state reviewed: yes.
+- Window complete through 2026-10-08: yes.
+- Historical rewrite: no.
+- Duplicate research credit: no.
+- Duplicate runtime credit: no.
+- Stage fabrication: no.
+- Parallel owner: no.
+- Early month final: no.
+
+### A2 disposition
+
+- Current relation: `UPDATED_THROUGH_2026-10-08`.
+- A1 base: `FRESH_POST_A1_MAIN`.
+- Stage registry identity: `2026-10-04 / UNCHANGED`.
+- N-day stage state: `NO_NEW_STAGE_OBJECT_OBSERVED`.
+- Evidence upgrade: `NONE`.
+- Runtime upgrade: `NONE`.
+- Month status: `OPEN`.
+
+```text
+MERGED_A1
++
+FRESH_MAIN
++
+STATE_TRIGGERED_N_DAY_REVIEW
+=
+RELATION_THROUGH_2026_10_08
+
+RELATION_THROUGH_2026_10_08
+!=
+STAGE_IDENTITY_2026_10_08
+```
+
+### Handoff
+
+- Future producer work owns its own stage evidence.
+- Future maintenance must re-read current main.
+- Future correction must reconcile forward.
