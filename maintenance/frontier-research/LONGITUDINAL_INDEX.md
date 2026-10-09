@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
 - **Stage registry / identity updated:** `2026-10-04`
-- **Current maintenance relation through:** `2026-10-08`
+- **Current maintenance relation through:** `2026-10-09`
 
 ## Boundary
 
@@ -2979,3 +2979,133 @@ STAGE_IDENTITY_2026_10_08
 - Current-month 2026-10-09 relationship is reserved for post-A1 A2.
 - Fresh all-ten-main prerequisite applies after A1 merges.
 - Disposition: N-1 OWNER_RELATION_REVIEW / STATE_TRIGGERED_BOUNDARY_PRESERVED.
+
+
+## A2 CURRENT-MONTH RELATION — 2026-10-09
+
+- October relation now 2026-10-01..2026-10-09 from exact post-A1 merged main.
+- Current A1 historical coverage 10/01..10/08 was consumed as merged prerequisite.
+- Canonical owner stays maintenance/frontier-research/LONGITUDINAL_INDEX.md.
+- Stage registry identity remains 2026-10-04, no Stage I producer object.
+- Current maintenance relation-through may advance to 2026-10-09 without research Stage creation.
+- Sci-render schema identity repair #106 is an engineering contract fix, not a research stage.
+- Rendering success and scientific validity must remain distinct.
+- No new browser/publisher/accessibility/conformance runtime test performed in maintenance.
+- Month status OPEN / natural-month final NOT_DUE.
+
+### Eight inherited checkpoint interpretations
+
+#### 2026-10-01 historical checkpoint 2026-10-01: NO_EXPLICIT_DATE_SPECIFIC_A1_A2_HEADING_IN_CURRENT_OWNER
+- Recorded owner detail 1: Owner evidence 1: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented
+- Recorded owner detail 2: Owner evidence 2: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented
+- Recorded owner detail 3: Owner evidence 3: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented
+- Research identity 2026-10-01: quarterly Stage A-H registry remains the owner of underlying stage evidence.
+- Timing 2026-10-01: relation recency cannot be mistaken for a new stage object date.
+- Source 2026-10-01: restating one source is not independent corroboration.
+- Trigger 2026-10-01: state-triggered no-change does not create daily missing-work status.
+- Renderer 2026-10-01: no newly executed browser, scientific validation or WCAG certification.
+- Historical correction 2026-10-01: preserve prior partial/unknown states and revisions.
+- Disposition 2026-10-01: inherit earlier A1 audit without modifying producer artifacts.
+
+#### 2026-10-02 historical checkpoint 2026-10-02: A1_FULL_COVERAGE_2026-10-02
+- Recorded owner detail 1: Owner evidence 1: Coverage window: 2026-10-01
+- Recorded owner detail 2: Owner evidence 2: Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE
+- Recorded owner detail 3: Owner evidence 3: A1 rule: REVIEWED != MODIFIED
+- Research identity 2026-10-02: quarterly Stage A-H registry remains the owner of underlying stage evidence.
+- Timing 2026-10-02: relation recency cannot be mistaken for a new stage object date.
+- Source 2026-10-02: restating one source is not independent corroboration.
+- Trigger 2026-10-02: state-triggered no-change does not create daily missing-work status.
+- Renderer 2026-10-02: no newly executed browser, scientific validation or WCAG certification.
+- Historical correction 2026-10-02: preserve prior partial/unknown states and revisions.
+- Disposition 2026-10-02: inherit earlier A1 audit without modifying producer artifacts.
+
+#### 2026-10-03 historical checkpoint 2026-10-03: A1_SUCCESSOR_FULL_COVERAGE_2026-10-03
+- Recorded owner detail 1: Owner evidence 1: Coverage window: 2026-10-01 through 2026-10-02
+- Recorded owner detail 2: Owner evidence 2: Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE
+- Recorded owner detail 3: Owner evidence 3: Predecessor 2026-10-03 A1/A2 D30 reconciliation: PRESERVED_AS_POINT_IN_TIME_HISTORY
+- Research identity 2026-10-03: quarterly Stage A-H registry remains the owner of underlying stage evidence.
+- Timing 2026-10-03: relation recency cannot be mistaken for a new stage object date.
+- Source 2026-10-03: restating one source is not independent corroboration.
+- Trigger 2026-10-03: state-triggered no-change does not create daily missing-work status.
+- Renderer 2026-10-03: no newly executed browser, scientific validation or WCAG certification.
+- Historical correction 2026-10-03: preserve prior partial/unknown states and revisions.
+- Disposition 2026-10-03: inherit earlier A1 audit without modifying producer artifacts.
+
+#### 2026-10-04 historical checkpoint 2026-10-04: A2 CURRENT MONTH RELATION — 2026-10-04
+- Recorded owner detail 1: Owner evidence 1: Required predecessor A1: PR #91 / MERGED
+- Recorded owner detail 2: Owner evidence 2: Fresh-read after A1 merge: YES
+- Recorded owner detail 3: Owner evidence 3: Current relation window: 2026-10-01..2026-10-04
+- Research identity 2026-10-04: quarterly Stage A-H registry remains the owner of underlying stage evidence.
+- Timing 2026-10-04: relation recency cannot be mistaken for a new stage object date.
+- Source 2026-10-04: restating one source is not independent corroboration.
+- Trigger 2026-10-04: state-triggered no-change does not create daily missing-work status.
+- Renderer 2026-10-04: no newly executed browser, scientific validation or WCAG certification.
+- Historical correction 2026-10-04: preserve prior partial/unknown states and revisions.
+- Disposition 2026-10-04: inherit earlier A1 audit without modifying producer artifacts.
+
+#### 2026-10-05 historical checkpoint 2026-10-05: A2 CURRENT MONTH RELATION — 2026-10-05 — SCI_RENDER
+- Recorded owner detail 1: Owner evidence 1: Required predecessor A1: PR #96 / MERGED
+- Recorded owner detail 2: Owner evidence 2: Fresh-read after A1 merge: YES
+- Recorded owner detail 3: Owner evidence 3: Current relation window: `2026-10-01..2026-10-05`
+- Research identity 2026-10-05: quarterly Stage A-H registry remains the owner of underlying stage evidence.
+- Timing 2026-10-05: relation recency cannot be mistaken for a new stage object date.
+- Source 2026-10-05: restating one source is not independent corroboration.
+- Trigger 2026-10-05: state-triggered no-change does not create daily missing-work status.
+- Renderer 2026-10-05: no newly executed browser, scientific validation or WCAG certification.
+- Historical correction 2026-10-05: preserve prior partial/unknown states and revisions.
+- Disposition 2026-10-05: inherit earlier A1 audit without modifying producer artifacts.
+
+#### 2026-10-06 historical checkpoint 2026-10-06: A2 CURRENT MONTH RELATION — 2026-10-06 — SCI_RENDER
+- Recorded owner detail 1: Owner evidence 1: Required predecessor A1: PR #98 / MERGED
+- Recorded owner detail 2: Owner evidence 2: Fresh-read after A1 merge: YES
+- Recorded owner detail 3: Owner evidence 3: Current month relation window: `2026-10-01..2026-10-06`
+- Research identity 2026-10-06: quarterly Stage A-H registry remains the owner of underlying stage evidence.
+- Timing 2026-10-06: relation recency cannot be mistaken for a new stage object date.
+- Source 2026-10-06: restating one source is not independent corroboration.
+- Trigger 2026-10-06: state-triggered no-change does not create daily missing-work status.
+- Renderer 2026-10-06: no newly executed browser, scientific validation or WCAG certification.
+- Historical correction 2026-10-06: preserve prior partial/unknown states and revisions.
+- Disposition 2026-10-06: inherit earlier A1 audit without modifying producer artifacts.
+
+#### 2026-10-07 historical checkpoint 2026-10-07: A2 CURRENT MONTH RELATION — 2026-10-07 — SCI_RENDER
+- Recorded owner detail 1: Owner evidence 1: Required predecessor A1: PR #101 / MERGED
+- Recorded owner detail 2: Owner evidence 2: Fresh-read after A1 merge: YES
+- Recorded owner detail 3: Owner evidence 3: Current relation window: `2026-10-01..2026-10-07`
+- Research identity 2026-10-07: quarterly Stage A-H registry remains the owner of underlying stage evidence.
+- Timing 2026-10-07: relation recency cannot be mistaken for a new stage object date.
+- Source 2026-10-07: restating one source is not independent corroboration.
+- Trigger 2026-10-07: state-triggered no-change does not create daily missing-work status.
+- Renderer 2026-10-07: no newly executed browser, scientific validation or WCAG certification.
+- Historical correction 2026-10-07: preserve prior partial/unknown states and revisions.
+- Disposition 2026-10-07: inherit earlier A1 audit without modifying producer artifacts.
+
+#### 2026-10-08 historical checkpoint 2026-10-08: A2 CURRENT-MONTH RELATION — 2026-10-08
+- Recorded owner detail 1: Owner evidence 1: Window: `2026-10-01..2026-10-08`
+- Recorded owner detail 2: Owner evidence 2: Fresh post-A1 base: `2382022038bb68bcfa61aa01d1bab1916ae36675`
+- Recorded owner detail 3: Owner evidence 3: A1 dependency: `PRESENT_AND_CONSUMED`
+- Research identity 2026-10-08: quarterly Stage A-H registry remains the owner of underlying stage evidence.
+- Timing 2026-10-08: relation recency cannot be mistaken for a new stage object date.
+- Source 2026-10-08: restating one source is not independent corroboration.
+- Trigger 2026-10-08: state-triggered no-change does not create daily missing-work status.
+- Renderer 2026-10-08: no newly executed browser, scientific validation or WCAG certification.
+- Historical correction 2026-10-08: preserve prior partial/unknown states and revisions.
+- Disposition 2026-10-08: inherit earlier A1 audit without modifying producer artifacts.
+
+### N-day 2026-10-09 stage and schema observations
+
+- Stage A-H current owner retains exact original period windows.
+- New Stage I status remains NO_NEW_STAGE_OBJECT_OBSERVED.
+- Missing stage object does not imply research omission or scheduler failure.
+- N-day main includes #106 schema identifier current-profile reconciliation.
+- #106 tests are regression checks at the schema/metadata contract, not rendered figure output.
+- Existing schema profile names do not establish upstream runtime semantic correctness.
+- No actual new research synthesis, stage handoff, or experimental figure published by A2.
+- Registered Stage identity-date 2026-10-04 stays unchanged.
+- Relation-through header 2026-10-09 is navigation freshness only.
+- Sci-render artifact reproducibility metadata does not prove external scientific replicability.
+- Documenting accessibility does not certify conformance with WCAG.
+- No Stage source independence, benchmark or runtime validation promoted.
+- Existing dated failures and corrections remain preserved.
+- Canonical owner updated with no parallel Stage registry or monthly owner.
+- Month OPEN, natural-month final NOT_DUE.
+- Disposition: UPDATED_THROUGH_2026_10_09_WITH_STAGE_IDENTITY_PRESERVED.
