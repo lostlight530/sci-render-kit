@@ -87,7 +87,7 @@ class TestRepositoryContracts(unittest.TestCase):
             description = research_refs[field]["description"]
             self.assertIn(upstream_profile, description)
             self.assertNotRegex(
-                description, r"epistemic-pipeline/[A-Za-z0-9._/-]+(?:@\\d+|/v\\d+)\\b"
+                description, r"epistemic-pipeline/[A-Za-z0-9._/-]+(?:@\d+|/v\d+)\b"
             )
 
     def test_profiles_expose_evidence_state(self):
