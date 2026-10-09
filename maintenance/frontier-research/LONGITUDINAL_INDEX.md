@@ -2817,3 +2817,165 @@ STAGE_IDENTITY_2026_10_08
 - Future producer work owns its own stage evidence.
 - Future maintenance must re-read current main.
 - Future correction must reconcile forward.
+
+
+## A1 FULL-COVERAGE MAINTENANCE — 2026-10-09
+
+- System: SCI_RENDER; existing current owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`.
+- Window: 2026-10-01..2026-10-08; 2026-10-09 excluded.
+- Review basis: actual month owner state/dated historical maintenance entries.
+- Stage A-H retained; last stage-registry identity 2026-10-04.
+- Relation-through before this pass: 2026-10-08.
+- Stage I research credit: none newly created by owner review.
+- Month state: OPEN, natural-month final NOT_DUE.
+- No producer-stage/checker/runtime replay performed.
+- Missing dated maintenance subheading is not evidence of missing state-triggered work.
+
+### Date-scoped owner-ledger reconciliation
+
+#### 2026-10-01: NO_EXPLICIT_DATE_SPECIFIC_A1_A2_HEADING_IN_CURRENT_OWNER
+- Owner evidence 1: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented
+- Owner evidence 2: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented
+- Owner evidence 3: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented
+- Owner evidence 4: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented
+- Owner evidence 5: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented
+- Owner evidence 6: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented
+- Owner evidence 7: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented
+- Stage gate: 2026-10-01 relation updates have no authority to increment the registered Stage A-H identity.
+- Scheduler gate: 2026-10-01 lack of new Stage object cannot be labeled scheduler malfunction.
+- Research gate: no 2026-10-01 retroactively invented Stage I synthesis, review, or handoff.
+- Historical gate: never backdate present-day owner pointers to earlier execution timestamps.
+- Dependency gate: an owner relation must not become independent source lineage.
+- Test gate: maintenance did not execute 2026-10-01 checker, benchmarks, or runtime.
+- Disposition: 2026-10-01 RETAIN_WITH_STATE_TRIGGERED_BOUNDARIES / NO_RESEARCH_CREDIT.
+
+#### 2026-10-02: A1_FULL_COVERAGE_2026-10-02
+- Owner evidence 1: Coverage window: 2026-10-01
+- Owner evidence 2: Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE
+- Owner evidence 3: A1 rule: REVIEWED != MODIFIED
+- Owner evidence 4: Pipeline cadence: STAGE_STATE_TRIGGERED
+- Owner evidence 5: Extra renderer/browser/scientific-validation execution: NOT_PERFORMED
+- Owner evidence 6: Historical rewrite: NO
+- Owner evidence 7: Coverage completeness: COMPLETE_FOR_2026-10-01
+- Stage gate: 2026-10-02 relation updates have no authority to increment the registered Stage A-H identity.
+- Scheduler gate: 2026-10-02 lack of new Stage object cannot be labeled scheduler malfunction.
+- Research gate: no 2026-10-02 retroactively invented Stage I synthesis, review, or handoff.
+- Historical gate: never backdate present-day owner pointers to earlier execution timestamps.
+- Dependency gate: an owner relation must not become independent source lineage.
+- Test gate: maintenance did not execute 2026-10-02 checker, benchmarks, or runtime.
+- Disposition: 2026-10-02 RETAIN_WITH_STATE_TRIGGERED_BOUNDARIES / NO_RESEARCH_CREDIT.
+
+#### 2026-10-03: A1_SUCCESSOR_FULL_COVERAGE_2026-10-03
+- Owner evidence 1: Coverage window: 2026-10-01 through 2026-10-02
+- Owner evidence 2: Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE
+- Owner evidence 3: Predecessor 2026-10-03 A1/A2 D30 reconciliation: PRESERVED_AS_POINT_IN_TIME_HISTORY
+- Owner evidence 4: Current-main movement after that reconciliation before this successor: NONE OBSERVED
+- Owner evidence 5: Stage cadence: STAGE_STATE_TRIGGERED
+- Owner evidence 6: Successor review result: REVIEWED / NO_FOLLOW_UP
+- Owner evidence 7: Historical rewrite: NO
+- Stage gate: 2026-10-03 relation updates have no authority to increment the registered Stage A-H identity.
+- Scheduler gate: 2026-10-03 lack of new Stage object cannot be labeled scheduler malfunction.
+- Research gate: no 2026-10-03 retroactively invented Stage I synthesis, review, or handoff.
+- Historical gate: never backdate present-day owner pointers to earlier execution timestamps.
+- Dependency gate: an owner relation must not become independent source lineage.
+- Test gate: maintenance did not execute 2026-10-03 checker, benchmarks, or runtime.
+- Disposition: 2026-10-03 RETAIN_WITH_STATE_TRIGGERED_BOUNDARIES / NO_RESEARCH_CREDIT.
+
+#### 2026-10-04: A2 CURRENT MONTH RELATION — 2026-10-04
+- Owner evidence 1: Required predecessor A1: PR #91 / MERGED
+- Owner evidence 2: Fresh-read after A1 merge: YES
+- Owner evidence 3: Current relation window: 2026-10-01..2026-10-04
+- Owner evidence 4: Native cadence: STAGE_STATE_TRIGGERED
+- Owner evidence 5: Historical rewrite: NO
+- Owner evidence 6: Producer replay: NO
+- Owner evidence 7: Renderer/browser/compiler execution: NOT_PERFORMED
+- Stage gate: 2026-10-04 relation updates have no authority to increment the registered Stage A-H identity.
+- Scheduler gate: 2026-10-04 lack of new Stage object cannot be labeled scheduler malfunction.
+- Research gate: no 2026-10-04 retroactively invented Stage I synthesis, review, or handoff.
+- Historical gate: never backdate present-day owner pointers to earlier execution timestamps.
+- Dependency gate: an owner relation must not become independent source lineage.
+- Test gate: maintenance did not execute 2026-10-04 checker, benchmarks, or runtime.
+- Disposition: 2026-10-04 RETAIN_WITH_STATE_TRIGGERED_BOUNDARIES / NO_RESEARCH_CREDIT.
+
+#### 2026-10-05: A2 CURRENT MONTH RELATION — 2026-10-05 — SCI_RENDER
+- Owner evidence 1: Required predecessor A1: PR #96 / MERGED
+- Owner evidence 2: Fresh-read after A1 merge: YES
+- Owner evidence 3: Current relation window: `2026-10-01..2026-10-05`
+- Owner evidence 4: Native cadence: `STAGE_STATE_TRIGGERED`
+- Owner evidence 5: Historical rewrite: NO
+- Owner evidence 6: Stage replay: NO
+- Owner evidence 7: Renderer/browser/compiler execution by maintenance: NOT_PERFORMED
+- Stage gate: 2026-10-05 relation updates have no authority to increment the registered Stage A-H identity.
+- Scheduler gate: 2026-10-05 lack of new Stage object cannot be labeled scheduler malfunction.
+- Research gate: no 2026-10-05 retroactively invented Stage I synthesis, review, or handoff.
+- Historical gate: never backdate present-day owner pointers to earlier execution timestamps.
+- Dependency gate: an owner relation must not become independent source lineage.
+- Test gate: maintenance did not execute 2026-10-05 checker, benchmarks, or runtime.
+- Disposition: 2026-10-05 RETAIN_WITH_STATE_TRIGGERED_BOUNDARIES / NO_RESEARCH_CREDIT.
+
+#### 2026-10-06: A2 CURRENT MONTH RELATION — 2026-10-06 — SCI_RENDER
+- Owner evidence 1: Required predecessor A1: PR #98 / MERGED
+- Owner evidence 2: Fresh-read after A1 merge: YES
+- Owner evidence 3: Current month relation window: `2026-10-01..2026-10-06`
+- Owner evidence 4: Native cadence: `STAGE_STATE_TRIGGERED`
+- Owner evidence 5: Current retained producer stage: `STAGE_H`
+- Owner evidence 6: Historical rewrite: NO
+- Owner evidence 7: Stage replay: NO
+- Stage gate: 2026-10-06 relation updates have no authority to increment the registered Stage A-H identity.
+- Scheduler gate: 2026-10-06 lack of new Stage object cannot be labeled scheduler malfunction.
+- Research gate: no 2026-10-06 retroactively invented Stage I synthesis, review, or handoff.
+- Historical gate: never backdate present-day owner pointers to earlier execution timestamps.
+- Dependency gate: an owner relation must not become independent source lineage.
+- Test gate: maintenance did not execute 2026-10-06 checker, benchmarks, or runtime.
+- Disposition: 2026-10-06 RETAIN_WITH_STATE_TRIGGERED_BOUNDARIES / NO_RESEARCH_CREDIT.
+
+#### 2026-10-07: A2 CURRENT MONTH RELATION — 2026-10-07 — SCI_RENDER
+- Owner evidence 1: Required predecessor A1: PR #101 / MERGED
+- Owner evidence 2: Fresh-read after A1 merge: YES
+- Owner evidence 3: Current relation window: `2026-10-01..2026-10-07`
+- Owner evidence 4: Native cadence: `STAGE_STATE_TRIGGERED`
+- Owner evidence 5: Current retained producer stage: `STAGE_H`
+- Owner evidence 6: Historical rewrite: NO
+- Owner evidence 7: Stage replay: NO
+- Stage gate: 2026-10-07 relation updates have no authority to increment the registered Stage A-H identity.
+- Scheduler gate: 2026-10-07 lack of new Stage object cannot be labeled scheduler malfunction.
+- Research gate: no 2026-10-07 retroactively invented Stage I synthesis, review, or handoff.
+- Historical gate: never backdate present-day owner pointers to earlier execution timestamps.
+- Dependency gate: an owner relation must not become independent source lineage.
+- Test gate: maintenance did not execute 2026-10-07 checker, benchmarks, or runtime.
+- Disposition: 2026-10-07 RETAIN_WITH_STATE_TRIGGERED_BOUNDARIES / NO_RESEARCH_CREDIT.
+
+#### 2026-10-08: A2 CURRENT-MONTH RELATION — 2026-10-08
+- Owner evidence 1: Window: `2026-10-01..2026-10-08`
+- Owner evidence 2: Fresh post-A1 base: `2382022038bb68bcfa61aa01d1bab1916ae36675`
+- Owner evidence 3: A1 dependency: `PRESENT_AND_CONSUMED`
+- Owner evidence 4: Stage registry identity: `2026-10-04`
+- Owner evidence 5: Maintenance relation-through: `2026-10-08`
+- Owner evidence 6: Historical rewrite: `NO`
+- Owner evidence 7: New research credit: `NONE`
+- Stage gate: 2026-10-08 relation updates have no authority to increment the registered Stage A-H identity.
+- Scheduler gate: 2026-10-08 lack of new Stage object cannot be labeled scheduler malfunction.
+- Research gate: no 2026-10-08 retroactively invented Stage I synthesis, review, or handoff.
+- Historical gate: never backdate present-day owner pointers to earlier execution timestamps.
+- Dependency gate: an owner relation must not become independent source lineage.
+- Test gate: maintenance did not execute 2026-10-08 checker, benchmarks, or runtime.
+- Disposition: 2026-10-08 RETAIN_WITH_STATE_TRIGGERED_BOUNDARIES / NO_RESEARCH_CREDIT.
+
+### Cross-date state-trigger decisions
+
+- STAGE_REGISTRY_UPDATED_2026_10_04 != LAST_MAINTENANCE_RELATION_2026_10_08.
+- NO_NEW_STAGE_OBJECT_OBSERVED != MISSING_WORK.
+- NO_NEW_STAGE_OBJECT_OBSERVED != SCHEDULER_FAILURE.
+- MAINTENANCE_INDEX_EDIT != PRODUCER_STAGE_EXECUTION.
+- Stage A-H historical quarters are not October daily execution windows.
+- Current index is a routing surface rather than a new research synthesis.
+- No historical source, stage, correction, or producer artifact was edited.
+- No claim of scientific validation, local provider execution, or model conformance.
+- Absence of one dated owner checkpoint is explicitly NOT_ASSUMED_INCIDENCE.
+- Unknown network/readiness state cannot be converted to success or failure.
+- Existing Stage I availability through N-1 reviewed at owner level only.
+- Same-source repetition in owner sections is not independent corroboration.
+- Historical A1 and A2 review cuts remain individually reproducible.
+- Current-month 2026-10-09 relationship is reserved for post-A1 A2.
+- Fresh all-ten-main prerequisite applies after A1 merges.
+- Disposition: N-1 OWNER_RELATION_REVIEW / STATE_TRIGGERED_BOUNDARY_PRESERVED.
