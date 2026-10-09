@@ -70,6 +70,26 @@ class TestRepositoryContracts(unittest.TestCase):
         self.assertIn("R1", rendered)
         self.assertNotIn('"level": "R3"', rendered)
 
+    def test_machine_schema_profile_identifiers_are_stable(self):
+        render_schema = yaml.safe_load(
+            (ROOT / "metadata/reproducibility.schema.yaml").read_text(encoding="utf-8")
+        )
+        self.assertEqual(render_schema["profile"], "sci-render-kit/render-manifest-schema")
+
+        recipe_schema = yaml.safe_load(
+            (ROOT / "metadata/recipe.schema.yaml").read_text(encoding="utf-8")
+        )
+        research_refs = recipe_schema["properties"]["research_context"]["properties"]
+        for field, upstream_profile in (
+            ("evidence_envelope_ref", "epistemic-pipeline/evidence-envelope"),
+            ("claim_audit_ref", "epistemic-pipeline/claim-verification"),
+        ):
+            description = research_refs[field]["description"]
+            self.assertIn(upstream_profile, description)
+            self.assertNotRegex(
+                description, r"epistemic-pipeline/[A-Za-z0-9._/-]+(?:@\\d+|/v\\d+)\\b"
+            )
+
     def test_profiles_expose_evidence_state(self):
         expected = {
             "nature": "publisher_guidance_reverified",
