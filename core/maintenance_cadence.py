@@ -207,7 +207,7 @@ def _history_inventory(root: Path, patterns: Iterable[str], findings: list[dict[
                     "severity": "error",
                     "kind": "maintenance-history-match-outside-repository",
                     "pattern": pattern,
-                    "path": path.as_posix(),
+                    "path": path.relative_to(root).as_posix(),
                 })
                 continue
             found.add(path.relative_to(root).as_posix())
