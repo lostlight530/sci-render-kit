@@ -3626,3 +3626,194 @@ STAGE_IDENTITY_2026_10_08
 - Merge prerequisite for A2: YES
 - A2 may advance relation-through only after fresh-read merged main
 - A1 status: READY_FOR_MAINTAINER_REVIEW
+
+## A2 CURRENT-MONTH RELATION — 2026-10-11
+- Repository: `lostlight530/sci-render-kit`
+- Domain: Sci Render Frontier Research
+- Exact owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Logical N: 2026-10-11 Asia/Shanghai
+- Relation window: 2026-10-01..2026-10-11
+- Fresh post-A1 base: `9f6f6054d7c7ca5f8f10765dbcda5f1881c3106d`
+- Required predecessor A1: #114 / MERGED / CONSUMED
+- Open PR state at A2 branch cut: 0 observed
+- Producer role: HUMAN_AUTHORIZED_GOVERNANCE_RELATION
+- Historical rewrite: NO
+- Renderer/browser/compiler execution by A2: NOT_PERFORMED
+- External research by A2: NOT_PERFORMED
+- New independent-source credit by A2: NONE
+- Month relation: OPEN
+- Natural-month final: NOT_DUE
+
+### Dependency and relation contract
+- A2 starts only from post-A1 current main
+- A1 supplies MonthStart→N-1 full coverage and is consumed rather than duplicated
+- N-day relation may advance without a new producer stage under state-triggered cadence
+- Absence of a stage object is not converted to scheduler or producer failure
+- Rendering/scientific validity layers remain separate
+- Engineering fixes stay engineering evidence unless independently tested on rendering surfaces
+- Only the canonical LONGITUDINAL_INDEX owner is updated
+- No synthetic Stage I or rendering result is created
+- Future correction appends a new timepoint
+
+#### 2026-10-01 inherited A1 render relation
+- A1 coverage source: merged predecessor #114
+- Historical owner checkpoint: CONSUMED
+- Historical stage/render evidence status: PRESERVED
+- Rendering/scientific-validity distinction: PRESERVED
+- Renderer/browser/compiler re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-02 inherited A1 render relation
+- A1 coverage source: merged predecessor #114
+- Historical owner checkpoint: CONSUMED
+- Historical stage/render evidence status: PRESERVED
+- Rendering/scientific-validity distinction: PRESERVED
+- Renderer/browser/compiler re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-03 inherited A1 render relation
+- A1 coverage source: merged predecessor #114
+- Historical owner checkpoint: CONSUMED
+- Historical stage/render evidence status: PRESERVED
+- Rendering/scientific-validity distinction: PRESERVED
+- Renderer/browser/compiler re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-04 inherited A1 render relation
+- A1 coverage source: merged predecessor #114
+- Historical owner checkpoint: CONSUMED
+- Historical stage/render evidence status: PRESERVED
+- Rendering/scientific-validity distinction: PRESERVED
+- Renderer/browser/compiler re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-05 inherited A1 render relation
+- A1 coverage source: merged predecessor #114
+- Historical owner checkpoint: CONSUMED
+- Historical stage/render evidence status: PRESERVED
+- Rendering/scientific-validity distinction: PRESERVED
+- Renderer/browser/compiler re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-06 inherited A1 render relation
+- A1 coverage source: merged predecessor #114
+- Historical owner checkpoint: CONSUMED
+- Historical stage/render evidence status: PRESERVED
+- Rendering/scientific-validity distinction: PRESERVED
+- Renderer/browser/compiler re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-07 inherited A1 render relation
+- A1 coverage source: merged predecessor #114
+- Historical owner checkpoint: CONSUMED
+- Historical stage/render evidence status: PRESERVED
+- Rendering/scientific-validity distinction: PRESERVED
+- Renderer/browser/compiler re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-08 inherited A1 render relation
+- A1 coverage source: merged predecessor #114
+- Historical owner checkpoint: CONSUMED
+- Historical stage/render evidence status: PRESERVED
+- Rendering/scientific-validity distinction: PRESERVED
+- Renderer/browser/compiler re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-09 inherited A1 render relation
+- A1 coverage source: merged predecessor #114
+- Historical owner checkpoint: CONSUMED
+- Historical stage/render evidence status: PRESERVED
+- Rendering/scientific-validity distinction: PRESERVED
+- Renderer/browser/compiler re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-10 inherited A1 render relation
+- A1 coverage source: merged predecessor #114
+- Historical owner checkpoint: CONSUMED
+- Historical stage/render evidence status: PRESERVED
+- Rendering/scientific-validity distinction: PRESERVED
+- Renderer/browser/compiler re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+### 2026-10-11 current-main integration
+- Current fact 01: A1 #114 is merged and supplies complete 2026-10-01..2026-10-10 coverage on the canonical LONGITUDINAL_INDEX owner
+- Current fact 02: Fresh post-A1 current main shows no new native Stage I producer artifact at the A2 branch cut
+- Current fact 03: Current retained producer-stage identity remains Stage H / 2026-10-04
+- Current fact 04: Relation-through advances to 2026-10-11 as governance recency rather than a rendering research event
+- Current fact 05: No-new-stage state is not classified as missing work or scheduler failure under state-triggered cadence
+- Current fact 06: The leaf-file confinement repair remains engineering evidence and does not establish rendered output, browser output, publisher output, accessibility, or scientific validity
+- Current fact 07: Schema/profile/regression evidence remains separate from actual renderer/compiler/browser execution
+- Current fact 08: No renderer, browser, compiler, publisher, or accessibility run is executed by this A2 relation update
+- Current fact 09: No independent source or scientific execution window is created from maintenance recency
+- Current fact 10: October relation remains OPEN and natural-month final is NOT_DUE
+- Current-day stage decision: NO_NEW_STAGE_OBJECT
+- Current-day relation decision: ADVANCE_RELATION_THROUGH_2026_10_11
+- Rendering result created by A2: NO
+- Stage registry identity changed: NO
+- Scientific-validity claim added: NO
+
+### Evidence boundaries rechecked
+- Boundary 01: rendering success != scientific validity
+- Boundary 02: schema test != rendered output
+- Boundary 03: metadata contract != browser result
+- Boundary 04: browser result != scientific interpretation
+- Boundary 05: Stage H identity != 10/11 relation-through
+- Boundary 06: NO_NEW_STAGE_OBJECT != scheduler failure
+- Boundary 07: state-triggered cadence != daily cadence
+- Boundary 08: relation-through != producer-stage date
+- Boundary 09: engineering repair != research-stage execution
+- Boundary 10: leaf confinement != publisher conformance
+- Boundary 11: profile name != runtime semantics
+- Boundary 12: same owner repetition != independent evidence
+- Boundary 13: historical Stage H != inferred Stage I
+- Boundary 14: D30 audit != new research stage
+- Boundary 15: Open Research routing != renderer execution
+- Boundary 16: maintenance A1 != A2 relation
+- Boundary 17: maintenance A2 != browser/compiler run
+- Boundary 18: current path != earlier runtime proof
+- Boundary 19: month OPEN != natural-month final
+- Boundary 20: correction remains forward and non-destructive
+
+### A2 relation summary
+- Relation-through: 2026-10-11
+- A1 prerequisite: SATISFIED
+- Retained producer stage: Stage H / 2026-10-04
+- New Stage I observed: NO
+- Renderer/browser/compiler execution: NONE
+- New independent-source credit: NONE
+- Historical stage artifacts rewritten: 0
+- Engineering evidence promoted to scientific validity: 0
+- Natural-month final formed: NO
+- Current owner status: RELATION_THROUGH_2026_10_11 / STAGE_IDENTITY_2026_10_04 / NO_STAGE_I
+- Future A1 must fresh-read this merged main
+- A2 status: READY_FOR_MAINTAINER_REVIEW
