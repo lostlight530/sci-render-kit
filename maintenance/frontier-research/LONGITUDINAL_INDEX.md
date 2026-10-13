@@ -4170,3 +4170,191 @@ STAGE_IDENTITY_2026_10_08
 - Relation-through advanced to: 2026-10-12.
 - Stage identity retained: STAGE_H / 2026-10-04.
 - Status: A2_RELATION_COMPLETE / MONTH_OPEN / STAGE_HISTORY_PRESERVED
+
+## A1 FULL OCTOBER MAINTENANCE — 2026-10-13
+- Repository: lostlight530/sci-render-kit
+- Domain: Sci Render / Stage-state Research
+- Canonical owner: maintenance/frontier-research/LONGITUDINAL_INDEX.md
+- Logical date: 2026-10-13 Asia/Shanghai
+- Coverage window: 2026-10-01..2026-10-12
+- Cutoff: N-1 = 2026-10-12
+- Exact current-main base: f650b583801c9e5809cdf70ee3f67c0e6a181219
+- Producer / external rerun: NOT_PERFORMED
+- Historical rewrite: NO
+- Month state: OPEN
+- Natural-month final: NOT_DUE
+- 2026-10-13 visibility: POST_CUTOFF_ONLY
+
+### Month-to-date coverage ledger
+
+#### 2026-10-01
+- Coverage date: 2026-10-01
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-02
+- Coverage date: 2026-10-02
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-03
+- Coverage date: 2026-10-03
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-04
+- Coverage date: 2026-10-04
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-05
+- Coverage date: 2026-10-05
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-06
+- Coverage date: 2026-10-06
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-07
+- Coverage date: 2026-10-07
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-08
+- Coverage date: 2026-10-08
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-09
+- Coverage date: 2026-10-09
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-10
+- Coverage date: 2026-10-10
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-11
+- Coverage date: 2026-10-11
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+#### 2026-10-12
+- Coverage date: 2026-10-12
+- Existing producer / stage / observation state: REVIEWED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact transition timestamp: NO
+- Negative / gap / unknown state: PRESERVED
+- Weekly / stage relation: RETAINED_WITHOUT_BACKDATING
+- Monthly relation: OPEN / NOT_FINAL
+- Independent-source upgrade by A1: NONE
+- Decision class: NO_HISTORICAL_REWRITE / RELATION_REVIEWED
+
+### Repository-specific adjudication
+- F01: Latest observed native scientific stage remains STAGE_H with registry date 2026-10-04
+- F02: No STAGE_I producer object is observed through the 2026-10-12 A1 cutoff
+- F03: Absence of a new stage is not scheduler failure
+- F04: Prior A2 relation-through reached 2026-10-12 while stage identity remained unchanged
+- F05: Schema identity repair #106 is engineering metadata repair rather than rendered scientific validation
+- F06: Maintenance scan repair #109 is repository-scope evidence rather than scientific-stage advancement
+- F07: RENDERING_SUCCESS != SCIENTIFIC_VALIDITY
+- F08: CHECKSUM != REPRODUCTION and claim binding != entailment
+- F09: No browser, renderer or publisher-target runtime is executed by A1
+- F10: Governance relation-through does not create producer-stage identity
+- F11: October longitudinal owner remains OPEN
+- F12: Historical Stage A-H chronology remains preserved
+
+### Evidence boundaries
+- Observation date != event / publication / transition date
+- Same publisher lineage != independent support
+- Current display != historical transition chronology
+- Relation-through != producer-stage identity
+- Stage absence != scheduler failure
+- Engineering repair != scientific validation
+- Evidence linkage != evidence sufficiency
+- Rendering success != scientific validity
+- Standard registration != implementation or conformance
+- Correction / reconciliation != history rewrite
+- Current path != historical task-time availability
+- A1 review != native observation or scientific run
+- Gap remains gap unless separately recovered by dated evidence
+- October month remains OPEN
+
+### A1 disposition
+- Covered dates: 12
+- Coverage completeness: COMPLETE_FOR_2026-10-01_THROUGH_2026-10-12
+- Historical artifacts rewritten: 0
+- Native/scientific/external runs replayed: 0
+- Independent-source credits added: 0
+- Unsupported runtime/conformance claims added: 0
+- 2026-10-13 state admitted into A1 cutoff: NO
+- Ready condition: MERGE_A1_THEN_FRESH_READ_MAIN
