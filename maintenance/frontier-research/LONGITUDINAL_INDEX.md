@@ -4893,3 +4893,162 @@ STAGE_IDENTITY_2026_10_08
 - Monthly final seal: 0
 - Relation-through: 2026-10-13
 - Status: FINAL_A2_COMPLETE / MONTH_OPEN / HISTORY_PRESERVED
+
+## A1 2026-10-14 Stage H scientific rendering evidence reconciliation
+- Repository: lostlight530/sci-render-kit
+- Exact main: 3c4edc3584b69e56a12a77b693b7995c30527d55
+- Cutoff: 2026-10-01..2026-10-13
+- Historical Stage H / 2025-Q4 native source blobs inspected: 13
+- Renderer, wrapper, browser, version and input identity may differ; never promote visual output to scientific correctness
+- Stage H original research and source/version evidence retained; no Stage I inferred
+- Current longitudinal index is the sole monthly maintenance relation owner
+- No scientific rerun, artifact re-render, benchmark validation, or source independence credit
+- Existing unknowns and release/capability restrictions preserved
+
+### maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md
+- Git blob: 740460cdfc3a7627d2d84ed7c3dfc59108e470fe
+- Source text lines retrieved: 8
+- Distinct reviewed headings: 1
+- Source heading 1: # Contributor Statement — Stage H / 2025-Q4
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md
+- Git blob: ad8415eb02e1b2e80ab5432c6816313a21c3cddd
+- Source text lines retrieved: 10
+- Distinct reviewed headings: 1
+- Source heading 1: # Stage H Evidence Chart — 2025-Q4
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md
+- Git blob: f22a0fa137bc743dd3e90474071a8325bb7f47d7
+- Source text lines retrieved: 32
+- Distinct reviewed headings: 5
+- Source heading 1: # H1 — Matplotlib 3.10.7: Dependency Floor as Render-Environment Identity
+- Source heading 2: ## Source identity
+- Source heading 3: ## Frontier observation
+- Source heading 4: ## Boundary
+- Source heading 5: ## Repository interpretation
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md
+- Git blob: 5f164252c290d0ffddd8e875d1d1e4313125fb8a
+- Source text lines retrieved: 29
+- Distinct reviewed headings: 5
+- Source heading 1: # H2 — Plotly.py 6.4/6.5: Bundled JS and Interaction Semantics
+- Source heading 2: ## Source identity
+- Source heading 3: ## Frontier observation
+- Source heading 4: ## Boundary
+- Source heading 5: ## Repository interpretation
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md
+- Git blob: e619dfa731c3a9d4f9761bffeaa7d9a52acbc320
+- Source text lines retrieved: 32
+- Distinct reviewed headings: 5
+- Source heading 1: # H3 — Altair 6.0.0: Wrapper/Grammar Identity and Rerun Stability
+- Source heading 2: ## Source identity
+- Source heading 3: ## Frontier observation
+- Source heading 4: ## Boundary
+- Source heading 5: ## Repository interpretation
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md
+- Git blob: 8993beeb8b937404fcdc87de547724f7b3a07634
+- Source text lines retrieved: 14
+- Distinct reviewed headings: 5
+- Source heading 1: # October 2025 Reconstruction — Stage H
+- Source heading 2: ## Selected event
+- Source heading 3: ## Narrative
+- Source heading 4: ## Boundary
+- Source heading 5: ## Decision
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md
+- Git blob: 11938e76fc1e328f4353d7e099e3703f1cecd645
+- Source text lines retrieved: 18
+- Distinct reviewed headings: 5
+- Source heading 1: # November 2025 Reconstruction — Stage H
+- Source heading 2: ## Selected events
+- Source heading 3: ## Narrative
+- Source heading 4: ## Boundary
+- Source heading 5: ## Decision
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md
+- Git blob: babecabeba106e87ea2ac774534bc2c753a1a285
+- Source text lines retrieved: 21
+- Distinct reviewed headings: 4
+- Source heading 1: # December 2025 Reconstruction — Stage H
+- Source heading 2: ## Selected event
+- Source heading 3: ## Search-bounded result
+- Source heading 4: ## Decision
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md
+- Git blob: 14779f452fb49e87517e431b624f66b285d45789
+- Source text lines retrieved: 15
+- Distinct reviewed headings: 4
+- Source heading 1: # Stage H Research Review — 2025-Q4
+- Source heading 2: ## Result
+- Source heading 3: ## Findings
+- Source heading 4: ## Limits
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md
+- Git blob: ba1a03a5e4228df2ffa5002e3654424b9c085699
+- Source text lines retrieved: 10
+- Distinct reviewed headings: 1
+- Source heading 1: # Stage H Source / Object Register — 2025-Q4
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md
+- Git blob: 8510c7001860ea0ca3d03c587d4c408d095987ad
+- Source text lines retrieved: 31
+- Distinct reviewed headings: 5
+- Source heading 1: # Frontier Research Stage Brief — Stage H / 2025-Q4
+- Source heading 2: ## Identity
+- Source heading 3: ## Rationale
+- Source heading 4: ## Selected objects
+- Source heading 5: ## Hard boundaries
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md
+- Git blob: f26a2c9a5fe940bb8770f511e0360bdd1d1a6806
+- Source text lines retrieved: 16
+- Distinct reviewed headings: 4
+- Source heading 1: # Stage H Handoff — 2025-Q4
+- Source heading 2: ## Preserved findings
+- Source heading 3: ## Next questions
+- Source heading 4: ## Boundary
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md
+- Git blob: f637e10b316e0159f789c00dce521ea0c81cc2f1
+- Source text lines retrieved: 44
+- Distinct reviewed headings: 6
+- Source heading 1: # Frontier Research Stage Synthesis — Stage H / 2025-Q4
+- Source heading 2: ## Identity
+- Source heading 3: ## Quarter narrative
+- Source heading 4: ## Previous-stage delta
+- Source heading 5: ## Current repository assessment
+- Source heading 6: ## Conclusion
+- Scope / evidence markers: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage-H research; rendering/export/version claims do not establish scientific validity
+
+### A1 decision
+- Stage H artifacts modified: 0
+- Runtime/scientific verification performed by this maintenance: NONE
+- October final: NOT_DUE
+- A2 gate: merge all A1 before fresh main and next relation review
