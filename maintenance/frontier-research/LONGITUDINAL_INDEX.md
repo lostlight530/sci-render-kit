@@ -5052,3 +5052,189 @@ STAGE_IDENTITY_2026_10_08
 - Runtime/scientific verification performed by this maintenance: NONE
 - October final: NOT_DUE
 - A2 gate: merge all A1 before fresh main and next relation review
+
+## A2 2026-10-14 scientific renderer version and evidence relation
+- Repository: lostlight530/sci-render-kit
+- Fresh post-A1 main SHA: 050c33074b2ed450c949436c2e8890ac18e2adc9
+- A1 owner blob inherited: ee1394686856c89a28d93fef0d266cee814ee154
+- Coverage: 2026-10-01..2026-10-14; Stage-H 2025-Q4 identity intact
+- Stage-H native source documents re-read: 13
+- Stage-I native artifact: NOT_OBSERVED
+- Wrapper, rendering engine, browser context, target version, export artifact and source input require separate identity before reproducibility claims
+- The current-month relation update does not execute a rendering task or reproduce scientific outputs
+- Legacy Stage-H source evidence and release state are preserved with historical timestamps
+- Source citation/version claims neither imply library installation nor exact dependency environment
+- All new relation content belongs to canonical LONGITUDINAL_INDEX rather than parallel Stage artifacts
+
+### A2 renderer evidence link: CONTRIBUTOR_STATEMENT.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md
+- Immutable source blob: 740460cdfc3a7627d2d84ed7c3dfc59108e470fe
+- Output/authority role: PROVENANCE_ATTRIBUTION
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # Contributor Statement — Stage H / 2025-Q4
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: EVIDENCE_CHART.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md
+- Immutable source blob: ad8415eb02e1b2e80ab5432c6816313a21c3cddd
+- Output/authority role: SOURCE_TO_OUTPUT_EVIDENCE
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # Stage H Evidence Chart — 2025-Q4
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md
+- Immutable source blob: f22a0fa137bc743dd3e90474071a8325bb7f47d7
+- Output/authority role: FOCUSED_RENDERER_OR_WRAPPER_CASE
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # H1 — Matplotlib 3.10.7: Dependency Floor as Render-Environment Identity
+- Source heading 2: ## Source identity
+- Source heading 3: ## Frontier observation
+- Source heading 4: ## Boundary
+- Source heading 5: ## Repository interpretation
+- Native assertion 1: - Object: Matplotlib 3.10.7
+- Native assertion 2: - Release-statistics date: 2025-10-08
+- Native assertion 3: - dependency compatibility != renderer correctness
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md
+- Immutable source blob: 5f164252c290d0ffddd8e875d1d1e4313125fb8a
+- Output/authority role: FOCUSED_RENDERER_OR_WRAPPER_CASE
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # H2 — Plotly.py 6.4/6.5: Bundled JS and Interaction Semantics
+- Source heading 2: ## Source identity
+- Source heading 3: ## Frontier observation
+- Source heading 4: ## Boundary
+- Source heading 5: ## Repository interpretation
+- Native assertion 1: - Plotly.py 6.4.0 — released 2025-11-04
+- Native assertion 2: - Plotly.py 6.5.0 — released 2025-11-17
+- Native assertion 3: - Primary source: https://github.com/plotly/plotly.py/releases
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md
+- Immutable source blob: e619dfa731c3a9d4f9761bffeaa7d9a52acbc320
+- Output/authority role: FOCUSED_RENDERER_OR_WRAPPER_CASE
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # H3 — Altair 6.0.0: Wrapper/Grammar Identity and Rerun Stability
+- Source heading 2: ## Source identity
+- Source heading 3: ## Frontier observation
+- Source heading 4: ## Boundary
+- Source heading 5: ## Repository interpretation
+- Native assertion 1: - Release date: 2025-11-12
+- Native assertion 2: - Primary source: https://github.com/vega/altair/releases
+- Native assertion 3: - wrapper thread-safety != every embedding integration race-free
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: MONTH_2025_10_RECONSTRUCTION.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md
+- Immutable source blob: 8993beeb8b937404fcdc87de547724f7b3a07634
+- Output/authority role: TEMPORAL_RECONSTRUCTION
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # October 2025 Reconstruction — Stage H
+- Source heading 2: ## Selected event
+- Source heading 3: ## Narrative
+- Source heading 4: ## Boundary
+- Source heading 5: ## Decision
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: MONTH_2025_11_RECONSTRUCTION.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md
+- Immutable source blob: 11938e76fc1e328f4353d7e099e3703f1cecd645
+- Output/authority role: TEMPORAL_RECONSTRUCTION
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # November 2025 Reconstruction — Stage H
+- Source heading 2: ## Selected events
+- Source heading 3: ## Narrative
+- Source heading 4: ## Boundary
+- Source heading 5: ## Decision
+- Native assertion 1: - Plotly.py 6.4.0 — 2025-11-04
+- Native assertion 2: - Altair 6.0.0 — 2025-11-12
+- Native assertion 3: - Plotly.py 6.5.0 — 2025-11-17
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: MONTH_2025_12_RECONSTRUCTION.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md
+- Immutable source blob: babecabeba106e87ea2ac774534bc2c753a1a285
+- Output/authority role: TEMPORAL_RECONSTRUCTION
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # December 2025 Reconstruction — Stage H
+- Source heading 2: ## Selected event
+- Source heading 3: ## Search-bounded result
+- Source heading 4: ## Decision
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: RESEARCH_REVIEW.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md
+- Immutable source blob: 14779f452fb49e87517e431b624f66b285d45789
+- Output/authority role: SCIENCE_VALIDITY_BOUNDARY
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # Stage H Research Review — 2025-Q4
+- Source heading 2: ## Result
+- Source heading 3: ## Findings
+- Source heading 4: ## Limits
+- Native assertion 1: - Q4 meaningfully extends Stage G through dependency and wrapper/engine identity.
+- Native assertion 2: - November contains the strongest selected cluster; the Stage does not force a December anchor.
+- Native assertion 3: - No release note proves local render replay, pixel equivalence, scientific validity, accessibility certification, or publisher acceptance.
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: SOURCE_OBJECT_REGISTER.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md
+- Immutable source blob: ba1a03a5e4228df2ffa5002e3654424b9c085699
+- Output/authority role: EXTERNAL_VERSION_IDENTITY
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # Stage H Source / Object Register — 2025-Q4
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: STAGE_BRIEF.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md
+- Immutable source blob: 8510c7001860ea0ca3d03c587d4c408d095987ad
+- Output/authority role: STAGE_PURPOSE
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # Frontier Research Stage Brief — Stage H / 2025-Q4
+- Source heading 2: ## Identity
+- Source heading 3: ## Rationale
+- Source heading 4: ## Selected objects
+- Source heading 5: ## Hard boundaries
+- Native assertion 1: - Repository: `lostlight530/sci-render-kit`
+- Native assertion 2: - Window: `2025-10-01 through 2025-12-31`
+- Native assertion 3: - Record type: `RETROSPECTIVE`
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: STAGE_HANDOFF.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md
+- Immutable source blob: f26a2c9a5fe940bb8770f511e0360bdd1d1a6806
+- Output/authority role: STAGE_HANDOFF
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # Stage H Handoff — 2025-Q4
+- Source heading 2: ## Preserved findings
+- Source heading 3: ## Next questions
+- Source heading 4: ## Boundary
+- Native assertion 1: - Dependency floors belong to render-environment identity.
+- Native assertion 2: - Wrapper revision and underlying grammar/JS renderer revision must stay separate.
+- Native assertion 3: - Generated-spec stability is useful evidence but does not imply identical visible artifacts.
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 renderer evidence link: STAGE_SYNTHESIS.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md
+- Immutable source blob: f637e10b316e0159f789c00dce521ea0c81cc2f1
+- Output/authority role: STAGE_SYNTHESIS
+- Original Stage H source continuity: UNMODIFIED
+- Source heading 1: # Frontier Research Stage Synthesis — Stage H / 2025-Q4
+- Source heading 2: ## Identity
+- Source heading 3: ## Quarter narrative
+- Source heading 4: ## Previous-stage delta
+- Source heading 5: ## Current repository assessment
+- Native assertion 1: - Window: `2025-10-01 through 2025-12-31`
+- Native assertion 2: - Coverage: `SEARCH_BOUNDED`
+- Native assertion 3: - Synthesis date: `2026-09-27`
+- Evidence decision: renderer target/wrapper/export success not equivalent to scientific reproducibility or conformance
+
+### A2 disposition
+- A1 source review inherited: YES
+- New runtime execution, release or scientific reproduction: NONE
+- Stage H historical files altered: NONE
+- New Stage I created: NO
+- Month owner: OPEN; no future-date seal
+- Final relation-through: 2026-10-14, chronology preserved
