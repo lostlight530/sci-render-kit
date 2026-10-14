@@ -45,3 +45,9 @@ GOVERNANCE_CANDIDATE: bind source revision, runner binary, renderer wrapper, inp
 CURRENT_RESULT: D14_CANDIDATE_ONLY / STAGE_H_RETAINED / MONTH_OPEN
 NEXT_AUDIT_DEPENDENCY: D30 2026-10-30
 SOURCE_CREDIT_ADDED: 0; EXPERIMENT_RERUN: NO; NO_STAGE_I_MANUFACTURED: YES
+
+## Dual-view D14 reconciliation — 2026-10-14
+- PR #124 (maintenance/2026-10-14-d14-pattern-formation-audit.md) and PR #125 (this file) are two documentary views of the same D14 cutoff.
+- A1 #122 / A2 #123 and Stage-H producer lineage are shared; these are not two independent periodic audits.
+- D14 audit event credit: ONE. New renderer/scientific execution credit: ZERO.
+- Both original records remain intact and inspectable. D30 should evaluate their evidence consistently.
