@@ -5389,3 +5389,166 @@ STAGE_IDENTITY_2026_10_08
 - No original Stage H research source, weekly report, runtime code or generic repository governance file modified.
 - A2 must wait for all ten A1 merges and a new current-main refresh, then include new dated original tasks if any.
 
+## A2 2026-10-15 | Sci-Render full-month renderer source and evidence continuity
+- Main authority after all ten A1 merges: `b192d78e6596ff0208890175f5eee9841f0cb07a`; inherits A1 #128, existing owner blob `b2536ffe782a9cc6f705d691136b600089612ff0`.
+- Relation covers 2026-10-01..2026-10-15; original scientific research source period remains 2025-Q4 Stage H.
+- 13 native Stage-H source object identities are retained; a 2026-10-15 Stage-I native producer run was NOT_OBSERVED.
+- Version/asset provenance, renderer runtime behavior and scientific output reproducibility are three different claims.
+- Current October owner stays OPEN; 2026-10 full-month final is NOT_DUE.
+- Prior A1 full-source review, historical monthly reconstructions and D14 audit history retained, not rewritten.
+- No synthetic test execution, release validation, image output or renderer conformance added.
+- This A2 checks source-to-claim relationships, not generic docs/open-science governance.
+
+### CONTRIBUTOR_STATEMENT.md — contributor/source-identity statement
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md` currently at Git blob `740460cdfc3a7627d2d84ed7c3dfc59108e470fe`.
+- Source type: contributor/source-identity statement, distinct from a new October 15 producer event.
+- Technical limit: authorship record is not a reproduction record.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### EVIDENCE_CHART.md — source-to-renderer evidence chart
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md` currently at Git blob `ad8415eb02e1b2e80ab5432c6816313a21c3cddd`.
+- Source type: source-to-renderer evidence chart, distinct from a new October 15 producer event.
+- Technical limit: chart source attribution is not a pixel/semantic regression test.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md — Matplotlib 3.10.7 interpreter dependency-floor identity
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md` currently at Git blob `f22a0fa137bc743dd3e90474071a8325bb7f47d7`.
+- Source type: Matplotlib 3.10.7 interpreter dependency-floor identity, distinct from a new October 15 producer event.
+- Technical limit: dependency pin is not a completed cross-platform rendering reproducibility test.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md — Plotly.py 6.4/6.5 JS bundle and client-side interaction semantics
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md` currently at Git blob `5f164252c290d0ffddd8e875d1d1e4313125fb8a`.
+- Source type: Plotly.py 6.4/6.5 JS bundle and client-side interaction semantics, distinct from a new October 15 producer event.
+- Technical limit: JS library package name does not prove browser execution, interactions or export fidelity.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md — Altair 6.0 wrapper/grammar and rerun stability
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md` currently at Git blob `e619dfa731c3a9d4f9761bffeaa7d9a52acbc320`.
+- Source type: Altair 6.0 wrapper/grammar and rerun stability, distinct from a new October 15 producer event.
+- Technical limit: wrapper conformance is not equivalent to independent repeatability across notebooks and environments.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### MONTH_2025_10_RECONSTRUCTION.md — 2025-Q4 historical monthly reconstruction
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md` currently at Git blob `8993beeb8b937404fcdc87de547724f7b3a07634`.
+- Source type: 2025-Q4 historical monthly reconstruction, distinct from a new October 15 producer event.
+- Technical limit: 2025 historical reporting is not new 2026-10 producer evidence.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### MONTH_2025_11_RECONSTRUCTION.md — 2025-Q4 historical monthly reconstruction
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md` currently at Git blob `11938e76fc1e328f4353d7e099e3703f1cecd645`.
+- Source type: 2025-Q4 historical monthly reconstruction, distinct from a new October 15 producer event.
+- Technical limit: 2025 historical reporting is not new 2026-10 producer evidence.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### MONTH_2025_12_RECONSTRUCTION.md — 2025-Q4 historical monthly reconstruction
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md` currently at Git blob `babecabeba106e87ea2ac774534bc2c753a1a285`.
+- Source type: 2025-Q4 historical monthly reconstruction, distinct from a new October 15 producer event.
+- Technical limit: 2025 historical reporting is not new 2026-10 producer evidence.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### RESEARCH_REVIEW.md — original Stage-H research review
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md` currently at Git blob `14779f452fb49e87517e431b624f66b285d45789`.
+- Source type: original Stage-H research review, distinct from a new October 15 producer event.
+- Technical limit: review of evidence is not a new render execution.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### SOURCE_OBJECT_REGISTER.md — canonical version/source-object registry
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md` currently at Git blob `ba1a03a5e4228df2ffa5002e3654424b9c085699`.
+- Source type: canonical version/source-object registry, distinct from a new October 15 producer event.
+- Technical limit: source register does not independently certify library behavior.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### STAGE_BRIEF.md — original Stage H bounded research scope
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md` currently at Git blob `8510c7001860ea0ca3d03c587d4c408d095987ad`.
+- Source type: original Stage H bounded research scope, distinct from a new October 15 producer event.
+- Technical limit: SEARCH_BOUNDED is not exhaustive toolchain inventory.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### STAGE_HANDOFF.md — cross-stage producer handoff
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md` currently at Git blob `f26a2c9a5fe940bb8770f511e0360bdd1d1a6806`.
+- Source type: cross-stage producer handoff, distinct from a new October 15 producer event.
+- Technical limit: handoff action is not completed Stage I research.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### STAGE_SYNTHESIS.md — 2025-Q4 Stage-H synthesis
+- Native source file `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md` currently at Git blob `f637e10b316e0159f789c00dce521ea0c81cc2f1`.
+- Source type: 2025-Q4 Stage-H synthesis, distinct from a new October 15 producer event.
+- Technical limit: bounded synthesis is not a fresh 2026-10 rendering run.
+- Historical scope remains 2025-Q4; first-party source assertion and maintainer post-hoc observation date are not interchangeable.
+- A1 #128 file review inherited: retained identical source-file identity on post-A1 main; source bytes left unchanged.
+- Evidence ceiling: Git object presence is repository truth, not a scientific renderer replay or acceptance test.
+- Independence check: repeated version labels across synopsis/chart/registry aren't additional independent platform executions.
+- Forward remediation rule: if a source version or renderer contract changes, record new observed date and artifact, not overwritten old source.
+- N current-month disposition: file/source relationship retained; no new verification credit, no duplicate original research.
+
+### Version, month and prospective Stage boundary
+- H1 Matplotlib, H2 Plotly and H3 Altair denote separate renderer components and independent environment constraints.
+- October 2025 through December 2025 reconstruction files remain historic evidence, not Daily 2026-10-15 production.
+- Source registry, chart and synthesis preserve source-to-claim links with different verification ceilings.
+- Stage H handoff retained; Stage I cannot be synthesized from routine maintenance alone.
+- No October new Stage I original producer artifact verified, and no month-final report is due.
+- Current month owner remains OPEN with current read and predecessor A1 provenance.
+- Original source, weekly, test, open-source, archive and audit files unmodified by A2.
+- GitHub diff/merge, fresh main blob and zero open PR checks remain completion gates.
+
