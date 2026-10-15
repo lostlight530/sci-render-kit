@@ -5238,3 +5238,154 @@ STAGE_IDENTITY_2026_10_08
 - New Stage I created: NO
 - Month owner: OPEN; no future-date seal
 - Final relation-through: 2026-10-14, chronology preserved
+
+## A1 2026-10-15 | Sci-Render Stage H original source and renderer evidence audit
+- Current main: 00b64fff2438bbb7f01127db02ce8972359c382d; original index blob: dfb63ffde1bcd0485a8c39b94442231db8db050d.
+- October maintenance 2026-10-01..2026-10-14 is DISTINCT from 2025-Q4 original Stage H research period.
+- 13 original Stage H native files individually retrieved on main; current file hashes and source periods documented below.
+- Original renderer/version claims remain source-bounded and do not prove independently repeated export, chart equivalence or cross-platform rendering.
+- New Stage I original execution on October 15: NOT_OBSERVED/NOT_DUE; A1 does not fabricate a Stage event.
+- Historical October 2025, November 2025 and December 2025 reconstruction objects are past-period records, not October 2026 Daily work.
+- Source chart, scientific provenance, handoff and synthesis have distinct evidence roles; file multiplicity is not multiple independent tests.
+- Existing owner A1/A2, D14 and corrections are retained; only relation is appended.
+
+### CONTRIBUTOR_STATEMENT.md | retained authorship boundary
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md`.
+- Git blob from refreshed main: `740460cdfc3a7627d2d84ed7c3dfc59108e470fe`.
+- Retrieved original content length: 8 lines; file remains original and unmodified.
+- Source role: retained authorship boundary; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: source period and later maintenance observation recorded separately.
+- Verification axis: source record correctness != end-to-end scientific reproducibility.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### EVIDENCE_CHART.md | per-claim evidence chart
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md`.
+- Git blob from refreshed main: `ad8415eb02e1b2e80ab5432c6816313a21c3cddd`.
+- Retrieved original content length: 10 lines; file remains original and unmodified.
+- Source role: per-claim evidence chart; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: source period and later maintenance observation recorded separately.
+- Verification axis: source record correctness != end-to-end scientific reproducibility.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md | Matplotlib 3.10.7 dependency-floor identity
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md`.
+- Git blob from refreshed main: `f22a0fa137bc743dd3e90474071a8325bb7f47d7`.
+- Retrieved original content length: 32 lines; file remains original and unmodified.
+- Source role: Matplotlib 3.10.7 dependency-floor identity; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: source period and later maintenance observation recorded separately.
+- Verification axis: Matplotlib floor must be resolved by executing environment.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md | Plotly.py 6.4/6.5 bundled JS and interaction state
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md`.
+- Git blob from refreshed main: `5f164252c290d0ffddd8e875d1d1e4313125fb8a`.
+- Retrieved original content length: 29 lines; file remains original and unmodified.
+- Source role: Plotly.py 6.4/6.5 bundled JS and interaction state; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: source period and later maintenance observation recorded separately.
+- Verification axis: Plotly Python/JS code and interaction behavior are separable.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md | Altair 6.0 wrapper grammar and rerun-stability boundary
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md`.
+- Git blob from refreshed main: `e619dfa731c3a9d4f9761bffeaa7d9a52acbc320`.
+- Retrieved original content length: 32 lines; file remains original and unmodified.
+- Source role: Altair 6.0 wrapper grammar and rerun-stability boundary; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: source period and later maintenance observation recorded separately.
+- Verification axis: Altair grammar stability is scoped to wrapper and versions.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### MONTH_2025_10_RECONSTRUCTION.md | 2025-10 historical reconstruction
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md`.
+- Git blob from refreshed main: `8993beeb8b937404fcdc87de547724f7b3a07634`.
+- Retrieved original content length: 14 lines; file remains original and unmodified.
+- Source role: 2025-10 historical reconstruction; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: historic 2025 reconstruction; no fabricated contemporaneous research.
+- Verification axis: recorded quarter chronology not retroactively reconstructed today.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### MONTH_2025_11_RECONSTRUCTION.md | 2025-11 historical reconstruction
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md`.
+- Git blob from refreshed main: `11938e76fc1e328f4353d7e099e3703f1cecd645`.
+- Retrieved original content length: 18 lines; file remains original and unmodified.
+- Source role: 2025-11 historical reconstruction; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: historic 2025 reconstruction; no fabricated contemporaneous research.
+- Verification axis: recorded quarter chronology not retroactively reconstructed today.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### MONTH_2025_12_RECONSTRUCTION.md | 2025-12 historical reconstruction (SEARCH_BOUNDED)
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md`.
+- Git blob from refreshed main: `babecabeba106e87ea2ac774534bc2c753a1a285`.
+- Retrieved original content length: 21 lines; file remains original and unmodified.
+- Source role: 2025-12 historical reconstruction (SEARCH_BOUNDED); retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: historic 2025 reconstruction; no fabricated contemporaneous research.
+- Verification axis: recorded quarter chronology not retroactively reconstructed today.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### RESEARCH_REVIEW.md | stage review source confidence
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md`.
+- Git blob from refreshed main: `14779f452fb49e87517e431b624f66b285d45789`.
+- Retrieved original content length: 15 lines; file remains original and unmodified.
+- Source role: stage review source confidence; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: source period and later maintenance observation recorded separately.
+- Verification axis: source record correctness != end-to-end scientific reproducibility.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### SOURCE_OBJECT_REGISTER.md | canonical source-object register
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md`.
+- Git blob from refreshed main: `ba1a03a5e4228df2ffa5002e3654424b9c085699`.
+- Retrieved original content length: 10 lines; file remains original and unmodified.
+- Source role: canonical source-object register; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: source period and later maintenance observation recorded separately.
+- Verification axis: source record correctness != end-to-end scientific reproducibility.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### STAGE_BRIEF.md | original 2025-10-01..2025-12-31 bounded search brief
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md`.
+- Git blob from refreshed main: `8510c7001860ea0ca3d03c587d4c408d095987ad`.
+- Retrieved original content length: 31 lines; file remains original and unmodified.
+- Source role: original 2025-10-01..2025-12-31 bounded search brief; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: original scientific window 2025-10-01..2025-12-31, coverage SEARCH_BOUNDED.
+- Verification axis: source record correctness != end-to-end scientific reproducibility.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### STAGE_HANDOFF.md | stage handoff boundary
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md`.
+- Git blob from refreshed main: `f26a2c9a5fe940bb8770f511e0360bdd1d1a6806`.
+- Retrieved original content length: 16 lines; file remains original and unmodified.
+- Source role: stage handoff boundary; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: source period and later maintenance observation recorded separately.
+- Verification axis: source record correctness != end-to-end scientific reproducibility.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### STAGE_SYNTHESIS.md | stage synthesis dated 2026-09-27, SEARCH_BOUNDED
+- Original source path: `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md`.
+- Git blob from refreshed main: `f637e10b316e0159f789c00dce521ea0c81cc2f1`.
+- Retrieved original content length: 44 lines; file remains original and unmodified.
+- Source role: stage synthesis dated 2026-09-27, SEARCH_BOUNDED; retain as 2025-Q4 Stage-H identity, not a new October 2026 producer execution.
+- Time gate: original synthesis recorded 2026-09-27, not today's execution.
+- Verification axis: source record correctness != end-to-end scientific reproducibility.
+- Preservation decision: NO_FOLLOW_UP to original file bytes; append-only current owner relationship, no native rerun.
+- No independent external source, runtime validation, release or native Stage increment credited by reviewing this file.
+
+### Reconciliation and gate
+- 13/13 known Stage H original source files checked against exact paths and Git hashes; previous source paths retained.
+- 2025-Q4 study chronology separated from October 2026 monthly maintenance updates.
+- H1/H2/H3 topics are distinct rendering research cases, not unrelated new producers on this maintenance date.
+- Scientific reproducibility remains unverified in this maintenance; package names alone are not scientific proof.
+- Next Stage I producer work NOT_DUE/NOT_OBSERVED and cannot be created for apparent PR activity.
+- October Monthly remains OPEN; future October days not counted as missing.
+- No original Stage H research source, weekly report, runtime code or generic repository governance file modified.
+- A2 must wait for all ten A1 merges and a new current-main refresh, then include new dated original tasks if any.
+
