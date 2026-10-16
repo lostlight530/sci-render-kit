@@ -5742,3 +5742,160 @@ STAGE_IDENTITY_2026_10_08
 - All 13 original Stage H blobs covered and each judged independently at October 15 cutoff; current-month state remains OPEN
 - A2 may consume merged A1 and fresh Oct16 main, but must not re-label this as a new Stage/H3 plot execution
 - Status: A1_COVERAGE_AND_DECISIONS / NO_SOURCE_REWRITE / MONTH_OPEN / REVIEW_REQUIRED
+
+## 2026-10-16 A2 | Sci-Render 2026-10 single current historical-stage relation
+
+- Post-A1 current main `c367189ff356e8bbdcb9d2d2cca1493f5be6b65d`; A1 #131 complete on historical 13-file Stage H native inventory
+- Canonical October longitudinal owner retained: maintenance/frontier-research/LONGITUDINAL_INDEX.md; month-to-date OPEN, Stage H 2025-Q4 historical COMPLETE
+- Current MANIFEST.yaml Git blob `4290e943491f66abcf35b69dd2d35e8488768518`; stable profiles claim-binding, figure-evidence and communication-transfer are implemented/documented repository contracts, not proof of third-party acceptance
+- Stage G concerned render/runtime/browser/export/interaction identity; Stage H adds dependency floor and wrapper-to-JS/Vega-Lite identity
+- Original H-R1 Oct8 Matplotlib 3.10.7, H-R2 Nov4 and Nov17 Plotly 6.4/6.5, H-R3 Nov12 Altair 6.0; release timestamps belong to historical Q4, not current month
+- December 2025 NO_NEW_SELECTED_OBJECT is an explicit search-bounded negative selection, not an invented benchmark or no-release claim
+- Neither a new Stage I producer nor a 2026-10 native renderer benchmark emerged on inspected main; project still has original code/contracts but this A2 does not replay them
+- A2 re-evaluates month relation from merged A1 and exact producer artifacts, with no change to original files, Stage brief, templates or source register
+- Data/recipe → wrapper/runtime/version → generated spec → browser/export → figure is a hypothesis of traceable identity, not a chain of automatic truth inheritance
+- Below are the current authority gates connecting all thirteen original Stage-H files to the one October monthly state:
+### H01 CONTRIBUTOR_STATEMENT.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md`, current blob `740460cdfc3a7627d2d84ed7c3dfc59108e470fe`
+- This artifact's 2026-10 current relation: Research selection/review attribution for Stage H
+- Evidence semantics and limits: Contributor authorship declaration is not an independent graphic renderer test
+- Downstream renderer/transfer gate: No transferred publisher/human acceptance without explicit current evidence
+- Original supporting text L3: Reconstructed 2026-09-27 from current repository authority and primary Matplotlib/Plotly/Altair release sources.
+- Original supporting text L5: No local renderer/browser replay, accessibility certification, publisher check, or scientific validation was executed. December 'NO_NEW_SELECTED_OBJECT' is a search-bounded selection result, not an ecosystem-wide negative claim.
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RETAINED_HISTORICAL_SOURCE_RELATION
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H02 EVIDENCE_CHART.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md`, current blob `ad8415eb02e1b2e80ab5432c6816313a21c3cddd`
+- This artifact's 2026-10 current relation: Three figure-evidence questions on dependency, wrapper and grammar/runtime
+- Evidence semantics and limits: Source support vs unsupported compatibility/pixel/safety claims are separate columns
+- Downstream renderer/transfer gate: No figure-claim audit pass inferred from matrix presence
+- Original supporting text L9: Coverage: 'SEARCH_BOUNDED'.
+- Original supporting text L0: NO_SECOND_LONG_TEXT_IN_COMPACT_RECORD
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RETAINED_HISTORICAL_SOURCE_RELATION
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H03 H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md`, current blob `f22a0fa137bc743dd3e90474071a8325bb7f47d7`
+- This artifact's 2026-10 current relation: Matplotlib 3.10.7 changed pyparsing dependency floor
+- Evidence semantics and limits: Dependency floor affects environment identity, not guaranteed local compatibility
+- Downstream renderer/transfer gate: Current recipe metadata would need installed runtime versions before replay claim
+- Original supporting text L26: - installable != locally tested
+- Original supporting text L27: - dependency update != scientific validity
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RENDER_CLAIM_SCOPE_RESTRICTED
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H04 H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md`, current blob `5f164252c290d0ffddd8e875d1d1e4313125fb8a`
+- This artifact's 2026-10 current relation: Plotly.py 6.4.0/6.5.0 bundled Plotly.js and interaction-input change
+- Evidence semantics and limits: Python wrapper version != JS engine != browser event semantics
+- Downstream renderer/transfer gate: A2 transfer must not assert visual/browser behavior validated
+- Original supporting text L23: - hover/display change != accessibility certification
+- Original supporting text L24: - bug fix != prior artifacts invalid
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RENDER_CLAIM_SCOPE_RESTRICTED
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H05 H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md`, current blob `e619dfa731c3a9d4f9761bffeaa7d9a52acbc320`
+- This artifact's 2026-10 current relation: Altair 6.0.0 Vega-Lite 6.1 and Python 3.14 identity
+- Evidence semantics and limits: Spec generation stability is not pixel/interaction parity
+- Downstream renderer/transfer gate: Separate wrapper target grammar, runtime and eventual generated artifact
+- Original supporting text L26: - stable spec != identical pixels
+- Original supporting text L27: - Vega-Lite target != browser engine identity
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RENDER_CLAIM_SCOPE_RESTRICTED
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H06 MONTH_2025_10_RECONSTRUCTION.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md`, current blob `8993beeb8b937404fcdc87de547724f7b3a07634`
+- This artifact's 2026-10 current relation: Original October Matplotlib dependency-floor event
+- Evidence semantics and limits: Historical renderer dependency version is not an October 2026 release
+- Downstream renderer/transfer gate: No automatic upgrade to active repo environment
+- Original supporting text L4: Matplotlib 3.10.7 release-statistics date: 2025-10-08.
+- Original supporting text L7: October makes dependency floors part of rendering identity: a recipe/backend statement is incomplete if the parser/package environment cannot be reproduced.
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RETAINED_HISTORICAL_SOURCE_RELATION
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H07 MONTH_2025_11_RECONSTRUCTION.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md`, current blob `11938e76fc1e328f4353d7e099e3703f1cecd645`
+- This artifact's 2026-10 current relation: November Plotly and Altair wrapper/grammar evolution
+- Evidence semantics and limits: Multiple separate vendor release events in 2025-11, not one combined API
+- Downstream renderer/transfer gate: Version-specific paper/release provenance must be preserved
+- Original supporting text L9: November concentrates the wrapper/engine boundary. Plotly.py changes the bundled Plotly.js and interaction/input semantics while Altair moves to Vega-Lite 6.1.0 and changes wrapper/runtime properties.
+- Original supporting text L11: The common lesson is not that these libraries converge. It is that a Python plotting package is often a compiler/wrapper around another semantic layer whose revision must remain visible.
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RETAINED_HISTORICAL_SOURCE_RELATION
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H08 MONTH_2025_12_RECONSTRUCTION.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md`, current blob `babecabeba106e87ea2ac774534bc2c753a1a285`
+- This artifact's 2026-10 current relation: Explicit 2025-12 NO_NEW_SELECTED_OBJECT with search-bounded decision
+- Evidence semantics and limits: Not finding selected object does not show no ecosystem release/change
+- Downstream renderer/transfer gate: Do not generate December event from arbitrary cadence
+- Original supporting text L7: No December release object strong enough to improve the Stage H narrative was selected in this reconstruction.
+- Original supporting text L17: November's wrapper/engine/environment relations remain the current Stage H frontier through the end of the quarter.
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: NO_NEW_SELECTED_OBJECT_NOT_NO_ECOSYSTEM_CHANGE
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H09 RESEARCH_REVIEW.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md`, current blob `14779f452fb49e87517e431b624f66b285d45789`
+- This artifact's 2026-10 current relation: Non-normative Stage H acceptance of bounded Q4 renderer sources
+- Evidence semantics and limits: No local replay, pixel equivalence, a11y certification or publisher acceptance
+- Downstream renderer/transfer gate: No promotion to production renderer guarantee from release notes
+- Original supporting text L9: - No release note proves local render replay, pixel equivalence, scientific validity, accessibility certification, or publisher acceptance.
+- Original supporting text L12: - Coverage is search-bounded.
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RETAINED_HISTORICAL_SOURCE_RELATION
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H10 SOURCE_OBJECT_REGISTER.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md`, current blob `ba1a03a5e4228df2ffa5002e3654424b9c085699`
+- This artifact's 2026-10 current relation: H-R1 Matplotlib Oct8; H-R2 Plotly Nov4/17; H-R3 Altair Nov12
+- Evidence semantics and limits: Source object date and scope each separate, December has no selected object
+- Downstream renderer/transfer gate: Current library versions could differ and require an execution receipt to compare
+- Original supporting text L9: December has no selected object in this search-bounded Stage. That absence is not a claim that no relevant release occurred.
+- Original supporting text L0: NO_SECOND_LONG_TEXT_IN_COMPACT_RECORD
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RETAINED_HISTORICAL_SOURCE_RELATION
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H11 STAGE_BRIEF.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md`, current blob `8510c7001860ea0ca3d03c587d4c408d095987ad`
+- This artifact's 2026-10 current relation: Historical Q4 frontier source selection/targeted synthesis brief
+- Evidence semantics and limits: Original research selection not implementation authorization
+- Downstream renderer/transfer gate: Stage I requires new native research and its own scoped source choice
+- Original supporting text L26: template/hover behavior != accessibility certification
+- Original supporting text L27: thread-safe claim != all integrations race-free
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RETAINED_HISTORICAL_SOURCE_RELATION
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H12 STAGE_HANDOFF.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md`, current blob `f26a2c9a5fe940bb8770f511e0360bdd1d1a6806`
+- This artifact's 2026-10 current relation: 2026 browser/font/runtime capture, communication-transfer and accessibility open questions
+- Evidence semantics and limits: Research handoff does not carry conformance, certification or scientific truth
+- Downstream renderer/transfer gate: Future separate renderer and reviewer evidence required
+- Original supporting text L10: - Which 2026 renderer changes make browser/font/runtime identity machine-capturable?
+- Original supporting text L11: - Can communication-transfer receipts carry wrapper, engine, browser and dependency identities without implying scientific validity?
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RETAINED_HISTORICAL_SOURCE_RELATION
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+### H13 STAGE_SYNTHESIS.md
+- Historical producer artifact `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md`, current blob `f637e10b316e0159f789c00dce521ea0c81cc2f1`
+- This artifact's 2026-10 current relation: 2025 Q4 narrative COMPLETE as of original 2026-09-27 research synthesis
+- Evidence semantics and limits: Current 2026-10 month-to-date OPEN, distinct clock and authority
+- Downstream renderer/transfer gate: NO_CURRENT_REPOSITORY_DRIFT/NO_RUNTIME_CHANGE in native synthesis is not new runtime test
+- Original supporting text L32: - PERSISTENT: render success != scientific validity; support != replay; accessibility/interaction behavior != certification.
+- Original supporting text L33: - GOVERNANCE: no selected object is a legitimate monthly result.
+- Source time stays 2025-Q4 despite today's A2 Git verification; no 2026-10-16 research run count
+- Current A2 class: RETAINED_HISTORICAL_SOURCE_RELATION
+- Authority transfer: renderer metadata and current manifest claims are not external figure truth or accessibility certification
+
+### Aggregate current interpretation and remaining proof requirements
+- Matplotlib 3.10.7's changed pyparsing floor means a version pin/reproduction receipt must record transitive package identity before claiming environment equivalence
+- Plotly.py 6.4/6.5 separates Python wrapper and bundled JS semantics, and separate browser/render/export execution is still needed for actual interaction behavior
+- Altair 6.0.0 targeting Vega-Lite 6.1 does not establish independent spec stability or visual pixel identity on present host
+- The three selected objects do not make December empty; December has a valid `NO_NEW_SELECTED_OBJECT`, not a fourth Stage-H object
+- P0 schema / P1 claim audit / P2 artifact integrity / P3 publisher alignment remain separate validation stages; no run executed here and no certification inferred
+- Claim-binding `visual_ref → claim_refs` remains declared by recipe, not automatically inferred from figure pixels
+- Communication-transfer receipts can retain evidence/uncertainty/reproducibility context without converting producer declarations into independent scientific acceptance
+- Current repo publisher/a11y criteria require target-specific evidence; existence of metadata keys alone doesn't establish passed publication/certification
+- Original Stage-H synthesis concluded NO_CURRENT_REPOSITORY_DRIFT/NO_RUNTIME_CHANGE/NO_CONTRACT_CHANGE inside its bounded research scope; not a new Oct16 execution claim
+- Stage-H handoff asks future 2026 renderer/browser/fonts and accessibility evidence questions, not authorization to create synthetic Stage-I output
+- All original thirteen artifacts and their historical provenance preserved; current October version was updated append-only within existing canonical owner
+- A2 result: OCT_2026_RELATION_OPEN / STAGE_H_HISTORICAL_COMPLETE / DEC2025_NEGATIVE_PRESERVED / NO_NEW_REPLAY_OR_STAGE_I_NATIVE
