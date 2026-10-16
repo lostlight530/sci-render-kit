@@ -5552,3 +5552,193 @@ STAGE_IDENTITY_2026_10_08
 - Original source, weekly, test, open-source, archive and audit files unmodified by A2.
 - GitHub diff/merge, fresh main blob and zero open PR checks remain completion gates.
 
+## 2026-10-16 ordinary A1 — Stage H rendering evidence month-start to October 15
+
+- Fresh-read current merged main: `6cd4c724f2f873135b4179961d12187925785979`; source class is original Stage H historical research
+- A1 logical cutoff: October 1–15; archived stage objects retain original 2025-Q4 scientific period
+- Canonical maintenance owner is this longitudinal index; no duplicate monthly file, new Stage I or synthetic screenshot created
+- Reviewed 13 original Stage H files at current blobs including supporting charts/register/reconstructions and synthesis/handoff
+- No external renderer or publisher tool was run independently in this review; external scientific interpretation stays bounded
+- Figure evidence, dependency version identity, claim binding, source provenance, accessibility and publisher targets must remain distinct evidence categories
+- Each original-file decision below records source identity/text and explicit no-rewrite outcome for this cutoff
+### 01 CONTRIBUTOR_STATEMENT.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md`
+- Blob identity on original main: `740460cdfc3a7627d2d84ed7c3dfc59108e470fe`, base `6cd4c724f2f8`
+- Original source heading: # Contributor Statement — Stage H / 2025-Q4
+- Source section/boundary: SHORT_RECORD
+- Text identity at L3: Reconstructed 2026-09-27 from current repository authority and primary Matplotlib/Plotly/Altair release sources.
+- Text identity at L5: No local renderer/browser replay, accessibility certification, publisher check, or scientific validation was executed. December 'NO_NEW_SELECTED_OBJECT' is a search-bounded selection result, not an ecosystem-wide negative claim.
+- Text identity at L7: No Stage A-G historical file was rewritten.
+- Source file extent: 8 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 02 EVIDENCE_CHART.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md`
+- Blob identity on original main: `ad8415eb02e1b2e80ab5432c6816313a21c3cddd`, base `6cd4c724f2f8`
+- Original source heading: # Stage H Evidence Chart — 2025-Q4
+- Source section/boundary: SHORT_RECORD
+- Text identity at L3: | Question | Evidence | Supported | Not supported |
+- Text identity at L5: | Can dependency floors alter render environment identity? | Matplotlib 3.10.7 API changes | minimum pyparsing floor changed | local compatibility/render result |
+- Text identity at L6: | Must Plotly wrapper and bundled JS remain separate? | Plotly.py 6.4/6.5 releases | bundled Plotly.js and interaction/input semantics changed | browser parity, scientific validity |
+- Text identity at L7: | Does Altair major-version identity include grammar/runtime state? | Altair 6.0.0 release | Vega-Lite 6.1 target, Python 3.14, thread-safety/stable spec claims | independent reproduction, pixel identity |
+- Source file extent: 10 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 03 H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md`
+- Blob identity on original main: `f22a0fa137bc743dd3e90474071a8325bb7f47d7`, base `6cd4c724f2f8`
+- Original source heading: # H1 — Matplotlib 3.10.7: Dependency Floor as Render-Environment Identity
+- Source section/boundary: ## Source identity
+- Text identity at L4: - Object: Matplotlib 3.10.7
+- Text identity at L5: - Release-statistics date: 2025-10-08
+- Text identity at L6: - Primary sources:
+- Text identity at L7: - https://matplotlib.org/stable/users/release_notes
+- Source file extent: 32 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 04 H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md`
+- Blob identity on original main: `5f164252c290d0ffddd8e875d1d1e4313125fb8a`, base `6cd4c724f2f8`
+- Original source heading: # H2 — Plotly.py 6.4/6.5: Bundled JS and Interaction Semantics
+- Source section/boundary: ## Source identity
+- Text identity at L4: - Plotly.py 6.4.0 — released 2025-11-04
+- Text identity at L5: - Plotly.py 6.5.0 — released 2025-11-17
+- Text identity at L6: - Primary source: https://github.com/plotly/plotly.py/releases
+- Text identity at L9: Plotly.py 6.4.0 updates Plotly.js from 3.1.1 to 3.2.0 and adds interaction/display semantics such as fallback template attributes and extended SI formatting. 6.5.0 advances Plotly.js again to 3.3.0, adds hover-template support for financial
+- Source file extent: 29 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 05 H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md`
+- Blob identity on original main: `e619dfa731c3a9d4f9761bffeaa7d9a52acbc320`, base `6cd4c724f2f8`
+- Original source heading: # H3 — Altair 6.0.0: Wrapper/Grammar Identity and Rerun Stability
+- Source section/boundary: ## Source identity
+- Text identity at L4: - Object: Altair 6.0.0
+- Text identity at L5: - Release date: 2025-11-12
+- Text identity at L6: - Primary source: https://github.com/vega/altair/releases
+- Text identity at L9: Altair 6.0.0 compiles against Vega-Lite 6.1.0, adds Python 3.14 support, describes the library as thread-safe, and states that specifications should remain stable after rerunning.
+- Source file extent: 32 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 06 MONTH_2025_10_RECONSTRUCTION.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md`
+- Blob identity on original main: `8993beeb8b937404fcdc87de547724f7b3a07634`, base `6cd4c724f2f8`
+- Original source heading: # October 2025 Reconstruction — Stage H
+- Source section/boundary: ## Selected event
+- Text identity at L4: Matplotlib 3.10.7 release-statistics date: 2025-10-08.
+- Text identity at L7: October makes dependency floors part of rendering identity: a recipe/backend statement is incomplete if the parser/package environment cannot be reproduced.
+- Text identity at L10: Dependency compatibility is not render correctness or scientific validity.
+- Text identity at L13: 'APPEND_RELATION — DEPENDENCY_FLOOR_IDENTITY'
+- Source file extent: 14 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 07 MONTH_2025_11_RECONSTRUCTION.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md`
+- Blob identity on original main: `11938e76fc1e328f4353d7e099e3703f1cecd645`, base `6cd4c724f2f8`
+- Original source heading: # November 2025 Reconstruction — Stage H
+- Source section/boundary: ## Selected events
+- Text identity at L4: - Plotly.py 6.4.0 — 2025-11-04
+- Text identity at L5: - Altair 6.0.0 — 2025-11-12
+- Text identity at L6: - Plotly.py 6.5.0 — 2025-11-17
+- Text identity at L9: November concentrates the wrapper/engine boundary. Plotly.py changes the bundled Plotly.js and interaction/input semantics while Altair moves to Vega-Lite 6.1.0 and changes wrapper/runtime properties.
+- Source file extent: 18 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 08 MONTH_2025_12_RECONSTRUCTION.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md`
+- Blob identity on original main: `babecabeba106e87ea2ac774534bc2c753a1a285`, base `6cd4c724f2f8`
+- Original source heading: # December 2025 Reconstruction — Stage H
+- Source section/boundary: ## Selected event
+- Text identity at L4: 'NO_NEW_SELECTED_OBJECT'
+- Text identity at L7: No December release object strong enough to improve the Stage H narrative was selected in this reconstruction.
+- Text identity at L9: This is a valid result:
+- Text identity at L12: NO_NEW_SELECTED_OBJECT
+- Source file extent: 21 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 09 RESEARCH_REVIEW.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md`
+- Blob identity on original main: `14779f452fb49e87517e431b624f66b285d45789`, base `6cd4c724f2f8`
+- Original source heading: # Stage H Research Review — 2025-Q4
+- Source section/boundary: ## Result
+- Text identity at L4: 'ACCEPTED_AS_NON_NORMATIVE_FRONTIER_RESEARCH'
+- Text identity at L7: - Q4 meaningfully extends Stage G through dependency and wrapper/engine identity.
+- Text identity at L8: - November contains the strongest selected cluster; the Stage does not force a December anchor.
+- Text identity at L9: - No release note proves local render replay, pixel equivalence, scientific validity, accessibility certification, or publisher acceptance.
+- Source file extent: 15 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 10 SOURCE_OBJECT_REGISTER.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md`
+- Blob identity on original main: `ba1a03a5e4228df2ffa5002e3654424b9c085699`, base `6cd4c724f2f8`
+- Original source heading: # Stage H Source / Object Register — 2025-Q4
+- Source section/boundary: SHORT_RECORD
+- Text identity at L3: | ID | Object | Date | Evidence role | Boundary |
+- Text identity at L5: | H-R1 | Matplotlib 3.10.7 | 2025-10-08 | dependency/runtime floor | compatibility != render validation |
+- Text identity at L6: | H-R2 | Plotly.py 6.4.0 / 6.5.0 | 2025-11-04 / 2025-11-17 | wrapper↔JS + interaction semantics | update != semantic parity |
+- Text identity at L7: | H-R3 | Altair 6.0.0 | 2025-11-12 | wrapper↔Vega-Lite + rerun/spec stability | stable spec != identical artifact |
+- Source file extent: 10 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 11 STAGE_BRIEF.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md`
+- Blob identity on original main: `8510c7001860ea0ca3d03c587d4c408d095987ad`, base `6cd4c724f2f8`
+- Original source heading: # Frontier Research Stage Brief — Stage H / 2025-Q4
+- Source section/boundary: ## Identity
+- Text identity at L4: - Repository: 'lostlight530/sci-render-kit'
+- Text identity at L5: - Stage: 'H / 2025-Q4'
+- Text identity at L6: - Window: '2025-10-01 through 2025-12-31'
+- Text identity at L7: - Record type: 'RETROSPECTIVE'
+- Source file extent: 31 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 12 STAGE_HANDOFF.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md`
+- Blob identity on original main: `f26a2c9a5fe940bb8770f511e0360bdd1d1a6806`, base `6cd4c724f2f8`
+- Original source heading: # Stage H Handoff — 2025-Q4
+- Source section/boundary: ## Preserved findings
+- Text identity at L4: - Dependency floors belong to render-environment identity.
+- Text identity at L5: - Wrapper revision and underlying grammar/JS renderer revision must stay separate.
+- Text identity at L6: - Generated-spec stability is useful evidence but does not imply identical visible artifacts.
+- Text identity at L7: - A month may legitimately have no selected frontier object.
+- Source file extent: 16 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+### 13 STAGE_SYNTHESIS.md
+- Inspected original research object: `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md`
+- Blob identity on original main: `f637e10b316e0159f789c00dce521ea0c81cc2f1`, base `6cd4c724f2f8`
+- Original source heading: # Frontier Research Stage Synthesis — Stage H / 2025-Q4
+- Source section/boundary: ## Identity
+- Text identity at L4: - Window: '2025-10-01 through 2025-12-31'
+- Text identity at L5: - Coverage: 'SEARCH_BOUNDED'
+- Text identity at L6: - Synthesis date: '2026-09-27'
+- Text identity at L7: - Status: 'COMPLETE'
+- Source file extent: 44 original lines; original stage period 2025-Q4 retained
+- A1 original-file disposition: NO_FOLLOW_UP; no genuine renderer/source defect in reviewed file warranted an overwrite
+- Current authority scope: rendering/recipe/documentary content does not prove plot scientific truth, executable replay or publisher acceptance
+- October admission: original input can enter current relational index, never counted as an October native renderer execution
+
+### Cross-document source, renderer and uncertainty resolution
+- H1 Matplotlib 3.10.7 establishes a bounded dependency floor statement, not universal renderer compatibility
+- H2 Plotly 6.4/6.5 records JS and interactivity-related source claims, not independently reproduced browser behavior
+- H3 Altair 6.0 addresses wrapper grammar and reproducibility assumptions, not an executed local rendering equivalence proof
+- Three historical month reconstruction documents are dated 2025-10/11/12; October 2026 reading does not create new 2026 monthly science
+- EVIDENCE_CHART and SOURCE_OBJECT_REGISTER carry different support/identity functions; combined use cannot upgrade unsupported visual conclusions
+- STAGE_BRIEF and RESEARCH_REVIEW bound question and counterevidence; STAGE_SYNTHESIS carries analysis while HANDOFF transfers only the documented scope
+- No source bytes were edited, no whole-file churn, no historical correction-date substitution, no unsupported conformance or figure-publisher certification introduced
+- Existing Stage H is retained as canonical; Stage I continuation needs independent producing evidence, not maintenance intent
+- All 13 original Stage H blobs covered and each judged independently at October 15 cutoff; current-month state remains OPEN
+- A2 may consume merged A1 and fresh Oct16 main, but must not re-label this as a new Stage/H3 plot execution
+- Status: A1_COVERAGE_AND_DECISIONS / NO_SOURCE_REWRITE / MONTH_OPEN / REVIEW_REQUIRED
