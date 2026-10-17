@@ -5909,3 +5909,130 @@ STAGE_IDENTITY_2026_10_08
 - Original Stage-H sources, stage registry, historical completion, and all existing longitudinal evidence blocks remain byte-for-byte unchanged apart from the one current header line.
 - October 17 is this correction's observation date, not a Stage-I execution date, Stage-H rerun, source recertification, test pass, or new independent research window.
 - Status: CURRENT_HEADER_RECONCILED / OCTOBER_RELATION_OPEN / STAGE_I_NOT_EVIDENCED.
+
+## 2026-10-17 A1 | Sci-Render Stage H thirteen-file figure/renderer identity review
+
+- Exact current main `d2075df8fcb217ef0678d023b765941ca2af0b71`; cutoff October 1–16 for current maintenance; research history refers to 2025-Q4
+- All thirteen Stage H support, source, monthly, synthesis and handoff files inventoried against exact blobs
+- Matplotlib 3.10.7, Plotly.py 6.4/6.5 and Altair 6.0.0 claims are not one general compatible renderer result
+- Figure generation success does not prove scientific claim correctness, layout accessibility, user interaction or publication acceptance
+- December 2025 explicit no-new-selected-object is a negative outcome, not missing research to be backfilled
+- Stage H historical COMPLETE/SEARCH_BOUNDED; Stage I current native result unobserved
+- October 16 A2 relation plus October 17 header fix are maintenance records, not Stage producer execution
+
+### Thirteen artifact-by-artifact dispositions
+#### CONTRIBUTOR_STATEMENT.md | research authorship
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md`
+- Current immutable blob `740460cdfc3a7627d2d84ed7c3dfc59108e470fe` (435 bytes)
+- Role and observable proposition: Attribution does not establish independent renderer QA
+- Evidence/validation boundary: Keep authorship and methodology scope explicit
+- Current-month admissibility: No external reproduction credit
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### EVIDENCE_CHART.md | figure evidence chart
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md`
+- Current immutable blob `ad8415eb02e1b2e80ab5432c6816313a21c3cddd` (689 bytes)
+- Role and observable proposition: Claim→figure→source relation must be explicit
+- Evidence/validation boundary: A figure existing is not a valid scientific result by itself
+- Current-month admissibility: No publisher/a11y certification from chart shape
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md | Matplotlib 3.10.7 dependency floor
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md`
+- Current immutable blob `f22a0fa137bc743dd3e90474071a8325bb7f47d7` (1051 bytes)
+- Role and observable proposition: Python Matplotlib version and dependency floor affect render environment
+- Evidence/validation boundary: Specification-level compatibility not universal pixel identity
+- Current-month admissibility: No host-specific rerun in this audit
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md | Plotly.py 6.4/6.5 JS bundle
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md`
+- Current immutable blob `5f164252c290d0ffddd8e875d1d1e4313125fb8a` (1040 bytes)
+- Role and observable proposition: Bundled JavaScript version and interaction semantics are distinct
+- Evidence/validation boundary: A generated HTML artifact does not prove working interaction at client
+- Current-month admissibility: No active browser conformance check
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md | Altair 6.0.0 wrapper grammar
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md`
+- Current immutable blob `e619dfa731c3a9d4f9761bffeaa7d9a52acbc320` (1078 bytes)
+- Role and observable proposition: Altair package and Vega-Lite grammar pairing must be versioned
+- Evidence/validation boundary: Wrapper compatibility not deterministic visual equivalence across runtimes
+- Current-month admissibility: No browser/font/device rerun
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### MONTH_2025_10_RECONSTRUCTION.md | October historical rendering object
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md`
+- Current immutable blob `8993beeb8b937404fcdc87de547724f7b3a07634` (436 bytes)
+- Role and observable proposition: Matplotlib dependency observations are October2025 historical
+- Evidence/validation boundary: Source publication vs present installed environment distinct
+- Current-month admissibility: No current deployment claim
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### MONTH_2025_11_RECONSTRUCTION.md | November historical rendering object
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md`
+- Current immutable blob `11938e76fc1e328f4353d7e099e3703f1cecd645` (769 bytes)
+- Role and observable proposition: Plotly 6.4/6.5 JS/interactive lifecycle in original window
+- Evidence/validation boundary: Public feature announcement not verified client behavior
+- Current-month admissibility: No same-host interaction witness
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### MONTH_2025_12_RECONSTRUCTION.md | December negative selection window
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md`
+- Current immutable blob `babecabeba106e87ea2ac774534bc2c753a1a285` (493 bytes)
+- Role and observable proposition: December has valid NO_NEW_SELECTED_OBJECT when no fourth selected source
+- Evidence/validation boundary: No invented fourth Stage-H research object
+- Current-month admissibility: Prior source identity not given a second independent count
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### RESEARCH_REVIEW.md | scope review and open limits
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md`
+- Current immutable blob `14779f452fb49e87517e431b624f66b285d45789` (670 bytes)
+- Role and observable proposition: Source-bound review does not verify visual pixels, alt text or scientific meaning
+- Evidence/validation boundary: Publication checks remain target-specific
+- Current-month admissibility: No new image/snapshot comparison run
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### SOURCE_OBJECT_REGISTER.md | three versioned source objects
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md`
+- Current immutable blob `ba1a03a5e4228df2ffa5002e3654424b9c085699` (598 bytes)
+- Role and observable proposition: Matplotlib, Plotly, Altair are independent object identities
+- Evidence/validation boundary: Same publisher family/renderer metadata not interchangeable
+- Current-month admissibility: Register not validation event
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### STAGE_BRIEF.md | H research contract
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md`
+- Current immutable blob `8510c7001860ea0ca3d03c587d4c408d095987ad` (1354 bytes)
+- Role and observable proposition: Stage H retrospective SEARCH_BOUNDED selection and questions
+- Evidence/validation boundary: Plan scope is not runtime result
+- Current-month admissibility: Stage H COMPLETE not permission for synthetic I
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### STAGE_HANDOFF.md | future runtime/evidence questions
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md`
+- Current immutable blob `f26a2c9a5fe940bb8770f511e0360bdd1d1a6806` (806 bytes)
+- Role and observable proposition: Fonts/browser/a11y and 2026 renderer semantics remain open
+- Evidence/validation boundary: Handoff does not certify compatibility
+- Current-month admissibility: No native Stage I file/result
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+#### STAGE_SYNTHESIS.md | quarter rendering synthesis
+- Original source path `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md`
+- Current immutable blob `f637e10b316e0159f789c00dce521ea0c81cc2f1` (1626 bytes)
+- Role and observable proposition: Version/source facts relate to current visualization specification
+- Evidence/validation boundary: No new renderer execution, accepted figure or publisher approval
+- Current-month admissibility: Historical research conclusion remains bounded
+- Relationship to current publisher target: source identity and environment need explicit target-specific witnesses
+- A1 disposition: `SOURCE_RETAINED` / `NO_UNSUPPORTED_VALIDATION_UPGRADE` / no native file rewrite
+
+### Cross-source and future verification gates
+- Matplotlib dependency floor → rendering-environment identity; check exact dependency graph before attributing layout differences
+- Plotly JS bundle → interaction runtime identity; static HTML generation cannot establish browser-side interaction
+- Altair/Vega-Lite grammar identity → potential rerender drift; fixed package versions and font/browser environment not assumed
+- Recipes with visual_ref/claim_refs preserve declared binding, not fact evaluation from pixels
+- P0 schema/P1 claim/P2 integrity/P3 publisher acceptance cannot collapse to one RUN_SUCCESS state
+- Accessibility and publisher acceptance remain UNKNOWN absent explicit executed tests and documented receipts
+- Stage H source bodies deliberately not modified; October longitudinal owner alone records per-file A1 decisions
+- No external source reread, figure rendering, browser automation, unit test or full CI executed by this A1
+- Current state 13_STAGE_H_SOURCES_REVIEWED / DEC2025_NEGATIVE_PRESERVED / NO_STAGE_I_NATIVE / OCT_MONTH_OPEN
