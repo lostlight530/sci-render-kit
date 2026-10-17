@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
 - **Stage registry / identity updated:** `2026-10-04`
-- **Current maintenance relation through:** `2026-10-10`
+- **Current maintenance relation through:** `2026-10-16`
 
 ## Boundary
 
@@ -5899,3 +5899,13 @@ STAGE_IDENTITY_2026_10_08
 - Stage-H handoff asks future 2026 renderer/browser/fonts and accessibility evidence questions, not authorization to create synthetic Stage-I output
 - All original thirteen artifacts and their historical provenance preserved; current October version was updated append-only within existing canonical owner
 - A2 result: OCT_2026_RELATION_OPEN / STAGE_H_HISTORICAL_COMPLETE / DEC2025_NEGATIVE_PRESERVED / NO_NEW_REPLAY_OR_STAGE_I_NATIVE
+
+
+## 2026-10-17 dated index-header reconciliation
+
+- Issue: the mutable current-relation header still read `2026-10-10` after October 16 A1/A2 maintenance was merged.
+- Verified current relation: October 16 A2 maintenance PR #132, based on merged A1 PR #131, appended Stage-H evidence and current handoff relationships to this canonical longitudinal index.
+- Correction: advance only the current-relation header to `2026-10-16`; keep `Stage registry / identity updated: 2026-10-04` unchanged as a different identity.
+- Original Stage-H sources, stage registry, historical completion, and all existing longitudinal evidence blocks remain byte-for-byte unchanged apart from the one current header line.
+- October 17 is this correction's observation date, not a Stage-I execution date, Stage-H rerun, source recertification, test pass, or new independent research window.
+- Status: CURRENT_HEADER_RECONCILED / OCTOBER_RELATION_OPEN / STAGE_I_NOT_EVIDENCED.
