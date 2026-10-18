@@ -6409,3 +6409,174 @@ STAGE_IDENTITY_2026_10_08
 - Original stage file inventory 104; stage families 8; no new rendering package or browser tests were executed
 - A1 outcome: EIGHT_STAGE_FIGURE_SOURCE_IDENTITY_CENSUS / NO_NEW_RUNTIME_CREDIT / OCT17_BOUNDARY_PRESERVED
 - A2 must fresh-read merged A1, include Oct18 no-new-Stage current truth and preserve source-to-figure-to-acceptance separation
+
+## 2026-10-18 A2 | sci-render-kit full October 18-day renderer / figure identity / publisher acceptance relation
+- A1 merged current main ba5fd5aad6e15dffa53b70282fd496643144dcf1; prior existing index Git object d63d9218d8fdd9b131961135eebf1722ebfea274
+- A2 is independent month-maintenance; its producer identity differs from 2025-Q4 native Stage-H retrospective science
+- Original Stage-A–H source history is immutable; Stage-I native delivery has not been established and October18 is not silently treated as a new Stage
+- Index date may advance through Oct18 while Stage registry and source production dates retain their separate historical identities
+- Essential risk: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- Evidence requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+
+### Logical Oct01–18 maintenance timeline and original-source guardrails
+#### 2026-10-01 | repo merge identities versus original Stage input
+- Calendar merge receipts=7 PRs; IDs=#77, #78, #79, #80, #81, #82, #83; calendar merge events, not 2026 original Stage research runs
+- 2026-10-01 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-01 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-01 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-01 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-02 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#84, #85, #86; calendar merge events, not 2026 original Stage research runs
+- 2026-10-02 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-02 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-02 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-02 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-03 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#87, #88, #89; calendar merge events, not 2026 original Stage research runs
+- 2026-10-03 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-03 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-03 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-03 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-04 | repo merge identities versus original Stage input
+- Calendar merge receipts=5 PRs; IDs=#90, #91, #92, #93, #94; calendar merge events, not 2026 original Stage research runs
+- 2026-10-04 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-04 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-04 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-04 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-05 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#95, #96, #97; calendar merge events, not 2026 original Stage research runs
+- 2026-10-05 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-05 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-05 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-05 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-06 | repo merge identities versus original Stage input
+- Calendar merge receipts=2 PRs; IDs=#98, #99; calendar merge events, not 2026 original Stage research runs
+- 2026-10-06 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-06 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-06 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-06 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-07 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#100, #101, #102; calendar merge events, not 2026 original Stage research runs
+- 2026-10-07 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-07 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-07 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-07 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-08 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#103, #104, #105; calendar merge events, not 2026 original Stage research runs
+- 2026-10-08 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-08 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-08 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-08 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-09 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#106, #107, #108; calendar merge events, not 2026 original Stage research runs
+- 2026-10-09 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-09 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-09 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-09 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-10 | repo merge identities versus original Stage input
+- Calendar merge receipts=4 PRs; IDs=#109, #110, #111, #112; calendar merge events, not 2026 original Stage research runs
+- 2026-10-10 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-10 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-10 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-10 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-11 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#113, #114, #115; calendar merge events, not 2026 original Stage research runs
+- 2026-10-11 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-11 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-11 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-11 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-12 | repo merge identities versus original Stage input
+- Calendar merge receipts=2 PRs; IDs=#116, #117; calendar merge events, not 2026 original Stage research runs
+- 2026-10-12 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-12 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-12 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-12 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-13 | repo merge identities versus original Stage input
+- Calendar merge receipts=4 PRs; IDs=#118, #119, #120, #121; calendar merge events, not 2026 original Stage research runs
+- 2026-10-13 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-13 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-13 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-13 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-14 | repo merge identities versus original Stage input
+- Calendar merge receipts=5 PRs; IDs=#122, #123, #124, #125, #126; calendar merge events, not 2026 original Stage research runs
+- 2026-10-14 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-14 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-14 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-14 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-15 | repo merge identities versus original Stage input
+- Calendar merge receipts=4 PRs; IDs=#127, #128, #129, #130; calendar merge events, not 2026 original Stage research runs
+- 2026-10-15 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-15 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-15 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-15 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-16 | repo merge identities versus original Stage input
+- Calendar merge receipts=2 PRs; IDs=#131, #132; calendar merge events, not 2026 original Stage research runs
+- 2026-10-16 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-16 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-16 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-16 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-17 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#133, #134, #135; calendar merge events, not 2026 original Stage research runs
+- 2026-10-17 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-17 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-17 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-17 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-18 | repo merge identities versus original Stage input
+- Calendar merge receipts=2 PRs; IDs=#136, #138; calendar merge events, not 2026 original Stage research runs
+- 2026-10-18 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-18 science evaluation: Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-18 transfer requirement: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- 2026-10-18 current disposition: CURRENT_MONTH_RELATION_ADVANCED_WITHOUT_STAGE_PRODUCER; local replay NOT_EXECUTED, external evidence credit ZERO
+
+### Thirteen distinct Stage-H owning artifacts and their admissible transfer
+- Source artifact CONTRIBUTOR_STATEMENT.md: maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md | Git blob 740460cdfc3a7627d2d84ed7c3dfc59108e470fe | size 435 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact EVIDENCE_CHART.md: maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md | Git blob ad8415eb02e1b2e80ab5432c6816313a21c3cddd | size 689 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md: maintenance/frontier-research/stage-h-2025-q4/H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md | Git blob f22a0fa137bc743dd3e90474071a8325bb7f47d7 | size 1051 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md: maintenance/frontier-research/stage-h-2025-q4/H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md | Git blob 5f164252c290d0ffddd8e875d1d1e4313125fb8a | size 1040 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md: maintenance/frontier-research/stage-h-2025-q4/H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md | Git blob e619dfa731c3a9d4f9761bffeaa7d9a52acbc320 | size 1078 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact MONTH_2025_10_RECONSTRUCTION.md: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md | Git blob 8993beeb8b937404fcdc87de547724f7b3a07634 | size 436 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact MONTH_2025_11_RECONSTRUCTION.md: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md | Git blob 11938e76fc1e328f4353d7e099e3703f1cecd645 | size 769 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact MONTH_2025_12_RECONSTRUCTION.md: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md | Git blob babecabeba106e87ea2ac774534bc2c753a1a285 | size 493 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact RESEARCH_REVIEW.md: maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md | Git blob 14779f452fb49e87517e431b624f66b285d45789 | size 670 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact SOURCE_OBJECT_REGISTER.md: maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md | Git blob ba1a03a5e4228df2ffa5002e3654424b9c085699 | size 598 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact STAGE_BRIEF.md: maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md | Git blob 8510c7001860ea0ca3d03c587d4c408d095987ad | size 1354 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact STAGE_HANDOFF.md: maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md | Git blob f26a2c9a5fe940bb8770f511e0360bdd1d1a6806 | size 806 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+- Source artifact STAGE_SYNTHESIS.md: maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md | Git blob f637e10b316e0159f789c00dce521ea0c81cc2f1 | size 1626 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: A figure citation does not prove pixel integrity, source data correctness, accessibility or acceptance in a real browser
+
+### October and multi-stage interpretation
+- Matplotlib Python, Plotly JS and Altair/Vega-Lite wrapper revisions require separate environment, visual, accessibility and data identities
+- 2026-10-17 relation correction advanced header to already-merged owner state but left 2026-10-04 Stage registry date unchanged; A2 updates only current interpretation
+- Historical 2025-10, 2025-11 and 2025-12 source choices are retrospective and not new October2026 experimental windows
+- Stage H RESEARCH_REVIEW, EVIDENCE_CHART, SOURCE_OBJECT_REGISTER and STAGE_HANDOFF have separate duties; none alone validates implemented systems
+- Historical empty/negative source findings remain negative data, not automatically SUCCESS
+- No new publisher fetch, benchmark execution, browser replay, CI or local algorithm tests performed in this A2
+- All Stage A–H sources, existing A1 and prior month corrections preserved; no native producer files replaced
+- Original Stage-I handoff questions remain OPEN until separately observed native Stage-I artifacts
+- Exact Stage-H objects inherited: 13/13; 18 calendar dates reviewed; maintenance creates zero independent research
+- A2 status: FULL_OCTOBER_RELATION / ORIGINAL_STAGE_H_EVIDENCE_IDENTITY / STAGE_I_NOT_EVIDENCED / MONTH_OPEN
