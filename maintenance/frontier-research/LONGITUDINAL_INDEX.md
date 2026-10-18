@@ -6162,3 +6162,250 @@ STAGE_IDENTITY_2026_10_08
 - Existing three-year archival and Stage H source objects remain unchanged; A2 writes only to existing longitudinal owner
 - No fresh publisher web fetch, local package execution, benchmarking, figure render or full GitHub Actions check conducted by this independent maintenance
 - Final A2 month OPEN; origin stage historically COMPLETE/SEARCH_BOUNDED, future Stage I unobserved, not backfilled
+
+## 2026-10-18 A1 | Sci-Render complete eight-stage figure/provenance historical census
+- Source base 57ab7a35088837ad11a2b4d4af2343dd9e5acdaa, owner blob 399876ad66efc984196b21cdaae794396fdeee56; A1 MonthStart→Oct17; source stages retain original 2024-Q1 to 2025-Q4 dates
+- This is an original Git object and source/provenance ownership census, not a new renderer execution or Stage I study
+- Figure claim correctness, render pixel integrity, backend revision, accessibility, publication and host acceptance are independent verification dimensions
+- Stage H SEARCH_BOUNDED completion is historical and cannot be promoted to current browser/run acceptance
+- No protected code, historical Stage object, or source timestamp is overwritten
+
+### Stage A–H original Git objects and evidence admissibility
+- A/2024-q1 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-a-2024-q1/A1_UNCERTAINTY_GUIDES_FIGURE_EVIDENCE.md` | Git blob `b3fb352e8f77f89f4402bc3438bd5d8175a2ce7a` | size=4688
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- A/2024-q1 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-a-2024-q1/A2_ACCESSIBILITY_ALTERNATE_REPRESENTATION.md` | Git blob `06116e1caca6346df9b9c83f9fd53fb17e137dbd` | size=4415
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- A/2024-q1 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-a-2024-q1/A3_RENDERER_VERSION_COMMUNICATION_TRANSFER.md` | Git blob `007df0a17acfe05774dd13503fbc315f49b1de3d` | size=4346
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- A/2024-q1 CONTRIBUTOR_DISCLOSURE: `maintenance/frontier-research/stage-a-2024-q1/CONTRIBUTOR_STATEMENT.md` | Git blob `3a4f7f2b4edb170e475ddd10d0fa6b7d515ff6f3` | size=1346
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- A/2024-q1 RENDER_EVIDENCE_CHART: `maintenance/frontier-research/stage-a-2024-q1/EVIDENCE_CHART.md` | Git blob `992cf5236a90e6d20ec5da670edf00fd978311c0` | size=7134
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=evidence link is not a pixel, figure semantics or accessibility certificate; independent renderer replay NOT_EXECUTED
+- A/2024-q1 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_01_RECONSTRUCTION.md` | Git blob `bbf34973e6c26099e485a5a58429abb75d0dd181` | size=3446
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- A/2024-q1 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_02_RECONSTRUCTION.md` | Git blob `044cc6340d754678508c1f34dc3559d5e7131150` | size=2985
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- A/2024-q1 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_03_RECONSTRUCTION.md` | Git blob `2c0ef73742a544da3f235e0e90911858f4209ba2` | size=3579
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- A/2024-q1 STAGE_REVIEW: `maintenance/frontier-research/stage-a-2024-q1/RESEARCH_REVIEW.md` | Git blob `25c06b5fe8275ddaa9d286480bf5f30f595676eb` | size=3294
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- A/2024-q1 SOURCE_REGISTER: `maintenance/frontier-research/stage-a-2024-q1/SOURCE_OBJECT_REGISTER.md` | Git blob `463db61d331daa4dfedbd77dfedf231dcda59fb2` | size=6440
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source registry binds publisher/object/version but not render acceptance; independent renderer replay NOT_EXECUTED
+- A/2024-q1 SCOPE_BRIEF: `maintenance/frontier-research/stage-a-2024-q1/STAGE_BRIEF.md` | Git blob `7d1ec314ca8fe54edce2df3b2b916b6670cc0680` | size=6496
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- A/2024-q1 HANDOFF_QUESTIONS: `maintenance/frontier-research/stage-a-2024-q1/STAGE_HANDOFF.md` | Git blob `5bf71d9428476134c7143374c3be573559564c97` | size=1944
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=handoff does not create Stage I execution evidence; independent renderer replay NOT_EXECUTED
+- A/2024-q1 SYNTHESIS: `maintenance/frontier-research/stage-a-2024-q1/STAGE_SYNTHESIS.md` | Git blob `5bc9f12975dc6d8bdd1215f6da3f9a4ae2445eaf` | size=17235
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=synthesis preserves bounded source claims without new figure production; independent renderer replay NOT_EXECUTED
+- B/2024-q2 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-b-2024-q2/B1_VERSIONED_VISUAL_SEMANTICS.md` | Git blob `f185caa63a11312988ad6e23defd79a9c6e4abd2` | size=2031
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- B/2024-q2 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-b-2024-q2/B2_MULTIMODAL_ACCESSIBILITY.md` | Git blob `abf40846eb34abf138f5a85d0bd6a22981f224c0` | size=2221
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- B/2024-q2 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-b-2024-q2/B3_USER_CONTROL_AND_INVALID_DATA.md` | Git blob `c2ed5a7a5e4316895d2a1d70312a2d0317d8180e` | size=2122
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- B/2024-q2 CONTRIBUTOR_DISCLOSURE: `maintenance/frontier-research/stage-b-2024-q2/CONTRIBUTOR_STATEMENT.md` | Git blob `5de2aeea9f3a555fb92f4392d7a096f0662b33a3` | size=760
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- B/2024-q2 RENDER_EVIDENCE_CHART: `maintenance/frontier-research/stage-b-2024-q2/EVIDENCE_CHART.md` | Git blob `37413ba45969aabe132abcea35e9eef6ca5bdad2` | size=2056
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=evidence link is not a pixel, figure semantics or accessibility certificate; independent renderer replay NOT_EXECUTED
+- B/2024-q2 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_04_RECONSTRUCTION.md` | Git blob `ec76867880466136a7e143e336341a629f663830` | size=693
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- B/2024-q2 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_05_RECONSTRUCTION.md` | Git blob `f15d17e77dc4e25ef5417b44652b8f489cf6b934` | size=981
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- B/2024-q2 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_06_RECONSTRUCTION.md` | Git blob `9949d1a48dfc00736ce40162f3330c75f6a8f700` | size=699
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- B/2024-q2 STAGE_REVIEW: `maintenance/frontier-research/stage-b-2024-q2/RESEARCH_REVIEW.md` | Git blob `610503e7b4926e57ffdd9f5be252514394681035` | size=1505
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- B/2024-q2 SOURCE_REGISTER: `maintenance/frontier-research/stage-b-2024-q2/SOURCE_OBJECT_REGISTER.md` | Git blob `2d1c62b1f888c5af5d11b8fc7950b9d21d627c6f` | size=2758
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source registry binds publisher/object/version but not render acceptance; independent renderer replay NOT_EXECUTED
+- B/2024-q2 SCOPE_BRIEF: `maintenance/frontier-research/stage-b-2024-q2/STAGE_BRIEF.md` | Git blob `a64355f5893eb6772c2363fc87afb1946686066b` | size=1615
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- B/2024-q2 HANDOFF_QUESTIONS: `maintenance/frontier-research/stage-b-2024-q2/STAGE_HANDOFF.md` | Git blob `d9acfcf8b35fdfc9825d3b4087df7b48e61b659d` | size=1301
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=handoff does not create Stage I execution evidence; independent renderer replay NOT_EXECUTED
+- B/2024-q2 SYNTHESIS: `maintenance/frontier-research/stage-b-2024-q2/STAGE_SYNTHESIS.md` | Git blob `4370caa51e119328b8ce22423da6aab8632af7d3` | size=6021
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=synthesis preserves bounded source claims without new figure production; independent renderer replay NOT_EXECUTED
+- C/2024-q3 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-c-2024-q3/C1_REACTIVE_INTERACTIVE_STATE.md` | Git blob `e0f1560e0781597881b9d593556fa43bad25f2c7` | size=1399
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- C/2024-q3 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-c-2024-q3/C2_RENDERER_WRAPPER_VERSION_BINDING.md` | Git blob `a861c5b8ec8b08dbedb92c55136dd04c62011479` | size=1626
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- C/2024-q3 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-c-2024-q3/C3_POPULATION_CONDITIONED_ACCESSIBILITY.md` | Git blob `fd20d477a0643a59cfa582bc1b5efca8ed4f9978` | size=1709
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- C/2024-q3 CONTRIBUTOR_DISCLOSURE: `maintenance/frontier-research/stage-c-2024-q3/CONTRIBUTOR_STATEMENT.md` | Git blob `87ff13158c29af3b1825bec68c9888173be08a4e` | size=476
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- C/2024-q3 RENDER_EVIDENCE_CHART: `maintenance/frontier-research/stage-c-2024-q3/EVIDENCE_CHART.md` | Git blob `7cccb37b4f0f3897abf435ba80382eaa1762a74d` | size=1440
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=evidence link is not a pixel, figure semantics or accessibility certificate; independent renderer replay NOT_EXECUTED
+- C/2024-q3 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_07_RECONSTRUCTION.md` | Git blob `476e9bef9ac3a2cd1de1ee1471f3192424eb0553` | size=559
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- C/2024-q3 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_08_RECONSTRUCTION.md` | Git blob `6f46f88940045997d23e0410626becd868bb5c4e` | size=611
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- C/2024-q3 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_09_RECONSTRUCTION.md` | Git blob `1f69b09801435fc8bfe9dd28cf62f8b1fc7a596a` | size=627
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- C/2024-q3 STAGE_REVIEW: `maintenance/frontier-research/stage-c-2024-q3/RESEARCH_REVIEW.md` | Git blob `5ab1d0d6257a0cc4696a12445c503b147186097f` | size=1441
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- C/2024-q3 SOURCE_REGISTER: `maintenance/frontier-research/stage-c-2024-q3/SOURCE_OBJECT_REGISTER.md` | Git blob `0bcfc9c200b92866d3343db8ee8da004b755343b` | size=1529
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source registry binds publisher/object/version but not render acceptance; independent renderer replay NOT_EXECUTED
+- C/2024-q3 SCOPE_BRIEF: `maintenance/frontier-research/stage-c-2024-q3/STAGE_BRIEF.md` | Git blob `11e5d1645fe5985dffc198e210d14d54f6b8b8cc` | size=2419
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- C/2024-q3 HANDOFF_QUESTIONS: `maintenance/frontier-research/stage-c-2024-q3/STAGE_HANDOFF.md` | Git blob `66b518cee11f569ecd3cd95c3e8234785e84d24c` | size=996
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=handoff does not create Stage I execution evidence; independent renderer replay NOT_EXECUTED
+- C/2024-q3 SYNTHESIS: `maintenance/frontier-research/stage-c-2024-q3/STAGE_SYNTHESIS.md` | Git blob `da4eb51a65378221f406a9e95eba42b8b75ab0eb` | size=3617
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=synthesis preserves bounded source claims without new figure production; independent renderer replay NOT_EXECUTED
+- D/2024-q4 CONTRIBUTOR_DISCLOSURE: `maintenance/frontier-research/stage-d-2024-q4/CONTRIBUTOR_STATEMENT.md` | Git blob `d9fffe289544ddff9b7ee5e4f936d6f4103343a5` | size=739
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- D/2024-q4 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-d-2024-q4/D1_MULTIMODAL_ACCESS_INTERACTION.md` | Git blob `789cb8c0fa80cd916c9f2b7568e15d7018d61725` | size=1588
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- D/2024-q4 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-d-2024-q4/D2_WRAPPER_SCREEN_READER_RENDERER.md` | Git blob `c4d9bf26942a0bba120d13a5182ce168c07c4a0d` | size=1249
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- D/2024-q4 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-d-2024-q4/D3_TEMPORAL_AND_COLOR_COMMUNICATION_STATE.md` | Git blob `9ab5da0096d263c7f1ee6590491c89bed5fc8079` | size=1495
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- D/2024-q4 RENDER_EVIDENCE_CHART: `maintenance/frontier-research/stage-d-2024-q4/EVIDENCE_CHART.md` | Git blob `1d8dfd2542fd76173ac8d8420fd1f5123b7adfd3` | size=939
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=evidence link is not a pixel, figure semantics or accessibility certificate; independent renderer replay NOT_EXECUTED
+- D/2024-q4 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_10_RECONSTRUCTION.md` | Git blob `1b11eb68349ed9fbea7382e63072c86bd15e80e9` | size=495
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- D/2024-q4 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_11_RECONSTRUCTION.md` | Git blob `a44e780159ba9db837cf25239fcb83067fed256a` | size=486
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- D/2024-q4 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_12_RECONSTRUCTION.md` | Git blob `8320ac3291283cfae037e782b34b9d92c6fccb82` | size=504
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- D/2024-q4 STAGE_REVIEW: `maintenance/frontier-research/stage-d-2024-q4/RESEARCH_REVIEW.md` | Git blob `d98fa795c40733d2e22aa72fa29353a9eb88decb` | size=1295
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- D/2024-q4 SOURCE_REGISTER: `maintenance/frontier-research/stage-d-2024-q4/SOURCE_OBJECT_REGISTER.md` | Git blob `3f2afe7ac4b4726995a33cdc2af055db4a2f224e` | size=1514
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source registry binds publisher/object/version but not render acceptance; independent renderer replay NOT_EXECUTED
+- D/2024-q4 SCOPE_BRIEF: `maintenance/frontier-research/stage-d-2024-q4/STAGE_BRIEF.md` | Git blob `8bbdb80389e7caf2191a08bfde48fec256f22069` | size=1625
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- D/2024-q4 HANDOFF_QUESTIONS: `maintenance/frontier-research/stage-d-2024-q4/STAGE_HANDOFF.md` | Git blob `1531c275362b262e030c99ba7cdd0cb7a3e77ff3` | size=1887
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=handoff does not create Stage I execution evidence; independent renderer replay NOT_EXECUTED
+- D/2024-q4 SYNTHESIS: `maintenance/frontier-research/stage-d-2024-q4/STAGE_SYNTHESIS.md` | Git blob `cd4959c4b3cf920d627de7e9da0f9f61596ae23c` | size=2624
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=synthesis preserves bounded source claims without new figure production; independent renderer replay NOT_EXECUTED
+- E/2025-q1 CONTRIBUTOR_DISCLOSURE: `maintenance/frontier-research/stage-e-2025-q1/CONTRIBUTOR_STATEMENT.md` | Git blob `f4d0f0f892673c11ef1495a5c945d245e08aac8e` | size=516
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- E/2025-q1 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-e-2025-q1/E1_PLOTLY6_SERIALIZATION_WRAPPER_AND_RENDERER_IDENTITY.md` | Git blob `ed6de0d9faa58a7c41f7392df2f896234e1eef5d` | size=1461
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- E/2025-q1 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-e-2025-q1/E2_MATPLOTLIB_PATCH_RELEASE_AND_RENDER_BEHAVIOR.md` | Git blob `74458452b549c2c9787fd42d775428961216efce` | size=1049
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- E/2025-q1 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-e-2025-q1/E3_VEGALITE6_GRAMMAR_RUNTIME_MAJOR_VERSION.md` | Git blob `1f3bfc56989f5917a03f9b5ddf91dd0cfb8defc1` | size=1065
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- E/2025-q1 RENDER_EVIDENCE_CHART: `maintenance/frontier-research/stage-e-2025-q1/EVIDENCE_CHART.md` | Git blob `19ea11f60e5a3283ec5e5a367f5230eeb0b87cf8` | size=845
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=evidence link is not a pixel, figure semantics or accessibility certificate; independent renderer replay NOT_EXECUTED
+- E/2025-q1 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_01_RECONSTRUCTION.md` | Git blob `37f8aeb197f980de27b685a81cfb24db1f2a58bf` | size=473
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- E/2025-q1 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_02_RECONSTRUCTION.md` | Git blob `90ed2f271e4ed22e545699d2ef3864619f851ab1` | size=586
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- E/2025-q1 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_03_RECONSTRUCTION.md` | Git blob `981ed9607bafcc31b064b2af3146355e27a59c81` | size=589
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- E/2025-q1 STAGE_REVIEW: `maintenance/frontier-research/stage-e-2025-q1/RESEARCH_REVIEW.md` | Git blob `d9e1072369e7076c2c3ef77fc75266482301368d` | size=1444
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- E/2025-q1 SOURCE_REGISTER: `maintenance/frontier-research/stage-e-2025-q1/SOURCE_OBJECT_REGISTER.md` | Git blob `dfbb1a6c888e1b34889bb311b32920f180e0017b` | size=925
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source registry binds publisher/object/version but not render acceptance; independent renderer replay NOT_EXECUTED
+- E/2025-q1 SCOPE_BRIEF: `maintenance/frontier-research/stage-e-2025-q1/STAGE_BRIEF.md` | Git blob `594db93a4d82abb04eafe3ba008a99ba4bd7ae67` | size=1716
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- E/2025-q1 HANDOFF_QUESTIONS: `maintenance/frontier-research/stage-e-2025-q1/STAGE_HANDOFF.md` | Git blob `d19ddbcefed3c0430b64fbb0120ffd058a2c2259` | size=1187
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=handoff does not create Stage I execution evidence; independent renderer replay NOT_EXECUTED
+- E/2025-q1 SYNTHESIS: `maintenance/frontier-research/stage-e-2025-q1/STAGE_SYNTHESIS.md` | Git blob `26230de37046ea82243041c858d26d2fd2d23c60` | size=2918
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=synthesis preserves bounded source claims without new figure production; independent renderer replay NOT_EXECUTED
+- F/2025-q2 CONTRIBUTOR_DISCLOSURE: `maintenance/frontier-research/stage-f-2025-q2/CONTRIBUTOR_STATEMENT.md` | Git blob `1a2b633f98894cc083a7d59871ebc01c534870d5` | size=355
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- F/2025-q2 RENDER_EVIDENCE_CHART: `maintenance/frontier-research/stage-f-2025-q2/EVIDENCE_CHART.md` | Git blob `434c4ad9d2b88af2edba836ac4327d86f13ea30a` | size=744
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=evidence link is not a pixel, figure semantics or accessibility certificate; independent renderer replay NOT_EXECUTED
+- F/2025-q2 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-f-2025-q2/F1_WRAPPER_GRAMMAR_MIGRATION_STATE.md` | Git blob `a880963887e44ed29fed4690e79883789487c1eb` | size=720
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- F/2025-q2 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-f-2025-q2/F2_RENDER_BACKEND_AND_PATCH_STABILIZATION.md` | Git blob `ab53a8bcabe8ecbda535be8e3caf21ca17604d68` | size=1005
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- F/2025-q2 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-f-2025-q2/F3_DELIVERY_INTEGRITY_AND_ACCESSIBILITY_METADATA.md` | Git blob `e189a97d95c69a8ba926d0508f4599a63214dd4a` | size=1086
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- F/2025-q2 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_04_RECONSTRUCTION.md` | Git blob `225e9449f4575c8ad565f224cb53f558266bb203` | size=432
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- F/2025-q2 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_05_RECONSTRUCTION.md` | Git blob `beb52828fb3febaa03c0c9b6fabf984263c3a66b` | size=414
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- F/2025-q2 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_06_RECONSTRUCTION.md` | Git blob `19ee02b2cff7a840a758e0bec50c53f723cfa963` | size=461
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- F/2025-q2 STAGE_REVIEW: `maintenance/frontier-research/stage-f-2025-q2/RESEARCH_REVIEW.md` | Git blob `b46e9dc9eab7776d3e95ffa67772d423d106c179` | size=1070
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- F/2025-q2 SOURCE_REGISTER: `maintenance/frontier-research/stage-f-2025-q2/SOURCE_OBJECT_REGISTER.md` | Git blob `8d23229c77d4ac2ee3d7315ab7b9f44ea0111760` | size=918
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source registry binds publisher/object/version but not render acceptance; independent renderer replay NOT_EXECUTED
+- F/2025-q2 SCOPE_BRIEF: `maintenance/frontier-research/stage-f-2025-q2/STAGE_BRIEF.md` | Git blob `a2ec3b1510368526132fa50d202ad0746b2cf6ef` | size=1429
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- F/2025-q2 HANDOFF_QUESTIONS: `maintenance/frontier-research/stage-f-2025-q2/STAGE_HANDOFF.md` | Git blob `ae2f98d4893b53d39f4d945626bc8ab59a63b1c6` | size=724
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=handoff does not create Stage I execution evidence; independent renderer replay NOT_EXECUTED
+- F/2025-q2 SYNTHESIS: `maintenance/frontier-research/stage-f-2025-q2/STAGE_SYNTHESIS.md` | Git blob `3b16ca05a60737c39b8a5225ba4aa914d88dae5b` | size=1931
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=synthesis preserves bounded source claims without new figure production; independent renderer replay NOT_EXECUTED
+- G/2025-q3 CONTRIBUTOR_DISCLOSURE: `maintenance/frontier-research/stage-g-2025-q3/CONTRIBUTOR_STATEMENT.md` | Git blob `a6b4cf1966d2b127c44de1ac2300a704df0fc7d2` | size=805
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- G/2025-q3 RENDER_EVIDENCE_CHART: `maintenance/frontier-research/stage-g-2025-q3/EVIDENCE_CHART.md` | Git blob `76aa82684d7a691bf3f2a37ae9578a68bea71ee5` | size=948
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=evidence link is not a pixel, figure semantics or accessibility certificate; independent renderer replay NOT_EXECUTED
+- G/2025-q3 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-g-2025-q3/G1_MATPLOTLIB3105_RUNTIME_TARGET_AND_WHEEL_IDENTITY.md` | Git blob `598dd92b311be8422328f7f1fbaec23f06bcaff8` | size=1707
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- G/2025-q3 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-g-2025-q3/G2_PLOTLY63_EXPORT_ENGINE_AND_BROWSER_IDENTITY.md` | Git blob `e977d6a7e4fc16c190dcee60919535cab56429d0` | size=1776
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- G/2025-q3 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-g-2025-q3/G3_VEGALITE63_64_INTERACTION_AND_TOOLTIP_SEMANTICS.md` | Git blob `09f9f83629dd3f1b6f54c6d0f57565db7fc73093` | size=1878
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- G/2025-q3 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_07_RECONSTRUCTION.md` | Git blob `727a03c85fc095e0d881bfb8e44a21e4831d72bf` | size=746
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- G/2025-q3 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_08_RECONSTRUCTION.md` | Git blob `f3cd2a96c041cbbe3ea67072530153d7645f4447` | size=737
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- G/2025-q3 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_09_RECONSTRUCTION.md` | Git blob `86fe934f97e6aef84c2fe08875ae2f3593841b01` | size=824
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- G/2025-q3 STAGE_REVIEW: `maintenance/frontier-research/stage-g-2025-q3/RESEARCH_REVIEW.md` | Git blob `8d48eff9895c50650f14689af717a83a807ff610` | size=1238
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- G/2025-q3 SOURCE_REGISTER: `maintenance/frontier-research/stage-g-2025-q3/SOURCE_OBJECT_REGISTER.md` | Git blob `c8cea0828aaf48cf9af28049eb36b56fa0e38297` | size=1094
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source registry binds publisher/object/version but not render acceptance; independent renderer replay NOT_EXECUTED
+- G/2025-q3 SCOPE_BRIEF: `maintenance/frontier-research/stage-g-2025-q3/STAGE_BRIEF.md` | Git blob `3ec163305604a372639e545191523e88b9a08103` | size=1739
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- G/2025-q3 HANDOFF_QUESTIONS: `maintenance/frontier-research/stage-g-2025-q3/STAGE_HANDOFF.md` | Git blob `d4c531f0bdf57f920c53cd1728679ac712919583` | size=955
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=handoff does not create Stage I execution evidence; independent renderer replay NOT_EXECUTED
+- G/2025-q3 SYNTHESIS: `maintenance/frontier-research/stage-g-2025-q3/STAGE_SYNTHESIS.md` | Git blob `9bc8f0b925426c553370c95a477a04d26a1ed012` | size=2462
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=synthesis preserves bounded source claims without new figure production; independent renderer replay NOT_EXECUTED
+- H/2025-q4 CONTRIBUTOR_DISCLOSURE: `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md` | Git blob `740460cdfc3a7627d2d84ed7c3dfc59108e470fe` | size=435
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- H/2025-q4 RENDER_EVIDENCE_CHART: `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md` | Git blob `ad8415eb02e1b2e80ab5432c6816313a21c3cddd` | size=689
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=evidence link is not a pixel, figure semantics or accessibility certificate; independent renderer replay NOT_EXECUTED
+- H/2025-q4 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-h-2025-q4/H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md` | Git blob `f22a0fa137bc743dd3e90474071a8325bb7f47d7` | size=1051
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- H/2025-q4 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-h-2025-q4/H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md` | Git blob `5f164252c290d0ffddd8e875d1d1e4313125fb8a` | size=1040
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- H/2025-q4 SOURCE_OR_FIGURE_NOTES: `maintenance/frontier-research/stage-h-2025-q4/H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md` | Git blob `e619dfa731c3a9d4f9761bffeaa7d9a52acbc320` | size=1078
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source/release snapshot retains wrapper/backend/grammar revision and environment conditions; independent renderer replay NOT_EXECUTED
+- H/2025-q4 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md` | Git blob `8993beeb8b937404fcdc87de547724f7b3a07634` | size=436
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- H/2025-q4 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md` | Git blob `11938e76fc1e328f4353d7e099e3703f1cecd645` | size=769
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- H/2025-q4 MONTH_RECONSTRUCTION: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md` | Git blob `babecabeba106e87ea2ac774534bc2c753a1a285` | size=493
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=historical month reconstruction is not a new native October producer run; independent renderer replay NOT_EXECUTED
+- H/2025-q4 STAGE_REVIEW: `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md` | Git blob `14779f452fb49e87517e431b624f66b285d45789` | size=670
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- H/2025-q4 SOURCE_REGISTER: `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md` | Git blob `ba1a03a5e4228df2ffa5002e3654424b9c085699` | size=598
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=source registry binds publisher/object/version but not render acceptance; independent renderer replay NOT_EXECUTED
+- H/2025-q4 SCOPE_BRIEF: `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md` | Git blob `8510c7001860ea0ca3d03c587d4c408d095987ad` | size=1354
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=original stage-scoped research artifact, not current runtime verification; independent renderer replay NOT_EXECUTED
+- H/2025-q4 HANDOFF_QUESTIONS: `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md` | Git blob `f26a2c9a5fe940bb8770f511e0360bdd1d1a6806` | size=806
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=handoff does not create Stage I execution evidence; independent renderer replay NOT_EXECUTED
+- H/2025-q4 SYNTHESIS: `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md` | Git blob `f637e10b316e0159f789c00dce521ea0c81cc2f1` | size=1626
+  - A1 disposition: RETAIN_ORIGINAL_BLOB; interpretation=synthesis preserves bounded source claims without new figure production; independent renderer replay NOT_EXECUTED
+
+### Stage-level counts and temporal guardrails
+- A/2024-q1: 13 original files; quarter identity is source history, not October2026 fresh experiment credit
+- B/2024-q2: 13 original files; quarter identity is source history, not October2026 fresh experiment credit
+- C/2024-q3: 13 original files; quarter identity is source history, not October2026 fresh experiment credit
+- D/2024-q4: 13 original files; quarter identity is source history, not October2026 fresh experiment credit
+- E/2025-q1: 13 original files; quarter identity is source history, not October2026 fresh experiment credit
+- F/2025-q2: 13 original files; quarter identity is source history, not October2026 fresh experiment credit
+- G/2025-q3: 13 original files; quarter identity is source history, not October2026 fresh experiment credit
+- H/2025-q4: 13 original files; quarter identity is source history, not October2026 fresh experiment credit
+- Dated review: maintenance/2026-10-01-external-independent-gpt-review.md @ 7d07722bd53270f942788a1c29a1e60b9714e1f3; 12233 bytes
+  - Independent maintenance/audit metadata, not original Stage contributor or publisher-run proof
+- Dated review: maintenance/2026-10-02-september-d30-independent-gpt-audit.md @ 511dccbb54d3afb054f4aadd7f69ac5437882d82; 5457 bytes
+  - Independent maintenance/audit metadata, not original Stage contributor or publisher-run proof
+- Dated review: maintenance/2026-10-05-open-research-routing-reconciliation.md @ af5556643924e8be2b63abeff802236eb279f34d; 2405 bytes
+  - Independent maintenance/audit metadata, not original Stage contributor or publisher-run proof
+- Dated review: maintenance/2026-10-14-d14-pattern-formation-audit.md @ 3853d95a254d3a8c7fdb04275369312f36aee7db; 4375 bytes
+  - Independent maintenance/audit metadata, not original Stage contributor or publisher-run proof
+- Dated review: maintenance/2026-10-14-d14-pattern-formation.md @ 3fa1380cd5e956bb5f2983386d281db379597bf2; 3479 bytes
+  - Independent maintenance/audit metadata, not original Stage contributor or publisher-run proof
+
+### Figure-to-claim transfer gates
+- Stage-H selected Matplotlib, Plotly and Altair source/release identities have distinct renderer/backend and wrapper revision semantics
+- Figures and claims require exact source revision, source-data identity, execution environment and output artifact identity before acceptance
+- A local image visually matching expectations does not prove data correctness, implementation equivalence or WCAG conformance
+- Stage-I native producer evidence absent at current main; no new stage is synthesized in this A1
+- October17 A2 was already recorded, and the current relation-through header fixed independently; this A1 inherits without silently changing historical Q4 2025 results
+- Original stage file inventory 104; stage families 8; no new rendering package or browser tests were executed
+- A1 outcome: EIGHT_STAGE_FIGURE_SOURCE_IDENTITY_CENSUS / NO_NEW_RUNTIME_CREDIT / OCT17_BOUNDARY_PRESERVED
+- A2 must fresh-read merged A1, include Oct18 no-new-Stage current truth and preserve source-to-figure-to-acceptance separation
