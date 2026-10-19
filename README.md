@@ -72,7 +72,7 @@ Real external/runtime versions remain evidence when genuinely known, including W
 | `metadata/recipe.schema.yaml` | Implemented current machine contract | recipe structure; schema success != scientific validity |
 | `metadata/communication_transfer.contract.yaml` | Implemented current machine contract | bounded transfer shape; not publisher/scientific validation |
 | `sci_render.py` | Implemented | unified schema/rule/backend/evidence path |
-| `core/accessibility.py` | Implemented | text alternatives/redundant-style intent; not whole-publication WCAG certification |
+| `core/accessibility.py` | Implemented | text alternatives; up to 32 default non-color style signatures for distinct series; not guaranteed perceptual separation or WCAG certification |
 | `core/color_encoding.py`, `core/palettes.py`, `core/cvd_simulation.py` | Implemented | project safeguards, not universal perceptual guarantees |
 | `core/uncertainty_legend.py` | Implemented | explicit uncertainty terminology; not statistical-validity inference |
 | `core/claim_binding_audit.py` | Implemented | claim/process consistency + communication coverage; no pixel/entailment inference |
