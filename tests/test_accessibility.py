@@ -58,34 +58,42 @@ class TestAccessibilityContract(unittest.TestCase):
         self.assertEqual(distinct_style_signatures(styles), 32)
         self.assertEqual(styles["series-0"]["line_style"], "-")
         self.assertNotEqual(styles["series-0"], styles["series-8"])
+        for chart_type in ("line-chart", "scatter-plot", "bar-chart"):
+            self.assertEqual(distinct_style_signatures(styles, chart_type=chart_type), 32)
+            recipe = {
+                "type": chart_type,
+                "data": {label: [index] for index, label in enumerate(labels)},
+                "accessibility": {"redundant_encoding": "required"},
+                "output": {},
+            }
+            findings = evaluate_pre_render_rules(recipe, {}, self.rules)
+            self.assertFalse(
+                any(item["check_id"] == "non-color-cue" for item in findings),
+                findings,
+            )
+        # Generated tuple markers are accepted by the backend's marker type.
+        from matplotlib.markers import MarkerStyle
 
-        recipe = {
-            "type": "line-chart",
-            "data": {label: [index] for index, label in enumerate(labels)},
-            "accessibility": {"redundant_encoding": "required"},
-            "output": {},
-        }
-        findings = evaluate_pre_render_rules(recipe, {}, self.rules)
-        self.assertFalse(
-            any(item["check_id"] == "non-color-cue" for item in findings),
-            findings,
-        )
+        for style in styles.values():
+            MarkerStyle(style["marker"])
 
     def test_generated_style_budget_does_not_hide_collisions(self):
         labels = [f"series-{index}" for index in range(33)]
         styles = resolve_series_styles(labels, {"redundant_encoding": "required"})
         self.assertLess(distinct_style_signatures(styles), len(labels))
-        recipe = {
-            "type": "line-chart",
-            "data": {label: [index] for index, label in enumerate(labels)},
-            "accessibility": {"redundant_encoding": "required"},
-            "output": {},
-        }
-        findings = evaluate_pre_render_rules(recipe, {}, self.rules)
-        self.assertTrue(
-            any(item["check_id"] == "non-color-cue" for item in findings),
-            findings,
-        )
+        for chart_type in ("line-chart", "scatter-plot", "bar-chart"):
+            self.assertLess(distinct_style_signatures(styles, chart_type=chart_type), 33)
+            recipe = {
+                "type": chart_type,
+                "data": {label: [index] for index, label in enumerate(labels)},
+                "accessibility": {"redundant_encoding": "required"},
+                "output": {},
+            }
+            findings = evaluate_pre_render_rules(recipe, {}, self.rules)
+            self.assertTrue(
+                any(item["check_id"] == "non-color-cue" for item in findings),
+                findings,
+            )
 
     def test_declared_adjacency_only_checks_declared_pairs(self):
         recipe = {
