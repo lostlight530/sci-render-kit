@@ -62,7 +62,7 @@ rules:
       - id: non-color-cue
         severity: error
         name: "非颜色冗余编码"
-        rule: "redundant_encoding=required 时按 Matplotlib 实际绘制字段检查可区分非颜色线索：line=marker+line_style，scatter=marker，bar=hatch；不把未绘制字段的差异计入通过，面向 WCAG 2.2 SC 1.4.1 设计支持而非合规认证"
+        rule: "redundant_encoding=required 时按 Matplotlib 实际绘制字段检查可区分非颜色线索：line=marker+line_style，scatter=marker，bar=hatch；不把未绘制字段的差异计入通过；marker/line_style 的 none/None/空白视为不可见，并拒绝 required 模式中没有实际非颜色线索的 scatter/line 系列；面向 WCAG 2.2 SC 1.4.1 设计支持而非合规认证"
       - id: cvd-contrast
         severity: warning
         name: "CVD 模拟增强检查"
