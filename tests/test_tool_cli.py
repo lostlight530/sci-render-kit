@@ -91,6 +91,14 @@ class ToolInterfaceTests(unittest.TestCase):
         self.assertFalse(receipt["output"]["figure_generated"])
         self.assertFalse(receipt["output"]["scientific_validity_claim"])
 
+    def test_invalid_recipe_schema_is_structured_failure(self):
+        with tempfile.TemporaryDirectory() as root:
+            path = Path(root) / "invalid.yaml"
+            path.write_text("id: invalid\ntype: line-chart\n", encoding="utf-8")
+            result = tool_cli.invoke("figure.preflight", {"recipe_path": str(path)})
+            self.assertEqual(result["status"], "failed")
+            self.assertIn(result["error"]["type"], {"ValidationError", "ValueError"})
+
     def test_profile_path_escape_rejected(self):
         receipt = tool_cli.invoke("figure.preflight", {
             "recipe_path": "examples/line_chart.yaml",
