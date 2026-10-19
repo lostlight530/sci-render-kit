@@ -71,11 +71,32 @@ class TestAccessibilityContract(unittest.TestCase):
                 any(item["check_id"] == "non-color-cue" for item in findings),
                 findings,
             )
-        # Generated tuple markers are accepted by the backend's marker type.
-        from matplotlib.markers import MarkerStyle
 
-        for style in styles.values():
-            MarkerStyle(style["marker"])
+    def test_effective_cues_ignore_unrendered_style_fields(self):
+        styles = {
+            "a": {"marker": "o", "line_style": "-", "hatch": "//"},
+            "b": {"marker": "o", "line_style": ":", "hatch": "//"},
+        }
+        self.assertEqual(distinct_style_signatures(styles), 2)
+        self.assertEqual(distinct_style_signatures(styles, chart_type="line-chart"), 2)
+        self.assertEqual(distinct_style_signatures(styles, chart_type="scatter-plot"), 1)
+        self.assertEqual(distinct_style_signatures(styles, chart_type="bar-chart"), 1)
+
+        for chart_type in ("scatter-plot", "bar-chart"):
+            recipe = {
+                "type": chart_type,
+                "data": {"a": [1], "b": [2]},
+                "accessibility": {
+                    "redundant_encoding": "required",
+                    "series_styles": styles,
+                },
+                "output": {},
+            }
+            findings = evaluate_pre_render_rules(recipe, {}, self.rules)
+            self.assertTrue(
+                any(item["check_id"] == "non-color-cue" for item in findings),
+                findings,
+            )
 
     def test_generated_style_budget_does_not_hide_collisions(self):
         labels = [f"series-{index}" for index in range(33)]
