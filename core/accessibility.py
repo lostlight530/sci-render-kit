@@ -75,11 +75,45 @@ def resolve_series_styles(labels: Iterable[str], accessibility: dict) -> Dict[st
     return resolved
 
 
+def _effective_cue_identity(field: str, value: object) -> object:
+    """Canonicalize explicitly absent cue aliases used by Matplotlib.
+
+    Markers and line styles named none/None are not drawn.
+    For hatch, whitespace and empty strings both give a plain fill.
+    Other values are preserved; this is not perceptual equivalence.
+    """
+    if field in {"marker", "line_style"}:
+        if value is None or (
+            isinstance(value, str) and value.strip().lower() in {"", "none"}
+        ):
+            return None
+    if field == "hatch" and isinstance(value, str) and not value.strip():
+        return ""
+    return value
+
+
+def missing_required_non_color_cues(styles: Dict[str, dict], chart_type: str) -> bool:
+    """Find a series with no rendered non-color cue on this chart type.
+
+    A plain bar may distinguish itself from hatched bars, but a scatter
+    series without a marker, or a line with neither line nor marker, has no
+    non-color channel even if other series do.
+    """
+    for style in styles.values():
+        marker = _effective_cue_identity("marker", style.get("marker"))
+        line = _effective_cue_identity("line_style", style.get("line_style"))
+        if chart_type == "scatter-plot" and marker is None:
+            return True
+        if chart_type == "line-chart" and marker is None and line is None:
+            return True
+    return False
+
+
 def distinct_style_signatures(styles: Dict[str, dict], chart_type: str | None = None) -> int:
-    """Count effective generated/declared cues for the requested Matplotlib chart.
+    """Count chart-effective cues, normalizing equivalent absent-style aliases.
 
     Lines use marker + linestyle; scatter uses marker; bars use hatch.
-    Without chart_type retain the original full-tuple utility behavior.
+    Without chart_type retain the original full-tuple field selection.
     """
     fields = {
         "line-chart": ("marker", "line_style"),
@@ -87,7 +121,7 @@ def distinct_style_signatures(styles: Dict[str, dict], chart_type: str | None = 
         "bar-chart": ("hatch",),
     }.get(chart_type, ("marker", "line_style", "hatch"))
     return len({
-        tuple(style.get(field) for field in fields)
+        tuple(_effective_cue_identity(field, style.get(field)) for field in fields)
         for style in styles.values()
     })
 
