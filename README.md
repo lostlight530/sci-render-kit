@@ -301,6 +301,12 @@ WCAG 2.2 is used with scoped semantics
 
 CVD simulation is an extra robustness check, not WCAG certification
 
+### Multi-series non-color cues (2026-10-19)
+
+When `accessibility.redundant_encoding: required` is set for supported series chart types, `core/accessibility.py` retains the existing first eight generated marker/line/hatch signatures. The default generator combines marker/hatch choices and line patterns to produce **32 distinct tuple signatures** for up to 32 distinct series labels. At 33 or more default-generated series, signatures can repeat; `sci_render.evaluate_pre_render_rules` continues to emit a `non-color-cue` finding when generated/declared signatures collide. Callers can declare `accessibility.series_styles` overrides when distinct cues are needed beyond the default budget.
+
+This is a **structural signature count**, not demonstrated visual separability, a screen-reader evaluation, color-vision suitability, backend feature parity or a WCAG conformance result. The configured rule severity determines whether a finding blocks rendering. Run `python3 -m unittest tests.test_accessibility -v` and a pinned Matplotlib fixture before a real-world rendering claim.
+
 ## Publisher-target profiles
 
 Publisher presets are machine-readable project configuration targets
