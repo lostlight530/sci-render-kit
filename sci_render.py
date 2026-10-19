@@ -28,6 +28,7 @@ from core.accessibility import (
     accessibility_config,
     build_accessibility_manifest,
     distinct_style_signatures,
+    missing_required_non_color_cues,
     resolve_series_styles,
     write_accessibility_manifest,
 )
@@ -260,11 +261,15 @@ def evaluate_pre_render_rules(recipe: dict, profile: dict, rule_catalog: dict) -
     mode = access.get("redundant_encoding", "off")
     if mode == "required" and chart_type in REDUNDANT_STYLE_TYPES and len(labels) > 1:
         styles = resolve_series_styles(labels, access)
-        if len(styles) != len(labels) or distinct_style_signatures(styles, chart_type=chart_type) < len(labels):
+        if (
+            len(styles) != len(labels)
+            or distinct_style_signatures(styles, chart_type=chart_type) < len(labels)
+            or missing_required_non_color_cues(styles, chart_type)
+        ):
             findings.append(finding(
                 rules,
                 "non-color-cue",
-                "multiple series do not have distinct non-color marker/line/hatch signatures",
+                "required non-color series cues are absent or not distinct on this chart type",
                 details={"standard_scope": "WCAG 2.2 SC 1.4.1 design support"},
             ))
 
