@@ -52,16 +52,22 @@ def resolve_series_styles(labels: Iterable[str], accessibility: dict) -> Dict[st
 
     resolved: Dict[str, dict] = {}
     for index, label in enumerate(labels):
-        base = dict(STYLE_CYCLE[index % len(STYLE_CYCLE)])
-        if index >= len(STYLE_CYCLE):
-            # Extend the eight stable defaults to 32 distinct signatures by
-            # varying the line pattern for each marker. Beyond 32, the
-            # runtime non-color-cue check continues to flag repeated styles
-            # unless callers explicitly provide distinct overrides.
+        # Bounded generated styles: after 32, collisions remain visible
+        # to the chart-type-aware non-color-cue check unless overridden.
+        slot = index % (len(STYLE_CYCLE) * 4)
+        base = dict(STYLE_CYCLE[slot % len(STYLE_CYCLE)])
+        if slot >= len(STYLE_CYCLE):
+            variant = slot // len(STYLE_CYCLE)
+            cue = slot % len(STYLE_CYCLE)
             line_styles = ("-", "--", "-.", ":")
-            base["line_style"] = line_styles[
-                (index % len(line_styles) + index // len(STYLE_CYCLE)) % len(line_styles)
-            ]
+            base["line_style"] = line_styles[(cue % 4 + variant) % 4]
+            # Matplotlib accepts (num_sides, style, angle) marker tuples.
+            # Unlike line-style-only changes, markers affect scatter output.
+            base["marker"] = (3 + cue, 0, variant * 15)
+            # Hatch density varies independently of line style/marker;
+            # bar charts only draw this non-color cue.
+            hatch_symbols = ("|", "/", "\\", "x", ".", "+", "o", "*")
+            base["hatch"] = hatch_symbols[cue] * (variant + 2)
         override = declared.get(label) or {}
         if isinstance(override, dict):
             base.update({k: v for k, v in override.items() if k in {"marker", "line_style", "hatch"}})
@@ -69,9 +75,19 @@ def resolve_series_styles(labels: Iterable[str], accessibility: dict) -> Dict[st
     return resolved
 
 
-def distinct_style_signatures(styles: Dict[str, dict]) -> int:
+def distinct_style_signatures(styles: Dict[str, dict], chart_type: str | None = None) -> int:
+    """Count effective generated/declared cues for the requested Matplotlib chart.
+
+    Lines use marker + linestyle; scatter uses marker; bars use hatch.
+    Without chart_type retain the original full-tuple utility behavior.
+    """
+    fields = {
+        "line-chart": ("marker", "line_style"),
+        "scatter-plot": ("marker",),
+        "bar-chart": ("hatch",),
+    }.get(chart_type, ("marker", "line_style", "hatch"))
     return len({
-        (style.get("marker"), style.get("line_style"), style.get("hatch"))
+        tuple(style.get(field) for field in fields)
         for style in styles.values()
     })
 
