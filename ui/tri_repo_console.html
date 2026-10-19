@@ -58,7 +58,7 @@ function row(parent,label,receipt,index){
   flag.textContent=status;
   element.append(number,body,flag);parent.append(element);
 }
-function showError(message){$("status").textContent="读取失败";$("steps").textContent=message;$("count").textContent="—";}
+function showError(message){$("repo").textContent="未加载";$("status").textContent="读取失败";$("steps").textContent=message;$("count").textContent="—";$("source").textContent="尚未读取 JSON";$("origin").textContent="本地文件";$("raw").textContent="没有导入记录";}
 function render(record,name){
   if(!record||typeof record!=="object"||Array.isArray(record))throw Error("文件根对象必须是 JSON object");
   const supported=/^(?:auto-doc-engine|epistemic-pipeline|sci-render-kit)\/(?:tool-adapter|tool-execution|agent-plan|tool-catalog)$/.test(String(record.profile||""));
