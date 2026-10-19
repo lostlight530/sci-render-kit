@@ -126,7 +126,13 @@ backends:
     runtime_versions_recorded: true
     redundant_series_style: implemented
     generated_distinct_non_color_signatures: 32
+    effective_cue_fields:
+      line-chart: [marker, line_style]
+      scatter-plot: [marker]
+      bar-chart: [hatch]
+    generated_tuple_marker_backend_scope: matplotlib
     above_generated_style_budget: explicit_overrides_or_runtime_duplicate_finding
+    wcag_conformance_claim: false
   ggplot2:
     adapter: backends/ggplot2_adapter.R
     outputs: [png, svg, pdf]
