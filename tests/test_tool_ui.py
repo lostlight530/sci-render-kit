@@ -59,5 +59,46 @@ class TestOfflineUI(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
 
 
+    def test_failed_import_clears_prior_receipt(self):
+        node = shutil.which("node")
+        if not node:
+            self.skipTest("Node.js not installed; UI state check optional")
+        harness = r'''
+const fs = require("node:fs");
+const vm = require("node:vm");
+const html = fs.readFileSync(process.argv[1], "utf8");
+const script = html.split("<script>", 2)[1].split("</script>", 1)[0];
+const elements = new Map();
+function element(id) {
+  if (!elements.has(id)) elements.set(id, {
+    textContent: "", addEventListener() {}, click() {},
+    classList: {add() {}, remove() {}},
+  });
+  return elements.get(id);
+}
+const context = {document: {getElementById: element}};
+vm.createContext(context);
+vm.runInContext(script, context);
+for (const id of ["repo", "source", "origin", "raw"]) {
+  element(id).textContent = "stale-" + id;
+}
+vm.runInContext('showError("invalid JSON")', context);
+const expected = {
+  repo: "未加载", status: "读取失败", steps: "invalid JSON", count: "—",
+  source: "尚未读取 JSON", origin: "本地文件", raw: "没有导入记录",
+};
+for (const [id, value] of Object.entries(expected)) {
+  if (element(id).textContent !== value) {
+    process.stderr.write(id + " retains " + JSON.stringify(element(id).textContent) + "\n");
+    process.exitCode = 1;
+  }
+}
+'''
+        result = subprocess.run(
+            [node, "-e", harness, str(UI)], capture_output=True, text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()
