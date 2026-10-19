@@ -244,6 +244,12 @@ Metaphorical filenames are not scientific capability evidence. Experimental/impo
 
 Render manifests, figure evidence, communication transfers, accessibility sidecars, maintenance reports, demonstrations, and canonical hash baselines never count as independent reproduction. R3 requires an actual separate rerun plus a declared comparison criterion.
 
+## Optional Tool / CLI / Agent adapter
+
+`agent_tools.py` provides an explicit local allowlist, argument contract and typed response envelope; `tool_cli.py` owns presentation in JSON, TTY and static offline HTML. [TOOL_CLI_AGENT.md](docs/02-examples-and-contracts/TOOL_CLI_AGENT.md) documents invocation, errors, UI and limits. It neither replaces `sci_render.py` nor supplies an MCP server, external model client, arbitrary shell or autonomous approvals.
+
+A completed tool call does not imply figure-render success, publisher acceptance, accessible publication or research truth. Additions require explicit implementation, validation and documentation.
+
 ## Delivery boundary
 
 For a confirmed maintenance repair:
