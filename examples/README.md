@@ -172,7 +172,7 @@ The renderer preserves this declaration but does not validate the upstream stati
 
 ```bash
 python3 sci_render.py examples/line_chart.yaml --profile presentation --backend ggplot2
-python3 sci_render.py examples/line_chart.yaml --profile presentation --backend observable
+python3 sci_render.py examples/line_chart_observable.yaml --profile presentation --backend observable
 ```
 
 Adapter source presence does not prove optional R/Node runtime availability
@@ -228,3 +228,7 @@ The dated first complete three-cadence demonstration is recorded under `maintena
 ## Local maintenance boundary
 
 Local checks are optional maintenance aids, not GitHub merge gates, scientific validation, WCAG certification or publisher acceptance
+
+### Backend-specific fixture boundary (2026-10-19)
+
+The default `examples/line_chart.yaml` requests PNG. Observable supports only HTML in the current backend matrix; its example uses a separate `line_chart_observable.yaml` with `output.format: html`. This is a synthetic fixture and requires an available Node runtime plus browser-side CDN dependency; no offline browser execution or feature parity with Matplotlib is implied.
