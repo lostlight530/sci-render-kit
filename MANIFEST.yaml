@@ -132,6 +132,8 @@ backends:
       bar-chart: [hatch]
     generated_tuple_marker_backend_scope: matplotlib
     above_generated_style_budget: explicit_overrides_or_runtime_duplicate_finding
+    missing_required_cue_behavior: reject_invisible_scatter_marker_or_line_without_marker_and_stroke
+    absent_cue_alias_normalization: [none, None, empty_or_whitespace]
     wcag_conformance_claim: false
   ggplot2:
     adapter: backends/ggplot2_adapter.R
