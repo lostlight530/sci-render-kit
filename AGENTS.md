@@ -261,3 +261,7 @@ Do not auto-merge, force-push, or write maintenance repairs directly to `main`. 
 ## Public boundary
 
 Do not publish private Jules prompts, repository memory, hidden reasoning, credentials, or unrelated operator context. Public governance may preserve the effect of a rule without copying private control text.
+
+## Native Tool / CLI / Agent and UI interface (2026-10-19 proposal)
+
+`tool_cli.py` exposes local preflight/communication handoff as two allowlisted tools with typed receipts; it does not invoke actual rendering or a model. Declared agent plans stop after failure. The offline `ui/tri_repo_console.html` uses locally selected JSON text only and is not the experimental `core/observer_dashboard.py` or a live observer. See `docs/02-examples-and-contracts/TOOL_CLI_AGENT_CONTRACT.md` and `TOOL_UI_STYLE.md`; do not infer MCP, scientific validity, full WCAG certification, publisher acceptance or completed CI from this proposal.
