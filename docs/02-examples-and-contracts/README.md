@@ -104,3 +104,8 @@ For a new figure/communication integration:
 6. keep scientific claim support and publication/accessibility status separately sourced.
 
 Architecture and implementation explanation live under [`../01-source-and-explanation/`](../01-source-and-explanation/). Maintenance/audit material in class 03 is operational/historical context, not scientific validity.
+
+## Tool CLI / Offline Evidence Console
+
+- [TOOL_CLI_AGENT.md](TOOL_CLI_AGENT.md) — current allowlisted Tool/CLI/Agent plan semantics, approval, and execution evidence boundaries
+- [TOOL_UI_STYLE.md](TOOL_UI_STYLE.md) — offline multi-repository receipt viewer, responsive UI tokens and validation limits

@@ -67,6 +67,11 @@ Real external/runtime versions remain evidence when genuinely known, including W
 
 ## Tool / CLI / Agent integration (2026-10-19)
 
+The additional [offline three-repository Evidence Console](ui/tri_repo_console.html) consumes selected JSON files for local, read-only comparison. It accepts this repository's native `sci-render-kit/tool-adapter` envelopes (including approval previews and completed agent plan steps) plus explicitly named legacy receipt profiles. See the [UI contract](docs/02-examples-and-contracts/TOOL_UI_STYLE.md). This file-import viewer is distinct from `tool_cli.py --format html` (a static single-run report). Neither surface checks current GitHub status, executes code, nor establishes WCAG/scientific validity.
+
+To view a result, create a JSON receipt with `python3 tool_cli.py list --output output/tools.json` or `python3 tool_cli.py plan --plan-file examples/tool_plan.json --output output/plan-preview.json`, then open the console HTML file locally and select that JSON. Actual execution requires explicit `--approve` on the CLI; the browser never approves or runs tools.
+
+
 `agent_tools.py` exposes allowlisted, nonrendering `figure_audit` and `communication_transfer` tools. `tool_cli.py` presents structured JSON, consistent terminal status and an offline HTML report. Actual scientific figures still use the repository-owned `sci_render.py` pipeline.
 
 ```bash

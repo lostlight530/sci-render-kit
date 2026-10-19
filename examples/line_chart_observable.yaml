@@ -1,0 +1,21 @@
+# Synthetic data: optional Observable HTML fixture, not offline/render verification
+id: line-chart-observable-example
+name: Synthetic two-series HTML output
+type: line-chart
+data:
+  control: [1, 2, 3, 4]
+  treatment: [2, 3, 4, 5]
+aesthetics:
+  title: Synthetic observations (fixture)
+  x_label: Sample
+  y_label: Value (arbitrary units)
+  palette: ["#0072B2", "#D55E00"]
+accessibility:
+  require_alt_text: true
+  alt_text: "Synthetic example, two increasing series across four samples."
+  redundant_encoding: off
+output:
+  dir: output
+  filename: line_chart_observable.html
+  format: html
+notes: "HTML output requires optional Node/browser/CDN runtime; not an offline or publisher validity claim."
