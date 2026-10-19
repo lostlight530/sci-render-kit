@@ -1,0 +1,12 @@
+{
+  "steps": [
+    {
+      "id": "figure-preflight",
+      "tool": "figure.preflight",
+      "arguments": {
+        "recipe_path": "examples/line_chart.yaml",
+        "profile_name": "nature"
+      }
+    }
+  ]
+}
