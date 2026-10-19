@@ -22,4 +22,4 @@ test-accessibility:
 
 .PHONY: test-tool-interface
 test-tool-interface:
-	python3 -m unittest tests.test_tool_cli -v
+	python3 -m unittest tests.test_tool_cli tests.test_tool_ui -v
