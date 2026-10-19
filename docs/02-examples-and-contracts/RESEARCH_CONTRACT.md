@@ -268,6 +268,8 @@ Selected WCAG 2.2 concerns are supported without claiming whole-document conform
 
 CVD simulation is an extra robustness check, not a WCAG test requirement
 
+The built-in redundant-style generator preserves eight original signatures and extends to 32 distinct marker/line/hatch tuples for distinct labels on supported series chart types. Beyond the default budget, caller-supplied style overrides or a surfaced duplicate-signature finding are required; the configured rule severity remains authoritative. The count does **not** prove that the styles are perceptually distinguishable, rendered identically across backends, accessible to assistive technology, or WCAG-conformant.
+
 ## Publisher-target boundary
 
 Publisher profiles are project presets, not official validators
