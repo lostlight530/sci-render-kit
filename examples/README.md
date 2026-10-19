@@ -5,6 +5,19 @@ They are not GitHub workflow instructions and do not imply scientific validation
 
 See [../DOCUMENT_STATUS.md](../DOCUMENT_STATUS.md) for current-versus-historical document authority
 
+## Native Tool / CLI / Agent and offline console
+
+The missing baseline fixture `examples/line_chart.yaml` is now supplied for the documented render command. The recipe uses **synthetic illustrative data**, not measured science or a publication-ready claim.
+
+```bash
+python3 tool_cli.py list
+python3 tool_cli.py call figure.preflight --input examples/tool_request.json
+python3 tool_cli.py agent --input examples/tool_plan.json --output output/agent-plan.json
+python3 sci_render.py examples/line_chart.yaml --profile nature --backend matplotlib
+```
+
+Open `ui/tri_repo_console.html` in a local browser and select an exported Tool/Agent JSON receipt. It is a **read-only offline review UI**, not a real-time renderer or MCP server. Read `docs/02-examples-and-contracts/TOOL_UI_STYLE.md` for design/interaction constraints.
+
 ## Baseline render
 
 ```bash
