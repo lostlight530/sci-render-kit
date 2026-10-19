@@ -19,6 +19,7 @@ from core.accessibility import (
     PROFILE,
     build_accessibility_manifest,
     distinct_style_signatures,
+    missing_required_non_color_cues,
     resolve_series_styles,
 )
 from sci_render import evaluate_pre_render_rules, load_yaml
@@ -50,6 +51,129 @@ class TestAccessibilityContract(unittest.TestCase):
         styles = resolve_series_styles(labels, {"redundant_encoding": "required"})
         self.assertEqual(len(styles), len(labels))
         self.assertEqual(distinct_style_signatures(styles), len(labels))
+
+    def test_generated_styles_scale_beyond_eight_series_without_colliding(self):
+        labels = [f"series-{index}" for index in range(32)]
+        styles = resolve_series_styles(labels, {"redundant_encoding": "required"})
+        self.assertEqual(len(styles), 32)
+        self.assertEqual(distinct_style_signatures(styles), 32)
+        self.assertEqual(styles["series-0"]["line_style"], "-")
+        self.assertNotEqual(styles["series-0"], styles["series-8"])
+        for chart_type in ("line-chart", "scatter-plot", "bar-chart"):
+            self.assertEqual(distinct_style_signatures(styles, chart_type=chart_type), 32)
+            recipe = {
+                "type": chart_type,
+                "data": {label: [index] for index, label in enumerate(labels)},
+                "accessibility": {"redundant_encoding": "required"},
+                "output": {},
+            }
+            findings = evaluate_pre_render_rules(recipe, {}, self.rules)
+            self.assertFalse(
+                any(item["check_id"] == "non-color-cue" for item in findings),
+                findings,
+            )
+
+    def test_effective_cues_ignore_unrendered_style_fields(self):
+        styles = {
+            "a": {"marker": "o", "line_style": "-", "hatch": "//"},
+            "b": {"marker": "o", "line_style": ":", "hatch": "//"},
+        }
+        self.assertEqual(distinct_style_signatures(styles), 2)
+        self.assertEqual(distinct_style_signatures(styles, chart_type="line-chart"), 2)
+        self.assertEqual(distinct_style_signatures(styles, chart_type="scatter-plot"), 1)
+        self.assertEqual(distinct_style_signatures(styles, chart_type="bar-chart"), 1)
+
+        for chart_type in ("scatter-plot", "bar-chart"):
+            recipe = {
+                "type": chart_type,
+                "data": {"a": [1], "b": [2]},
+                "accessibility": {
+                    "redundant_encoding": "required",
+                    "series_styles": styles,
+                },
+                "output": {},
+            }
+            findings = evaluate_pre_render_rules(recipe, {}, self.rules)
+            self.assertTrue(
+                any(item["check_id"] == "non-color-cue" for item in findings),
+                findings,
+            )
+
+    def test_absent_marker_aliases_not_distinct(self):
+        aliases = {
+            "a": {"marker": "none", "line_style": "-", "hatch": ""},
+            "b": {"marker": "None", "line_style": "-", "hatch": "/"},
+        }
+        self.assertEqual(distinct_style_signatures(aliases, "scatter-plot"), 1)
+        self.assertTrue(missing_required_non_color_cues(aliases, "scatter-plot"))
+        recipe = {
+            "type": "scatter-plot",
+            "data": {"a": [[0], [1]], "b": [[1], [2]]},
+            "accessibility": {
+                "redundant_encoding": "required",
+                "series_styles": aliases,
+            },
+            "output": {},
+        }
+        findings = evaluate_pre_render_rules(recipe, {}, self.rules)
+        self.assertTrue(any(
+            item["check_id"] == "non-color-cue" and item["severity"] == "error"
+            for item in findings
+        ), findings)
+
+    def test_absent_cue_rejected_even_when_signatures_differ(self):
+        styles = {
+            "invisible": {"marker": "none", "line_style": "None", "hatch": ""},
+            "visible": {"marker": "o", "line_style": "-", "hatch": "/"},
+        }
+        for chart_type in ("scatter-plot", "line-chart"):
+            self.assertEqual(distinct_style_signatures(styles, chart_type), 2)
+            self.assertTrue(missing_required_non_color_cues(styles, chart_type))
+            recipe = {
+                "type": chart_type,
+                "data": {"invisible": [1], "visible": [2]},
+                "accessibility": {"redundant_encoding": "required", "series_styles": styles},
+                "output": {},
+            }
+            findings = evaluate_pre_render_rules(recipe, {}, self.rules)
+            self.assertTrue(any(
+                item["check_id"] == "non-color-cue" and item["severity"] == "error"
+                for item in findings
+            ), findings)
+
+    def test_visible_line_and_plain_bar_baselines_remain_allowed(self):
+        styles = {
+            "a": {"marker": "none", "line_style": "-", "hatch": ""},
+            "b": {"marker": "None", "line_style": "--", "hatch": "/"},
+        }
+        self.assertEqual(distinct_style_signatures(styles, "line-chart"), 2)
+        self.assertFalse(missing_required_non_color_cues(styles, "line-chart"))
+        self.assertFalse(missing_required_non_color_cues(styles, "bar-chart"))
+        self.assertEqual(distinct_style_signatures(styles, "bar-chart"), 2)
+        blank = {
+            "a": {"marker": "o", "line_style": "-", "hatch": ""},
+            "b": {"marker": "s", "line_style": "--", "hatch": " "},
+        }
+        self.assertEqual(distinct_style_signatures(blank, "bar-chart"), 1)
+
+    def test_generated_style_budget_does_not_hide_collisions(self):
+        labels = [f"series-{index}" for index in range(33)]
+        styles = resolve_series_styles(labels, {"redundant_encoding": "required"})
+        self.assertLess(distinct_style_signatures(styles), len(labels))
+        for chart_type in ("line-chart", "scatter-plot", "bar-chart"):
+            self.assertLess(distinct_style_signatures(styles, chart_type=chart_type), 33)
+            recipe = {
+                "type": chart_type,
+                "data": {label: [index] for index, label in enumerate(labels)},
+                "accessibility": {"redundant_encoding": "required"},
+                "output": {},
+            }
+            findings = evaluate_pre_render_rules(recipe, {}, self.rules)
+            self.assertTrue(
+                any(item["check_id"] == "non-color-cue" and item["severity"] == "error"
+                    for item in findings),
+                findings,
+            )
 
     def test_declared_adjacency_only_checks_declared_pairs(self):
         recipe = {

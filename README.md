@@ -72,7 +72,7 @@ Real external/runtime versions remain evidence when genuinely known, including W
 | `metadata/recipe.schema.yaml` | Implemented current machine contract | recipe structure; schema success != scientific validity |
 | `metadata/communication_transfer.contract.yaml` | Implemented current machine contract | bounded transfer shape; not publisher/scientific validation |
 | `sci_render.py` | Implemented | unified schema/rule/backend/evidence path |
-| `core/accessibility.py` | Implemented | text alternatives/redundant-style intent; not whole-publication WCAG certification |
+| `core/accessibility.py` | Implemented | text alternatives; up to 32 default non-color style signatures for distinct series; not guaranteed perceptual separation or WCAG certification |
 | `core/color_encoding.py`, `core/palettes.py`, `core/cvd_simulation.py` | Implemented | project safeguards, not universal perceptual guarantees |
 | `core/uncertainty_legend.py` | Implemented | explicit uncertainty terminology; not statistical-validity inference |
 | `core/claim_binding_audit.py` | Implemented | claim/process consistency + communication coverage; no pixel/entailment inference |
@@ -300,6 +300,12 @@ WCAG 2.2 is used with scoped semantics
 `adjacency_check=true` is a stricter project all-pairs palette safeguard, not a universal WCAG requirement
 
 CVD simulation is an extra robustness check, not WCAG certification
+
+### Multi-series non-color cues (2026-10-19)
+
+When `accessibility.redundant_encoding: required` is set for supported series chart types, `core/accessibility.py` retains the existing first eight generated marker/line/hatch signatures. The default generator combines additional Matplotlib-compatible polygon markers, line-style patterns and hatch densities to produce **32 distinct backend-effective cue signatures** for up to 32 distinct series labels. The validator checks `marker + line_style` for lines, `marker` for scatter and `hatch` for bars, instead of counting style fields the backend does not draw. It normalizes absent marker/line-style aliases (such as `none`, `None`, or empty strings), and rejects a scatter series without a visible marker or a line series with neither a marker nor a drawn line when `redundant_encoding=required`. Plain unhatched bars may still be a distinct baseline alongside hatched bars. At 33 or more default-generated series, signatures can repeat; `sci_render.evaluate_pre_render_rules` continues to emit an error-severity `non-color-cue` finding when effective signatures collide. Callers can declare `accessibility.series_styles` overrides when distinct cues are needed beyond the default budget.
+
+This is a **structural signature count**, not demonstrated visual separability, a screen-reader evaluation, color-vision suitability, backend feature parity or a WCAG conformance result. The configured rule severity determines whether a finding blocks rendering. Run `python3 -m unittest tests.test_accessibility -v` and a pinned Matplotlib fixture before a real-world rendering claim.
 
 ## Publisher-target profiles
 
