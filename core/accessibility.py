@@ -37,7 +37,13 @@ def accessibility_config(recipe: dict) -> dict:
 
 
 def resolve_series_styles(labels: Iterable[str], accessibility: dict) -> Dict[str, dict]:
-    """Resolve declared or generated non-color cues for series labels."""
+    """Resolve declared or generated non-color cues for series labels.
+
+    The eight historical defaults are unchanged. For up to 32 distinct labels,
+    generated marker/line/hatch tuples are unique; larger plots may need
+    caller-declared overrides and remain subject to the runtime duplicate check.
+    Tuple identity is not a measured visual-perception guarantee.
+    """
     labels = list(labels)
     declared = accessibility.get("series_styles") or {}
     mode = accessibility.get("redundant_encoding", "off")
