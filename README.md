@@ -65,6 +65,19 @@ Project identifiers are unversioned
 
 Real external/runtime versions remain evidence when genuinely known, including WCAG 2.2 references, CFF 1.2.0, Matplotlib/NumPy/Python/ggplot2/R versions, and pinned Observable Plot 0.6.17
 
+## Tool / CLI / Agent integration (2026-10-19)
+
+`agent_tools.py` exposes allowlisted, nonrendering `figure_audit` and `communication_transfer` tools. `tool_cli.py` presents structured JSON, consistent terminal status and an offline HTML report. Actual scientific figures still use the repository-owned `sci_render.py` pipeline.
+
+```bash
+python3 tool_cli.py list
+python3 tool_cli.py invoke figure_audit --args '{"recipe":"recipes/accessible-line-chart.yaml","profile":"nature"}' --format text
+python3 tool_cli.py list --format html --output output/tool-catalog.html
+python3 -m unittest tests.test_tool_cli -v
+```
+
+[Tool / CLI / Agent and UI contract](docs/02-examples-and-contracts/TOOL_CLI_AGENT.md). Pre-render project checks do not assert publisher acceptance, actual rendering, WCAG conformance, independent reruns or truth.
+
 ## Capability map
 
 | Surface | Status | Boundary |
