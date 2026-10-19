@@ -6,6 +6,12 @@
 
 [Architecture](docs/01-source-and-explanation/ARCHITECTURE.md) · [Research Contract](docs/02-examples-and-contracts/RESEARCH_CONTRACT.md) · [Figure Claim Contract](docs/02-examples-and-contracts/FIGURE_CLAIM_CONTRACT.md) · [Communication Transfer](docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md) · [Assertion Basis & Communication Coverage](docs/02-examples-and-contracts/ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md) · [Maintenance](docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md) · [Document Status](docs/03-maintenance-and-audit/DOCUMENT_STATUS.md) · [August Stage Close](docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md) · [Frontier Alignment](docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md) · [Examples](examples/README.md)
 
+## Native Tool / CLI / Agent interface (2026-10-19 integration)
+
+The repository exposes `tool_cli.py` for allowlisted local JSON tool discovery, calls, and deterministic declared agent plans: `python3 tool_cli.py list`, `python3 tool_cli.py call figure.preflight --input request.json`, or `python3 tool_cli.py agent --input examples/tool_plan.json --output output/agent-plan.json`.
+
+[Tool/CLI/Agent contract](docs/02-examples-and-contracts/TOOL_CLI_AGENT_CONTRACT.md) · [Offline Evidence Console](ui/tri_repo_console.html) · [UI style/interaction contract](docs/02-examples-and-contracts/TOOL_UI_STYLE.md). The Console only visualizes locally selected receipts; neither UI nor preflight is a render engine, MCP server, CI monitor, independent reproduction or publisher acceptance claim.
+
 ## Positioning
 
 `sci-render-kit` does not decide whether a scientific conclusion is correct. It compiles a declarative recipe into a supported visual artifact while keeping communication semantics inspectable and portable
