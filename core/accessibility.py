@@ -47,6 +47,15 @@ def resolve_series_styles(labels: Iterable[str], accessibility: dict) -> Dict[st
     resolved: Dict[str, dict] = {}
     for index, label in enumerate(labels):
         base = dict(STYLE_CYCLE[index % len(STYLE_CYCLE)])
+        if index >= len(STYLE_CYCLE):
+            # Extend the eight stable defaults to 32 distinct signatures by
+            # varying the line pattern for each marker. Beyond 32, the
+            # runtime non-color-cue check continues to flag repeated styles
+            # unless callers explicitly provide distinct overrides.
+            line_styles = ("-", "--", "-.", ":")
+            base["line_style"] = line_styles[
+                (index % len(line_styles) + index // len(STYLE_CYCLE)) % len(line_styles)
+            ]
         override = declared.get(label) or {}
         if isinstance(override, dict):
             base.update({k: v for k, v in override.items() if k in {"marker", "line_style", "hatch"}})
