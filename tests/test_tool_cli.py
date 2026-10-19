@@ -90,6 +90,28 @@ class TestRepoIntegration(unittest.TestCase):
         self.assertFalse(value["result"]["scientific_validity_claim"])
         self.assertIn(value["result"]["check_status"], {"observed", "failed"})
 
+    def test_invalid_recipe_schema_is_structured_cli_failure(self):
+        with tempfile.TemporaryDirectory() as folder:
+            invalid_recipe = Path(folder) / "invalid.yaml"
+            invalid_recipe.write_text(
+                "id: deliberately-missing-required-fields\n", encoding="utf-8"
+            )
+            args = {"recipe": str(invalid_recipe), "profile": "nature"}
+            receipt = execute_tool_call("figure_audit", args)
+            self.assertEqual(receipt["status"], "error", receipt)
+            self.assertEqual(receipt["error"]["code"], "EXECUTION_FAILED")
+            self.assertIn("schema validation failed", receipt["error"]["message"])
+            proc = subprocess.run(
+                [sys.executable, str(ROOT / "tool_cli.py"), "invoke",
+                 "figure_audit", "--args", json.dumps(args)],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertEqual(proc.returncode, 1, proc.stdout)
+            self.assertFalse(proc.stderr, proc.stderr)
+            cli_receipt = json.loads(proc.stdout)
+            self.assertEqual(cli_receipt["status"], "error")
+            self.assertEqual(cli_receipt["error"]["code"], "EXECUTION_FAILED")
+
     def test_transfer_wrong_source_and_bad_profile(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "wrong.json"
