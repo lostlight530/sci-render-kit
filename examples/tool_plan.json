@@ -1,0 +1,13 @@
+{
+  "purpose": "inspect declared synthetic figure input",
+  "on_error": "stop",
+  "steps": [
+    {
+      "tool": "figure_audit",
+      "arguments": {
+        "recipe": "examples/line_chart.yaml",
+        "profile": "nature"
+      }
+    }
+  ]
+}

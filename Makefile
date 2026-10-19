@@ -1,4 +1,4 @@
-.PHONY: help clean test test-core test-accessibility
+.PHONY: help clean test test-core test-accessibility test-tools
 
 help:
 	@echo "sci-render-kit manual maintenance commands"
@@ -12,10 +12,17 @@ clean:
 	rm -rf __pycache__ .pytest_cache output/*
 	@echo "Cleaned local caches and generated artifacts"
 
-test: test-core test-accessibility
+test: test-core test-accessibility test-tools test-tool-ui
 
 test-core:
 	python3 tests/test_all.py
 
 test-accessibility:
 	python3 -m unittest tests.test_accessibility -v
+
+test-tools:
+	python3 -m unittest tests.test_tool_cli tests.test_agent_plan -v
+
+.PHONY: test-tool-ui
+test-tool-ui:
+	python3 -m unittest tests.test_tool_ui -v

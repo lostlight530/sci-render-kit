@@ -215,3 +215,7 @@ The dated first complete three-cadence demonstration is recorded under `maintena
 ## Local maintenance boundary
 
 Local checks are optional maintenance aids, not GitHub merge gates, scientific validation, WCAG certification or publisher acceptance
+
+## Current native Tool CLI and offline Evidence Console
+
+Synthetic example recipe: `examples/line_chart.yaml` (local demonstration only, not scientific data). Use `python3 tool_cli.py invoke figure_audit --args-file examples/tool_request.json --format json --output output/figure-audit.json` to obtain an actual pre-render audit receipt. Use `python3 tool_cli.py plan --plan-file examples/tool_plan.json --output output/plan-preview.json` for a no-execution approval preview; `--approve` is required to execute the bounded plan. Open `ui/tri_repo_console.html` locally and import either JSON to inspect status and original metadata. The viewer never invokes the renderer or an agent, and optional Observable backend support is not proven by the presence of `examples/line_chart_observable.yaml`.

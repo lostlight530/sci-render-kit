@@ -65,6 +65,24 @@ Project identifiers are unversioned
 
 Real external/runtime versions remain evidence when genuinely known, including WCAG 2.2 references, CFF 1.2.0, Matplotlib/NumPy/Python/ggplot2/R versions, and pinned Observable Plot 0.6.17
 
+## Tool / CLI / Agent integration (2026-10-19)
+
+The additional [offline three-repository Evidence Console](ui/tri_repo_console.html) consumes selected JSON files for local, read-only comparison. It accepts this repository's native `sci-render-kit/tool-adapter` envelopes (including approval previews and completed agent plan steps) plus explicitly named legacy receipt profiles. See the [UI contract](docs/02-examples-and-contracts/TOOL_UI_STYLE.md). This file-import viewer is distinct from `tool_cli.py --format html` (a static single-run report). Neither surface checks current GitHub status, executes code, nor establishes WCAG/scientific validity.
+
+To view a result, create a JSON receipt with `python3 tool_cli.py list --output output/tools.json` or `python3 tool_cli.py plan --plan-file examples/tool_plan.json --output output/plan-preview.json`, then open the console HTML file locally and select that JSON. Actual execution requires explicit `--approve` on the CLI; the browser never approves or runs tools.
+
+
+`agent_tools.py` exposes allowlisted, nonrendering `figure_audit` and `communication_transfer` tools. `tool_cli.py` presents structured JSON, consistent terminal status and an offline HTML report. Actual scientific figures still use the repository-owned `sci_render.py` pipeline.
+
+```bash
+python3 tool_cli.py list
+python3 tool_cli.py invoke figure_audit --args '{"recipe":"recipes/accessible-line-chart.yaml","profile":"nature"}' --format text
+python3 tool_cli.py list --format html --output output/tool-catalog.html
+python3 -m unittest tests.test_tool_cli -v
+```
+
+[Tool / CLI / Agent and UI contract](docs/02-examples-and-contracts/TOOL_CLI_AGENT.md). Pre-render project checks do not assert publisher acceptance, actual rendering, WCAG conformance, independent reruns or truth.
+
 ## Capability map
 
 | Surface | Status | Boundary |
