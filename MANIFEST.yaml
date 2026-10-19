@@ -125,6 +125,8 @@ backends:
     provenance: sci-render-kit/provenance
     runtime_versions_recorded: true
     redundant_series_style: implemented
+    generated_distinct_non_color_signatures: 32
+    above_generated_style_budget: explicit_overrides_or_runtime_duplicate_finding
   ggplot2:
     adapter: backends/ggplot2_adapter.R
     outputs: [png, svg, pdf]
