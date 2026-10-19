@@ -12,10 +12,14 @@ clean:
 	rm -rf __pycache__ .pytest_cache output/*
 	@echo "Cleaned local caches and generated artifacts"
 
-test: test-core test-accessibility
+test: test-core test-accessibility test-tool-interface
 
 test-core:
 	python3 tests/test_all.py
 
 test-accessibility:
 	python3 -m unittest tests.test_accessibility -v
+
+.PHONY: test-tool-interface
+test-tool-interface:
+	python3 -m unittest tests.test_tool_cli -v
