@@ -260,7 +260,7 @@ def evaluate_pre_render_rules(recipe: dict, profile: dict, rule_catalog: dict) -
     mode = access.get("redundant_encoding", "off")
     if mode == "required" and chart_type in REDUNDANT_STYLE_TYPES and len(labels) > 1:
         styles = resolve_series_styles(labels, access)
-        if len(styles) != len(labels) or distinct_style_signatures(styles) < len(labels):
+        if len(styles) != len(labels) or distinct_style_signatures(styles, chart_type=chart_type) < len(labels):
             findings.append(finding(
                 rules,
                 "non-color-cue",
