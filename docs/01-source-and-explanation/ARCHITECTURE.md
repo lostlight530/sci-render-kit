@@ -104,6 +104,8 @@ Project all-pairs `adjacency_check` is deliberately stricter than universal WCAG
 
 CVD simulation is an extra safeguard, not certification
 
+As of the 2026-10-19 implementation, Matplotlib-supported redundant encoding retains the original first eight marker/line/hatch choices and extends generated **tuple uniqueness** through 32 series by combining line-style variants. At 33 or more default series, signatures can repeat and `non-color-cue` diagnostics remain visible. Explicit caller styles may extend the encoding but are still checked for duplicates. These are code-level structural cues, not measured readability or WCAG conformance; ggplot2 and Observable do **not** acquire feature parity from this change.
+
 ## Claim communication layer
 
 Recipes may declare whole-figure claim refs, visual-to-claim bindings, relation labels, evidence refs, and upstream audit/provenance/evidence references
