@@ -112,7 +112,8 @@ class TestAccessibilityContract(unittest.TestCase):
             }
             findings = evaluate_pre_render_rules(recipe, {}, self.rules)
             self.assertTrue(
-                any(item["check_id"] == "non-color-cue" for item in findings),
+                any(item["check_id"] == "non-color-cue" and item["severity"] == "error"
+                    for item in findings),
                 findings,
             )
 
