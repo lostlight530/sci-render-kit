@@ -96,7 +96,7 @@ def _check_arguments(name: str, arguments: Any) -> dict:
 def _dispatch(name: str, a: dict) -> Any:
     if name == "figure_audit":
         from pathlib import Path
-        from jsonschema import validate
+        from jsonschema import ValidationError, validate
         from sci_render import load_yaml, evaluate_pre_render_rules, has_errors
         from core.claim_binding_audit import audit_claim_communication
         root = Path(__file__).resolve().parent
@@ -105,7 +105,10 @@ def _dispatch(name: str, a: dict) -> Any:
             raise ValueError("profile must be an installed preset name")
         recipe = load_yaml(a["recipe"])
         schema = load_yaml(str(root / "metadata" / "recipe.schema.yaml"))
-        validate(instance=recipe, schema=schema)
+        try:
+            validate(instance=recipe, schema=schema)
+        except ValidationError as exc:
+            raise ValueError("recipe schema validation failed: " + exc.message) from exc
         profile = load_yaml(str(root / "profiles" / (preset + ".yaml")))
         rules = load_yaml(str(root / "quality" / "rules.yaml"))
         visual = evaluate_pre_render_rules(recipe, profile, rules)
