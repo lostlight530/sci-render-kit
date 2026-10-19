@@ -85,3 +85,12 @@ These remain in force in every retrospective, live, longitudinal, correction, ha
 Every instantiated stage records the specification/template version it used. Later template improvements do not retroactively change the method used by an earlier stage. Substantive historical corrections are additive and use correction/reconciliation records.
 
 See [FIRST_BATCH_SPECIFICATION.md](FIRST_BATCH_SPECIFICATION.md) for the complete artifact relationships, completion rules, and authority boundaries.
+
+## Dated annual and cross-year synthesis route (2026-10-19)
+
+The hierarchy is category-aware Research Parts within a three-month Stage, fed by dated month reconstructions; annual and cross-year syntheses compare mature Stages. Annual synthesis is not a separate Stage or evidence of new renderer execution.
+
+- [2025 annual synthesis](longitudinal/LONGITUDINAL_SYNTHESIS_2025.md) — native E–H quarterly owners and twelve month reconstructions, `SOURCE_BOUNDED`.
+- [2024 through 2025-Q4 synthesis](longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q4.md) — additive Stage-H longitudinal coverage; earlier A→G synthesis retained.
+- Preserve Stage H December's bounded `NO_SELECTED_OBJECT`; do not infer absent scientific activity globally.
+- The distinct A2-owned `LONGITUDINAL_INDEX.md` is not rewritten by these secondary interpretations. 2026 Stage I remains `NOT_EVIDENCED` until native research artifacts support it.
