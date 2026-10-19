@@ -110,3 +110,7 @@ Earlier index assertions `Stage I NOT_EVIDENCED` are **historical observations a
 ## 2026 Plotly wrapper supplementary release evidence (2026-10-19)
 
 - [Additional January and September Plotly.py release records](annotations/expansion/2026-10-19_STAGE_I_K_PLOTLY_WRAPPER_SOURCE_DELTA.md) — wrapper/template, dtype and conversion identity beyond the original Stage I/K selected sources; preserves original month/Stage owners without a silent method change.
+
+## 2026 documentary release/route audit (2026-10-19)
+
+- [Stage I–L upstream release identity and source hierarchy audit](annotations/2026-10-19_STAGE_I_L_PRIMARY_RELEASE_AND_STRUCTURE_AUDIT.md) — 14/14 tagged release dates, 39/39 key routes, Stage L/year remain open, 2024–2025 Stage paths unchanged since annual baseline. Same-producer source/structure check only; no render replay, accessibility certification or independent scientific validation.
