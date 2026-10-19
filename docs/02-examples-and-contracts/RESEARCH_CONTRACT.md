@@ -268,7 +268,7 @@ Selected WCAG 2.2 concerns are supported without claiming whole-document conform
 
 CVD simulation is an extra robustness check, not a WCAG test requirement
 
-The built-in redundant-style generator preserves eight original signatures and extends to 32 distinct marker/line/hatch tuples for distinct labels on supported series chart types. Beyond the default budget, caller-supplied style overrides or a surfaced duplicate-signature finding are required; the configured rule severity remains authoritative. The count does **not** prove that the styles are perceptually distinguishable, rendered identically across backends, accessible to assistive technology, or WCAG-conformant.
+The built-in redundant-style generator preserves eight original signatures and extends to 32 distinct **backend-effective** non-color cues for distinct labels on supported Matplotlib series chart types. Runtime checks match drawn fields: lines use marker + line_style, scatter uses marker, bars use hatch. At 33 or more default-generated labels, caller-supplied style overrides or an error-severity duplicate-signature finding are required; the configured rule severity remains authoritative. The count does **not** prove that the styles are perceptually distinguishable, rendered identically across backends, accessible to assistive technology, or WCAG-conformant.
 
 ## Publisher-target boundary
 
