@@ -106,3 +106,7 @@ Subject-specific Research Parts **within** each quarter remain distinct from mon
 - [2026-10-19 stage-registry/index reconciliation](corrections/RECONCILIATION_2026-10-19_STAGE_I_TO_L.md)
 
 Earlier index assertions `Stage I NOT_EVIDENCED` are **historical observations at their own as-of time**; this dated research adds new native artifacts but does not retroactively claim previously executed Stage I runs. `Source release announcement != repository execution`, `same-producer review != independent validation`, `Q4 month != completed quarter`.
+
+## 2026 Plotly wrapper supplementary release evidence (2026-10-19)
+
+- [Additional January and September Plotly.py release records](annotations/expansion/2026-10-19_STAGE_I_K_PLOTLY_WRAPPER_SOURCE_DELTA.md) — wrapper/template, dtype and conversion identity beyond the original Stage I/K selected sources; preserves original month/Stage owners without a silent method change.
