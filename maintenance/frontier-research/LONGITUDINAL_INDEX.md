@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
 - **Stage registry / identity updated:** `2026-10-04`
-- **Current maintenance relation through:** `2026-10-19`
+- **Current maintenance relation through:** `2026-10-20` (bounded no-new-source delta check)
 
 ## Boundary
 
@@ -7134,3 +7134,15 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - [2024–2026 YTD cross-year bridge](longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2026_YTD_2026-10-19.md) — historical analyses preserved, incompatible methods disclosed.
 - [Reconciliation of earlier Stage-I absence](corrections/RECONCILIATION_2026-10-19_STAGE_I_TO_L.md) — correction forward, no rewrite of A2 as-of evidence.
 - No native benchmark execution, code change, conformance proof, independent scientific validation or CI completion is asserted by these research files.
+
+
+## A2 current relation — 2026-10-20 UI versus Stage source boundary
+
+- Current post-ten-A1 main `b714d076577a3ae798969a0f465122bb00160c98`, inherited exact A1 source file `maintenance/frontier-research/annotations/2026-10-20_A1_STAGE_SOURCE_CUSTODY.md` blob `56a0230099af8d4a4218d98e29a66fd17aaa4ff9`
+- A2 `maintenance/frontier-research/annotations/2026-10-20_A2_STAGE_CURRENT_RELATION.md` rechecks 154 original Stage source SHAs against current main, 0 changes
+- Original Stage L October reconstruction `maintenance/frontier-research/stage-l-2026-q4/MONTH_2026_10_RECONSTRUCTION.md` keeps selected publisher source cut through Oct19; no new primary Stage source object observed on Oct20
+- Separate native engineering PR #157 merge `422f11c92759d1bf2da745d348a5e32533a80822` fixes failed-import stale UI receipt and is not a Stage research release or independent figure proof
+- Plotly.js and Vega-Lite publisher metadata do not prove current UI/browser or accessibility conformance
+- No Stage source history overwritten and no additional experiment/source-independence credit by documentary A2
+- Full browser/Node/figure render, accessibility and external source refresh NOT_EXECUTED here
+- Current classification: A1_154_INHERITED / ZERO_STAGE_SOURCE_DRIFT / N_DAY_STAGE_SOURCE_NOT_OBSERVED / UI_NATIVE_DISTINCT
