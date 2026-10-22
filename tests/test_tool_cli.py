@@ -112,6 +112,69 @@ class TestRepoIntegration(unittest.TestCase):
             self.assertEqual(cli_receipt["status"], "error")
             self.assertEqual(cli_receipt["error"]["code"], "EXECUTION_FAILED")
 
+    def test_transfer_rejects_nonobject_context_with_structured_failure(self):
+        fields = (
+            "claim_communication", "upstream_research", "uncertainty",
+            "process_disclosure", "communication_audit", "runtime_validation",
+            "reproducibility",
+        )
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "malformed.evidence.json"
+            for field in fields:
+                for invalid in ([], ["unexpected"], "not-an-object", 7, False):
+                    with self.subTest(field=field, invalid=invalid):
+                        path.write_text(json.dumps({
+                            "profile": "sci-render-kit/figure-evidence",
+                            field: invalid,
+                        }), encoding="utf-8")
+                        response = execute_tool_call(
+                            "communication_transfer", {"figure_evidence": str(path)}
+                        )
+                        self.assertEqual(response["status"], "error", response)
+                        self.assertEqual(response["error"]["code"], "EXECUTION_FAILED")
+                        self.assertIn(field, response["error"]["message"])
+                        self.assertFalse(response["scientific_validity_claim"])
+
+            path.write_text(json.dumps({
+                "profile": "sci-render-kit/figure-evidence",
+                "upstream_research": ["unexpected"],
+            }), encoding="utf-8")
+            proc = subprocess.run(
+                [sys.executable, str(ROOT / "tool_cli.py"), "invoke",
+                 "communication_transfer", "--args",
+                 json.dumps({"figure_evidence": str(path)})],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertEqual(proc.returncode, 1, proc.stdout)
+            self.assertEqual(proc.stderr, "")
+            receipt = json.loads(proc.stdout)
+            self.assertEqual(receipt["error"]["code"], "EXECUTION_FAILED")
+            self.assertIn("upstream_research", receipt["error"]["message"])
+
+    def test_transfer_accepts_valid_and_nullable_optional_context(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "valid.evidence.json"
+            path.write_text(json.dumps({
+                "profile": "sci-render-kit/figure-evidence",
+                "claim_communication": {"claim_refs": ["claim-1"], "bindings": []},
+                "upstream_research": {"claim_audit": {"ref": "local-audit"}},
+                "uncertainty": None,
+                "process_disclosure": {},
+                "communication_audit": {},
+                "runtime_validation": {},
+                "reproducibility": {"level": "R1"},
+            }), encoding="utf-8")
+            response = execute_tool_call(
+                "communication_transfer", {"figure_evidence": str(path)}
+            )
+            self.assertEqual(response["status"], "ok", response)
+            record = response["result"]
+            self.assertEqual(record["claim_communication"]["claim_refs"], ["claim-1"])
+            self.assertEqual(record["upstream_research"]["claim_audit"]["ref"], "local-audit")
+            self.assertTrue(record["transfer_coverage"]["reproducibility_context_present"])
+            self.assertFalse(record["transfer_constraints"]["scientific_validity_inherited"])
+            self.assertFalse(record["independent_reproduction_claim"])
+
     def test_transfer_wrong_source_and_bad_profile(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "wrong.json"
