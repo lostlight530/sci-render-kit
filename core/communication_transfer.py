@@ -45,6 +45,23 @@ def _load_json(path: str | Path) -> dict:
         raise ValueError(
             f"communication transfer requires source profile {SOURCE_PROFILE!r}, got {source_profile!r}"
         )
+    # The handoff copies optional structured context. Reject malformed
+    # supplied sections before any .get()/dict() operations or coverage metrics.
+    # Omitted/null sections preserve the existing not-declared semantics.
+    for field in (
+        "claim_communication",
+        "upstream_research",
+        "uncertainty",
+        "process_disclosure",
+        "communication_audit",
+        "runtime_validation",
+        "reproducibility",
+    ):
+        value = data.get(field)
+        if value is not None and not isinstance(value, dict):
+            raise ValueError(
+                f"figure evidence field {field!r} must be a JSON object when supplied"
+            )
     return data
 
 
