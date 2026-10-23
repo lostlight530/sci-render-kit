@@ -1,8 +1,26 @@
 profile: sci-render-kit/communication-transfer
 status: implemented
-calibrated: "2026-09-01"
+calibrated: "2026-10-23"
 implementation: core/communication_transfer.py
 source_profile: sci-render-kit/figure-evidence
+
+input_validation:
+  root_payload_type: object
+  source_profile_must_match: sci-render-kit/figure-evidence
+  copied_context_fields:
+    - claim_communication
+    - upstream_research
+    - uncertainty
+    - process_disclosure
+    - communication_audit
+    - runtime_validation
+    - reproducibility
+  accepted_context_values: [omitted, null, object]
+  non_null_context_value_type: object
+  malformed_context_behavior: fail_explicitly
+  validation_precedes_coverage_metrics: true
+  source_sidecar_mutated: false
+  adapter_error_code_for_malformed_context: EXECUTION_FAILED
 
 copied_context:
   - claim_communication
