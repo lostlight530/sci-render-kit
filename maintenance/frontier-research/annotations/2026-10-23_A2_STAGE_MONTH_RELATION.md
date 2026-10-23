@@ -7,7 +7,7 @@
 - Fixed month identity: `2026-10`
 - Stage source identities rechecked: 154; changed: 0; missing: 0; new Stage research objects through Oct23: 0
 - Six 2026-10-23 implementation/contract context files are admitted as non-Stage context only; they are not counted as Stage research
-- Fresh main and recursive tree SHA match; all 160 mapped paths exist with matching current blob identities
+- Fresh `main` commit `3f8e5e7cc59944c29ada2748bb96cc055d205060` records root tree `46bb78151dfffce0fecc7a85e9ee87577ef28f3a`; all 160 mapped paths, blob SHAs, and byte sizes match the recursive tree for that commit.
 
 ## Complete Stage source-to-current mapping
 
@@ -213,3 +213,9 @@
 - Two copied bullets under “Fresh-read context summary” were truncated after “not a test executed by” and “not a runtime defec”. The complete wording is restored from `maintenance/2026-10-23-daily-drift-reconciliation.md`, blob `3702d844c991a0aba88164139f9af04a23745a03` (source lines 21 and 30). The prior text remains in Git history.
 - Restored boundary: the green CI result belongs to PR #163's exact head and was not a test executed by this independent maintenance run; the finding is contract/documentation drift, not a runtime defect or scientific-validity finding.
 - Scope: excerpt completeness only. Stage source identities, six non-Stage context paths, validation status, source lineage, and month state are unchanged. Native Stage runner, full repository tests, WCAG checks, and external source recertification remain NOT_EXECUTED by A2.
+
+## 2026-10-23 post-merge correction — root-tree SHA wording
+
+- Superseded wording: “Fresh main and recursive tree SHA match; all 160 mapped paths exist with matching current blob identities”. The original version remains in Git history.
+- Correction: a commit SHA identifies a Git commit object; a tree SHA identifies a separate tree object. The recorded base commit and root-tree SHA are distinct. The recursive tree response returned the root-tree SHA, and all 160 mapped rows matched path, blob SHA, and byte size against that tree.
+- Scope: wording precision only. The 154 Stage source identities, six non-Stage context paths, no-new-Stage-source conclusion, owner OPEN state, and month-closure NOT_DUE state are unchanged. No execution, test, external-source, or scientific-validation credit is added by this correction.
