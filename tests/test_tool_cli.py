@@ -112,6 +112,66 @@ class TestRepoIntegration(unittest.TestCase):
             self.assertEqual(cli_receipt["status"], "error")
             self.assertEqual(cli_receipt["error"]["code"], "EXECUTION_FAILED")
 
+    def test_transfer_malformed_bindings_fail_without_silent_loss(self):
+        malformed_bindings = [
+            {"visual_ref": "series:one", "claim_refs": ["claim-1"]},
+            ["unexpected"],
+            [{"visual_ref": "series:one"}, None],
+            "incorrect-type",
+            False,
+        ]
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "bindings.evidence.json"
+            for bindings in malformed_bindings:
+                with self.subTest(bindings=bindings):
+                    path.write_text(json.dumps({
+                        "profile": "sci-render-kit/figure-evidence",
+                        "claim_communication": {"bindings": bindings},
+                    }), encoding="utf-8")
+                    response = execute_tool_call(
+                        "communication_transfer", {"figure_evidence": str(path)}
+                    )
+                    self.assertEqual(response["status"], "error", response)
+                    self.assertEqual(response["error"]["code"], "EXECUTION_FAILED")
+                    self.assertIn("claim_communication.bindings",
+                                  response["error"]["message"])
+                    self.assertFalse(response["scientific_validity_claim"])
+
+            path.write_text(json.dumps({
+                "profile": "sci-render-kit/figure-evidence",
+                "claim_communication": {"bindings": {"visual_ref": "series:one"}},
+            }), encoding="utf-8")
+            proc = subprocess.run(
+                [sys.executable, str(ROOT / "tool_cli.py"), "invoke",
+                 "communication_transfer", "--args",
+                 json.dumps({"figure_evidence": str(path)})],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertEqual(proc.returncode, 1, proc.stdout)
+            self.assertEqual(proc.stderr, "")
+            self.assertEqual(json.loads(proc.stdout)["error"]["code"],
+                             "EXECUTION_FAILED")
+
+    def test_transfer_preserves_valid_declared_bindings(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "valid-bindings.evidence.json"
+            expected = [{"visual_ref": "series:one", "claim_refs": ["claim-1"]}]
+            path.write_text(json.dumps({
+                "profile": "sci-render-kit/figure-evidence",
+                "claim_communication": {
+                    "claim_refs": ["claim-1"], "bindings": expected,
+                },
+            }), encoding="utf-8")
+            response = execute_tool_call(
+                "communication_transfer", {"figure_evidence": str(path)}
+            )
+            self.assertEqual(response["status"], "ok", response)
+            transfer = response["result"]
+            self.assertEqual(transfer["claim_communication"]["bindings"], expected)
+            self.assertEqual(transfer["transfer_coverage"]["binding_count"], 1)
+            self.assertFalse(transfer["transfer_constraints"]["entailment_inherited"])
+            self.assertFalse(transfer["scientific_validity_claim"])
+
     def test_transfer_rejects_nonobject_context_with_structured_failure(self):
         fields = (
             "claim_communication", "upstream_research", "uncertainty",
