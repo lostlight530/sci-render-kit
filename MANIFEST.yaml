@@ -1,6 +1,6 @@
 name: sci-render-kit
 purpose: "声明式科研图件编译、断言来源、claim-aware evidence、transfer handoff 与阶段化维护 | Declarative scientific-figure compilation with assertion-aware evidence, transfer handoff, and phase-aware maintenance"
-calibrated: "2026-09-22"
+calibrated: "2026-10-23"
 
 principles:
   - 声明优先: "data / aesthetics / research_context / claim_bindings / uncertainty / process_disclosure / accessibility 由 recipe 显式声明"
@@ -236,6 +236,12 @@ artifacts:
     machine_contract_status: current
     source_profile: sci-render-kit/figure-evidence
     wrong_profile_behavior: fail_explicitly
+    input_validation:
+      root_payload_type: object
+      copied_context_value_type: object_or_null
+      omitted_or_null_semantics: not_declared
+      malformed_context_behavior: fail_explicitly
+      validation_precedes_coverage_metrics: true
     destination_basis: caller_declared_or_not_declared
     purpose_basis: caller_declared_or_not_declared
     payloads_preserved:
@@ -465,8 +471,9 @@ scientific_boundaries:
 # Stage H / 2025-Q4 is present on current main and LONGITUDINAL_INDEX routes the current A→H documentary relation.
 # maintenance/frontier-research/longitudinal/ currently ends at LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q3.md;
 # no A→H synthesis artifact is inferred or manufactured by this annotation.
-# This is routing metadata only: calibrated=2026-09-22 is preserved, and no runtime capability,
-# machine-contract semantics, scientific validation, reproduction status, or release authority is changed.
+# At the time of this 2026-10-19 annotation, calibrated=2026-09-22 was preserved, and that annotation changed no runtime capability,
+# machine-contract semantics, scientific validation, reproduction status, or release authority.
+# 2026-10-23 reconciliation aligns communication-transfer input-shape semantics with the implementation merged in PR #163; it adds no runtime code or scientific-validity claim.
 
 # Offline read-only presentation of three repository local receipts (2026-10-19)
 offline_evidence_console:
