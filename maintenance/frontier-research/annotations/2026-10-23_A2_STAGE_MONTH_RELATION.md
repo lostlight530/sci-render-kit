@@ -194,12 +194,12 @@
   - LOGICAL_DATE: 2026-10-23 Asia/Shanghai
   - MONTH_CLOSURE: OPEN / NOT_DUE
   - Current main includes PR #163, merged 2026-10-23T03:35:44Z, merge commit `6ffa665b4bcae45eb8dad9d11deead367e272de1`
-  - PR #163 GitHub Actions `local-tool-contract` completed SUCCESS. Its steps include module/test compilation, tool-contract tests and the complete repository manual test suite. This is CI evidence for the exact PR head, not a test executed by 
+  - PR #163 GitHub Actions `local-tool-contract` completed SUCCESS. Its steps include module/test compilation, tool-contract tests and the complete repository manual test suite. This is CI evidence for the exact PR head, not a test executed by this independent maintenance run.
   - The current machine contract `metadata/communication_transfer.contract.yaml` previously declared copied fields and non-inheritance constraints but did not state the new input-shape validation rule.
   - The human contract `docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md` documented transfer semantics and source authority, but did not specify malformed optional-context behavior.
   - The current `MANIFEST.yaml` linked the machine contract and described wrong-profile handling, but did not expose malformed context handling.
   - CONFIRMED_IMPLEMENTATION_CONTRACT_DRIFT
-  - The merged implementation and its passing test suite establish a new explicit input-shape behavior, while the machine contract, human contract and Manifest did not yet describe it. This is a contract/documentation drift, not a runtime defec
+  - The merged implementation and its passing test suite establish a new explicit input-shape behavior, while the machine contract, human contract and Manifest did not yet describe it. This is a contract/documentation drift, not a runtime defect and not a scientific-validity finding.
 - Stage A–L historical source records remain unchanged. Repeated source register, chart, handoff or index text does not strengthen scientific claims or add independent experiments, trials, publisher events or source-maturity credit.
 - Full repository tests, native Stage runner, WCAG checks and external source recertification were NOT_EXECUTED. Stage/monthly closure remains OPEN / NOT_DUE.
 - Only file proposed by this A2 PR: `maintenance/frontier-research/annotations/2026-10-23_A2_STAGE_MONTH_RELATION.md`
@@ -207,3 +207,9 @@
 ## Result
 
 `A2_STAGE_MONTH_VERSION_2026-10 / 154_SOURCE_IDENTITIES_PRESERVED / SIX_NON_STAGE_CONTEXT_FILES / STAGE_OPEN`
+
+## 2026-10-23 post-merge correction — truncated context excerpt
+
+- Two copied bullets under “Fresh-read context summary” were truncated after “not a test executed by” and “not a runtime defec”. The complete wording is restored from `maintenance/2026-10-23-daily-drift-reconciliation.md`, blob `3702d844c991a0aba88164139f9af04a23745a03` (source lines 21 and 30). The prior text remains in Git history.
+- Restored boundary: the green CI result belongs to PR #163's exact head and was not a test executed by this independent maintenance run; the finding is contract/documentation drift, not a runtime defect or scientific-validity finding.
+- Scope: excerpt completeness only. Stage source identities, six non-Stage context paths, validation status, source lineage, and month state are unchanged. Native Stage runner, full repository tests, WCAG checks, and external source recertification remain NOT_EXECUTED by A2.
