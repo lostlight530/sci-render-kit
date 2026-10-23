@@ -201,3 +201,16 @@ Human review != Peer review
 Provenance != Truth
 Calendar-month close != Reproduction
 ```
+
+
+## Input-shape validation — 2026-10-23
+
+The implementation added by merged PR [#163](https://github.com/lostlight530/sci-render-kit/pull/163) validates copied optional context before reading nested fields or calculating transfer-coverage metrics:
+
+- The sidecar root must be a JSON object and its `profile` must equal `sci-render-kit/figure-evidence`
+- Each supplied non-null context field — `claim_communication`, `upstream_research`, `uncertainty`, `process_disclosure`, `communication_audit`, `runtime_validation`, and `reproducibility` — must itself be a JSON object
+- Omitted or explicit `null` fields retain the existing not-declared semantics
+- Arrays, strings, numbers, booleans, and other non-object non-null values are rejected with an explicit `ValueError`; the tool adapter reports `EXECUTION_FAILED` rather than producing a partial transfer
+- Validation runs before transfer-coverage calculation, and the input sidecar is not mutated
+
+This is structural input validation only. It does not validate the scientific meaning or sufficiency of copied content, and does not upgrade source authority, entailment, statistical validity, peer review, publisher acceptance, accessibility conformance, or independent reproduction. The implementation's existing PR #163 `local-tool-contract` workflow passed; this dated contract reconciliation does not claim a new local test execution.
