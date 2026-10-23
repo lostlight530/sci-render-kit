@@ -62,6 +62,20 @@ def _load_json(path: str | Path) -> dict:
             raise ValueError(
                 f"figure evidence field {field!r} must be a JSON object when supplied"
             )
+    # A malformed declared binding collection must not be silently discarded.
+    # The figure-evidence producer emits a list of objects; preserve that
+    # declared context or fail before computing transfer coverage.
+    communication = data.get("claim_communication")
+    if isinstance(communication, dict):
+        bindings = communication.get("bindings")
+        if bindings is not None and (
+            not isinstance(bindings, list)
+            or any(not isinstance(item, dict) for item in bindings)
+        ):
+            raise ValueError(
+                "figure evidence field 'claim_communication.bindings' "
+                "must be an array of JSON objects when supplied"
+            )
     return data
 
 

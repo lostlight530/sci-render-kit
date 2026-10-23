@@ -20,6 +20,11 @@ input_validation:
   malformed_context_behavior: fail_explicitly
   validation_precedes_coverage_metrics: true
   source_sidecar_mutated: false
+  claim_communication_bindings:
+    accepted_states: ["omitted", "null", "array"]
+    item_type: object
+    malformed_collection_behavior: fail_explicitly
+    silent_binding_drop_allowed: false
   adapter_error_code_for_malformed_context: EXECUTION_FAILED
 
 copied_context:

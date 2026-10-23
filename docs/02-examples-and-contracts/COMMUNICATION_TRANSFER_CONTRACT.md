@@ -46,6 +46,8 @@ The source figure-evidence file is locally byte-identified with SHA-256. Destina
 
 No relationship is inferred from filenames, image pixels, captions, legends or prose.
 
+The optional `claim_communication.bindings` collection must be an array of JSON objects when supplied. Malformed collections fail explicitly rather than silently dropping declared bindings or reporting a misleading zero binding count.
+
 ```text
 source hash != semantic equivalence
 caller-declared destination != publication acceptance
