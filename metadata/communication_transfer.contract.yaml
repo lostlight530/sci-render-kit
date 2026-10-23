@@ -15,7 +15,7 @@ input_validation:
     - communication_audit
     - runtime_validation
     - reproducibility
-  accepted_context_values: ["omitted", "null", "object"]
+  accepted_context_states: ["omitted", "null", "object"]
   non_null_context_value_type: object
   malformed_context_behavior: fail_explicitly
   validation_precedes_coverage_metrics: true
