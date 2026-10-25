@@ -153,6 +153,8 @@ Optional report output:
 python core/maintenance_cadence.py daily --as-of YYYY-MM-DD --output output/communication-maintenance-YYYY-MM-DD.json
 ```
 
+An existing `--output` destination can be replaced only when its JSON already has this repository's `maintenance-report` profile and expected report structure. Existing configuration, Manifest, research inputs and unrelated files are rejected without mutation. A missing destination may be created. This preserves explicit report regeneration without treating arbitrary caller-selected input files as expendable report outputs.
+
 The scanner enforces declared repository-local structural scope. It does not render figures, inspect pixels, call external services, run tests, validate statistics, certify WCAG conformance, predict publisher acceptance, establish independent reproduction, inspect GitHub PR ownership, or validate historical Jules claims.
 
 ### Optional Tool CLI smoke workflow boundary
