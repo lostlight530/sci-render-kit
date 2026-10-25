@@ -4,26 +4,25 @@
 - Prior merged A2: `57e8424e13d6454a870eba1bbdcd92ed3cdcc9d1`; current task N=2026-10-25 is excluded.
 - Previous maintainer: Web GPT native Stage records. Current producer: Independent GPT relation auditor, NOT an original producer.
 - Previous owner: `maintenance/frontier-research/annotations/2026-10-24_A2_STAGE_MONTH_RELATION.md`.
-- Stage A–L: 13 directory objects; exact Stage blobs 156, supporting source/annotation objects 16.
+- Stage A–L: 12 directory objects; exact Stage blobs 154, supporting source/annotation objects 18. The two unrelated annotation paths were excluded from the Stage directory count.
 - Git commit delta since merged old A2: core/communication_transfer.py, tests/test_tool_cli.py.
 - These changed `core/**` and `tests/**` files are N-day code fixes; they do not assert a new Stage M research publication.
 - Monthly October OPEN, W43 and Special each require their own native evidence; no simulated results or periodic D7/D10/D14/D30 audit credit.
 - All judgments below are blob custody/inheritance, not source semantic recertification, runtime execution or external conformance.
 
 ## Stage A–L owned surfaces and distinction
-- Stage 01 | `maintenance/frontier-research/annotations` | 2 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 02 | `maintenance/frontier-research/stage-a-2024-q1` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 03 | `maintenance/frontier-research/stage-b-2024-q2` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 04 | `maintenance/frontier-research/stage-c-2024-q3` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 05 | `maintenance/frontier-research/stage-d-2024-q4` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 06 | `maintenance/frontier-research/stage-e-2025-q1` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 07 | `maintenance/frontier-research/stage-f-2025-q2` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 08 | `maintenance/frontier-research/stage-g-2025-q3` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 09 | `maintenance/frontier-research/stage-h-2025-q4` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 10 | `maintenance/frontier-research/stage-i-2026-q1` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 11 | `maintenance/frontier-research/stage-j-2026-q2` | 15 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 12 | `maintenance/frontier-research/stage-k-2026-q3` | 14 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
-- Stage 13 | `maintenance/frontier-research/stage-l-2026-q4` | 8 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 01 | `maintenance/frontier-research/stage-a-2024-q1` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 02 | `maintenance/frontier-research/stage-b-2024-q2` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 03 | `maintenance/frontier-research/stage-c-2024-q3` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 04 | `maintenance/frontier-research/stage-d-2024-q4` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 05 | `maintenance/frontier-research/stage-e-2025-q1` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 06 | `maintenance/frontier-research/stage-f-2025-q2` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 07 | `maintenance/frontier-research/stage-g-2025-q3` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 08 | `maintenance/frontier-research/stage-h-2025-q4` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 09 | `maintenance/frontier-research/stage-i-2026-q1` | 13 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 10 | `maintenance/frontier-research/stage-j-2026-q2` | 15 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 11 | `maintenance/frontier-research/stage-k-2026-q3` | 14 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
+- Stage 12 | `maintenance/frontier-research/stage-l-2026-q4` | 8 exact files | source register -> evidence chart -> review -> synthesis -> handoff are separate
 
 ## N-day code drift excluded from A1
 - `core/communication_transfer.py`: changed +24/-3; command and exit NOT_REPLAYED in A1
