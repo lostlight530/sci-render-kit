@@ -1,0 +1,240 @@
+# A2 | sci-render-kit | 2026-10-26 Stage A–L and runtime-current source relation
+
+- Exact **post-ten-A1** main: `387ff573ae13f5a1d7f69fe794a070e4c9f8e0d0`; own merged A1 `maintenance/frontier-research/annotations/2026-10-26_A1_STAGE_SOURCE_CUSTODY.md` blob `1c1fb4bc0043f8bc48ffb84c1a1b4e36c7455eeb`.
+- Previous merged 2026-10-25 A2 main: `d032368056b582dd0b265e02264d0cc89c6da4c3`; logical MonthStart→N 2026-10-01…2026-10-26 inclusive.
+- October current relation: MONTH_OPEN; twelve triggered Stage A–L source groups, no new fixed Daily Stage M contract on Oct26.
+- Original Stage research producer: Web GPT; independent GPT relation maintainer: separate record, not original Stage author or implementation validator.
+- Main Git tree is nontruncated=true, Stage source objects=154, stage directories=12, related code/tests/maintenance objects=34.
+- Previous A2→fresh main actual changed named paths=5; A1 is merged prerequisite, never silently rewritten.
+- Runtime/test execution in **this A2**: NOT_EXECUTED; Git path and blob custody is not scientific, publisher, or conformance validation.
+
+## Updated N-day implementation/research status
+- Current report-output guard in `core/maintenance_cadence.py` protects inspected sources; renderer/communication transfer source custody is not actual visual correctness, WCAG certification, or publisher acceptance.
+- `Stage L` is a 2026-Q4 triggered research stage; October month OPEN does not create Stage M automatically.
+- A new source-code patch and a new documentation PR are not new Web GPT research Stage executions; preserve producer timing.
+- An unchanged exact blob inherits prior bounded source custody, not an unsupported semantic re-certification.
+- Current report-output safeguard in maintenance scanner is an actual current source difference; code text is visible, execution proof is NOT_REPLAYED.
+- D7/D10/D14/D30 periodic independent audits are separate and cannot inherit A1/A2 pass credit.
+
+## Stage → source registry → evidence chart → review → handoff exact-blob links
+- Stage 01 `stage-a-2024-q1` | 13 original objects | REG `463db61d331daa4dfedbd77dfedf231dcda59fb2` → CHART `992cf5236a90e6d20ec5da670edf00fd978311c0` → HANDOFF `5bf71d9428476134c7143374c3be573559564c97` | directed provenance not downstream runtime verification
+- Stage 02 `stage-b-2024-q2` | 13 original objects | REG `2d1c62b1f888c5af5d11b8fc7950b9d21d627c6f` → CHART `37413ba45969aabe132abcea35e9eef6ca5bdad2` → HANDOFF `d9acfcf8b35fdfc9825d3b4087df7b48e61b659d` | directed provenance not downstream runtime verification
+- Stage 03 `stage-c-2024-q3` | 13 original objects | REG `0bcfc9c200b92866d3343db8ee8da004b755343b` → CHART `7cccb37b4f0f3897abf435ba80382eaa1762a74d` → HANDOFF `66b518cee11f569ecd3cd95c3e8234785e84d24c` | directed provenance not downstream runtime verification
+- Stage 04 `stage-d-2024-q4` | 13 original objects | REG `3f2afe7ac4b4726995a33cdc2af055db4a2f224e` → CHART `1d8dfd2542fd76173ac8d8420fd1f5123b7adfd3` → HANDOFF `1531c275362b262e030c99ba7cdd0cb7a3e77ff3` | directed provenance not downstream runtime verification
+- Stage 05 `stage-e-2025-q1` | 13 original objects | REG `dfbb1a6c888e1b34889bb311b32920f180e0017b` → CHART `19ea11f60e5a3283ec5e5a367f5230eeb0b87cf8` → HANDOFF `d19ddbcefed3c0430b64fbb0120ffd058a2c2259` | directed provenance not downstream runtime verification
+- Stage 06 `stage-f-2025-q2` | 13 original objects | REG `8d23229c77d4ac2ee3d7315ab7b9f44ea0111760` → CHART `434c4ad9d2b88af2edba836ac4327d86f13ea30a` → HANDOFF `ae2f98d4893b53d39f4d945626bc8ab59a63b1c6` | directed provenance not downstream runtime verification
+- Stage 07 `stage-g-2025-q3` | 13 original objects | REG `c8cea0828aaf48cf9af28049eb36b56fa0e38297` → CHART `76aa82684d7a691bf3f2a37ae9578a68bea71ee5` → HANDOFF `d4c531f0bdf57f920c53cd1728679ac712919583` | directed provenance not downstream runtime verification
+- Stage 08 `stage-h-2025-q4` | 13 original objects | REG `ba1a03a5e4228df2ffa5002e3654424b9c085699` → CHART `ad8415eb02e1b2e80ab5432c6816313a21c3cddd` → HANDOFF `f26a2c9a5fe940bb8770f511e0360bdd1d1a6806` | directed provenance not downstream runtime verification
+- Stage 09 `stage-i-2026-q1` | 13 original objects | REG `7ea291e922b42cc7e41478a30df092c64d1683e3` → CHART `2a8c0a32c44ca10910a71f37bc46ec2aca8864f5` → HANDOFF `ba65cc7abe20428bbfac0cb5597f7d19b5c32dea` | directed provenance not downstream runtime verification
+- Stage 10 `stage-j-2026-q2` | 15 original objects | REG `cbc3c1555310decca7c0699e2c289329fd92667b` → CHART `19ba19e8768f14ca771733533f570ac8ee26be7e` → HANDOFF `725a454331712b4943d35ae10924594b4b307caa` | directed provenance not downstream runtime verification
+- Stage 11 `stage-k-2026-q3` | 14 original objects | REG `2f4926d3c078012e7362cd8dbb0bebcfa5849891` → CHART `7a97c47ca04abb14930cc0686d4101b947ee4d57` → HANDOFF `874c165a9ba0727b32c243c632bc83403a3a327a` | directed provenance not downstream runtime verification
+- Stage 12 `stage-l-2026-q4` | 8 original objects | REG `304447c8189f7bfe7c3cf35d7176e0d93bca2ae0` → CHART `a241e560d286a2d3b21687ba6a19095787fc3c1f` → HANDOFF `NOT_IN_STAGE` | directed provenance not downstream runtime verification
+
+## Exact Stage A–L source and evidence object relation through October 26
+- 001 | `maintenance/frontier-research/stage-a-2024-q1/A1_UNCERTAINTY_GUIDES_FIGURE_EVIDENCE.md` | blob `b3fb352e8f77f89f4402bc3438bd5d8175a2ce7a` | 4688 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 002 | `maintenance/frontier-research/stage-a-2024-q1/A2_ACCESSIBILITY_ALTERNATE_REPRESENTATION.md` | blob `06116e1caca6346df9b9c83f9fd53fb17e137dbd` | 4415 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 003 | `maintenance/frontier-research/stage-a-2024-q1/A3_RENDERER_VERSION_COMMUNICATION_TRANSFER.md` | blob `007df0a17acfe05774dd13503fbc315f49b1de3d` | 4346 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 004 | `maintenance/frontier-research/stage-a-2024-q1/CONTRIBUTOR_STATEMENT.md` | blob `3a4f7f2b4edb170e475ddd10d0fa6b7d515ff6f3` | 1346 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 005 | `maintenance/frontier-research/stage-a-2024-q1/EVIDENCE_CHART.md` | blob `992cf5236a90e6d20ec5da670edf00fd978311c0` | 7134 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 006 | `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_01_RECONSTRUCTION.md` | blob `bbf34973e6c26099e485a5a58429abb75d0dd181` | 3446 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 007 | `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_02_RECONSTRUCTION.md` | blob `044cc6340d754678508c1f34dc3559d5e7131150` | 2985 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 008 | `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_03_RECONSTRUCTION.md` | blob `2c0ef73742a544da3f235e0e90911858f4209ba2` | 3579 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 009 | `maintenance/frontier-research/stage-a-2024-q1/RESEARCH_REVIEW.md` | blob `25c06b5fe8275ddaa9d286480bf5f30f595676eb` | 3294 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 010 | `maintenance/frontier-research/stage-a-2024-q1/SOURCE_OBJECT_REGISTER.md` | blob `463db61d331daa4dfedbd77dfedf231dcda59fb2` | 6440 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 011 | `maintenance/frontier-research/stage-a-2024-q1/STAGE_BRIEF.md` | blob `7d1ec314ca8fe54edce2df3b2b916b6670cc0680` | 6496 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 012 | `maintenance/frontier-research/stage-a-2024-q1/STAGE_HANDOFF.md` | blob `5bf71d9428476134c7143374c3be573559564c97` | 1944 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 013 | `maintenance/frontier-research/stage-a-2024-q1/STAGE_SYNTHESIS.md` | blob `5bc9f12975dc6d8bdd1215f6da3f9a4ae2445eaf` | 17235 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 014 | `maintenance/frontier-research/stage-b-2024-q2/B1_VERSIONED_VISUAL_SEMANTICS.md` | blob `f185caa63a11312988ad6e23defd79a9c6e4abd2` | 2031 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 015 | `maintenance/frontier-research/stage-b-2024-q2/B2_MULTIMODAL_ACCESSIBILITY.md` | blob `abf40846eb34abf138f5a85d0bd6a22981f224c0` | 2221 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 016 | `maintenance/frontier-research/stage-b-2024-q2/B3_USER_CONTROL_AND_INVALID_DATA.md` | blob `c2ed5a7a5e4316895d2a1d70312a2d0317d8180e` | 2122 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 017 | `maintenance/frontier-research/stage-b-2024-q2/CONTRIBUTOR_STATEMENT.md` | blob `5de2aeea9f3a555fb92f4392d7a096f0662b33a3` | 760 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 018 | `maintenance/frontier-research/stage-b-2024-q2/EVIDENCE_CHART.md` | blob `37413ba45969aabe132abcea35e9eef6ca5bdad2` | 2056 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 019 | `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_04_RECONSTRUCTION.md` | blob `ec76867880466136a7e143e336341a629f663830` | 693 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 020 | `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_05_RECONSTRUCTION.md` | blob `f15d17e77dc4e25ef5417b44652b8f489cf6b934` | 981 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 021 | `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_06_RECONSTRUCTION.md` | blob `9949d1a48dfc00736ce40162f3330c75f6a8f700` | 699 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 022 | `maintenance/frontier-research/stage-b-2024-q2/RESEARCH_REVIEW.md` | blob `610503e7b4926e57ffdd9f5be252514394681035` | 1505 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 023 | `maintenance/frontier-research/stage-b-2024-q2/SOURCE_OBJECT_REGISTER.md` | blob `2d1c62b1f888c5af5d11b8fc7950b9d21d627c6f` | 2758 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 024 | `maintenance/frontier-research/stage-b-2024-q2/STAGE_BRIEF.md` | blob `a64355f5893eb6772c2363fc87afb1946686066b` | 1615 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 025 | `maintenance/frontier-research/stage-b-2024-q2/STAGE_HANDOFF.md` | blob `d9acfcf8b35fdfc9825d3b4087df7b48e61b659d` | 1301 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 026 | `maintenance/frontier-research/stage-b-2024-q2/STAGE_SYNTHESIS.md` | blob `4370caa51e119328b8ce22423da6aab8632af7d3` | 6021 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 027 | `maintenance/frontier-research/stage-c-2024-q3/C1_REACTIVE_INTERACTIVE_STATE.md` | blob `e0f1560e0781597881b9d593556fa43bad25f2c7` | 1399 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 028 | `maintenance/frontier-research/stage-c-2024-q3/C2_RENDERER_WRAPPER_VERSION_BINDING.md` | blob `a861c5b8ec8b08dbedb92c55136dd04c62011479` | 1626 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 029 | `maintenance/frontier-research/stage-c-2024-q3/C3_POPULATION_CONDITIONED_ACCESSIBILITY.md` | blob `fd20d477a0643a59cfa582bc1b5efca8ed4f9978` | 1709 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 030 | `maintenance/frontier-research/stage-c-2024-q3/CONTRIBUTOR_STATEMENT.md` | blob `87ff13158c29af3b1825bec68c9888173be08a4e` | 476 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 031 | `maintenance/frontier-research/stage-c-2024-q3/EVIDENCE_CHART.md` | blob `7cccb37b4f0f3897abf435ba80382eaa1762a74d` | 1440 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 032 | `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_07_RECONSTRUCTION.md` | blob `476e9bef9ac3a2cd1de1ee1471f3192424eb0553` | 559 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 033 | `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_08_RECONSTRUCTION.md` | blob `6f46f88940045997d23e0410626becd868bb5c4e` | 611 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 034 | `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_09_RECONSTRUCTION.md` | blob `1f69b09801435fc8bfe9dd28cf62f8b1fc7a596a` | 627 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 035 | `maintenance/frontier-research/stage-c-2024-q3/RESEARCH_REVIEW.md` | blob `5ab1d0d6257a0cc4696a12445c503b147186097f` | 1441 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 036 | `maintenance/frontier-research/stage-c-2024-q3/SOURCE_OBJECT_REGISTER.md` | blob `0bcfc9c200b92866d3343db8ee8da004b755343b` | 1529 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 037 | `maintenance/frontier-research/stage-c-2024-q3/STAGE_BRIEF.md` | blob `11e5d1645fe5985dffc198e210d14d54f6b8b8cc` | 2419 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 038 | `maintenance/frontier-research/stage-c-2024-q3/STAGE_HANDOFF.md` | blob `66b518cee11f569ecd3cd95c3e8234785e84d24c` | 996 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 039 | `maintenance/frontier-research/stage-c-2024-q3/STAGE_SYNTHESIS.md` | blob `da4eb51a65378221f406a9e95eba42b8b75ab0eb` | 3617 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 040 | `maintenance/frontier-research/stage-d-2024-q4/CONTRIBUTOR_STATEMENT.md` | blob `d9fffe289544ddff9b7ee5e4f936d6f4103343a5` | 739 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 041 | `maintenance/frontier-research/stage-d-2024-q4/D1_MULTIMODAL_ACCESS_INTERACTION.md` | blob `789cb8c0fa80cd916c9f2b7568e15d7018d61725` | 1588 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 042 | `maintenance/frontier-research/stage-d-2024-q4/D2_WRAPPER_SCREEN_READER_RENDERER.md` | blob `c4d9bf26942a0bba120d13a5182ce168c07c4a0d` | 1249 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 043 | `maintenance/frontier-research/stage-d-2024-q4/D3_TEMPORAL_AND_COLOR_COMMUNICATION_STATE.md` | blob `9ab5da0096d263c7f1ee6590491c89bed5fc8079` | 1495 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 044 | `maintenance/frontier-research/stage-d-2024-q4/EVIDENCE_CHART.md` | blob `1d8dfd2542fd76173ac8d8420fd1f5123b7adfd3` | 939 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 045 | `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_10_RECONSTRUCTION.md` | blob `1b11eb68349ed9fbea7382e63072c86bd15e80e9` | 495 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 046 | `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_11_RECONSTRUCTION.md` | blob `a44e780159ba9db837cf25239fcb83067fed256a` | 486 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 047 | `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_12_RECONSTRUCTION.md` | blob `8320ac3291283cfae037e782b34b9d92c6fccb82` | 504 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 048 | `maintenance/frontier-research/stage-d-2024-q4/RESEARCH_REVIEW.md` | blob `d98fa795c40733d2e22aa72fa29353a9eb88decb` | 1295 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 049 | `maintenance/frontier-research/stage-d-2024-q4/SOURCE_OBJECT_REGISTER.md` | blob `3f2afe7ac4b4726995a33cdc2af055db4a2f224e` | 1514 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 050 | `maintenance/frontier-research/stage-d-2024-q4/STAGE_BRIEF.md` | blob `8bbdb80389e7caf2191a08bfde48fec256f22069` | 1625 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 051 | `maintenance/frontier-research/stage-d-2024-q4/STAGE_HANDOFF.md` | blob `1531c275362b262e030c99ba7cdd0cb7a3e77ff3` | 1887 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 052 | `maintenance/frontier-research/stage-d-2024-q4/STAGE_SYNTHESIS.md` | blob `cd4959c4b3cf920d627de7e9da0f9f61596ae23c` | 2624 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 053 | `maintenance/frontier-research/stage-e-2025-q1/CONTRIBUTOR_STATEMENT.md` | blob `f4d0f0f892673c11ef1495a5c945d245e08aac8e` | 516 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 054 | `maintenance/frontier-research/stage-e-2025-q1/E1_PLOTLY6_SERIALIZATION_WRAPPER_AND_RENDERER_IDENTITY.md` | blob `ed6de0d9faa58a7c41f7392df2f896234e1eef5d` | 1461 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 055 | `maintenance/frontier-research/stage-e-2025-q1/E2_MATPLOTLIB_PATCH_RELEASE_AND_RENDER_BEHAVIOR.md` | blob `74458452b549c2c9787fd42d775428961216efce` | 1049 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 056 | `maintenance/frontier-research/stage-e-2025-q1/E3_VEGALITE6_GRAMMAR_RUNTIME_MAJOR_VERSION.md` | blob `1f3bfc56989f5917a03f9b5ddf91dd0cfb8defc1` | 1065 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 057 | `maintenance/frontier-research/stage-e-2025-q1/EVIDENCE_CHART.md` | blob `19ea11f60e5a3283ec5e5a367f5230eeb0b87cf8` | 845 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 058 | `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_01_RECONSTRUCTION.md` | blob `37f8aeb197f980de27b685a81cfb24db1f2a58bf` | 473 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 059 | `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_02_RECONSTRUCTION.md` | blob `90ed2f271e4ed22e545699d2ef3864619f851ab1` | 586 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 060 | `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_03_RECONSTRUCTION.md` | blob `981ed9607bafcc31b064b2af3146355e27a59c81` | 589 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 061 | `maintenance/frontier-research/stage-e-2025-q1/RESEARCH_REVIEW.md` | blob `d9e1072369e7076c2c3ef77fc75266482301368d` | 1444 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 062 | `maintenance/frontier-research/stage-e-2025-q1/SOURCE_OBJECT_REGISTER.md` | blob `dfbb1a6c888e1b34889bb311b32920f180e0017b` | 925 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 063 | `maintenance/frontier-research/stage-e-2025-q1/STAGE_BRIEF.md` | blob `594db93a4d82abb04eafe3ba008a99ba4bd7ae67` | 1716 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 064 | `maintenance/frontier-research/stage-e-2025-q1/STAGE_HANDOFF.md` | blob `d19ddbcefed3c0430b64fbb0120ffd058a2c2259` | 1187 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 065 | `maintenance/frontier-research/stage-e-2025-q1/STAGE_SYNTHESIS.md` | blob `26230de37046ea82243041c858d26d2fd2d23c60` | 2918 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 066 | `maintenance/frontier-research/stage-f-2025-q2/CONTRIBUTOR_STATEMENT.md` | blob `1a2b633f98894cc083a7d59871ebc01c534870d5` | 355 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 067 | `maintenance/frontier-research/stage-f-2025-q2/EVIDENCE_CHART.md` | blob `434c4ad9d2b88af2edba836ac4327d86f13ea30a` | 744 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 068 | `maintenance/frontier-research/stage-f-2025-q2/F1_WRAPPER_GRAMMAR_MIGRATION_STATE.md` | blob `a880963887e44ed29fed4690e79883789487c1eb` | 720 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 069 | `maintenance/frontier-research/stage-f-2025-q2/F2_RENDER_BACKEND_AND_PATCH_STABILIZATION.md` | blob `ab53a8bcabe8ecbda535be8e3caf21ca17604d68` | 1005 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 070 | `maintenance/frontier-research/stage-f-2025-q2/F3_DELIVERY_INTEGRITY_AND_ACCESSIBILITY_METADATA.md` | blob `e189a97d95c69a8ba926d0508f4599a63214dd4a` | 1086 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 071 | `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_04_RECONSTRUCTION.md` | blob `225e9449f4575c8ad565f224cb53f558266bb203` | 432 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 072 | `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_05_RECONSTRUCTION.md` | blob `beb52828fb3febaa03c0c9b6fabf984263c3a66b` | 414 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 073 | `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_06_RECONSTRUCTION.md` | blob `19ee02b2cff7a840a758e0bec50c53f723cfa963` | 461 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 074 | `maintenance/frontier-research/stage-f-2025-q2/RESEARCH_REVIEW.md` | blob `b46e9dc9eab7776d3e95ffa67772d423d106c179` | 1070 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 075 | `maintenance/frontier-research/stage-f-2025-q2/SOURCE_OBJECT_REGISTER.md` | blob `8d23229c77d4ac2ee3d7315ab7b9f44ea0111760` | 918 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 076 | `maintenance/frontier-research/stage-f-2025-q2/STAGE_BRIEF.md` | blob `a2ec3b1510368526132fa50d202ad0746b2cf6ef` | 1429 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 077 | `maintenance/frontier-research/stage-f-2025-q2/STAGE_HANDOFF.md` | blob `ae2f98d4893b53d39f4d945626bc8ab59a63b1c6` | 724 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 078 | `maintenance/frontier-research/stage-f-2025-q2/STAGE_SYNTHESIS.md` | blob `3b16ca05a60737c39b8a5225ba4aa914d88dae5b` | 1931 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 079 | `maintenance/frontier-research/stage-g-2025-q3/CONTRIBUTOR_STATEMENT.md` | blob `a6b4cf1966d2b127c44de1ac2300a704df0fc7d2` | 805 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 080 | `maintenance/frontier-research/stage-g-2025-q3/EVIDENCE_CHART.md` | blob `76aa82684d7a691bf3f2a37ae9578a68bea71ee5` | 948 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 081 | `maintenance/frontier-research/stage-g-2025-q3/G1_MATPLOTLIB3105_RUNTIME_TARGET_AND_WHEEL_IDENTITY.md` | blob `598dd92b311be8422328f7f1fbaec23f06bcaff8` | 1707 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 082 | `maintenance/frontier-research/stage-g-2025-q3/G2_PLOTLY63_EXPORT_ENGINE_AND_BROWSER_IDENTITY.md` | blob `e977d6a7e4fc16c190dcee60919535cab56429d0` | 1776 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 083 | `maintenance/frontier-research/stage-g-2025-q3/G3_VEGALITE63_64_INTERACTION_AND_TOOLTIP_SEMANTICS.md` | blob `09f9f83629dd3f1b6f54c6d0f57565db7fc73093` | 1878 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 084 | `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_07_RECONSTRUCTION.md` | blob `727a03c85fc095e0d881bfb8e44a21e4831d72bf` | 746 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 085 | `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_08_RECONSTRUCTION.md` | blob `f3cd2a96c041cbbe3ea67072530153d7645f4447` | 737 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 086 | `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_09_RECONSTRUCTION.md` | blob `86fe934f97e6aef84c2fe08875ae2f3593841b01` | 824 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 087 | `maintenance/frontier-research/stage-g-2025-q3/RESEARCH_REVIEW.md` | blob `8d48eff9895c50650f14689af717a83a807ff610` | 1238 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 088 | `maintenance/frontier-research/stage-g-2025-q3/SOURCE_OBJECT_REGISTER.md` | blob `c8cea0828aaf48cf9af28049eb36b56fa0e38297` | 1094 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 089 | `maintenance/frontier-research/stage-g-2025-q3/STAGE_BRIEF.md` | blob `3ec163305604a372639e545191523e88b9a08103` | 1739 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 090 | `maintenance/frontier-research/stage-g-2025-q3/STAGE_HANDOFF.md` | blob `d4c531f0bdf57f920c53cd1728679ac712919583` | 955 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 091 | `maintenance/frontier-research/stage-g-2025-q3/STAGE_SYNTHESIS.md` | blob `9bc8f0b925426c553370c95a477a04d26a1ed012` | 2462 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 092 | `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md` | blob `740460cdfc3a7627d2d84ed7c3dfc59108e470fe` | 435 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 093 | `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md` | blob `ad8415eb02e1b2e80ab5432c6816313a21c3cddd` | 689 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 094 | `maintenance/frontier-research/stage-h-2025-q4/H1_MATPLOTLIB3107_DEPENDENCY_FLOOR_IDENTITY.md` | blob `f22a0fa137bc743dd3e90474071a8325bb7f47d7` | 1051 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 095 | `maintenance/frontier-research/stage-h-2025-q4/H2_PLOTLY64_65_JS_AND_INTERACTION_SEMANTICS.md` | blob `5f164252c290d0ffddd8e875d1d1e4313125fb8a` | 1040 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 096 | `maintenance/frontier-research/stage-h-2025-q4/H3_ALTAIR60_WRAPPER_GRAMMAR_AND_RERUN_STABILITY.md` | blob `e619dfa731c3a9d4f9761bffeaa7d9a52acbc320` | 1078 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 097 | `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md` | blob `8993beeb8b937404fcdc87de547724f7b3a07634` | 436 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 098 | `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md` | blob `11938e76fc1e328f4353d7e099e3703f1cecd645` | 769 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 099 | `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md` | blob `babecabeba106e87ea2ac774534bc2c753a1a285` | 493 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 100 | `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md` | blob `14779f452fb49e87517e431b624f66b285d45789` | 670 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 101 | `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md` | blob `ba1a03a5e4228df2ffa5002e3654424b9c085699` | 598 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 102 | `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md` | blob `8510c7001860ea0ca3d03c587d4c408d095987ad` | 1354 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 103 | `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md` | blob `f26a2c9a5fe940bb8770f511e0360bdd1d1a6806` | 806 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 104 | `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md` | blob `f637e10b316e0159f789c00dce521ea0c81cc2f1` | 1626 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 105 | `maintenance/frontier-research/stage-i-2026-q1/CONTRIBUTOR_STATEMENT.md` | blob `c70a1c95e9fb54e3dd36e7341b1b820ed31d6494` | 946 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 106 | `maintenance/frontier-research/stage-i-2026-q1/EVIDENCE_CHART.md` | blob `2a8c0a32c44ca10910a71f37bc46ec2aca8864f5` | 2531 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 107 | `maintenance/frontier-research/stage-i-2026-q1/I1_VEGALITE_V642.md` | blob `4b4742779b2b6eb0e2df1289e5aafe73eaf2a46c` | 5974 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 108 | `maintenance/frontier-research/stage-i-2026-q1/I2_PLOTLYJS_V340.md` | blob `b7ecee722ffb98f00fe801a4b28a2a8f88c052bf` | 6018 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 109 | `maintenance/frontier-research/stage-i-2026-q1/I3_PLOTLYPY_V660.md` | blob `46b4c80d1d31b1d38f8a7480aceb648fb5eff0f0` | 6051 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 110 | `maintenance/frontier-research/stage-i-2026-q1/MONTH_2026_01_RECONSTRUCTION.md` | blob `6b543fdcd5b23ded6f0aee59c7e4a7f9a6fd17e8` | 1784 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 111 | `maintenance/frontier-research/stage-i-2026-q1/MONTH_2026_02_RECONSTRUCTION.md` | blob `6ad1e10e7153d26215ec9f0aad4bc46c1176ec3d` | 1823 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 112 | `maintenance/frontier-research/stage-i-2026-q1/MONTH_2026_03_RECONSTRUCTION.md` | blob `946a537d8794cfc72870540bb6f54bb5678d7156` | 1824 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 113 | `maintenance/frontier-research/stage-i-2026-q1/RESEARCH_REVIEW.md` | blob `1973aff035d565e4a3625ad2c3c8d6426e9187fe` | 2502 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 114 | `maintenance/frontier-research/stage-i-2026-q1/SOURCE_OBJECT_REGISTER.md` | blob `7ea291e922b42cc7e41478a30df092c64d1683e3` | 1919 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 115 | `maintenance/frontier-research/stage-i-2026-q1/STAGE_BRIEF.md` | blob `52cc85d5371c4e05dc8520374190c8fbdab64828` | 4151 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 116 | `maintenance/frontier-research/stage-i-2026-q1/STAGE_HANDOFF.md` | blob `ba65cc7abe20428bbfac0cb5597f7d19b5c32dea` | 1831 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 117 | `maintenance/frontier-research/stage-i-2026-q1/STAGE_SYNTHESIS.md` | blob `3420e3bc75deb82894e019d0cee8c05dbafe2f9b` | 7131 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 118 | `maintenance/frontier-research/stage-j-2026-q2/CONTRIBUTOR_STATEMENT.md` | blob `c556e6f0c74dde36a04752c8665a37a98de61d4b` | 946 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 119 | `maintenance/frontier-research/stage-j-2026-q2/EVIDENCE_CHART.md` | blob `19ba19e8768f14ca771733533f570ac8ee26be7e` | 3248 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 120 | `maintenance/frontier-research/stage-j-2026-q2/J1_MATPLOTLIB_V3109.md` | blob `31ae72874e78b1dbe299928771b9e20e1cef6e7b` | 6094 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 121 | `maintenance/frontier-research/stage-j-2026-q2/J2_ALTAIR_V610.md` | blob `a66e79f7dfb92caad2405374089e934533525ff1` | 5966 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 122 | `maintenance/frontier-research/stage-j-2026-q2/J3_PLOTLYJS_V351.md` | blob `d4d9ff7c448998bc5f91a40a0b74ad033cdc5068` | 5904 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 123 | `maintenance/frontier-research/stage-j-2026-q2/J4_MATPLOTLIB_V3110.md` | blob `aa6308cedcecc51abf584f57126f23e2c54bc9a2` | 6204 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 124 | `maintenance/frontier-research/stage-j-2026-q2/J5_ALTAIR_V622.md` | blob `c679df12c51155b7cd8b1545fd9e1d620f88af54` | 6023 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 125 | `maintenance/frontier-research/stage-j-2026-q2/MONTH_2026_04_RECONSTRUCTION.md` | blob `ee76550c3879d747d48f1d734a87f1a15b331404` | 2553 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 126 | `maintenance/frontier-research/stage-j-2026-q2/MONTH_2026_05_RECONSTRUCTION.md` | blob `51ab8b8de5cd4eb28a78a296410b431b9db87d03` | 1749 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 127 | `maintenance/frontier-research/stage-j-2026-q2/MONTH_2026_06_RECONSTRUCTION.md` | blob `8f42f00f630a77ee49eead1b86b99d6857aec1d0` | 2646 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 128 | `maintenance/frontier-research/stage-j-2026-q2/RESEARCH_REVIEW.md` | blob `302681e2c73d0f23cc113f2dbbd0f1b7cf1e622b` | 2502 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 129 | `maintenance/frontier-research/stage-j-2026-q2/SOURCE_OBJECT_REGISTER.md` | blob `cbc3c1555310decca7c0699e2c289329fd92667b` | 2383 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 130 | `maintenance/frontier-research/stage-j-2026-q2/STAGE_BRIEF.md` | blob `e6777796963a9c15e8a9b0b38d2e352e698506a8` | 4338 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 131 | `maintenance/frontier-research/stage-j-2026-q2/STAGE_HANDOFF.md` | blob `725a454331712b4943d35ae10924594b4b307caa` | 2451 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 132 | `maintenance/frontier-research/stage-j-2026-q2/STAGE_SYNTHESIS.md` | blob `889d5012b59bce2f4749af8075662c5262293d80` | 8296 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 133 | `maintenance/frontier-research/stage-k-2026-q3/CONTRIBUTOR_STATEMENT.md` | blob `1aab1697c3cc38e6a8db7ce18c5728ce107dc841` | 946 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 134 | `maintenance/frontier-research/stage-k-2026-q3/EVIDENCE_CHART.md` | blob `7a97c47ca04abb14930cc0686d4101b947ee4d57` | 2948 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 135 | `maintenance/frontier-research/stage-k-2026-q3/K1_MATPLOTLIB_V3111.md` | blob `90bfef4281e37ea904cf7446c50a906aee6282c7` | 6068 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 136 | `maintenance/frontier-research/stage-k-2026-q3/K2_PLOTLYPY_V700.md` | blob `2585f0cad9f6ef5b50c396d549439d3309465514` | 6164 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 137 | `maintenance/frontier-research/stage-k-2026-q3/K3_ALTAIR_V630.md` | blob `16f72dbc97ee7c8ad47b54efee59ea81255524a7` | 6027 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 138 | `maintenance/frontier-research/stage-k-2026-q3/K4_MATPLOTLIB_V3112.md` | blob `47c3faaaa8d5132c9773fb490db137470e451f14` | 6024 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 139 | `maintenance/frontier-research/stage-k-2026-q3/MONTH_2026_07_RECONSTRUCTION.md` | blob `748e88d042465c2152b836086d8a1b4eac8af2fb` | 1844 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 140 | `maintenance/frontier-research/stage-k-2026-q3/MONTH_2026_08_RECONSTRUCTION.md` | blob `570ac37408fc62dc2d90021645f3c0b5deee03a2` | 1887 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 141 | `maintenance/frontier-research/stage-k-2026-q3/MONTH_2026_09_RECONSTRUCTION.md` | blob `4739e5627548544bcdc4cd5d2066b2e85ea7182f` | 2558 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 142 | `maintenance/frontier-research/stage-k-2026-q3/RESEARCH_REVIEW.md` | blob `13e7b37ec6d286372d2be5d811fefcae0ab2d27f` | 2502 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 143 | `maintenance/frontier-research/stage-k-2026-q3/SOURCE_OBJECT_REGISTER.md` | blob `2f4926d3c078012e7362cd8dbb0bebcfa5849891` | 2177 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 144 | `maintenance/frontier-research/stage-k-2026-q3/STAGE_BRIEF.md` | blob `be245dfb1b76d9c534e2d5632938674f7f108f63` | 4265 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 145 | `maintenance/frontier-research/stage-k-2026-q3/STAGE_HANDOFF.md` | blob `874c165a9ba0727b32c243c632bc83403a3a327a` | 2193 bytes | HANDOFF_NOT_RUNTIME | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 146 | `maintenance/frontier-research/stage-k-2026-q3/STAGE_SYNTHESIS.md` | blob `40ab70ff80c9eabb5a648d706b30ff1a32ec054a` | 7822 bytes | STAGE_SYNTHESIS | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 147 | `maintenance/frontier-research/stage-l-2026-q4/CONTRIBUTOR_STATEMENT.md` | blob `750ab55a1d1d487dc073a8f3f2f2c51e3676b2f2` | 946 bytes | PRODUCER_PROVENANCE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 148 | `maintenance/frontier-research/stage-l-2026-q4/EVIDENCE_CHART.md` | blob `a241e560d286a2d3b21687ba6a19095787fc3c1f` | 2207 bytes | STAGE_EVIDENCE_CHART | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 149 | `maintenance/frontier-research/stage-l-2026-q4/L1_PLOTLYJS_V412.md` | blob `eb7b941a5d7327f2fa4543f21082102ba93bcf41` | 6143 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 150 | `maintenance/frontier-research/stage-l-2026-q4/L2_VEGALITE_V650.md` | blob `e0e5bdf11779395531d7b1338bc2cdef6323b5b8` | 5897 bytes | TOPICAL_PRIMARY_RESEARCH | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 151 | `maintenance/frontier-research/stage-l-2026-q4/MONTH_2026_10_RECONSTRUCTION.md` | blob `64faa2d1d87773ec3d187c753439dd089498b261` | 2555 bytes | MONTH_RECONSTRUCTION_NOT_MONTH_SEAL | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 152 | `maintenance/frontier-research/stage-l-2026-q4/RESEARCH_REVIEW.md` | blob `45728146f375e48082fe840349bf44df902cc356` | 2449 bytes | RESEARCH_REVIEW | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 153 | `maintenance/frontier-research/stage-l-2026-q4/SOURCE_OBJECT_REGISTER.md` | blob `304447c8189f7bfe7c3cf35d7176e0d93bca2ae0` | 1693 bytes | SOURCE_REGISTRY | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+- 154 | `maintenance/frontier-research/stage-l-2026-q4/STAGE_BRIEF.md` | blob `96129b7b7b3ce4a9f6c7bfe5784a7fb1935bd43f` | 4131 bytes | STAGE_SCOPE | SAME_ORIGINAL_STAGE_CUSTODY; NO_NEW_STAGE_AUTHORED
+
+## Current runtime, test and maintenance objects (source, not command receipts)
+- C001 | `core/accessibility.py` | blob `7afc2bb9e149e511ee504154b4b5ed8fedb6bed0` | 6755 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C002 | `core/claim_binding_audit.py` | blob `4947585f54ea3579d19f4d9a117e32788c3fdb5e` | 14143 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C003 | `core/color_encoding.py` | blob `3734009ed01b17fa347e717ab9fdbf61e8c2c2f4` | 5374 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C004 | `core/communication_transfer.py` | blob `f94b9b08d75d3387cad36d0cc8a9219f6420947c` | 10283 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C005 | `core/cvd_simulation.py` | blob `e8d0a8019537a9363e82e02499703a6a3e5fea9f` | 2572 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C006 | `core/figure_evidence.py` | blob `5e1c30b3a8af4c79bcdb728c72ed2ba220b842bd` | 12298 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C007 | `core/maintenance_cadence.py` | blob `3873cd4c2c7a0b9ae75ae425243ee6b363a67bcb` | 16923 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C008 | `core/observer_dashboard.py` | blob `fe20304d6f77acc48dfce2c7c400ef96024d7092` | 7001 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C009 | `core/palettes.py` | blob `cc8bcfe598454f4eb21bd706af65df6caaea2572` | 5871 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C010 | `core/projection.py` | blob `5f408864d10e0037ad2fdcacf7c9d58dc1038300` | 8863 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C011 | `core/superposition.py` | blob `ddf254e892d5bde3a93c36213d929a718c3ca4db` | 3570 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C012 | `core/time_crystal.py` | blob `f4738529def4aede18617fb703eaab70981b5e19` | 3706 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C013 | `core/uncertainty_legend.py` | blob `72acf7a97dfa6dbdb51d541b64fc0443dd228938` | 5734 bytes | IMPLEMENTATION_SOURCE_NOT_RETESTED
+- C014 | `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` | blob `634c0612bed8c7ac27b92e685e5b3ef42bf0d495` | 14898 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C015 | `docs/03-maintenance-and-audit/history/FIVE_DAY_CONSOLIDATION.md` | blob `0e597dc9bcae3bce91a9933cc40ce4136b9b6cbf` | 4745 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C016 | `docs/03-maintenance-and-audit/history/FOUR_DAY_CONSOLIDATION.md` | blob `dc75b065ed0f1cf1c241a10c7bdf7c289939f307` | 2362 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C017 | `docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md` | blob `315f56581a4599dbecbb9ab07f8755d9c1a787af` | 7391 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C018 | `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` | blob `bc7f692ce7d0e01747767ca8d106a3fbf4390873` | 4849 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C019 | `docs/03-maintenance-and-audit/history/README.md` | blob `a855839f8d1fa113a706a3607d8c5ec46dbee48d` | 1839 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C020 | `docs/03-maintenance-and-audit/history/SIX_DAY_CONSOLIDATION.md` | blob `3b51ebbb46ce1cd09ddb2288f1b3c6dc7e174e0a` | 2509 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C021 | `docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md` | blob `fe3cb8a1e207c66ea346a3572737e736014c5e42` | 6605 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C022 | `docs/03-maintenance-and-audit/history/superpowers/specs/2026-08-05-scientific-closure-design.md` | blob `525bb2ad411d0aec46452bf29daedcb3ed2c6519` | 3700 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C023 | `docs/03-maintenance-and-audit/independent-gpt/README.md` | blob `0db6f078b06ffbd493973dfdb8df513f671dc011` | 4821 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C024 | `docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md` | blob `7c2d6c2e30cceb53aec4ae6b2d80cb6d6a5c4e20` | 10788 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C025 | `docs/03-maintenance-and-audit/README.md` | blob `570db873920a41b56ac3d743069c4765b84576ca` | 4053 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C026 | `maintenance/frontier-research/annotations/2026-10-25_A1_STAGE_SOURCE_CUSTODY.md` | blob `632550db350fc99ea114bf3e639e403f25aede9c` | 42721 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C027 | `maintenance/frontier-research/annotations/2026-10-25_A2_STAGE_MONTH_RELATION.md` | blob `bc13143fcd935d56489fc8855990747eb84867af` | 46502 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C028 | `maintenance/frontier-research/annotations/2026-10-26_A1_STAGE_SOURCE_CUSTODY.md` | blob `1c1fb4bc0043f8bc48ffb84c1a1b4e36c7455eeb` | 40158 bytes | MAINTENANCE_OR_DOC_SOURCE
+- C029 | `tests/test_accessibility.py` | blob `62c26a8aba6588cc41e15b191b50b45a4e6962e4` | 11066 bytes | TEST_SOURCE_NOT_RUN
+- C030 | `tests/test_agent_plan.py` | blob `d6641b621fc7d31e82c8e241a987684525695a75` | 4270 bytes | TEST_SOURCE_NOT_RUN
+- C031 | `tests/test_all.py` | blob `cf69cfe4f4c2ff71952144a0443826f2119de8fa` | 8252 bytes | TEST_SOURCE_NOT_RUN
+- C032 | `tests/test_maintenance_scan_scope.py` | blob `77f7c6e73e406cdb87a965aaf1bb9d50838fc04d` | 7944 bytes | TEST_SOURCE_NOT_RUN
+- C033 | `tests/test_tool_cli.py` | blob `fc12bcaed156ab07979dd5db746b06b9f7453bc3` | 17287 bytes | TEST_SOURCE_NOT_RUN
+- C034 | `tests/test_tool_ui.py` | blob `7f103197e323a1cfce819fb55bce42cba79dc0d2` | 3851 bytes | TEST_SOURCE_NOT_RUN
+
+## Exact observed changes after previous A2
+- Δ01 | `README.md` | modified +3/-3 | newly visible current Git object, not presumed tests passing
+- Δ02 | `core/maintenance_cadence.py` | modified +17/-0 | newly visible current Git object, not presumed tests passing
+- Δ03 | `docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md` | modified +6/-4 | newly visible current Git object, not presumed tests passing
+- Δ04 | `maintenance/frontier-research/annotations/2026-10-26_A1_STAGE_SOURCE_CUSTODY.md` | added +196/-0 | newly visible current Git object, not presumed tests passing
+- Δ05 | `tests/test_tool_cli.py` | modified +55/-0 | newly visible current Git object, not presumed tests passing
+
+## 2026-10-26 process corrections
+- Same logical owner + logical date + repository must be checked against all open PRs before writing. Reuse the draft; do not manufacture duplicate owners.
+- Treat source, author, logical task window, commit and current runtime status as five independent axes.
+- Do not write only to satisfy activity quotas when no subject defect exists; this dated independent A2 updates a legitimate relation due after A1 barrier.
+- Separate semantic code truth (implementation) from source Git identity and from actual runtime test receipts. No tests were replayed in this report.
+- A1 all-ten merge is a global barrier, and this file records its exact inherited blob plus fresh post-barrier main.
+- Stage author/source claims, scientific validity, user-accepted runtime and independent reproducibility remain distinct evidence classes.
+- Preserve original historical Stage document and quarter timing; append this current relation without rewriting earlier author attribution.
+- Monthly October remains OPEN, even if A2 relationship report has 100+ lines or its PR merges.
