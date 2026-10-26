@@ -363,9 +363,9 @@ Current document authority is defined in [DOCUMENT_STATUS.md](docs/03-maintenanc
 The closed August baseline is [STAGE_2026_08_MAINTENANCE.md](docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md)
 
 ```bash
-python core/maintenance_cadence.py daily
-python core/maintenance_cadence.py weekly
-python core/maintenance_cadence.py monthly --as-of 2026-08-31
+python3 core/maintenance_cadence.py daily
+python3 core/maintenance_cadence.py weekly
+python3 core/maintenance_cadence.py monthly --as-of 2026-08-31
 ```
 
 Current closed stage
