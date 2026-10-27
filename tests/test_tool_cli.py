@@ -80,6 +80,46 @@ class TestToolContract(unittest.TestCase):
         self.assertEqual(parsed["error"]["code"], "INVALID_ARGUMENT")
 
 
+    def test_cli_output_cannot_replace_source_or_request_inputs(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / "source.json"
+            source.write_text("{\"profile\":\"sci-render-kit/figure-evidence\"}", encoding="utf-8")
+            original = source.read_bytes()
+            arguments = {"figure_evidence": str(source)}
+            request_file = Path(temp) / "request.json"
+            request_file.write_text(json.dumps(arguments), encoding="utf-8")
+            request_original = request_file.read_bytes()
+            base = [sys.executable, str(ROOT / "tool_cli.py"), "invoke", "communication_transfer"]
+            for options, destination in (
+                (["--args", json.dumps(arguments)], source),
+                (["--args-file", str(request_file)], request_file),
+            ):
+                completed = subprocess.run(
+                    base + options + ["--output", str(destination)],
+                    cwd=ROOT, text=True, capture_output=True,
+                )
+                self.assertEqual(completed.returncode, 2, completed.stderr)
+                self.assertIn("must not overwrite an input file", completed.stderr)
+                self.assertEqual(source.read_bytes(), original)
+                self.assertEqual(request_file.read_bytes(), request_original)
+
+            plan_file = Path(temp) / "plan.json"
+            plan_file.write_text(json.dumps({"steps": [
+                {"tool": "communication_transfer", "arguments": arguments}
+            ]}), encoding="utf-8")
+            plan_original = plan_file.read_bytes()
+            preview = subprocess.run(
+                [sys.executable, str(ROOT / "tool_cli.py"), "plan",
+                 "--plan-file", str(plan_file), "--output", str(plan_file)],
+                cwd=ROOT, text=True, capture_output=True,
+            )
+            self.assertEqual(preview.returncode, 2, preview.stderr)
+            self.assertIn("must not overwrite an input file", preview.stderr)
+            self.assertEqual(plan_file.read_bytes(), plan_original)
+            self.assertEqual(source.read_bytes(), original)
+
+
+
 class TestRepoIntegration(unittest.TestCase):
     def test_real_recipe_audit_remains_nonrendering(self):
         value = execute_tool_call("figure_audit",
