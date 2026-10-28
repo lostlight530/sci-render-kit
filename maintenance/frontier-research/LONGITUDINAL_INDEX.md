@@ -4,8 +4,8 @@
 
 - **Repository:** `lostlight530/sci-render-kit`
 - **Specification:** `2026-09-19-first-batch`
-- **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
-- **Stage registry / identity updated:** `2026-10-04`
+- **Index coverage (2026-10-28 routing):** Stages A–K (`2024-Q1`–`2026-Q3`) have historical `FRONTIER_STAGE_COMPLETE / SOURCE_BOUNDED` records; Stage L (`2026-Q4`) is `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source observations through `2026-10-19` only. The original A–H table below remains the baseline view; the later I–L registry is appended in the dated 2026-10-19 section.
+- **Stage A–H baseline registry identity date:** `2026-10-04` (I–L extension documented in the later 2026-10-19 section)
 - **Current maintenance relation through:** `2026-10-28` (documentary Day 28 forward relation; not a Stage producer run)
 
 ## Boundary
@@ -24,7 +24,8 @@ stage-registry identity date != current maintenance relation-through date
 |---|---|---|---|---|---|---|---|---|---|
 | A | 2024-Q1 | 2024-01-01 through 2024-03-31 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-a-2024-q1/STAGE_SYNTHESIS.md | stage-a-2024-q1/RESEARCH_REVIEW.md | stage-a-2024-q1/STAGE_HANDOFF.md |
 | B | 2024-Q2 | 2024-04-01 through 2024-06-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-b-2024-q2/STAGE_SYNTHESIS.md | stage-b-2024-q2/RESEARCH_REVIEW.md | stage-b-2024-q2/STAGE_HANDOFF.md |
-| C | 2024-Q3 | 2024-07-01 through 2024-09-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-c-2024-q3/STAGE_SYNTHESIS.md | stage-c-2024-q3/RESEARCH_REVIEW.md | stage-c-2024-q3/STAGE_HANDOFF.md |\n| D | 2024-Q4 | 2024-10-01 through 2024-12-31 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-d-2024-q4/STAGE_SYNTHESIS.md | stage-d-2024-q4/RESEARCH_REVIEW.md | stage-d-2024-q4/STAGE_HANDOFF.md |
+| C | 2024-Q3 | 2024-07-01 through 2024-09-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-c-2024-q3/STAGE_SYNTHESIS.md | stage-c-2024-q3/RESEARCH_REVIEW.md | stage-c-2024-q3/STAGE_HANDOFF.md |
+| D | 2024-Q4 | 2024-10-01 through 2024-12-31 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-d-2024-q4/STAGE_SYNTHESIS.md | stage-d-2024-q4/RESEARCH_REVIEW.md | stage-d-2024-q4/STAGE_HANDOFF.md |
 | E | 2025-Q1 | 2025-01-01 through 2025-03-31 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-e-2025-q1/STAGE_SYNTHESIS.md | stage-e-2025-q1/RESEARCH_REVIEW.md | stage-e-2025-q1/STAGE_HANDOFF.md |
 | F | 2025-Q2 | 2025-04-01 through 2025-06-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-f-2025-q2/STAGE_SYNTHESIS.md | stage-f-2025-q2/RESEARCH_REVIEW.md | stage-f-2025-q2/STAGE_HANDOFF.md |
 | G | 2025-Q3 | 2025-07-01 through 2025-09-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-g-2025-q3/STAGE_SYNTHESIS.md | stage-g-2025-q3/RESEARCH_REVIEW.md | stage-g-2025-q3/STAGE_HANDOFF.md |
@@ -39,7 +40,8 @@ No Stage A correction record exists at initial close.
 |---|---|---|---|
 | A | 2026-09-19-first-batch | initial software-release set expanded with January uncertainty/interpretation research and Chart4Blind code history for month-complete research | baseline for later stages |
 | B | 2026-09-19-first-batch | Q2 object set fixed before synthesis; no material amendment | comparable on visual-semantics versioning, representation-specific accessibility, user-control state, and render provenance |
-| C | 2026-09-19-first-batch | Q3 object set fixed before synthesis; no material amendment | comparable on renderer/version provenance, representation-specific validation and communication-state boundaries |\n| D | 2026-09-19-first-batch | Q4 object set fixed before synthesis; no material amendment | comparable on modality/interaction provenance, wrapper renderer, temporal state and bounded accessibility evidence |
+| C | 2026-09-19-first-batch | Q3 object set fixed before synthesis; no material amendment | comparable on renderer/version provenance, representation-specific validation and communication-state boundaries |
+| D | 2026-09-19-first-batch | Q4 object set fixed before synthesis; no material amendment | comparable on modality/interaction provenance, wrapper renderer, temporal state and bounded accessibility evidence |
 | E | 2026-09-19-first-batch | Q1 2025 release-object set fixed before synthesis; no local render/replay performed | comparable on renderer/wrapper revision, serialization, package/runtime identity and communication-state boundaries |
 | F | 2026-09-19-first-batch | Q2 2025 migration/release set fixed before synthesis; no local render/browser/accessibility replay | comparable on compatibility state, backend stabilization, delivery integrity and accessibility metadata |
 | G | 2026-09-19-first-batch | Q3 2025 release-object set fixed before synthesis; no package install, browser/export, interaction or accessibility replay | comparable on runtime/platform identity, renderer/browser identity, and interaction/tooltip semantics |
