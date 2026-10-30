@@ -295,3 +295,128 @@ No `sci-render-kit` runtime, experimental benchmark, scientific result or contra
 - Actual verification performed: GitHub current main and A1 blob read; current source owner content relation and scoped pull-request diff checked.
 - Actual verification not performed: full repo execution, live dependency conformance, independent upstream verification and scientific replication.
 - A2 acceptance: OCT_MONTH_RELATION_AND_SELECTED_SOURCE_GOVERNANCE_UPDATED / BROADER_SEMANTIC_AND_RUNTIME_EVIDENCE_PARTIAL.
+
+## A2_2026_10_30_SCI_RENDER_STAGE_MONTH_RELATION
+
+- All-ten A1 merged base a91efe2070864408190479167faad01f35737b94; exact current A1 maintenance/frontier-research/annotations/2026-10-30_A1_STAGE_SOURCE_CONTENT.md blob 85ee38f999c443cb25a6e0c56ef29b043e023445
+- Window 2026-10-01..30 Asia/Shanghai; Stage L/Q4 remains OPEN and October natural month NOT_CLOSED
+- Original source producer Web GPT state-triggered Stage research, not a per-day independent cron
+- O13/S13 plotly.js v4.1.2 Oct05 and O14/S14 Vega-Lite v6.5.0 Oct08 represent independent named projects but different research objects, not corroborative experiments
+- Plotly ResizeObserver responsive changes are publisher statements; no local rendered sample establishes accessibility, adaptive layout, export fidelity, or statistical correctness
+- Vega-Lite image-mark alignment fixed in publisher release claims, no repo visual regression or compiler parity run reproduced
+- Original source cutoff Oct19 vs current maintenance cutoff Oct30 must not create false new events
+- Existing Oct29 A1/A2 month relation and current Oct30 A1 original-source review remain named separate evidence revisions
+- Source origin, claim binding, uncertainty, accessibility and long-term reproducibility are independent axes, not a general scientific PASS
+- D30 cross-window audit is a separate due activity; current dated file census has no independent native audit receipt for Oct30, status NOT_OBSERVED
+
+### Per-original source and maintenance relation
+#### R01 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/stage-l-2026-q4/STAGE_BRIEF.md`, observed current-main blob `96129b7b7b3ce4a9f6c7bfe5784a7fb1935bd43f`
+- Content scope: Original/reconciled source content: 2026 Q4 Stage L open; selected Plotly and Vega-Lite release records with Oct19 cutoff; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: source cutoff does not establish local rendering; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: QUARTER_OPEN; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R02 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/stage-l-2026-q4/SOURCE_OBJECT_REGISTER.md`, observed current-main blob `304447c8189f7bfe7c3cf35d7176e0d93bca2ae0`
+- Content scope: Original/reconciled source content: O13/S13 plotly.js v4.1.2 Oct05; O14/S14 Vega-Lite v6.5.0 Oct08; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: each publisher's release and tag form one originating family; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: TWO_DISTINCT_OBJECTS; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R03 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/stage-l-2026-q4/EVIDENCE_CHART.md`, observed current-main blob `a241e560d286a2d3b21687ba6a19095787fc3c1f`
+- Content scope: Original/reconciled source content: F-L1 ResizeObserver responsiveness versus F-L2 centered image-mark correction; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: different systems have no common controlled metric; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: NO_CROSS_RENDER_BENCHMARK; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R04 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/stage-l-2026-q4/L1_PLOTLYJS_V412.md`, observed current-main blob `eb7b941a5d7327f2fa4543f21082102ba93bcf41`
+- Content scope: Original/reconciled source content: plotly.js 4.1.2 described ResizeObserver and schema for image export; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: release note is not this repo's rendered figure evidence; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: LOCAL_RENDER_NOT_REPRODUCED; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R05 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/stage-l-2026-q4/L2_VEGALITE_V650.md`, observed current-main blob `e0e5bdf11779395531d7b1338bc2cdef6323b5b8`
+- Content scope: Original/reconciled source content: Vega-Lite 6.5.0 reports image-mark center-alignment fix for absent secondary channel; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: compiler release does not establish local renderer parity; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: LOCAL_PARITY_NOT_REPRODUCED; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R06 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/stage-l-2026-q4/MONTH_2026_10_RECONSTRUCTION.md`, observed current-main blob `d11283e9ea3106a28dc45d7eafa8a04a5dd5f4e3`
+- Content scope: Original/reconciled source content: Oct05 and Oct08 selected events recorded in open October reconstruction; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: retrospective source analysis does not close quarter; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: MONTH_OPEN; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R07 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/stage-l-2026-q4/RESEARCH_REVIEW.md`, observed current-main blob `45728146f375e48082fe840349bf44df902cc356`
+- Content scope: Original/reconciled source content: post-selection protocol retrospective and same-producer review; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: not independent scientific review or preregistration; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: PARTIAL_SAME_PRODUCER_REVIEW; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R08 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/stage-l-2026-q4/CONTRIBUTOR_STATEMENT.md`, observed current-main blob `750ab55a1d1d487dc073a8f3f2f2c51e3676b2f2`
+- Content scope: Original/reconciled source content: research instrument and upstream authorship are distinguished; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: no peer-review or local experimental run claimed; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: KEEP_AUTHORSHIP_BOUNDARY; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R09 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/annotations/2026-10-19_STAGE_I_L_PRIMARY_RELEASE_AND_STRUCTURE_AUDIT.md`, observed current-main blob `60ff506208348ded2694fff713935141dd968a23`
+- Content scope: Original/reconciled source content: selected Stage I-L original release source and structure review; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: same producer source check distinct from runtime; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: DOCUMENTARY_ONLY; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R10 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/annotations/2026-10-28_A1_STAGE_SOURCE_CUSTODY.md`, observed current-main blob `a44ca4d79f11a20064bad6c15d83ce420572115a`
+- Content scope: Original/reconciled source content: past October path/blob custody by source date; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: path exists not original producer execution; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: INHERIT_CUSTODY_LIMIT; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R11 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/annotations/2026-10-28_A2_STAGE_MONTH_RELATION.md`, observed current-main blob `2609f1d34909fc226ebb6ab35b530eedfdc2484b`
+- Content scope: Original/reconciled source content: Oct28 previous A1 monthly relation and Stage L current owner; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: previous A2 is prior cutoff, not today outcome; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: INHERIT_PRIOR_CUTOFF; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R12 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/annotations/2026-10-28_MINIMAL_SOP_ACCEPTANCE_AUDIT.md`, observed current-main blob `7697010a3a8d97a9c3368975281ec05fa96cf531`
+- Content scope: Original/reconciled source content: earlier native/maintenance gates expressly partial on source semantics; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: PR delivery not science validation; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: KEEP_PARTIAL; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R13 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/annotations/2026-10-28_OCTOBER_NATIVE_STAGE_GAP_RECOVERY_REGISTER.md`, observed current-main blob `17afcaf5aa587e4523f31e09e5d957d76e858a5a`
+- Content scope: Original/reconciled source content: Stage delivery is state-triggered, not presumed daily cron; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: absence of daily Stage files not necessarily missing work; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: NO_FALSE_MISSING; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R14 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/annotations/PARALLEL_SOURCE_SELECTION_RECONCILIATION_2026-10-19.md`, observed current-main blob `d1052bf1c8b42a28d233dac38d3d5baa96478077`
+- Content scope: Original/reconciled source content: parallel research sources retained as candidate not native original; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: source registration not Stage execution; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: CANDIDATE_ONLY; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R15 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/annotations/expansion/2026-10-19_ALTAIR_620_INTERACTION_SOURCE_CANDIDATE.md`, observed current-main blob `2b8193be7b302a810269631aad56c2a09dcbf5ce`
+- Content scope: Original/reconciled source content: Altair 6.2.0 interaction candidate segregated from Stage-L selection; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: candidate not an accepted figure/benchmark result; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: NOT_STAGE_ADMITTED; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R16 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/annotations/expansion/2026-10-19_STAGE_I_K_PLOTLY_WRAPPER_SOURCE_DELTA.md`, observed current-main blob `c6826a4bf5fcc2fe873a71d758adc7e902d89dbe`
+- Content scope: Original/reconciled source content: Plotly wrapper Source Delta belongs to earlier Stage I-K; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: wrapper identity does not reproduce Plotly.js4.1.2 host rendering; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: PRIOR_STAGE_DISTINCT; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R17 — exact source-stage owner
+- Original source identity: Exact owner `maintenance/frontier-research/longitudinal/LONGITUDINAL_SYNTHESIS_2026_YTD_2026-10-19.md`, observed current-main blob `0a5b90e54ca8afd90f9cc535040b4a253ce53f21`
+- Content scope: Original/reconciled source content: YTD Stage I-K summaries and L October OPEN; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: quarter-complete research not present by date; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: NO_Q4_FINAL; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+#### R18 — exact source-stage owner
+- Original source identity: Exact owner `MANIFEST.yaml`, observed current-main blob `2fff5d86a37de2318ed5de2fbc35800b4a30bf9d`
+- Content scope: Original/reconciled source content: active implementation-first rendering and claim binding contract; this is a claim about this identified record
+- Evidence/render validity limitation: Evidence boundary: render success is not scientific truth; checksum not reproduction; do not convert a release description into this toolkit's validation
+- Current month decision: Decision: MACHINE_AUTHORITY; keep owner unchanged, carry limitation to A2 if and only if it is merged after all A1; retain prior source version and date
+
+### Stage L native source body checks at current main
+- STAGE_BRIEF.md @ 96129b7b7b3ce4a9f6c7bfe5784a7fb1935bd43f; # Frontier Research Stage L — 2026-Q4 | Study brief; original boundaries: - Intended/achieved evidence coverage: `SOURCE_BOUNDED`; source cutoff `2026-10-19`; status: `IN_PROGRESS`
+- SOURCE_OBJECT_REGISTER.md @ 304447c8189f7bfe7c3cf35d7176e0d93bca2ae0; # Source/Object Register — Stage L / 2026-Q4; original boundaries: - Status: `PARTIAL / QUARTER_OPEN`.
+- EVIDENCE_CHART.md @ a241e560d286a2d3b21687ba6a19095787fc3c1f; # Evidence and comparison chart — Stage L / 2026-Q4; original boundaries: | F-L1 | O13 | Plotly.js 4.1.2 changes responsive resizing to ResizeObserver instead of window resize events and documents image-export / | F-L2 | O14 | Vega-Lite 6.5.0 fixes image-mark center alignment when a secondary channel is undefined. | Compiler revision changes spa
+- L1_PLOTLYJS_V412.md @ eb7b941a5d7327f2fa4543f21082102ba93bcf41; # L1 — Resize observer and responsive layout; original boundaries: - Design: `TARGETED_EVIDENCE_SYNTHESIS`; coverage: `SOURCE_BOUNDED`; status: `IN_PROGRESS (quarter open)` / | `O13` | `S13`, same-origin release note | Plotly.js 4.1.2 changes responsive resizing to ResizeObserver instead of window resize even
+- L2_VEGALITE_V650.md @ e0e5bdf11779395531d7b1338bc2cdef6323b5b8; # L2 — Image-mark alignment correction; original boundaries: - Design: `TARGETED_EVIDENCE_SYNTHESIS`; coverage: `SOURCE_BOUNDED`; status: `IN_PROGRESS (quarter open)` / | `O14` | `S14`, same-origin release note | Vega-Lite 6.5.0 fixes image-mark center alignment when a secondary channel is undefined. | 
+- RESEARCH_REVIEW.md @ 45728146f375e48082fe840349bf44df902cc356; # Research Review — Stage L / 2026-Q4; original boundaries: - Review date: 2026-10-19; producer: ChatGPT project-session researcher; **independence:** `SAME_PRODUCER_REVIEW`. / - Claimed coverage is `SOURCE_BOUNDED`; no `SYSTEMATIC`, `METHODICALLY_SCOPED` or field-complete assertion.
+- CONTRIBUTOR_STATEMENT.md @ 750ab55a1d1d487dc073a8f3f2f2c51e3676b2f2; # Contributor and instrument record — Stage L / 2026-Q4; original boundaries: - Responsible human/governance context: maintenance request in the ongoing project conversation; authorship of upstream release objects
+
+### October-to-quarter continuity and test/evidence gates
+- W44 remains OPEN, October final not due Oct30, Q4 final not due until Dec31 natural window
+- Selected release and versioned figure surface are publisher evidence, not accepted figure artifact with bound source data and uncertainty semantics
+- Retrospective research method was same-producer self-review, not preregistered independent source family replication
+- The earlier Oct19 additional Altair candidate and Plotly wrapper source delta remain source candidates, not admitted Stage-L new parts
+- D30 independent audit due but no exact valid executed D30 receipt observed in current repo path; do not upgrade this A2 into an Audit
+- Verification completed: ten merged A1 source heads, 18 per-original owner decisions, seven directly opened Stage L source bodies and month owner
+- NOT_EXECUTED: local browser/render output, accessibility inspection, scientific statistical test, full CI, independent publisher recheck, D30 audit
+- No change to L1/L2 research content, image/figure artifacts, MANIFEST, source/candidate registry, code or historical corrections
+- A2 status APPEND_RELATION / SOURCE_BOUNDED_O13_O14 / VISUAL_CONFORMANCE_UNVERIFIED / Q4_MONTH_OPEN
