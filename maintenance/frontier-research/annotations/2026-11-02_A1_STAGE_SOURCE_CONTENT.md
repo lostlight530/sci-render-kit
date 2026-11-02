@@ -1,0 +1,127 @@
+# 2026-11-02 A1 | sci-render-kit Stage L source-content custody
+
+- Repository: lostlight530/sci-render-kit
+- Source main SHA: f661393dd4dd93d5ce5e42c711255bf5472849ec
+- Independent maintenance scope: 2026-11-01 inclusive Asia/Shanghai
+- Lens: Scientific figure communication, version identity, accessibility and claim binding
+- Original selected research window: 2026-10-01 through 2026-10-19
+- Native Stage L: 2026-Q4 / IN_PROGRESS; November native trigger: NOT_ESTABLISHED
+- A1 decision: COMPLETE_SOURCE_REVIEW / NO_NEW_NATIVE_RESEARCH / NO_ORIGINAL_ARTIFACT_MUTATION
+- Actual GitHub Actions or runner tests by this reviewer: NOT_EXECUTED
+
+## Current repository authority and scope decisions
+- G01: Canonical A1 identity is independent maintenance, not Stage L native research or running scanner
+- G02: Cutoff includes 2026-11-01 and excludes 2026-11-02 as the A2 N-day integration limit
+- G03: Repository main was read fresh and is recorded as a full SHA in this document
+- G04: No open PR existed at startup, so no foreign owner was selected for mutation
+- G05: Source-time October 19 research remains historical evidence for the selected releases
+- G06: Current Stage L quarter covers October 1 through December 31 and is not naturally closed
+- G07: Only actual native Stage triggers can create genuine Stage research production
+- G08: November 1 does not add a new release unless a versioned source is verified
+- G09: Retrieved source files are current GitHub objects, not runtime execution proof
+- G10: One selected source family does not create two independent studies by repeated citation
+- G11: October 31 A1 is a prior-period source review and is not the current A1
+- G12: October 31 A2 is a prior-period relation version and cannot become November A2
+- G13: The November 1 correction PR about Oct31 successor is dated delivery, not a November research event
+- G14: Old source files and archive remain immutable; a forward audit does not rewrite original method
+- G15: No source bibliography is silently recast from official announcement into independent replication
+- G16: Historical author-time UNKNOWN and NOT_EXECUTED outcomes retain those states
+- G17: No original Stage L research body, source registry or original review is changed
+- G18: Each owner disposition below records current source scope without forcing a new native experiment
+- G19: November natural-month Monthly is NOT_DUE on November 2
+- G20: Stage L final is NOT_DUE until the contract's quarter closing gate
+- G21: An index link is a navigation record rather than independent evidence for source truth
+- G22: Full validated tool or runner execution requires a recorded current revision and actual run
+- G23: Last accessible Actions smoke run was on a past PR head, not this review branch
+- G24: No current branch source test, full build or scientific experiment is asserted PASS
+- G25: Current A1 source review is purely documentary and carries zero experiment or execution-window credit
+- G26: A2 must wait for human merge of A1, refresh main SHA, then inspect month-wide relations
+- G27: Until a November material Stage object is verified, the November month relation may legitimately be NO_MATERIAL_CHANGE
+- G28: Any actually new later source must have precise publication date, source identity and evidence level
+- G29: Historical source cutoff cannot be silently extended by a later maintenance publication date
+- G30: No direct main commit, foreign PR edit, force push or auto merge is allowed
+- G31: Rollback is closure of this Draft or reverting only the dated A1 annotation
+
+## Individually opened Stage L artifact decisions
+- S01.1 | Opened canonical Stage L owner maintenance/frontier-research/stage-l-2026-q4/STAGE_BRIEF.md
+- S01.2 | Git blob identity at inspection: 96129b7b7b3ce4a9f6c7bfe5784a7fb1935bd43f
+- S01.3 | Source content: Live 2026-Q4 Stage L has an original October 19 source cutoff
+- S01.4 | Evidence limitation: Its research selection protocol was written after choosing release objects
+- S01.5 | Decision: NO_FOLLOW_UP / retain original source and historical period
+- S01.6 | Negative-space check: No November independent Stage-L execution follows from calendar presence
+- S02.1 | Opened canonical Stage L owner maintenance/frontier-research/stage-l-2026-q4/SOURCE_OBJECT_REGISTER.md
+- S02.2 | Git blob identity at inspection: 304447c8189f7bfe7c3cf35d7176e0d93bca2ae0
+- S02.3 | Source content: O13/S13 is Plotly.js v4.1.2 and O14/S14 is Vega-Lite v6.5.0
+- S02.4 | Evidence limitation: Two originating software-project sources are not one controlled paired renderer trial
+- S02.5 | Decision: NO_FOLLOW_UP / retain original source and historical period
+- S02.6 | Negative-space check: No local renderer parity or access certification is implied
+- S03.1 | Opened canonical Stage L owner maintenance/frontier-research/stage-l-2026-q4/L1_PLOTLYJS_V412.md
+- S03.2 | Git blob identity at inspection: eb7b941a5d7327f2fa4543f21082102ba93bcf41
+- S03.3 | Source content: Plotly.js v4.1.2 publisher release is dated October 5
+- S03.4 | Evidence limitation: ResizeObserver layout handling and image export schema are source-described changes
+- S03.5 | Decision: NO_FOLLOW_UP / retain original source and historical period
+- S03.6 | Negative-space check: No exact-revision browser screenshot or runtime visual check exists here
+- S04.1 | Opened canonical Stage L owner maintenance/frontier-research/stage-l-2026-q4/L2_VEGALITE_V650.md
+- S04.2 | Git blob identity at inspection: e0e5bdf11779395531d7b1338bc2cdef6323b5b8
+- S04.3 | Source content: Vega-Lite v6.5.0 publisher release is dated October 8
+- S04.4 | Evidence limitation: Image-mark center alignment correction concerns missing secondary channel
+- S04.5 | Decision: NO_FOLLOW_UP / retain original source and historical period
+- S04.6 | Negative-space check: No local compiler/runtime equivalence test is supported
+- S05.1 | Opened canonical Stage L owner maintenance/frontier-research/stage-l-2026-q4/EVIDENCE_CHART.md
+- S05.2 | Git blob identity at inspection: a241e560d286a2d3b21687ba6a19095787fc3c1f
+- S05.3 | Source content: F-L1 and F-L2 are qualitatively compared version-specific evidence
+- S05.4 | Evidence limitation: Distinct product objects have no shared benchmark denominator
+- S05.5 | Decision: NO_FOLLOW_UP / retain original source and historical period
+- S05.6 | Negative-space check: Visual support and scientific truth are not comparable numeric attributes
+- S06.1 | Opened canonical Stage L owner maintenance/frontier-research/stage-l-2026-q4/MONTH_2026_10_RECONSTRUCTION.md
+- S06.2 | Git blob identity at inspection: f22edbee331ba35ceb5d7a92569acb5d02fc8a11
+- S06.3 | Source content: October Stage L source reconstruction is limited to October 1–19
+- S06.4 | Evidence limitation: Historical A1/A2 annotations remain later maintenance chronology
+- S06.5 | Decision: NO_FOLLOW_UP / retain original source and historical period
+- S06.6 | Negative-space check: Do not overwrite it into a fabricated November as-of report
+- S07.1 | Opened canonical Stage L owner maintenance/frontier-research/stage-l-2026-q4/RESEARCH_REVIEW.md
+- S07.2 | Git blob identity at inspection: 45728146f375e48082fe840349bf44df902cc356
+- S07.3 | Source content: Same-producer documentary review recorded October 19
+- S07.4 | Evidence limitation: No independent renderer acceptance or peer assessment was executed
+- S07.5 | Decision: NO_FOLLOW_UP / retain original source and historical period
+- S07.6 | Negative-space check: A source-file review cannot replace actual generated figure examination
+- S08.1 | Opened canonical Stage L owner maintenance/frontier-research/stage-l-2026-q4/CONTRIBUTOR_STATEMENT.md
+- S08.2 | Git blob identity at inspection: 750ab55a1d1d487dc073a8f3f2f2c51e3676b2f2
+- S08.3 | Source content: Research authorship and tooling are disclosed as connector-assisted work
+- S08.4 | Evidence limitation: No signed external review or laboratory evidence is recorded
+- S08.5 | Decision: NO_FOLLOW_UP / retain original source and historical period
+- S08.6 | Negative-space check: Maintain provenance without transferring publisher authorship
+
+## Object-specific interpretation and counterevidence
+- E01: Publisher source version is a necessary input to reproducible figure communication
+- E02: Responsive layout change is not a statement that scientific figure geometry is always stable
+- E03: A resize event may change recipient viewport and presentation outcome
+- E04: Image export metadata does not establish exact output image bitwise identity
+- E05: Accessibility metadata presence is not proof of WCAG conformance
+- E06: Plotly.js release announcement is not this repo's active installed backend
+- E07: Vega-Lite compile-time alignment affects spatial meaning of declarative source
+- E08: Missing secondary channel is the exact source-described condition, not arbitrary image data
+- E09: Figure rendering success does not establish plotted claim validity
+- E10: Claim binding is a declared relationship, not semantic entailment
+- E11: Uncertainty visualization fields are not statistical calibration results
+- E12: A checksum cannot replace independent reproducibility work
+- E13: Communication transfer does not inherit scientific authority
+- E14: Different backends can each be present in source without runtime parity
+- E15: To claim visual acceptance requires exact-revision recipe, backend, output and inspection
+- E16: No such executed render is added by the November A1 maintenance
+- E17: Visual rendering and publisher acceptance have separate validation authorities
+- E18: Source-bounded October releases do not imply November upstream release events
+- E19: Stage L remains quarter-open and no November native Stage execution was observed
+- E20: Absence of a daily Stage artifact is not evidence of missing cron
+- E21: Earlier October 31 source review is a historical checkpoint, not a current source replay
+- E22: November 1 successor maintenance merge does not establish new original figure research
+- E23: Longitudinal index is navigation and temporal routing, not a scientific adjudicator
+
+## Current month and downstream gate
+- The November 1 A1 source set has explicit per-owner review decisions above
+- Original October selected research facts, October maintenance appendices and source publisher dates are preserved
+- No November Stage producer run is fabricated from absence of a new dated source
+- No new Stage paper, release, scientific test, local runtime outcome or conformance claim is promoted
+- A2 must start from main after this A1 is merged, not directly from this unmerged branch
+- Future evidence is to be appended in the appropriate current owner with a dated correction or material relation, if any
+- GitHub Delivery Verification and Human Review are separate from semantic research verification
