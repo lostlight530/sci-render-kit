@@ -1,3 +1,4 @@
+$schema: https://json-schema.org/draft/2020-12/schema
 title: Scientific Figure Recipe Schema
 description: >
   图表 YAML 配方结构。Recipe 描述数据、视觉编码、输出、可访问性意图、上游研究引用、

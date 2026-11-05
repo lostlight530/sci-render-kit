@@ -83,6 +83,11 @@ sci-render-kit is a communication layer. It must not upgrade upstream claim stre
 
 These are constrained by current implementation, `MANIFEST.yaml`, and active contracts.
 
+
+### [INTEROPERABILITY_VERIFICATION.md](./INTEROPERABILITY_VERIFICATION.md)
+
+Current producer/consumer fixture scope, Python environment pins, CodeMeta 4 migration boundaries, and (where applicable) failure injection or offline renderer verification — evidence of a test is separate from its execution
+
 ## Scholarly metadata
 
 - root `CITATION.cff`

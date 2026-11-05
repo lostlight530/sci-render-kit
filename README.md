@@ -343,7 +343,7 @@ Internal profile IDs are unversioned, but factual runtime versions remain eviden
 
 - Matplotlib provenance records Matplotlib, NumPy, and Python versions
 - ggplot2 manifest records installed ggplot2 and R versions
-- Observable HTML pins `@observablehq/plot` 0.6.17 and records its view-time dependency
+- Observable defaults to a pinned `@observablehq/plot` 0.6.17 CDN ESM import at view time; `--offline-assets` optionally copies caller-supplied D3 and Plot UMD bytes beside HTML, recording local SHA-256 without asserting upstream version authenticity or browser conformance
 
 ## Reproducibility
 
@@ -450,3 +450,9 @@ Local/manual checks are optional maintenance aids; test execution is not the com
 ## Archived checkpoint — 2026-10-14
 
 [v2026.10-fourteen-day-evidence-checkpoint](https://github.com/lostlight530/sci-render-kit/releases/tag/v2026.10-fourteen-day-evidence-checkpoint) is archived as [10.5281/zenodo.23365525](https://doi.org/10.5281/zenodo.23365525). For the software-family concept DOI, earlier versions and exact-checkpoint citation, see [Release and Archival Policy](RELEASE_POLICY.md).
+
+## Global interoperability verification
+
+The optional Python 3.13 distribution snapshot is recorded in `requirements-python313.txt`; run `python scripts/check_python_environment.py` for a revision-specific JSON version check, and `make test` for current local test contracts. Neither the version snapshot nor test source is a result from an unobserved execution
+
+See [Interoperability Verification](docs/02-examples-and-contracts/INTEROPERABILITY_VERIFICATION.md) for current producer/consumer fixture semantics, CodeMeta 4 migration, external standards and explicit scientific/reproducibility boundaries

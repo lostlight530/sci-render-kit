@@ -1,3 +1,4 @@
+$schema: https://json-schema.org/draft/2020-12/schema
 title: "Render Manifest Schema"
 profile: sci-render-kit/render-manifest-schema
 description: >
