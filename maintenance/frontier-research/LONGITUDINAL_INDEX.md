@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** `2026-11-02` (A1→A2 documentary relation; forward owner correction on 2026-11-03; Stage-L source cutoff remains 2026-10-19; original Day-28 routing preserved below)
+- **Current maintenance relation through:** `2026-11-03` (A1→A2 documentary relation verified merged; current navigation advanced in dated 2026-11-05 reconciliation; Stage-L October original source cutoff unchanged)
 
 ## Boundary
 
@@ -7174,3 +7174,32 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - Stage-L `STAGE_SYNTHESIS.md` and `STAGE_HANDOFF.md` were absent in the checked GitHub main tree. At this time they are **NOT_DUE / NOT_REVIEWED_AS_EXISTING_FILES**, not failed jobs or confirmed missing required outputs.
 - Source-of-record separation: Stage-L eight original research files unchanged; A1/A2 maintenance artifacts remain derived; source register, native runtime, external publisher verification, and independent review status are not promoted.
 - The correction was performed after the original November 2 source window, on November 3; it does not backdate a result or silently replace old A2 text.
+
+## 2026-11-05 forward index reconciliation — November 3 A1/A2 custody
+
+- This is an Independent GPT **current routing correction**, not November 4/5 A1 or A2, an original Stage L research run, or a D7/D10/D14/D30 Periodic Audit.
+- Cold-start observed repository: `lostlight530/sci-render-kit`, `main` at `0f6282f435cdbea0cd2a79b45f5804669aee4f40`, GitHub checked 2026-11-05; prior current-index header still pointed to `2026-11-02` despite the November 3 A2 merge.
+- Original independent A1 on logical 2026-11-03: [PR #209](https://github.com/lostlight530/sci-render-kit/pull/209) **merged**, source review `2026-11-01..02`, retained `annotations/2026-11-03_A1_STAGE_SOURCE_CONTENT.md` blob `0d47ccb6eeebd392ba5dfad0bb2e5e02ce787e9a`.
+- Original independent A2 on logical 2026-11-03: [PR #210](https://github.com/lostlight530/sci-render-kit/pull/210) **merged after A1**, month-to-date relation `2026-11-01..03`, retained `annotations/2026-11-03_A2_MONTH_RELATION.md` blob `1c754075e274894f04909d90778799db4397110a`.
+- The index header now advances only the **current maintenance relation-through pointer** to `2026-11-03`; no historical previous pointer, original PR additions, earlier observation, or source artifact has been rewritten.
+- The original Stage L `stage-l-2026-q4/STAGE_BRIEF.md` remains source-bounded to `2026-10-19`, `2026-Q4 IN_PROGRESS`; selected October versioned publisher records do not prove a new November native Stage run.
+- November 2026 remains `OPEN`; a material native Stage L November trigger was `NOT_ESTABLISHED` in these reviewed source and maintenance artifacts, not verified absent across all possible external sources.
+- Later merged implementation PRs [#211](https://github.com/lostlight530/sci-render-kit/pull/211) and [#212](https://github.com/lostlight530/sci-render-kit/pull/212) concern final render-manifest byte identity, accessibility profile and offline figure-evidence contract checks; these are **later implementation changes**, not original November 3 Stage L research and not November 4/5 A1/A2 maintenance delivery.
+- As of this GitHub read, **no original November 4 or November 5 A1/A2 maintenance PR was identified** for this repository; their strict delivery status is `NOT_DELIVERED / NOT_VERIFIED`, not `PASS`.
+- Next legitimate sequence: November 4 A1 (`2026-11-01..03`) must be independently reviewed, independently meet the `>=100 GitHub additions AND >=100 substantive maintenance lines` contract, and be merged by authorized maintainer before starting November 4 A2 (`2026-11-01..04`).
+- The November 5 chain analogously requires its own A1 (`2026-11-01..04`) merged and fresh-read before November 5 A2 (`2026-11-01..05`); missing upstream merges may not be substituted by this index correction.
+- Historical October 31 original A2 strict `0/10 NOT_MET`, subsequent successor deliveries, cleanup retention and November 1 reconciliation remain separate ledgers; this update does not retroactively alter any acceptance.
+- The current edit is index-only navigation and forward correction; no repo test, Stage research replay, external publisher re-verification or independent human review was performed by this correction. Any CI conclusion must be tied to its own check/run and SHA.
+
+
+## 2026-11-05 forward publisher-source candidate — previous-month Figure/Render release
+
+- This forward note is **publisher release discovery for the next bounded review**, not November native Stage L execution, a 2026-11-04 original A1/A2, or retroactive replacement of earlier research.
+- [Plotly.js v4.2.0](https://github.com/plotly/plotly.js/releases/tag/v4.2.0) was published `2026-10-29T20:08:41Z` = **2026-10-30 04:08:41 Asia/Shanghai**; that is an **October Q4 version candidate**, not a November release.
+- Its issuer note covers legend pattern swatches, ternary spikelines, scattergl hover freeze, Sankey node placement, updated types, and sanitization of `javascript:` URLs in MathJax `href` (publisher-reported fix, not locally tested here).
+- These changes potentially affect figure-communication and security assertions, but do **not** establish same-revision pixel parity, WCAG conformance, backend availability, safe local MathJax execution, or scientific claim validity.
+- Original Stage L selected source [Plotly v4.1.2](https://github.com/plotly/plotly.js/releases/tag/v4.1.2) remains an October 5 selected research object with October 19 cutoff. The later 4.2.0 release is a separate version and must be admitted only by its native governed research owner.
+- The original Nov 3 A2 [#210](https://github.com/lostlight530/sci-render-kit/pull/210) asserted no newly verified **November native** Stage event; October 30 publisher release does not logically refute that period-scoped claim.
+- Later [#211](https://github.com/lostlight530/sci-render-kit/pull/211) and [#212](https://github.com/lostlight530/sci-render-kit/pull/212) are November implementation changes, not a replay of Plotly v4.2.0 or Vega-Lite v6.5.0 release semantics.
+- Keep `November OPEN`, `2026-Q4 IN_PROGRESS`, and independent browser/runtime execution `NOT_EXECUTED`. This index Draft still provides **no** original Nov4/5 A1/A2 `>=100` credit or A2 upstream merge evidence.
+
