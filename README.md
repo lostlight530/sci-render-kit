@@ -343,7 +343,7 @@ Internal profile IDs are unversioned, but factual runtime versions remain eviden
 
 - Matplotlib provenance records Matplotlib, NumPy, and Python versions
 - ggplot2 manifest records installed ggplot2 and R versions
-- Observable HTML pins `@observablehq/plot` 0.6.17 and records its view-time dependency
+- Observable defaults to a pinned `@observablehq/plot` 0.6.17 CDN ESM import at view time; `--offline-assets` optionally copies caller-supplied D3 and Plot UMD bytes beside HTML, recording local SHA-256 without asserting upstream version authenticity or browser conformance
 
 ## Reproducibility
 
