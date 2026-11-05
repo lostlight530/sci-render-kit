@@ -75,7 +75,45 @@ function semanticPalette(labels) {
   return labels.map((label, index) => semanticMap[String(label).toLowerCase()] || fallback[index % fallback.length]);
 }
 
-function generateHTML(recipe, profile) {
+/**
+ * Copies caller-supplied UMD bundles alongside the output without fetching.
+ * Byte hashes are local identities, not upstream release/authenticity proof.
+ */
+function stageOfflineAssets(assetsDir, outputPath) {
+  const root = fs.realpathSync(assetsDir);
+  if (!fs.statSync(root).isDirectory()) throw new Error('offline assets must be a directory');
+  const targetDir = path.dirname(outputPath);
+  const stem = path.parse(outputPath).name;
+  const inputs = [
+    {name: 'd3', source: 'd3.min.js', output: stem + '.d3.min.js'},
+    {name: '@observablehq/plot', source: 'plot.umd.min.js', output: stem + '.plot.umd.min.js'}
+  ];
+  // Validate both source inputs and existing destinations before any copy.
+  const plan = inputs.map(item => {
+    const source = fs.realpathSync(path.join(root, item.source));
+    const relative = path.relative(root, source);
+    if (relative === '..' || relative.startsWith('..' + path.sep) || path.isAbsolute(relative)) {
+      throw new Error('offline bundle resolves outside asset root: ' + item.source);
+    }
+    const stat = fs.statSync(source);
+    if (!stat.isFile() || stat.size === 0) throw new Error('offline bundle empty or not regular: ' + item.source);
+    const target = path.join(targetDir, item.output);
+    const hash = fileSha256(source);
+    if (fs.existsSync(target) &&
+        (fs.lstatSync(target).isSymbolicLink() || fileSha256(target) !== hash)) {
+      throw new Error('offline destination has different bytes: ' + target);
+    }
+    return {...item, source, target, file_sha256: hash, file: item.output};
+  });
+  for (const item of plan) {
+    if (!fs.existsSync(item.target)) {
+      fs.copyFileSync(item.source, item.target, fs.constants.COPYFILE_EXCL);
+    }
+  }
+  return plan.map(({name, file, file_sha256}) => ({name, file, file_sha256}));
+}
+
+function generateHTML(recipe, profile, offlineAssets = null) {
   const aesthetics = { ...(profile.aesthetics || {}), ...(recipe.aesthetics || {}) };
   const data = recipe.data || {};
   const chartType = recipe.type;
@@ -189,8 +227,11 @@ const plot = Plot.plot({
 <body>
   <h2>${title.replaceAll('&', '&amp;').replaceAll('<', '&lt;')}</h2>
   <div id="chart" role="img" aria-label=${JSON.stringify(altText)}></div>
+  ${offlineAssets
+    ? '<script src="' + offlineAssets[0].file + '"></script>\n  <script src="' + offlineAssets[1].file + '"></script>'
+    : ''}
   <script type="module">
-import * as Plot from ${JSON.stringify(PLOT_ESM_URL)};
+${offlineAssets ? 'const Plot = window.Plot;' : 'import * as Plot from ' + JSON.stringify(PLOT_ESM_URL) + ';'}
 ${plotCode}
 document.getElementById("chart").appendChild(plot);
   </script>
@@ -198,7 +239,7 @@ document.getElementById("chart").appendChild(plot);
 </html>`;
 }
 
-function writeManifest(recipe, profile, recipePath, profileName, outputPath) {
+function writeManifest(recipe, profile, recipePath, profileName, outputPath, offlineAssets = null) {
   const profilePath = path.join('profiles', `${profileName}.yaml`);
   const manifest = {
     profile: MANIFEST_PROFILE,
@@ -232,13 +273,26 @@ function writeManifest(recipe, profile, recipePath, profileName, outputPath) {
       accessibility_sidecar: recipe.accessibility ? path.basename(outputPath).replace(/\.[^.]+$/, '.a11y.json') : null,
       figure_evidence_sidecar: null
     },
-    external_dependencies: [{
-      name: '@observablehq/plot',
-      version: PLOT_VERSION,
-      url: PLOT_ESM_URL,
-      required_at_view_time: true,
-      bundled_in_output: false
-    }],
+    external_dependencies: offlineAssets
+      ? offlineAssets.map(asset => ({
+          name: asset.name,
+          version: null,
+          expected_version: asset.name === '@observablehq/plot' ? PLOT_VERSION : null,
+          version_verified: false,
+          file: asset.file,
+          file_sha256: asset.file_sha256,
+          identity_basis: 'caller-supplied-local-bytes',
+          required_at_view_time: false,
+          bundled_in_output: true
+        }))
+      : [{
+          name: '@observablehq/plot',
+          version: PLOT_VERSION,
+          url: PLOT_ESM_URL,
+          required_at_view_time: true,
+          bundled_in_output: false
+        }],
+    offline_assets_copied: Boolean(offlineAssets),
     reproducibility: {
       level: 'R1',
       semantics: 'HTML and dependency identity are replay-addressable; offline replay requires vendoring/snapshotting the ESM dependency.',
@@ -249,19 +303,20 @@ function writeManifest(recipe, profile, recipePath, profileName, outputPath) {
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n', 'utf-8');
 }
 
-function render(recipePath, profileName = 'presentation') {
+function render(recipePath, profileName = 'presentation', offlineAssetsDir = null) {
   const recipe = loadRecipe(recipePath);
   const errors = validateRecipe(recipe);
   if (errors.length) throw new Error(errors.join('; '));
   const profile = loadProfile(profileName);
-  const html = generateHTML(recipe, profile);
   const output = recipe.output;
   const outputDir = output.dir || 'output';
   fs.mkdirSync(outputDir, {recursive: true});
   const outputPath = path.join(outputDir, output.filename || 'figure.html');
+  const offlineAssets = offlineAssetsDir ? stageOfflineAssets(offlineAssetsDir, outputPath) : null;
+  const html = generateHTML(recipe, profile, offlineAssets);
   fs.writeFileSync(outputPath, html, 'utf-8');
   console.log(`saved: ${outputPath}`);
-  writeManifest(recipe, profile, recipePath, profileName, outputPath);
+  writeManifest(recipe, profile, recipePath, profileName, outputPath, offlineAssets);
 }
 
 const args = process.argv.slice(2);
@@ -270,8 +325,12 @@ if (args[0] === 'render' && args[1]) {
   const flagIndex = args.indexOf('--profile');
   if (flagIndex !== -1 && args[flagIndex + 1]) profile = args[flagIndex + 1];
   else if (args[2] && !args[2].startsWith('--')) profile = args[2];
-  render(args[1], profile);
+  const index = args.indexOf('--offline-assets');
+  if (index !== -1 && (!args[index + 1] || args[index + 1].startsWith('--'))) {
+    throw new Error('--offline-assets requires a folder with d3.min.js and plot.umd.min.js');
+  }
+  render(args[1], profile, index < 0 ? null : args[index + 1]);
 } else {
-  console.log('usage: node backends/observable_adapter.js render <recipe.yaml> [--profile <name>]');
+  console.log('usage: node backends/observable_adapter.js render <recipe.yaml> [--profile <name>] [--offline-assets <dir>]');
   process.exitCode = 2;
 }
