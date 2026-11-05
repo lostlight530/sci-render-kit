@@ -86,6 +86,7 @@ runtime_quality:
 
 recipes:
   schema: metadata/recipe.schema.yaml
+  schema_dialect: https://json-schema.org/draft/2020-12/schema
   document_status: current_machine_contract
   chart_types: [line-chart, bar-chart, scatter-plot, heatmap, boxplot, histogram]
   claim_bindings:
@@ -163,13 +164,21 @@ backends:
     outputs: [html]
     render_manifest: sci-render-kit/render-manifest
     plot_version: "0.6.17"
-    browser_dependency: "@observablehq/plot@0.6.17/+esm via CDN"
+    browser_dependency: "@observablehq/plot@0.6.17/+esm via CDN (default online mode)"
+    offline_mode: caller_supplied_umd_assets
+    offline_asset_inputs: [d3.min.js, plot.umd.min.js]
+    offline_asset_identity: copied_local_sha256
+    offline_asset_version_verified: false
+    offline_asset_network_fetch: false
+    offline_browser_execution_verified: false
     offline_environment_complete: false
 
 artifacts:
   render_manifest:
     profile: sci-render-kit/render-manifest
     sidecar: <output>.manifest.json
+    schema: metadata/reproducibility.schema.yaml
+    schema_dialect: https://json-schema.org/draft/2020-12/schema
     default_reproducibility_semantics: R1
   provenance:
     profile: sci-render-kit/provenance
