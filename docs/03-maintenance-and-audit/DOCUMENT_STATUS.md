@@ -17,6 +17,8 @@ sci_render.py
 core/
 backends/
 tests/
+scripts/
+requirements-python313.txt
 Makefile
 package.json
 README.md
@@ -40,6 +42,7 @@ profiles/
 quality/
 recipes/
 docs/02-examples-and-contracts/RESEARCH_CONTRACT.md
+docs/02-examples-and-contracts/INTEROPERABILITY_VERIFICATION.md
 docs/02-examples-and-contracts/FIGURE_CLAIM_CONTRACT.md
 docs/02-examples-and-contracts/COMMUNICATION_TRANSFER_CONTRACT.md
 docs/02-examples-and-contracts/ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md
