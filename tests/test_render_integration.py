@@ -28,6 +28,9 @@ class RenderIntegration(unittest.TestCase):
             recipe = yaml.safe_load(
                 (ROOT / "recipes/accessible-line-chart.yaml").read_text(encoding="utf-8")
             )
+            # The source demo is 10pt, while the Nature target caps at 7pt.
+            # Keep strict P1 policy intact and make this fixture profile-valid.
+            recipe["aesthetics"]["font_size"] = 7
             recipe["output"]["dir"] = str(root)
             recipe_file = root / "render.yaml"
             recipe_file.write_text(
