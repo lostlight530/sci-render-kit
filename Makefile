@@ -12,7 +12,7 @@ clean:
 	rm -rf __pycache__ .pytest_cache output/*
 	@echo "Cleaned local caches and generated artifacts"
 
-test: test-core test-accessibility test-tools test-tool-ui test-interoperability test-render-integration
+test: test-core test-accessibility test-tools test-tool-ui test-interoperability test-render-integration test-maintenance-scope
 
 test-core:
 	python3 tests/test_all.py
@@ -36,3 +36,7 @@ test-render-integration:
 # Optional Node dependency validation; install package.json dependencies first
 test-observable-offline:
 	node tests/test_observable_offline.js
+
+.PHONY: test-maintenance-scope
+test-maintenance-scope:
+	python3 -m unittest tests.test_maintenance_scan_scope -v
