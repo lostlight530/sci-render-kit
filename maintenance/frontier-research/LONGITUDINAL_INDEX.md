@@ -7191,3 +7191,15 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - Historical October 31 original A2 strict `0/10 NOT_MET`, subsequent successor deliveries, cleanup retention and November 1 reconciliation remain separate ledgers; this update does not retroactively alter any acceptance.
 - The current edit is index-only navigation and forward correction; no repo test, Stage research replay, external publisher re-verification or independent human review was performed by this correction. Any CI conclusion must be tied to its own check/run and SHA.
 
+
+## 2026-11-05 forward publisher-source candidate — previous-month Figure/Render release
+
+- This forward note is **publisher release discovery for the next bounded review**, not November native Stage L execution, a 2026-11-04 original A1/A2, or retroactive replacement of earlier research.
+- [Plotly.js v4.2.0](https://github.com/plotly/plotly.js/releases/tag/v4.2.0) was published `2026-10-29T20:08:41Z` = **2026-10-30 04:08:41 Asia/Shanghai**; that is an **October Q4 version candidate**, not a November release.
+- Its issuer note covers legend pattern swatches, ternary spikelines, scattergl hover freeze, Sankey node placement, updated types, and sanitization of `javascript:` URLs in MathJax `href` (publisher-reported fix, not locally tested here).
+- These changes potentially affect figure-communication and security assertions, but do **not** establish same-revision pixel parity, WCAG conformance, backend availability, safe local MathJax execution, or scientific claim validity.
+- Original Stage L selected source [Plotly v4.1.2](https://github.com/plotly/plotly.js/releases/tag/v4.1.2) remains an October 5 selected research object with October 19 cutoff. The later 4.2.0 release is a separate version and must be admitted only by its native governed research owner.
+- The original Nov 3 A2 [#210](https://github.com/lostlight530/sci-render-kit/pull/210) asserted no newly verified **November native** Stage event; October 30 publisher release does not logically refute that period-scoped claim.
+- Later [#211](https://github.com/lostlight530/sci-render-kit/pull/211) and [#212](https://github.com/lostlight530/sci-render-kit/pull/212) are November implementation changes, not a replay of Plotly v4.2.0 or Vega-Lite v6.5.0 release semantics.
+- Keep `November OPEN`, `2026-Q4 IN_PROGRESS`, and independent browser/runtime execution `NOT_EXECUTED`. This index Draft still provides **no** original Nov4/5 A1/A2 `>=100` credit or A2 upstream merge evidence.
+
