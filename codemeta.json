@@ -1,5 +1,5 @@
 {
-  "@context": "https://w3id.org/codemeta/3.1",
+  "@context": "https://w3id.org/codemeta/4.0",
   "@type": "SoftwareSourceCode",
   "name": "sci-render-kit",
   "description": "Declarative scientific-figure compilation with backend-bounded rendering, provenance and figure-evidence sidecars, explicit uncertainty semantics, accessibility contracts, and publisher-target boundaries.",
