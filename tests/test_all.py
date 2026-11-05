@@ -14,18 +14,93 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import yaml
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from core.figure_evidence import PROFILE as FIGURE_EVIDENCE_PROFILE, build_figure_evidence
+from backends import matplotlib_adapter
+from core.accessibility import PROFILE as ACCESSIBILITY_PROFILE
+from core.figure_evidence import PROFILE as FIGURE_EVIDENCE_PROFILE, build_figure_evidence, file_sha256
 from core.projection import PCAProjection, ProjectionMetrics, TSNEProjection
 from core.uncertainty_legend import UncertaintyBound
-from sci_render import _rule_index, has_errors
+from sci_render import _rule_index, has_errors, main as render_main
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+class TestRenderManifestIdentity(unittest.TestCase):
+    def test_matplotlib_accessibility_manifest_uses_stable_profile(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            figure = Path(tmp) / "figure.png"
+            manifest_path = figure.with_suffix(".manifest.json")
+            recipe = {
+                "output": {"dir": tmp, "filename": figure.name},
+                "accessibility": {"alt_text": "A line chart."},
+            }
+
+            def emit_backend_manifest(*args, **kwargs):
+                manifest_path.write_text(
+                    json.dumps({"profile": "sci-render-kit/render-manifest", "provenance": {}}),
+                    encoding="utf-8",
+                )
+
+            with (
+                patch.object(matplotlib_adapter.base, "load_recipe", return_value=recipe),
+                patch.object(matplotlib_adapter.base, "render", side_effect=emit_backend_manifest),
+            ):
+                matplotlib_adapter.render("unused-recipe.yaml")
+
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            self.assertEqual(manifest["accessibility"]["profile"], ACCESSIBILITY_PROFILE)
+
+    def test_figure_evidence_hashes_final_render_manifest(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            recipe = yaml.safe_load(
+                (ROOT / "recipes/line-chart.yaml").read_text(encoding="utf-8")
+            )
+            recipe["output"] = {"dir": tmp, "filename": "regression.png", "format": "png"}
+            recipe_path = root / "recipe.yaml"
+            recipe_path.write_text(
+                yaml.safe_dump(recipe, allow_unicode=True), encoding="utf-8"
+            )
+            figure_path = root / "regression.png"
+            manifest_path = figure_path.with_suffix(".manifest.json")
+            evidence_path = figure_path.with_suffix(".evidence.json")
+
+            def emit_backend_artifacts(*args, **kwargs):
+                figure_path.write_bytes(b"regression figure bytes")
+                manifest_path.write_text(
+                    json.dumps({"profile": "sci-render-kit/render-manifest"}),
+                    encoding="utf-8",
+                )
+
+            with (
+                patch(
+                    "sys.argv",
+                    ["sci_render.py", str(recipe_path), "--backend", "matplotlib"],
+                ),
+                patch("sci_render.subprocess.run", side_effect=emit_backend_artifacts),
+                patch("sci_render.evaluate_pre_render_rules", return_value=[]),
+                patch("sci_render.audit_claim_communication", return_value=[]),
+                patch("sci_render.evaluate_post_render_rules", return_value=[]),
+            ):
+                render_main()
+
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+            manifest_artifacts = [
+                item for item in evidence["artifacts"]
+                if item["kind"] == "render-manifest"
+            ]
+            self.assertEqual(len(manifest_artifacts), 1)
+            self.assertEqual(
+                manifest_artifacts[0]["file_sha256"], file_sha256(manifest_path)
+            )
+            self.assertEqual(manifest["figure_evidence"]["sidecar"], evidence_path.name)
 
 
 class TestRepositoryContracts(unittest.TestCase):
