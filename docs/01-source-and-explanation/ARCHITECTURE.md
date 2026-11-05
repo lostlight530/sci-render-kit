@@ -213,9 +213,11 @@ Writes the stable manifest identifier and records actual ggplot2/R versions wher
 
 ### Observable Plot
 
-Generates HTML and pins `@observablehq/plot` 0.6.17 at view time
+Default online mode generates HTML with pinned `@observablehq/plot` 0.6.17 via CDN at view time
 
-Offline reproduction requires separate vendoring/snapshotting
+Optional `--offline-assets` mode requires caller-supplied `d3.min.js` and `plot.umd.min.js`, copies their locally observed bytes next to the HTML, and records each copied file SHA-256 in the manifest. It prevents overwrite of different existing dependency bytes and embeds local script references rather than CDN imports
+
+The caller must authenticate source versions and satisfy redistribution licenses independently. The tool does not ship/download bundles, prove their upstream version or execute browser-side rendering; offline dependency byte presence is not independent reproduction
 
 ## Figure Evidence layer
 
