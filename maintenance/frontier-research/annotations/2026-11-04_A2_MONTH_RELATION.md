@@ -1,0 +1,169 @@
+# 2026-11-04 independent A2 — Sci Render November1–4 full month relationship
+
+- Logical Nov04 A2 covers Nov1–04 Asia/Shanghai; actual evidence collection/authoring Nov06 (retrospective).
+- **Fresh main after predecessor:** `82602809799598d58aa5ae696097ed076deb3394`; previous [original A1 #214](https://github.com/lostlight530/sci-render-kit/pull/214), source blob `de35ec499a8baa9657ce3f3c9aeee860de6bdf6b` and original Nov03 A2 #210 verified in main.
+- Native Stage L originally selected O13 Plotly.js v4.1.2 / O14 Vega-Lite v6.5.0 through Oct19. [Plotly 4.2.0](https://github.com/plotly/plotly.js/releases/tag/v4.2.0) was released Oct30 Shanghai and is a prior-month **candidate**, not a new Nov04 release, not native Stage admission.
+- November remains OPEN; 2026-Q4 Stage L IN_PROGRESS; no native Stage, renderer, browser, scanner or CI execution is claimed.
+- The rows below are explicit month-relation decisions for individually identified original A1 content claims. They carry SOURCE/REVIEW context; repeated issuer family entries **do not represent independent experiments**.
+
+## Nov1–04 month relation delta
+- M001 | Nov1–04 月关系是 11/03 A2 月版本的扩展，旧 11/01–03 的截点不被覆盖
+- M002 | 在本轮 fresh main 上，Nov04 A1 #214 的实际文件 blob 是 de35ec499a8baa9657ce3f3c9aeee860de6bdf6b
+- M003 | Nov04 A1 的来源截止 Nov03，因此本 A2 单独承担 Nov04 当天的新状态边界
+- M004 | 本轮作者实际检查日 Nov06，不能推断在 Nov04 已执行浏览器或 CLI
+- M005 | 已合并 11/05 渲染修复 #211 不能回填成为 Nov04 本地运行 PASS
+- M006 | 已合并 11/05 interop #212 不能回填成为 Nov04 scientific validation
+- M007 | Plotly 4.2.0 上海时间 Oct30 发布，属于 prior-month carryover 而非 Nov04 issue event
+- M008 | Plotly issuer 的 MathJax href 修复只证明发行声明，不是当前 repo 的安全复现
+- M009 | Plotly hover/color/legend 改动与 Vega-Lite image-mark geometry 是独立渲染轴
+- M010 | Stage L 的 O13/S13 v4.1.2 与 O14/S14 v6.5.0 仍按 10/19 选样保留
+- M011 | Stage L 方法为 source bounded targeted research，不能随当前 A2 升级为 systematic
+- M012 | Stage L 的 2026-Q4 12/31 以前不成立自然季度 final close
+- M013 | 现有 November 状态是 OPEN，当前 A2 也不产生自然月最终结算
+- M014 | 当前 MANIFEST Observable offline browser verification 标志仍为 false，不会随 A2 改变
+- M015 | 当前 MANIFEST 的 profile/source/transfer 权威不由 issuer release note 自动改变
+- M016 | 当前 index relation-through 是 Nov03，若 A2 合并可推进 Nov04，但保留原 Stage identity
+- M017 | 没有真实 renderer/browser/scanner/test execution，所有运行结论保持 NOT_EXECUTED
+- M018 | 本次只追加 A2 annotation 和更新纵向索引首部 navigation pointer，不改 Stage corpus
+- M019 | Nov05 A1 的前置依赖必须是此 A2 已合并的 main，而非 A2 branch
+- M020 | 原始 A1 #214 +171 GitHub additions 不允许合计至本 A2 的数量验收
+- M021 | 后续若来源时间冲突，以 dated correction 而非 silent overwrite 修复
+- M022 | 本 A2 的关系审查不能替代原生 D7/D10/D14/D30 周期审计
+
+## Source-specific A1→monthly relationship records
+- R001 | merged A1 J001: 11/04 A1 只评审上海 11/01–03 的前一日完整来源窗口；2026-11-04 当日变更只允许在 A2 引入 | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R002 | merged A1 J002: 本次实际 GitHub 访问在 11/06，因而是 retrospective independent maintenance，不能声称 11/03 当时执行 | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R003 | merged A1 J003: 11/03 原始 A1 sci #209 已合并；其 source review 截至 11/02，不能替代 11/04 新窗口 | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R004 | merged A1 J004: 11/03 原始 A2 sci #210 已合并；其 11/01–03 月度关系是本次 A1 的前序，不是 11/04 A1 交付 | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R005 | merged A1 J005: 11/02 A1/A2 是另两份历史任务，其 additions 不进入本次独立验收 | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R006 | merged A1 J006: 已合并 #211 修正 render-manifest/a11y profile 是 11/05 的 implementation event，不可倒填到 11/03 | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R007 | merged A1 J007: 已合并 #212 全局 interop/schema/offline artifact 是 11/05 的实现验证任务，也不属于 11/04 A1 的历史输入 | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R008 | merged A1 J008: 已合并 index #213 修正指向 11/03 A2，但只是导航层，不是原始 Stage L 科研复现 | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R009 | merged A1 J009: 当前源 main SHA 包含上述 11/05 合并成果；审查解释必须区分 retrospective current tree 和 event-time state | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R010 | merged A1 J010: 当前 MANIFEST current_temporal_status.as_of=10/01 是 last explicit calendar reconciliation；不得当作 11/04 scheduler failure | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R011 | merged A1 J011: Stage L 原研究的 10/19 source cutoff 是稳定历史时标；新 10/30 release 不回写既有 selected-set | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R012 | merged A1 J012: 2026-Q4 结束日是 12/31；到 11/04 Stage L 只能 IN_PROGRESS，不能生成 final research handoff | A2 disposition: DAY_N_RELATION: 保留前置 A1 的 Nov1–03 判断，Nov04 仅在有独立当日事实时扩展，当前没有实测新 native 运行
+- R013 | merged A1 J013: STAGE_BRIEF.md#L4 研究对象明确属于 sci-render-kit，不能把 Plotly、Vega-Lite 的发布元数据当作 auto-doc/epistemic 的本地运行证据 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R014 | merged A1 J014: STAGE_BRIEF.md#L5 quarter clock 与 A1 daily clock 独立；前者仍开放、后者截点落在 11/03 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R015 | merged A1 J015: STAGE_BRIEF.md#L6 的 LIVE_STAGE as-of 10/19 正确；新版本存在不应改成 11 月研究已完成 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R016 | merged A1 J016: STAGE_BRIEF.md#L7 的 TARGETED_EVIDENCE_SYNTHESIS 是对象选择法，不是 benchmark performance evaluation | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R017 | merged A1 J017: STAGE_BRIEF.md#L8 的 SOURCE_BOUNDED 不能在少数新发布记录出现后升级为 SYSTEMATIC | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R018 | merged A1 J018: STAGE_BRIEF.md#L9 的 post-selection reconstruction 事实应保留；不得包装成 preregistration | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R019 | merged A1 J019: STAGE_BRIEF.md#L12 只有跨阶段比较对象身份，未承诺跨版本可复现性能改善 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R020 | merged A1 J020: STAGE_BRIEF.md#L13 原研究排除 11/12 月是 10/19 时的未来边界，不是对未来永不研究的禁止 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R021 | merged A1 J021: STAGE_BRIEF.md#L16 将 scientific communication 与 uncertainty display 分列，前者可检查图面编码、后者需统计定义 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R022 | merged A1 J022: STAGE_BRIEF.md#L17 要求源对象版本时钟与运行时钟不同；不能以 issuer source 证明 host behavior | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R023 | merged A1 J023: STAGE_BRIEF.md#L18 的 unknown 应在缺少复现实验时保留，而非用 reviewer confidence 代替 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R024 | merged A1 J024: STAGE_BRIEF.md#L21 原选样截止 10/19；10/30 Plotly v4.2.0 是同季度后续候选，不属于原选样 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R025 | merged A1 J025: STAGE_BRIEF.md#L22 的 prerelease exclusion 用于 stable-object selection；若后来出现候选也要单列状态 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R026 | merged A1 J026: STAGE_BRIEF.md#L23 的 versioned unit 要求 v4.1.2 与 v4.2.0 不合并成同一研究对象 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R027 | merged A1 J027: STAGE_BRIEF.md#L24 一个 GitHub tag 加一份 release note 仍是一个 issuer family，不能作为两次独立复现 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R028 | merged A1 J028: STAGE_BRIEF.md#L25 的 downstream adoption 未审查，现未取得任何本仓安装 Plotly v4.2.0 的 runner receipt | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R029 | merged A1 J029: STAGE_BRIEF.md#L28 的 GitHub Releases 检索只是所选源路径，不能据此断言生态完全没有其它版本 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R030 | merged A1 J030: STAGE_BRIEF.md#L31 O13 v4.1.2 研究主题为 ResizeObserver 与 responsive layout；新 v4.2.0 的 hover 修正是不同风险面 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R031 | merged A1 J031: STAGE_BRIEF.md#L32 O14 v6.5.0 研究主题为 image mark alignment；不能用新 Plotly 发行反证 Vega-Lite 编译器 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R032 | merged A1 J032: STAGE_BRIEF.md#L35 descriptive comparison 禁止把 release note 条目数当成可量化 rendering quality 提升 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R033 | merged A1 J033: STAGE_BRIEF.md#L38 明确 checksum != independent reproduction；既有 artifact manifest 不代表独立浏览器重放 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R034 | merged A1 J034: SOURCE_OBJECT_REGISTER.md#L3 原 register access date 10/19 不变；11/06 的新审查来源应另存审查日期 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R035 | merged A1 J035: SOURCE_OBJECT_REGISTER.md#L4 的单位是 upstream release，不是 pull-request 数量或 script run 数 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R036 | merged A1 J036: SOURCE_OBJECT_REGISTER.md#L5 把对象与来源拆分，不能因同一 issuer 有两个 tag 便认为有独立 cross-vendor 证据 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R037 | merged A1 J037: SOURCE_OBJECT_REGISTER.md#L6 PARTIAL/QUARTER_OPEN 仍有效；没有新 native stage close authority | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R038 | merged A1 J038: SOURCE_OBJECT_REGISTER.md#L10 O13/S13 对 Plotly v4.1.2 的包含决定属于原样保留历史 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R039 | merged A1 J039: SOURCE_OBJECT_REGISTER.md#L11 O14/S14 对 Vega-Lite v6.5.0 的包含决定属于原样保留历史 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R040 | merged A1 J040: SOURCE_OBJECT_REGISTER.md#L14 对未选数据的 UNKNOWN 不能提升为 ABSENT；源家族的包内 PR 不充当另一个发行方 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R041 | merged A1 J041: SOURCE_OBJECT_REGISTER.md#L17 'included month' 范围只针对截至 10/19 的样本，不代表 11 月无发布 | A2 disposition: NATIVE_STAGE_RELATION: 保留 Oct19 selected-study scope 和 source ownership；不自动准入新版本或宣告 Stage complete
+- R042 | merged A1 J042: L1_PLOTLYJS_V412.md#L5 明确选择 v4.1.2；新增 v4.2.0 的事实不改变 O13 的 identity | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R043 | merged A1 J043: L1_PLOTLYJS_V412.md#L6 原 release 10/05、research 10/19，是两个不同时间坐标 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R044 | merged A1 J044: L1_PLOTLYJS_V412.md#L13 排除未观察的本仓 runtime，故没有 browser fixture 不能宣称旧 resize 修复成功 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R045 | merged A1 J045: L1_PLOTLYJS_V412.md#L16 的 S13 为发行方 GitHub release，不构成下游包集成证明 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R046 | merged A1 J046: L1_PLOTLYJS_V412.md#L23 issuer claim 为 ResizeObserver 代替 window resize；需控制 host container resize 独立测试 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R047 | merged A1 J047: L1_PLOTLYJS_V412.md#L26 描述的是发布行为，不是本仓 npm dependency version | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R048 | merged A1 J048: L1_PLOTLYJS_V412.md#L30 responsive behavior 不等于 WCAG 或 scientific validity | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R049 | merged A1 J049: L1_PLOTLYJS_V412.md#L38 cross-version replay=NO；本次不得标记 parity verified | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R050 | merged A1 J050: L1_PLOTLYJS_V412.md#L40 defect UNKNOWN；没有本仓 bug reproduction，不能因 issuer 发行构造代码修复 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R051 | merged A1 J051: L1_PLOTLYJS_V412.md#L44 evidence receipt 应包含浏览器、renderer、host dimensions、artifact；单份 HTML 文件不足 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R052 | merged A1 J052: L2_VEGALITE_V650.md#L5 研究对象是 Vega-Lite v6.5.0，不是 Plotly.js v4.2.0 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R053 | merged A1 J053: L2_VEGALITE_V650.md#L6 10/08 发布和 10/19 获取仍是历史日期，不随新 A1 改写 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R054 | merged A1 J054: L2_VEGALITE_V650.md#L13 将 image center alignment 修复限定 undefined secondary channel 的边界 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R055 | merged A1 J055: L2_VEGALITE_V650.md#L16 的 S14 是另一 issuer 家族，但不能复核 S13 的真实实现 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R056 | merged A1 J056: L2_VEGALITE_V650.md#L23 compiler 修正空间解释：需要相同 declarative spec、版号与像素 comparison 才能比较 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R057 | merged A1 J057: L2_VEGALITE_V650.md#L26 内容只支持 issue-specified 发行声明，不证明所有 marker 对齐一致 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R058 | merged A1 J058: L2_VEGALITE_V650.md#L30 指出不能声明全版本语义等价；测试需定义具体 secondary channel 缺失样本 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R059 | merged A1 J059: L2_VEGALITE_V650.md#L38 cross-version replay=NO；本轮不将矩阵从 UNKNOWN 升为 PASS | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R060 | merged A1 J060: L2_VEGALITE_V650.md#L40 实际 repo bug 未审计；不允许凭新发布动本仓代码 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R061 | merged A1 J061: L2_VEGALITE_V650.md#L44 需要绑定 spec、runtime、render artifact 与复现记录，才能宣称 geometry changes verified | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R062 | merged A1 J062: EVIDENCE_CHART.md#L8 F-L1 是 ResizeObserver/host observation 维度，和 source-provenance 的直接性不同 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R063 | merged A1 J063: EVIDENCE_CHART.md#L9 F-L2 是 Vega-Lite image mark geometry 维度；不能和 F-L1 计为两个同类实验 sample | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R064 | merged A1 J064: EVIDENCE_CHART.md#L11..12 不允许把两个厂商发行当作具有公共结果变量的改善趋势 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R065 | merged A1 J065: EVIDENCE_CHART.md#L15 的 selection bias 未经外部抽样消除 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R066 | merged A1 J066: EVIDENCE_CHART.md#L16 的 issuer claims 不具 local conformance authority | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R067 | merged A1 J067: EVIDENCE_CHART.md#L17 measured adoption、controlled compare、specialist review 三类不同证据都缺 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R068 | merged A1 J068: EVIDENCE_CHART.md#L18 schema changes 可能不兼容，后续只能 version-scoped checking | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R069 | merged A1 J069: RESEARCH_REVIEW.md#L4 self-review 所有者可追溯，但没有独立 reviewer 标识 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R070 | merged A1 J070: RESEARCH_REVIEW.md#L9 事后记录协议不等于预注册，不重写研究时序 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R071 | merged A1 J071: RESEARCH_REVIEW.md#L23 R1 是 runtime reproduction 缺口；源记录新增仍不关闭 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R072 | merged A1 J072: RESEARCH_REVIEW.md#L24 R2 是非全量检索缺口；不把本轮版本候选视为完备生态覆盖 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R073 | merged A1 J073: RESEARCH_REVIEW.md#L25 R3 为 same-producer 独立性缺口；审核 GitHub line numbers 不能消除 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R074 | merged A1 J074: RESEARCH_REVIEW.md#L26 R4 为时间追溯风险；通过区分 issuer publish 和 reading date 防止回填 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R075 | merged A1 J075: RESEARCH_REVIEW.md#L29 disposition PARTIAL_REVIEW_ONLY 与当前季度未完成一致 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R076 | merged A1 J076: CONTRIBUTOR_STATEMENT.md#L3 原作者研究日期 10/19 不因本次独立维护改变 | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R077 | merged A1 J077: CONTRIBUTOR_STATEMENT.md#L5 上游工具是 connected GitHub，不能声称自己跑了浏览器或 Python renderer | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R078 | merged A1 J078: CONTRIBUTOR_STATEMENT.md#L7 明确无 independent laboratory，不把本次审核写成 peer review | A2 disposition: EVIDENCE_CONTRACT_RELATION: 记录文献/Part/Review 的当前月继承角色，不把 issuer 源声明转化为 runtime reproduction
+- R079 | merged A1 J079: Plotly v4.2.0 GitHub publication=2026-10-29T20:08:41Z，即上海 10/30 04:08，是 11/04 A1 的上月 carryover，非 11 月发行 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R080 | merged A1 J080: v4.2.0 增加 layout.legend.itemheight 控制 fill swatch，高度变化影响 pattern 可见性，不证明本仓图例可读性达标 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R081 | merged A1 J081: v4.2.0 新 ternary spikelines 属于三元图交互，不等同已选 chart_type 的一般属性 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R082 | merged A1 J082: v4.2.0 TypeScript lifecycle/WebGL context event declarations 是类型声明变动，不证明 Python/Observable 后端已消费 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R083 | merged A1 J083: v4.2.0 Sankey node.x/y 修正针对 unlinked/grouped nodes；需要特殊 topology fixture 才可判定位置稳定 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R084 | merged A1 J084: v4.2.0 ticklabelindex period axes 的 tick positioning 修复需含周期坐标轴样本，不是全局 axis fix | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R085 | merged A1 J085: v4.2.0 ticklabelindex format 修复与 position 修复是可独立验证的两种错误，不能以一种测试覆盖两项 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R086 | merged A1 J086: v4.2.0 bar marker.pattern array 的 unified hover swatch 更正是交互信息编码，不证明导出 SVG 语义 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R087 | merged A1 J087: v4.2.0 automargin title 与扩 margin component 的对齐修复须同时存在两条件才能测试，不能用简单散点图替代 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R088 | merged A1 J088: v4.2.0 MathJax 单 TeX expression hover 标签修复需要输入仅单表达式；普通含混合文本样本不覆盖 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R089 | merged A1 J089: v4.2.0 对 MathJax href javascript scheme 修复为发行方 security claim；本次未做浏览器 XSS proof | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R090 | merged A1 J090: v4.2.0 scattergl hover freeze 修正是交互长运行稳定性议题；本仓未运行 WebGL browser session | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R091 | merged A1 J091: v4.2.0 quiver color discrete array 修正要比较多个箭头颜色并含 categorical mapping，不是普通线图可替代 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R092 | merged A1 J092: v4.2.0 scattergl numeric/numeric-string symbol variant 识别修复暴露 string coercion 风险；未对本仓 schema 做直接 test | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R093 | merged A1 J093: v4.2.0 hoverlabel.align x/y unified 标签修复需检查实际 hover DOM，不能从静态 PDF 证明 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R094 | merged A1 J094: v4.2.0 CSS modern color 转 RGBA 用于 scattergl，像素一致性有浏览器颜色管线条件而非仅 label text | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R095 | merged A1 J095: v4.2.0 relayout/restyle/update 的 attribute-path TypeScript 类型补全不说明所有 runtime path 生效 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R096 | merged A1 J096: v4.2.0 LayoutUpdate 与 DataUpdate 新类型属于 SDK 使用契约，不证明本仓 Python adapter 变动 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R097 | merged A1 J097: v4.2.0 funnel percentTotal 改为格式化百分比，展示数值解释可能改变，未证明此仓采用 funnel backend | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R098 | merged A1 J098: 上述 Plotly v4.2.0 issuer release 仍只有一个源家族；19 项不计为 19 个独立研究论文 | A2 disposition: CARRYOVER_RELATION: Oct30 Plotly 4.2.0 属十月候选；随当前月记观察相关性，但不是 Nov04 新发行
+- R099 | merged A1 J099: MANIFEST.yaml#L6 recipe data、aesthetics、research_context 均为显式声明；release note 不能替换 recipe 的事实字段 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R100 | merged A1 J100: MANIFEST.yaml#L7 visual_ref->claim_refs 只记录声明关系，不能从图例/像素反推出验证成功 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R101 | merged A1 J101: MANIFEST.yaml#L8 assertion basis 表示写入来源，不是 correctness | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R102 | merged A1 J102: MANIFEST.yaml#L9 communication-coverage 分维度，不能以一组 ratios 计算虚构质量总分 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R103 | merged A1 J103: MANIFEST.yaml#L10 communication-transfer 不继承 entailment/statistical validity/acceptance | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R104 | merged A1 J104: MANIFEST.yaml#L13 scanner configured paths 必须仓内闭环；本次并未执行 scanner，标记 NOT_EXECUTED | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R105 | merged A1 J105: MANIFEST.yaml#L14 config bytes SHA-256 是配置 identity 证据，不是 renderer binary reproducibility | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R106 | merged A1 J106: MANIFEST.yaml#L15 report output 写入语义与正式 repo source 需分开，A1 只新增注释 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R107 | merged A1 J107: MANIFEST.yaml#L18 month/stage close 分离，11/04 November 和 2026-Q4 都应 OPEN | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R108 | merged A1 J108: MANIFEST.yaml#L20 schema 字段存在不等于所有 backend 支持 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R109 | merged A1 J109: MANIFEST.yaml#L21 未知 provider/model/version 保持 null，不补运行时版本 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R110 | merged A1 J110: MANIFEST.yaml#L24 hash/provenance 并不授予 independent reproduction | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R111 | merged A1 J111: MANIFEST.yaml#L41 decorative version suffix 禁止，不制造项目内部假 v2 验收 profile | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R112 | merged A1 J112: MANIFEST.yaml#L83 P0-P3 各级审查范围不同，没运行核心 pipeline 不宣称四级 PASS | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R113 | merged A1 J113: MANIFEST.yaml recipes claim_bindings inferred_by_renderer=false，与上游 Plotly hover 功能不同层 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R114 | merged A1 J114: MANIFEST.yaml process_disclosure automatic_ai_detection_used=false，不能凭发行方代码变动推断 AI 作者资格 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R115 | merged A1 J115: MANIFEST.yaml uncertainty supported_kinds 包括 heuristic-bound，后者不能未经模型校准宣称置信区间 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R116 | merged A1 J116: MANIFEST.yaml tool_adapter local_synchronous_function_call 不应因 publisher release 推断 MCP remote support | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R117 | merged A1 J117: MANIFEST.yaml backend Matplotlib cue signatures 仅描述本仓 backend scoped rules，不代表 Plotly.js 颜色和花纹通过 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R118 | merged A1 J118: MANIFEST.yaml Observable online/CDN 与 caller-supplied UMD offline 有不同网络/证据边界，现 offline_browser_execution_verified=false | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R119 | merged A1 J119: MANIFEST.yaml 输出 .manifest/.prov/.a11y sidecar 是不同证据产物，不能将其中任一等同审稿或出版社接收 | A2 disposition: IMPLEMENTATION_AUTHORITY_RELATION: 以当前 MANIFEST 为机器契约；没有实际 CLI/browser run 不变更 PASS/FAIL
+- R120 | merged A1 J120: Nov3 A1 指向原八个 Stage owner blob，当前其一致性未发现 Stage source body 修改；这只证明快照稳定不代表无发布事件 | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R121 | merged A1 J121: Nov3 A2 已覆盖 Nov1–3，新的 Nov4 A1 要识别前一日原文有无变化，不以索引日期漂移制造科研新结果 | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R122 | merged A1 J122: Nov3 A1 的源行分配仅为前轮原始任务的附件，不能复制计作 11/04 A1 独立有效行 | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R123 | merged A1 J123: Nov3 A2 对 October selected O13/O14 的评价仍 source bounded，Plotly 4.2 可进入候选列但不覆盖原 selected set | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R124 | merged A1 J124: Nov3 A2 的 NO_NATIVE_RUN 是过去那轮的事实，本轮亦无实际图像/浏览器执行，需保留新一轮独立 NO_RUN | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R125 | merged A1 J125: 11/04 A1 严格工作需要自身 GitHub diff≥100 与独立内容审查，两者不能用历史合并 PR 汇总 | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R126 | merged A1 J126: 11/04 A2 必须等本 PR 合并，从新 main 读本 A1 和 Nov1–4 全关系；同 branch 不能伪造 predecessor | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R127 | merged A1 J127: 11/05 A1 只能在 11/04 A2 合并后从新 main 重读 Nov1–4 source；不能提前算本 A1 的 11/05 内容 | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R128 | merged A1 J128: 11/05 A2 需在 11/05 A1 合并后覆盖完整 Nov1–5；不能以自然月仍开放跳过该月度关系 | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R129 | merged A1 J129: 本次不写 Stage source register、index 或 MANIFEST；只有后续确证新 owner/trigger 才另设变更 | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R130 | merged A1 J130: 后续 reviewer 可用 GitHub compare 核验单文件 delta，无法从文字中验证的本地执行状态仍 UNKNOWN | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+- R131 | merged A1 J131: 2026-11-04 task-date 与 2026-11-06 GitHub authorship date 分离，避免制造“当时已执行”的伪证 | A2 disposition: HANDOFF_GATE_RELATION: 保留 merged-A1 依赖、独立 PR additions 与下一日 A1 新 main 闸门
+
+## Handoff
+- Independent original A2 numeric additions are evaluated on this PR only; source-specific records are reviewed for their semantic distinctness, not automatically accepted because they have separate IDs.
+- The change touches only this new annotation and an updated top-level index navigation pointer; no historical Stage source or runtime implementation changed.
+- Next Nov05 A1 must read newly merged main and Nov1–04 owner state before any write.
