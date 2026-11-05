@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 import yaml
+from jsonschema import Draft202012Validator
 
 from core.figure_evidence import build_figure_evidence, write_figure_evidence
 from core.communication_transfer import build_communication_transfer
@@ -79,6 +80,15 @@ class CrossRepositoryContract(unittest.TestCase):
             self.assertEqual(handoff["uncertainty"]["kind"], "heuristic-bound")
             self.assertFalse(handoff["transfer_constraints"]["scientific_validity_inherited"])
             self.assertFalse(handoff["transfer_constraints"]["independent_reproduction_inherited"])
+
+    def test_current_json_schema_dialect_is_explicit_and_meta_valid(self):
+        for path in ("metadata/recipe.schema.yaml", "metadata/reproducibility.schema.yaml"):
+            with self.subTest(path=path):
+                schema = yaml.safe_load((ROOT / path).read_text(encoding="utf-8"))
+                self.assertEqual(
+                    schema["$schema"], "https://json-schema.org/draft/2020-12/schema",
+                )
+                Draft202012Validator.check_schema(schema)
 
     def test_codemeta_v4_citation_identity_stays_consistent(self):
         meta = json.loads((ROOT / "codemeta.json").read_text(encoding="utf-8"))
