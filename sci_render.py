@@ -420,6 +420,7 @@ def main() -> None:
     parser.add_argument("recipe", help="YAML recipe path")
     parser.add_argument("--profile", default="nature", help="target profile name")
     parser.add_argument("--backend", default="matplotlib", choices=sorted(BACKEND_CAPABILITIES))
+    parser.add_argument("--offline-assets", help="Observable only: local UMD bundle folder; never fetched")
     args = parser.parse_args()
 
     if not os.path.exists(args.recipe):
@@ -476,10 +477,16 @@ def main() -> None:
         "ggplot2": ("Rscript", "backends/ggplot2_adapter.R"),
         "observable": ("node", "backends/observable_adapter.js"),
     }
+    if args.offline_assets is not None and args.backend != "observable":
+        print("OFFLINE_ASSETS_BACKEND_MISMATCH: --offline-assets requires --backend observable")
+        raise SystemExit(1)
     command, script = backend_script_map[args.backend]
+    command_args = [command, script, "render", args.recipe, "--profile", args.profile]
+    if args.offline_assets is not None:
+        command_args.extend(["--offline-assets", args.offline_assets])
     print(f"🚀 rendering with {args.backend}")
     try:
-        subprocess.run([command, script, "render", args.recipe, "--profile", args.profile], check=True)
+        subprocess.run(command_args, check=True)
     except (subprocess.CalledProcessError, FileNotFoundError) as exc:
         print("BACKEND_EXECUTION_FAILURE")
         print(f"  - {type(exc).__name__}: {exc}")
