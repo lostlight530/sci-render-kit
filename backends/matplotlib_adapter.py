@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from backends import matplotlib_base as base
-from core.accessibility import accessibility_config, resolve_series_styles
+from core.accessibility import PROFILE as ACCESSIBILITY_PROFILE, accessibility_config, resolve_series_styles
 
 DEFAULT_PALETTE = base.DEFAULT_PALETTE
 SERIES_CHART_TYPES = base.SERIES_CHART_TYPES
@@ -139,7 +139,7 @@ def render(recipe_path: str, profile_name: str = "nature") -> None:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         manifest.setdefault("provenance", {})["accessibility_sidecar"] = output_path.with_suffix(".a11y.json").name
         manifest["accessibility"] = {
-            "profile": "sci-render-kit/a11y@1",
+            "profile": ACCESSIBILITY_PROFILE,
             "redundant_encoding": accessibility.get("redundant_encoding", "off"),
             "alt_text_embedded_where_supported": bool(str(accessibility.get("alt_text") or "").strip()),
         }

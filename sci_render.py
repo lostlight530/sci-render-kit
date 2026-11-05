@@ -513,6 +513,12 @@ def main() -> None:
             sidecars[kind] = path
 
     try:
+        # Finalize the mutable render manifest before recording its byte identity.
+        # Figure evidence must hash the final sidecar, not its pre-audit version.
+        expected_evidence_path = output_path.with_suffix(".evidence.json")
+        _update_render_manifest(
+            output_path.with_suffix(".manifest.json"), expected_evidence_path, findings
+        )
         evidence_record = build_figure_evidence(
             recipe_path=args.recipe,
             recipe=recipe,
@@ -532,8 +538,6 @@ def main() -> None:
     if not evidence_path.exists():
         print("FIGURE_EVIDENCE_FAILURE: sidecar was not written")
         raise SystemExit(1)
-
-    _update_render_manifest(output_path.with_suffix(".manifest.json"), evidence_path, findings)
 
     warning_count = sum(1 for item in findings if item.get("severity") == "warning")
     status = "passed_with_warnings" if warning_count else "passed"
