@@ -71,3 +71,22 @@
 - PUBLISH-01: verify publisher-target profile under pinned engine and output format, not only document link existence
 - SOURCE-01: hold original Stage L cohort fixed when interpreting later Plotly 4.2.0 candidate
 - RESULT: all listed runnable probes NOT_EXECUTED in this reconciliation; original historical statuses and strict acceptance are not retroactively upgraded
+
+## Strict original A1/A2 acceptance adjudication — 2026-11-06
+- Basis: each named original GitHub PR patch and its original merged delivery; this is a later independent *documentary* evaluation, not a replacement or recomputation of original additions.
+- Gate 1 (GitHub original PR >=100 additions and merged): PASS for every original below. Gate 2 (>=100 non-repeated, original, independently substantive maintenance lines per original): outcomes below. NOT_CERTIFIED is a non-PASS state.
+- Exclude from Gate 2: blank lines, headings, administrative metadata, file/blob indexes, source-body quotations, unchanged inherited upstream rows, repeated boilerplate suffixes, and historical evidence that was not newly assessed. A numbered row is not automatically a distinct substantive decision.
+- No native execution, external source recertification or GitHub Actions run is performed by this documentary review. No later correction is backdated into an original GitHub PR.
+
+| Original PR | Original additions | Strict substantive result | Specific acceptance reason / unresolved test |
+|---|---:|---|---|
+| [#206](https://github.com/lostlight530/sci-render-kit/pull/206) | 127 | NOT_CERTIFIED | Nov2 A1 source-specific Plotly/Vega decisions coexist with generic Gxx source-custody and runtime-limit rows; independent figure-specific substance count not established |
+| [#207](https://github.com/lostlight530/sci-render-kit/pull/207) | 127 | NOT_CERTIFIED | Nov2 A2 Dxx stage-source recitals and inherited evidence contracts cannot substitute for >=100 distinct new month-relationship decisions |
+| [#214](https://github.com/lostlight530/sci-render-kit/pull/214) | 171 | NOT_CERTIFIED | Nov4 A1 states 131 bounded judgments; includes blob inventory and repeated source line links, so distinguish unique figure/claim implications from mechanical source coverage |
+| [#215](https://github.com/lostlight530/sci-render-kit/pull/215) | 170 | NOT_CERTIFIED | Nov4 A2 lengthy Rxx 'merged A1 Jxx' source rows repeatedly share EVIDENCE_CONTRACT_RELATION disposition; duplicate semantic suffix is not independent new relation |
+| [#216](https://github.com/lostlight530/sci-render-kit/pull/216) | 186 | STRICT_GATE_NOT_MET | Nov5 A1 explicitly self-reports 39 fresh original assessments plus 131 inherited relations; 131 inherited lines cannot count as new independent work, and the remaining metadata/hand-off cannot establish 100 fresh substantive decisions |
+| [#217](https://github.com/lostlight530/sci-render-kit/pull/217) | 224 | NOT_CERTIFIED | Nov5 A2 inherits nested prior Rxx/Jxx/Sxx with long repeated NATIVE_STAGE_RELATION/A1/A2 disposition clauses; distinct original Nov5 A2 insights require separate line-level adjudication |
+
+- Certification rule: no original is marked semantic PASS without an independently checked exact-line inclusion/exclusion ledger achieving 100 eligible, different source-specific judgments for *that original*, with citation to its original diff. Higher GitHub additions alone cannot supply that ledger.
+- Next legal action: review and adjudicate each specific row; where the strict criterion is actually unmet, a separately scoped successor may be proposed, but must not be retroactively counted toward the original. Stop at Draft until maintainer decision.
+- Current status: ORIGINAL_NUMERIC_GATE_VERIFIED / ORIGINAL_STRICT_SUBSTANTIVE_NOT_CLOSED / FORWARD_CORRECTION_DELIVERED.
