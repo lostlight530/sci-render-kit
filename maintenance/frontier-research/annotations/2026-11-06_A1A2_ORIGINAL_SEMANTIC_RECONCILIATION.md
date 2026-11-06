@@ -90,3 +90,34 @@
 - Certification rule: no original is marked semantic PASS without an independently checked exact-line inclusion/exclusion ledger achieving 100 eligible, different source-specific judgments for *that original*, with citation to its original diff. Higher GitHub additions alone cannot supply that ledger.
 - Next legal action: review and adjudicate each specific row; where the strict criterion is actually unmet, a separately scoped successor may be proposed, but must not be retroactively counted toward the original. Stop at Draft until maintainer decision.
 - Current status: ORIGINAL_NUMERIC_GATE_VERIFIED / ORIGINAL_STRICT_SUBSTANTIVE_NOT_CLOSED / FORWARD_CORRECTION_DELIVERED.
+
+## 2026-11-06 exact original-diff line-screening ledger
+
+> This record examines the literal positive diff lines of the original merged PRs; it does not add those lines to an original, certify external scientific reality, or substitute for independent native execution.
+
+- `Structural` excludes empty lines, headings, Markdown separators and code-fence delimiters from the substantive denominator.
+- `Inherited/source-quoted pattern` counts source-line reference patterns or explicitly inherited A1/A2 row reuse. Pattern matching flags candidates for *manual semantic exclusion*; it is not a proof that every referenced source claim is devoid of new reasoning.
+- `Conditional ceiling` subtracts structural and flagged inherited-source row patterns; a value below 100 proves strict failure only **if** the line-by-line audit confirms those flagged rows contain no distinct original maintenance judgment.
+- `Nonstructural ceiling` is permissive and **cannot** be called accepted substantive count. A source quote and repeated same generic disposition cannot automatically be counted twice.
+
+| Original diff | Additions | Structural | Inherited/quoted-pattern flags | Other citation/disposition flags | Nonstructural ceiling | Conditional ceiling | Current verdict |
+|---|---:|---:|---:|---:|---:|---:|---|
+| [#206](https://github.com/lostlight530/sci-render-kit/pull/206/files) | 127 | 10 | 0 | 0 | 117 | 117 | NOT_CERTIFIED |
+| [#207](https://github.com/lostlight530/sci-render-kit/pull/207/files) | 127 | 10 | 0 | 0 | 117 | 117 | NOT_CERTIFIED |
+| [#214](https://github.com/lostlight530/sci-render-kit/pull/214/files) | 171 | 20 | 0 | 80 | 151 | 151 | NOT_CERTIFIED |
+| [#215](https://github.com/lostlight530/sci-render-kit/pull/215/files) | 170 | 8 | 131 | 131 | 162 | 31 | NOT_CERTIFIED |
+| [#216](https://github.com/lostlight530/sci-render-kit/pull/216/files) | 186 | 8 | 131 | 131 | 178 | 47 | STRICT_GATE_NOT_MET (source self-report 39 new / 131 inherited) |
+| [#217](https://github.com/lostlight530/sci-render-kit/pull/217/files) | 224 | 8 | 131 | 170 | 216 | 85 | NOT_CERTIFIED |
+
+### Concrete original diff locations for source-reuse adjudication
+- #206: changed `maintenance/frontier-research/annotations/2026-11-02_A1_STAGE_SOURCE_CONTENT.md`; no mechanical inherited-source hit. See original PR for exact source line and repeated disposition; a flagged line is not automatically invalid without checking its distinct new conclusion.
+- #207: changed `maintenance/frontier-research/annotations/2026-11-02_A2_MONTH_RELATION.md`; no mechanical inherited-source hit. See original PR for exact source line and repeated disposition; a flagged line is not automatically invalid without checking its distinct new conclusion.
+- #214: changed `maintenance/frontier-research/annotations/2026-11-04_A1_STAGE_SOURCE_CONTENT.md`; no mechanical inherited-source hit. See original PR for exact source line and repeated disposition; a flagged line is not automatically invalid without checking its distinct new conclusion.
+- #215: changed `maintenance/frontier-research/LONGITUDINAL_INDEX.md`, `maintenance/frontier-research/annotations/2026-11-04_A2_MONTH_RELATION.md`; first flagged line(s) `maintenance/frontier-research/annotations/2026-11-04_A2_MONTH_RELATION.md#L34`, `maintenance/frontier-research/annotations/2026-11-04_A2_MONTH_RELATION.md#L35`, `maintenance/frontier-research/annotations/2026-11-04_A2_MONTH_RELATION.md#L36`. See original PR for exact source line and repeated disposition; a flagged line is not automatically invalid without checking its distinct new conclusion.
+- #216: changed `maintenance/frontier-research/annotations/2026-11-05_A1_STAGE_SOURCE_CONTENT.md`; first flagged line(s) `maintenance/frontier-research/annotations/2026-11-05_A1_STAGE_SOURCE_CONTENT.md#L51`, `maintenance/frontier-research/annotations/2026-11-05_A1_STAGE_SOURCE_CONTENT.md#L52`, `maintenance/frontier-research/annotations/2026-11-05_A1_STAGE_SOURCE_CONTENT.md#L53`. See original PR for exact source line and repeated disposition; a flagged line is not automatically invalid without checking its distinct new conclusion.
+- #217: changed `maintenance/frontier-research/LONGITUDINAL_INDEX.md`, `maintenance/frontier-research/annotations/2026-11-05_A2_MONTH_RELATION.md`; first flagged line(s) `maintenance/frontier-research/annotations/2026-11-05_A2_MONTH_RELATION.md#L88`, `maintenance/frontier-research/annotations/2026-11-05_A2_MONTH_RELATION.md#L89`, `maintenance/frontier-research/annotations/2026-11-05_A2_MONTH_RELATION.md#L90`. See original PR for exact source line and repeated disposition; a flagged line is not automatically invalid without checking its distinct new conclusion.
+
+### Resulting contract decision
+- Original numerical delivery gate is verified independently. Original semantic >=100 new-line gate is not closed by this forward PR; no row is certified PASS by copied source-body text or source count.
+- Only Sci Render #216 has an explicit contemporaneous new-versus-inherited line breakdown sufficient to disqualify its asserted >=100 *fresh* claims under the stated strict interpretation; the remainder are NOT_CERTIFIED without a complete inclusion/exclusion acceptance ledger.
+- Original task-time observations, past PR additions, monthly owner and research source bodies remain untouched; correction is dated and forward-only.
