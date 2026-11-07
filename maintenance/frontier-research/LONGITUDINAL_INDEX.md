@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** `2026-11-06` — [Nov06 Independent A2](annotations/2026-11-06_A2_MONTH_RELATION.md); November OPEN / Stage L IN_PROGRESS / selected Oct19 source cutoff unchanged.
+- **Current maintenance relation through:** `2026-11-07` — [Nov07 Independent A2](annotations/2026-11-07_A2_MONTH_RELATION.md), exact main A2 blob `fa47410ace33a3c1652e7da7919b03ce6f4ad70e`; original Nov07 A2 `ORIGINAL_NOT_MET` (independent >=100 substantive-line gate not certified), November `OPEN`, Stage L `IN_PROGRESS`, original October 19 selected source unchanged. Previous Nov06 relation is a historical as-of source, not the current owner.
 - **Previous current month relation preserved:** [Nov05 A2](annotations/2026-11-05_A2_MONTH_RELATION.md), retained with its original source-time and historical PR metrics.
 
 ## Boundary
@@ -7204,3 +7204,10 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - Later [#211](https://github.com/lostlight530/sci-render-kit/pull/211) and [#212](https://github.com/lostlight530/sci-render-kit/pull/212) are November implementation changes, not a replay of Plotly v4.2.0 or Vega-Lite v6.5.0 release semantics.
 - Keep `November OPEN`, `2026-Q4 IN_PROGRESS`, and independent browser/runtime execution `NOT_EXECUTED`. This index Draft still provides **no** original Nov4/5 A1/A2 `>=100` credit or A2 upstream merge evidence.
 
+
+## 2026-11-08 D7 forward correction — relation pointer Nov06 → Nov07
+
+- Found on main: the opening `Current maintenance relation through` pointer remained at 2026-11-06 despite merged November 7 independent A2. This is current navigation drift, not a defect in the historical November 6 A2 text or the immutable Stage L selection.
+- Reconciled to the actual November 7 A2 blob `fa47410ace33a3c1652e7da7919b03ce6f4ad70e`; Nov07 original A1/A2 strict acceptance remains `NOT_MET`, so routing the artifact does not certify its hard-gate contract.
+- Original Stage L source cutoff (2026-10-19), monthly `OPEN`, quarterly `IN_PROGRESS`, previous pointers, GitHub delivery and cleanup histories are not revised. `MANIFEST.yaml.current_temporal_status.as_of` is a separate machine snapshot clock and was deliberately untouched.
+- D7 evidence: [2026-11-08 D7 continuity audit](../../2026-11-08-d7-operational-continuity.md). No publisher release, local runtime or scientific validation was executed by this pointer correction.
