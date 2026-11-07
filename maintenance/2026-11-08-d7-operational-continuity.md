@@ -53,3 +53,32 @@
 - NEXT_AUDIT_DEPENDENCY: D10/D14/D30 separately; natural W45 end Nov08; Stage L end 2026-Q4
 - NOT_EXECUTED_BY_THIS_D7: rendering, screenshot, spec compilation, browser accessibility, scientific replication or original Stage research, project tests
 - OPEN_PRS_AT_BASE: NONE
+
+## Audit Log minimum machine-field ledger — vNext
+
+- REPOSITORY: `lostlight530/sci-render-kit`
+- SYSTEM: Sci Render Stage L / Independent A1-A2
+- AUDIT_TYPE: D7 / OPERATIONAL_CONTINUITY
+- AUDIT_WINDOW: 2026-11-01..2026-11-07 inclusive / Asia/Shanghai
+- CUTOFF: 2026-11-07T23:59:59+08:00 (logical, not a claim of precisely timestamped original runs)
+- BASE_REVISION: exact main SHA recorded at report opening
+- FINAL_OBSERVED_REVISION: PENDING_POSTMERGE_REFRESH at Draft stage; original cold-start main documented above
+- TASKS_EXPECTED: applicable Native/Stage and six dated independent A1/A2 windows as explicitly enumerated, no invented per-day Stage native executions
+- TASKS_OBSERVED: Git current-main source pack/Stage custody plus original merged maintenance PR ledger
+- TASKS_MISSING: no missing scheduled original source/PR paths in the scoped applicable set; runnable test missingness handled independently
+- A1_COVERAGE: Six A1 merged original windows, Stage L Q4 remains LIVE_STAGE not seven new renders
+- A1_DECISIONS: Nov07 A1 original #223 74 additions strict NOT_MET; no paper source-version upgrade
+- A2_MONTH_VERSION: 2026-11 / MONTH_OPEN through 2026-11-07, not November final
+- A2_EVOLUTION_BLOCKS: Six A2 current month versions through Nov07 #224; Nov07 strict NOT_MET; one real current index pointer correction
+- REPOSITORY_EVIDENCE: exact Git tree blob identities, GitHub original PR additions and merge metadata
+- RUNNER_EVIDENCE: only prior Actions or optional smoke precisely named in report; not this D7 runtime validation
+- EXTERNAL_EVIDENCE: inherited official upstream sources in original research records, not a fresh independent TCK or publisher fetch
+- TELEMETRY_EVIDENCE: NOT_COLLECTED
+- NEW_FINDINGS: source/maintenance custody and (if documented) current owner-pointer drift, with actual minimal correction
+- COUNTEREVIDENCE: a source, documentation owner or generic deployment action is not itself effect/claim-validation evidence
+- REPEATED_PATTERNS: Rendering, artifact integrity and accessibility uncertainties recur as research boundaries; no measured repeated failure
+- UNRESOLVED: original strict-content admission and any unrun independent runtime/integration experiment
+- UNKNOWN: No native screenshot/DOM/a11y evaluation, claim binding validation or independent 100 substantive line certification
+- CURRENT_RESULT: PARTIAL / DELIVERY_CUSTODY_VERIFIED / ORIGINAL_STRICT_ACCEPTANCE_NOT_MET_OR_UNCERTIFIED
+- GOVERNANCE_CANDIDATE: only the justified current-pointer repair, not changes to original Stage research or normative standards
+- NEXT_AUDIT_DEPENDENCY: D10/D14/D30 on their own triggers, W45 after Nov08, natural November end Nov30, Stage-L final at end Q4
