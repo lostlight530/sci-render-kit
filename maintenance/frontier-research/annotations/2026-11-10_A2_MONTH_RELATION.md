@@ -124,3 +124,54 @@
 - Original A2 hard gate is this PR's ≥100 additions and ≥100 substantive review lines, not an A1 or successor count
 - Retest: exact source data, Plotly/Vega version, export profile, resulting bytes, sidecar, color/alt-text checks and provenance receipt
 - Next cycle Nov11 A1 cutoff through Nov10 must merge before Nov11 full-month A2
+
+## Rendering Stage L direct source and falsifier review for November relation
+- No new Plotly/Vega execution or pixel, SVG/HTML, sidecar or WCAG reproduction is inferred from a Nov10 maintenance date
+### Exact Stage and previous relation: maintenance/frontier-research/stage-l-2026-q4/STAGE_BRIEF.md
+- Main-sourced Git blob `96129b7b7b3ce4a9f6c7bfe5784a7fb1935bd43f`, text lines=39, first authored heading # Frontier Research Stage L — 2026-Q4 | Study brief
+- Version/provenance excerpt: # Frontier Research Stage L — 2026-Q4 | Study brief; publisher release ≠ installed renderer
+- Recorded negative/source boundary: 3. What cannot be inferred about this repository from those external records?; a missing rendered artifact cannot certify scientific equivalence
+- Reviewer judgment: Q4 stage owner is IN_PROGRESS and may be updated only under native source contract
+- Figure evidence distinction: raw data digest, export backend, Plotly/Vega version, render environment, artifact bytes and accessibility notes are independent verification targets
+- Failed alternative/unknown: no fixed-corpus equivalence assertion, pixel-identical reproduction or WCAG result is established from these source texts
+- Month delta action: advance current routing through Nov10 and preserve original 2026-10-19 selected-stage source cut / November OPEN
+### Exact Stage and previous relation: maintenance/frontier-research/stage-l-2026-q4/L1_PLOTLYJS_V412.md
+- Main-sourced Git blob `eb7b941a5d7327f2fa4543f21082102ba93bcf41`, text lines=55, first authored heading # L1 — Resize observer and responsive layout
+- Version/provenance excerpt: - Repository: 'lostlight530/sci-render-kit'; Stage 'L / 2026-Q4'; Part 'L1'; publisher release ≠ installed renderer
+- Recorded negative/source boundary: | 'O13' | 'S13', same-origin release note | Plotly.js 4.1.2 changes responsive resizing to ResizeObserver instead of window resize events and documents image-export config in schema. | Viewport and host resize events are observable parts of inte; a missing rendered artifact cannot certify scientific equivalence
+- Reviewer judgment: Plotly.js v4.1.2 selected source is not the later October v4.2.0 release; JavaScript/MathJax changes need native test before adoption
+- Figure evidence distinction: raw data digest, export backend, Plotly/Vega version, render environment, artifact bytes and accessibility notes are independent verification targets
+- Failed alternative/unknown: no fixed-corpus equivalence assertion, pixel-identical reproduction or WCAG result is established from these source texts
+- Month delta action: advance current routing through Nov10 and preserve original 2026-10-19 selected-stage source cut / November OPEN
+### Exact Stage and previous relation: maintenance/frontier-research/stage-l-2026-q4/L2_VEGALITE_V650.md
+- Main-sourced Git blob `e0e5bdf11779395531d7b1338bc2cdef6323b5b8`, text lines=55, first authored heading # L2 — Image-mark alignment correction
+- Version/provenance excerpt: - Repository: 'lostlight530/sci-render-kit'; Stage 'L / 2026-Q4'; Part 'L2'; publisher release ≠ installed renderer
+- Recorded negative/source boundary: | 'O14' | 'S14', same-origin release note | Vega-Lite 6.5.0 fixes image-mark center alignment when a secondary channel is undefined. | Compiler revision changes spatial interpretation of a declarative spec even without changed data. | 'NOT_EXECU; a missing rendered artifact cannot certify scientific equivalence
+- Reviewer judgment: Vega-Lite v6.5.0 source selection is not a browser or backend execution; generated Vega specification identity matters
+- Figure evidence distinction: raw data digest, export backend, Plotly/Vega version, render environment, artifact bytes and accessibility notes are independent verification targets
+- Failed alternative/unknown: no fixed-corpus equivalence assertion, pixel-identical reproduction or WCAG result is established from these source texts
+- Month delta action: advance current routing through Nov10 and preserve original 2026-10-19 selected-stage source cut / November OPEN
+### Exact Stage and previous relation: maintenance/frontier-research/stage-l-2026-q4/SOURCE_OBJECT_REGISTER.md
+- Main-sourced Git blob `304447c8189f7bfe7c3cf35d7176e0d93bca2ae0`, text lines=18, first authored heading # Source/Object Register — Stage L / 2026-Q4
+- Version/provenance excerpt: # Source/Object Register — Stage L / 2026-Q4; publisher release ≠ installed renderer
+- Recorded negative/source boundary: - Status: 'PARTIAL / QUARTER_OPEN'.; a missing rendered artifact cannot certify scientific equivalence
+- Reviewer judgment: source register selected Oct19 remains fixed; candidate discovery does not authorize mutation
+- Figure evidence distinction: raw data digest, export backend, Plotly/Vega version, render environment, artifact bytes and accessibility notes are independent verification targets
+- Failed alternative/unknown: no fixed-corpus equivalence assertion, pixel-identical reproduction or WCAG result is established from these source texts
+- Month delta action: advance current routing through Nov10 and preserve original 2026-10-19 selected-stage source cut / November OPEN
+### Exact Stage and previous relation: maintenance/frontier-research/annotations/2026-11-09_A2_MONTH_RELATION.md
+- Main-sourced Git blob `413e48339b56fcd63a6dd76c117b385367f9b8d2`, text lines=49, first authored heading # Independent A2 — sci-render-kit — 2026-11-09 Stage L month relations
+- Version/provenance excerpt: # Independent A2 — sci-render-kit — 2026-11-09 Stage L month relations; publisher release ≠ installed renderer
+- Recorded negative/source boundary: 8. Vega-Lite grammar and compiled Vega specification are distinct representations; a chart's visual similarity does not prove semantic equivalence.; a missing rendered artifact cannot certify scientific equivalence
+- Reviewer judgment: previous November relation A2 is immutable dated context, not new evidence of a Nov10 render
+- Figure evidence distinction: raw data digest, export backend, Plotly/Vega version, render environment, artifact bytes and accessibility notes are independent verification targets
+- Failed alternative/unknown: no fixed-corpus equivalence assertion, pixel-identical reproduction or WCAG result is established from these source texts
+- Month delta action: advance current routing through Nov10 and preserve original 2026-10-19 selected-stage source cut / November OPEN
+### Exact Stage and previous relation: maintenance/frontier-research/annotations/2026-11-10_A1_STAGE_SOURCE_CONTENT.md
+- Main-sourced Git blob `935688acf3174cdd962855c5eb9ba650511bd9db`, text lines=216, first authored heading # Nov10 A1 — sci-render-kit Stage L figure and scientific-output evidence custody
+- Version/provenance excerpt: # Nov10 A1 — sci-render-kit Stage L figure and scientific-output evidence custody; publisher release ≠ installed renderer
+- Recorded negative/source boundary: - File status vocabulary: PARTIAL, UNKNOWN; the observed words belong to the original author, not a new test outcome; a missing rendered artifact cannot certify scientific equivalence
+- Reviewer judgment: merged Nov10 A1 is source-review dependency, not a renderer CI pass
+- Figure evidence distinction: raw data digest, export backend, Plotly/Vega version, render environment, artifact bytes and accessibility notes are independent verification targets
+- Failed alternative/unknown: no fixed-corpus equivalence assertion, pixel-identical reproduction or WCAG result is established from these source texts
+- Month delta action: advance current routing through Nov10 and preserve original 2026-10-19 selected-stage source cut / November OPEN
