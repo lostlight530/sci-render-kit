@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** 2026-11-09 — [November 9 independent A2](annotations/2026-11-09_A2_MONTH_RELATION.md), exact main A2 blob `413e48339b56fcd63a6dd76c117b385367f9b8d2`; November `OPEN`, Stage L `IN_PROGRESS`, selected source cut remains `2026-10-19`. The Nov08 A2 `636d0d10b38794156ddb5d23a013a94d72b9432d` is preserved as the immediately prior dated relation; the older Nov07 pointer is historical.
+- **Current maintenance relation through:** 2026-11-10 — [November 10 independent A2](annotations/2026-11-10_A2_MONTH_RELATION.md), exact candidate source blob `92ee833aa304c9e646e39c02fe78c718d81ee668`; November `OPEN`, Stage L `IN_PROGRESS`, selected source cut `2026-10-19`. The earlier Nov09 dated relation and Git history remain preserved.
 - **Previous current month relation preserved:** [Nov05 A2](annotations/2026-11-05_A2_MONTH_RELATION.md), retained with its original source-time and historical PR metrics.
 
 ## Boundary
@@ -7212,3 +7212,11 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - Reconciled to the actual November 7 A2 blob `fa47410ace33a3c1652e7da7919b03ce6f4ad70e`; Nov07 original A1/A2 strict acceptance remains `NOT_MET`, so routing the artifact does not certify its hard-gate contract.
 - Original Stage L source cutoff (2026-10-19), monthly `OPEN`, quarterly `IN_PROGRESS`, previous pointers, GitHub delivery and cleanup histories are not revised. `MANIFEST.yaml.current_temporal_status.as_of` is a separate machine snapshot clock and was deliberately untouched.
 - D7 evidence: [2026-11-08 D7 continuity audit](../2026-11-08-d7-operational-continuity.md). No publisher release, local runtime or scientific validation was executed by this pointer correction.
+
+
+## 2026-11-10 forward pointer — current relation only
+
+- Nov10 independent original A1 merged before creation of this A2, exact input available on main at branch fork
+- Previous index object Git SHA `f55c7916f4afad51c99520436296dd8a61f264e2` is historical source-time evidence, not deleted or silently overridden as a scientific result
+- No native Plotly/Vega execution, browser export, accessibility checker, sidecar comparison or external conformance is claimed
+- Current November OPEN state and Stage L Q4 IN_PROGRESS remain unchanged by a maintenance navigation update
