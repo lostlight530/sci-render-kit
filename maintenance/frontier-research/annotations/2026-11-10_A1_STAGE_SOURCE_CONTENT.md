@@ -140,3 +140,76 @@
 - The current pointer may lag merged maintenance records; genuine pointer drift can be corrected only after A1 merge in the right owner
 - A2 fresh-read gate depends on merged source and a new SHA, not this candidate branch
 - Result: A1 source custody verified with actual graph/render execution explicitly NOT_EXECUTED
+
+## Dated renderer output/source boundary evidence re-read from original maintenance records
+- The previous A1/A2 files are dated maintenance material, NOT new Plotly/Vega renderer runs and not substitutes for verified sidecar or source corpus
+### maintenance/frontier-research/annotations/2026-11-03_A1_STAGE_SOURCE_CONTENT.md
+- Git blob `0d47ccb6eeebd392ba5dfad0bb2e5e02ce787e9a`, 144 source lines; title # 2026-11-03 A1 | Sci Render Stage L Nov 1–2 custody
+- Source-time figure/export evidence: # 2026-11-03 A1 | Sci Render Stage L Nov 1–2 custody; description is not reproduced output bytes
+- Relation judgment: prior Stage L source/version review cannot replace image-sidecar fidelity, accessibility and runner trace verification
+- Separation gate: 2026-11-03 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-03_A2_MONTH_RELATION.md
+- Git blob `1c754075e274894f04909d90778799db4397110a`, 140 source lines; title # 2026-11-03 A2 | Sci Render November month-to-date Stage relations
+- Source-time figure/export evidence: # 2026-11-03 A2 | Sci Render November month-to-date Stage relations; description is not reproduced output bytes
+- Relation judgment: prior A2 date-state pointer is a historical reconciliation, not a newly emitted figure or original current PR
+- Separation gate: 2026-11-03 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-04_A1_STAGE_SOURCE_CONTENT.md
+- Git blob `de35ec499a8baa9657ce3f3c9aeee860de6bdf6b`, 172 source lines; title # 2026-11-04 A1 | Sci Render source-content audit — Nov 01–03
+- Source-time figure/export evidence: # 2026-11-04 A1 | Sci Render source-content audit — Nov 01–03; description is not reproduced output bytes
+- Relation judgment: prior Stage L source/version review cannot replace image-sidecar fidelity, accessibility and runner trace verification
+- Separation gate: 2026-11-04 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-04_A2_MONTH_RELATION.md
+- Git blob `0b9f1384cd6a39e500b8ef00092b2d4d8070b53d`, 170 source lines; title # 2026-11-04 independent A2 — Sci Render November1–4 full month relationship
+- Source-time figure/export evidence: # 2026-11-04 independent A2 — Sci Render November1–4 full month relationship; description is not reproduced output bytes
+- Relation judgment: prior A2 date-state pointer is a historical reconciliation, not a newly emitted figure or original current PR
+- Separation gate: 2026-11-04 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-05_A1_STAGE_SOURCE_CONTENT.md
+- Git blob `d5f0f9f86e0fa9dd87878de4354d3fdeeb8265ae`, 187 source lines; title # 2026-11-05 A1 | Sci Render full Nov1–4 Stage source-content audit
+- Source-time figure/export evidence: # 2026-11-05 A1 | Sci Render full Nov1–4 Stage source-content audit; description is not reproduced output bytes
+- Relation judgment: prior Stage L source/version review cannot replace image-sidecar fidelity, accessibility and runner trace verification
+- Separation gate: 2026-11-05 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-05_A2_MONTH_RELATION.md
+- Git blob `f5adb17b7bf456d33f4df8f0675fecfbefc43e84`, 224 source lines; title # 2026-11-05 original independent A2 — Sci Render full November1–5 monthly relationship
+- Source-time figure/export evidence: # 2026-11-05 original independent A2 — Sci Render full November1–5 monthly relationship; description is not reproduced output bytes
+- Relation judgment: prior A2 date-state pointer is a historical reconciliation, not a newly emitted figure or original current PR
+- Separation gate: 2026-11-05 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-06_A1_STAGE_SOURCE_CONTENT.md
+- Git blob `9b6fbf7248a90d69287346c680015c61271d464a`, 239 source lines; title # Sci Render independent A1 — Nov1–5 2026 provenance and rendering-custody review
+- Source-time figure/export evidence: # Sci Render independent A1 — Nov1–5 2026 provenance and rendering-custody review; description is not reproduced output bytes
+- Relation judgment: prior Stage L source/version review cannot replace image-sidecar fidelity, accessibility and runner trace verification
+- Separation gate: 2026-11-06 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-06_A2_MONTH_RELATION.md
+- Git blob `45383c2987005ce02e048123a4f66361e572374c`, 193 source lines; title # Sci Render Independent A2 — Nov1–6 2026 Q4 Stage L month and render provenance
+- Source-time figure/export evidence: # Sci Render Independent A2 — Nov1–6 2026 Q4 Stage L month and render provenance; description is not reproduced output bytes
+- Relation judgment: prior A2 date-state pointer is a historical reconciliation, not a newly emitted figure or original current PR
+- Separation gate: 2026-11-06 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-07_A1_STAGE_SOURCE_CONTENT.md
+- Git blob `526c5c6123fbfd6b3f422e749f06615b36547ed1`, 75 source lines; title # Independent Stage L A1 source review — sci-render-kit — 2026-11-07
+- Source-time figure/export evidence: # Independent Stage L A1 source review — sci-render-kit — 2026-11-07; description is not reproduced output bytes
+- Relation judgment: prior Stage L source/version review cannot replace image-sidecar fidelity, accessibility and runner trace verification
+- Separation gate: 2026-11-07 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-07_A2_MONTH_RELATION.md
+- Git blob `fa47410ace33a3c1652e7da7919b03ce6f4ad70e`, 75 source lines; title # Independent A2 — sci-render-kit — 2026-11-07 full current November relations
+- Source-time figure/export evidence: # Independent A2 — sci-render-kit — 2026-11-07 full current November relations; description is not reproduced output bytes
+- Relation judgment: prior A2 date-state pointer is a historical reconciliation, not a newly emitted figure or original current PR
+- Separation gate: 2026-11-07 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-08_A1_STAGE_SOURCE_CONTENT.md
+- Git blob `c35c1f6cecba7620a9875ff2b86950ec27a4441e`, 64 source lines; title # Independent A1 — sci-render-kit Nov01–07 source-quality custody
+- Source-time figure/export evidence: # Independent A1 — sci-render-kit Nov01–07 source-quality custody; description is not reproduced output bytes
+- Relation judgment: prior Stage L source/version review cannot replace image-sidecar fidelity, accessibility and runner trace verification
+- Separation gate: 2026-11-08 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-08_A2_MONTH_RELATION.md
+- Git blob `636d0d10b38794156ddb5d23a013a94d72b9432d`, 58 source lines; title # Independent A2 — sci-render-kit — 2026-11-08 November current relation
+- Source-time figure/export evidence: # Independent A2 — sci-render-kit — 2026-11-08 November current relation; description is not reproduced output bytes
+- Relation judgment: prior A2 date-state pointer is a historical reconciliation, not a newly emitted figure or original current PR
+- Separation gate: 2026-11-08 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-09_A1_STAGE_SOURCE_CONTENT.md
+- Git blob `469fe5c7d5f304020597beed460ba8a902eee7ad`, 52 source lines; title # Independent A1 — sci-render-kit — 2026-11-09 Stage L source custody
+- Source-time figure/export evidence: # Independent A1 — sci-render-kit — 2026-11-09 Stage L source custody; description is not reproduced output bytes
+- Relation judgment: prior Stage L source/version review cannot replace image-sidecar fidelity, accessibility and runner trace verification
+- Separation gate: 2026-11-09 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
+### maintenance/frontier-research/annotations/2026-11-09_A2_MONTH_RELATION.md
+- Git blob `413e48339b56fcd63a6dd76c117b385367f9b8d2`, 49 source lines; title # Independent A2 — sci-render-kit — 2026-11-09 Stage L month relations
+- Source-time figure/export evidence: # Independent A2 — sci-render-kit — 2026-11-09 Stage L month relations; description is not reproduced output bytes
+- Relation judgment: prior A2 date-state pointer is a historical reconciliation, not a newly emitted figure or original current PR
+- Separation gate: 2026-11-09 source version, renderer config, output artifact digest and checked current-main pointer must remain individually attributable
