@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** 2026-11-10 — [November 10 independent A2](annotations/2026-11-10_A2_MONTH_RELATION.md), exact candidate source blob `92ee833aa304c9e646e39c02fe78c718d81ee668`; November `OPEN`, Stage L `IN_PROGRESS`, selected source cut `2026-10-19`. The earlier Nov09 dated relation and Git history remain preserved.
+- **Current maintenance relation through:** 2026-11-11 — [Nov11 independent original A2](annotations/2026-11-11_A2_MONTH_RELATION.md), exact source blob `d6efab2e3d671151c878b2a762c2fb661c0e5736`; November `OPEN`, Stage L `IN_PROGRESS`, selected Oct19 O13 Plotly/O14 Vega source, no executed browser/render/AT tests. Prior [Nov10 A2](annotations/2026-11-10_A2_MONTH_RELATION.md) retained.
 - **Previous current month relation preserved:** [Nov05 A2](annotations/2026-11-05_A2_MONTH_RELATION.md), retained with its original source-time and historical PR metrics.
 
 ## Boundary
