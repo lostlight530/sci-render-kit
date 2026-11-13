@@ -60,6 +60,12 @@ For executable or machine-contract changes:
 
 Backend source presence is not evidence that a backend runtime is installed or semantically equivalent to another backend.
 
+### 阶段图表与研究证据验收 / Stage figures and research evidence review
+
+图形输出必须能追溯到具体源、配方、执行环境、确定的运行输出和人工解释；区别所用配色／辅助标识、渲染正确性、统计误差表达与科研结论；不能把自动生成 PNG、SVG、SARIF 或发行 DOI 当成科学验证；检查未运行就记录 NOT_EXECUTED，历史阶段数据按原日期保留
+
+Figure output must trace to source, recipe, environment, concrete run artifact and human interpretation. Distinguish visual styling and auxiliary cues, rendering correctness, uncertainty semantics and scientific conclusions. PNG/SVG/SARIF generation or release DOI is not scientific validation. Record unrun checks as NOT_EXECUTED and preserve historical stage cutoffs
+
 ## Verification
 
 Run tests, rendering checks, schema/profile validation, accessibility checks, or external tools relevant to the changed surface and supported by the environment. Record exact commands and observed results.

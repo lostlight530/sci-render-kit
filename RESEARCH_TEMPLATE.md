@@ -86,6 +86,11 @@ State one question that can be contradicted by evidence
 - 中文：新研究记录需注明输入数据 ID、配方／schema、渲染后端与版本、Git revision、实际执行命令与结果、输出图表哈希及 evidence sidecar、反例／未测状态和阶段覆盖时间；软件 concept DOI 不能替代具体版本 DOI 或一次渲染执行收据
 - English: A new record names input-data ID, recipe/schema, rendering backend and version, Git revision, executed command/result, output digest and evidence sidecar, counterexamples/untested states and reporting window; a software concept DOI cannot substitute for a specific version DOI or rendering receipt
 
+### 图形与长期状态引用 / Figure and longitudinal status identity
+
+- **中文**：记录数据及 recipe 版本、source Git SHA、renderer/backend、Figure Evidence、uncertainty／accessibility sidecar、实际 audit 状态、失败与未测内容、显示周期与统计分母；concept DOI、version DOI、图像摘要和验证收据各代表不同身份
+- **English**: Record dataset/recipe versions, source Git SHA, renderer/backend, Figure Evidence, uncertainty/accessibility sidecars, actual audit outcome, failures/untested scope, display window and denominator. Concept DOI, version DOI, figure digest and verification receipt have different identities
+
 ## Evidence or source basis / 证据基础
 
 For each material source or input record identity, authority, time, supported proposition, limitation, and independence where relevant

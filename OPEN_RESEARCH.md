@@ -108,6 +108,12 @@ These support open research; they do not establish scientific validity.
 
 **English**: Every longitudinal visual claim should trace to input data, recipe, backend, run receipt, figure-evidence sidecar, reporting window and counterexamples. Counts of generated figures or display coverage are not raw scientific outcomes. Releases, Zenodo DOIs, image exports and third-party publication are different identities and do not replace independent scientific interpretation, human accessibility review or publisher certification
 
+### Figure evidence, stage metrics and archive identity / 图形证据、阶段数据与归档身份
+
+**中文**：图形产物的工程状态、研究解释、长期追踪统计与软件出版元数据互不继承；阶段展示应标注输入与配方修订、执行环境、数据来源、Figure Evidence／Audit 结果、时间窗口和原始／聚合口径；CITATION、CodeMeta 或 DOI 仅作为软件定位与版本引用，不能认证图形表达、科研效度或外部使用情况
+
+**English**: Figure engineering status, research interpretation, longitudinal metrics and software publication metadata do not inherit authority from one another. A stage view identifies source and recipe revisions, environment, data origin, Figure Evidence/audit outcome, observation window and raw/aggregate denominator. CFF, CodeMeta or DOI identify and cite software; they cannot certify figure semantics, science or third-party adoption
+
 ## Scholarly metadata discipline
 
 Preserve Canonical Type, One-line Positioning, Primary Domains, Non-goals, accurate structured subjects where supported, and 5–7 defining keywords before future metadata publication. Do not rewrite precise scientific-software descriptions for classifier optimization or keyword stuffing.

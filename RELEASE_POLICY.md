@@ -54,6 +54,12 @@ Use the version DOI for this exact checkpoint and the concept DOI for the softwa
 
 **English**: Historical tags, archived version DOIs and release-specific citation fields retain their original publication identity. Concept DOI `10.5281/zenodo.22791375` identifies the Sci Render software family; reproducibility requires the relevant version DOI, commit, input data, recipe, backend version and artifact receipt. Figure publication, research-stage closure and scientific validity are different events; a software archive or rendered image does not certify validation
 
+### 不变归档与持续图形工作 / Fixed releases and evolving figure work
+
+**中文**：当前 `main` 可以持续增加配方、渲染后端与图形证据，但已公开 Git tag 与 Zenodo version DOI 所对应的软件归档不追溯变化；concept DOI `10.5281/zenodo.22791375` 代表整个软件家族而非每次最新构建；重现图形时需引用确切 Git SHA、recipe、数据、backend/runtime、产物哈希与实际审查结果，不能以 DOI 或 README 声称已经完成无障碍、出版商或科研验证
+
+**English**: `main` may evolve recipes, rendering backends and evidence, but published tags and their Zenodo version DOIs remain fixed archives. Concept DOI `10.5281/zenodo.22791375` names the software family rather than the latest working build. Figure reproduction requires exact Git SHA, recipe, data, backend/runtime, artifact digest and executed reviews. DOI or README text alone cannot establish accessibility, publisher acceptance or scientific verification
+
 ## Open-science reuse and research records
 
 - Cite the software family through [CITATION.cff](CITATION.cff) or [CodeMeta](codemeta.json); cite the version DOI above when a result depends on this checkpoint.
