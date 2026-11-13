@@ -345,6 +345,18 @@ Internal profile IDs are unversioned, but factual runtime versions remain eviden
 - ggplot2 manifest records installed ggplot2 and R versions
 - Observable defaults to a pinned `@observablehq/plot` 0.6.17 CDN ESM import at view time; `--offline-assets` optionally copies caller-supplied D3 and Plot UMD bytes beside HTML, recording local SHA-256 without asserting upstream version authenticity or browser conformance
 
+### 研究阶段、出版与可视化证据身份 / Research stage, publication and visual-evidence identity
+
+**中文**：本仓是科学图形生成与证据交流工具，不是科学正确性认证服务；复现应固定数据集／配方／源修订、渲染后端和实际版本、输出产物、evidence sidecar 与执行环境；独立的 Daily／Weekly／Monthly 阶段研究不得根据图形已生成就推断研究完成；当前 `main` 会持续演进，已发行 GitHub tag 与 Zenodo version DOI 冻结各自软件版本；concept DOI `10.5281/zenodo.22791375` 只标识软件家族，不是现时源代码或任一图像生成运行的证明
+
+**English**: This project compiles scientific figures and traceable communication evidence; it does not certify scientific correctness. Reproduction pins dataset, recipe, source revision, renderer backend and actual version, output artifacts, evidence sidecars and execution environment. Daily/Weekly/Monthly research stages are not completed merely because a figure was rendered. Live `main` evolves, while released tags and Zenodo version DOIs identify frozen software versions. Concept DOI `10.5281/zenodo.22791375` identifies the software family, not current source bytes or a particular rendering run
+
+### Stage display and provenance contract / 长期阶段数据与图形证据
+
+**中文**：Recipe、输入数据集、renderer/backend 版本、figure artifact、uncertainty/a11y 辅助数据、Figure Evidence、communication audit 和人工研究结论是不同对象；长期阶段展示必须保留源输入修订、recipe 与后端身份、生成时间、实际检查、缺口与失败，以及图像旁可回溯的证据；导出成功、界面可视化或 WCAG 风格检查不自动证明图形科研正确性及无障碍合规
+
+**English**: Recipes, input datasets, renderer/backend versions, figure artifacts, uncertainty/accessibility sidecars, Figure Evidence, communication audits and human scientific conclusions are distinct objects. Longitudinal views should retain source/input revision, recipe/backend identity, generation time, actually executed checks, gaps/failures and traceable evidence for every figure. Rendering success, visualization and a style check do not certify scientific correctness or WCAG conformance
+
 ## Reproducibility
 
 - **R0 Traceable** — artifact/source identity located

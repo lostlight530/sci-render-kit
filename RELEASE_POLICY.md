@@ -48,6 +48,18 @@ The fourth archived version is [v2026.10-fourteen-day-evidence-checkpoint](https
 
 Use the version DOI for this exact checkpoint and the concept DOI for the software family. `CITATION.cff` and CodeMeta retain the family identifier and recorded September 16 baseline date. Later changes to `main` belong to subsequent repository state; the checkpoint tag remains unchanged.
 
+### 软件版本与图表数据身份 / Software-version and figure-data identities
+
+**中文**：历史 GitHub tag、归档版本 DOI 及引用文件中明确固定的发布信息，保留其原始发行身份；concept DOI `10.5281/zenodo.22791375` 标识 Sci Render 软件版本家族，具体复现应引用相应 version DOI、commit、输入数据、配方、后端版本与产物回执；图表发布、科研阶段闭环与科学有效性是不同事件，不能仅凭软件归档或图片输出声称已验证
+
+**English**: Historical tags, archived version DOIs and release-specific citation fields retain their original publication identity. Concept DOI `10.5281/zenodo.22791375` identifies the Sci Render software family; reproducibility requires the relevant version DOI, commit, input data, recipe, backend version and artifact receipt. Figure publication, research-stage closure and scientific validity are different events; a software archive or rendered image does not certify validation
+
+### 不变归档与持续图形工作 / Fixed releases and evolving figure work
+
+**中文**：当前 `main` 可以持续增加配方、渲染后端与图形证据，但已公开 Git tag 与 Zenodo version DOI 所对应的软件归档不追溯变化；concept DOI `10.5281/zenodo.22791375` 代表整个软件家族而非每次最新构建；重现图形时需引用确切 Git SHA、recipe、数据、backend/runtime、产物哈希与实际审查结果，不能以 DOI 或 README 声称已经完成无障碍、出版商或科研验证
+
+**English**: `main` may evolve recipes, rendering backends and evidence, but published tags and their Zenodo version DOIs remain fixed archives. Concept DOI `10.5281/zenodo.22791375` names the software family rather than the latest working build. Figure reproduction requires exact Git SHA, recipe, data, backend/runtime, artifact digest and executed reviews. DOI or README text alone cannot establish accessibility, publisher acceptance or scientific verification
+
 ## Open-science reuse and research records
 
 - Cite the software family through [CITATION.cff](CITATION.cff) or [CodeMeta](codemeta.json); cite the version DOI above when a result depends on this checkpoint.
