@@ -48,6 +48,12 @@ The fourth archived version is [v2026.10-fourteen-day-evidence-checkpoint](https
 
 Use the version DOI for this exact checkpoint and the concept DOI for the software family. `CITATION.cff` and CodeMeta retain the family identifier and recorded September 16 baseline date. Later changes to `main` belong to subsequent repository state; the checkpoint tag remains unchanged.
 
+### 软件版本与图表数据身份 / Software-version and figure-data identities
+
+**中文**：历史 GitHub tag、归档版本 DOI 及引用文件中明确固定的发布信息，保留其原始发行身份；concept DOI `10.5281/zenodo.22791375` 标识 Sci Render 软件版本家族，具体复现应引用相应 version DOI、commit、输入数据、配方、后端版本与产物回执；图表发布、科研阶段闭环与科学有效性是不同事件，不能仅凭软件归档或图片输出声称已验证
+
+**English**: Historical tags, archived version DOIs and release-specific citation fields retain their original publication identity. Concept DOI `10.5281/zenodo.22791375` identifies the Sci Render software family; reproducibility requires the relevant version DOI, commit, input data, recipe, backend version and artifact receipt. Figure publication, research-stage closure and scientific validity are different events; a software archive or rendered image does not certify validation
+
 ## Open-science reuse and research records
 
 - Cite the software family through [CITATION.cff](CITATION.cff) or [CodeMeta](codemeta.json); cite the version DOI above when a result depends on this checkpoint.

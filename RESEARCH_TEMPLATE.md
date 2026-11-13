@@ -7,7 +7,7 @@ Scope: new research records only; durable open-research method is owned by `OPEN
 
 English is the canonical/default language of this template. Chinese labels and guidance are provided for accessibility. If bilingual wording diverges, the English instruction governs; repository-native contracts remain authoritative over this template.
 
-英文为本模板的默认与规范语言；中文标签与说明用于辅助理解。若双语表述出现差异，以英文说明为准；仓库原生 contract 对本模板始终具有更高权威。
+英文为本模板的默认与规范语言；中文标签与说明用于辅助理解；若双语表述出现差异，以英文说明为准；仓库原生 contract 对本模板始终具有更高权威；
 
 Historical records are not rewritten by this template
 
@@ -80,6 +80,11 @@ State one question that can be contradicted by evidence
 - Proposed explanation:
 - Support condition:
 - Falsifier:
+
+### 图表身份与阶段来源 / Figure and stage source identities
+
+- 中文：新研究记录需注明输入数据 ID、配方／schema、渲染后端与版本、Git revision、实际执行命令与结果、输出图表哈希及 evidence sidecar、反例／未测状态和阶段覆盖时间；软件 concept DOI 不能替代具体版本 DOI 或一次渲染执行收据
+- English: A new record names input-data ID, recipe/schema, rendering backend and version, Git revision, executed command/result, output digest and evidence sidecar, counterexamples/untested states and reporting window; a software concept DOI cannot substitute for a specific version DOI or rendering receipt
 
 ## Evidence or source basis / 证据基础
 
