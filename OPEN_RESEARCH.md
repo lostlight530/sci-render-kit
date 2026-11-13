@@ -7,7 +7,7 @@ Scope: repository-level research positioning, independent research-production me
 
 English is the canonical and default language for this open-research contract. Chinese text is provided as an accessibility and interpretation aid. If wording diverges, the English normative text governs; repository evidence and current owning contracts remain authoritative over both.
 
-英文是本开放科研契约的默认与规范语言；中文用于辅助理解与可访问性。若中英文表述有差异，以英文规范文本为准；仓库事实与当前 owning contract 的权威仍高于任何翻译。
+英文是本开放科研契约的默认与规范语言；中文用于辅助理解与可访问性；若中英文表述有差异，以英文规范文本为准；仓库事实与当前 owning contract 的权威仍高于任何翻译；
 
 ## Authority
 
@@ -102,6 +102,12 @@ Unknown or unexecuted states stay explicit.
 
 These support open research; they do not establish scientific validity.
 
+### 可追踪图表与长期阶段展示 / Traceable figures and longitudinal stage displays
+
+**中文**：每项长期可视化结论须能回溯到输入数据、配方、后端、运行收据、图表 evidence sidecar、时间窗口和反例；公开摘要中的覆盖率／图表数不得冒充原始实验结果；软件 release、Zenodo DOI、图片导出和第三方平台展示属于不同身份，不能替代独立科学解释、可访问性人工检查或外部规范认证
+
+**English**: Every longitudinal visual claim should trace to input data, recipe, backend, run receipt, figure-evidence sidecar, reporting window and counterexamples. Counts of generated figures or display coverage are not raw scientific outcomes. Releases, Zenodo DOIs, image exports and third-party publication are different identities and do not replace independent scientific interpretation, human accessibility review or publisher certification
+
 ## Scholarly metadata discipline
 
 Preserve Canonical Type, One-line Positioning, Primary Domains, Non-goals, accurate structured subjects where supported, and 5–7 defining keywords before future metadata publication. Do not rewrite precise scientific-software descriptions for classifier optimization or keyword stuffing.
@@ -158,8 +164,8 @@ external indexing != repository self-definition
 
 ## 中文摘要
 
-本文件定义 Sci Render Kit 的长期开放科研方法，并与工程实现、figure/communication contract、maintenance 和历史记录分层。共同科研骨架要求研究问题、可证伪假设、数据/来源身份、固定 figure/recipe/backend 身份、实际执行程序、原始观测、反例或误导性解释检查、有界结论、研究增量与复验条件。
+本文件定义 Sci Render Kit 的长期开放科研方法，并与工程实现、figure/communication contract、maintenance 和历史记录分层；共同科研骨架要求研究问题、可证伪假设、数据/来源身份、固定 figure/recipe/backend 身份、实际执行程序、原始观测、反例或误导性解释检查、有界结论、研究增量与复验条件；
 
-render success、claim binding、uncertainty metadata、accessibility check、publisher profile 都只能支持其实际检查到的属性，不能自动升级为科学真值、统计验证、认证或期刊接收。
+render success、claim binding、uncertainty metadata、accessibility check、publisher profile 都只能支持其实际检查到的属性，不能自动升级为科学真值、统计验证、认证或期刊接收；
 
-未来 scholarly metadata 以准确定位、少量高质量 subjects 与 5–7 个定义性 keywords 为主；外部分类漂移只有在 upstream metadata 确有歧义时才修 owning layer，否则记录 classifier noise。
+未来 scholarly metadata 以准确定位、少量高质量 subjects 与 5–7 个定义性 keywords 为主；外部分类漂移只有在 upstream metadata 确有歧义时才修 owning layer，否则记录 classifier noise；

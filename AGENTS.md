@@ -4,6 +4,12 @@ This is the operational contract for agents modifying the repository.
 
 Keep runtime code, schemas, profiles, evidence sidecars, maintenance control, current documentation, and historical-document status semantically aligned without turning agent narrative into renderer or scientific truth.
 
+### Agent、渲染与证据责任 / Agent, rendering and evidence ownership
+
+**中文**：Agent 可以提出图表配方、可访问性或出版配置修改，但真实能力由渲染器实现、schema、测试、`MANIFEST.yaml` 以及可复核的图表证据共同限定；生成一个看似正确的图像不代表不确定性解释、期刊规范或科学结论已经独立验证；历史 Jules 记录及后来生产者的结果保留各自身份
+
+**English**: Agents may propose recipes, accessibility and publication changes, but actual semantics are constrained by renderer implementation, schemas, tests, `MANIFEST.yaml` and inspectable figure evidence. A plausible figure does not independently validate uncertainty interpretation, publisher compliance or scientific claims. Historical Jules records and later producers retain separate identities
+
 ## Document authority
 
 Read `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` before broad documentation or governance maintenance.

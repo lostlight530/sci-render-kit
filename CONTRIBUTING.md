@@ -21,6 +21,12 @@ Keep a change with the layer that owns it:
 
 Use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to distinguish current contracts from dated/historical records.
 
+### 长期数据与图表版本关联 / Longitudinal source and figure version linkage
+
+**中文**：提交配方、后端或图表 evidence sidecar 的修改，应保留输入数据 ID、源 commit、配方与渲染器版本、环境、出版目标、审查命令与实际结果，以及语义正确性尚未验证的部分；固定发行的版本 DOI 不自动标识当前 `main` 的图表；科研阶段展示必须明确 raw／derived 与冻结归档对象的区别
+
+**English**: Recipe, backend or figure-evidence changes should retain input identity, source commit, recipe and renderer versions, environment, publisher target, actual check command/results and remaining semantic unknowns. A frozen version DOI does not identify figures built from current `main`; stage presentations distinguish raw inputs, derived graphics and archived software objects
+
 ## Scientific communication integrity
 
 Keep these boundaries explicit:
