@@ -216,3 +216,11 @@ The implementation added by merged PR [#163](https://github.com/lostlight530/sci
 - Validation runs before transfer-coverage calculation, and the input sidecar is not mutated
 
 This is structural input validation only. It does not validate the scientific meaning or sufficiency of copied content, and does not upgrade source authority, entailment, statistical validity, peer review, publisher acceptance, accessibility conformance, or independent reproduction. The implementation's existing PR #163 `local-tool-contract` workflow passed; this dated contract reconciliation does not claim a new local test execution.
+
+## Fail-closed shape validation versus inherited scientific status
+
+`core/communication_transfer.py::_load_json` requires source profile `sci-render-kit/figure-evidence`. It rejects supplied non-object nested sections for claim communication, upstream research, uncertainty, process disclosure, communication audit, runtime validation and reproducibility; if `claim_communication.bindings` is supplied it must be an array of objects. Missing/null sections preserve unreported state.
+
+A valid transfer copies claim references/bindings and structured upstream, uncertainty, disclosure, audit and validation fields. `source_figure_evidence.file_sha256` hashes the local figure-evidence sidecar bytes; it is not a signature of the original data, source proposition, publisher or human reviewer. `destination` and `purpose` are caller-supplied, not evidence that a downstream organization accepted the object.
+
+**Counterexample:** a source sidecar declares `uncertainty.kind` and supplies reproducibility metadata, but contains no raw measurement validation or independent reproduction. The transfer may truthfully report both fields as present. It must not inherit statistical validity, R3 reproduction, accessibility conformance, peer review or publisher acceptance.
