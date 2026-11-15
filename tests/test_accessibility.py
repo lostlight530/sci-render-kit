@@ -7,9 +7,12 @@ claim whole-document WCAG conformance and are not GitHub merge policy.
 
 from __future__ import annotations
 
+import json
 import os
+import tempfile
 import sys
 import unittest
+from pathlib import Path
 
 import yaml
 
@@ -21,8 +24,9 @@ from core.accessibility import (
     distinct_style_signatures,
     missing_required_non_color_cues,
     resolve_series_styles,
+    write_accessibility_manifest,
 )
-from sci_render import evaluate_pre_render_rules, load_yaml
+from sci_render import _update_render_manifest, evaluate_pre_render_rules, load_yaml
 
 
 class TestAccessibilityContract(unittest.TestCase):
@@ -244,6 +248,44 @@ class TestAccessibilityContract(unittest.TestCase):
         self.assertIn("redundant-series-style", BACKEND_ACCESSIBILITY_CAPABILITIES["matplotlib"])
         self.assertNotIn("redundant-series-style", BACKEND_ACCESSIBILITY_CAPABILITIES["ggplot2"])
         self.assertNotIn("redundant-series-style", BACKEND_ACCESSIBILITY_CAPABILITIES["observable"])
+
+
+    def test_accessibility_sidecar_does_not_clobber_legacy_staging_symlink(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            output_path = root / "chart.png"
+            unrelated = root / "unrelated-input.txt"
+            unrelated.write_text("PRESERVE", encoding="utf-8")
+            legacy_staging = output_path.with_suffix(".a11y.json").with_suffix(".a11y.json.tmp")
+            try:
+                legacy_staging.symlink_to(unrelated)
+            except (OSError, NotImplementedError) as exc:
+                self.skipTest(f"symbolic links unavailable: {exc}")
+
+            sidecar = write_accessibility_manifest(output_path, {"profile": PROFILE})
+            self.assertEqual(unrelated.read_text(encoding="utf-8"), "PRESERVE")
+            self.assertTrue(legacy_staging.is_symlink())
+            self.assertEqual(json.loads(sidecar.read_text(encoding="utf-8"))["profile"], PROFILE)
+
+    def test_render_manifest_update_does_not_clobber_legacy_staging_symlink(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            manifest_path = root / "chart.manifest.json"
+            manifest_path.write_text(json.dumps({"profile": "sci-render-kit/render-manifest"}), encoding="utf-8")
+            unrelated = root / "unrelated-input.txt"
+            unrelated.write_text("PRESERVE", encoding="utf-8")
+            legacy_staging = manifest_path.with_suffix(".manifest.json.tmp")
+            try:
+                legacy_staging.symlink_to(unrelated)
+            except (OSError, NotImplementedError) as exc:
+                self.skipTest(f"symbolic links unavailable: {exc}")
+
+            _update_render_manifest(manifest_path, root / "chart.evidence.json", [])
+            self.assertEqual(unrelated.read_text(encoding="utf-8"), "PRESERVE")
+            self.assertTrue(legacy_staging.is_symlink())
+            updated = json.loads(manifest_path.read_text(encoding="utf-8"))
+            self.assertEqual(updated["runtime_validation"]["status"], "passed")
+            self.assertEqual(updated["figure_evidence"]["sidecar"], "chart.evidence.json")
 
 
 if __name__ == "__main__":
