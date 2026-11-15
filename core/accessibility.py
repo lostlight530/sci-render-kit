@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import os
+import tempfile
 from pathlib import Path
 from typing import Dict, Iterable, List
 
@@ -158,7 +159,19 @@ def build_accessibility_manifest(recipe: dict, palette: List[str]) -> dict:
 def write_accessibility_manifest(output_path: Path, manifest: dict) -> Path:
     path = output_path.with_suffix(".a11y.json")
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".a11y.json.tmp")
-    tmp.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    os.replace(tmp, path)
+    staged = None
+    try:
+        # Exclusive, same-directory staging prevents collision with an existing
+        # fixed .tmp file or symlink to an unrelated input.
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=path.parent,
+            prefix=f".{path.name}.", suffix=".tmp", delete=False,
+        ) as handle:
+            staged = Path(handle.name)
+            json.dump(manifest, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+        os.replace(staged, path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
     return path
