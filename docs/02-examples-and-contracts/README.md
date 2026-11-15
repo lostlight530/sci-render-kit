@@ -61,6 +61,12 @@ render completed != scientific claim valid
 
 Unknown publisher/review/backend/accessibility/validation state remains unknown unless directly observed at the relevant surface.
 
+### [FIGURE_COMMUNICATION_NEGATIVE_CASES.md](./FIGURE_COMMUNICATION_NEGATIVE_CASES.md)
+
+Source-grounded counterexamples for metadata-only figure bindings, opaque upstream references, statistical uncertainty and the limits of communication transfer
+
+**This is a durable research-method casebook, not an executed test log or historical maintenance account**
+
 ## Cross-repository role
 
 In the research-infrastructure chain:
