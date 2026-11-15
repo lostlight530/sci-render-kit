@@ -399,3 +399,11 @@ Local/manual checks may be used when useful
 GitHub Actions, CI, CodeQL, dependency bots, branch protection, and merge gates remain outside repository architecture
 
 Test execution is not the completion criterion for this stage-close reconciliation
+
+## Contract-owned negative test for visual communication claims
+
+A bounded figure claim requires evidence that survives five independent questions: (1) is there a declared recipe-to-claim binding, (2) is the referenced evidence/source identity resolvable, (3) does the source support the exact proposition and uncertainty semantics, (4) does the rendered visual correctly encode the relevant data, and (5) has any relevant publisher/accessibility or reproduction requirement actually been checked? The repository's `claim_binding_audit` answers principally the first, with narrow local reference-existence handling; it cannot answer all five.
+
+**Falsification design:** construct two recipes sharing a plot and visible data while giving one a `supports` link to an unrelated claim. Source inspection predicts that structural declaration checks cannot prove the unrelated proposition false or true; a scientific reviewer must inspect evidence and semantics outside this auditor. A renderer success would likewise be insufficient to infer acceptance by a publisher.
+
+Do not upgrade downstream `communication-transfer` metadata because its source `figure-evidence` file has a digest or its audit counters are nonempty. Truth, entailment, statistical correctness, external peer review and accessibility certification remain independent evidence obligations. No new rendering/validator execution is claimed by this amendment.

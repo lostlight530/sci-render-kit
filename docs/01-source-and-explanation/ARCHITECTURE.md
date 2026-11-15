@@ -430,3 +430,13 @@ Calendar-month close != reproduction
 ```
 
 GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, and merge-gate architecture remain outside the repository design
+
+## Exact evidence planes behind one scientific figure
+
+The code distinguishes `core/claim_binding_audit.py` (consistency of **declared** visual-claim relationships), `core/figure_evidence.py` (figure, recipe, upstream references, runtime-quality and audit sidecars), and `core/communication_transfer.py` (bounded downstream handoff). A render may complete while the source proposition is false, the uncertainty interval is statistically invalid, or the publication profile has not been independently accepted.
+
+The claim-binding audit does not inspect rendered pixels or prove that a glyph, axis scale, legend or plotted value supports an upstream research proposition. It validates specific recipe metadata; a `supports` relation is a user declaration. Its remote references are opaque and are not dereferenced by the audit.
+
+The two distinct evidence planes—`sci-render-kit/runtime-quality` and `sci-render-kit/figure-claim-audit`—must not be collapsed. The first concerns repository-owned visual/artifact/publisher predicates under exact conditions; the second concerns field/binding structural consistency. Neither alone establishes external scientific entailment, accessibility certification or publisher acceptance.
+
+**Counterexample:** a syntactically valid recipe associates a `supports` binding with an unrelated publication URL and produces a technically successful image. The resulting metadata can pass a structural check while the scientific claim remains unsupported. A higher scientific-status statement requires separate inspection of source content, measurement/uncertainty and figure semantics. This passage is code-path analysis, not newly executed rendering evidence.

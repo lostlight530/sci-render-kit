@@ -197,3 +197,11 @@ Human review != peer review
 Figure evidence != scientific verification
 Calendar-month close != reproduction
 ```
+
+## The denominator of coverage is not a denominator of truth
+
+`claim_communication_coverage` counts figure-level claim IDs, valid declared bindings, distinct visual references, bound claims, evidence-ref-bearing bindings, and support bindings with any upstream-context string. Those fields are a **coverage inventory**. An upstream-context string may be an opaque, unverified URL or unresolved local pointer; `supports_with_evidence_context_count` is not the count of scientifically demonstrated support relationships.
+
+A useful audit report retains `(declared visual_ref, claim_ref, relation, reference_resolution, upstream claim/audit identity, rendering output, independent source assessment)` as separate fields. Increasing `valid_binding_count` without checking the underlying source can raise metadata coverage while leaving evidence quality unchanged.
+
+Example: if every declared figure claim has a binding but all evidence references are unresolvable, the structural binding ratio may be complete while source sufficiency remains unknown. No aggregate probability or scientific-quality score is computed by the code, and the ratio must not be interpreted as a confidence percentage.

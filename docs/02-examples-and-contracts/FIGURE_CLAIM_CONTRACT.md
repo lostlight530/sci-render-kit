@@ -249,3 +249,11 @@ The repository borrows those structural lessons only; it does not claim provenan
 ## Core rule
 
 > Preserve what the figure declares it communicates, the basis of those declarations, and the coverage of the communication record, without silently upgrading any of them into truth
+
+## Relation labels and visual evidence do not imply entailment
+
+`core/claim_binding_audit.py` permits `supports`, `illustrates`, `contextualizes`, `compares` and `derived-from`, but these are declared relation types. A binding is structurally usable when a `visual_ref`, at least one `claim_ref`, and a permitted relation are present. This does not guarantee that a rendered panel actually exists as described or that the panel entails the claim.
+
+`_reference_state` reports a URI with a scheme as `opaque-uri-not-dereferenced`; a local file is classified by path existence; all other references remain unresolved. The audit does not fetch a web page or inspect its data. `supports_with_evidence_context` can count a support relation merely because an upstream evidence/claim-audit/provenance reference string was supplied. The count is **metadata-context coverage**, not validation of the referenced evidence.
+
+**Negative case:** a recipe binds one plotted visual to two competing claims and supplies a remote evidence URL. The audit can record the binding and reference presence, but cannot resolve the contradiction or prove either claim. Preserve that unresolved state and require a separate claim-specific evidence review; do not relabel the figure as a scientific proof.

@@ -61,6 +61,10 @@ render completed != scientific claim valid
 
 Unknown publisher/review/backend/accessibility/validation state remains unknown unless directly observed at the relevant surface.
 
+### [FIGURE_CLAIM_NEGATIVE_CASES.md](./FIGURE_CLAIM_NEGATIVE_CASES.md)
+
+A source-derived suite of bounded negative cases for this repository's **own** evidence objects, with exact implementation owners, falsification inputs, excluded claims, and `NOT_EXECUTED` status, it does not change runtime behavior or inherit scientific validity
+
 ## Cross-repository role
 
 In the research-infrastructure chain:
