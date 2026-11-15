@@ -18,6 +18,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
@@ -410,9 +411,20 @@ def _update_render_manifest(manifest_path: Path, evidence_path: Path, findings: 
         "profile": "sci-render-kit/figure-evidence",
         "sidecar": evidence_path.name,
     }
-    temp = manifest_path.with_suffix(".manifest.json.tmp")
-    temp.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    os.replace(temp, manifest_path)
+    staged = None
+    try:
+        # Do not clobber a pre-existing fixed .tmp file or follow its symlink.
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=manifest_path.parent,
+            prefix=f".{manifest_path.name}.", suffix=".tmp", delete=False,
+        ) as handle:
+            staged = Path(handle.name)
+            json.dump(manifest, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+        os.replace(staged, manifest_path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
 
 
 def main() -> None:
