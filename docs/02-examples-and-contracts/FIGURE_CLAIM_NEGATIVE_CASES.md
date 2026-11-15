@@ -43,3 +43,9 @@ For any execution claim retain the exact source revision, recipe, figure bytes, 
 **Status:** new negative-case runs `NOT_EXECUTED`, scientific truth/peer review `NOT_VERIFIED`, no code behavior added or implied by this document
 
 The owning specialized contracts continue to define the implemented JSON and transfer fields, this companion defines falsifiable interpretation tests only
+
+## Existing test scope versus unexecuted negative cases
+
+`tests/test_render_integration.py` defines a temporary-file Matplotlib case checking emitted PNG, manifest and evidence-sidecar byte identities. That test's **definition** establishes a bounded intended regression surface; it does not certify independent rendering parity, source data validity, inferred plot meaning, accessibility conformance or publisher acceptance. Its actual result must be tied to a named revision, environment and retained run output
+
+The matrix above is an extension of the **scientific interpretation boundary**: it is not already covered by a successful byte-identity fixture, and the negative cases remain `NOT_EXECUTED` until run with explicit input/outputs
