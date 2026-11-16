@@ -11,6 +11,33 @@
 
 # Scientific Communication Transfer Contract — sci-render-kit
 
+## 中文专业正文对照 / Chinese technical counterpart
+
+**具体研究对象 / Concrete subject:** 视觉传播只传递来源声明和有限上下文，不继承上游 Claim 的真值、同行评审或 R3 复现
+
+**English owning title:** Scientific Communication Transfer Contract — sci-render-kit
+
+**图像证据判别 / Figure evidence reading:** 应分别取得源数据版本、recipe/profile、实际后端输出、manifest、声明绑定、上游 sidecar 与可访问性实测结果，不能将图像 bytes、示例文档或测试定义视为实际同行评审 / Keep source, recipe, backend, manifest and claim identities separate, verify the exact execution evidence before asserting quality or reproducibility
+
+| English original section / 英文原章 | 中文对应定位 / Chinese section meaning |
+| --- | --- |
+| Purpose | 目标 |
+| Stable profile | 该图像合同的局部机制与证据限制 |
+| Source semantics | 来源语义 |
+| Reproducibility-context preservation | 该图像合同的局部机制与证据限制 |
+| Transfer constraints | 传递条件 |
+| Transfer coverage | 该图像合同的局部机制与证据限制 |
+| Assertion basis | 该图像合同的局部机制与证据限制 |
+| CLI | 该图像合同的局部机制与证据限制 |
+| Relationship to figure evidence | 该图像合同的局部机制与证据限制 |
+| Machine-readable contract | 该图像合同的局部机制与证据限制 |
+| Cross-repository context | 该图像合同的局部机制与证据限制 |
+| Current maintenance authority | 该图像合同的局部机制与证据限制 |
+| Global calibration | 该图像合同的局部机制与证据限制 |
+
+**限界 / Limits:** 原有配置、图形行为与未知执行状态保持不变，本节不新增科学审定、出版接纳、WCAG 认证或真实浏览器通过声明 / Original behaviors and unknown states are unchanged, no scientific or publisher certification is implied
+
+
 **Status:** implemented project-owned handoff contract  
 **Calibrated:** 2026-09-01  
 **Implementation:** `core/communication_transfer.py`

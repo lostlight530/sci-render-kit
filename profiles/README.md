@@ -1,5 +1,25 @@
 # Publication Profiles
 
+## 中文专业正文对照 / Chinese technical counterpart
+
+**具体研究对象 / Concrete subject:** 本专业文档给出真实图像编译能力的边界
+
+**English owning title:** Publication Profiles
+
+**图像证据判别 / Figure evidence reading:** 应分别取得源数据版本、recipe/profile、实际后端输出、manifest、声明绑定、上游 sidecar 与可访问性实测结果，不能将图像 bytes、示例文档或测试定义视为实际同行评审 / Keep source, recipe, backend, manifest and claim identities separate, verify the exact execution evidence before asserting quality or reproducibility
+
+| English original section / 英文原章 | 中文对应定位 / Chinese section meaning |
+| --- | --- |
+| Evidence fields | 证据字段 |
+| `publication` vs `aesthetics` | 该图像合同的局部机制与证据限制 |
+| P3 semantics | 该图像合同的局部机制与证据限制 |
+| Nature snapshot | 该图像合同的局部机制与证据限制 |
+| Accessibility remains recipe-level | 该图像合同的局部机制与证据限制 |
+| Maintenance rule | 该图像合同的局部机制与证据限制 |
+
+**限界 / Limits:** 原有配置、图形行为与未知执行状态保持不变，本节不新增科学审定、出版接纳、WCAG 认证或真实浏览器通过声明 / Original behaviors and unknown states are unchanged, no scientific or publisher certification is implied
+
+
 Profiles are machine-readable **publisher-target presets**, not official publisher validators and not opaque visual themes.
 
 ## Evidence fields
