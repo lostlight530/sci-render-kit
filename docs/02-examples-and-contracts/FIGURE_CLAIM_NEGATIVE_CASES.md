@@ -1,5 +1,23 @@
 # Figure claim and communication transfer — source-derived negative cases
 
+## 中文专业正文对照 / Chinese technical counterpart
+
+**具体研究对象 / Concrete subject:** 虚假 claim binding、篡改 sidecar、错配引用和非真实复现需要负例测试，文档提出用例不等于实际执行
+
+**English owning title:** Figure claim and communication transfer — source-derived negative cases
+
+**图像证据判别 / Figure evidence reading:** 应分别取得源数据版本、recipe/profile、实际后端输出、manifest、声明绑定、上游 sidecar 与可访问性实测结果，不能将图像 bytes、示例文档或测试定义视为实际同行评审 / Keep source, recipe, backend, manifest and claim identities separate, verify the exact execution evidence before asserting quality or reproducibility
+
+| English original section / 英文原章 | 中文对应定位 / Chinese section meaning |
+| --- | --- |
+| Central research problem | 该图像合同的局部机制与证据限制 |
+| Code-grounded negative cases | 该图像合同的局部机制与证据限制 |
+| Evidence obligations for an actual figure study | 该图像合同的局部机制与证据限制 |
+| Existing test scope versus unexecuted negative cases | 该图像合同的局部机制与证据限制 |
+
+**限界 / Limits:** 原有配置、图形行为与未知执行状态保持不变，本节不新增科学审定、出版接纳、WCAG 认证或真实浏览器通过声明 / Original behaviors and unknown states are unchanged, no scientific or publisher certification is implied
+
+
 **Document class:** durable specialized research method, independent of periodic reports  
 **Source baseline:** `main@df9c2424f661b2f0ef258f0064f4480dc8395913`, inspected 2026-11-15  
 **Owning contracts:** [Figure Claim](./FIGURE_CLAIM_CONTRACT.md), [Communication Transfer](./COMMUNICATION_TRANSFER_CONTRACT.md), [Assertion Basis and Coverage](./ASSERTION_BASIS_AND_COMMUNICATION_COVERAGE.md)  

@@ -11,6 +11,31 @@
 
 # Assertion Basis & Communication Coverage — sci-render-kit
 
+## 中文专业正文对照 / Chinese technical counterpart
+
+**具体研究对象 / Concrete subject:** 展示覆盖度应按 claim、visual binding 与可访问性维度分别记录，不构造未经论证的总体质量评分
+
+**English owning title:** Assertion Basis & Communication Coverage — sci-render-kit
+
+**图像证据判别 / Figure evidence reading:** 应分别取得源数据版本、recipe/profile、实际后端输出、manifest、声明绑定、上游 sidecar 与可访问性实测结果，不能将图像 bytes、示例文档或测试定义视为实际同行评审 / Keep source, recipe, backend, manifest and claim identities separate, verify the exact execution evidence before asserting quality or reproducibility
+
+| English original section / 英文原章 | 中文对应定位 / Chinese section meaning |
+| --- | --- |
+| Purpose | 目标 |
+| Assertion bases | 该图像合同的局部机制与证据限制 |
+| No automatic AI detection | 该图像合同的局部机制与证据限制 |
+| Communication coverage | 该图像合同的局部机制与证据限制 |
+| No aggregate communication-quality score | 不得汇总未经核验的质量分数 |
+| Transfer coverage stays separate | 该图像合同的局部机制与证据限制 |
+| Runtime validation remains separate | 该图像合同的局部机制与证据限制 |
+| Relation to current research-agent work | 该图像合同的局部机制与证据限制 |
+| Current document and maintenance authority | 该图像合同的局部机制与证据限制 |
+| Hard boundaries | 该图像合同的局部机制与证据限制 |
+| The denominator of coverage is not a denominator of truth | 该图像合同的局部机制与证据限制 |
+
+**限界 / Limits:** 原有配置、图形行为与未知执行状态保持不变，本节不新增科学审定、出版接纳、WCAG 认证或真实浏览器通过声明 / Original behaviors and unknown states are unchanged, no scientific or publisher certification is implied
+
+
 **Calibration:** 2026-08-31  
 **Status:** implemented companion contract for `sci-render-kit/figure-claim-audit`, `sci-render-kit/figure-evidence`, and downstream communication handoff
 

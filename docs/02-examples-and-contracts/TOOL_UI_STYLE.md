@@ -1,5 +1,25 @@
 # Three-Repository Evidence Console — UI Style & Interaction Contract
 
+## 中文专业正文对照 / Chinese technical counterpart
+
+**具体研究对象 / Concrete subject:** 科研控制台的易用性、可访问性、边界提示和静态预览需要实际浏览器与辅助技术验证
+
+**English owning title:** Three-Repository Evidence Console — UI Style & Interaction Contract
+
+**图像证据判别 / Figure evidence reading:** 应分别取得源数据版本、recipe/profile、实际后端输出、manifest、声明绑定、上游 sidecar 与可访问性实测结果，不能将图像 bytes、示例文档或测试定义视为实际同行评审 / Keep source, recipe, backend, manifest and claim identities separate, verify the exact execution evidence before asserting quality or reproducibility
+
+| English original section / 英文原章 | 中文对应定位 / Chinese section meaning |
+| --- | --- |
+| Purpose | 目标 |
+| Design language | 该图像合同的局部机制与证据限制 |
+| Observable interaction | 该图像合同的局部机制与证据限制 |
+| Accessibility and boundaries | 该图像合同的局部机制与证据限制 |
+| Next verification gate | 该图像合同的局部机制与证据限制 |
+| Canonical native adapter compatibility | 该图像合同的局部机制与证据限制 |
+
+**限界 / Limits:** 原有配置、图形行为与未知执行状态保持不变，本节不新增科学审定、出版接纳、WCAG 认证或真实浏览器通过声明 / Original behaviors and unknown states are unchanged, no scientific or publisher certification is implied
+
+
 **Owner:** sci-render-kit communication/presentation plane, 2026-10-19
 **Artifact:** [ui/tri_repo_console.html](../../ui/tri_repo_console.html)
 

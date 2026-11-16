@@ -11,6 +11,33 @@
 
 # Architecture — sci-render-kit
 
+## 中文专业正文对照 / Chinese technical counterpart
+
+**具体研究对象 / Concrete subject:** 图像 recipe、后端、profile、hash manifest 与 Figure Evidence 是互相关联但不能混淆的层，渲染成功不证明命题正确
+
+**English owning title:** Architecture — sci-render-kit
+
+**图像证据判别 / Figure evidence reading:** 应分别取得源数据版本、recipe/profile、实际后端输出、manifest、声明绑定、上游 sidecar 与可访问性实测结果，不能将图像 bytes、示例文档或测试定义视为实际同行评审 / Keep source, recipe, backend, manifest and claim identities separate, verify the exact execution evidence before asserting quality or reproducibility
+
+| English original section / 英文原章 | 中文对应定位 / Chinese section meaning |
+| --- | --- |
+| Thesis | 中心命题 |
+| Canonical path | 规范输入到输出路径 |
+| Stable project identifiers | 该图像合同的局部机制与证据限制 |
+| Recipe layer | 该图像合同的局部机制与证据限制 |
+| Runtime-quality plane | 运行质量层 |
+| Accessibility semantics | 可访问性语义 |
+| Claim communication layer | 该图像合同的局部机制与证据限制 |
+| Assertion-basis layer | 该图像合同的局部机制与证据限制 |
+| Figure Claim Audit | 该图像合同的局部机制与证据限制 |
+| Communication-coverage layer | 该图像合同的局部机制与证据限制 |
+| Two evidence planes | 该图像合同的局部机制与证据限制 |
+| Backend layer | 该图像合同的局部机制与证据限制 |
+| Figure Evidence layer | 该图像合同的局部机制与证据限制 |
+
+**限界 / Limits:** 原有配置、图形行为与未知执行状态保持不变，本节不新增科学审定、出版接纳、WCAG 认证或真实浏览器通过声明 / Original behaviors and unknown states are unchanged, no scientific or publisher certification is implied
+
+
 > Calibrated 2026-08-31. This document describes scientific-figure runtime/evidence semantics, communication transfer, and maintenance/document governance, not GitHub platform governance
 
 ## Thesis
