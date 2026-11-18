@@ -20,6 +20,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, Optional
@@ -329,10 +330,19 @@ def write_figure_evidence(record: dict, output_path: str | Path) -> Path:
     output_path = Path(output_path)
     path = output_path.with_suffix(".evidence.json")
     path.parent.mkdir(parents=True, exist_ok=True)
-    temp = path.with_suffix(".evidence.json.tmp")
-    temp.write_text(
-        json.dumps(record, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
-    os.replace(temp, path)
+    staged = None
+    try:
+        # An exclusive same-directory staging file avoids following or
+        # overwriting a pre-existing legacy .tmp symlink.
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=path.parent,
+            prefix=f".{path.name}.", suffix=".tmp", delete=False,
+        ) as handle:
+            staged = Path(handle.name)
+            json.dump(record, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+        os.replace(staged, path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
     return path
