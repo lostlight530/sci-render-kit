@@ -74,5 +74,30 @@ class RenderIntegration(unittest.TestCase):
             }, sort_keys=True))
 
 
+
+    def test_figure_evidence_writer_preserves_legacy_stage_symlink_target(self):
+        from core.figure_evidence import write_figure_evidence
+
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            protected = root / "protected.txt"
+            protected.write_text("PRESERVE", encoding="utf-8")
+            figure = root / "figure.png"
+            output = figure.with_suffix(".evidence.json")
+            old_stage = output.with_suffix(".evidence.json.tmp")
+            try:
+                old_stage.symlink_to(protected)
+            except (OSError, NotImplementedError) as exc:
+                self.skipTest(f"symbolic links unavailable: {exc}")
+
+            actual = write_figure_evidence({"figure_id": "f1"}, figure)
+            self.assertEqual(actual, output)
+            self.assertEqual(protected.read_text(encoding="utf-8"), "PRESERVE")
+            self.assertTrue(old_stage.is_symlink())
+            self.assertEqual(
+                json.loads(output.read_text(encoding="utf-8"))["figure_id"], "f1"
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
