@@ -262,9 +262,9 @@ A reference or transfer does not inherit truth
 
 ## Current document and maintenance authority
 
-Current document authority is indexed in [DOCUMENT_STATUS.md](DOCUMENT_STATUS.md)
-Daily / weekly / monthly repository maintenance is defined by [MAINTENANCE_CADENCE.md](MAINTENANCE_CADENCE.md)
-The August 2026 research-maintenance phase is closed in [STAGE_2026_08_MAINTENANCE.md](STAGE_2026_08_MAINTENANCE.md)
+Current document authority is indexed in [DOCUMENT_STATUS.md](../03-maintenance-and-audit/DOCUMENT_STATUS.md)
+Daily / weekly / monthly repository maintenance is defined by [MAINTENANCE_CADENCE.md](../03-maintenance-and-audit/MAINTENANCE_CADENCE.md)
+The August 2026 research-maintenance phase is closed in [STAGE_2026_08_MAINTENANCE.md](../03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md)
 
 Historical `*_DAY_CONSOLIDATION.md` files remain snapshots of earlier repository states and are not current contracts
 
