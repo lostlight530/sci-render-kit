@@ -149,3 +149,12 @@
 - NEW_COUNTEREVIDENCE: a passing converter cannot validate a chart's underlying data claim.
 - UNKNOWN_RETAINED: real render outputs and independent scientific/visual validity checks.
 - NEXT_RETEST_CONDITION: actual A2 merge/main readback, then separately authorized Stage-specific artifact verification.
+
+
+## 2026-11-20 independent forward Stage L content calibration — A2
+- Original independent A2 PR #266 remains merged with its own original GitHub numeric and producer history; this is an attributable current-owner correction after original source blob `d26989ae4c15e369e9f8924f47e5177b2cbd6c1d`
+- Read current Stage L original source `maintenance/frontier-research/stage-l-2026-q4/L1_PLOTLYJS_V412.md` blob `eb7b941a5d7327f2fa4543f21082102ba93bcf41`, O13/S13 `plotly/plotly.js@v4.1.2`, release date 2026-10-05, inspected in the Stage research 2026-10-19; author-reported responsive ResizeObserver and export-config changes are not local renderer behavior verification
+- Read current Stage L original source `maintenance/frontier-research/stage-l-2026-q4/L2_VEGALITE_V650.md` blob `e0e5bdf11779395531d7b1338bc2cdef6323b5b8`, O14/S14 `vega/vega-lite@v6.5.0`, release date 2026-10-08, Stage inspected 2026-10-19; author-reported image-mark center alignment fix is not independently verified cross-version render equivalence
+- Source revision, renderer execution, bitmap/DOM output, accessibility claims, underlying data correctness, uncertainty display and publisher scientific acceptance require different observations; neither this A2 nor cited Stage source contains independent current rendered-output receipt
+- Consequently Stage stays `SOURCE_BOUNDED / IN_PROGRESS`; no November month FINAL, no invented native render or independent WCAG/scientific validation
+- Source-specific audit: [Stage L render/scientific evidence document review](../../../historical-audits/02-document-audits/2026-11-20--stage-l-render-and-science--document-audit.md)
