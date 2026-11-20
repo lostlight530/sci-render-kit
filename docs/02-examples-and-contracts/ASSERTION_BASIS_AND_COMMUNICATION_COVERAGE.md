@@ -202,9 +202,9 @@ The Sci Render response remains communication-layer specific
 
 ## Current document and maintenance authority
 
-See [DOCUMENT_STATUS.md](DOCUMENT_STATUS.md) for CURRENT versus HISTORICAL documentation
-See [MAINTENANCE_CADENCE.md](MAINTENANCE_CADENCE.md) for daily / weekly / monthly maintenance semantics
-The August stage is closed in [STAGE_2026_08_MAINTENANCE.md](STAGE_2026_08_MAINTENANCE.md)
+See [DOCUMENT_STATUS.md](../03-maintenance-and-audit/DOCUMENT_STATUS.md) for CURRENT versus HISTORICAL documentation
+See [MAINTENANCE_CADENCE.md](../03-maintenance-and-audit/MAINTENANCE_CADENCE.md) for daily / weekly / monthly maintenance semantics
+The August stage is closed in [STAGE_2026_08_MAINTENANCE.md](../03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md)
 
 ## Hard boundaries
 
