@@ -102,6 +102,27 @@ class RenderIntegration(unittest.TestCase):
 
 
 class MatplotlibTemporaryFileSafety(unittest.TestCase):
+    def test_atomic_json_writer_preserves_legacy_temp_symlink_target(self):
+        from backends import matplotlib_base
+
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            target = root / "render.manifest.json"
+            target.write_text(json.dumps({"old": True}), encoding="utf-8")
+            protected = root / "protected.txt"
+            protected.write_text("PRESERVE", encoding="utf-8")
+            legacy_temp = target.with_suffix(target.suffix + ".tmp")
+            try:
+                legacy_temp.symlink_to(protected)
+            except (OSError, NotImplementedError) as exc:
+                self.skipTest(f"symbolic links unavailable: {exc}")
+
+            matplotlib_base._atomic_json(target, {"new": True})
+
+            self.assertEqual(protected.read_text(encoding="utf-8"), "PRESERVE")
+            self.assertTrue(legacy_temp.is_symlink())
+            self.assertEqual(json.loads(target.read_text(encoding="utf-8")), {"new": True})
+
     def test_backend_preserves_preexisting_generated_script(self):
         from backends import matplotlib_base
 
