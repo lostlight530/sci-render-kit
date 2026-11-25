@@ -11,7 +11,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
+import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -143,9 +145,25 @@ def render(recipe_path: str, profile_name: str = "nature") -> None:
             "redundant_encoding": accessibility.get("redundant_encoding", "off"),
             "alt_text_embedded_where_supported": bool(str(accessibility.get("alt_text") or "").strip()),
         }
-        temp = manifest_path.with_suffix(".manifest.json.tmp")
-        temp.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        temp.replace(manifest_path)
+        staged = None
+        try:
+            # Use an exclusive same-directory temporary file. A fixed .tmp path
+            # can be a symlink to unrelated input and must never be followed.
+            with tempfile.NamedTemporaryFile(
+                mode="w",
+                encoding="utf-8",
+                dir=manifest_path.parent,
+                prefix=f".{manifest_path.name}.",
+                suffix=".tmp",
+                delete=False,
+            ) as handle:
+                staged = Path(handle.name)
+                json.dump(manifest, handle, ensure_ascii=False, indent=2)
+                handle.write("\n")
+            os.replace(staged, manifest_path)
+        finally:
+            if staged is not None:
+                staged.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":

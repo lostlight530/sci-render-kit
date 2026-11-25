@@ -24,6 +24,7 @@ import json
 import os
 import platform
 import subprocess
+import tempfile
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -446,15 +447,27 @@ def render(
     output = recipe["output"]
     output_dir = Path(output.get("dir", "output"))
     output_dir.mkdir(parents=True, exist_ok=True)
-    script_path = output_dir / "_generated_render.py"
-    script_path.write_text(code, encoding="utf-8")
+    script_path: Optional[Path] = None
     try:
+        # Never reserve a fixed filename inside a caller-selected output directory:
+        # an existing _generated_render.py may be user data or source code.
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=output_dir,
+            prefix=".sci-render-",
+            suffix=".py",
+            delete=False,
+        ) as handle:
+            script_path = Path(handle.name)
+            handle.write(code)
         subprocess.run([sys.executable, str(script_path)], check=True)
     finally:
-        try:
-            script_path.unlink(missing_ok=True)
-        except OSError:
-            pass
+        if script_path is not None:
+            try:
+                script_path.unlink(missing_ok=True)
+            except OSError:
+                pass
 
     output_path = output_dir / output.get("filename", "figure.png")
     if not output_path.is_file():
