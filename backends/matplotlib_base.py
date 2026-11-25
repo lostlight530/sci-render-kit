@@ -24,6 +24,7 @@ import json
 import os
 import platform
 import subprocess
+import tempfile
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -91,9 +92,25 @@ def file_sha256(path: str | Path | None) -> Optional[str]:
 
 def _atomic_json(path: Path, payload: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    temp = path.with_suffix(path.suffix + ".tmp")
-    temp.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    os.replace(temp, path)
+    staged = None
+    try:
+        # A fixed .tmp path can be a symlink to unrelated input. Stage
+        # exclusively in the destination directory before atomic replacement.
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=path.parent,
+            prefix=f".{path.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as handle:
+            staged = Path(handle.name)
+            json.dump(payload, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+        os.replace(staged, path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
 
 
 def resolve_palette(aesthetics: dict, chart_type: str, data: dict) -> list:
@@ -446,15 +463,27 @@ def render(
     output = recipe["output"]
     output_dir = Path(output.get("dir", "output"))
     output_dir.mkdir(parents=True, exist_ok=True)
-    script_path = output_dir / "_generated_render.py"
-    script_path.write_text(code, encoding="utf-8")
+    script_path: Optional[Path] = None
     try:
+        # Never reserve a fixed filename inside a caller-selected output directory:
+        # an existing _generated_render.py may be user data or source code.
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=output_dir,
+            prefix=".sci-render-",
+            suffix=".py",
+            delete=False,
+        ) as handle:
+            script_path = Path(handle.name)
+            handle.write(code)
         subprocess.run([sys.executable, str(script_path)], check=True)
     finally:
-        try:
-            script_path.unlink(missing_ok=True)
-        except OSError:
-            pass
+        if script_path is not None:
+            try:
+                script_path.unlink(missing_ok=True)
+            except OSError:
+                pass
 
     output_path = output_dir / output.get("filename", "figure.png")
     if not output_path.is_file():
