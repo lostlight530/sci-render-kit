@@ -108,6 +108,9 @@
 | `maintenance/frontier-research/stage-l-2026-q4/SOURCE_OBJECT_REGISTER.md` | `304447c8189f7bfe7c3cf35d7176e0d93bca2ae0` | `304447c8189f7bfe7c3cf35d7176e0d93bca2ae0` | INHERITED / INHERITED / exact prior source custody; NO_FOLLOW_UP / exact prior custody; Q4_STAGE_L_NATIVE_EVIDENCE_OR_AUTHORITY; NO_ACTUAL_PUBLISHER_OR_ACCESSIBILITY_CERTIFICATION |
 | `maintenance/frontier-research/stage-l-2026-q4/STAGE_BRIEF.md` | `96129b7b7b3ce4a9f6c7bfe5784a7fb1935bd43f` | `96129b7b7b3ce4a9f6c7bfe5784a7fb1935bd43f` | INHERITED / INHERITED / exact prior source custody; NO_FOLLOW_UP / exact prior custody; Q4_STAGE_L_NATIVE_EVIDENCE_OR_AUTHORITY; NO_ACTUAL_PUBLISHER_OR_ACCESSIBILITY_CERTIFICATION |
 | `MANIFEST.yaml` | `62e09c7e79dc3aa0051feeed22138366f37af174` | `62e09c7e79dc3aa0051feeed22138366f37af174` | INHERITED / INHERITED / exact prior source custody; NO_FOLLOW_UP / exact prior custody; MACHINE_AND_SUPPORT; INHERITED_EXACT_BLOB; NO_RENDER_PASS_INFERRED |
+| `backends/matplotlib_adapter.py` | `2cdde0d64d0533f05d93653d3bd754aa1b6f154d` | NOT_IN_PRIOR_A2 | CHANGED / #279 exclusive same-directory manifest staging, os.replace and cleanup; code source reviewed, not render execution |
+| `backends/matplotlib_base.py` | `492dc3680ef01cc2a72ba3f173646997bdadc7f0` | NOT_IN_PRIOR_A2 | CHANGED / #279 exclusive JSON staging and unique generated-script path, subprocess and cleanup; not a Stage research object |
+| `tests/test_render_integration.py` | `62e8c3edf6cb95d25f8c63217a43e39d84588d67` | NOT_IN_PRIOR_A2 | CHANGED / #279 test definitions protect legacy temp symlink target and pre-existing generated script; mocked render subprocess is not real renderer evidence; tests NOT_EXECUTED here |
 
 ## Evidence delta and counterevidence
 - INHERITED: L1 Plotly.js 4.1.2 resize observer/responsive layout and L2 Vega-Lite 6.5.0 image-mark alignment remain distinct versioned research objects; neither is independent browser output or measured accessibility.
@@ -120,5 +123,5 @@
 - D7/D10/D14/D30 and month closure independent. November OPEN; D30 NOT_DUE.
 
 ## Acceptance
-- TASK_COMPLETENESS: 25 logical windows; 72 source relations; claim/output verification PARTIAL. Original A1 final additions verified. Original A2 final merged additions gate >=100 pending authorization and merge.
+- TASK_COMPLETENESS: 25 logical windows; 75 source relations; claim/output verification PARTIAL. Original A1 final additions verified. Original A2 final merged additions gate >=100 pending authorization and merge.
 - DELIVERY Draft only; main retention pending. No history or Stage owner rewritten.
