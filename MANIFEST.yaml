@@ -251,6 +251,8 @@ artifacts:
       omitted_or_null_semantics: not_declared
       malformed_context_behavior: fail_explicitly
       validation_precedes_coverage_metrics: true
+      claim_communication_refs: omitted_null_or_array_of_nonempty_strings
+      claim_communication_inferred_bindings: omitted_or_boolean
     destination_basis: caller_declared_or_not_declared
     purpose_basis: caller_declared_or_not_declared
     payloads_preserved:

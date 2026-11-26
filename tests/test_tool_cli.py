@@ -192,6 +192,59 @@ class TestRepoIntegration(unittest.TestCase):
             self.assertEqual(json.loads(proc.stdout)["error"]["code"],
                              "EXECUTION_FAILED")
 
+    def test_transfer_rejects_lossy_claim_refs_and_inference_flags(self):
+        malformed = [
+            ("claim_refs", "claim-1"),
+            ("claim_refs", [None]),
+            ("claim_refs", [7]),
+            ("claim_refs", [" "]),
+            ("inferred_bindings", "false"),
+            ("inferred_bindings", None),
+        ]
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "figure.evidence.json"
+            for field, value in malformed:
+                with self.subTest(field=field, value=value):
+                    path.write_text(json.dumps({
+                        "profile": "sci-render-kit/figure-evidence",
+                        "claim_communication": {field: value},
+                    }), encoding="utf-8")
+                    original = path.read_bytes()
+                    response = execute_tool_call(
+                        "communication_transfer", {"figure_evidence": str(path)}
+                    )
+                    self.assertEqual(response["status"], "error", response)
+                    self.assertEqual(response["error"]["code"], "EXECUTION_FAILED")
+                    self.assertIn(f"claim_communication.{field}", response["error"]["message"])
+                    proc = subprocess.run(
+                        [sys.executable, str(ROOT / "tool_cli.py"), "invoke",
+                         "communication_transfer", "--args",
+                         json.dumps({"figure_evidence": str(path)})],
+                        cwd=ROOT, capture_output=True, text=True,
+                    )
+                    self.assertEqual(proc.returncode, 1, proc.stdout)
+                    self.assertEqual(proc.stderr, "")
+                    self.assertEqual(json.loads(proc.stdout)["error"]["code"], "EXECUTION_FAILED")
+                    self.assertEqual(path.read_bytes(), original)
+
+            for fields, expected in (
+                ({"claim_refs": ["c1", "c1", "c2"], "inferred_bindings": False}, ["c1", "c2"]),
+                ({"claim_refs": None}, []),
+            ):
+                path.write_text(json.dumps({
+                    "profile": "sci-render-kit/figure-evidence",
+                    "claim_communication": fields,
+                }), encoding="utf-8")
+                response = execute_tool_call(
+                    "communication_transfer", {"figure_evidence": str(path)}
+                )
+                self.assertEqual(response["status"], "ok", response)
+                transfer = response["result"]
+                self.assertEqual(transfer["claim_communication"]["claim_refs"], expected)
+                self.assertEqual(transfer["transfer_coverage"]["claim_ref_count"], len(expected))
+                self.assertIs(transfer["claim_communication"]["inferred_bindings"], False)
+                self.assertFalse(transfer["scientific_validity_claim"])
+
     def test_transfer_preserves_valid_declared_bindings(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "valid-bindings.evidence.json"

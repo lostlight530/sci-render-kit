@@ -68,6 +68,20 @@ def _load_json(path: str | Path) -> dict:
     # declared context or fail before computing transfer coverage.
     communication = data.get("claim_communication")
     if isinstance(communication, dict):
+        claim_refs = communication.get("claim_refs")
+        if claim_refs is not None and (
+            not isinstance(claim_refs, list)
+            or any(not isinstance(item, str) or not item.strip() for item in claim_refs)
+        ):
+            raise ValueError(
+                "figure evidence field 'claim_communication.claim_refs' "
+                "must be an array of nonempty strings when supplied"
+            )
+        if "inferred_bindings" in communication and not isinstance(communication["inferred_bindings"], bool):
+            raise ValueError(
+                "figure evidence field 'claim_communication.inferred_bindings' "
+                "must be a boolean when supplied"
+            )
         bindings = communication.get("bindings")
         if bindings is not None and (
             not isinstance(bindings, list)

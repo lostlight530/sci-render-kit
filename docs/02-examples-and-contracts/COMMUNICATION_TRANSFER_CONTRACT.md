@@ -75,6 +75,8 @@ No relationship is inferred from filenames, image pixels, captions, legends or p
 
 The optional `claim_communication.bindings` collection must be an array of JSON objects when supplied. Malformed collections fail explicitly rather than silently dropping declared bindings or reporting a misleading zero binding count.
 
+The optional `claim_communication.claim_refs` collection accepts omission or null; a supplied non-null value must be an array of nonempty strings. Existing trimming and deduplication remain unchanged. If supplied, `claim_communication.inferred_bindings` must be a JSON boolean; omission retains the previous false default. Explicit null and non-boolean flags fail instead of being converted. These checks precede transfer and coverage calculation; they do not infer bindings, resolve references, or establish entailment.
+
 ```text
 source hash != semantic equivalence
 caller-declared destination != publication acceptance
