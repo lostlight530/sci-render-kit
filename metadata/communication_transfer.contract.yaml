@@ -25,6 +25,14 @@ input_validation:
     item_type: object
     malformed_collection_behavior: fail_explicitly
     silent_binding_drop_allowed: false
+  claim_communication_refs:
+    accepted_states: ["omitted", "null", "array"]
+    item_type: nonempty_string
+    malformed_collection_behavior: fail_explicitly
+  claim_communication_inferred_bindings:
+    accepted_states: ["omitted", "boolean"]
+    omitted_default: false
+    malformed_value_behavior: fail_explicitly
   adapter_error_code_for_malformed_context: EXECUTION_FAILED
 
 copied_context:
